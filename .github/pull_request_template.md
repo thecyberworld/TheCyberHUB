@@ -41,6 +41,6 @@ Incorrect ways to mark a box:
 
 ---
 
-You can also join our [Discord](https://discord.gg/QHBPq6xP5p) community. <br>
-Feel free to check out other cool repositories of the [Thecyberworld](https://github.com/thecyberworld). <br>
+You can also join our [Discord](https://discord.gg/QHBPq6xP5p) community. 
+Feel free to check out other cool repositories of the [Thecyberworld](https://github.com/thecyberworld). 
 Join the Thecyberworld GitHub Organisation by raising an [issue](https://github.com/thecyberworld/Support/issues/new?assignees=&labels=invite+me+to+the+organisation&template=invitation.yml&title=Please+invite+me+to+the+GitHub+Community+Organization) (you will be sent an invitation).
