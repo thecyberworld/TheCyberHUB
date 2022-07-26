@@ -1,6 +1,6 @@
 import React from 'react';
-import YoutubeCoursesNavbar from "./Courses/YoutubeCoursesNavbar/YoutubeCoursesNavbar";
-import YoutubeCourses from "./Courses/YoutubeCourses";
+import YoutubeCoursesNavbar from "../components/Courses/YoutubeCoursesNavbar/YoutubeCoursesNavbar";
+import YoutubeCourses from "../components/Courses/YoutubeCourses";
 
 const Courses = () => {
     return (

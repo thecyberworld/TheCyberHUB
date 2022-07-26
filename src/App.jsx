@@ -4,10 +4,10 @@ import './App.css';
 import {Route, Routes} from "react-router-dom";
 
 import Homepage from './pages/Homepage';
+import Courses from './pages/Courses';
 import {Footer} from "./components";
 import ScrollToTop from "./components/ScrollToTop";
 import {Navigate} from "react-router";
-import Courses from "./components/Courses";
 
 const App = () => {
     return (
