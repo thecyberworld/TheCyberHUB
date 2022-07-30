@@ -1137,16 +1137,20 @@ Error generating stack: `+i.message+`
 `,wx=x.p`
   display: inline-block;
 `,xx=x.div`
-  width: 30%;
   display: inline-block;
+  align-self: center;
+  width: 30%;
+  `,Sx=x.img`
+  display: inline-block;
+  align-self: center;
 
-`,Sx=x.button`
+`,kx=x.button`
     border-radius: 5px;
   border-color: #2F80ED;
     border-style: solid;
   font-size: 20px;
   border-width: 1px;
   
-`,kx=x.div`
 `,_x=x.div`
-`,Rh=()=>M(px,{children:[f(hx,{src:"https://miro.medium.com/fit/c/176/176/1*WrWKJOzibjROkAF5S5Qn8w.jpeg",alt:"Steiner255"}),f(mx,{children:"Steiner255"}),f(gx,{children:". 5 Days Ago"}),M(vx,{children:[f(yx,{children:"$$$ bounty in less 3 minutes from a google dork"}),"~ Hi Bug Bounty Hunters & CyberSecurity folks!!! It\u2019s been long since i dropped a bug bounty writeup. Got lots of them in store, and i will be sharing them soonest possible. Just stay tuned, remember: Practice Make....",f(wx,{})]}),f(xx,{src:"https://miro.medium.com/fit/c/224/224/1*cRu3ETnHdt6n-z96oedxPQ.png",alt:"Bootcamp"}),f(Sx,{children:"Bug Bounty"}),f(kx,{children:"2 min read"}),M(_x,{children:[f(P2,{}),f(C2,{}),f(E2,{})]})]}),Cx=()=>M("div",{children:[f("navbar",{children:f(yw,{})}),M(Up,{children:[f(Nt,{exact:!0,path:"/",element:f(Lh,{})}),f(Nt,{exact:!0,path:"cybernews",element:f(Nh,{})}),f(Nt,{path:"writeups",element:f(Rh,{})})]})]}),Ex=()=>M("div",{children:[f(dx,{children:M(Up,{children:[f(Nt,{index:!0,exact:!0,path:"/",element:f(fx,{})}),M(Nt,{exact:!0,path:"/resources",element:f(Cx,{}),children:[f(Nt,{index:!0,element:f(Lh,{})}),f(Nt,{path:"cybernews",element:f(Nh,{})}),f(Nt,{path:"writeups",element:f(Rh,{})})]})]})}),f(nx,{})]});sa.createRoot(document.getElementById("root")).render(f(lt.StrictMode,{children:f(N0,{children:f(Ex,{})})}));
+`,Cx=x.div`
+`,Rh=()=>M(px,{children:[f(hx,{src:"https://miro.medium.com/fit/c/176/176/1*WrWKJOzibjROkAF5S5Qn8w.jpeg",alt:"Steiner255"}),f(mx,{children:"Steiner255"}),f(gx,{children:". 5 Days Ago"}),M(vx,{children:[f(yx,{children:"$$$ bounty in less 3 minutes from a google dork"}),"~ Hi Bug Bounty Hunters & CyberSecurity folks!!! It\u2019s been long since i dropped a bug bounty writeup. Got lots of them in store, and i will be sharing them soonest possible. Just stay tuned, remember: Practice Make....",f(wx,{})]}),f(xx,{children:f(Sx,{src:"https://miro.medium.com/fit/c/224/224/1*cRu3ETnHdt6n-z96oedxPQ.png",alt:"Bootcamp"})}),f(kx,{children:"Bug Bounty"}),f(_x,{children:"2 min read"}),M(Cx,{children:[f(P2,{}),f(C2,{}),f(E2,{})]})]}),Ex=()=>M("div",{children:[f("navbar",{children:f(yw,{})}),M(Up,{children:[f(Nt,{exact:!0,path:"/",element:f(Lh,{})}),f(Nt,{exact:!0,path:"cybernews",element:f(Nh,{})}),f(Nt,{path:"writeups",element:f(Rh,{})})]})]}),Px=()=>M("div",{children:[f(dx,{children:M(Up,{children:[f(Nt,{index:!0,exact:!0,path:"/",element:f(fx,{})}),M(Nt,{exact:!0,path:"/resources",element:f(Ex,{}),children:[f(Nt,{index:!0,element:f(Lh,{})}),f(Nt,{path:"cybernews",element:f(Nh,{})}),f(Nt,{path:"writeups",element:f(Rh,{})})]})]})}),f(nx,{})]});sa.createRoot(document.getElementById("root")).render(f(lt.StrictMode,{children:f(N0,{children:f(Px,{})})}));
