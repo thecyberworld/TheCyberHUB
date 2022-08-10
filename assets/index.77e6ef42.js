@@ -723,6 +723,10 @@ Error generating stack: `+i.message+`
   text-align: center;
   margin: -50px 10px 100px 20px;
   color: #cecac3;
+
+  @media screen and (max-width: 760px) {
+    text-align: center;
+  }
 `,Cw=v.div`
   display: flex;
   flex-direction: column;
@@ -736,6 +740,11 @@ Error generating stack: `+i.message+`
 
   @media screen and (max-width: 760px) {
   }
+
+  @media screen and (max-width: 600px) {
+    width: 27rem;
+  }
+  
 `,Ew=v.div`
   display: flex;
 `,Pw=v.img`
@@ -755,12 +764,17 @@ Error generating stack: `+i.message+`
 `,$w=v.div`
   margin: 0 20px 0 0;
 `,Lw=v.h2`
-
+  @media screen and (max-width: 600px) {
+    font-size: 15px;
+  }
 `,Nw=v.p`
+  @media screen and (max-width: 600px) {
+    font-size: 13px;
+  }
 `,Rw=v.div`
 
 `,Iw=v.img`
-    border-radius: 5px;
+  border-radius: 5px;
 `,bw=v.div`
   display: flex;
 `,Mw=v.button`
@@ -1082,7 +1096,7 @@ Error generating stack: `+i.message+`
 `;v.p`
   font-size: 1rem;
   text-align: center;
-`;const dx=()=>c("div",{className:"paddingTop",children:$("div",{className:"card__section",id:"id",children:[c("h1",{className:"h1_Courses",children:"Linux Courses"}),c("div",{className:"container",children:cx})]})}),px=()=>$("div",{className:"card__section",id:"id",children:[c("h1",{className:"h1_Courses",children:"Cyber Security Courses"}),c("div",{className:"container",children:ux})]}),hx=()=>$("div",{className:"card__section",id:"id",children:[c("h1",{className:"h1_Courses",children:"Bug bounty hunting Courses"}),c("div",{className:"container",children:sx})]}),mu=()=>$(Ot,{children:[c(fx,{children:c("h1",{children:"Under Development"})}),c(dx,{}),c(px,{}),c(hx,{})]}),Yh=()=>$(Cw,{children:[c(Eo,{children:c("h1",{children:"Under Development"})}),$(Ew,{children:[c(Pw,{src:"https://miro.medium.com/fit/c/176/176/1*WrWKJOzibjROkAF5S5Qn8w.jpeg",alt:"Steiner255"}),c(Tw,{children:"Steiner255"}),c(zw,{children:"5 Days Ago"})]}),c(Mn,{}),$(Ow,{children:[$($w,{children:[c(Lw,{children:"Another day, Another IDOR vulnerability \u2014 $5000 Reddit Bug Bounty"}),c(Mn,{}),c(Nw,{children:"Gaining unprivileged access to Reddit moderator logs \u2014 Here we go. Again. IDOR, or insecure direct object reference, is a common yet insecure...."})]}),c(Rw,{children:c(Iw,{src:"https://miro.medium.com/fit/c/224/224/1*cRu3ETnHdt6n-z96oedxPQ.png",alt:"Bootcamp"})})]}),c(Mn,{}),c(Mn,{}),$(bw,{children:[c(Mw,{children:"Bug Bounty"}),c(jw,{children:"2 min read"}),$(Aw,{children:[c(D2,{}),c(F2,{})]})]}),c(Mn,{}),c(Mn,{}),c(Dw,{})]}),Gh=()=>c(Eo,{children:c("h1",{children:"Under Development"})}),Kh=()=>c(Eo,{children:c("h1",{children:"Under Development"})}),Xh=()=>c(Eo,{children:c("h1",{children:"Under Development"})}),mx=v.div`
+`;const dx=()=>c("div",{className:"paddingTop",children:$("div",{className:"card__section",id:"id",children:[c("h1",{className:"h1_Courses",children:"Linux Courses"}),c("div",{className:"container",children:cx})]})}),px=()=>$("div",{className:"card__section",id:"id",children:[c("h1",{className:"h1_Courses",children:"Cyber Security Courses"}),c("div",{className:"container",children:ux})]}),hx=()=>$("div",{className:"card__section",id:"id",children:[c("h1",{className:"h1_Courses",children:"Bug bounty hunting Courses"}),c("div",{className:"container",children:sx})]}),mu=()=>$(Ot,{children:[c(fx,{children:c("h1",{children:"Under Development"})}),c(dx,{}),c(px,{}),c(hx,{})]}),Yh=()=>$(Cw,{children:[c(Eo,{children:c("h1",{children:"\u{1F6E0}  Under Development  \u{1F6E0}"})}),$(Ew,{children:[c(Pw,{src:"https://miro.medium.com/fit/c/176/176/1*WrWKJOzibjROkAF5S5Qn8w.jpeg",alt:"Steiner255"}),c(Tw,{children:"Steiner255"}),c(zw,{children:"5 Days Ago"})]}),c(Mn,{}),$(Ow,{children:[$($w,{children:[c(Lw,{children:"Another day, Another IDOR vulnerability \u2014 $5000 Reddit Bug Bounty"}),c(Mn,{}),c(Nw,{children:"Gaining unprivileged access to Reddit moderator logs \u2014 Here we go. Again. IDOR, or insecure direct object reference, is a common yet insecure...."})]}),c(Rw,{children:c(Iw,{src:"https://miro.medium.com/fit/c/224/224/1*cRu3ETnHdt6n-z96oedxPQ.png",alt:"Bootcamp"})})]}),c(Mn,{}),c(Mn,{}),$(bw,{children:[c(Mw,{children:"Bug Bounty"}),c(jw,{children:"2 min read"}),$(Aw,{children:[c(D2,{}),c(F2,{})]})]}),c(Mn,{}),c(Mn,{}),c(Dw,{})]}),Gh=()=>c(Eo,{children:c("h1",{children:"Under Development"})}),Kh=()=>c(Eo,{children:c("h1",{children:"Under Development"})}),Xh=()=>c(Eo,{children:c("h1",{children:"Under Development"})}),mx=v.div`
   color: #fff;
   background: ${({lightBg:e})=>e?"#f9f9f9":"#010606"};
 
