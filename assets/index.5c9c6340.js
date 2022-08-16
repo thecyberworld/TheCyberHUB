@@ -945,11 +945,13 @@ Error generating stack: `+i.message+`
   text-align: center;
   color: #cecac3;
   width: 27rem;
-  margin: 200px auto;
+  margin: 100px auto;
 
-  @media screen and (max-width: 760px) {
-    text-align: center;
+  @media screen and (max-width: 600px) {
+    width: 20rem;
   }
+`,nx=g.h1`
+  margin: -50px auto 70px auto;
 `,xn=g.h2`
   margin-top: 35px;
   text-align: center;
@@ -970,7 +972,7 @@ Error generating stack: `+i.message+`
   margin-top: 15px;
   text-align: start;
   color: #cecac3;
-`,nx=()=>b(tx,{children:[s("h1",{children:"\u{1F468}\u200D\u{1F4BB}Cyber Sec Resources\u{1F468}\u200D\u{1F4BB}"}),s(xn,{children:" Essential Skills in Every Field "}),b(kn,{children:[s(K,{children:s(X,{href:"https://youtu.be/IPvYjXCsTg8",target:"_blank",children:"Computer Networking"})}),s(K,{children:s(X,{href:"https://youtu.be/v_1zB2WNN14",target:"_blank",children:"Linux Tutorial"})}),s(K,{children:s(X,{href:"https://youtu.be/apGV9Kg7ics",target:"_blank",children:"Complete Git and GitHub Tutorial"})})]}),s(xn,{children:" Cyber Security "})," ",b(kn,{children:[s(K,{children:s(X,{href:"https://youtu.be/1hvVcEhcbLM",target:"_blank",children:"Linux Essentials for Ethical Hackers"})}),s(K,{children:s(X,{href:"https://youtu.be/fNzpcB7ODxQ",target:"_blank",children:"Ethical Hacking Course"})}),s(K,{children:s(X,{href:"https://youtu.be/qwA6MmbeGNo",target:"_blank",children:"Open-Source Intelligence"})})]}),s(xn,{children:" Web App Pen-testing "}),b(kn,{children:[s(K,{children:s(X,{href:"https://youtu.be/X4eRbHgRawI",target:"_blank",children:"Web App Pentesting"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLBf0hzazHTGO3EpGAs718LvLsiMIv9dSC",target:"_blank",children:"Web App Penetration Testing Tutorials"})})]}),s(xn,{children:" Bug Hunting "}),b(kn,{children:[s(K,{children:s(X,{href:"https://www.youtube.com/watch?v=hDYqWZ11njU&list=PLbyncTkpno5FAC0DJYuJrEqHSMdudEffw",target:"_blank",children:"New to bug hunting"})}),s(K,{children:s(X,{href:"https://www.youtube.com/watch?v=yCUQBc2rY9Y&list=PLbyncTkpno5HqX1h2MnV6Qt4wvTb8Mpol",target:"_blank",children:"Everything API Hacking"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLF7JR1a3dLONdkRYU_8-5OcgOzrWe2549",target:"_blank",children:"Bug bounty / webapp pentesting tutorials"})}),s(K,{children:s(X,{href:"https://www.youtube.com/c/RanaKhalil101/videos",target:"_blank",children:"Web Security Academy"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLhfP6zOcRP1f_FyWc_gk1fRz1mxst0QE5",target:"_blank",children:"Guide to Failing at Bug Bounties"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLhfP6zOcRP1fXtBtxhTlu9KR-PKDA6biX",target:"_blank",children:"What after Recon?"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLhfP6zOcRP1dCTjbENt4ilFKFwFpspOoS",target:"_blank",children:"No BS Guides"})})]}),s(xn,{children:" Practice / Learn - Web App Pen-testing "}),b(kn,{children:[s(K,{children:s(X,{href:"https://portswigger.net/web-security/learning-path",target:"_blank",children:"Web Security Academy"})}),s(K,{children:s(X,{href:"https://pentesterlab.com",target:"_blank",children:"Pentesterlab"})}),s(K,{children:s(X,{href:"https://www.bugbountyhunter.com",target:"_blank",children:"Bugbountyhunter"})}),s(K,{children:s(X,{href:"https://application.security",target:"_blank",children:"Kontra"})})]}),s(xn,{children:" CTF Practice "}),b(kn,{children:[s(K,{children:s(X,{href:"https://ctf.hacker101.com/",target:"_blank",children:"ctf.hacker101.com"})}),s(K,{children:s(X,{href:"https://overthewire.org/wargames/",target:"_blank",children:"overthewire.org"})}),s(K,{children:s(X,{href:"https://ctfchallenge.com/",target:"_blank",children:"ctfchallenge.com"})}),s(K,{children:s(X,{href:"https://tryhackme.com/ ",target:"_blank",children:"tryhackme.com"})}),s(K,{children:s(X,{href:"https://www.bugbountyhunter.com/",target:"_blank",children:"www.bugbountyhunter.com"})}),s(K,{children:s(X,{href:"https://www.hackthebox.com/",target:"_blank",children:"www.hackthebox.com"})})]}),s(xn,{children:" Bug bounty hunting Programs "}),b(kn,{children:[s(K,{children:s(X,{href:"https://bugcrowd.com/ ",target:"_blank",children:"bugcrowd.com"})}),s(K,{children:s(X,{href:"https://hackerone.com/ ",target:"_blank",children:"hackerone.com"})}),s(K,{children:s(X,{href:"https://www.facebook.com/whitehat",target:"_blank",children:"facebook.com/whitehat"})}),s(K,{children:s(X,{href:"https://www.intigriti.com/ ",target:"_blank",children:"intigriti.com"})}),s(K,{children:s(X,{href:"https://www.yeswehack.com/ ",target:"_blank",children:"yeswehack.com"})}),s(K,{children:s(X,{href:"https://yogosha.com/ ",target:"_blank",children:"yogosha.com"})})]})]}),Jh=()=>b(zo,{children:[s(nx,{}),s("h1",{children:"Write-Ups"}),s("h1",{children:"Cyber News"}),s("h1",{children:"Events"})]}),rx=({toggle:e})=>{const[t,n]=A.exports.useState(!1),r=()=>{window.scrollY>=80?n(!0):n(!1)};A.exports.useEffect(()=>{window.addEventListener("scroll",r)},[]);const o=()=>{ml.scrollToTop()};return s(Ot,{children:s(Hi.Provider,{value:{color:"#fff"},children:s(N2,{scrollNav:t,children:b(R2,{children:[s(I2,{to:"/",onClick:o,children:"Thecyberworld"}),s(M2,{onClick:e,children:s(Rh,{})}),b(j2,{children:[[{to:"/resources",title:"Resources Home"},{to:"courses",title:"Courses"},{to:"writeups",title:"WriteUps"},{to:"events",title:"Events"},{to:"jobs",title:"Jobs"},{to:"cybernews",title:"Cyber News"}].map(({to:i,title:l})=>s(A2,{children:s(D2,{to:i,smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,children:l})},i)),s(F2,{href:"https://blog.thecyberhub.org/",target:"_blank",children:"Blog"})]}),s(H2,{children:b(Kh,{href:"https://twitter.com/intent/tweet?text=Hi%20Everyone,%20%0D%0AFound%20the%20best%20website%20to%20learn%20Cybersecurity%20for%20free%20by%20@thecyberw0rld%20community.%20%0D%0A%0D%0AWebsite:%20https://thecyberhub.org%20%0D%0AResources:%20https://thecyberhub.org/resources%20%0D%0A%0D%0AMore%20features%20are%20on%20the%20way...%20%0D%0Afollow%20@thecyberw0rld%20for%20getting%20updates%20and%20for%20cyber%20security%20content.",rel:"noopener",target:"_blank",smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,children:[s(gl,{}),s(Zh,{children:"Share us"})]})})]})})})})},ox=g.nav`
+`,rx=()=>b(tx,{children:[s(nx,{children:"\u{1F468}\u200D\u{1F4BB}Cyber Sec Resources\u{1F468}\u200D\u{1F4BB}"}),s(xn,{children:" Essential Skills in Every Field "}),b(kn,{children:[s(K,{children:s(X,{href:"https://youtu.be/IPvYjXCsTg8",target:"_blank",children:"Computer Networking"})}),s(K,{children:s(X,{href:"https://youtu.be/v_1zB2WNN14",target:"_blank",children:"Linux Tutorial"})}),s(K,{children:s(X,{href:"https://youtu.be/apGV9Kg7ics",target:"_blank",children:"Complete Git and GitHub Tutorial"})})]}),s(xn,{children:" Cyber Security "})," ",b(kn,{children:[s(K,{children:s(X,{href:"https://youtu.be/1hvVcEhcbLM",target:"_blank",children:"Linux Essentials for Ethical Hackers"})}),s(K,{children:s(X,{href:"https://youtu.be/fNzpcB7ODxQ",target:"_blank",children:"Ethical Hacking Course"})}),s(K,{children:s(X,{href:"https://youtu.be/qwA6MmbeGNo",target:"_blank",children:"Open-Source Intelligence"})})]}),s(xn,{children:" Web App Pen-testing "}),b(kn,{children:[s(K,{children:s(X,{href:"https://youtu.be/X4eRbHgRawI",target:"_blank",children:"Web App Pentesting"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLBf0hzazHTGO3EpGAs718LvLsiMIv9dSC",target:"_blank",children:"Web App Penetration Testing Tutorials"})})]}),s(xn,{children:" Bug Hunting "}),b(kn,{children:[s(K,{children:s(X,{href:"https://www.youtube.com/watch?v=hDYqWZ11njU&list=PLbyncTkpno5FAC0DJYuJrEqHSMdudEffw",target:"_blank",children:"New to bug hunting"})}),s(K,{children:s(X,{href:"https://www.youtube.com/watch?v=yCUQBc2rY9Y&list=PLbyncTkpno5HqX1h2MnV6Qt4wvTb8Mpol",target:"_blank",children:"Everything API Hacking"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLF7JR1a3dLONdkRYU_8-5OcgOzrWe2549",target:"_blank",children:"Bug bounty / webapp pentesting tutorials"})}),s(K,{children:s(X,{href:"https://www.youtube.com/c/RanaKhalil101/videos",target:"_blank",children:"Web Security Academy"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLhfP6zOcRP1f_FyWc_gk1fRz1mxst0QE5",target:"_blank",children:"Guide to Failing at Bug Bounties"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLhfP6zOcRP1fXtBtxhTlu9KR-PKDA6biX",target:"_blank",children:"What after Recon?"})}),s(K,{children:s(X,{href:"https://www.youtube.com/playlist?list=PLhfP6zOcRP1dCTjbENt4ilFKFwFpspOoS",target:"_blank",children:"No BS Guides"})})]}),s(xn,{children:" Practice / Learn - Web App Pen-testing "}),b(kn,{children:[s(K,{children:s(X,{href:"https://portswigger.net/web-security/learning-path",target:"_blank",children:"Web Security Academy"})}),s(K,{children:s(X,{href:"https://pentesterlab.com",target:"_blank",children:"Pentesterlab"})}),s(K,{children:s(X,{href:"https://www.bugbountyhunter.com",target:"_blank",children:"Bugbountyhunter"})}),s(K,{children:s(X,{href:"https://application.security",target:"_blank",children:"Kontra"})})]}),s(xn,{children:" CTF Practice "}),b(kn,{children:[s(K,{children:s(X,{href:"https://ctf.hacker101.com/",target:"_blank",children:"ctf.hacker101.com"})}),s(K,{children:s(X,{href:"https://overthewire.org/wargames/",target:"_blank",children:"overthewire.org"})}),s(K,{children:s(X,{href:"https://ctfchallenge.com/",target:"_blank",children:"ctfchallenge.com"})}),s(K,{children:s(X,{href:"https://tryhackme.com/ ",target:"_blank",children:"tryhackme.com"})}),s(K,{children:s(X,{href:"https://www.bugbountyhunter.com/",target:"_blank",children:"www.bugbountyhunter.com"})}),s(K,{children:s(X,{href:"https://www.hackthebox.com/",target:"_blank",children:"www.hackthebox.com"})})]}),s(xn,{children:" Bug bounty hunting Programs "}),b(kn,{children:[s(K,{children:s(X,{href:"https://bugcrowd.com/ ",target:"_blank",children:"bugcrowd.com"})}),s(K,{children:s(X,{href:"https://hackerone.com/ ",target:"_blank",children:"hackerone.com"})}),s(K,{children:s(X,{href:"https://www.facebook.com/whitehat",target:"_blank",children:"facebook.com/whitehat"})}),s(K,{children:s(X,{href:"https://www.intigriti.com/ ",target:"_blank",children:"intigriti.com"})}),s(K,{children:s(X,{href:"https://www.yeswehack.com/ ",target:"_blank",children:"yeswehack.com"})}),s(K,{children:s(X,{href:"https://yogosha.com/ ",target:"_blank",children:"yogosha.com"})})]})]}),Jh=()=>b(zo,{children:[s(rx,{}),s("h1",{children:"Many things are on the way \u{1F680}"})]}),ox=({toggle:e})=>{const[t,n]=A.exports.useState(!1),r=()=>{window.scrollY>=80?n(!0):n(!1)};A.exports.useEffect(()=>{window.addEventListener("scroll",r)},[]);const o=()=>{ml.scrollToTop()};return s(Ot,{children:s(Hi.Provider,{value:{color:"#fff"},children:s(N2,{scrollNav:t,children:b(R2,{children:[s(I2,{to:"/",onClick:o,children:"Thecyberworld"}),s(M2,{onClick:e,children:s(Rh,{})}),b(j2,{children:[[{to:"/resources",title:"Resources Home"},{to:"courses",title:"Courses"},{to:"writeups",title:"WriteUps"},{to:"events",title:"Events"},{to:"jobs",title:"Jobs"},{to:"cybernews",title:"Cyber News"}].map(({to:i,title:l})=>s(A2,{children:s(D2,{to:i,smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,children:l})},i)),s(F2,{href:"https://blog.thecyberhub.org/",target:"_blank",children:"Blog"})]}),s(H2,{children:b(Kh,{href:"https://twitter.com/intent/tweet?text=Hi%20Everyone,%20%0D%0AFound%20the%20best%20website%20to%20learn%20Cybersecurity%20for%20free%20by%20@thecyberw0rld%20community.%20%0D%0A%0D%0AWebsite:%20https://thecyberhub.org%20%0D%0AResources:%20https://thecyberhub.org/resources%20%0D%0A%0D%0AMore%20features%20are%20on%20the%20way...%20%0D%0Afollow%20@thecyberw0rld%20for%20getting%20updates%20and%20for%20cyber%20security%20content.",rel:"noopener",target:"_blank",smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,children:[s(gl,{}),s(Zh,{children:"Share us"})]})})]})})})})},ix=g.nav`
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -982,9 +984,9 @@ Error generating stack: `+i.message+`
   transition: 0.3s ease-in-out;
   opacity: ${({isOpen:e})=>e?"100%":"0"};
   top: ${({isOpen:e})=>e?"0":"-100%"};
-`,ix=g(Ih)`
+`,lx=g(Ih)`
   color: #fff;
-`,lx=g.div`
+`,ax=g.div`
   position: absolute;
   top: 1.2rem;
   right: 1.5rem;
@@ -992,7 +994,7 @@ Error generating stack: `+i.message+`
   font-size: 2rem;
   cursor: pointer;
   outline: none;
-`,ax=g.div`
+`,ux=g.div`
   color: #fff;
 `,$r=g.div`
   display: flex;
@@ -1009,10 +1011,10 @@ Error generating stack: `+i.message+`
     color: #01bf71;
     transition: 0.2s ease-in-out;
   }
-`,ux=g.div`
+`,sx=g.div`
   display: flex;
   justify-content: center;
-`,sx=g.div`
+`,cx=g.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows:repeat(6, 80px);
@@ -1021,7 +1023,7 @@ Error generating stack: `+i.message+`
   @media screen and (min-width: 480px) {
     grid-template-rows: repeat(6, 60px);
   }
-`,cx=g(Ut)`
+`,fx=g(Ut)`
   border-radius: 50px;
   background: #01bf71;
   white-space: nowrap;
@@ -1039,7 +1041,7 @@ Error generating stack: `+i.message+`
     background: #fff;
     color: #010606;
   }
-`,fx=({isOpen:e,toggle:t})=>b(ox,{isOpen:e,onClick:t,children:[s(lx,{onClick:t,children:s(ix,{})}),b(ax,{children:[b(sx,{children:[s($r,{to:"events",children:"Home"}),s($r,{to:"events",children:"Courses"}),s($r,{to:"events",children:"WriteUps"}),s($r,{to:"events",children:"Events"}),s($r,{to:"events",children:"Jobs"})]}),s(ux,{children:s(cx,{to:"/subscribe",children:"Subscribe"})})]})]});const dx=[{id:"freeYoutubeCourses",sectionsHeading:"Free Courses: Youtube",topLine:"Free Courses",YTChannelImageLink:"https://i.ytimg.com/vi/fNzpcB7ODxQ/maxresdefault.jpg",tag:"Cyber Security",videoHeading:"Ethical Hacking in 12 Hours - Full Course - Learn to Hack!",videoDescription:"In this video, I explore the various cybersecurity paths available as well as their corresponding certifications and skills required in order to transition into a cybersecurity role/career.",videoLink:"https://youtu.be/fNzpcB7ODxQ",channelName:"The Cyber Mentor",channelLogo:"https://yt3.ggpht.com/ytc/AKedOLRGnc0be-YXi3zenYi6s8uwgPxi_IrLBZ7Rigv7=s48-c-k-c0x00ffffff-no-rj",timeStamp:"Today",alt:"ResourcesSvg",channelLink:"https://www.youtube.com/c/TheCyberMentor"}],px=[{id:"freeYoutubeCourses",sectionsHeading:"Free Courses: Youtube",topLine:"Free Courses",YTChannelImageLink:"https://i.ytimg.com/vi/U1w4T03B30I/maxresdefault.jpg",tag:"Linux",videoHeading:"Linux for Ethical Hackers (2022 - Full Kali Linux Course)",videoDescription:"In this Linux course, you will learn the 20% you need to know to be efficient with Linux. This course will teach all the common Linux skills used in cyber-security and ethical hacking.",videoLink:"https://youtu.be/U1w4T03B30I",channelName:"The Cyber Mentor",channelLogo:"https://yt3.ggpht.com/ytc/AKedOLRGnc0be-YXi3zenYi6s8uwgPxi_IrLBZ7Rigv7=s48-c-k-c0x00ffffff-no-rj",timeStamp:"Today",alt:"ResourcesSvg",channelLink:"https://www.youtube.com/c/TheCyberMentor"}],hx=[{id:"freeYoutubeCourses",sectionsHeading:"Free Courses: Youtube",topLine:"Free Courses",YTChannelImageLink:"https://i.ytimg.com/vi/hDYqWZ11njU/maxresdefault.jpg",tag:"Bug Bounty Hunting",videoHeading:"How to Get Started with Bug Bounty - Resource Lists & Advice",videoDescription:"This is my gift for you the ultimate getting started guide for bug bounties / ethical hacking / cybersecurity. In this video, I go through a ton of resources including books, courses, videos, podcasts, conferences, and give out some study guides for people who wanna get into bug bounties but they have no hacking experience, no experience in tech, some security experience but not in bug bounties. I hope you find this super useful, it's PACKED full of information, almost an hour of stuff to check out!.",videoLink:"https://youtu.be/hDYqWZ11njU?list=PLbyncTkpno5FAC0DJYuJrEqHSMdudEffw",channelName:"InsiderPhD",channelLogo:"https://yt3.ggpht.com/ytc/AMLnZu9FToR3EOEIhCjUcq70BroVP_aoBYtlnC-Ncst7=s48-c-k-c0x00ffffff-no-rj",timeStamp:"Today",alt:"ResourcesSvg",channelLink:"https://www.youtube.com/c/InsiderPhD"}],hr=g.a`
+`,dx=({isOpen:e,toggle:t})=>b(ix,{isOpen:e,onClick:t,children:[s(ax,{onClick:t,children:s(lx,{})}),b(ux,{children:[b(cx,{children:[s($r,{to:"events",children:"Home"}),s($r,{to:"events",children:"Courses"}),s($r,{to:"events",children:"WriteUps"}),s($r,{to:"events",children:"Events"}),s($r,{to:"events",children:"Jobs"})]}),s(sx,{children:s(fx,{to:"/subscribe",children:"Subscribe"})})]})]});const px=[{id:"freeYoutubeCourses",sectionsHeading:"Free Courses: Youtube",topLine:"Free Courses",YTChannelImageLink:"https://i.ytimg.com/vi/fNzpcB7ODxQ/maxresdefault.jpg",tag:"Cyber Security",videoHeading:"Ethical Hacking in 12 Hours - Full Course - Learn to Hack!",videoDescription:"In this video, I explore the various cybersecurity paths available as well as their corresponding certifications and skills required in order to transition into a cybersecurity role/career.",videoLink:"https://youtu.be/fNzpcB7ODxQ",channelName:"The Cyber Mentor",channelLogo:"https://yt3.ggpht.com/ytc/AKedOLRGnc0be-YXi3zenYi6s8uwgPxi_IrLBZ7Rigv7=s48-c-k-c0x00ffffff-no-rj",timeStamp:"Today",alt:"ResourcesSvg",channelLink:"https://www.youtube.com/c/TheCyberMentor"}],hx=[{id:"freeYoutubeCourses",sectionsHeading:"Free Courses: Youtube",topLine:"Free Courses",YTChannelImageLink:"https://i.ytimg.com/vi/U1w4T03B30I/maxresdefault.jpg",tag:"Linux",videoHeading:"Linux for Ethical Hackers (2022 - Full Kali Linux Course)",videoDescription:"In this Linux course, you will learn the 20% you need to know to be efficient with Linux. This course will teach all the common Linux skills used in cyber-security and ethical hacking.",videoLink:"https://youtu.be/U1w4T03B30I",channelName:"The Cyber Mentor",channelLogo:"https://yt3.ggpht.com/ytc/AKedOLRGnc0be-YXi3zenYi6s8uwgPxi_IrLBZ7Rigv7=s48-c-k-c0x00ffffff-no-rj",timeStamp:"Today",alt:"ResourcesSvg",channelLink:"https://www.youtube.com/c/TheCyberMentor"}],mx=[{id:"freeYoutubeCourses",sectionsHeading:"Free Courses: Youtube",topLine:"Free Courses",YTChannelImageLink:"https://i.ytimg.com/vi/hDYqWZ11njU/maxresdefault.jpg",tag:"Bug Bounty Hunting",videoHeading:"How to Get Started with Bug Bounty - Resource Lists & Advice",videoDescription:"This is my gift for you the ultimate getting started guide for bug bounties / ethical hacking / cybersecurity. In this video, I go through a ton of resources including books, courses, videos, podcasts, conferences, and give out some study guides for people who wanna get into bug bounties but they have no hacking experience, no experience in tech, some security experience but not in bug bounties. I hope you find this super useful, it's PACKED full of information, almost an hour of stuff to check out!.",videoLink:"https://youtu.be/hDYqWZ11njU?list=PLbyncTkpno5FAC0DJYuJrEqHSMdudEffw",channelName:"InsiderPhD",channelLogo:"https://yt3.ggpht.com/ytc/AMLnZu9FToR3EOEIhCjUcq70BroVP_aoBYtlnC-Ncst7=s48-c-k-c0x00ffffff-no-rj",timeStamp:"Today",alt:"ResourcesSvg",channelLink:"https://www.youtube.com/c/InsiderPhD"}],hr=g.a`
     text-decoration: none;
     color: #e8e6e3;
 
@@ -1083,7 +1085,7 @@ Error generating stack: `+i.message+`
   width: 2.5rem;
 `,Us=g.div`
   color: #666;
-`,mx=dx.map(e=>b(As,{children:[s("div",{children:s(js,{src:e.YTChannelImageLink,alt:"card__image",width:"600"})}),b(Ds,{children:[s(Fs,{className:"tag-brown",children:e.tag}),s(Is,{children:s(hr,{href:e.videoLink,target:"_blank",children:e.videoHeading})})]}),s("hr",{}),s(Hs,{children:b(Bs,{children:[s(Ws,{src:e.channelLogo,alt:"user__image"}),b(Us,{children:[s(Ms,{children:s(hr,{href:e.channelLink,target:"_blank",children:e.channelName})}),s("small",{children:e.timeStamp})]})]})})]})),gx=hx.map(e=>b(As,{children:[s("div",{children:s(js,{src:e.YTChannelImageLink,alt:"card__image",width:"600"})}),b(Ds,{children:[s(Fs,{className:"tag-brown",children:e.tag}),s(Is,{children:s(hr,{href:e.videoLink,target:"_blank",children:e.videoHeading})})]}),s("hr",{}),s(Hs,{children:b(Bs,{children:[s(Ws,{src:e.channelLogo,alt:"user__image"}),b(Us,{children:[s(Ms,{children:s(hr,{href:e.channelLink,target:"_blank",children:e.channelName})}),s("small",{children:e.timeStamp})]})]})})]})),vx=px.map(e=>b(As,{children:[s("div",{children:s(js,{src:e.YTChannelImageLink,alt:"card__image",width:"600"})}),b(Ds,{children:[s(Fs,{className:"tag-brown",children:e.tag}),s(Is,{children:s(hr,{href:e.videoLink,target:"_blank",children:e.videoHeading})})]}),s("hr",{}),s(Hs,{children:b(Bs,{children:[s(Ws,{src:e.channelLogo,alt:"user__image"}),b(Us,{children:[s(Ms,{children:s(hr,{href:e.channelLink,target:"_blank",children:e.channelName})}),s("small",{children:e.timeStamp})]})]})})]})),yx=g.div`
+`,gx=px.map(e=>b(As,{children:[s("div",{children:s(js,{src:e.YTChannelImageLink,alt:"card__image",width:"600"})}),b(Ds,{children:[s(Fs,{className:"tag-brown",children:e.tag}),s(Is,{children:s(hr,{href:e.videoLink,target:"_blank",children:e.videoHeading})})]}),s("hr",{}),s(Hs,{children:b(Bs,{children:[s(Ws,{src:e.channelLogo,alt:"user__image"}),b(Us,{children:[s(Ms,{children:s(hr,{href:e.channelLink,target:"_blank",children:e.channelName})}),s("small",{children:e.timeStamp})]})]})})]})),vx=mx.map(e=>b(As,{children:[s("div",{children:s(js,{src:e.YTChannelImageLink,alt:"card__image",width:"600"})}),b(Ds,{children:[s(Fs,{className:"tag-brown",children:e.tag}),s(Is,{children:s(hr,{href:e.videoLink,target:"_blank",children:e.videoHeading})})]}),s("hr",{}),s(Hs,{children:b(Bs,{children:[s(Ws,{src:e.channelLogo,alt:"user__image"}),b(Us,{children:[s(Ms,{children:s(hr,{href:e.channelLink,target:"_blank",children:e.channelName})}),s("small",{children:e.timeStamp})]})]})})]})),yx=hx.map(e=>b(As,{children:[s("div",{children:s(js,{src:e.YTChannelImageLink,alt:"card__image",width:"600"})}),b(Ds,{children:[s(Fs,{className:"tag-brown",children:e.tag}),s(Is,{children:s(hr,{href:e.videoLink,target:"_blank",children:e.videoHeading})})]}),s("hr",{}),s(Hs,{children:b(Bs,{children:[s(Ws,{src:e.channelLogo,alt:"user__image"}),b(Us,{children:[s(Ms,{children:s(hr,{href:e.channelLink,target:"_blank",children:e.channelName})}),s("small",{children:e.timeStamp})]})]})})]})),wx=g.div`
   text-align: center;
   margin: 200px 100px 0;
   color: #cecac3;  
@@ -1155,14 +1157,14 @@ Error generating stack: `+i.message+`
 `;g.p`
   font-size: 1rem;
   text-align: center;
-`;const wx=()=>s("div",{className:"paddingTop",children:b("div",{className:"card__section",id:"id",children:[s("h1",{className:"h1_Courses",children:"Linux Courses"}),s("div",{className:"container",children:vx})]})}),xx=()=>b("div",{className:"card__section",id:"id",children:[s("h1",{className:"h1_Courses",children:"Cyber Security Courses"}),s("div",{className:"container",children:mx})]}),kx=()=>b("div",{className:"card__section",id:"id",children:[s("h1",{className:"h1_Courses",children:"Bug bounty hunting Courses"}),s("div",{className:"container",children:gx})]}),qh=()=>b(Ot,{children:[s(yx,{children:s("h1",{children:"Under Development"})}),s(wx,{}),s(xx,{}),s(kx,{})]}),em=()=>b(Dw,{children:[s(zo,{children:s("h1",{children:"\u{1F6E0}  Under Development  \u{1F6E0}"})}),b(Fw,{children:[s(Hw,{src:"https://miro.medium.com/fit/c/176/176/1*WrWKJOzibjROkAF5S5Qn8w.jpeg",alt:"Steiner255"}),s(Bw,{children:"Steiner255"}),s(Ww,{children:"5 Days Ago"})]}),s(Fn,{}),b(Uw,{children:[b(Vw,{children:[s(Qw,{children:"Another day, Another IDOR vulnerability \u2014 $5000 Reddit Bug Bounty"}),s(Fn,{}),s(Yw,{children:"Gaining unprivileged access to Reddit moderator logs \u2014 Here we go. Again. IDOR, or insecure direct object reference, is a common yet insecure...."})]}),s(Gw,{children:s(Kw,{src:"https://miro.medium.com/fit/c/224/224/1*cRu3ETnHdt6n-z96oedxPQ.png",alt:"Bootcamp"})})]}),s(Fn,{}),s(Fn,{}),b(Xw,{children:[s(Zw,{children:"Bug Bounty"}),s(Jw,{children:"2 min read"}),b(qw,{children:[s(ew,{}),s(tw,{})]})]}),s(Fn,{}),s(Fn,{}),s(ex,{})]}),tm=()=>s(zo,{children:s("h1",{children:"Under Development"})}),nm=()=>s(zo,{children:s("h1",{children:"Under Development"})}),rm=()=>s(zo,{children:s("h1",{children:"Under Development"})}),Sx=g.div`
+`;const xx=()=>s("div",{className:"paddingTop",children:b("div",{className:"card__section",id:"id",children:[s("h1",{className:"h1_Courses",children:"Linux Courses"}),s("div",{className:"container",children:yx})]})}),kx=()=>b("div",{className:"card__section",id:"id",children:[s("h1",{className:"h1_Courses",children:"Cyber Security Courses"}),s("div",{className:"container",children:gx})]}),Sx=()=>b("div",{className:"card__section",id:"id",children:[s("h1",{className:"h1_Courses",children:"Bug bounty hunting Courses"}),s("div",{className:"container",children:vx})]}),qh=()=>b(Ot,{children:[s(wx,{children:s("h1",{children:"Under Development"})}),s(xx,{}),s(kx,{}),s(Sx,{})]}),em=()=>b(Dw,{children:[s(zo,{children:s("h1",{children:"\u{1F6E0}  Under Development  \u{1F6E0}"})}),b(Fw,{children:[s(Hw,{src:"https://miro.medium.com/fit/c/176/176/1*WrWKJOzibjROkAF5S5Qn8w.jpeg",alt:"Steiner255"}),s(Bw,{children:"Steiner255"}),s(Ww,{children:"5 Days Ago"})]}),s(Fn,{}),b(Uw,{children:[b(Vw,{children:[s(Qw,{children:"Another day, Another IDOR vulnerability \u2014 $5000 Reddit Bug Bounty"}),s(Fn,{}),s(Yw,{children:"Gaining unprivileged access to Reddit moderator logs \u2014 Here we go. Again. IDOR, or insecure direct object reference, is a common yet insecure...."})]}),s(Gw,{children:s(Kw,{src:"https://miro.medium.com/fit/c/224/224/1*cRu3ETnHdt6n-z96oedxPQ.png",alt:"Bootcamp"})})]}),s(Fn,{}),s(Fn,{}),b(Xw,{children:[s(Zw,{children:"Bug Bounty"}),s(Jw,{children:"2 min read"}),b(qw,{children:[s(ew,{}),s(tw,{})]})]}),s(Fn,{}),s(Fn,{}),s(ex,{})]}),tm=()=>s(zo,{children:s("h1",{children:"Under Development"})}),nm=()=>s(zo,{children:s("h1",{children:"Under Development"})}),rm=()=>s(zo,{children:s("h1",{children:"Under Development"})}),_x=g.div`
   color: #fff;
   background: ${({lightBg:e})=>e?"#f9f9f9":"#010606"};
 
   @media screen and (max-width: 768px) {
     padding: 100px 0;
   }
-`,_x=g.div`
+`,Cx=g.div`
   display: grid;
   z-index: 1;
   height: 860px;
@@ -1175,7 +1177,7 @@ Error generating stack: `+i.message+`
 `;g(An)`
   margin: 10px 10px 10px 20px;
   cursor: pointer;
-`;const Cx=g.div`
+`;const Ex=g.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1 lf);
   align-items: center;
@@ -1184,19 +1186,19 @@ Error generating stack: `+i.message+`
   @media screen and (max-width: 768px) {
     grid-template-areas: ${({imgStart:e})=>e?"'col1' 'col2'":"'col1 col1' 'col2 col2'"};
   }
-`,Ex=g.div`
-  margin-bottom: 15px;
-  padding: 0 15px;
-  grid-area: col1;
 `,Px=g.div`
   margin-bottom: 15px;
   padding: 0 15px;
-  grid-area: col2;
+  grid-area: col1;
 `,Tx=g.div`
+  margin-bottom: 15px;
+  padding: 0 15px;
+  grid-area: col2;
+`,bx=g.div`
   max-width: 540px;
   padding-top: 0;
   padding-bottom: 60px;
-`,bx=g.p`
+`,zx=g.p`
   color: #01bf71;
   font-size: 16px;
   line-height: 16px;
@@ -1204,7 +1206,7 @@ Error generating stack: `+i.message+`
   letter-spacing: 1.4px;
   text-transform: uppercase;
   margin-bottom: 16px;
-`,zx=g.h1`
+`,Ox=g.h1`
   margin-bottom: 24px;
   font-size: 48px;
   line-height: 1.1;
@@ -1214,25 +1216,25 @@ Error generating stack: `+i.message+`
   @media screen and (max-width: 480px) {
     font-size: 32px;
   }
-`,Ox=g.p`
+`,$x=g.p`
   max-width: 440px;
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 24px;
   color: ${({darkText:e})=>e?"#010606":"#fff"};
-`,$x=g.div`
+`,Lx=g.div`
   display: flex;
   justify-content: flex-start;
-`,Lx=g.div`
+`,Nx=g.div`
   max-width: 555px;
   height: 100%;
-`,Nx=g.img`
+`,Rx=g.img`
   width: 100%;
   margin: 0 0 10px 0;
   padding-right: 0;
-`,Rx=({id:e,lightBg:t,lightText:n,topLine:r,headline:o,description:i,buttonLabel:l,buttonLabel2:a,buttonLabel3:u,imgStart:c,img:h,alt:v,dark:p,dark2:k,primary:w,darkText:C})=>s(Ot,{children:s(Sx,{id:e,lightBg:t,children:s(_x,{children:b(Cx,{imgStart:c,children:[s(Ex,{children:b(Tx,{children:[b(bx,{children:[" ",r," "]}),b(zx,{lightText:n,children:[" ",o," "]}),b(Ox,{darkText:C,children:[" ",i," "]}),s($x,{children:s(Xh,{href:"https://github.com/thecyberworld",target:"_blank",smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,primary:w?"true":"",dark:p?1:0,dark2:k?1:0,children:l})})]})}),s(Px,{children:s(Lx,{children:s(Nx,{src:h,alt:v})})})]})})})}),Ix=g.footer`
+`,Ix=({id:e,lightBg:t,lightText:n,topLine:r,headline:o,description:i,buttonLabel:l,buttonLabel2:a,buttonLabel3:u,imgStart:c,img:h,alt:v,dark:p,dark2:k,primary:w,darkText:C})=>s(Ot,{children:s(_x,{id:e,lightBg:t,children:s(Cx,{children:b(Ex,{imgStart:c,children:[s(Px,{children:b(bx,{children:[b(zx,{children:[" ",r," "]}),b(Ox,{lightText:n,children:[" ",o," "]}),b($x,{darkText:C,children:[" ",i," "]}),s(Lx,{children:s(Xh,{href:"https://github.com/thecyberworld",target:"_blank",smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,primary:w?"true":"",dark:p?1:0,dark2:k?1:0,children:l})})]})}),s(Tx,{children:s(Nx,{children:s(Rx,{src:h,alt:v})})})]})})})}),Mx=g.footer`
   background: #080a10;
-`,Mx=g.div`
+`,jx=g.div`
   padding: 48px 24px; 
   display: flex;
   flex-direction: column; 
@@ -1240,7 +1242,7 @@ Error generating stack: `+i.message+`
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
-`,jx=g.div`
+`,Ax=g.div`
   display: flex;
   justify-content: center;
 
@@ -1282,7 +1284,7 @@ Error generating stack: `+i.message+`
     color: #01bf71;
     transition: .3s ease-out;
   }
-`,Ax=g(An)`
+`,Dx=g(An)`
   color: #fff;
   text-decoration: none; 
   margin-bottom: .5rem;
@@ -1312,11 +1314,11 @@ Error generating stack: `+i.message+`
     color: #01bf71;
     transition: .3s ease-out;
   }
-`;const Dx=g.div`
+`;const Fx=g.div`
   max-width: 1000px;
   width: 100%;
   color: #fff;
-`,Fx=g.div`
+`,Hx=g.div`
   display: flex;
   justify-content: space-between; 
   align-items: center; 
@@ -1326,10 +1328,10 @@ Error generating stack: `+i.message+`
   @media screen and (max-width: 820px) {
     flex-direction: column;
   }
-`,Hx=g.small`
+`,Bx=g.small`
   color: #fff;
   margin-bottom: 16px;
-`,Bx=g.div`
+`,Wx=g.div`
   display: flex;
   justify-content: space-between; 
   align-items: center; 
@@ -1341,7 +1343,7 @@ Error generating stack: `+i.message+`
     color: #01bf71;
     transition: .3s ease-out;
   }
-`;const Wx=g.a`
+`;const Ux=g.a`
   color: #fff;
   text-decoration: none;
   margin-bottom: .5rem;
@@ -1349,18 +1351,6 @@ Error generating stack: `+i.message+`
 
   &:hover {
     color: #1d9bf0;
-    font-size: 15px;
-    transition: .3s ease-out;
-
-  }
-`,Ux=g.a`
-  color: #fff;
-  text-decoration: none;
-  margin-bottom: .5rem;
-  font-size: 14px;
-
-  &:hover {
-    color: #afafaf;
     font-size: 15px;
     transition: .3s ease-out;
 
@@ -1372,7 +1362,7 @@ Error generating stack: `+i.message+`
   font-size: 14px;
 
   &:hover {
-    color: #5865f2;
+    color: #afafaf;
     font-size: 15px;
     transition: .3s ease-out;
 
@@ -1384,12 +1374,24 @@ Error generating stack: `+i.message+`
   font-size: 14px;
 
   &:hover {
-    color: #1fbd3a;
+    color: #5865f2;
     font-size: 15px;
     transition: .3s ease-out;
 
   }
 `,Yx=g.a`
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: .5rem;
+  font-size: 14px;
+
+  &:hover {
+    color: #1fbd3a;
+    font-size: 15px;
+    transition: .3s ease-out;
+
+  }
+`,Gx=g.a`
   color: #fff;
   font-size: 24px;
 
@@ -1398,7 +1400,7 @@ Error generating stack: `+i.message+`
     transition: .3s ease-out;
     font-size: 30px;
   }
-`,Gx=g.a`
+`,Kx=g.a`
   color: #fff;
   font-size: 24px;
 
@@ -1407,7 +1409,7 @@ Error generating stack: `+i.message+`
     transition: .3s ease-out;
     font-size: 30px;
   }
-`,Kx=g.a`
+`,Xx=g.a`
   color: #fff;
   font-size: 24px;
 
@@ -1416,7 +1418,7 @@ Error generating stack: `+i.message+`
     transition: .3s ease-out;
     font-size: 30px;
   }
-`,Xx=g.a`
+`,Zx=g.a`
   color: #fff;
   font-size: 24px;
 
@@ -1425,7 +1427,7 @@ Error generating stack: `+i.message+`
     transition: .3s ease-out;
     font-size: 30px;
   }
-`,Zx=g(Ut)`
+`,Jx=g(Ut)`
   color: #fff;
   justify-self: start;
   cursor: pointer;
@@ -1441,4 +1443,4 @@ Error generating stack: `+i.message+`
     font-size: 1.6rem;
     transition: .3s ease-out;
   }
-`,Jx=()=>{ml.scrollToTop()},qx=()=>s(Ix,{children:b(Mx,{children:[b(jx,{children:[b(Gf,{children:[b(Lr,{children:[s(Nr,{children:"About Us"}),[{to:"about",title:"About"},{to:"services",title:"Services"},{to:"community",title:"Community"},{to:"contribute",title:"Contribute"}].map(({to:e,title:t})=>s(Ax,{to:e,smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,children:t}))]}),b(Lr,{children:[s(Nr,{children:"Contact Us"}),s(Sn,{to:"#",children:"Contact"}),s(Sn,{to:"#",children:"Feedback"}),s(Sn,{to:"#",children:"Support (Discord)"}),s(Sn,{to:"#",children:"Sponsorships"})]}),b(Lr,{children:[s(Nr,{children:" Social Media "}),s(Wx,{href:"https://www.twitter.com/cryptoverseweb3",target:"_blank",children:" Twitter "}),s(Ux,{href:"https://www.github.com/cryptoverseweb3",target:"_blank",children:" GitHub "}),s(Vx,{href:"https://discord.gg/QHBPq6xP5p",target:"_blank",children:" Discord "}),s(Qx,{href:"https://www.linktree.com/cryptoverseweb3",target:"_blank",children:" All Community Links "})]})]}),b(Gf,{children:[b(Lr,{children:[s(Nr,{children:" Free Courses "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Intro to Linux "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Cyber Tools "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Agency "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Influence "})]}),b(Lr,{children:[s(Nr,{children:" Videos "}),s(Sn,{to:"#",children:" About Community "}),s(Sn,{to:"#",children:" How to Join Community "}),s(Sn,{to:"#",children:" How to Contribute to the Community "})]})]})]}),s(Dx,{children:b(Fx,{children:[s(Zx,{to:"/",onClick:Jx,children:"Thecyberworld"}),b(Hx,{children:[" \xA9 ",new Date().getFullYear()," All rights reserved."]}),b(Bx,{children:[s(Yx,{href:"https://www.twitter.com/cryptoverseWeb3",target:"_blank","aria-label":"Twitter",children:s(gl,{})}),s(Gx,{href:"https://www.github.com/cryptoverseWeb3",target:"_blank","aria-label":"Github",children:s(_s,{})}),s(Kx,{href:"https://discord.gg/QHBPq6xP5p",target:"_blank","aria-label":"Discord",children:s(Lh,{})}),s(Xx,{href:"https://www.instagram.com/cryptoverseWeb3",target:"_blank","aria-label":"Instagram",children:s(Nh,{})})]})]})})]})});const e3=()=>s("div",{style:{background:"#010606FF",color:"#fff",textAlign:"center",padding:"0 0 200px 0",margin:"0 0 0 0"},children:b("h1",{children:["\u{1F468}\u200D\u{1F4BB} ",s("i",{children:"More on the way"})," \u{1F469}\u200D\u{1F4BB}  "]})});var t3="/assets/undraw_public_discussion_re_w9up.3b30ad0e.svg",n3="/assets/undraw_programming_re_kg9v.d5298519.svg",r3="/assets/LogoTrans_theCyberw0rld.4ca7179b.png";const ni=()=>s(pw,{children:">"}),o3={id:"about",idTo:"community",buttonType:"scroll",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Thecyberworld Community",headline:"About Thecyberworld",description:b("p",{children:[s(ni,{})," Community with more than 100,000 members. ",s("br",{}),s("br",{}),s(ni,{})," Community's goal is to help new folks to get started with open-source and cyber-security. ",s("br",{}),s("br",{}),s(ni,{})," Open-source projects. ",s("br",{}),s("br",{}),s(ni,{})," A Hub of Cyber Security. ",s("br",{}),s("br",{})]}),buttonLabel:"Get started",buttonLabel2:"Contribute",buttonLabel3:"Join",imgStart:!1,img:r3,alt:"Car",dark:!0,primary:!0,darkText:!1},i3={id:"resources",idTo:"resources",buttonType:"router",link:"/resources",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Resources",headline:"Cyber Sec Resources",description:b("p",{children:["We provide free courses for Cyber-security. ",s("br",{}),"Cyber WriteUps, RoadMap, and much more."]}),buttonLabel:b(Ot,{children:[" Explore ",b($2,{children:[" ",s(nw,{})," "]}),"  "]}),imgStart:!0,img:n3,alt:"ResourcesSvg",dark:!0,primary:!0,darkText:!1},l3={id:"community",idTo:"join",buttonType:"scroll",link:"joinUs",link2:"https://www.linktree.com/thecyberworld",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Join our Community",headline:"Over 100,0000 members",description:s("p",{children:"Community's goal is to help new folks to get started with open-source, cyber-security and to help existing folks get more involved in the open-source and cyber-security communities."}),buttonLabel:"Join now",imgStart:!1,img:t3,alt:"Secure data",dark:!0,primary:!0,darkText:!1},a3={id:"contribute",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Contribute to Thecyberworld",headline:"Want to contribute?",description:s("p",{children:"That's great! We welcome all sorts of contributions from raising issues, starting discussions, adding documentation, making pull requests and so much more! Help each other and make improvements! Check the contributing guidelines in each repository for guidance on how to get started."}),buttonLabel:b(Ot,{children:[" ",b(O2,{children:[" ",s(_s,{})," "]})," Contribute now "]}),imgStart:!1,img:Pw,alt:"Secure data",dark:!0,primary:!0,darkText:!1},u3=()=>{const[e,t]=A.exports.useState(!1),n=()=>t(!e);return b(Ot,{children:[b("navbar",{children:[s(X2,{isOpen:e,toggle:n}),s(B2,{toggle:n})]}),s(dw,{}),s(ga,yn({},o3)),s(ga,yn({},i3)),s(Rx,yn({},a3)),s(ga,yn({},l3)),s(Aw,{}),s(e3,{})]})},s3=e=>{const t=wo();return A.exports.useEffect(()=>{window.scrollTo(0,0)},[t]),s(Ot,{children:e.children})},c3=()=>{const[e,t]=A.exports.useState(!1),n=()=>t(!e);return b("div",{children:[b("navbar",{children:[s(fx,{isOpen:e,toggle:n}),s(rx,{toggle:n})]}),b(uh,{children:[s(Be,{exact:!0,path:"/",element:s(Jh,{})}),s(Be,{exact:!0,path:"courses",element:s(qh,{})}),s(Be,{exact:!0,path:"cybernews",element:s(tm,{})}),s(Be,{path:"writeups",element:s(em,{})}),s(Be,{path:"events",element:s(nm,{})}),s(Be,{path:"jobs",element:s(rm,{})})]})]})},f3=()=>b("div",{children:[s(s3,{children:b(uh,{children:[s(Be,{index:!0,exact:!0,path:"/",element:s(u3,{})}),b(Be,{exact:!0,path:"/resources",element:s(c3,{}),children:[s(Be,{index:!0,element:s(Jh,{})}),s(Be,{path:"courses",element:s(qh,{})}),s(Be,{path:"cybernews",element:s(tm,{})}),s(Be,{path:"writeups",element:s(em,{})}),s(Be,{path:"events",element:s(nm,{})}),s(Be,{path:"jobs",element:s(rm,{})})]})]})}),s(qx,{})]});va.createRoot(document.getElementById("root")).render(s(st.StrictMode,{children:s(ng,{children:s(f3,{})})}));
+`,qx=()=>{ml.scrollToTop()},e3=()=>s(Mx,{children:b(jx,{children:[b(Ax,{children:[b(Gf,{children:[b(Lr,{children:[s(Nr,{children:"About Us"}),[{to:"about",title:"About"},{to:"services",title:"Services"},{to:"community",title:"Community"},{to:"contribute",title:"Contribute"}].map(({to:e,title:t})=>s(Dx,{to:e,smooth:!0,duration:500,spy:!0,exact:"true",offset:-80,children:t}))]}),b(Lr,{children:[s(Nr,{children:"Contact Us"}),s(Sn,{to:"#",children:"Contact"}),s(Sn,{to:"#",children:"Feedback"}),s(Sn,{to:"#",children:"Support (Discord)"}),s(Sn,{to:"#",children:"Sponsorships"})]}),b(Lr,{children:[s(Nr,{children:" Social Media "}),s(Ux,{href:"https://www.twitter.com/cryptoverseweb3",target:"_blank",children:" Twitter "}),s(Vx,{href:"https://www.github.com/cryptoverseweb3",target:"_blank",children:" GitHub "}),s(Qx,{href:"https://discord.gg/QHBPq6xP5p",target:"_blank",children:" Discord "}),s(Yx,{href:"https://www.linktree.com/cryptoverseweb3",target:"_blank",children:" All Community Links "})]})]}),b(Gf,{children:[b(Lr,{children:[s(Nr,{children:" Free Courses "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Intro to Linux "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Cyber Tools "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Agency "}),s(ti,{href:"https://www.youtube.com/c/thecyberworld?sub_confirmation=1",target:"_blank",children:" Influence "})]}),b(Lr,{children:[s(Nr,{children:" Videos "}),s(Sn,{to:"#",children:" About Community "}),s(Sn,{to:"#",children:" How to Join Community "}),s(Sn,{to:"#",children:" How to Contribute to the Community "})]})]})]}),s(Fx,{children:b(Hx,{children:[s(Jx,{to:"/",onClick:qx,children:"Thecyberworld"}),b(Bx,{children:[" \xA9 ",new Date().getFullYear()," All rights reserved."]}),b(Wx,{children:[s(Gx,{href:"https://www.twitter.com/cryptoverseWeb3",target:"_blank","aria-label":"Twitter",children:s(gl,{})}),s(Kx,{href:"https://www.github.com/cryptoverseWeb3",target:"_blank","aria-label":"Github",children:s(_s,{})}),s(Xx,{href:"https://discord.gg/QHBPq6xP5p",target:"_blank","aria-label":"Discord",children:s(Lh,{})}),s(Zx,{href:"https://www.instagram.com/cryptoverseWeb3",target:"_blank","aria-label":"Instagram",children:s(Nh,{})})]})]})})]})});const t3=()=>s("div",{style:{background:"#010606FF",color:"#fff",textAlign:"center",padding:"0 0 200px 0",margin:"0 0 0 0"},children:b("h1",{children:["\u{1F468}\u200D\u{1F4BB} ",s("i",{children:"More on the way"})," \u{1F469}\u200D\u{1F4BB}  "]})});var n3="/assets/undraw_public_discussion_re_w9up.3b30ad0e.svg",r3="/assets/undraw_programming_re_kg9v.d5298519.svg",o3="/assets/LogoTrans_theCyberw0rld.4ca7179b.png";const ni=()=>s(pw,{children:">"}),i3={id:"about",idTo:"community",buttonType:"scroll",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Thecyberworld Community",headline:"About Thecyberworld",description:b("p",{children:[s(ni,{})," Community with more than 100,000 members. ",s("br",{}),s("br",{}),s(ni,{})," Community's goal is to help new folks to get started with open-source and cyber-security. ",s("br",{}),s("br",{}),s(ni,{})," Open-source projects. ",s("br",{}),s("br",{}),s(ni,{})," A Hub of Cyber Security. ",s("br",{}),s("br",{})]}),buttonLabel:"Get started",buttonLabel2:"Contribute",buttonLabel3:"Join",imgStart:!1,img:o3,alt:"Car",dark:!0,primary:!0,darkText:!1},l3={id:"resources",idTo:"resources",buttonType:"router",link:"/resources",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Resources",headline:"Cyber Sec Resources",description:b("p",{children:["We provide free courses for Cyber-security. ",s("br",{}),"Cyber WriteUps, RoadMap, and much more."]}),buttonLabel:b(Ot,{children:[" Explore ",b($2,{children:[" ",s(nw,{})," "]}),"  "]}),imgStart:!0,img:r3,alt:"ResourcesSvg",dark:!0,primary:!0,darkText:!1},a3={id:"community",idTo:"join",buttonType:"scroll",link:"joinUs",link2:"https://www.linktree.com/thecyberworld",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Join our Community",headline:"Over 100,0000 members",description:s("p",{children:"Community's goal is to help new folks to get started with open-source, cyber-security and to help existing folks get more involved in the open-source and cyber-security communities."}),buttonLabel:"Join now",imgStart:!1,img:n3,alt:"Secure data",dark:!0,primary:!0,darkText:!1},u3={id:"contribute",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Contribute to Thecyberworld",headline:"Want to contribute?",description:s("p",{children:"That's great! We welcome all sorts of contributions from raising issues, starting discussions, adding documentation, making pull requests and so much more! Help each other and make improvements! Check the contributing guidelines in each repository for guidance on how to get started."}),buttonLabel:b(Ot,{children:[" ",b(O2,{children:[" ",s(_s,{})," "]})," Contribute now "]}),imgStart:!1,img:Pw,alt:"Secure data",dark:!0,primary:!0,darkText:!1},s3=()=>{const[e,t]=A.exports.useState(!1),n=()=>t(!e);return b(Ot,{children:[b("navbar",{children:[s(X2,{isOpen:e,toggle:n}),s(B2,{toggle:n})]}),s(dw,{}),s(ga,yn({},i3)),s(ga,yn({},l3)),s(Ix,yn({},u3)),s(ga,yn({},a3)),s(Aw,{}),s(t3,{})]})},c3=e=>{const t=wo();return A.exports.useEffect(()=>{window.scrollTo(0,0)},[t]),s(Ot,{children:e.children})},f3=()=>{const[e,t]=A.exports.useState(!1),n=()=>t(!e);return b("div",{children:[b("navbar",{children:[s(dx,{isOpen:e,toggle:n}),s(ox,{toggle:n})]}),b(uh,{children:[s(Be,{exact:!0,path:"/",element:s(Jh,{})}),s(Be,{exact:!0,path:"courses",element:s(qh,{})}),s(Be,{exact:!0,path:"cybernews",element:s(tm,{})}),s(Be,{path:"writeups",element:s(em,{})}),s(Be,{path:"events",element:s(nm,{})}),s(Be,{path:"jobs",element:s(rm,{})})]})]})},d3=()=>b("div",{children:[s(c3,{children:b(uh,{children:[s(Be,{index:!0,exact:!0,path:"/",element:s(s3,{})}),b(Be,{exact:!0,path:"/resources",element:s(f3,{}),children:[s(Be,{index:!0,element:s(Jh,{})}),s(Be,{path:"courses",element:s(qh,{})}),s(Be,{path:"cybernews",element:s(tm,{})}),s(Be,{path:"writeups",element:s(em,{})}),s(Be,{path:"events",element:s(nm,{})}),s(Be,{path:"jobs",element:s(rm,{})})]})]})}),s(e3,{})]});va.createRoot(document.getElementById("root")).render(s(st.StrictMode,{children:s(ng,{children:s(d3,{})})}));
