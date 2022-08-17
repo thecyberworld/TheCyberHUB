@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import moment from 'moment';
 
-import {useGetCryptoNewsQuery} from "../../../services/cryptoNewsApi";
+import {useGetCyberNewsQuery} from "../../../services/cyberNewsApi";
 import {
     CyberNewsSection,
     SectionHeading,
@@ -26,13 +26,13 @@ const demoImage = "http://coinrevolution.com/wp-content/uploads/2020/06/cryptone
 
 const CyberNews = ({simplified}) => {
     const [newsCategory, setNewsCategory] = useState('cybersecurity')
-    const {data: cryptoNews} = useGetCryptoNewsQuery({newsCategory, count: simplified ? 6 : 30});
-    if (!cryptoNews?.value) return "<Loader/>";
+    const {data: cyberNews} = useGetCyberNewsQuery({newsCategory, count: simplified ? 6 : 30});
+    if (!cyberNews?.value) return "<Loader/>";
 
     return (
         <CyberNewsSection>
             <SectionHeading style={{textAlign: "center", margin: "-80px 0 50px 0"}}> Latest CyberNews</SectionHeading>
-            {cryptoNews.value.map((news, i) => (
+            {cyberNews.value.map((news, i) => (
                 <>
                     <CyberNewsBody>
                         <MarginTop/>
