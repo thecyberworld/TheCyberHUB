@@ -102,7 +102,7 @@ export const NavLinkRouter = styled.a`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-
+  margin-left: 24px;
   @media screen and (max-width: 760px) {
     display: none;
   }
