@@ -66,7 +66,7 @@ const Navbar = ({toggle}) => {
                                     > 
                                         {title}
                                     </NavLinks>
-                                    {to=='resources' && drop && <Dropdown/>}
+                                    {to=='resources' && drop && <Dropdown sidebar={false}/>}
                                 </NavItem>
                             ))}
                         </NavMenu>
