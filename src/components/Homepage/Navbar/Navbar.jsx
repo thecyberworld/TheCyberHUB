@@ -7,9 +7,18 @@ import {
 } from "./NavbarElements";
 import {Button, RedirectButton} from "../../MixComponenets/Buttons/ButtonElements";
 import {Text} from "../../Resources/ResourcesNavbar/ResourcesNavbarElements";
+import Dropdown from '../Dropdowns/Dropdown';
+import SideDropdown from '../Dropdowns/SideDropdown';
 
 const Navbar = ({toggle}) => {
     const [scrollNav, setScrollNav] = useState(false);
+    const [drop, setDrop] = useState(false);
+
+    const dropHandler = (title) => {
+        if(title == 'resources'){
+            setDrop(true);
+        }else setDrop(false);
+    }
 
     const changeNav = () => {
         if (window.scrollY >= 80) {
@@ -31,7 +40,7 @@ const Navbar = ({toggle}) => {
     return (
         <>
             <IconContext.Provider value={{color: '#fff'}}>
-                <Nav scrollNav={scrollNav}>
+                <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav}>
                     <NavbarContainer>
                         <NavLogo to={"/"} onClick={toggleHome}>
                             Thecyberworld
@@ -46,7 +55,7 @@ const Navbar = ({toggle}) => {
                                 {to: 'contribute', title: 'Contribute',},
                                 {to: 'community', title: 'Community',},
                             ].map(({to, title}) => (
-                                <NavItem key={to}>
+                                <NavItem onMouseEnter={()=>dropHandler(to)} onMouseLeave={()=>dropHandler(to)} key={to}>
                                     <NavLinks
                                         to={to}
                                         smooth={true}
@@ -54,12 +63,14 @@ const Navbar = ({toggle}) => {
                                         spy={true}
                                         exact="true"
                                         offset={-80}
-                                    >
+                                    > 
                                         {title}
                                     </NavLinks>
+                                    {to=='resources' && drop && <Dropdown/>}
                                 </NavItem>
                             ))}
                         </NavMenu>
+                        
                         <NavBtn>
                             <Button
                                 to={"join"}
