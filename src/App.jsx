@@ -11,11 +11,10 @@ import Prep from "./pages/Prep";
 import {
     ResourcesHome, RoadmapResources, CyberNews, Blogs, Events,
     InterviewQuestions, InterviewExperiences, Quiz, Jobs,
-    Footer
+    Footer, Sidebar, Navbar
 } from "./components";
 
 import Spinner from "./components/MixComponents/Spinner/Spinner";
-
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -26,13 +25,20 @@ const App = () => {
             setLoading(false)
         }, 2000)
     }, []);
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
 
     return (
         <div>
             {loading ? (
                 <Spinner/>
-            ) : (
-                <> <ScrollToTop>
+            ) : (<>
+                <navbar>
+                    <Sidebar isOpen={isOpen} toggle={toggle}/>
+                    <Navbar toggle={toggle}/>
+                </navbar>
+                ) : (
+                <ScrollToTop>
                     <Routes>
                         <Route index exact path={"/"} element={<Homepage/>}/>
 
@@ -52,9 +58,8 @@ const App = () => {
                         </Route>
                     </Routes>
                 </ScrollToTop>
-                    <Footer/>
-                </>
-            )}
+                <Footer/>
+            </>)}
         </div>
     );
 };

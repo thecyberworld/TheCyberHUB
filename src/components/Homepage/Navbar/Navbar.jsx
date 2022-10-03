@@ -3,7 +3,17 @@ import {IconContext} from 'react-icons/lib';
 import {animateScroll as scroll} from 'react-scroll';
 import {FaBars, FaTwitter} from 'react-icons/fa';
 import {
-    Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavLinkRouter, NavBtn, NavBtnLink
+    Nav,
+    NavbarContainer,
+    NavLogo,
+    MobileIcon,
+    NavMenu,
+    NavItem,
+    NavLinks,
+    NavLinkRouter,
+    NavBtn,
+    NavBtnLink,
+    DropdownIcon
 } from "./NavbarElements";
 import {Button, RedirectButton} from "../../MixComponents/Buttons/ButtonElements";
 import {Text} from "../../Resources/ResourcesNavbar/ResourcesNavbarElements";
@@ -15,7 +25,7 @@ const Navbar = ({toggle}) => {
     const [drop, setDrop] = useState(false);
 
     const dropHandler = (title) => {
-        if(title == 'resources'){
+        if(title === 'resources'){
             setDrop(true);
         }else setDrop(false);
     }
@@ -47,7 +57,7 @@ const Navbar = ({toggle}) => {
                         <NavMenu>
                             {[
                                 {to: 'about', title: 'About',},
-                                {to: 'resources', title: 'Resources',},
+                                {to: 'resources', title: <><p>Learn</p> <DropdownIcon/></>},
                                 {to: 'contribute', title: 'Contribute',},
                                 {to: 'community', title: 'Community',},
                             ].map(({to, title}) => (
@@ -62,7 +72,7 @@ const Navbar = ({toggle}) => {
                                     > 
                                         {title}
                                     </NavLinks>
-                                    {to=='resources' && drop && <Dropdown sidebar={false}/>}
+                                    {to==='resources' && drop && <Dropdown sidebar={false}/>}
                                 </NavItem>
                             ))}
                         </NavMenu>
