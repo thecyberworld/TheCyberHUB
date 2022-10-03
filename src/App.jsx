@@ -45,7 +45,6 @@ const App = () => {
         <Spinner />
       ) : (
         <>
-          {" "}
           <ScrollToTop>
             <Routes>
               <Route index exact path={"/"} element={<Homepage />} />
