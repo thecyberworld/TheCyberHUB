@@ -101,7 +101,7 @@ export const FilledButton = styled(RouterButton)`
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #47cf73;
-    color: white;
+    color: black;
     border-color: #343434;
     font-size: 18px;
   }
