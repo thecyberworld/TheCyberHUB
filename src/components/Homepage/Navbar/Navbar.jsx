@@ -5,7 +5,7 @@ import {FaBars, FaTwitter} from 'react-icons/fa';
 import {
     Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, NavLinkRouter, NavBtn, NavBtnLink
 } from "./NavbarElements";
-import {Button, RedirectButton} from "../../MixComponents/Buttons/ButtonElements";
+import {Button, RedirectButton, FilledButton} from "../../MixComponents/Buttons/ButtonElements";
 import {Text} from "../../Resources/ResourcesNavbar/ResourcesNavbarElements";
 
 const Navbar = ({toggle}) => {
@@ -86,6 +86,9 @@ const Navbar = ({toggle}) => {
                                     Share us
                                 </Text>
                             </RedirectButton>
+                                <FilledButton to="register">
+                                    Register                                                                
+                                </FilledButton>
                         </NavBtn>
                     </NavbarContainer>
                 </Nav>
