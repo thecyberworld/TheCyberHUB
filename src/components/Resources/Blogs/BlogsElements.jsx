@@ -11,12 +11,12 @@ const BlogsElements = (props) => {
           <img className="blogImg" src={image} alt="Blog Image" width="360px" height="180px" />
           <h2>{props.title}</h2>
           <h6>
-            {props.author} | {props.date}
+            {props.date} • {props.author}
           </h6>
         </div>
         <div className="blogs__container__content">{props.content.slice(0, 200)}{props.content.length>200?"...":""}</div>
         <div className="tags">
-          tags:
+          {/*tags:*/}
           {props.tags.map((tag, index) => (
             <div className="tag" key={index}>{tag}</div>
           ))}
