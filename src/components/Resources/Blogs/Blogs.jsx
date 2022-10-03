@@ -12,6 +12,7 @@ const Blogs = () => {
       <Route exact path={"viewBlog"} element={<ViewBlog />} />
     </Routes>
     </>
+
   );
 };
 

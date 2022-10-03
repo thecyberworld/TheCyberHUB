@@ -1,48 +1,78 @@
-import React from 'react';
-import {
-    EventsContainer,
-    EventHeading,
-    EventContent,
-    ContentList,
-    EventSubHeading,
-    EventSubHeadingSection, BGCTFImage, BGImage, ImageSection, CtfImage
-} from "./EventsElemetns";
-import {Link} from "../RoadmapResources/RoadmapResourcesElements";
-import CTFImg from "../../../assets/images/Capture.png";
+import React from "react";
+import {Section} from "../WriteUps/WriteUpsElements";
+import EventsElements from "./EventsElement";
+import "./Events.css";
+import EventsHeader from "./EventsHeader";
+
+import {Heading, ListContent, List, Link} from "../RoadmapResources/RoadmapResourcesElements";
+
+
+// probably received by a api call
+const eventsHeader = {
+    title: "We are happy to announce that Thecyberworld is participating in Hacktoberfest 2022.",
+    date: "1st October 2022",
+    venue: <>
+       <a style={{color: "white"}} href={"https://discord.gg/QHBPq6xP5p"} target={"_blank"}>Discord</a>,
+       <a style={{color: "white"}} href={"https://github.com/thecyberworld/"} target={"_blank"}>GitHub</a>,
+    </>,
+    content:
+    <p>
+        Go through the Hacktoberfest 2022 contributor section to know more about what you should do and the rewards you will receive. We would be genuinely happy if you choose the “plant a tree” option as your reward. <br/>
+        Contributions/pull requests can be made to the following repositories under the <b><Link href={"https://github.com/thecyberworld/"} target={"_blank"}> Thecyberworld </Link></b> organization: <br/>
+
+        <div style={{margin: "10px 20px"}}>
+        <ListContent>
+            <List> Thecyberhub website: <Link href={"https://github.com/thecyberworld/thecyberhub.org"} target={"_blank"}> link </Link></List>
+            <List> Thecyberhub App: <Link href={"https://github.com/thecyberworld/thecyberhub-app"} target={"_blank"}> link </Link></List>
+            <List> Thecyberhub Extension: <Link href={"https://github.com/thecyberworld/thecyberhub-ext"} target={"_blank"}> link </Link></List>
+            <List> Port scanner: <Link href={"https://github.com/thecyberworld/port-scanner"} target={"_blank"}> link </Link></List>
+            <List> Subdomain finder: <Link href={"https://github.com/thecyberworld/subdomain-finder"} target={"_blank"}> link </Link></List>
+        </ListContent>
+        </div>
+
+        Read the <Link href={"https://github.com/thecyberworld/thecyberhub.org/blob/main/CONTRIBUTING.md"} target={"_blank"}> Thecyberworld Contributing Guide</Link>.
+        If you are a beginner, please check out the curated <Link href={"https://github.com/search?q=org%3Athecyberworld+is%3Aopen+is%3Aissue+label%3AHacktoberFest"} target={"_blank"}> Hacktoberfest issues </Link>on the main Thecyberworld org.
+        If you would like to challenge yourself, you can create some issues and features requests on <b> <Link href={"https://github.com/thecyberworld"} target={"_blank"}> Thecyberworld </Link> </b>  and work on those issues.
+
+        <br/>
+        <br/>
+
+        <Link href={"https://github.com/thecyberworld/"} target={"_blank"}> </Link>
+        Some good resources to get started for beginners:
+        <div style={{margin: "10px 20px"}}>
+            <ListContent>
+                <List> Open Source Guides: <Link href={"https://opensource.guide/how-to-contribute/"} target={"_blank"}> How to contribute to Open Source </Link></List>
+                <List> GitHub: <Link href={"https://training.github.com/"} target={"_blank"}> GitHub training kit </Link></List>
+                <List> DigitalOcean: <Link href={"https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source"} target={"_blank"}> Introduction to Open Source </Link></List>
+                <List> GitHub: <Link href={"https://github.blog/2015-01-21-how-to-write-the-perfect-pull-request/"} target={"_blank"}> Write good PRs </Link></List>
+            </ListContent>
+        </div>
+    </p>,
+}
+const events = {
+    title: "TheCyberCTF",
+    date: "1st October 2022",
+    venue: <a style={{color: "white"}} href={"https://discord.gg/QHBPq6xP5p"} target={"_blank"}>Discord</a>,
+    content: " We host every weekend for the community for free. Take participate in the CTF and win exciting prizes and this is free for everyone. Join Discord now."
+}
 
 const Events = () => {
     return (
-        <EventsContainer>
-            {/*<BGCTFImage>*/}
-                {/*<BGImage src={"/src/assets/ctf.jpg"} type={'image'} />*/}
-            {/*</BGCTFImage>*/}
-            <ImageSection>
-                <img src={CTFImg} alt=""/>
-            </ImageSection>
-            <EventSubHeading> This Saturday @10pm </EventSubHeading>
+        <Section>
+            <div className="AllEvents">
+                <EventsHeader title={eventsHeader.title} venue={eventsHeader.venue} date={eventsHeader.date} content={eventsHeader.content}/>
+            </div>
+
             <br/>
-            {/*<EventHeading> TheCyberCTF </EventHeading>*/}
-            <EventSubHeadingSection>
-                <EventSubHeading>
-                    Price: TryHackMe Voucher
-                </EventSubHeading>
-                <EventContent>
-                    Top 3 will get 1 month Voucher.
-                </EventContent>
-            </EventSubHeadingSection>
-            <EventContent>
-                <ContentList>
-                    Join our <Link href="https://discord.gg/QHBPq6xP5p" target={"_blank"}>
-                    <b> Discord </b> </Link> server.
-                </ContentList>
-                <ContentList>For more details and questions.</ContentList>
-                <ContentList>CTF link will be given at discord server before 10m.</ContentList>
-
-                <br/>
-
-                More details will be added soon.
-            </EventContent>
-        </EventsContainer>
+            <h1> All Events </h1>
+            <br/>
+            <div className="AllEvents">
+                <EventsElements title={events.title} venue={events.venue} date={events.date} content={events.content}/>
+                <EventsElements title={events.title} venue={events.venue} date={events.date} content={events.content}/>
+                <EventsElements title={events.title} venue={events.venue} date={events.date} content={events.content}/>
+                <EventsElements title={events.title} venue={events.venue} date={events.date} content={events.content}/>
+            </div>
+        </Section>
     );
 };
 
