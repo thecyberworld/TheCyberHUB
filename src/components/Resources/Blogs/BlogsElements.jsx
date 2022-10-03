@@ -1,6 +1,6 @@
 import React from "react";
 import "./Blog.css";
-import image from "./img.jpg";
+import image from "./img.webp";
 // const image = require('./img.jpg');
 
 const BlogsElements = (props) => {
@@ -17,8 +17,8 @@ const BlogsElements = (props) => {
         <div className="blogs__container__content">{props.content.slice(0, 200)}{props.content.length>200?"...":""}</div>
         <div className="tags">
           tags:
-          {props.tags.map((tag) => (
-            <div className="tag">{tag}</div>
+          {props.tags.map((tag, index) => (
+            <div className="tag" key={index}>{tag}</div>
           ))}
         </div>
       </div>
