@@ -11,6 +11,7 @@ import {
     SideBtnWrap,
     SidebarRoute
 } from './SidebarElements';
+import {DropdownIcon} from "../Navbar/NavbarElements";
 
 const Sidebar = ({isOpen, toggle}) => {
     const [drop, setDrop] = useState(false);
@@ -22,7 +23,7 @@ const Sidebar = ({isOpen, toggle}) => {
             <SidebarWrapper>
                 <SidebarMenu>
                     <SidebarLink onClick={toggle} to={"about"}>About</SidebarLink>
-                    <SidebarLink onClick={()=>setDrop(!drop)} to={"resources"}>Resources</SidebarLink>
+                    <SidebarLink onClick={()=>setDrop(!drop)} to={"resources"}>Learn <DropdownIcon/> </SidebarLink>
                     {drop && <Dropdown sidebar={true} />}
                     <SidebarLink onClick={toggle} to={"contribute"}>Contribute</SidebarLink>
                     <SidebarLink onClick={toggle} to={"community"}>Community</SidebarLink>
