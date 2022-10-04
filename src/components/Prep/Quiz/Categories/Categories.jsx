@@ -85,6 +85,8 @@ export default function Categories() {
       <CategoriesButtons
         categoryToShow={categoryToShow}
         showCategory={showCategory}
+        handleResetButton={handleResetButton}
+        score={score}
       />
       {categoryToShow === "CBQ" && <CBQ {...styles} {...statesAndFunctions} />}
       {categoryToShow === "Phishing" && (
