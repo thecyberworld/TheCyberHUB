@@ -62,7 +62,7 @@ const Navbar = ({toggle}) => {
                                     > 
                                         {title}
                                     </NavLinks>
-                                    {to=='resources' && drop && <Dropdown sidebar={false}/>}
+                                    {to === 'resources' && drop && <Dropdown sidebar={false}/>}
                                 </NavItem>
                             ))}
                         </NavMenu>
@@ -93,9 +93,9 @@ const Navbar = ({toggle}) => {
                                     Share us
                                 </Text>
                             </RedirectButton>
-                                <FilledButton to="register">
-                                    Register                                                                
-                                </FilledButton>
+                                {/*<FilledButton to="register">*/}
+                                {/*    Register                                                                */}
+                                {/*</FilledButton>*/}
                         </NavBtn>
                     </NavbarContainer>
                 </Nav>
