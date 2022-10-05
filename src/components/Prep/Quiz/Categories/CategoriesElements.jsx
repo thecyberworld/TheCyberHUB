@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const QuizSection = styled.div`
   margin: 100px auto;
-  color: #cecac3;
+  color: #53c42e;
   background-color: #1a1c1d;
   width: auto;
   max-width: 800px;
@@ -98,24 +98,27 @@ export const CategoriesSection = styled.section`
   margin: 150px auto 0;
   color: #cecac3;
   width: auto;
-  //   max-width: 800px;
-  //   outline: 0.01px solid white;
+  max-width: 70em;
+  //outline: 0.01px solid white;
   padding: 25px;
   display: flex;
 `;
 
 export const CategoriesButton = styled.button`
   background-color: transparent;
-  box-shadow: 2px 2px 2px #cecac3;
+  //box-shadow: 2px 2px 2px #cecac3;
   color: #cecac3;
   cursor: pointer;
   font-weight: bold;
-  outline: 1px solid #cecac3;
+  //outline: 1px solid #cecac3;
   margin: 0 10px;
   padding: 8px;
+  border: #545454 1px solid;
+  border-radius: 5px;
 
   &:hover {
     background-color: #cecac3;
     color: #010606;
+    font-size: 15px;
   }
 `;
