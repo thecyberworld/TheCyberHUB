@@ -135,6 +135,14 @@ Error generating stack: `+o.message+`
   margin-left: 24px;
   font-weight: bold;
   text-decoration: none;
+  @media screen and (max-width: 370px) {
+    margin: 0 0 0 0;
+  }
+
+  @media screen and (max-width: 350px) {
+    margin: 0 -20px 0 0;
+  } 
+
 `,t3=P.div`
   display: none;
 
@@ -147,6 +155,16 @@ Error generating stack: `+o.message+`
     font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
+  }
+
+
+  @media screen and (max-width: 340px) {
+    display: inline-flex;
+    justify-content: center;
+    text-align: center;
+    
+    margin-top: 60px;
+    width: 30%;
   }
 `,r3=P.div`
     margin-left: 5px;
