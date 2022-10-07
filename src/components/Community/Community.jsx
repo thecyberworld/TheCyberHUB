@@ -15,9 +15,10 @@ const Community = () => {
     <Header>
       <Overlay></Overlay>
       <Container>
-        <Heading>Loved by thousands of professionals</Heading>
+        <Heading>Loved by thousands of hackers</Heading>
         <Paragraph>
-          We build open-source tools for hackers and developers.
+          Community's goal is to help new folks to get started with open-source and cyber-security. <br/>
+          We build open-source projects for hackers and developers
         </Paragraph>
         <a href="https://discord.gg/QHBPq6xP5p" target="blanck">
           <Button>
