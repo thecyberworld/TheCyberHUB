@@ -4,8 +4,8 @@ import bgImage from "../../assets/thecyberworld-green01.png";
 export const Header = styled.header`
   color: #cecac3;
   background: url(${bgImage}) no-repeat;
-  background-size: 30% 50%;
-  background-position: center;
+  background-size: 25%;
+  background-position: 50% 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@ export const Paragraph = styled.p`
 `;
 
 export const Button = styled.button`
-  background-color: hsl(235, calc(1 * 85.6%), 64.7%);
+  background-color: #364eb0;
   border: none;
   border-radius: 0.3rem;
   color: white;
