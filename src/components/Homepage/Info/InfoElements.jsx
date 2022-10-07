@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import {Link as ScrollLink} from "react-scroll";
 
 export const Symbol = styled.a`
-  color: #01bf71;
+  color: #20c20e;
 `
 
 export const InfoContainer = styled.div`
@@ -60,7 +60,7 @@ export const TextWrapper = styled.div`
 `
 
 export const TopLine = styled.p`
-  color: #01bf71;
+  color: #20c20e;
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;
@@ -92,6 +92,11 @@ export const Subtitle = styled.p`
 export const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-start;
+
+  @media screen and (max-width: 600px) {
+    display: grid;
+  }
+
 `;
 
 export const ImgWrap = styled.div`
