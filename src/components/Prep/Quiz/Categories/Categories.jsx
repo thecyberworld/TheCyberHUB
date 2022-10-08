@@ -31,6 +31,8 @@ export default function Categories() {
 
   const [categoryToShow, setCategoryToShow] = useState("CBQ");
 
+  const [showDropdown, setShowDropdown] = useState(false);
+
   const handleAnswerButtonClick = (isCorrect, length) => {
     if (isCorrect === true) {
       setScore(score + 1);
@@ -57,6 +59,14 @@ export default function Categories() {
     },
     [categoryToShow]
   );
+
+  const openDropdown = useCallback(() => {
+    setShowDropdown(true);
+  }, [showDropdown]);
+
+  const closeDropdown = useCallback(() => {
+    setShowDropdown(false);
+  }, [showDropdown]);
 
   const styles = {
     AnswerSection: AnswerSection,
@@ -87,6 +97,9 @@ export default function Categories() {
         showCategory={showCategory}
         handleResetButton={handleResetButton}
         score={score}
+        openDropdown={openDropdown}
+        closeDropdown={closeDropdown}
+        showDropdown={showDropdown}
       />
       {categoryToShow === "CBQ" && <CBQ {...styles} {...statesAndFunctions} />}
       {categoryToShow === "Phishing" && (

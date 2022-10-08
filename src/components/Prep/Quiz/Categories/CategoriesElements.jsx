@@ -12,7 +12,7 @@ export const QuizSection = styled.div`
   padding: 25px;
   box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
   display: flex;
-  
+
   @media screen and (max-width: 800px) {
     margin: 50px 30px;
   }
@@ -102,30 +102,67 @@ export const CategoriesSection = styled.section`
   margin: 150px auto 0;
   color: #cecac3;
   width: auto;
-  max-width: 70em;
-  //outline: 0.01px solid white;
+  max-width: 70rem;
+  // outline: 0.01px solid white;
   padding: 25px;
   display: flex;
-  @media screen and (max-width: 800px) {
-    margin: 150px 30px 0;
+  align-items: center;
+  justify-content: space-between;
+
+  & > span {
+    font-size: 1.5rem;
+
+    @media screen and (min-width: 769px) {
+      display: none;
+    }
+  }
+`;
+
+export const MobileCategories = styled(CategoriesSection)`
+  background-color: #1a1c1d;
+  border-radius: 1rem 0 0 1rem;
+  box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
+  -webkit-box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
+  -moz-box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
+  flex-direction: column;
+  max-width: fit-content;
+  overflow-y: auto;
+  height: 80vh;
+  position: absolute;
+  top: 4.3rem;
+  left: 1rem;
+  z-index: 1;
+
+  & > button {
+    margin: 1rem 0;
   }
 `;
 
 export const CategoriesButton = styled.button`
   background-color: transparent;
-  //box-shadow: 2px 2px 2px #cecac3;
   color: #cecac3;
   cursor: pointer;
   font-weight: bold;
-  //outline: 1px solid #cecac3;
+  outline: 1px solid #cecac3;
   margin: 0 10px;
   padding: 8px;
-  border: #545454 1px solid;
   border-radius: 5px;
 
   &:hover {
     background-color: #cecac3;
+    box-shadow: 2px 2px 2px #cecac3;
     color: #010606;
-    font-size: 15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: ${(props) =>
+      props.type === props.show ? "inline-block" : "none"};
+  }
+`;
+
+export const CategoriesButtonMobile = styled(CategoriesButton)`
+  @media screen and (max-width: 768px) {
+    display: ${(props) =>
+      props.type === props.show ? "none" : "inline-block"};
   }
 `;
