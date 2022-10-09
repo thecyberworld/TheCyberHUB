@@ -22,17 +22,11 @@ import VSQ from "./VSQ/VSQ";
 
 export default function Categories() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-
   const [showScore, setShowScore] = useState(false);
-
   const [score, setScore] = useState(0);
-
   const [scoreList, setScoreList] = useState(0);
-
   const [categoryToShow, setCategoryToShow] = useState("CBQ");
-
   const [showDropdown, setShowDropdown] = useState(false);
-
   const handleAnswerButtonClick = (isCorrect, length) => {
     if (isCorrect === true) {
       setScore(score + 1);
