@@ -103,7 +103,6 @@ export const CategoriesSection = styled.section`
   color: #cecac3;
   width: auto;
   max-width: 70rem;
-  // outline: 0.01px solid white;
   padding: 25px;
   display: flex;
   align-items: center;
@@ -121,10 +120,8 @@ export const CategoriesSection = styled.section`
 
 export const MobileCategories = styled(CategoriesSection)`
   background-color: #1a1c1d;
-  border-radius: 0 1rem 1rem 0;
-  box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
-  -webkit-box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
-  -moz-box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
+  border-radius: 1rem;
+  box-shadow: 0 0 3px 1px rgba(44, 222, 76, 0.56);
   flex-direction: column;
   justify-content: start;
   max-width: fit-content;
@@ -136,6 +133,7 @@ export const MobileCategories = styled(CategoriesSection)`
   z-index: 1;
 
   & > button {
+    width: 100%;
     margin: 0.5rem 0;
   }
 `;
@@ -145,26 +143,25 @@ export const CategoriesButton = styled.button`
   color: #cecac3;
   cursor: pointer;
   font-weight: bold;
-  outline: 1px solid #cecac3;
   margin: 0 10px;
   padding: 8px;
   border-radius: 5px;
+  border-color: #343434;
 
   &:hover {
-    background-color: #cecac3;
-    box-shadow: 2px 2px 2px #cecac3;
-    color: #010606;
+    background: transparent;
+    color: #20c20e;
   }
 
   @media screen and (max-width: 768px) {
     display: ${(props) =>
-      props.type === props.show ? "inline-block" : "none"};
+            props.type === props.show ? "inline-block" : "none"};
   }
 `;
 
 export const CategoriesButtonMobile = styled(CategoriesButton)`
   @media screen and (max-width: 768px) {
     display: ${(props) =>
-      props.type === props.show ? "none" : "inline-block"};
+            props.type === props.show ? "none" : "inline-block"};
   }
 `;
