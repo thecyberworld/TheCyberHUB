@@ -110,6 +110,7 @@ export const CategoriesSection = styled.section`
   justify-content: space-between;
 
   & > span {
+    cursor: pointer;
     font-size: 1.5rem;
 
     @media screen and (min-width: 769px) {
@@ -120,21 +121,22 @@ export const CategoriesSection = styled.section`
 
 export const MobileCategories = styled(CategoriesSection)`
   background-color: #1a1c1d;
-  border-radius: 1rem 0 0 1rem;
+  border-radius: 0 1rem 1rem 0;
   box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
   -webkit-box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
   -moz-box-shadow: -2px 4px 17px -1px rgba(206, 202, 195, 0.75);
   flex-direction: column;
+  justify-content: start;
   max-width: fit-content;
   overflow-y: auto;
-  height: 80vh;
+  height: fit-content;
   position: absolute;
-  top: 4.3rem;
+  top: 4.5rem;
   left: 1rem;
   z-index: 1;
 
   & > button {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
   }
 `;
 
