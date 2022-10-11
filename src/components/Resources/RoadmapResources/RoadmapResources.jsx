@@ -37,7 +37,6 @@ const RoadmapResources = () => {
                 <List><Link href={"https://www.youtube.com/watch?v=p3qvj9hO_Bo"} target={"_blank"}>Learn SQL In 60 Minutes</Link></List>
                 <List><Link href={"https://www.youtube.com/watch?v=Zl7npywCB84"} target={"_blank"}>Basics of Bash Shell Scripting</Link></List>
                 <List><Link href={"https://www.youtube.com/watch?v=7utwZYKweho&t=8861s"} target={"_blank"}>Python for Beginners / Hackers</Link></List>
-                    
             </ListContent>
 
             <Heading> Cyber Security </Heading>
