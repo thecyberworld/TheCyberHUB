@@ -15,7 +15,7 @@ const Blogs = () => {
                 {blogs.map((blog) => (
                     <Link className={"styles"}
                         to={{
-                            pathname: `viewBlog/${encodeURL(blog.title)}`,
+                            pathname: `${encodeURL(blog.title)}`,
                         }}
                     >
                         <BlogsElements

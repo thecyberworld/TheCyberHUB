@@ -11,5 +11,5 @@ export function encodeURL(title) {
         }
     }
 
-    return encoded.split(' ').join('-');
+    return encoded.split(' ').join('-').toLowerCase();
 }
