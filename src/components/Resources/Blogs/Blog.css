@@ -11,11 +11,11 @@
   background-color: rgba(32, 194, 14, 0.04);
   margin: 20px 20px;
   padding: 15px 20px;
-  border: 1px solid rgba(32, 194, 14, 0.65);
+  border: 1px solid #2a2a2a;
   transition: 260ms all;
 }
 .blogs__container:hover {
-  border-color: #20c20e;
+  border-color: #545454;
   background-color: rgba(32, 194, 14, 0.1);
 }
 .styles {
@@ -50,10 +50,10 @@
 
 .tag {
   margin: 0 5px;
-  padding: 10px 15px;
+  padding: 8px 10px;
   border-radius: 5px;
-  background-color: rgba(32, 194, 14, 0.67);
-  border: 1px solid #20c20e;
+  background-color: transparent;
+  border: 1px solid #545454;
   color: white;
   font-size: 0.9rem;
   font-weight: 600;
@@ -65,6 +65,7 @@
 }
 
 .AllBlogs {
+  margin: 30px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
