@@ -5,14 +5,12 @@ import ResourcesSvg from '../../../assets/images/undraw_programming_re_kg9v.svg'
 import logo_thecyberworld from '../../../assets/thecyberworld-green01.png';
 
 import {FaGithub} from "react-icons/fa";
+import {GoPrimitiveDot} from "react-icons/go";
+
 import {IconsSpacing} from "../../MixComponents/Buttons/ButtonElements";
 import {IconsSpacing2} from "../../MixComponents/Buttons/ButtonElements";
-import {Symbol} from "./InfoElements";
 import {BsFillPlayFill} from "react-icons/bs";
-
-const GSymbol = () => {
-    return (<Symbol>></Symbol>)
-}
+import {DotSymbol} from "./InfoElements";
 
 export const aboutData = {
     id: 'about',
@@ -26,11 +24,11 @@ export const aboutData = {
     headline: 'About Thecyberworld',
     description:
         <p>
-            <GSymbol/> Thecyberhub Website, App, Extension, Bot are by @thecyberworld community <br/><br/>
-            <GSymbol/> Community with more than 100,000 members. <br/><br/>
-            <GSymbol/> Community's goal is to help new folks to get started with open-source and cyber-security. <br/><br/>
-            <GSymbol/> Open-source projects. <br/><br/>
-            <GSymbol/> A Hub of Cyber Security. <br/><br/>
+            <DotSymbol/> Thecyberhub Website, App, Extension, Bot are by @thecyberworld community  <br/><br/>
+            <DotSymbol/> Community with more than 100,000 members.  <br/><br/>
+            <DotSymbol/> Community's goal is to help new folks to get started with open-source and cyber-security. <br/><br/>
+            <DotSymbol/> Open-source projects.  <br/><br/>
+            <DotSymbol/> A Hub of Cyber Security.  <br/><br/>
         </p>,
     buttonLabel: 'Join community',
     buttonLabel2: 'Contribute to Opensource',
@@ -55,7 +53,7 @@ export const ResourcesData = {
     description:
         <p>
             Explore cyber security resources. <br/>
-            events, blogs, tools, writeups, roadmaps, and much more.
+            Courses, ctfs, events, blogs, tools, writeups, roadmaps, and much more.
         </p>,
     buttonLabel: <> Explore <IconsSpacing2> <BsFillPlayFill/> </IconsSpacing2>  </>,
     imgStart: true,
