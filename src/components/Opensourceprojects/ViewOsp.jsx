@@ -1,7 +1,6 @@
 import React from "react";
 import { useSearchParams, useParams } from "react-router-dom";
 import { Section } from "../Resources/WriteUps/WriteUpsElements";
-import image from "./img.webp";
 import "./Osp.css";
 
 import Osp from "./OspData";
