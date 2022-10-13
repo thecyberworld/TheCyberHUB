@@ -57,6 +57,7 @@ const Navbar = ({toggle}) => {
                                 {to: 'blogs', title: 'Blogs',},
                                 {to: 'community', title: 'Community',},
                                 {to: 'about', title: 'About',},
+                                {to: 'projects', title: 'Projects',},
                             ].map(({to, title}) => (
                                 <NavItem onMouseEnter={()=>dropHandler(to)} onMouseLeave={()=>dropHandler(to)} key={to}>
                                     <NavLinks
