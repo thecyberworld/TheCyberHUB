@@ -5,7 +5,7 @@ const Jobs = () => {
     return (
         <Section>
             <h1>
-                Under Development
+                Developing
             </h1>
         </Section>
     );
