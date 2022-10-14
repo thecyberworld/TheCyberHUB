@@ -15,9 +15,6 @@ const ViewOsp = (props) => {
     <Section>
       <div className="viewOsp">
         <h1>{searchedOsp.title}</h1>
-        <h3>
-          {searchedOsp.author} | {searchedOsp.date}
-        </h3>
         <p>{searchedOsp.content}</p>
       </div>
       <div className="tags">
