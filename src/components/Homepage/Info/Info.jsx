@@ -107,7 +107,7 @@ const InfoSection = ({
 
                   {buttonLabelNew && buttonType === "scroll" && (
                     <OpenSourceButton
-                      to={"opensourceprojects"}
+                      to={"projects"}
                       primary={primary ? "true" : ""}
                       dark={dark ? 1 : 0}
                       dark2={dark2 ? 1 : 0}
