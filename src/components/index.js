@@ -20,6 +20,7 @@ export {default as Events} from './Events/Events'
 export {default as CTF} from './Resources/CTF/CTF'
 export {default as Community} from './Community/Community'
 export {default as About} from './About/About'
+export {default as OpenSource} from './OpenSource/OpenSource'
 
 // Prep //
 export {default as PrepHome} from './Prep/Prep/PrepHome'
