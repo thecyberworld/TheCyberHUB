@@ -55,8 +55,9 @@ const Navbar = ({toggle}) => {
                                 {to: 'resources', title: <><p>Learn</p> <DropdownIcon/></>},
                                 {to: 'events', title: 'Events',},
                                 {to: 'blogs', title: 'Blogs',},
+                                {to: 'projects', title: 'Projects',},
                                 {to: 'community', title: 'Community',},
-                                {to: 'about', title: 'About',},
+//                                 {to: 'about', title: 'About',},
                             ].map(({to, title}) => (
                                 <NavItem onMouseEnter={()=>dropHandler(to)} onMouseLeave={()=>dropHandler(to)} key={to}>
                                     <NavLinks
