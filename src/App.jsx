@@ -12,7 +12,7 @@ import Registration from "./pages/Registration";
 import {
     ResourcesHome, RoadmapResources, CyberNews, Blogs, Events, Community, About,
     InterviewQuestions, InterviewExperiences, Quiz, Jobs, Footer, Sidebar, Navbar,
-    Courses, CTF, 
+    Courses, CTF, OpenSource
 } from "./components";
 
 import Osp from "./components/Opensourceprojects/Osp";
@@ -55,7 +55,7 @@ const App = () => {
                                 <Route exact path={"/community"} element={<Community/>}/>
                                 <Route exact path={"/about"} element={<About/>}/>
                                 <Route exact path={"/ctf"} element={<CTF/>}/>
-                                <Route exact path={"/projects/*"} element={<Osp/>}/>
+                                <Route exact path={"/opensourceprojects"} element={<OpenSource/>}/>
 
 
                                 <Route exact path={"/resources/*"} element={<Resources/>}>
