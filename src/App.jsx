@@ -12,7 +12,7 @@ import Registration from "./pages/Registration";
 import {
     ResourcesHome, RoadmapResources, CyberNews, Blogs, Events, Community, About,
     InterviewQuestions, InterviewExperiences, Quiz, Jobs, Footer, Sidebar, Navbar,
-    Courses, CTF, 
+    Courses, CTF,
 } from "./components";
 
 import Osp from "./components/Opensourceprojects/Osp";
