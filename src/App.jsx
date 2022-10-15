@@ -72,10 +72,7 @@ const App = () => {
 
                                 <Route exact path={"/resources/*"} element={<Resources/>}>
                                     <Route index element={<ResourcesHome/>}/>
-                                    <Route
-                                        path={"roadmapResources"}
-                                        element={<RoadmapResources/>}
-                                    />
+                                    <Route path={"roadmapResources"} element={<RoadmapResources/>}/>
                                     <Route path={"courses"} element={<Courses/>}/>
                                     <Route path={"cyberNews"} element={<CyberNews/>}/>
                                     <Route path={"blogs"} element={<Blogs/>}/>
@@ -83,23 +80,13 @@ const App = () => {
                                 </Route>
 
                                 <Route exact path={"/prep"} element={<Prep/>}>
-                                    <Route
-                                        path={"interviewQuestions"}
-                                        element={<InterviewQuestions/>}
-                                    />
-                                    <Route
-                                        path={"interviewExperiences"}
-                                        element={<InterviewExperiences/>}
-                                    />
+                                    <Route path={"interviewQuestions"} element={<InterviewQuestions/>}/>
+                                    <Route path={"interviewExperiences"} element={<InterviewExperiences/>}/>
                                     <Route path={"quiz"} element={<Quiz/>}/>
                                     <Route path={"jobs"} element={<Jobs/>}/>
                                 </Route>
 
-                                <Route
-                                    exact
-                                    path={"/register"}
-                                    element={<Registration/>}
-                                ></Route>
+                                <Route exact path={"/register"} element={<Registration/>}></Route>
                             </Routes>
                         </ScrollToTop>
                         {showFooter() && <Footer/>}
