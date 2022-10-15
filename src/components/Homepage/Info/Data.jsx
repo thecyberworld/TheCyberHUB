@@ -24,11 +24,11 @@ export const aboutData = {
     headline: 'About Thecyberworld',
     description:
         <p>
-            <DotSymbol/> Thecyberhub Website, App, Extension, Bot are by @thecyberworld community <br/><br/>
-            <DotSymbol/> Community with more than 100,000 members. <br/><br/>
+            <DotSymbol/> Thecyberhub Website, App, Extension, Bot are by @thecyberworld community  <br/><br/>
+            <DotSymbol/> Community with more than 100,000 members.  <br/><br/>
             <DotSymbol/> Community's goal is to help new folks to get started with open-source and cyber-security. <br/><br/>
-            <DotSymbol/> Open-source projects. <br/><br/>
-            <DotSymbol/> A Hub of Cyber Security. <br/><br/>
+            <DotSymbol/> Open-source projects.  <br/><br/>
+            <DotSymbol/> A Hub of Cyber Security.  <br/><br/>
         </p>,
     buttonLabel: 'Join community',
     buttonLabel2: 'Contribute to Opensource',
@@ -99,8 +99,7 @@ export const OpenSource = {
     headline: 'What is Open Source?',
     description:
         <p>
-            Open source software (OSS) is software that is distributed with its source code, making it available for
-            use, modification, and distribution with its original rights.
+            Open source software (OSS) is software that is distributed with its source code, making it available for use, modification, and distribution with its original rights.
         </p>,
     buttonLabel_ContributeToOpensource: <> <IconsSpacing> <FaGithub/> </IconsSpacing> Contribute now </>,
     imgStart: false,
