@@ -12,7 +12,7 @@ import Registration from "./pages/Registration";
 import {
     ResourcesHome, RoadmapResources, CyberNews, Blogs, Events, Community, About,
     InterviewQuestions, InterviewExperiences, Quiz, Jobs, Footer, Sidebar, Navbar,
-    Courses, CTF,
+    Courses, CTF, 
 } from "./components";
 
 import Osp from "./components/Opensourceprojects/Osp";
@@ -50,13 +50,13 @@ const App = () => {
                             <Routes>
                                 <Route index exact path={"/"} element={<Homepage/>}/>
 
-
                                 <Route exact path={"/blogs/*"} element={<Blogs/>}/>
                                 <Route exact path={"/events"} element={<Events/>}/>
                                 <Route exact path={"/community"} element={<Community/>}/>
                                 <Route exact path={"/about"} element={<About/>}/>
                                 <Route exact path={"/ctf"} element={<CTF/>}/>
                                 <Route exact path={"/projects/*"} element={<Osp/>}/>
+
 
                                 <Route exact path={"/resources/*"} element={<Resources/>}>
                                     <Route index element={<ResourcesHome/>}/>
