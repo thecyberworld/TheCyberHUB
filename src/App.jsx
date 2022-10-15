@@ -10,22 +10,9 @@ import Prep from "./pages/Prep";
 import Registration from "./pages/Registration";
 
 import {
-    ResourcesHome,
-    RoadmapResources,
-    CyberNews,
-    Blogs,
-    Events,
-    Community,
-    About,
-    InterviewQuestions,
-    InterviewExperiences,
-    Quiz,
-    Jobs,
-    Footer,
-    Sidebar,
-    Navbar,
-    Courses,
-    CTF,
+    ResourcesHome, RoadmapResources, CyberNews, Blogs, Events, Community, About,
+    InterviewQuestions, InterviewExperiences, Quiz, Jobs, Footer, Sidebar, Navbar,
+    Courses, CTF,
 } from "./components";
 
 import Osp from "./components/Opensourceprojects/Osp";
@@ -62,6 +49,7 @@ const App = () => {
                         <ScrollToTop>
                             <Routes>
                                 <Route index exact path={"/"} element={<Homepage/>}/>
+
 
                                 <Route exact path={"/blogs/*"} element={<Blogs/>}/>
                                 <Route exact path={"/events"} element={<Events/>}/>
