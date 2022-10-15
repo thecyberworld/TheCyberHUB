@@ -52,61 +52,59 @@ const App = () => {
 
     return (
         <div>
-            {loading ? (
-                <Spinner/>
-            ) : (
-                <>
-                    <navbar>
-                        <Sidebar isOpen={isOpen} toggle={toggle}/>
-                        <Navbar toggle={toggle}/>
-                    </navbar>
+            {loading ? (<Spinner/>) :
+                (<>
+                        <navbar>
+                            <Sidebar isOpen={isOpen} toggle={toggle}/>
+                            <Navbar toggle={toggle}/>
+                        </navbar>
 
-                    <ScrollToTop>
-                        <Routes>
-                            <Route index exact path={"/"} element={<Homepage/>}/>
+                        <ScrollToTop>
+                            <Routes>
+                                <Route index exact path={"/"} element={<Homepage/>}/>
 
-                            <Route exact path={"/blogs/*"} element={<Blogs/>}/>
-                            <Route exact path={"/events"} element={<Events/>}/>
-                            <Route exact path={"/community"} element={<Community/>}/>
-                            <Route exact path={"/about"} element={<About/>}/>
-                            <Route exact path={"/ctf"} element={<CTF/>}/>
-                            <Route exact path={"/projects/*"} element={<Osp/>}/>
+                                <Route exact path={"/blogs/*"} element={<Blogs/>}/>
+                                <Route exact path={"/events"} element={<Events/>}/>
+                                <Route exact path={"/community"} element={<Community/>}/>
+                                <Route exact path={"/about"} element={<About/>}/>
+                                <Route exact path={"/ctf"} element={<CTF/>}/>
+                                <Route exact path={"/projects/*"} element={<Osp/>}/>
 
-                            <Route exact path={"/resources/*"} element={<Resources/>}>
-                                <Route index element={<ResourcesHome/>}/>
+                                <Route exact path={"/resources/*"} element={<Resources/>}>
+                                    <Route index element={<ResourcesHome/>}/>
+                                    <Route
+                                        path={"roadmapResources"}
+                                        element={<RoadmapResources/>}
+                                    />
+                                    <Route path={"courses"} element={<Courses/>}/>
+                                    <Route path={"cyberNews"} element={<CyberNews/>}/>
+                                    <Route path={"blogs"} element={<Blogs/>}/>
+                                    <Route path={"events"} element={<Events/>}/>
+                                </Route>
+
+                                <Route exact path={"/prep"} element={<Prep/>}>
+                                    <Route
+                                        path={"interviewQuestions"}
+                                        element={<InterviewQuestions/>}
+                                    />
+                                    <Route
+                                        path={"interviewExperiences"}
+                                        element={<InterviewExperiences/>}
+                                    />
+                                    <Route path={"quiz"} element={<Quiz/>}/>
+                                    <Route path={"jobs"} element={<Jobs/>}/>
+                                </Route>
+
                                 <Route
-                                    path={"roadmapResources"}
-                                    element={<RoadmapResources/>}
-                                />
-                                <Route path={"courses"} element={<Courses/>}/>
-                                <Route path={"cyberNews"} element={<CyberNews/>}/>
-                                <Route path={"blogs"} element={<Blogs/>}/>
-                                <Route path={"events"} element={<Events/>}/>
-                            </Route>
-
-                            <Route exact path={"/prep"} element={<Prep/>}>
-                                <Route
-                                    path={"interviewQuestions"}
-                                    element={<InterviewQuestions/>}
-                                />
-                                <Route
-                                    path={"interviewExperiences"}
-                                    element={<InterviewExperiences/>}
-                                />
-                                <Route path={"quiz"} element={<Quiz/>}/>
-                                <Route path={"jobs"} element={<Jobs/>}/>
-                            </Route>
-
-                            <Route
-                                exact
-                                path={"/register"}
-                                element={<Registration/>}
-                            ></Route>
-                        </Routes>
-                    </ScrollToTop>
-                    {showFooter() && <Footer/>}
-                </>
-            )}
+                                    exact
+                                    path={"/register"}
+                                    element={<Registration/>}
+                                ></Route>
+                            </Routes>
+                        </ScrollToTop>
+                        {showFooter() && <Footer/>}
+                    </>
+                )}
         </div>
     );
 };
