@@ -2,7 +2,7 @@
   "homepage": "https://thecyberhub.org/",
   "name": "thecyberhub.org",
   "private": true,
-  "version": "0.15.15",
+  "version": "0.15.16",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
@@ -25,6 +25,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.4.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-redux": "^8.0.2",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
