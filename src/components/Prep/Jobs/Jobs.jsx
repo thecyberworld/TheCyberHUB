@@ -1,80 +1,68 @@
-import React from "react";
-import {
-  JobSection,
-  JobContainer,
-  JobHero,
-  JobHeader,
-  JobTitle,
-  JobRole,
-  JobRoleTitle,
-  JobRating,
-  JobType,
-  JobDetails,
-  JobState,
-} from "./JobsElements";
+import { useState, useCallback } from "react";
+import { Link as ScrollLink } from "react-scroll";
 
-import { FaEllipsisV } from "react-icons/fa";
+import {
+  Overlay,
+  Container,
+  Heading,
+  Paragraph,
+} from "../../Community/CommunityElements";
+import { ScrollButton, JobIntroHeader } from "./JobsElements";
+
+import Job from "./Job";
+import { JobsData } from "./JobsData";
+import { JobSection } from "./JobsElements";
+
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { auto } from "@popperjs/core";
 
 const Jobs = () => {
+  const [viewMore, setViewMore] = useState(false);
+
+  const toggleViewMore = useCallback(() => {
+    setViewMore((prevView) => !prevView);
+  }, []);
+
+  const allJobs = JobsData.map((data) => <Job key={data.id} {...data} />);
+
   return (
-    <JobSection>
-      <div className="grid">
-        <JobContainer>
-          <JobHero>
-            <JobHeader>
-              <span>new</span>
-              <JobTitle className="text-8xl">Data Analysts</JobTitle>
-              <JobRole>
-                <JobRoleTitle>Cloudstaff</JobRoleTitle>
-                <JobRating>4.1⭐</JobRating>
-              </JobRole>
-              <JobType>
-                <span>Remote</span>
-              </JobType>
-            </JobHeader>
-            <FaEllipsisV />
-          </JobHero>
-          <JobDetails>
-            <div>
-              <span>💼</span>
-              <span>Full-time</span>
-            </div>
-            <div>
-              <span>⏱️</span>
-              <span>Morning shifts</span>
-            </div>
-          </JobDetails>
-          <JobState>
-            <div>
-              <span>⏩</span>
-              <span>Apply securely with Indeed Resume</span>
-            </div>
-            <div>
-              <span>⚡</span>
-              <span>Responsive employer</span>
-            </div>
-          </JobState>
-          <div className="job-details">
-            <ul>
-              <li>
-                Technical expertise in data models, database design development,
-                data mining, and segmentation technique.
-              </li>
-              <li>
-                Strong knowledge of and experience with reporting packages
-                (Business Objects, etc.), databases...
-              </li>
-            </ul>
-          </div>
-          <div className="job-timeline">
-            <span>Posted 3 days ago</span>
-            <span></span>
-            <span>
-              From <span>remote</span>
-            </span>
-          </div>
-        </JobContainer>
+    <JobSection viewMore={viewMore}>
+      <JobIntroHeader>
+        <Overlay></Overlay>
+        <Container>
+          <Heading>
+            Searching for a job? <br /> Look no futher!
+          </Heading>
+          <Paragraph>
+            We have collated several areas/field where there are job
+            vacancy(ies). <br /> Go through the <span>Job Section</span>, and
+            find one that is best match for you.
+          </Paragraph>
+          <ScrollLink
+            to={"jobs"}
+            smooth={true}
+            duration={600}
+            spy={true}
+            exact={"true"}
+            offset={-80}
+          >
+            <ScrollButton>
+              <FaChevronDown />
+              <span>Find A Job</span>
+            </ScrollButton>
+          </ScrollLink>
+        </Container>
+      </JobIntroHeader>
+      <div id="jobs" className="grid">
+        {allJobs}
       </div>
+      <button className="view" onClick={toggleViewMore}>
+        {!viewMore ? (
+          <FaChevronDown size={20} style={{ color: "white" }} />
+        ) : (
+          <FaChevronUp size={20} style={{ color: "white" }} />
+        )}
+      </button>
     </JobSection>
   );
 };
