@@ -1,22 +1,28 @@
 import styled from "styled-components";
 
-import { Button, Header } from "../../Community/CommunityElements";
+import {Button, Header} from "../../Community/CommunityElements";
+import {FaChevronDown} from "react-icons/fa";
 
 export const ScrollButton = styled(Button)`
-  background: rgba(32, 194, 14, 0.5);
   outline: 2px solid #363636;
   transition: 260ms all;
 
   &:hover {
-    background: rgba(32, 194, 14, 0.8);
+    background: #20c20e;
     outline-color: #545454;
     outline-offset: 2px;
   }
 `;
 
 export const JobIntroHeader = styled(Header)`
-  height: 80vh;
+  height: 100vh;
 `;
+
+export const JobsDropdownIcon = styled(FaChevronDown)`
+  margin: 2px 0 0 5px;
+  font-size: 11px;
+`;
+
 
 export const JobSection = styled.section`
   margin: 100px 20px;
@@ -34,21 +40,23 @@ export const JobSection = styled.section`
     width: 3rem;
     height: 3rem;
     position: absolute;
-    bottom: -2.5em;
+    bottom: -2em;
     left: 50%;
     transition: 260ms all;
   }
+
   & button.view:hover {
     background: rgba(32, 194, 14, 0.8);
     outline-color: #545454;
     outline-offset: 1px;
   }
+
   & div.grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    height: ${({ viewMore }) => (viewMore ? "auto" : "100vh")};
-    overflow: ${({ viewMore }) => (viewMore ? "auto" : "hidden")};
+    height: ${({viewMore}) => (viewMore ? "auto" : "100vh")};
+    overflow: ${({viewMore}) => (viewMore ? "auto" : "hidden")};
     padding: 0.2rem;
     margin: 10rem 0;
   }
@@ -142,6 +150,7 @@ export const JobDetails = styled.div`
     padding: 0.1rem 0.3rem;
     position: relative;
   }
+
   & span {
     display: inline-flex;
     column-gap: 0.3rem;
@@ -149,6 +158,7 @@ export const JobDetails = styled.div`
     font-weight: 300;
     letter-spacing: 0.1rem;
   }
+
   & div.badge {
     background: #20c20e;
     color: white;
@@ -166,6 +176,7 @@ export const JobDetails = styled.div`
     width: 0.8rem;
     z-index: 1;
   }
+
   & div.badge span {
     font-size: smaller;
     font-weight: bolder;
@@ -195,10 +206,12 @@ export const JobTimeline = styled(JobDetails)`
   & span {
     letter-spacing: 0.08rem;
   }
+
   & span.dot {
     color: #fff;
     font-size: 0.2rem;
   }
+
   & span.remote {
     font-weight: 600;
   }
