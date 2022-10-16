@@ -46,20 +46,42 @@ const Events = () => {
 
     console.log(date);
     console.log(mydate)
+
+    const todaysEvents = EventsData.filter((event) => {
+        if (formatDate(todayDate) === formatDate(new Date(event.validationDate))) {
+            return event; 
+        }
+    });
+
+    const upcomingEvents = EventsData.filter((event) => {
+        if (formatDate(todayDate) < formatDate(new Date(event.validationDate))) {
+            return event;
+        }
+    });
+
     return (<Section>
         <EventsContainer>
             <MainEventsContainer>
-                <EventsHeading>Today's Events</EventsHeading>
-                <OnGoingEventsContainer>
-                    {EventsData.map((event) => (formatDate(todayDate) === formatDate(new Date(event.validationDate))  && (
-                            <OnGoingEvents title={event.title} image={event.image} venue={event.venue} date={event.date} content={event.content}/>
-                    )))}
-                </OnGoingEventsContainer>
-                <EventsHeading>Up Coming</EventsHeading>
-                <UpComingEventsContainer>
-                    {EventsData.map((event) => (formatDate(todayDate) < formatDate(new Date(event.validationDate)) && (
-                        <UpComingEvents title={event.title} image={event.image} venue={event.venue} date={event.date} content={event.content}/>)))}
-                </UpComingEventsContainer>
+                {
+                    todaysEvents.length ?
+                        <Section>
+                            <EventsHeading>Today's Events</EventsHeading>
+                            <OnGoingEventsContainer>
+                                {todaysEvents.map(event => <OnGoingEvents title={event.title} image={event.image} venue={event.venue} date={event.date} content={event.content} />)}
+                            </OnGoingEventsContainer>
+                        </Section>
+                         : null
+                }
+                {
+                    upcomingEvents.length ? 
+                        <Section>
+                            <EventsHeading>Up Coming</EventsHeading>
+                            <UpComingEventsContainer>
+                                {upcomingEvents.map(event => <UpComingEvents title={event.title} image={event.image} venue={event.venue} date={event.date} content={event.content} />)}
+                            </UpComingEventsContainer>
+                        </Section>
+                        : null
+                }
             </MainEventsContainer>
 
             <PastEventsContainer>
