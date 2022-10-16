@@ -44,19 +44,6 @@ const Events = () => {
   let eventdate3 = new Date(EventsData[3].validationDate);
   let eventdate4 = new Date(EventsData[4].validationDate);
 
-  console.log("helooooooooooooooooooooooo", EventsData);
-  console.log(
-    "filter",
-    EventsData.filter((event) => new Date(event.validationDate) === new Date())
-  ); // This is the code that filters the events based on the date);
-  console.log("today date", new Date());
-  console.log(
-    "checkkkkkk",
-    EventsData.filter(
-      (event) =>
-        formatDate(todayDate) === formatDate(new Date(event.validationDate))
-    )
-  );
   return (
     <Section>
       <EventsContainer>
