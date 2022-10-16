@@ -3810,6 +3810,7 @@ K.version="2.29.4";oE(Je);K.fn=q;K.min=q8;K.max=Q8;K.now=V8;K.utc=xr;K.unix=Sj;K
   margin: 3px 0 0 10px;
   font-size: 13px;
 `,lR=P.div`
+  margin: 0 0 50px 0;
   display: flex;
   justify-content: space-between;
 `,uR=P.div`
