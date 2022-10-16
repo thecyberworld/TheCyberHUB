@@ -72,22 +72,30 @@ const Events = () => {
               </OnGoingEventsContainer>
             </>
           )}
-          <EventsHeading>Up Coming</EventsHeading>
-          <UpComingEventsContainer>
-            {EventsData.map(
-              (event) =>
-                formatDate(todayDate) <
-                  formatDate(new Date(event.validationDate)) && (
-                  <UpComingEvents
-                    title={event.title}
-                    image={event.image}
-                    venue={event.venue}
-                    date={event.date}
-                    content={event.content}
-                  />
-                )
-            )}
-          </UpComingEventsContainer>
+
+          {EventsData.some(
+            (event) =>
+              formatDate(todayDate) < formatDate(new Date(event.validationDate))
+          ) && (
+            <>
+              <EventsHeading>Up Coming</EventsHeading>
+              <UpComingEventsContainer>
+                {EventsData.map(
+                  (event) =>
+                    formatDate(todayDate) <
+                      formatDate(new Date(event.validationDate)) && (
+                      <UpComingEvents
+                        title={event.title}
+                        image={event.image}
+                        venue={event.venue}
+                        date={event.date}
+                        content={event.content}
+                      />
+                    )
+                )}
+              </UpComingEventsContainer>
+            </>
+          )}
         </MainEventsContainer>
 
         <PastEventsContainer>
