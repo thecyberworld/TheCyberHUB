@@ -3868,7 +3868,7 @@ K.version="2.29.4";aE(Je);K.fn=q;K.min=Q8;K.max=V8;K.now=G8;K.utc=xr;K.unix=kj;K
   border: 1px solid #ffffff0d;
   border-radius: 10px;
   background-color: #0d1117;
-  margin: 0 20px 0 ;
+  margin: 0 0 20px 0 ;
   padding: 15px 15px;
   @media screen and (max-width: 768px) {
     width: 100%;
