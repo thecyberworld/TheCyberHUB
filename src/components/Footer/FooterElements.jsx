@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
   background: #080a10;
 `;
 
-export const FooterWrap = styled.div`
+export const FooterWrap = styled.div` 
   padding: 48px 24px; 
   display: flex;
   flex-direction: column; 

@@ -48,6 +48,7 @@ const App = () => {
                         </navbar>
 
                         <ScrollToTop>
+                            <div className="content-body">
                             <Routes>
                                 <Route index exact path={"/"} element={<Homepage/>}/>
 
@@ -80,6 +81,7 @@ const App = () => {
 
                                 <Route exact path={"/register"} element={<Registration/>}></Route>
                             </Routes>
+                            </div>
                         </ScrollToTop>
                         {showFooter() && <Footer/>}
                     </>
