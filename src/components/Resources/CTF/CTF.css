@@ -76,8 +76,9 @@
 }
 
 .button-final {
+    cursor: pointer;
     margin: 1rem;
-    background-color: #116f06;
+    background-color: #4cc23e;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;
@@ -87,7 +88,6 @@
     border-width: 1px;
     border-color: #ffffff;
     height: 40px;
-
 }
 
 .button-final:hover {
@@ -98,7 +98,7 @@
 .button-initial {
     margin: 1rem;
     background-color: #000000;
-    color: #10B981;
+    color: #33e33c;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 600;

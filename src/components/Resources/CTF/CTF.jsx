@@ -18,8 +18,8 @@ const CTF = () => {
     const [value, setValue] = useState(null)
     const [correct,setCorrect]=useState(false)
     console.log(value)
-    const handleClick=()=>{
-        value==number?setCorrect(true):setCorrect(false)
+    const handleClick = () => {
+        value == number ? setCorrect(true) : setCorrect(false)
     }
     return (
         <Section>
@@ -31,8 +31,8 @@ const CTF = () => {
                     <label htmlFor="value" className="label-css">Enter value:</label>
                     <input type="text" id="value" className="input-css"
                         value={value} onChange={e => setValue(e.target.value)}></input>
-                    {correct? <button className="button-final" onClick={handleClick}>Submit</button>:<button className="button-initial" onClick={handleClick}>Submit</button>}
-                    {correct?<p>Congratulations!</p>:null}
+                    {correct ? <button className="button-final" onClick={handleClick}> Submit </button> : <button className="button-initial" onClick={handleClick}> Submit </button>}
+                    {correct ? <p> Congratulations! </p> : null}
                 </div>
             </div>
         </Section>
