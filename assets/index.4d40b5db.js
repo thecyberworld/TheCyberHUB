@@ -3991,7 +3991,9 @@ K.version="2.29.4";aE(Je);K.fn=q;K.min=Q8;K.max=V8;K.now=G8;K.utc=xr;K.unix=kj;K
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-`,Op=T.h1``,QR=T.div`
+`,Op=T.h1`
+  margin: 0 0 10px 0
+`,QR=T.div`
   width: 30%;
   height: auto;
   display: flex;
