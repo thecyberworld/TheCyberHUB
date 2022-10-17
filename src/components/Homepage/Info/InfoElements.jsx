@@ -1,8 +1,15 @@
 import styled from 'styled-components'
 import {Link as ScrollLink} from "react-scroll";
+import {GoPrimitiveSquare} from "react-icons/all";
 
-export const Symbol = styled.a`
-  color: #01bf71;
+export const DotSymbol = styled(GoPrimitiveSquare)`
+  color: #20c20e;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  font-size: 0.5rem;
+  display: inline;
+  justify-content: center;
+  text-align: center;
 `
 
 export const InfoContainer = styled.div`
@@ -60,7 +67,7 @@ export const TextWrapper = styled.div`
 `
 
 export const TopLine = styled.p`
-  color: #01bf71;
+  color: #20c20e;
   font-size: 16px;
   line-height: 16px;
   font-weight: 700;
@@ -92,6 +99,11 @@ export const Subtitle = styled.p`
 export const BtnWrap = styled.div`
   display: flex;
   justify-content: flex-start;
+
+  @media screen and (max-width: 600px) {
+    display: grid;
+  }
+
 `;
 
 export const ImgWrap = styled.div`
