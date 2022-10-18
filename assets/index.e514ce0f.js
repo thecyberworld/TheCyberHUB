@@ -4342,6 +4342,8 @@ K.version="2.29.4";aE(Je);K.fn=q;K.min=Q8;K.max=V8;K.now=G8;K.utc=xr;K.unix=kj;K
     overflow: ${({viewMore:e})=>e?"auto":"hidden"};
     padding: 0.2rem;
     margin: 10rem 0;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: 1024px) {
