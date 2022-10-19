@@ -58,38 +58,27 @@ export default function Dropdown(props) {
               <Link
                 style={{ textDecoration: "none", color: "white" ,marginLeft:"50px"}}
                 to={i.url}
-              >
+ 
                 {" "}
                 {i.title}{" "}
               </Link>
-              {i.title === "Prep" && sideDrop && (
-                <SideDropdown sidebar={false} />
-              )}
+              {i.title === "Prep" && sideDrop && <SideDropdown sidebar={false} />}
             </Item>
           ) : ( 
             <>
               <Item onClick={() => sideDropHandler(i.title)}>
                 {i.title !== "Prep" ? (
-                  <Link
-                    onClick={props.toggle}
-                    style={{ textDecoration: "none", color: "white" }}
-                    to={i.url}
-                  >
+                  <Link onClick={props.toggle} style={{ textDecoration: "none", color: "white" }} to={i.url}>
                     {" "}
                     {i.title}{" "}
                   </Link>
                 ) : (
-                  <p style={{ textDecoration: "none", color: "white" }}>
-                    {" "}
-                    {i.title}{" "}
-                  </p>
+                  <p style={{ textDecoration: "none", color: "white" }}> {i.title} </p>
                 )}
               </Item>
-              {i.title === "Prep" && sideDrop && (
-                <SideDropdown toggle={props.toggle} sidebar={true} />
-              )}
+              {i.title === "Prep" && sideDrop && <SideDropdown toggle={props.toggle} sidebar={true} />}
             </>
-          )
+          ),
         )}
       </li>
     </div>
