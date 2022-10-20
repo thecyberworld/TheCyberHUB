@@ -1,45 +1,45 @@
-## [0.15.17](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.16...v0.15.17) (2022-10-16)
+## [0.16.1](https://github.com/thecyberworld/thecyberhub.org/compare/v0.16.0...v0.16.1) (2022-10-20)
 
 
 ### Bug Fixes
 
-* typo in the jobs page ([#201](https://github.com/thecyberworld/thecyberhub.org/issues/201)) ([45bbf67](https://github.com/thecyberworld/thecyberhub.org/commit/45bbf674ea5c7b3958dc93e2ea4f2eb3a5af4afe))
+* allow buttons to transition on hover without affecting other elements ([#233](https://github.com/thecyberworld/thecyberhub.org/issues/233)) ([930bfd6](https://github.com/thecyberworld/thecyberhub.org/commit/930bfd660029011d5624f83797b7ea2db6397a29))
 
 
 
-## [0.15.16](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.15...v0.15.16) (2022-10-16)
+# [0.16.0](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.26...v0.16.0) (2022-10-19)
 
 
-### Bug Fixes
+### Features
 
-* Today's event issue resolved ([#194](https://github.com/thecyberworld/thecyberhub.org/issues/194)) ([f78492c](https://github.com/thecyberworld/thecyberhub.org/commit/f78492c8e8648f826879ea134ed340da9b4e2955))
-
-
-
-## [0.15.15](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.14...v0.15.15) (2022-10-16)
-
-
-### Bug Fixes
-
-* Event Date Issue Resolved ([#191](https://github.com/thecyberworld/thecyberhub.org/issues/191)) ([6ec38d7](https://github.com/thecyberworld/thecyberhub.org/commit/6ec38d7d083d923ed7607bd24eaff1055e0d9d97))
+* transparent drop navbar ([#229](https://github.com/thecyberworld/thecyberhub.org/issues/229)) ([3a5920b](https://github.com/thecyberworld/thecyberhub.org/commit/3a5920bd567be3423b22078a38bdd4ed333da276))
 
 
 
-## [0.15.14](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.13...v0.15.14) (2022-10-14)
+## [0.15.26](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.25...v0.15.26) (2022-10-19)
 
 
 ### Bug Fixes
 
-* about navitem ([#181](https://github.com/thecyberworld/thecyberhub.org/issues/181)) ([f894c01](https://github.com/thecyberworld/thecyberhub.org/commit/f894c0133becb0c776a566d56e0946ac954082ea))
+* big nav-bar on hover ([#225](https://github.com/thecyberworld/thecyberhub.org/issues/225)) ([1084e0e](https://github.com/thecyberworld/thecyberhub.org/commit/1084e0e2b1c089ae896dcf910cda5f30ad6f3a5a))
 
 
 
-## [0.15.13](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.12...v0.15.13) (2022-10-14)
+## [0.15.25](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.24...v0.15.25) (2022-10-19)
 
 
 ### Bug Fixes
 
-* nav route ([#178](https://github.com/thecyberworld/thecyberhub.org/issues/178)) ([f872b39](https://github.com/thecyberworld/thecyberhub.org/commit/f872b39653aa4aaa68b0145a4577ed451aa979af))
+* [[#226](https://github.com/thecyberworld/thecyberhub.org/issues/226)] chore: added prettier and reformatted codebase. ([#227](https://github.com/thecyberworld/thecyberhub.org/issues/227)) ([96507cf](https://github.com/thecyberworld/thecyberhub.org/commit/96507cf726d8de224bb9d38c7c5e9c3d1adce920))
+
+
+
+## [0.15.24](https://github.com/thecyberworld/thecyberhub.org/compare/v0.15.23...v0.15.24) (2022-10-19)
+
+
+### Bug Fixes
+
+* Alignment issue on the events page ([#224](https://github.com/thecyberworld/thecyberhub.org/issues/224)) ([d91067b](https://github.com/thecyberworld/thecyberhub.org/commit/d91067b35a17f5f1b1010f604f0690f0b2f93441))
 
 
 

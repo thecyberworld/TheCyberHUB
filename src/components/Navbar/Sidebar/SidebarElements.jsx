@@ -11,10 +11,16 @@ export const SidebarContainer = styled.nav`
   background: #0d0d0d;
   display: grid;
   align-items: center;
-  left: 0;
-  transition: 0.3s ease-in-out;
+  right: 0;
   opacity: ${({isOpen}) => (isOpen ? '100%' : '0')};
   top: ${({isOpen}) => (isOpen ? '0' : '-100%')};
+
+  transition: all .2s ease-in-out;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(3, 3, 3, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 `
 
 export const CloseIcon = styled(FaTimes)`

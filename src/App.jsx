@@ -26,11 +26,14 @@ import {
   Navbar,
   Courses,
   CTF,
+  CyberGames,
+  OSINTGame,
 } from "./components";
 
-import Osp from "./components/Opensourceprojects/Osp";
+import OpenSourceProjects from "./components/OpenSourceProjects/OpenSourceProjects";
 
 import Spinner from "./components/MixComponents/Spinner/Spinner";
+import Submit from "./components/Resources/Submit/Submit";
 
 import TCHBot from "./components/Chatbot/TCHBot";
 
@@ -42,7 +45,7 @@ const App = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 0);
   }, []);
 
   const showFooter = () => {
@@ -71,15 +74,15 @@ const App = () => {
               <Route exact path={"/events"} element={<Events />} />
               <Route exact path={"/community"} element={<Community />} />
               <Route exact path={"/about"} element={<About />} />
-              <Route exact path={"/ctf"} element={<CTF />} />
-              <Route exact path={"/projects/*"} element={<Osp />} />
+              <Route exact path={"/projects/*"} element={<OpenSourceProjects />} />
+              <Route exact path={"/CyberGames"} element={<CyberGames />} />
+              <Route exact path={"/CyberGames/CTF"} element={<CTF />} />
+              <Route exact path={"/CyberGames/OSINTGame"} element={<OSINTGame />} />
+              <Route exact path={"/submit"} element={<Submit />} />
 
               <Route exact path={"/resources/*"} element={<Resources />}>
                 <Route index element={<ResourcesHome />} />
-                <Route
-                  path={"roadmapResources"}
-                  element={<RoadmapResources />}
-                />
+                <Route path={"roadmapResources"} element={<RoadmapResources />} />
                 <Route path={"courses"} element={<Courses />} />
                 <Route path={"cyberNews"} element={<CyberNews />} />
                 <Route path={"blogs"} element={<Blogs />} />
@@ -87,23 +90,13 @@ const App = () => {
               </Route>
 
               <Route exact path={"/prep"} element={<Prep />}>
-                <Route
-                  path={"interviewQuestions"}
-                  element={<InterviewQuestions />}
-                />
-                <Route
-                  path={"interviewExperiences"}
-                  element={<InterviewExperiences />}
-                />
+                <Route path={"interviewQuestions"} element={<InterviewQuestions />} />
+                <Route path={"interviewExperiences"} element={<InterviewExperiences />} />
                 <Route path={"quiz"} element={<Quiz />} />
                 <Route path={"jobs"} element={<Jobs />} />
               </Route>
 
-              <Route
-                exact
-                path={"/register"}
-                element={<Registration />}
-              ></Route>
+              <Route exact path={"/register"} element={<Registration />}></Route>
             </Routes>
           </ScrollToTop>
           <TCHBot />
