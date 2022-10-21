@@ -14,9 +14,9 @@ import {
 
 import Dropdown from '../Dropdowns/Dropdown';
 import SideDropdown from '../Dropdowns/SideDropdown';
-import logo from "../../../assets/ThecyberhubLogo.png"
+import logo from "../../../assets/images/WebsiteLogo/ThecyberhubLogo.png"
 
-const Navbar = ({toggle}) => {
+const Navbar = ({ isOpen, toggle }) => {
     const [scrollNav, setScrollNav] = useState(false);
     const [drop, setDrop] = useState(false);
 
@@ -24,6 +24,10 @@ const Navbar = ({toggle}) => {
         if(title === 'resources'){
             setDrop(true);
         }else setDrop(false);
+    }
+
+    const closeDropHandler = () => {
+        setDrop(false);
     }
 
     const changeNav = () => {
@@ -39,6 +43,8 @@ const Navbar = ({toggle}) => {
     const toggleHome = () => {
         scroll.scrollToTop();
     };
+
+
     return (
         <>
             <IconContext.Provider value={{color: '#fff'}}>
@@ -65,7 +71,9 @@ const Navbar = ({toggle}) => {
                                     >
                                         {title}
                                     </NavLinks>
-                                    {to === 'resources' && drop && <Dropdown sidebar={false}/>}
+                                    {to === 'resources' && drop &&
+                                        <Dropdown isOpen={isOpen} />
+                                    }
                                 </NavItem>
                             ))}
                         </NavMenu>

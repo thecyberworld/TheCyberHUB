@@ -3,13 +3,12 @@ import {Link as LinkRouter} from 'react-router-dom';
 import {Link as LinkScroll} from 'react-scroll'
 import {AiFillCaretDown, AiFillCaretRight} from 'react-icons/ai';
 
+
 export const DropdownIcon = styled(AiFillCaretDown)`
   margin: 5px 0 0 5px;`
 
 export const SideDropdownIcon = styled(AiFillCaretRight)`
   margin: 5px 0 0 5px;`
-
-
 
 export const Nav = styled.nav`
   background: ${({scrollNav}) => scrollNav ? '#000' : 'transparent'};
@@ -189,8 +188,6 @@ export const NavBtnLink = styled.a`
     font-size: 18px;
   }
 `
-
-
 // export const NavBtnLink = styled.a`
 //   border-radius: 50px;
 //   background: #20c20e;

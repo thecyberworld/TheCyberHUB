@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
-import {Route, Routes, useLocation} from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import Homepage from "./pages/Homepage";
 import ScrollToTop from "./components/ScrollToTop";
@@ -10,9 +10,26 @@ import Prep from "./pages/Prep";
 import Registration from "./pages/Registration";
 
 import {
-    ResourcesHome, RoadmapResources, CyberNews, Blogs, Events, Community, About,
-    InterviewQuestions, InterviewExperiences, Quiz, Jobs, Footer, Sidebar, Navbar,
-    Courses, CTF, CyberGames, OSINTGame
+  ResourcesHome,
+  RoadmapResources,
+  CyberNews,
+  Blogs,
+  Events,
+  Community,
+  About,
+  InterviewQuestions,
+  InterviewExperiences,
+  Quiz,
+  Jobs,
+  Footer,
+  Sidebar,
+  Navbar,
+  Courses,
+  CTF,
+  CyberGames,
+  OSINTGame,
+  CourseDetail,
+  CoursesLayout,
 } from "./components";
 
 import OpenSourceProjects from "./components/OpenSourceProjects/OpenSourceProjects";
@@ -42,6 +59,7 @@ const App = () => {
         <div>
             {loading ? (<Spinner/>) :
                 (<>
+                        {/* Required on registration page. Do not remove. */}
                         {showDefaultLayout() && <navbar>
                             <Sidebar isOpen={isOpen} toggle={toggle}/>
                             <Navbar toggle={toggle}/>
@@ -81,6 +99,7 @@ const App = () => {
                                 <Route exact path={"/register"} element={<Registration/>}></Route>
                             </Routes>
                         </ScrollToTop>
+                        {/* Required on registration page. Do not remove. */}
                         {showDefaultLayout() && <Footer/>}
                     </>
                 )}
