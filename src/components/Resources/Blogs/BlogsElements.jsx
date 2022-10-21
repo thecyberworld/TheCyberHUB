@@ -1,7 +1,6 @@
 import React from "react";
 import "./Blog.css";
 import image from "./img.webp";
-// const image = require('./img.jpg');
 
 const BlogsElements = (props) => {
   return (

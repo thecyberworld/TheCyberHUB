@@ -31,7 +31,7 @@ const App = () => {
         }, 5000);
     }, []);
 
-    const showFooter = () => {
+    const showDefaultLayout = () => {
         return pathname !== "/register";
     };
 
@@ -42,10 +42,10 @@ const App = () => {
         <div>
             {loading ? (<Spinner/>) :
                 (<>
-                        <navbar>
+                        {showDefaultLayout() && <navbar>
                             <Sidebar isOpen={isOpen} toggle={toggle}/>
                             <Navbar toggle={toggle}/>
-                        </navbar>
+                        </navbar>}
 
                         <ScrollToTop>
                             <Routes>
@@ -81,7 +81,7 @@ const App = () => {
                                 <Route exact path={"/register"} element={<Registration/>}></Route>
                             </Routes>
                         </ScrollToTop>
-                        {showFooter() && <Footer/>}
+                        {showDefaultLayout() && <Footer/>}
                     </>
                 )}
         </div>

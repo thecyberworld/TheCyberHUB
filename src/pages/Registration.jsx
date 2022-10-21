@@ -2,15 +2,27 @@ import React from "react";
 import { Container } from "../components/Registration";
 import { CenterCard } from "../components/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Registration/Learn2CodePromotion";
+import { CustomInputGroup } from "../components/MixComponents/InputField/CustomInputField";
+import { RegistrationFormContainer } from "../components/Registration/Form";
+import { PrimaryFilledButton } from "../components/MixComponents/Buttons/ButtonElements";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faCircleUser } from "@fortawesome/free-regular-svg-icons";
+import { faLock } from "@fortawesome/free-solid-svg-icons";
 
 const Registration = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Container>
       <CenterCard>
         <Learn2CodePromotion>
           <div id="reg-promo-content">
             <span className="brand-logo">Thecyberworld</span>
-            <h1 className="leading-title">Learn to Code Interactively For Free</h1>
+            <h1 className="leading-title">
+              Learn to Code Interactively For Free
+            </h1>
             <span>Watch Demo</span>
             <ul className="nav-links">
               <li>Home</li>
@@ -21,7 +33,62 @@ const Registration = () => {
             </ul>
           </div>
         </Learn2CodePromotion>
-        <div></div>
+        <RegistrationFormContainer onSubmit={handleSubmit}>
+          <h1 className="registration__promotion__h1">
+            Join over 25 million learners from around the globe
+          </h1>
+          <p className="registration__promotion__p">
+            Master the languages of the web: HTML, CSS and Javascript. This path
+            will prepare you to build highly secure web applications.
+          </p>
+          <div className="registration__inputfields">
+            <CustomInputGroup>
+              <span>
+                <FontAwesomeIcon icon={faCircleUser} />
+              </span>
+              <input
+                type="text"
+                placeholder="Username"
+                aria-label="Username"
+                autoComplete={false}
+              />
+            </CustomInputGroup>
+            <CustomInputGroup>
+              <span>
+                <FontAwesomeIcon icon={faEnvelope} />
+              </span>
+              <input
+                type="text"
+                placeholder="Email"
+                aria-label="Email"
+                autoComplete={false}
+              />
+            </CustomInputGroup>
+            <CustomInputGroup>
+              <span>
+                <FontAwesomeIcon icon={faLock} />
+              </span>
+              <input
+                type="password"
+                placeholder="Password"
+                aria-label="Password"
+                autoComplete={false}
+              />
+            </CustomInputGroup>
+          </div>
+          <div className="registration__ctas">
+            <div className="registration__tandc">
+              <input role="checkbox" type="checkbox" autoComplete="" />
+              <div>
+                I agree to all statements included in
+                <span role="link">Terms of Use</span>
+              </div>
+            </div>
+            <PrimaryFilledButton width={"100%"} type="submit">
+              Start Coding Now
+            </PrimaryFilledButton>
+          </div>
+        </RegistrationFormContainer>
       </CenterCard>
     </Container>
   );
