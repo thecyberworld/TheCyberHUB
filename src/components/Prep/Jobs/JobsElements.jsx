@@ -74,9 +74,9 @@ export const JobSection = styled.section`
 
 export const JobContainer = styled.div`
 background-color: rgba(32, 194, 14, 0.04);
-max-width: 500px;
+width: 400px;
 
-height: 500px;
+min-height: 500px;
 margin : 10px;
 outline: 1px solid #2a2a2a;
 border-radius: 0.5rem;
