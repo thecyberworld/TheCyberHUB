@@ -32,13 +32,7 @@
     "react-scroll": "^1.8.7",
     "react-spinners": "^0.13.4",
     "react-spinners-kit": "^1.9.1",
-    "styled-components": "^5.3.5",
-    "@fortawesome/fontawesome-free": "5.13.0",
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/free-brands-svg-icons": "^6.1.1",
-    "@fortawesome/free-regular-svg-icons": "^6.1.1",
-    "@fortawesome/free-solid-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.2.0"
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

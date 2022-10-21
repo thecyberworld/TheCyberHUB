@@ -28,5 +28,7 @@ export const CustomInputGroup = styled.div`
     padding: 5px;
     color: #b9b4b4;
     padding-right: 15px;
+    display: flex;
+    align-items: center;
   }
 `;
