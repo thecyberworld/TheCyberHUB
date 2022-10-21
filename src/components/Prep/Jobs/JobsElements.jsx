@@ -26,68 +26,37 @@ export const JobsDropdownIcon = styled(FaChevronDown)`
 export const JobSection = styled.section`
   margin: 100px 20px;
   color: #cecac3;
-  position: relative;
-
-  & button.view {
-    background: rgba(32, 194, 14, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    outline: 2px solid #363636;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 3rem;
-    height: 3rem;
-    position: absolute;
-    bottom: -2em;
-    left: 50%;
-    transition: 260ms all;
-  }
-
-  & button.view:hover {
-    background: rgba(32, 194, 14, 0.8);
-    outline-color: #545454;
-    outline-offset: 1px;
-  }
 
   & div.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    height: ${({ viewMore }) => (viewMore ? "auto" : "100vh")};
-    overflow: ${({ viewMore }) => (viewMore ? "auto" : "hidden")};
     padding: 0.2rem;
-    margin: 10rem 0;
-    justify-content: center;
-    align-items: center;
-  }
-
-  @media screen and (max-width: 1024px) {
-    & div.grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media screen and (max-width: 768px) {
-    & div.grid {
-      grid-template-columns: 1fr;
-    }
+    margin: 2rem auto;
+    max-width : 100rem;
+    display : flex;
+    flex-wrap : wrap;
+    justify-content : center; 
+    align-items : center;
   }
 `;
 
 export const JobContainer = styled.div`
-  background-color: rgba(32, 194, 14, 0.04);
-  outline: 1px solid #2a2a2a;
-  border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  padding: 1.2rem;
-  row-gap: 0.8rem;
-  transition: 260ms all;
+background-color: rgba(32, 194, 14, 0.04);
+width: 400px;
 
-  &:hover {
-    outline-color: #545454;
-    outline-offset: 2px;
-  }
+min-height: 500px;
+margin : 10px;
+outline: 1px solid #2a2a2a;
+border-radius: 0.5rem;
+display: flex;
+flex-direction: column;
+padding: 1.2rem;
+row-gap: 0.8rem;
+
+transition: 260ms all;
+
+&:hover {
+  outline-color: #545454;
+  outline-offset: 2px;
+}
 `;
 
 export const JobHero = styled.div`
