@@ -53,7 +53,7 @@ export const JobSection = styled.section`
   & div.grid {
     padding: 0.2rem;
     margin: 2rem auto;
-    max-width : 90rem;
+    max-width : 100rem;
     display : flex;
     flex-wrap : wrap;
     justify-content : center; 
@@ -76,8 +76,7 @@ export const JobContainer = styled.div`
 background-color: rgba(32, 194, 14, 0.04);
 max-width: 500px;
 
-min-height: 450px;
-max-height: 500px;
+height: 500px;
 margin : 10px;
 outline: 1px solid #2a2a2a;
 border-radius: 0.5rem;
