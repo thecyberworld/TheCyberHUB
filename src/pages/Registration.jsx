@@ -20,7 +20,7 @@ const Registration = () => {
         <Learn2CodePromotion>
           <div id="reg-promo-content">
             <span className="brand-logo">Thecyberworld</span>
-            <h1 className="leading-title">Learn to Code Interactively For Free</h1>
+            <h1 className="leading-title">Learn to Hack Interactively For Free</h1>
             <span>Watch Demo</span>
             <ul className="nav-links">
               <li>Home</li>
@@ -66,7 +66,7 @@ const Registration = () => {
               </div>
             </div>
             <PrimaryFilledButton width={"100%"} type="submit">
-              Start Coding Now
+              Start Learning Now
             </PrimaryFilledButton>
           </div>
         </RegistrationFormContainer>
