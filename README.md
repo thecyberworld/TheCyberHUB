@@ -2,7 +2,7 @@
 
 ### Thecyberhub: hub of cyber-security.
 
-Cyber Security is a field that is growing at an exponential rate and everyone should be aware about this so <a href="https://www.thecyberhub.org/">thecyberhub.org</a> is a website buit by @TheCyberWorld.
+Cyber Security is a field that is growing at an exponential rate and everyone should be aware about this so <a href="https://www.thecyberhub.org/">thecyberhub.org</a> is a website built by @TheCyberWorld to spread the awareness.
 
 #### This website offers:
 
@@ -74,7 +74,7 @@ Before installation, please make sure you have already installed the following t
 
 ---
 
-## 🙏 License
+## 🛡 License
 
 [thecyberhub.org](https://www.thecyberhub.org) is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
