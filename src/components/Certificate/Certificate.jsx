@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./certificate.scss";
 import axios from "axios";
+import {CertificateContainer} from "./CertificateElements";
 
 export default function Certificate() {
   const [certificate, setCertificate] = useState();
@@ -8,7 +9,7 @@ export default function Certificate() {
 
   useEffect(() => {
     async function fetchCertificate() {
-      const res = await axios.get(baseUrl + "get-certificate?id=1666512295791");
+      const res = await axios.get(baseUrl + "get-certificate?id=1666530238339");
       const data = await res.data;
       setCertificate(data);
     }
@@ -17,7 +18,7 @@ export default function Certificate() {
   }, []);
 
   return (
-    <>
+    <CertificateContainer>
       {certificate ? (
         <div className="certificate flex-column-center">
           <div className="certificate-word">Certificate</div>
@@ -47,7 +48,7 @@ export default function Certificate() {
       ) : (
         ""
       )}
-    </>
+    </CertificateContainer>
   );
 }
 
