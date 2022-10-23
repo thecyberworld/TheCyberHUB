@@ -123,6 +123,10 @@ Error generating stack: `+o.message+`
   width: 100%;
   padding: 0 24px;
   max-width: 1100px;
+
+  @media screen and (max-width : 940px){
+    padding : 0 5px;
+  }
 `,ZT=O(tn)`
   color: #fff;
   justify-self: flex-start;
@@ -130,7 +134,7 @@ Error generating stack: `+o.message+`
   font-size: 1.5rem;
   display: flex;
   align-items: center;
-  margin-left: 24px;
+  margin : 0 5px;
   font-weight: bold;
   text-decoration: none;
 `,JT=O.img`
@@ -141,9 +145,14 @@ Error generating stack: `+o.message+`
   font-size: 1.5rem;
   display: flex;
   align-items: center;
-  margin-left: 24px;
+  margin-left: 5px;
   font-weight: bold;
   text-decoration: none;
+
+  @media screen and (max-width : 880px){
+    margin : 0;
+    padding : 0;
+  }
   @media screen and (max-width: 500px) {
     margin: 0 0 0 0;
   }
@@ -155,7 +164,7 @@ Error generating stack: `+o.message+`
 `,eE=O.div`
   display: none;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 850px) {  //
     display: block;
     position: absolute;
     top: 0;
@@ -186,9 +195,13 @@ Error generating stack: `+o.message+`
   align-items: center;
   list-style: none;
   text-align: center;
-  margin-right: -22px;
+  margin : 0 1rem;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 875px){
+    margin : 0px;
+    padding : 0;
+  }
+  @media screen and (max-width: 850px) { //
     display: none;
   }
 `,nE=O.li`
@@ -221,7 +234,7 @@ Error generating stack: `+o.message+`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 850px) { //
     display: none;
   }
 `;O.a`
@@ -244,6 +257,10 @@ Error generating stack: `+o.message+`
     color: #20c20e;
     border-color: #343434;
     font-size: 18px;
+  }
+
+  @media screen and (max-width: 890px){
+    padding : 2px;
   }
 `;const oE=O.button`
   text-decoration: none;
