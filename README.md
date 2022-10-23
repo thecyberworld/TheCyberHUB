@@ -1,18 +1,4 @@
-<h1 align="center"> Thecyberworld 🩻 </h1>
-
-### Thecyberhub: hub of cyber-security.
-
-Cyber Security is a field that is growing at an exponential rate and everyone should be aware about this so <a href="https://www.thecyberhub.org/">thecyberhub.org</a> is a website built by @TheCyberWorld to spread the awareness.
-
-#### This website offers:
-
-- Roadmap of cybersecurity
-- Courses related to CyberSecurity
-- Events of cybersecurity
-- Blogs for cybersecurity
-- News of CyberSecurity
-- Projects from the community
-- Exciting Cybersecurity Games
+<h1 align="center"> Thecyberhub </h1>
 
 ![thecyberhub](https://user-images.githubusercontent.com/44284877/194150142-1df54766-b8bb-4d9c-9e86-26907e324551.gif)
 
