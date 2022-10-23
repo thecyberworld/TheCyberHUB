@@ -43,6 +43,11 @@ Before installation, please make sure you have already installed the following t
 - Any contributions you make are **truly appreciated**.
 - Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
+## Contributors
+<a href="https://github.com/abel-otegbola/clock-app/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=abel-otegbola/clock-app" />
+</a>  
+
 ## 🛡️ License
 
 [thecyberhub.org](https://www.thecyberhub.org) is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
