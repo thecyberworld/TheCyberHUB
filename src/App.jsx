@@ -36,6 +36,7 @@ import OpenSourceProjects from "./components/OpenSourceProjects/OpenSourceProjec
 
 import Spinner from "./components/MixComponents/Spinner/Spinner";
 import Submit from "./components/Resources/Submit/Submit";
+import Layout from "./components/Layout";
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -60,7 +61,7 @@ const App = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <>
+        <Layout>
           <>
             <Sidebar isOpen={isOpen} toggle={toggle} />
             <Navbar toggle={toggle} />
@@ -106,7 +107,7 @@ const App = () => {
           {/*{showFooter() &&*/}
               <Footer />
           {/*}*/}
-        </>
+        </Layout>
       )}
     </div>
   );
