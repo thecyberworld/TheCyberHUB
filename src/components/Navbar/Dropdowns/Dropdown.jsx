@@ -9,16 +9,16 @@ import {
 
 export default function Dropdown({isOpen, toggle, closed, isResources, isLearn}) {
     const learn = [
-        {title: "Roadmap", url: "/learn/roadmaps", desc: "Learn about the roadmap of cybersecurity"},
-        {title: "Courses", url: "/learn/courses", desc: "Learn about the courses of cybersecurity"},
-        {title: "Blogs", url: "/learn/blogs", desc: "Learn about the blogs of cybersecurity"},
+        {title: "Roadmap", url: "/learn/roadmaps", desc: "Step by step guide to becoming a cybersecurity professional"},
+        {title: "Courses", url: "/learn/courses", desc: "Learn from the best courses on the internet"},
+        {title: "Blogs", url: "/learn/blogs", desc: "Learn from the best blogs on the internet"},
     ];
 
     const resources = [
-        {title: "Jobs", url: "/resources/jobs", desc: "Learn about the jobs of cybersecurity"},
-        {title: "Quiz", url: "/resources/quiz", desc: "Learn about the quiz of cybersecurity"},
-        {title: "Interview Questions", url: "/resources/interviewQuestions", desc: "Learn about the interview questions of cybersecurity"},
-        {title: "News", url: "/resources/cyberNews", desc: "Learn about the news of cybersecurity"},
+        {title: "Jobs", url: "/resources/jobs", desc: "Find your dream job"},
+        {title: "Quiz", url: "/resources/quiz", desc: "Test your knowledge"},
+        {title: "Interview Questions", url: "/resources/interviewQuestions", desc: "Prepare for your interview"},
+        {title: "News", url: "/resources/cyberNews", desc: "Stay up to date with the latest news"},
     ];
 
     return (

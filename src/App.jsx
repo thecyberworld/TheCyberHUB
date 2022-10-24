@@ -54,7 +54,6 @@ const App = () => {
                         <Routes>
                             <Route index exact path={"/"} element={<Homepage/>}/>
 
-                            <Route exact path={"/blogs/*"} element={<Blogs/>}/>
                             <Route exact path={"/events"} element={<Events/>}/>
                             <Route exact path={"/community"} element={<Community/>}/>
                             <Route exact path={"/about"} element={<About/>}/>
@@ -77,11 +76,11 @@ const App = () => {
 
                             <Route exact path={"/resources/*"}>
                                 <Route index path="roadmaps" element={<Roadmaps/>}/>
-                                <Route path={"cyberNews"} element={<CyberNews/>}/>
                                 <Route path={"events"} element={<Events/>}/>
                                 <Route path={"jobs"} element={<Jobs/>}/>
                                 <Route path={"quiz"} element={<Quiz/>}/>
                                 <Route path={"interviewQuestions"} element={<InterviewQuestions/>}/>
+                                <Route path={"cyberNews"} element={<CyberNews/>}/>
                             </Route>
 
                             <Route exact path={"/register"} element={<Registration/>}></Route>
