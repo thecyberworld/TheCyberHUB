@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { useParams } from "react-router-dom";
+import {useParams} from "react-router-dom";
 import RoadmapsData from "./RoadmapsData";
-import { encodeURL } from "../Blogs/util";
+import {encodeURL} from "../Blogs/util";
 import {
     Roadmaps,
     RelatedRoadmaps,
@@ -17,16 +17,13 @@ import {
     RedirectLink,
     RoadmapSectionHeading,
     RoadmapDetails,
-    RoadmapDetailsCard,
-    RoadmapContentHeading,
-    RoadmapDetailsContainer,
+    RoadmapDetailsCard, RoadmapContentHeading,RoadmapDetailsContainer
 } from "./RoadmapElements";
 
 const Roadmap = () => {
-    const { title } = useParams();
-    let SelectedRoadmap = RoadmapsData.find(
-        (roadmap) => encodeURL(roadmap.title).toLowerCase() === title.toLowerCase(),
-    );
+    const {title} = useParams();
+    let SelectedRoadmap = RoadmapsData.find((roadmap) => encodeURL(roadmap.title).toLowerCase() === title.toLowerCase());
+
 
     return (
         <RoadmapContainer>
@@ -46,14 +43,14 @@ const Roadmap = () => {
                                             <RoadmapContentHeading>{resource.title}</RoadmapContentHeading>
                                         </RoadmapDetailsCard>
                                     </RedirectLink>
-                                );
+                                )
                             })}
                         </RoadmapDetails>
-                    );
+                    )
                 })}
             </RoadmapDetailsContainer>
 
-            <hr style={{ width: "65em" }} />
+            <hr style={{width: "65em"}}/>
 
             <Roadmaps>
                 <Container>
@@ -61,16 +58,17 @@ const Roadmap = () => {
                     <RouterLink to={"/learn/roadmaps"}>
                         <AllRoadmaps>All Roadmaps</AllRoadmaps>
                     </RouterLink>
+
                 </Container>
                 {RoadmapsData.map((roadmap) => {
                     return (
-                        <RouterLink to={{ pathname: `../` + `${encodeURL(roadmap.title)}` }}>
+                        <RouterLink to={{pathname: `../` + `${encodeURL(roadmap.title)}`}}>
                             <RoadmapInlineCard>
                                 <RoadmapsHeading>{roadmap.title} </RoadmapsHeading>
                                 <RoadmapsDesc>{roadmap.desc} </RoadmapsDesc>
                             </RoadmapInlineCard>
                         </RouterLink>
-                    );
+                    )
                 })}
             </Roadmaps>
         </RoadmapContainer>

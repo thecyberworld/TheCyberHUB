@@ -2,8 +2,7 @@ import React from "react";
 import {
     InterviewQuestionSection,
     InterviewsQuestionsHeading,
-    InterviewsQuestionsCard,
-    InterviewsQuestionsTitle,
+    InterviewsQuestionsCard, InterviewsQuestionsTitle
 } from "./InterviewQuestionsElements";
 import InterviewsQuestionsData from "./InterviewQuestionsData";
 
@@ -14,11 +13,17 @@ const InterviewQuestions = () => {
                 return (
                     <InterviewsQuestionsCard>
                         <InterviewsQuestionsHeading> {Question.title} </InterviewsQuestionsHeading>
-                        {Question.details.map((resources) => {
-                            return <InterviewsQuestionsTitle>{resources.questions}</InterviewsQuestionsTitle>;
-                        })}
+                        {Question.details.map(
+                            (resources) => {
+                                return (
+                                    <InterviewsQuestionsTitle>
+                                        {resources.questions}
+                                    </InterviewsQuestionsTitle>
+                                )
+                            }
+                        )}
                     </InterviewsQuestionsCard>
-                );
+                )
             })}
         </InterviewQuestionSection>
     );

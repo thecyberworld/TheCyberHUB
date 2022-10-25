@@ -1,30 +1,30 @@
 name: Github Pages deploy
 
 on:
-    push:
-        branches:
-            - "main"
+  push:
+    branches:
+      - "main"
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        strategy:
-            matrix:
-                node-version: [16.x]
+    strategy:
+      matrix:
+        node-version: [16.x]
 
-        steps:
-            - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-            - run: npm install
-            - run: npm run build
-            - run: cp 404.html dist/
-              env:
-                  PUBLIC_BASE_PATH: /Thecyberhub.org
+      - run: npm install
+      - run: npm run build
+      - run: cp 404.html dist/
+        env:
+          PUBLIC_BASE_PATH: /Thecyberhub.org
 
-            - name: Deploy 🚀
-              uses: JamesIves/github-pages-deploy-action@v4.2.3
-              with:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  branch: gh-pages # The branch the action should deploy to.
-                  folder: dist # The folder the action should deploy.
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.

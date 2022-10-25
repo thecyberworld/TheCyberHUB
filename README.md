@@ -17,16 +17,15 @@
 </div>
 
 ## Table of contents 💻
-
--   [Title](#thecyberhub-hub-of-cyber-security)
--   [🤖 Installation Guidelines](#-installation-guidelines)
-    -   [👇 Prerequisites](#-prerequisites)
-    -   [🛠️ Installation Steps](#-installation-steps)
--   [Try Website](https://thecyberhub.org)
--   [👨‍💻 Contributing](#-contributing)
--   [🛡️ License](#-license)
--   [🙏 Support](#-support)
--   [📨 Contact US](#-contact-us)
+- [Title](#thecyberhub-hub-of-cyber-security)
+- [🤖 Installation Guidelines](#-installation-guidelines)
+  - [👇 Prerequisites](#-prerequisites)
+  - [🛠️ Installation Steps](#-installation-steps)
+- [Try Website](https://thecyberhub.org)
+- [👨‍💻 Contributing](#-contributing)
+- [🛡️ License](#-license)
+- [🙏 Support](#-support)
+- [📨 Contact US](#-contact-us)
 
 ---
 
@@ -36,8 +35,9 @@
 
 Before installation, please make sure you have already installed the following tools:
 
--   [Git](https://git-scm.com/downloads)
--   [Nodejs](https://nodejs.org/en/download/)
+- [Git](https://git-scm.com/downloads)
+- [Nodejs](https://nodejs.org/en/download/)
+
 
 ### 🛠 Installation Steps
 
@@ -54,9 +54,9 @@ Before installation, please make sure you have already installed the following t
 
 ## 👨‍💻 Contributing
 
--   Contributions make the open source community such an amazing place to learn, inspire, and create.
--   Any contributions you make are **truly appreciated**.
--   Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
+- Contributions make the open source community such an amazing place to learn, inspire, and create.
+- Any contributions you make are **truly appreciated**.
+- Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
 ---
 
