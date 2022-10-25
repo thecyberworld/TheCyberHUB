@@ -43,7 +43,6 @@ const Roadmaps = () => {
             })}
         </RoadmapContainer>
 
-        <hr/>
 
         {/*<ResourcesListSection>*/}
         {/*    <SectionHeading>👨‍💻Cyber Sec Roadmap👨‍💻</SectionHeading>*/}
