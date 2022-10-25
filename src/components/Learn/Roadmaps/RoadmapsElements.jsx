@@ -15,18 +15,19 @@ export const Overlay = styled.div`
   width: 20em;
   height: 5em;
   position: absolute;
-  background: rgba(1, 6, 6, 0.8);
+  //background: rgba(1, 6, 6, 0.8);
   //opacity: 0.7;
-  padding: 10px;
-  margin: 5px;
+  margin: -5px 0 0 0 ;
+
 `;
 
 export const OverlayDetails = styled.div`
+  font-size: 10px;
   color: #d2d2d2;
   border-radius: 3px;
   margin: 5px 5em;
   padding: 5px 5px;
-  width: auto;
+  width: 8em;
   background: #1a1c1d;
   transition: all .2s ease-in-out;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
@@ -61,7 +62,7 @@ export const RoadmapCard = styled.div`
   border: 1px solid #2a2a2a;
   border-radius: 10px;
   padding: 10px;
-  margin: 5px;
+  margin: 10px;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
 
