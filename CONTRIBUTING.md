@@ -2,13 +2,13 @@
 
 Basics:
 
-- [Git](https://git-scm.com/)
-- [Markdown](https://www.markdownguide.org/basic-syntax/)
+-   [Git](https://git-scm.com/)
+-   [Markdown](https://www.markdownguide.org/basic-syntax/)
 
 Front-end:
 
-- [React](https://reactjs.org/)
-- [Ant Design](https://ant.design/)
+-   [React](https://reactjs.org/)
+-   [Ant Design](https://ant.design/)
 
 ---
 
@@ -17,10 +17,10 @@ Front-end:
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/thecyberworld/thecyberhub.org/pulls)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/thecyberworld/)
 
-- Take a look at the existing [Issues](https://github.com/thecyberworld/thecyberhub.org/issues) or [create a new issue](https://github.com/thecyberworld/thecyberhub.org/issues/new/choose)!
-- [Fork the Repo](https://github.com/thecyberworld/thecyberhub.org/fork). Then, create a branch for any issue that you are working on. Finally, commit your work.
-- Create a **[Pull Request](https://github.com/thecyberworld/thecyberhub.org/compare)** (_PR_), which will be promptly reviewed and given suggestions for improvements by the community.
-- Add screenshots or screen captures to your Pull Request to help us understand the effects of the changes proposed in your PR.
+-   Take a look at the existing [Issues](https://github.com/thecyberworld/thecyberhub.org/issues) or [create a new issue](https://github.com/thecyberworld/thecyberhub.org/issues/new/choose)!
+-   [Fork the Repo](https://github.com/thecyberworld/thecyberhub.org/fork). Then, create a branch for any issue that you are working on. Finally, commit your work.
+-   Create a **[Pull Request](https://github.com/thecyberworld/thecyberhub.org/compare)** (_PR_), which will be promptly reviewed and given suggestions for improvements by the community.
+-   Add screenshots or screen captures to your Pull Request to help us understand the effects of the changes proposed in your PR.
 
 ---
 
@@ -54,8 +54,8 @@ git checkout -b YourBranchName
 
 **6.** Sync your fork or your local repository with the origin repository:
 
-- In your forked repository, click on "Fetch upstream"
-- Click "Fetch and merge"
+-   In your forked repository, click on "Fetch upstream"
+-   Click "Fetch and merge"
 
 ### Alternatively, Git CLI way to Sync forked repository with origin repository:
 
@@ -115,15 +115,15 @@ Open the browser to visit the website at http://localhost:3000
 
 **How you can add more value to your contribution logs:**
 
-- Use the present tense. (Example: "Add feature" instead of "Added feature")
-- Use the imperative mood. (Example: "Move item to...", instead of "Moves item to...")
-- Limit the first line (also called the Subject Line) to _50 characters or fewer_.
-- Capitalize the Subject Line.
-- Separate subject from body with a blank line.
-- Do not end the subject line with a period.
-- Wrap the body at _72 characters_.
-- Use the body to explain the _what_, _why_, _vs_, and _how_.
-- Reference [Issues](https://github.com/thecyberworld/thecyberhub.org/issues) and [Pull Requests](https://github.com/thecyberworld/thecyberhub.org/pulls) liberally after the first line.
+-   Use the present tense. (Example: "Add feature" instead of "Added feature")
+-   Use the imperative mood. (Example: "Move item to...", instead of "Moves item to...")
+-   Limit the first line (also called the Subject Line) to _50 characters or fewer_.
+-   Capitalize the Subject Line.
+-   Separate subject from body with a blank line.
+-   Do not end the subject line with a period.
+-   Wrap the body at _72 characters_.
+-   Use the body to explain the _what_, _why_, _vs_, and _how_.
+-   Reference [Issues](https://github.com/thecyberworld/thecyberhub.org/issues) and [Pull Requests](https://github.com/thecyberworld/thecyberhub.org/pulls) liberally after the first line.
 
 ---
 
