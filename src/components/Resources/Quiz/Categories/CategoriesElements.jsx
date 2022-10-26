@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const QuizSection = styled.div`
+  min-height: 25em;
   margin: 40px auto;
   color: white;
   font-weight: 600;
   background-color: #111111;
   width: auto;
   max-width: calc(70rem - 75px);
-  min-height: 350px;
   height: min-content;
   border-radius: 10px;
   padding: 30px 40px;
@@ -68,7 +68,7 @@ export const QuestionSection = styled.div`
 export const QuizProgressIndicator = styled.div`
   width: 100%;
   height: 20px;
-  margin: 10px 0px 30px 0px;
+  margin: 5px 0 20px ;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +92,7 @@ export const QuestionText = styled.div`
   font-size: 1.2rem;
   font-weight: normal;
   width: 90%;
-  margin: 20px 0 40px 0;
+  margin: 10px 0 20px 0;
 `;
 
 export const AnswerSection = styled.div`
@@ -110,14 +110,15 @@ export const QuestionButton = styled.button`
   background-color: #1A1A1A;
   border-radius: 5px;
   padding: 15px;
-  margin: 10px 0px;
+  margin: 7px 0;
   border: 1px solid #545454;
   border-bottom-width: 2px;
   cursor: pointer;
   transition: 0.2s ease;
 
   &:hover {
-    background-color: rgba(55, 55, 55, 0.44);
+    background-color: rgb(95, 232, 49);
+    color: #000000;
   }
 
   &:active {
@@ -127,7 +128,7 @@ export const QuestionButton = styled.button`
 `;
 
 export const CategoriesSection = styled.section`
-  margin: 150px auto 0;
+  margin: 125px auto 0;
   color: #cecac3;
   width: auto;
   max-width: 70rem;
@@ -180,8 +181,8 @@ export const CategoriesButton = styled.button`
   transition: 0.3s ease;
 
   &:hover {
-    background: rgba(55, 55, 55, 0.44);
-    color: white;
+    background-color: rgb(95, 232, 49);
+    color: #000000;
   }
 
   &:active {

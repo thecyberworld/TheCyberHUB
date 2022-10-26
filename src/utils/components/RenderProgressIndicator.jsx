@@ -5,7 +5,7 @@ export default function RenderProgressIndicator({questionsArray, currentQuestion
         <QuizProgressIndicator>
         {questionsArray.map((e, i)=>{
           return(
-            <IndicatorDot key={i + 'key'} id={i} questionCompleted={currentQuestion == i || currentQuestion > i ? true : false}/>
+            <IndicatorDot key={i + 'key'} id={i} questionCompleted={currentQuestion === i || currentQuestion > i}/>
           )
         })}
        </QuizProgressIndicator>
