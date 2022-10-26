@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const QuizSection = styled.div`
-  margin: 100px auto;
-  color: #53c42e;
-  background-color: #1a1c1d;
+  margin: 40px auto;
+  color: white;
+  font-weight: 600;
+  background-color: #111111;
   width: auto;
-  max-width: 800px;
+  max-width: calc(70rem - 75px);
   min-height: 350px;
   height: min-content;
-  border-radius: 15px;
-  padding: 25px;
+  border-radius: 10px;
+  padding: 30px 40px;
   box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
   display: flex;
 
@@ -64,15 +65,34 @@ export const QuestionSection = styled.div`
   position: relative;
 `;
 
+export const QuizProgressIndicator = styled.div`
+  width: 100%;
+  height: 20px;
+  margin: 10px 0px 30px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+`;
+
+export const IndicatorDot = styled.div`
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  background-color: ${props => props.questionCompleted ? "white" : "rgba(62, 62, 62, 0.76)"};
+  transition: 0.5s ease;
+`
+
 export const QuestionCount = styled.div`
   font-size: 20px;
 `;
 
 export const QuestionText = styled.div`
-  color: #fff;
+  color: #cecac3;
   font-size: 1.2rem;
+  font-weight: normal;
   width: 90%;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 40px 0;
 `;
 
 export const AnswerSection = styled.div`
@@ -81,20 +101,28 @@ export const AnswerSection = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
+
 export const QuestionButton = styled.button`
   text-align: left;
   width: auto;
-  font-size: 16px;
+  font-size: 14px;
   color: #cecac3;
-  background-color: #1a1c1d;
+  background-color: #1A1A1A;
   border-radius: 5px;
-  padding: 10px;
-  margin: 5px;
+  padding: 15px;
+  margin: 10px 0px;
   border: 1px solid #545454;
+  border-bottom-width: 2px;
   cursor: pointer;
+  transition: 0.2s ease;
 
   &:hover {
-    background-color: #2c2f30;
+    background-color: rgba(55, 55, 55, 0.44);
+  }
+
+  &:active {
+    background-color: #222;
+    transform: scale(0.98)
   }
 `;
 
@@ -140,17 +168,24 @@ export const MobileCategories = styled(CategoriesSection)`
 
 export const CategoriesButton = styled.button`
   background-color: transparent;
+  border: 1px solid rgba(62, 62, 62, 0.76);
   color: #cecac3;
   cursor: pointer;
   font-weight: bold;
   margin: 0 10px;
-  padding: 8px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 4px;
   border-color: #343434;
+  letter-spacing: -0.03rem;
+  transition: 0.3s ease;
 
   &:hover {
-    background: transparent;
-    color: #20c20e;
+    background: rgba(55, 55, 55, 0.44);
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.9)
   }
 
   @media screen and (max-width: 768px) {
@@ -163,3 +198,4 @@ export const CategoriesButtonMobile = styled(CategoriesButton)`
     display: ${(props) => (props.type === props.show ? "none" : "inline-block")};
   }
 `;
+
