@@ -55,8 +55,13 @@
     "react-snap": "^0.2.0",
     "vite": "^3.1.8"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx}": ["eslint --cache --fix", "git add"],
     "*.{js,jsx,css,md}": "prettier --write"
   }
 }
