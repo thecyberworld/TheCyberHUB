@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const UpComingEventsContainer = styled.div`
+  width: 348px;
   display: flex;
   flex-direction: column;
   justify-content: left;
