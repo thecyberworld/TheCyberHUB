@@ -11,19 +11,21 @@ const Navlinks = ({ link, title, children }) => {
     const [open, setOpen] = useState(false);
 
     const handleClick = (e) => {
-        if (window.innerWidth >= 875) return;
-
-        if (open === true) {
-            setOpen(false);
-        } else {
-            setOpen(true);
+        if (window.innerHeight < 875) {
+            e.target.classList.toggle("higher-zindex");
         }
+        setOpen((currState) => !currState);
     };
 
-    const handleMouseEvent = (e) => {
+    const handleMouseEnter = (e) => {
         if (window.innerWidth < 875) return;
 
-        setOpen((currState) => !currState);
+        const val = document.querySelector(".higher-zindex");
+        if (val) {
+            val.classList.remove("higher-zindex");
+        }
+        e.target.classList.add("higher-zindex");
+        setOpen(true);
     };
 
     return (
@@ -36,12 +38,7 @@ const Navlinks = ({ link, title, children }) => {
                 )}
 
                 {!link && (
-                    <p
-                        className="nav-links"
-                        onClick={handleClick}
-                        onMouseEnter={handleMouseEvent}
-                        onMouseLeave={handleMouseEvent}
-                    >
+                    <p className="nav-links" onClick={handleClick} onMouseEnter={handleMouseEnter}>
                         {title}
                     </p>
                 )}

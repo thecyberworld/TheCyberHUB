@@ -80,6 +80,16 @@ p.nav-links::after {
     border-bottom: 3px solid #20c20e;
 }
 
+p.nav-links ~ .nav-link-child > div {
+    z-index: 997;
+    display: none;
+}
+
+p.nav-links.higher-zindex ~ .nav-link-child > div {
+    z-index: 1000;
+    display: block;
+}
+
 .social-links-wrapper {
     display: none;
 }

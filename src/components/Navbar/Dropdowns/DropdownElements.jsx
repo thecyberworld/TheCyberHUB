@@ -8,7 +8,6 @@ export const DropdownContainer = styled.div`
     height: auto;
     padding: 1rem;
     position: absolute;
-    z-index: 1000;
     top: 80px;
     left: 0;
 
