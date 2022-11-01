@@ -45,7 +45,7 @@ const Footer = () => {
                                 { to: "services", title: "Services" },
                                 { to: "community", title: "Community" },
                                 { to: "contribute", title: "Contribute" },
-                            ].map(({ to, title, id }) => (
+                            ].map(({ to, title }, id) => (
                                 <FooterScrollLink
                                     key={id}
                                     to={to}
