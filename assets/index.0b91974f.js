@@ -926,20 +926,20 @@ Error generating stack: `+o.message+`
 `,n5=()=>S(ZT,{id:"join",children:[c(t5,{children:"Join"}),S(e5,{children:[c(ir,{children:c(UT,{href:"https://discord.gg/QHBPq6xP5p",target:"_blank","aria-label":"Discord",children:c(yp,{})})}),c(ir,{children:c(qT,{href:"https://www.github.com/thecyberworld",target:"_blank","aria-label":"Github",children:c(wp,{})})}),c(ir,{children:c(VT,{href:"https://www.twitter.com/thecyberw0rld",target:"_blank","aria-label":"Twitter",children:c(pw,{})})}),c(ir,{children:c(QT,{href:"https://www.youtube.com/c/thecyberworld",target:"_blank","aria-label":"Youtube",children:c(Z3,{})})}),c(ir,{children:c(GT,{href:"https://t.me/thecyberw0rld",target:"_blank","aria-label":"Telegram",children:c(wi,{})})}),c(ir,{children:c(JT,{href:"https://linkedin.com/company/thecyberworld",target:"_blank","aria-label":"Linkedin",children:c(X3,{})})}),c(ir,{children:c(KT,{href:"https://www.instagram.com/thecyberw0rld",target:"_blank","aria-label":"Instagram",children:c(hw,{})})}),c(ir,{children:c(XT,{href:"https://www.facebook.com/thecyberw0rld",target:"_blank","aria-label":"Facebook",children:c(J3,{})})})]})]}),Ow="/assets/thecyberworld-green01.0d004e30.png",Ew=x.header`
     color: #cecac3;
     background: url(${Ow}) no-repeat;
-    background-size: 25%;
-    background-position: 50% 20%;
+    background-size: 20%;
+    background-position: 50% 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     position: relative;
 `,Pw=x.div`
     width: 100%;
     height: 100%;
     position: absolute;
     background: #010606;
-    opacity: 0.8;
+    opacity: 0.9;
 `,Rw=x.div`
+    margin: 200px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -961,7 +961,7 @@ Error generating stack: `+o.message+`
     margin: 0.5rem 0 2rem;
     text-align: center;
 `,Mw=x.button`
-    background-color: #364eb0;
+    background-color: #23272a;
     border: none;
     border-radius: 0.3rem;
     color: white;
@@ -976,9 +976,10 @@ Error generating stack: `+o.message+`
     }
 
     &:hover {
-        background-color: hsl(235, calc(3 * 85.6%), 64.7%);
+        scale: 1.1;
+        transition: all 0.2s ease-in-out;
     }
-`,r5=()=>S(Ew,{children:[c(Pw,{}),S(Rw,{children:[c(Vl,{children:"Loved by thousands of hackers"}),S(Dw,{children:["Community goal is to help new folks to get started with open-source and cyber-security. ",c("br",{}),"We build open-source projects for hackers and developers"]}),c("a",{href:"https://discord.gg/QHBPq6xP5p",target:"blanck",children:S(Mw,{children:[c(Hl.Provider,{value:{size:"2em",style:{margin:"0 0.2rem"}},children:c(yp,{})}),c("span",{children:"Join our Discord Channel"})]})})]})]}),i5=()=>c("div",{children:c("h1",{style:{margin:"300px",color:"white"},children:"Learn"})});x.div`
+`,r5=()=>S(Ew,{children:[c(Pw,{}),S(Rw,{children:[c(Vl,{children:"Loved by thousands of hackers"}),S(Dw,{children:["Community goal is to help new folks to get started with open-source and cyber-security. ",c("br",{}),"We build open-source projects for hackers and developers"]}),c("a",{href:"https://discord.gg/QHBPq6xP5p",target:"blanck",children:S(Mw,{children:[c(Hl.Provider,{value:{size:"2em",style:{margin:"0 0.2rem"}},children:c(yp,{style:{color:"#7289da"}})}),c("span",{children:"Join our Discord Channel"})]})})]})]}),i5=()=>c("div",{children:c("h1",{style:{margin:"300px",color:"white"},children:"Learn"})});x.div`
     text-align: center;
     color: #cecac3;
     width: 27rem;
