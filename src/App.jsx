@@ -36,7 +36,6 @@ import AllBlogs from "./components/Learn/Blogs/Blogs";
 import ViewBlog from "./components/Learn/Blogs/ViewBlog";
 import Roadmap from "./components/Learn/Roadmaps/Roadmap";
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
-import ViewEvent from "./components/Resources/Events/ViewEvent/ViewEvent";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -73,8 +72,8 @@ const App = () => {
 
                             <Route path={"/events/*"}>
                                 <Route index element={<Events />} />
-                                <Route path={":slug"} element={<ViewEvent />}  />
-                            </Route> 
+                                <Route path={":slug"} element={<Event />} />
+                            </Route>
                             <Route exact path={"/community"} element={<Community />} />
                             <Route exact path={"/about"} element={<About />} />
                             <Route exact path={"/projects"} element={<OpensourceProjects />} />
