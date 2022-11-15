@@ -982,24 +982,29 @@ Error generating stack: `+o.message+`
 `,i5=()=>S(Pw,{children:[c(Rw,{}),S(Dw,{children:[c(Ql,{children:"Loved by thousands of hackers"}),S(Mw,{children:["Community goal is to help new folks to get started with open-source and cyber-security. ",c("br",{}),"We build open-source projects for hackers and developers"]}),c("a",{href:"https://discord.gg/QHBPq6xP5p",target:"blanck",children:S(Lw,{children:[c(Wl.Provider,{value:{size:"2em",style:{margin:"0 0.2rem"}},children:c(wp,{style:{color:"#7289da"}})}),c("span",{children:"Join our Discord Channel"})]})})]})]}),o5=x.div`
     padding: 10px 20px;
     width: 100%;
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #fff;
-    margin-top: 150px;
-`,a5=x.img`
-    margin: 50px auto;
-`,s5=x.h1`
-    font-family: "Roboto Mono", monospace;
+    margin: 150px auto;
 
-    text-align: center;
-    margin: 0 auto 50px auto;
-`,l5=x.p`
+    @media screen and (max-width: 768px) {
+        margin: 100px auto;
+    }
+`,a5=x.h1`
     font-family: "Roboto Mono", monospace;
     text-align: center;
     margin: 0 auto 50px auto;
-`,u5=x.a`
+
+    @media screen and (max-width: 768px) {
+        font-size: 1.8rem;
+    }
+`,s5=x.p`
+    font-family: "Roboto Mono", monospace;
+    text-align: center;
+    margin: 0 auto 50px auto;
+`,l5=x.a`
+    border: #4cc23e 1px solid;
     font-family: "Roboto Mono", monospace;
     display: flex;
     justify-content: center;
@@ -1011,12 +1016,25 @@ Error generating stack: `+o.message+`
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
+    cursor: none;
 
     &:hover {
         color: #c7c7c7;
         text-decoration: none;
     }
-`,c5=()=>S(o5,{children:[c(s5,{children:"Now you can sponsor Thecyberworld community"}),S(l5,{children:["Thecyberhub is an initiative by Thecyberworld community ",c("br",{}),"to provide the best cyber security resources to everyone for free. ",c("br",{})," ",c("br",{}),c("br",{}),"Our websites and bots are running on the servers. ",c("br",{}),"We also organize CTF weekly and provide prizes to the winners, ",c("br",{}),c("br",{}),"Sponsors will help us recover server costs as well prize costs."]}),c(u5,{href:"https://www.buymeacoffee.com/thecyberw0rld",target:"_blank",children:c(a5,{src:"https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=thecyberw0rld&button_colour=32ec57&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00",alt:"thecyberworld buymeacoffe"})})]}),d5=()=>c("div",{children:c("h1",{style:{margin:"300px",color:"white"},children:"Learn"})});x.div`
+`,u5=x.img`
+    margin: 50px auto;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    @media screen and (max-width: 768px) {
+        margin: 0;
+    }
+`,c5=()=>S(o5,{children:[c(a5,{children:"Now you can sponsor Thecyberworld community"}),S(s5,{children:["Thecyberhub is an initiative by Thecyberworld community ",c("br",{}),"to provide the best cyber security resources to everyone for free. ",c("br",{})," ",c("br",{}),c("br",{}),"Our websites and bots are running on the servers. ",c("br",{}),"We also organize CTF weekly and provide prizes to the winners, and much more ",c("br",{}),c("br",{}),"Sponsors will help us recover server costs as well prize costs."]}),c(l5,{href:"https://www.buymeacoffee.com/thecyberw0rld",target:"_blank",children:c(u5,{src:"https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=thecyberw0rld&button_colour=32ec57&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00",alt:"thecyberworld buymeacoffe"})})]}),d5=()=>c("div",{children:c("h1",{style:{margin:"300px",color:"white"},children:"Learn"})});x.div`
     text-align: center;
     color: #cecac3;
     width: 27rem;
