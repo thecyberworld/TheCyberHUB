@@ -1015,7 +1015,7 @@ Error generating stack: `+o.message+`
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
-    cursor: none;
+    cursor: auto;
 
     &:hover {
         color: #c7c7c7;
