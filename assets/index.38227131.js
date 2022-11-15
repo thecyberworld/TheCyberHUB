@@ -160,7 +160,7 @@ Error generating stack: `+o.message+`
     }
 `,K_=x.div`
     display: none;
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 900px) {
         display: block;
         position: absolute;
         top: 0;
@@ -188,7 +188,7 @@ Error generating stack: `+o.message+`
     text-align: center;
     margin: 0 1rem;
 
-    @media screen and (max-width: 780px) {
+    @media screen and (max-width: 900px) {
         display: none;
     }
 `,Tw=x.li`
@@ -894,7 +894,7 @@ Error generating stack: `+o.message+`
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px 20px 10px 20px;
+    padding: 10px 20px 0 20px;
     transition: all 0.2s ease-in-out;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
@@ -904,7 +904,7 @@ Error generating stack: `+o.message+`
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
     &:hover {
-        transform: scale(1.02);
+        transform: scale(1.05);
         transition: all 0.2s ease-in-out;
         cursor: pointer;
     }
@@ -1089,6 +1089,11 @@ Error generating stack: `+o.message+`
     margin: 10px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: all 0.3s ease-in-out;
+    }
 `,g5=x.h4`
     color: #faf089;
     padding: 5px 20px 0 5px;
@@ -1138,12 +1143,12 @@ Error generating stack: `+o.message+`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 45em;
     color: white;
     margin: 15px 0;
+    width: 100%;
 `,b5=x.p`
     min-width: 20px;
-    color: #91dc56;
+    color: #faf089;
     font-size: 18px;
     width: 100%;
 `,S5=x.div`
@@ -1157,6 +1162,23 @@ Error generating stack: `+o.message+`
     padding: 5px 15px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+
+    &:hover {
+        scale: 1.05;
+        border: #faf089 1px solid;
+        color: #faf089;
+        transition: all 0.3s ease-in-out;
+    }
+
+    @media screen and (max-width: 600px) {
+        width: 25em;
+    }
+    @media screen and (max-width: 500px) {
+        width: 20em;
+    }
+    @media screen and (max-width: 350px) {
+        width: 100%;
+    }
 `,k5=x.h3`
     display: flex;
     justify-content: center;
@@ -1178,27 +1200,40 @@ Error generating stack: `+o.message+`
     justify-content: center;
     background: #151515;
 `;const C5=x.div`
-    width: 65em;
+    max-width: 65em;
+    width: 100%;
     color: white;
     background: #0a0a0a;
     padding: 0 50px;
     padding-bottom: 20px;
     margin: 50px 0;
     display: inline;
+
+    @media screen and (max-width: 768px) {
+        width: 100%;
+        padding: 0 10px;
+    }
 `,_5=x.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-`,Aw=x.div`
+`,Aw=x.button`
     width: auto;
     background: #0a0a0a;
-    border: #dadada 1px solid;
+    border: #343434 1px solid;
     border-radius: 3px;
     display: flex;
     margin: -15px 0 20px 0;
-    padding: 5px 15px;
-    color: #d9d9d9;
-`,T5=x(Aw)``,O5=x.div`
+    padding: 10px 15px;
+    color: #ececec;
+`,T5=x(Aw)`
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.1;
+        transition: all 0.3s ease-in-out;
+    }
+`,O5=x.div`
     text-decoration: none;
     background: #0a0a0a;
     border: #383838 1px solid;
@@ -1208,6 +1243,12 @@ Error generating stack: `+o.message+`
     padding: 5px 15px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+
+    &:hover {
+        scale: 1.02;
+        color: #faf089;
+        transition: all 0.3s ease-in-out;
+    }
 `,zf=x(pt)`
     text-decoration: none;
 `,E5=x.a`
@@ -1215,7 +1256,7 @@ Error generating stack: `+o.message+`
 `,P5=x.p`
     width: 40%;
     min-width: 20px;
-    color: #91dc56;
+    color: #faf089;
     font-size: 18px;
 `,R5=x.p`
     width: 60%;
@@ -3098,7 +3139,7 @@ If your application works on the development machine, in the same way it will wo
         object-fit: contain;
         border-radius: 5px;
     }
-`,y9=()=>{const{title:e}=Ya(),t=Sx.find(n=>Hn(n.title).toLowerCase()===e.toLowerCase());return S($,{children:[S(v9,{children:[c("img",{className:"viewImg",src:wx,alt:"Blog Image"}),c("h1",{children:t.title}),S("h3",{children:[t.author," | ",t.date]}),c("p",{children:t.content})]}),c(xx,{children:t.tags.map((n,r)=>c(bx,{children:n},r))})]})},w9=()=>{const{title:e}=Ya(),t=jf.find(n=>Hn(n.title).toLowerCase()===e.toLowerCase());return S(y5,{children:[c("h1",{children:t.title}),c(w5,{children:t.details.map((n,r)=>S(x5,{children:[c(k5,{children:n.section}),n.resources.map((i,o)=>c(E5,{href:i.url,target:"_blank",children:c(S5,{children:c(b5,{children:i.title})})},o))]},r))}),c("hr",{style:{width:"65em"}}),S(C5,{children:[S(_5,{children:[c(Aw,{children:"Related Roadmaps"}),c(zf,{to:"/learn/roadmaps",children:c(T5,{children:"All Roadmaps"})})]}),jf.map((n,r)=>c(zf,{to:{pathname:`../${Hn(n.title)}`},children:S(O5,{children:[S(P5,{children:[n.title," "]}),S(R5,{children:[n.desc," "]})]},r)},r))]})]})},x9=x.div`
+`,y9=()=>{const{title:e}=Ya(),t=Sx.find(n=>Hn(n.title).toLowerCase()===e.toLowerCase());return S($,{children:[S(v9,{children:[c("img",{className:"viewImg",src:wx,alt:"Blog Image"}),c("h1",{children:t.title}),S("h3",{children:[t.author," | ",t.date]}),c("p",{children:t.content})]}),c(xx,{children:t.tags.map((n,r)=>c(bx,{children:n},r))})]})},w9=()=>{const{title:e}=Ya(),t=jf.find(n=>Hn(n.title).toLowerCase()===e.toLowerCase());return S(y5,{children:[c("h1",{children:t.title}),c(w5,{children:t.details.map((n,r)=>S(x5,{children:[c(k5,{children:n.section}),n.resources.map((i,o)=>c(E5,{href:i.url,target:"_blank",children:c(S5,{children:c(b5,{children:i.title})})},o))]},r))}),S(C5,{children:[S(_5,{children:[c(Aw,{children:"Related Roadmaps"}),c(zf,{to:"/learn/roadmaps",children:c(T5,{children:"All Roadmaps"})})]}),jf.map((n,r)=>c(zf,{to:{pathname:`../${Hn(n.title)}`},children:S(O5,{children:[S(P5,{children:[n.title," "]}),S(R5,{children:[n.desc," "]})]},r)},r))]})]})},x9=x.div`
     display: flex;
     min-height: 100vh;
     height: fit-content;
