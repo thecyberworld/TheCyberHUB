@@ -1004,7 +1004,6 @@ Error generating stack: `+o.message+`
     text-align: center;
     margin: 0 auto 50px auto;
 `,l5=x.a`
-    border: #4cc23e 1px solid;
     font-family: "Roboto Mono", monospace;
     display: flex;
     justify-content: center;
@@ -1034,7 +1033,7 @@ Error generating stack: `+o.message+`
     @media screen and (max-width: 768px) {
         margin: 0;
     }
-`,c5=()=>S(o5,{children:[c(a5,{children:"Now you can sponsor Thecyberworld community"}),S(s5,{children:["Thecyberhub is an initiative by Thecyberworld community ",c("br",{}),"to provide the best cyber security resources to everyone for free. ",c("br",{})," ",c("br",{}),c("br",{}),"Our websites and bots are running on the servers. ",c("br",{}),"We also organize CTF weekly and provide prizes to the winners, and much more ",c("br",{}),c("br",{}),"Sponsors will help us recover server costs as well prize costs."]}),c(l5,{href:"https://www.buymeacoffee.com/thecyberw0rld",target:"_blank",children:c(u5,{src:"https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=thecyberw0rld&button_colour=32ec57&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00",alt:"thecyberworld buymeacoffe"})})]}),d5=()=>c("div",{children:c("h1",{style:{margin:"300px",color:"white"},children:"Learn"})});x.div`
+`,c5=()=>S(o5,{children:[c(a5,{children:"Now you can sponsor Thecyberworld community"}),S(s5,{children:["Thecyberhub is an initiative by Thecyberworld community ",c("br",{}),"to provide the best cyber security resources to everyone for free. ",c("br",{})," ",c("br",{}),c("br",{}),"Our websites and bots are running on the servers. ",c("br",{}),"We also organize CTF weekly and provide prizes to the winners, and much more ",c("br",{}),c("br",{}),"Sponsors will help us recover server costs as well prize costs. ",c("br",{}),"If you like our work and want to support us, you can sponsor us on BuyMeACoffee. ",c("br",{})]}),c(l5,{href:"https://www.buymeacoffee.com/thecyberw0rld",target:"_blank",children:c(u5,{src:"https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=thecyberw0rld&button_colour=32ec57&font_colour=000000&font_family=Comic&outline_colour=000000&coffee_colour=FFDD00",alt:"thecyberworld buymeacoffe"})})]}),d5=()=>c("div",{children:c("h1",{style:{margin:"300px",color:"white"},children:"Learn"})});x.div`
     text-align: center;
     color: #cecac3;
     width: 27rem;
