@@ -1,3 +1,4 @@
+import React from "react";
 import Capture from "../../Resources/Events/EventsData/Capture.png";
 
 const CTFData = [
@@ -8,8 +9,16 @@ const CTFData = [
         date: "Sep 24, 2022",
         validationDate: "2022-9-24",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 2,
@@ -18,8 +27,16 @@ const CTFData = [
         date: "Oct 1, 2022",
         validationDate: "2022-10-1",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 3,
@@ -28,8 +45,16 @@ const CTFData = [
         date: "Oct 8, 2022",
         validationDate: "2022-10-8",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 4,
@@ -38,8 +63,16 @@ const CTFData = [
         date: "Oct 15, 2022",
         validationDate: "2022-10-15",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 5,
@@ -48,8 +81,16 @@ const CTFData = [
         date: "Oct 22, 2022",
         validationDate: "2022-10-22",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 6,
@@ -58,48 +99,52 @@ const CTFData = [
         date: "Oct 29, 2022",
         validationDate: "2022-10-29",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
-    },
-    {
-        id: 7,
-        title: "TheCyberCTF 0x07",
-        image: Capture,
-        date: "Nov 5, 2022",
-        validationDate: "2022-11-05",
-        venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 8,
-        title: "TheCyberCTF 0x08",
+        title: "TheCyberCTF 0x07",
         image: Capture,
         date: "Nov 12, 2022",
         validationDate: "2022-11-12",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
-    },
-    {
-        id: 9,
-        title: "TheCyberCTF 0x09",
-        image: Capture,
-        date: "Nov 19, 2022",
-        validationDate: "2022-11-19",
-        venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
     {
         id: 10,
-        title: "TheCyberCTF 0x10",
+        title: "TheCyberCTF 0x08",
         image: Capture,
-        date: "Nov 26 2022",
-        validationDate: "2022-11-26",
+        date: "Nov 24, 2022",
+        validationDate: "2022-11-24",
         venue: "Online",
-        content:
-            "We host CTF every weekend for the community. You can take participate in the CTF and win exciting prizes. This is free for everyone. For details, Join Discord now.",
+        ctfLink: "https://tryhackme.com/",
+        ctfWinner: [],
+        ctfParticipants: [],
+        ctfRooted: [],
+        content: (
+            <p>
+                We host CTF every weekend for the community. You can take participate in the CTF and win exciting
+                prizes. This is free for everyone. For details, Join Discord now.,
+            </p>
+        ),
     },
 ];
 

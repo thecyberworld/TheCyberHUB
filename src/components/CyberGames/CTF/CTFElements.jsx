@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const CTFContainer = styled.div`
-    margin-top: 150px;
+    margin-top: 100px;
 `;
 
 export const GetCertificateContainer = styled.div`
+    margin-top: 100px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -21,6 +23,7 @@ export const Heading = styled.h2`
 `;
 
 export const InvalidCertificate = styled.div`
+    margin-top: 150px;
     width: 37vw;
     padding: 1rem 5rem;
     font-family: "Oswald", sans-serif;
@@ -34,7 +37,6 @@ export const InvalidCertificate = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 50px auto;
 `;
 
 export const InputBox = styled.input`

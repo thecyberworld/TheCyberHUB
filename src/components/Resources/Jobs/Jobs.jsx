@@ -1,12 +1,11 @@
 import React from "react";
 import { Link as ScrollLink } from "react-scroll";
 
-import { Overlay, Container, Heading, Paragraph } from "../../Community/CommunityElements";
-import { ScrollButton, JobIntroHeader, JobsDropdownIcon } from "./JobsElements";
+import { Overlay, Container, Heading, Paragraph } from "../../Homepage/Community/CommunityElements";
+import { ScrollButton, JobIntroHeader, JobsDropdownIcon , JobSection } from "./JobsElements";
 
 import Job from "./Job";
 import { JobsData } from "./JobsData";
-import { JobSection } from "./JobsElements";
 
 const Jobs = () => {
     const allJobs = JobsData.map((data) => <Job key={data.id} {...data} />);

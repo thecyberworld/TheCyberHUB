@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CertificateContainer, CertificateComponent, CertificateFooter } from "./CertificateElements";
 import { InvalidCertificate } from "../CyberGames/CTF/CTFElements";
+import { useParams } from "react-router-dom";
 
-export default function Certificate(certId) {
+export default function CertificateCard() {
     const [certificate, setCertificate] = useState();
     const baseUrl = "https://thecyberhub-next.vercel.app/api/";
 
+    const { id } = useParams();
+    const certificateId = id;
+
     useEffect(() => {
         async function fetchCertificate() {
-            const res = await axios.get(baseUrl + "get-certificate?id=" + certId.certId);
+            const res = await axios.get(baseUrl + "get-certificate?id=" + certificateId);
             const data = await res.data;
             setCertificate(data);
         }
-
         fetchCertificate();
     }, []);
 

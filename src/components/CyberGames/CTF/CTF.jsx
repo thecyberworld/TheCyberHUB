@@ -1,42 +1,21 @@
-import React, { useState } from "react";
-import {
-    CertificateContainer,
-    CTFContainer,
-    GetCertificateContainer,
-    Heading,
-    InputBox,
-    InvalidCertificate,
-} from "./CTFElements";
+import React from "react";
+import { CTFContainer, GetCertificateContainer, Heading } from "./CTFElements";
 import "./CTF.css";
-import Certificate from "../../Certificate/Certificate";
+import { RouterLink } from "../../Learn/Roadmaps/RoadmapElements";
 
 const CTF = () => {
-    const [certId, setCert] = useState("");
-
-    console.log(certId);
     return (
         <CTFContainer>
             <GetCertificateContainer>
-                <Heading> Get Your Certificate</Heading>
-                <InputBox
-                    type="text"
-                    placeholder={"certificate id"}
-                    name={"site"}
-                    value={certId}
-                    onChange={(e) => setCert(e.target.value)}
-                />
-            </GetCertificateContainer>
-            <CertificateContainer>
-                {certId.length === 13 ? <Certificate certId={certId} /> : " "}
+                <Heading> CTFs </Heading>
+                <Heading> OnGoing CTF </Heading>
+                <Heading> UpComing CTFs </Heading>
+                <Heading> Past CTFs </Heading>
 
-                {(certId.length > 5 && certId.length !== 13) || certId.length > 13 ? (
-                    <InvalidCertificate>
-                        <h4>Invalid certificate id</h4>
-                    </InvalidCertificate>
-                ) : (
-                    " "
-                )}
-            </CertificateContainer>
+                <RouterLink to={"certificate"}>
+                    <Heading> Get Certificate </Heading>
+                </RouterLink>
+            </GetCertificateContainer>
         </CTFContainer>
     );
 };

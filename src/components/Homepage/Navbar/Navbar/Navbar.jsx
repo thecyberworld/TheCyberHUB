@@ -18,6 +18,7 @@ import {
 
 import Dropdown from "../Dropdowns/Dropdown";
 import logo from "../../../../assets/images/WebsiteLogo/ThecyberhubLogo.png";
+import { GlowingButton } from "../../../MixComponents/Buttons/ButtonElements";
 
 const Navbar = ({ isOpen, toggle }) => {
     const [scrollNav, setScrollNav] = useState(false);
@@ -128,9 +129,7 @@ const Navbar = ({ isOpen, toggle }) => {
                         </NavMenu>
 
                         <NavBtn>
-                            {/* <GlowingButton to={"CyberGames"}> */}
-                            {/*        Cyber Games */}
-                            {/* </GlowingButton> */}
+                            <GlowingButton to={"CTF"}>CTF</GlowingButton>
                             {/* <RedirectButton href={"https://twitter.com/intent/tweet?text=Hi%20Everyone,%20%0D%0AFound%20the%20best%20website%20to%20learn%20Cybersecurity%20for%20free%20by%20@thecyberw0rld%20community.%20%0D%0A%0D%0AWebsite:%20https://thecyberhub.org%20%0D%0AResources:%20https://thecyberhub.org/resources%20%0D%0A%0D%0AMore%20features%20are%20on%20the%20way...%20%0D%0Afollow%20@thecyberw0rld%20for%20getting%20updates%20and%20for%20cyber%20security%20content."} rel="noopener" target="_blank" smooth={true} duration={500} spy={true} exact="true" offset={-80}> */}
                             {/*    <FaTwitter/> */}
                             {/*    <Text> Share </Text> */}

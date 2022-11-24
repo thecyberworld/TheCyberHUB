@@ -21,7 +21,7 @@ export const PrimaryFilledButton = styled.button`
     align-items: center;
     transition: all 0.2s ease-in-out;
     color: black;
-    width: ${({ width }) => (width || "auto")};
+    width: ${({ width }) => width || "auto"};
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -60,9 +60,9 @@ export const GlowingButton = styled(LinkRouter)`
 
     &:hover {
         transition: all 0.2s ease-in-out;
+        border-bottom: 5px solid #4cc23e;
         background: white;
         color: #000;
-        border: 1px solid #20c20e;
         //scale: 1.1;
     }
 `;

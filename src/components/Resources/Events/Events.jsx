@@ -1,17 +1,27 @@
 import React from "react";
 import EventsData from "./EventsData/EventsData";
 import CTFData from "../../CyberGames/CTF/CTFData";
-import PastEvents from "./PastEvents/PastEvents";
-import OnGoingEvents from "./OnGoingEvents/OnGoingEvents";
-import UpComingEvents from "./UpComingEvents/UpComingEvents";
 import {
     EventsContainer,
-    MainEventsContainer,
+    TodayEventContainer,
     EventsHeading,
     OnGoingEventsContainer,
     UpComingEventsContainer,
     PastEventsContainer,
     RouterLink,
+    EventsHeader,
+    EventsImage,
+    EventLink,
+    EventsHeadingMedium,
+    EventsSubHeading,
+    EventLocation,
+    EventsVenue,
+    UpComingEventsCardContainer,
+    EventsHeadingSmall,
+    PastEventsCardContainer,
+    OnGoingEventsCardContainer,
+    UpPastEventContainer,
+    UpComingEvents,
 } from "./EventsElement";
 import { encodeURL } from "../../Learn/Blogs/util";
 
@@ -27,15 +37,13 @@ const Events = () => {
     const allEvents = [...EventsData, ...CTFData].sort(
         (a, b) => new Date(a.validationDate) - new Date(b.validationDate),
     );
-
     const pastEvents = allEvents.filter((event) => new Date(event.validationDate) < new Date()).reverse();
     const tenPastEvents = pastEvents.slice(0, 8);
-
     const todayDate = new Date(Date());
 
     return (
         <EventsContainer>
-            <MainEventsContainer>
+            <TodayEventContainer>
                 {allEvents.some((event) => formatDate(todayDate) === formatDate(new Date(event.validationDate))) ? (
                     <>
                         <EventsHeading>Today Events</EventsHeading>
@@ -43,71 +51,98 @@ const Events = () => {
                             {allEvents.map((event, id) =>
                                 formatDate(todayDate) === formatDate(new Date(event.validationDate)) ? (
                                     <RouterLink key={id} to={{ pathname: `${encodeURL(event.title)}` }}>
-                                        <OnGoingEvents
-                                            key={id}
-                                            title={event.title}
-                                            image={event.image}
-                                            venue={event.venue}
-                                            location={event.location}
-                                            url={event.url}
-                                            date={event.date}
-                                            content={event.content}
-                                        />
+                                        <OnGoingEventsCardContainer>
+                                            <EventsHeader>
+                                                <EventsImage
+                                                    src={event.image}
+                                                    about="Event Image"
+                                                    width="100%"
+                                                    height="180px"
+                                                />
+                                                <EventsHeadingSmall> {event.title} </EventsHeadingSmall>
+                                                <EventsSubHeading>
+                                                    <EventLocation> {event.location} </EventLocation>
+                                                    {event.date} • <EventsVenue> {event.venue} </EventsVenue>
+                                                </EventsSubHeading>
+                                            </EventsHeader>
+                                        </OnGoingEventsCardContainer>
                                     </RouterLink>
                                 ) : null,
                             )}
                         </OnGoingEventsContainer>
                     </>
-                ) : null}
-
-                {allEvents.some((event) => formatDate(todayDate) < formatDate(new Date(event.validationDate))) ? (
-                    <>
-                        <EventsHeading>Up Coming Events</EventsHeading>
-                        <UpComingEventsContainer>
-                            {allEvents.map((event, id) =>
-                                formatDate(todayDate) < formatDate(new Date(event.validationDate)) ? (
-                                    <RouterLink key={id} to={{ pathname: `${encodeURL(event.title)}` }}>
-                                        <UpComingEvents
-                                            key={id}
-                                            title={event.title}
-                                            image={event.image}
-                                            venue={event.venue}
-                                            location={event.location}
-                                            url={event.url}
-                                            date={event.date}
-                                            content={event.content}
-                                        />
-                                    </RouterLink>
-                                ) : null,
-                            )}
-                        </UpComingEventsContainer>
-                    </>
                 ) : (
-                    <>
-                        <EventsHeading>No Up Coming Events</EventsHeading>
-                    </>
+                    <>Next Event is on {allEvents[0].validationDate}</>
                 )}
-            </MainEventsContainer>
+            </TodayEventContainer>
 
-            <PastEventsContainer>
-                <EventsHeading>Past Events</EventsHeading>
-                {tenPastEvents.map((event, id) =>
-                    formatDate(todayDate) > formatDate(new Date(event.validationDate)) ? (
-                        <RouterLink key={id} to={{ pathname: `${encodeURL(event.title)}` }}>
-                            <PastEvents
-                                key={id}
-                                title={event.title}
-                                image={event.image}
-                                venue={event.venue}
-                                location={event.location}
-                                url={event.url}
-                                date={event.date}
-                                content={event.content}
-                            />
-                        </RouterLink>
-                    ) : null,
-                )}
-            </PastEventsContainer>
+            <UpPastEventContainer>
+                <UpComingEvents>
+                    {allEvents.some((event) => formatDate(todayDate) < formatDate(new Date(event.validationDate))) ? (
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <EventsHeading>Up Coming Events</EventsHeading>
+                            <UpComingEventsContainer>
+                                {allEvents.map((event, id) =>
+                                    formatDate(todayDate) < formatDate(new Date(event.validationDate)) ? (
+                                        <RouterLink key={id} to={{ pathname: `${encodeURL(event.title)}` }}>
+                                            <UpComingEventsCardContainer>
+                                                <EventsHeader>
+                                                    <EventsImage
+                                                        src={event.image}
+                                                        about="Event Image"
+                                                        width="100%"
+                                                        height="180px"
+                                                    />
+                                                    <EventLink href={event.url} target={"_blank"}>
+                                                        <EventsHeadingMedium> {event.title} </EventsHeadingMedium>
+                                                    </EventLink>
+                                                    <EventsSubHeading>
+                                                        <EventLocation> {event.location} </EventLocation>
+                                                        {event.date} • <EventsVenue> {event.venue} </EventsVenue>
+                                                    </EventsSubHeading>
+                                                </EventsHeader>
+                                            </UpComingEventsCardContainer>
+                                        </RouterLink>
+                                    ) : null,
+                                )}
+                            </UpComingEventsContainer>
+                        </div>
+                    ) : (
+                        <>
+                            <EventsHeading>No Up Coming Events</EventsHeading>
+                        </>
+                    )}
+                </UpComingEvents>
+
+                <PastEventsContainer>
+                    <EventsHeading>Past Events</EventsHeading>
+                    {tenPastEvents.map(
+                        (event, id) =>
+                            formatDate(todayDate) > formatDate(new Date(event.validationDate)) ? (
+                                <RouterLink key={id} to={{ pathname: `${encodeURL(event.title)}` }}>
+                                    <PastEventsCardContainer>
+                                        <EventsHeader>
+                                            <EventsImage
+                                                src={event.image}
+                                                about="Event Image"
+                                                width="100%"
+                                                height="180px"
+                                            />
+                                            <EventsHeadingSmall> {event.title} </EventsHeadingSmall>
+                                            <EventsSubHeading>
+                                                <EventLocation> {event.location} </EventLocation>
+                                                {event.date} • <EventsVenue> {event.venue} </EventsVenue>
+                                            </EventsSubHeading>
+                                        </EventsHeader>
+                                    </PastEventsCardContainer>
+                                </RouterLink>
+                            ) : null,
+                        // (<>
+                        //     <EventsHeading>No Past Events</EventsHeading>
+                        // </>)
+                    )}
+                </PastEventsContainer>
+            </UpPastEventContainer>
         </EventsContainer>
     );
 };

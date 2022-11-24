@@ -20,8 +20,8 @@ export const RouterLink = styled(Link)`
     text-decoration: none;
 `;
 
-export const MainEventsContainer = styled.div`
-    width: 70%;
+export const TodayEventContainer = styled.div`
+    width: 100%;
 
     @media screen and (max-width: 768px) {
         width: 100%;
@@ -45,19 +45,12 @@ export const EventLocation = styled.div`
     margin-bottom: 5px;
 `;
 export const OnGoingEventsContainer = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: self-start;
     justify-content: start;
-`;
-
-export const UpComingEventsContainer = styled.div`
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
 `;
 
 export const EventsHeading = styled.h1`
@@ -91,16 +84,13 @@ export const EventLink = styled.a`
 
 export const EventsHeader = styled.div``;
 export const PastEventsContainer = styled.div`
-    width: 30%;
+    max-width: 30%;
+    width: auto;
     height: auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-
-    @media screen and (max-width: 768px) {
-        width: auto;
-    }
 `;
 
 export const EventComponent = styled.div`
@@ -148,7 +138,7 @@ export const EventVenue = styled.div`
 
 export const EventTitle = styled.h1``;
 
-export const EventContent = styled.p`
+export const EventContent = styled.div`
     font-family: "Roboto Mono", monospace;
     text-align: left;
     padding: 0 50px 0 10px;
@@ -156,3 +146,73 @@ export const EventContent = styled.p`
     font-size: 20px;
 `;
 export const EventDate = styled.h3``;
+
+export const UpPastEventContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+`;
+
+export const UpComingEvents = styled.div`
+    max-width: 70%;
+    width: auto;
+`;
+export const UpComingEventsContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`;
+export const UpComingEventsCardContainer = styled.div`
+    max-width: 348px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    height: auto;
+    border: 1px solid #ffffff0d;
+    border-radius: 10px;
+    background-color: #090a0a;
+    margin: 0 20px 20px 0;
+    padding: 15px 20px;
+
+    @media screen and (max-width: 768px) {
+        margin: 0 0 20px 0;
+        width: 100%;
+    }
+`;
+
+export const OnGoingEventsCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    text-align: left;
+    height: auto;
+    width: 100%;
+    border: 1px solid #ffffff0d;
+    border-radius: 10px;
+    background-color: #090a0a;
+    margin: 0 auto 20px auto;
+    padding: 15px 20px;
+
+    @media screen and (max-width: 768px) {
+        margin: 0 0 20px 0;
+    }
+`;
+
+export const PastEventsCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    width: 20em;
+    border: 1px solid #ffffff0d;
+    border-radius: 10px;
+    background-color: #090a0a;
+    margin: 0 0 20px 0;
+    padding: 15px 15px;
+    @media screen and (max-width: 768px) {
+        width: 100%;
+    }
+`;
