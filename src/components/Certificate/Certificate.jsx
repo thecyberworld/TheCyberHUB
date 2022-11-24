@@ -74,6 +74,8 @@ function getKindText(kind) {
             return "winning";
         case "participation":
             return "participating in";
+        case "rooted":
+            return "Rooting";
         default:
             return "";
     }
