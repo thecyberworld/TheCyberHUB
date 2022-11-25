@@ -41,3 +41,10 @@ export { default as Spinner } from "./MixComponents/Spinner/Spinner";
 export { default as AllBlogs } from "./Learn/Blogs/Blogs";
 export { default as ViewBlog } from "./Learn/Blogs/ViewBlog";
 export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";
+
+export { default as Homepage } from "../pages/Homepage";
+export { default as ScrollToTop } from "./MixComponents/ScrollToTop";
+export { default as Registration } from "../pages/Registration";
+
+export { default as CertificateCard } from "./Certificate/CertificateCard";
+export { default as CertificatePage } from "./Certificate/CertificatePage";

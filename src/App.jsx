@@ -5,9 +5,6 @@ import {
     Routes,
     // useLocation
 } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import ScrollToTop from "./components/ScrollToTop";
-import Registration from "./pages/Registration";
 import {
     Navbar,
     Sidebar,
@@ -25,8 +22,6 @@ import {
     Community,
     About,
     CTF,
-    CyberGames,
-    OSINTGame,
     Footer,
     Sponsors,
     OpensourceProjects,
@@ -34,6 +29,11 @@ import {
     AllBlogs,
     ViewBlog,
     Roadmap,
+    Homepage,
+    ScrollToTop,
+    Registration,
+    CertificateCard,
+    CertificatePage,
 } from "./components";
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
 
@@ -79,9 +79,11 @@ const App = () => {
                             <Route exact path={"/about"} element={<About />} />
                             <Route exact path={"/projects"} element={<OpensourceProjects />} />
 
-                            <Route exact path={"/CyberGames"} element={<CyberGames />} />
-                            <Route exact path={"/CyberGames/CTF"} element={<CTF />} />
-                            <Route exact path={"/CyberGames/OSINTGame"} element={<OSINTGame />} />
+                            <Route exact path={"/ctf"}>
+                                <Route index element={<CTF />} />
+                                <Route path={"certificate"} element={<CertificatePage />} />
+                                <Route path={"certificate/:id"} element={<CertificateCard />} />
+                            </Route>
 
                             <Route exact path={"/learn/*"}>
                                 <Route index path={"learn"} element={<Learn />} />

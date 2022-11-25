@@ -8,7 +8,6 @@ const CTF = () => {
         <CTFContainer>
             <GetCertificateContainer>
                 <Heading> CTFs </Heading>
-                <Heading> OnGoing CTF </Heading>
                 <Heading> UpComing CTFs </Heading>
                 <Heading> Past CTFs </Heading>
 
