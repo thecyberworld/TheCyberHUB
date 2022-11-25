@@ -4,7 +4,7 @@ export { default as Sidebar } from "./Homepage/Navbar/Sidebar/Sidebar";
 export { default as Hero } from "./Homepage/Hero/Hero";
 export { default as Info } from "./Homepage/Info/Info";
 export { default as Socials } from "./Homepage/Socials/Socials";
-export { default as Community } from "./Homepage/Community/Community";
+export { default as Community } from "./Community/Community";
 export { default as Sponsors } from "./Homepage/Sponsors/Sponsors";
 
 // Learn //

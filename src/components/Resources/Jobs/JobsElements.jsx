@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Button, Header } from "../../Homepage/Community/CommunityElements";
+import { Button, Header } from "../../Community/CommunityElements";
 import { FaChevronDown } from "react-icons/fa";
 
 export const ScrollButton = styled(Button)`
