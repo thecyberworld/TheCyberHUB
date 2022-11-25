@@ -18,6 +18,7 @@ import {
 const InfoSection = ({
     id,
     idTo,
+    idTo2,
     buttonType,
     link,
     lightBg,
@@ -51,7 +52,7 @@ const InfoSection = ({
                                     {buttonType === "router" && (
                                         // <Link to='/resources'>
                                         <RouterButton
-                                            to="/resources"
+                                            to={link}
                                             primary={primary ? "true" : ""}
                                             dark={dark ? 1 : 0}
                                             dark2={dark2 ? 1 : 0}
@@ -78,7 +79,7 @@ const InfoSection = ({
 
                                     {buttonLabel2 && buttonType === "scroll" && (
                                         <Button
-                                            to={idTo}
+                                            to={idTo2}
                                             smooth={true}
                                             duration={500}
                                             spy={true}
