@@ -6,7 +6,7 @@ import {
     // useLocation
 } from "react-router-dom";
 import Homepage from "./pages/Homepage";
-import ScrollToTop from "./components/MixComponents/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 import Registration from "./pages/Registration";
 import {
     Navbar,
@@ -25,18 +25,17 @@ import {
     Community,
     About,
     CTF,
+    CyberGames,
+    OSINTGame,
     Footer,
     Sponsors,
-    CyberGames,
+    OpensourceProjects,
+    Spinner,
+    AllBlogs,
+    ViewBlog,
+    Roadmap,
 } from "./components";
-import OpensourceProjects from "./components/OpensourceProjects/OpensourceProjects";
-import Spinner from "./components/MixComponents/Spinner/Spinner";
-import AllBlogs from "./components/Learn/Blogs/Blogs";
-import ViewBlog from "./components/Learn/Blogs/ViewBlog";
-import Roadmap from "./components/Learn/Roadmaps/Roadmap";
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
-import CertificateCard from "./components/Certificate/CertificateCard";
-import CertificatePage from "./components/Certificate/CertificatePage";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -81,12 +80,8 @@ const App = () => {
                             <Route exact path={"/projects"} element={<OpensourceProjects />} />
 
                             <Route exact path={"/CyberGames"} element={<CyberGames />} />
-
-                            <Route exact path={"/ctf"}>
-                                <Route index element={<CTF />} />
-                                <Route path={"certificate"} element={<CertificatePage />} />
-                                <Route path={"certificate/:id"} element={<CertificateCard />} />
-                            </Route>
+                            <Route exact path={"/CyberGames/CTF"} element={<CTF />} />
+                            <Route exact path={"/CyberGames/OSINTGame"} element={<OSINTGame />} />
 
                             <Route exact path={"/learn/*"}>
                                 <Route index path={"learn"} element={<Learn />} />
@@ -122,9 +117,9 @@ const App = () => {
                             <Route exact path={"/register"} element={<Registration />}></Route>
                         </Routes>
                     </ScrollToTop>
-                    {/* {showFooter() &&
-                    } */}
+                    {/* {showFooter() && */}
                     <Footer />
+                    {/* } */}
                 </Container>
             )}
         </div>
