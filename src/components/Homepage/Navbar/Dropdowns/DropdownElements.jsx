@@ -24,10 +24,15 @@ export const DropdownItemsContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     text-align: center;
+    height: max-content;
     margin: 0 auto;
     margin-bottom: 1rem;
-    max-width: 50rem;
-    height: auto;
+    background: transparent;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 255), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(100px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  
 `;
 
 export const DropdownItemContainer = styled.div`
@@ -35,7 +40,7 @@ export const DropdownItemContainer = styled.div`
     position: relative;
     margin: 1rem;
     width: 200px;
-
+    
     &:hover {
         cursor: pointer;
     }

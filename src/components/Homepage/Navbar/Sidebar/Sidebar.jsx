@@ -54,7 +54,7 @@ const Sidebar = (props) => {
         toggle && (
             <SidebarContainer isOpen={isOpen}>
                 <Icon onClick={toggle}>
-                    <CloseIcon />
+                    <CloseIcon onClick={() => setDrop(false)} />
                 </Icon>
                 <SidebarWrapper>
                     <SidebarMenu>
@@ -87,15 +87,24 @@ const Sidebar = (props) => {
                                     {title}
                                 </SidebarLink>
                                 {dropdown === "learn" && learnClick && drop && (
-                                    <Dropdown isLearn={true} toggle={setOnClosed} closed={onClosed} isOpen={isOpen} />
+                                    <>
+                                        <Dropdown
+                                            isLearn={true}
+                                            toggle={setOnClosed}
+                                            closed={onClosed}
+                                            isOpen={isOpen}
+                                        />
+                                    </>
                                 )}
                                 {dropdown === "resources" && resourcesClick && drop && (
-                                    <Dropdown
-                                        isResources={true}
-                                        toggle={setOnClosed}
-                                        closed={onClosed}
-                                        isOpen={isOpen}
-                                    />
+                                    <>
+                                        <Dropdown
+                                            isResources={true}
+                                            toggle={setOnClosed}
+                                            closed={onClosed}
+                                            isOpen={isOpen}
+                                        />
+                                    </>
                                 )}
                             </NavItem>
                         ))}
