@@ -1,5 +1,4 @@
 import React from "react";
-import { CloseIcon } from "../Sidebar/SidebarElements";
 import {
     DropdownDesc,
     DropdownItem,
@@ -7,6 +6,7 @@ import {
     DropdownRouterLink,
     DropdownItemContainer,
     DropdownItemsContainer,
+    SideCloseIcon,
 } from "./DropdownElements";
 
 export default function Dropdown({ isOpen, toggle, closed, isResources, isLearn, closeSidebar }) {
@@ -31,17 +31,15 @@ export default function Dropdown({ isOpen, toggle, closed, isResources, isLearn,
         closed && (
             <DropdownContainer isOpen={isOpen}>
                 <DropdownItemsContainer>
-                <CloseIcon style={{marginLeft: "95%", height: 25, width: 20,}}/>
+                    <SideCloseIcon />
                     {isLearn === true &&
                         learn.map((i, id) => (
                             <DropdownItemContainer key={id}>
                                 <DropdownRouterLink to={i.to} onClick={() => toggle(false)}>
                                     <DropdownItem> {i.title} </DropdownItem>
                                     <DropdownDesc> {i.desc} </DropdownDesc>
-                                   
                                 </DropdownRouterLink>
                             </DropdownItemContainer>
-                            
                         ))}
                     {isResources === true &&
                         resources.map((i, id) => (

@@ -1,5 +1,17 @@
 import styled from "styled-components";
 import { Link as LinkRouter } from "react-router-dom";
+import { CloseIcon } from "../Sidebar/SidebarElements";
+
+export const SideCloseIcon = styled(CloseIcon)`
+    margin-left: 95%;
+    height: 25px;
+    width: 20px;
+    cursor: pointer;
+
+    @media screen and (min-width: 900px) {
+        display: none;
+    }
+`;
 
 export const DropdownContainer = styled.div`
     border-radius: 0;
@@ -24,15 +36,10 @@ export const DropdownItemsContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     text-align: center;
-    height: max-content;
+    max-width: 50rem;
+    height: auto;
     margin: 0 auto;
     margin-bottom: 1rem;
-    background: transparent;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 255), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(100px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  
 `;
 
 export const DropdownItemContainer = styled.div`
@@ -40,7 +47,7 @@ export const DropdownItemContainer = styled.div`
     position: relative;
     margin: 1rem;
     width: 200px;
-    
+
     &:hover {
         cursor: pointer;
     }
