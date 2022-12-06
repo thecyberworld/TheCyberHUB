@@ -36,7 +36,7 @@ export default function Dropdown({ isOpen, toggle, closed, isResources, isLearn,
                         learn.map((i, id) => (
                             <DropdownItemContainer key={id}>
                                 <DropdownRouterLink to={i.to} onClick={() => toggle(false)}>
-                                    <DropdownItem onClick={() => closeSidebar(true)}> {i.title} </DropdownItem>
+                                    <DropdownItem> {i.title} </DropdownItem>
                                     <DropdownDesc> {i.desc} </DropdownDesc>
                                    
                                 </DropdownRouterLink>
