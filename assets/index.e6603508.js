@@ -1153,7 +1153,6 @@ Error generating stack: `+o.message+`
     width: 100%;
     justify-content: center;
     align-items: center;
-    border: 1px solid #ff0000;
 `,xT=w(S5)`
     margin: 3.5px 5px 0 0;
     font-size: 20px;
@@ -1169,8 +1168,6 @@ Error generating stack: `+o.message+`
     flex-direction: column;
     color: #d9d9d9;
     justify-content: center;
-    align-items: start;
-    border: 1px solid #ff0000;
 `,CT=w.div`
     display: flex;
     flex-direction: column;
@@ -1228,9 +1225,10 @@ Error generating stack: `+o.message+`
     display: flex;
     justify-content: flex-start;
     text-align: left;
-    align-items: start;
+    //align-items: self-start;
 
     color: #d9d9d9;
+    //width: 100%;
     width: auto;
     margin: 15px auto;
     font-weight: 500;
