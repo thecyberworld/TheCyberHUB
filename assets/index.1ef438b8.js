@@ -191,7 +191,7 @@ Error generating stack: `+o.message+`
     @media screen and (max-width: 900px) {
         display: none;
     }
-`,_w=w.li`
+`,_w=w.p`
     height: 80px;
 `,J_=w(pt)`
     color: #fff;
@@ -371,6 +371,14 @@ Error generating stack: `+o.message+`
     height: auto;
     margin: 0 auto;
     margin-bottom: 1rem;
+
+    @media screen and (max-width: 900px) {
+        height: max-content;
+        background: #000000;
+        backdrop-filter: blur(1000px);
+        -webkit-backdrop-filter: blur(1000px);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
 `,ug=w.div`
     color: black;
     position: relative;
@@ -1145,6 +1153,7 @@ Error generating stack: `+o.message+`
     width: 100%;
     justify-content: center;
     align-items: center;
+    border: 1px solid #ff0000;
 `,xT=w(S5)`
     margin: 3.5px 5px 0 0;
     font-size: 20px;
@@ -1153,22 +1162,22 @@ Error generating stack: `+o.message+`
     margin: 10px 10px 0 0;
     font-size: 6px;
 `,ST=w.hr`
-    width: ;
+    //width: 100%;
     color: #2a2a2a;
 `,kT=w.div`
-    margin: 50px 0 100px 150px;
     display: flex;
     flex-direction: column;
     color: #d9d9d9;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    border: 1px solid #ff0000;
 `,CT=w.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     color: #d9d9d9;
     margin: 15px 0;
-    width: 100%;
+    border: 1px solid #ff0000;
 `,_T=w.p`
     display: flex;
     justify-content: flex-start;
@@ -1177,7 +1186,7 @@ Error generating stack: `+o.message+`
     margin: 5px auto;
     margin-left: 50px;
     min-width: 20px;
-    width: 100%;
+    width: auto;
     color: #d9d9d9;
     font-size: 18px;
 `,TT=w.div`
@@ -1186,6 +1195,7 @@ Error generating stack: `+o.message+`
     justify-content: flex-start;
     text-align: left;
     align-items: start;
+    width: 100%;
 
     //width: 30em;
     //text-decoration: none;
@@ -1221,7 +1231,7 @@ Error generating stack: `+o.message+`
     align-items: start;
 
     color: #d9d9d9;
-    width: 100%;
+    width: auto;
     margin: 15px auto;
     font-weight: 500;
     letter-spacing: 0.1rem;
@@ -1287,7 +1297,7 @@ Error generating stack: `+o.message+`
 `;const PT=w(pt)`
     text-decoration: none;
 `,RT=w.a`
-    text-decoration: dashed underline #faf089; ;
+    text-decoration: dashed underline #faf089;
 `;w.p`
     width: 40%;
     min-width: 20px;
@@ -3043,7 +3053,7 @@ If your application works on the development machine, in the same way it will wo
         object-fit: contain;
         border-radius: 5px;
     }
-`,iL=()=>{const{title:e}=Ya(),t=bx.find(n=>Er(n.title).toLowerCase()===e.toLowerCase());return S($,{children:[S(rL,{children:[c("img",{className:"viewImg",src:yx,alt:"Blog Image"}),c("h1",{children:t.title}),S("h3",{children:[t.author," | ",t.date]}),c("p",{children:t.content})]}),c(wx,{children:t.tags.map((n,r)=>c(xx,{children:n},r))})]})},oL=()=>{const{title:e}=Ya(),t=ll.find(n=>Er(n.title).toLowerCase()===e.toLowerCase());return S(wT,{children:[c("h1",{children:t.title}),c(kT,{children:t==null?void 0:t.details.map((n,r)=>S(CT,{children:[S(OT,{children:[" ",c(xT,{})," ",n.section]}),n==null?void 0:n.resources.map((i,o)=>c(RT,{href:i.url,target:"_blank",children:c(TT,{children:S(_T,{children:[c(bT,{})," ",i.title]})})},o))]},r))}),c(ST,{})]})},aL="/assets/open-source-contribution.1799e717.svg",sL="/assets/undraw_public_discussion_re_w9up.3976d6d4.svg",lL="/assets/undraw_firmware_re_fgdy.9784d13c.svg",uL={id:"about",idTo:"community",idTo2:"contribute",buttonType:"scroll",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Thecyberworld About",headline:"About Thecyberworld",description:S($,{children:[c(To,{})," Thecyberhub Website, App, Extension, Bot are by @thecyberworld community ",c("br",{}),c("br",{}),c(To,{})," Community with more than 100,000 members. ",c("br",{}),c("br",{}),c(To,{})," Community's goal is to help new folks to get started with open-source and cyber-security.",c("br",{}),c("br",{}),c(To,{})," Open-source projects. ",c("br",{}),c("br",{}),c(To,{})," A Hub of Cyber Security. ",c("br",{}),c("br",{})]}),buttonLabel:"Join community",buttonLabel2:"Contribute to Opensource",imgStart:!1,img:Ew,alt:"Car",dark:!0,primary:!0,darkText:!1},cL={id:"resources",idTo:"resources",buttonType:"router",link:"/learn/roadmaps",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Resources",headline:"Cyber Sec Resources",description:S($,{children:["Explore cyber security resources. ",c("br",{}),"Courses, ctfs, events, blogs, tools, writeups, roadmaps, and much more."]}),buttonLabel:S($,{children:["Explore",c(f5,{children:c(x5,{})})]}),imgStart:!0,img:lL,alt:"ResourcesSvg",dark:!0,primary:!0,darkText:!1},dL={id:"community",idTo:"join",buttonType:"router",link:"/community",link2:"https://www.linktree.com/thecyberworld",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Join our About",headline:"Over 100,0000 members",description:c($,{children:"Community's goal is to help new folks to get started with open-source, cyber-security and to help existing folks get more involved in the open-source and cyber-security communities."}),buttonLabel:"Join community",imgStart:!1,img:sL,alt:"Secure data",dark:!0,primary:!0,darkText:!1},fL={id:"contribute",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Contribute to Thecyberworld",headline:"Want to contribute?",description:c($,{children:"That's great! We welcome all sorts of contributions from raising issues, starting discussions, adding documentation, making pull requests and so much more! Help each other and make improvements! Check the contributing guidelines in each repository for guidance on how to get started."}),buttonLabel:S($,{children:[c(d5,{children:c(wp,{})}),"Contribute now"]}),imgStart:!1,img:aL,alt:"Secure data",dark:!0,primary:!0,darkText:!1},hL=()=>S($,{children:[c(I5,{}),c(cd,{...uL}),c(cd,{...cL}),c(c9,{...fL}),c(cd,{...dL}),c(iT,{})]}),pL=e=>{const t=Wa();return P.exports.useEffect(()=>{window.scrollTo(0,0)},[t]),c($,{children:e.children})},mL=w.div`
+`,iL=()=>{const{title:e}=Ya(),t=bx.find(n=>Er(n.title).toLowerCase()===e.toLowerCase());return S($,{children:[S(rL,{children:[c("img",{className:"viewImg",src:yx,alt:"Blog Image"}),c("h1",{children:t.title}),S("h3",{children:[t.author," | ",t.date]}),c("p",{children:t.content})]}),c(wx,{children:t.tags.map((n,r)=>c(xx,{children:n},r))})]})},oL=()=>{const{title:e}=Ya(),t=ll.find(n=>Er(n.title).toLowerCase()===e.toLowerCase());return S(wT,{children:[c("h1",{children:t.title}),c(kT,{children:t==null?void 0:t.details.map((n,r)=>S(CT,{children:[S(OT,{children:[c(xT,{})," ",n.section]}),n==null?void 0:n.resources.map((i,o)=>c(RT,{href:i.url,target:"_blank",children:c(TT,{children:S(_T,{children:[c(bT,{})," ",i.title]})})},o))]},r))}),c(ST,{})]})},aL="/assets/open-source-contribution.1799e717.svg",sL="/assets/undraw_public_discussion_re_w9up.3976d6d4.svg",lL="/assets/undraw_firmware_re_fgdy.9784d13c.svg",uL={id:"about",idTo:"community",idTo2:"contribute",buttonType:"scroll",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Thecyberworld About",headline:"About Thecyberworld",description:S($,{children:[c(To,{})," Thecyberhub Website, App, Extension, Bot are by @thecyberworld community ",c("br",{}),c("br",{}),c(To,{})," Community with more than 100,000 members. ",c("br",{}),c("br",{}),c(To,{})," Community's goal is to help new folks to get started with open-source and cyber-security.",c("br",{}),c("br",{}),c(To,{})," Open-source projects. ",c("br",{}),c("br",{}),c(To,{})," A Hub of Cyber Security. ",c("br",{}),c("br",{})]}),buttonLabel:"Join community",buttonLabel2:"Contribute to Opensource",imgStart:!1,img:Ew,alt:"Car",dark:!0,primary:!0,darkText:!1},cL={id:"resources",idTo:"resources",buttonType:"router",link:"/learn/roadmaps",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Resources",headline:"Cyber Sec Resources",description:S($,{children:["Explore cyber security resources. ",c("br",{}),"Courses, ctfs, events, blogs, tools, writeups, roadmaps, and much more."]}),buttonLabel:S($,{children:["Explore",c(f5,{children:c(x5,{})})]}),imgStart:!0,img:lL,alt:"ResourcesSvg",dark:!0,primary:!0,darkText:!1},dL={id:"community",idTo:"join",buttonType:"router",link:"/community",link2:"https://www.linktree.com/thecyberworld",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Join our About",headline:"Over 100,0000 members",description:c($,{children:"Community's goal is to help new folks to get started with open-source, cyber-security and to help existing folks get more involved in the open-source and cyber-security communities."}),buttonLabel:"Join community",imgStart:!1,img:sL,alt:"Secure data",dark:!0,primary:!0,darkText:!1},fL={id:"contribute",lightBg:!1,lightText:!0,lightTextDesc:!0,topLine:"Contribute to Thecyberworld",headline:"Want to contribute?",description:c($,{children:"That's great! We welcome all sorts of contributions from raising issues, starting discussions, adding documentation, making pull requests and so much more! Help each other and make improvements! Check the contributing guidelines in each repository for guidance on how to get started."}),buttonLabel:S($,{children:[c(d5,{children:c(wp,{})}),"Contribute now"]}),imgStart:!1,img:aL,alt:"Secure data",dark:!0,primary:!0,darkText:!1},hL=()=>S($,{children:[c(I5,{}),c(cd,{...uL}),c(cd,{...cL}),c(c9,{...fL}),c(cd,{...dL}),c(iT,{})]}),pL=e=>{const t=Wa();return P.exports.useEffect(()=>{window.scrollTo(0,0)},[t]),c($,{children:e.children})},mL=w.div`
     display: flex;
     align-items: center;
     height: 100vh;
