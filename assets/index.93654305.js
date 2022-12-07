@@ -2868,7 +2868,7 @@ U.version="2.29.4";eO(Pe);U.fn=F;U.min=H8;U.max=W8;U.now=Y8;U.utc=En;U.unix=v6;U
     align-items: center;
     width: 100%;
     height: 100vh;
-`,J9=({loading:e,key:t})=>c("div",{children:S(K9,{children:[c(G9,{color:"#20c20e",loading:e,size:50},t),","]})}),yx="/assets/img.c39472f8.webp",X9=w.div`
+`,J9=({loading:e,key:t})=>c("div",{children:c(K9,{children:c(G9,{color:"#20c20e",loading:e,size:50},t)})}),yx="/assets/img.c39472f8.webp",X9=w.div`
     display: flex;
     flex-direction: column;
     justify-content: left;
