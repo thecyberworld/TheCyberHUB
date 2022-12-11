@@ -22,17 +22,15 @@ export const CircleIcon = styled(BiCircle)`
     font-size: 6px;
 `;
 export const HrLine = styled.hr`
-    width: ;
+    //width: 100%;
     color: #2a2a2a;
 `;
 
 export const RoadmapDetailsContainer = styled.div`
-    margin: 50px 0 100px 150px;
     display: flex;
     flex-direction: column;
     color: #d9d9d9;
     justify-content: center;
-    align-items: center;
 `;
 
 export const RoadmapDetails = styled.div`
@@ -41,7 +39,6 @@ export const RoadmapDetails = styled.div`
     align-items: flex-start;
     color: #d9d9d9;
     margin: 15px 0;
-    width: 100%;
 `;
 
 export const RoadmapContentHeading = styled.p`
@@ -52,16 +49,18 @@ export const RoadmapContentHeading = styled.p`
     margin: 5px auto;
     margin-left: 50px;
     min-width: 20px;
-    width: 100%;
+    width: auto;
     color: #d9d9d9;
     font-size: 18px;
 `;
+
 export const RoadmapDetailsCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: left;
     align-items: start;
+    width: 100%;
 
     //width: 30em;
     //text-decoration: none;
@@ -91,14 +90,16 @@ export const RoadmapDetailsCard = styled.div`
     //    width: 100%;
     //}
 `;
+
 export const RoadmapSectionHeading = styled.h3`
     display: flex;
     justify-content: flex-start;
     text-align: left;
-    align-items: start;
+    //align-items: self-start;
 
     color: #d9d9d9;
-    width: 100%;
+    //width: 100%;
+    width: auto;
     margin: 15px auto;
     font-weight: 500;
     letter-spacing: 0.1rem;
@@ -180,9 +181,11 @@ export const RoadmapInlineCard = styled.div`
 export const RouterLink = styled(Link)`
     text-decoration: none;
 `;
+
 export const RedirectLink = styled.a`
-    text-decoration: dashed underline #faf089; ;
+    text-decoration: dashed underline #faf089;
 `;
+
 export const RoadmapsHeading = styled.p`
     width: 40%;
     min-width: 20px;
