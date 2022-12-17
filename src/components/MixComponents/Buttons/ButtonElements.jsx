@@ -21,7 +21,7 @@ export const PrimaryFilledButton = styled.button`
     align-items: center;
     transition: all 0.2s ease-in-out;
     color: black;
-    width: ${({ width }) => (width || "auto")};
+    width: ${({ width }) => width || "auto"};
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -159,15 +159,13 @@ export const RouterButton = styled(RouterLink)`
 `;
 
 export const FilledButton = styled(RouterButton)`
-    background: #20c20e;
-    color: white;
-
     &:hover {
         transition: all 0.2s ease-in-out;
         background: #20c20e;
         color: black;
         border-color: #343434;
         font-size: 18px;
+        border-bottom: 1px solid whitesmoke;
     }
 `;
 

@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../features/auth/authSlice";
 
-import { cyberNewsApi } from "../services/cyberNewsApi";
+// import { cyberNewsApi } from "../services/cyberNewsApi";
 
 export default configureStore({
     reducer: {
-        [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
+        auth: authReducer,
+        // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },
 });

@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import {
-    Route,
-    Routes,
-    // useLocation
-} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import ScrollToTop from "./components/ScrollToTop";
-import Registration from "./pages/Registration";
+import Register from "./pages/Register";
 import {
     Navbar,
     Sidebar,
@@ -36,10 +35,12 @@ import {
     Roadmap,
 } from "./components";
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    // const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
     useEffect(() => {
         setLoading(true);
@@ -48,9 +49,9 @@ const App = () => {
         }, 3000);
     }, []);
 
-    // const showFooter = () => {
-    //     return pathname !== "/register";
-    // };
+    const showFooter = () => {
+        return pathname !== "/register";
+    };
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -61,14 +62,20 @@ const App = () => {
                 <Spinner />
             ) : (
                 <Container>
-                    <>
-                        <Sidebar isOpen={isOpen} toggle={toggle} />
-                        <Navbar toggle={toggle} />
-                    </>
+                    {showFooter() && (
+                        <>
+                            <Sidebar isOpen={isOpen} toggle={toggle} />
+                            <Navbar toggle={toggle} />
+                        </>
+                    )}
 
                     <ScrollToTop>
                         <Routes>
                             <Route index exact path={"/"} element={<Homepage />} />
+
+                            <Route exact path={"/dashboard"} element={<Dashboard />} />
+                            <Route exact path={"/login"} element={<Login />} />
+                            <Route exact path={"/register"} element={<Register />}></Route>
 
                             <Route path={"/events/*"}>
                                 <Route index element={<Events />} />
@@ -113,15 +120,12 @@ const App = () => {
                                 <Route path={"interviewQuestions"} element={<InterviewQuestions />} />
                                 <Route path={"cyberNews"} element={<CyberNews />} />
                             </Route>
-
-                            <Route exact path={"/register"} element={<Registration />}></Route>
                         </Routes>
                     </ScrollToTop>
-                    {/* {showFooter() && */}
-                    <Footer />
-                    {/* } */}
+                    {showFooter() && <Footer />}
                 </Container>
             )}
+            <ToastContainer />
         </div>
     );
 };
