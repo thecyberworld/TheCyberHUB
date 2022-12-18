@@ -1,7 +1,15 @@
 import styled from "styled-components";
 import { Link as LinkRouter } from "react-router-dom";
 import { AiFillCaretDown, AiFillCaretRight } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
 
+export const UserIcon = styled(FaUser)`
+    border: #2f80ed 1px solid;
+    padding: 5px;
+    background: #646464;
+    font-size: 40px;
+    border-radius: 100%;
+`;
 export const DropdownIcon = styled(AiFillCaretDown)`
     margin: 5px 0 0 5px;
 `;
@@ -11,6 +19,7 @@ export const SideDropdownIcon = styled(AiFillCaretRight)`
 `;
 
 export const Nav = styled.nav`
+    border: #2f80ed 1px solid;
     background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
     height: 80px;
     margin-top: -80px;
@@ -27,25 +36,27 @@ export const Nav = styled.nav`
 `;
 
 export const NavbarContainer = styled.div`
+    border: #ff8100 1px solid;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     height: 80px;
     z-index: 1;
     width: 100%;
     padding: 0 24px;
-    max-width: 1100px;
+    max-width: 1200px;
     @media screen and (max-width: 940px) {
         padding: 0 5px;
     }
 `;
 
 export const NavLogoRouter = styled(LinkRouter)`
-    color: #fff;
+    border: #ff8100 1px solid;
+    display: flex;
     justify-self: flex-start;
+    align-items: center;
+    color: #fff;
     cursor: pointer;
     font-size: 1.5rem;
-    display: flex;
-    align-items: center;
     margin: 0 5px;
     font-weight: bold;
     text-decoration: none;
@@ -88,6 +99,7 @@ export const NavLogo = styled.img`
 // `
 
 export const MobileIcon = styled.div`
+    border: #ff8100 1px solid;
     display: none;
     @media screen and (max-width: 900px) {
         display: block;
@@ -113,6 +125,7 @@ export const Text = styled.div`
     margin-bottom: 2px;
 `;
 export const NavMenu = styled.div`
+    border: #ff8100 1px solid;
     display: flex;
     align-items: center;
     list-style: none;
@@ -163,7 +176,8 @@ export const NavLinkRouter = styled.a`
 
 export const NavBtn = styled.nav`
     display: flex;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: end;
     @media screen and (max-width: 980px) {
         //
         display: none;

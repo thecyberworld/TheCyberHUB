@@ -37,6 +37,7 @@ import {
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import Profile from "./components/Dashboard/Profile/Profile";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -75,7 +76,8 @@ const App = () => {
 
                             <Route exact path={"/dashboard"} element={<Dashboard />} />
                             <Route exact path={"/login"} element={<Login />} />
-                            <Route exact path={"/register"} element={<Register />}></Route>
+                            <Route exact path={"/register"} element={<Register />} />
+                            <Route exact path={"/profile"} element={<Profile />} />
 
                             <Route path={"/events/*"}>
                                 <Route index element={<Events />} />

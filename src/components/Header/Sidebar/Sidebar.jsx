@@ -11,7 +11,7 @@ import {
     SidebarMenu,
     SideBtnWrap,
 } from "./SidebarElements";
-import { RedirectButton } from "../../../MixComponents/Buttons/ButtonElements";
+import { RedirectButton } from "../../MixComponents/Buttons/ButtonElements";
 
 const Sidebar = (props) => {
     const { isOpen, toggle } = props;
@@ -119,5 +119,3 @@ const Sidebar = (props) => {
 };
 
 export default Sidebar;
-
-

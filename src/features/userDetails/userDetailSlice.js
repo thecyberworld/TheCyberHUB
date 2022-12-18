@@ -1,19 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import goalService from "./goalService";
+import userDetailService from "./userDetailService";
 
 const initialState = {
-    goals: [],
+    userDetails: [],
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: "",
 };
 
-// Create new goal
-export const createGoal = createAsyncThunk("goals/create", async (goalData, thunkAPI) => {
+// Create new userDetail
+export const createUserDetail = createAsyncThunk("userDetails/create", async (userDetailData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await goalService.createGoal(goalData, token);
+        return await userDetailService.createUserDetail(userDetailData, token);
     } catch (error) {
         const message =
             (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -21,11 +21,11 @@ export const createGoal = createAsyncThunk("goals/create", async (goalData, thun
     }
 });
 
-// Get user goals
-export const getGoals = createAsyncThunk("goals/getAll", async (_, thunkAPI) => {
+// Get user userDetails
+export const getUserDetails = createAsyncThunk("userDetails/getAll", async (_, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await goalService.getGoals(token);
+        return await userDetailService.getUserDetails(token);
     } catch (error) {
         const message =
             (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -33,11 +33,11 @@ export const getGoals = createAsyncThunk("goals/getAll", async (_, thunkAPI) => 
     }
 });
 
-// Delete user goal
-export const deleteGoal = createAsyncThunk("goals/delete", async (id, thunkAPI) => {
+// Delete user userDetail
+export const deleteUserDetail = createAsyncThunk("userDetails/delete", async (id, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await goalService.deleteGoal(id, token);
+        return await userDetailService.deleteUserDetail(id, token);
     } catch (error) {
         const message =
             (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -45,49 +45,49 @@ export const deleteGoal = createAsyncThunk("goals/delete", async (id, thunkAPI) 
     }
 });
 
-export const goalSlice = createSlice({
-    name: "goal",
+export const userDetailSlice = createSlice({
+    name: "userDetail",
     initialState,
     reducers: {
         reset: (state) => initialState,
     },
     extraReducers: (builder) => {
         builder
-            .addCase(createGoal.pending, (state) => {
+            .addCase(createUserDetail.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(createGoal.fulfilled, (state, action) => {
+            .addCase(createUserDetail.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.goals.push(action.payload);
+                state.userDetails.push(action.payload);
             })
-            .addCase(createGoal.rejected, (state, action) => {
+            .addCase(createUserDetail.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
             })
-            .addCase(getGoals.pending, (state) => {
+            .addCase(getUserDetails.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(getGoals.fulfilled, (state, action) => {
+            .addCase(getUserDetails.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.goals = action.payload;
+                state.userDetails = action.payload;
             })
-            .addCase(getGoals.rejected, (state, action) => {
+            .addCase(getUserDetails.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
             })
-            .addCase(deleteGoal.pending, (state) => {
+            .addCase(deleteUserDetail.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(deleteGoal.fulfilled, (state, action) => {
+            .addCase(deleteUserDetail.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.isSuccess = true;
-                state.goals = state.goals.filter((goal) => goal._id !== action.payload.id);
+                state.userDetails = state.userDetails.filter((userDetail) => userDetail._id !== action.payload.id);
             })
-            .addCase(deleteGoal.rejected, (state, action) => {
+            .addCase(deleteUserDetail.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
@@ -95,5 +95,5 @@ export const goalSlice = createSlice({
     },
 });
 
-export const { reset } = goalSlice.actions;
-export default goalSlice.reducer;
+export const { reset } = userDetailSlice.actions;
+export default userDetailSlice.reducer;

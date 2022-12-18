@@ -18,7 +18,7 @@ export const register = createAsyncThunk("auth/register", async (user, thunkAPI)
         return await authService.register(user);
     } catch (error) {
         const message =
-            (error.response && error.response.data && error.response.message) || error.data.message || error.toString();
+            (error.response && error.response.data && error.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
     }
 });
@@ -29,7 +29,7 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
         return await authService.login(user);
     } catch (error) {
         const message =
-            (error.response && error.response.data && error.response.message) || error.data.message || error.toString();
+            (error.response && error.response.data && error.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
     }
 });
