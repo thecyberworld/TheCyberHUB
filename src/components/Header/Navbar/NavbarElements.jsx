@@ -19,7 +19,6 @@ export const SideDropdownIcon = styled(AiFillCaretRight)`
 `;
 
 export const Nav = styled.nav`
-    border: #2f80ed 1px solid;
     background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
     height: 80px;
     margin-top: -80px;
@@ -36,7 +35,6 @@ export const Nav = styled.nav`
 `;
 
 export const NavbarContainer = styled.div`
-    border: #ff8100 1px solid;
     display: flex;
     justify-content: start;
     height: 80px;
@@ -50,7 +48,6 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavLogoRouter = styled(LinkRouter)`
-    border: #ff8100 1px solid;
     display: flex;
     justify-self: flex-start;
     align-items: center;
@@ -99,7 +96,6 @@ export const NavLogo = styled.img`
 // `
 
 export const MobileIcon = styled.div`
-    border: #ff8100 1px solid;
     display: none;
     @media screen and (max-width: 900px) {
         display: block;

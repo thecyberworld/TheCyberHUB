@@ -31,11 +31,9 @@ const Streak = () => {
     return (
         <StreakContainer>
             <Streaks>
-                {userDetails.map((userDetail) => (
-                    <>
-                        <StreakIcon />
-                        <Count> {userDetail.streak} </Count>
-                    </>
+                <StreakIcon />
+                {userDetails.map((item) => (
+                    <Count key={item.id}> {item.streak} </Count>
                 ))}
             </Streaks>
         </StreakContainer>
