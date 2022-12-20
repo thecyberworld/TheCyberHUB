@@ -8,7 +8,7 @@ import VersionControlSvg from "../../../assets/images/undraw_version_control_re_
 import { FaGithub } from "react-icons/fa";
 // import { GoPrimitiveDot } from "react-icons/go";
 
-import { IconsSpacing , IconsSpacing2 } from "../../MixComponents/Buttons/ButtonElements";
+import { IconsSpacing, IconsSpacing2 } from "../../MixComponents/Buttons/ButtonElements";
 import { BsFillPlayFill } from "react-icons/bs";
 import { DotSymbol } from "./InfoElements";
 
@@ -51,7 +51,7 @@ export const ResourcesData = {
     id: "resources",
     idTo: "resources",
     buttonType: "router",
-    link: "/learn/roadmaps",
+    link: "/roadmaps",
     lightBg: false,
     lightText: true,
     lightTextDesc: true,

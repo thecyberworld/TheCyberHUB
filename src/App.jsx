@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import {
-    Route,
-    Routes,
-    // useLocation
-} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import ScrollToTop from "./components/ScrollToTop";
-import Registration from "./pages/Registration";
+import Register from "./pages/Register";
 import {
     Navbar,
     Sidebar,
-    Learn,
+    // Learn,
     Courses,
     CourseDetail,
     CoursesLayout,
@@ -36,10 +35,13 @@ import {
     Roadmap,
 } from "./components";
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
+import Dashboard from "./pages/Dashboard";
+import Login from "./pages/Login";
+import Profile from "./components/Dashboard/Profile/Profile";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
-    // const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
     useEffect(() => {
         setLoading(true);
@@ -48,9 +50,13 @@ const App = () => {
         }, 3000);
     }, []);
 
-    // const showFooter = () => {
-    //     return pathname !== "/register";
-    // };
+    const showFooter = () => {
+        const register = pathname !== "/register";
+        const login = pathname !== "/login";
+        if (register === false) {
+            return register;
+        } else return login;
+    };
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
@@ -61,14 +67,21 @@ const App = () => {
                 <Spinner />
             ) : (
                 <Container>
-                    <>
-                        <Sidebar isOpen={isOpen} toggle={toggle} />
-                        <Navbar toggle={toggle} />
-                    </>
+                    {showFooter() && (
+                        <>
+                            <Sidebar isOpen={isOpen} toggle={toggle} />
+                            <Navbar toggle={toggle} />
+                        </>
+                    )}
 
                     <ScrollToTop>
                         <Routes>
                             <Route index exact path={"/"} element={<Homepage />} />
+
+                            <Route exact path={"/dashboard"} element={<Dashboard />} />
+                            <Route exact path={"/login"} element={<Login />} />
+                            <Route exact path={"/register"} element={<Register />} />
+                            <Route exact path={"/profile"} element={<Profile />} />
 
                             <Route path={"/events/*"}>
                                 <Route index element={<Events />} />
@@ -80,48 +93,43 @@ const App = () => {
                             <Route exact path={"/projects"} element={<OpensourceProjects />} />
 
                             <Route exact path={"/CyberGames"} element={<CyberGames />} />
-                            <Route exact path={"/CyberGames/CTF"} element={<CTF />} />
-                            <Route exact path={"/CyberGames/OSINTGame"} element={<OSINTGame />} />
+                            <Route exact path={"/CTF"} element={<CTF />} />
+                            <Route exact path={"/OSINT"} element={<OSINTGame />} />
 
-                            <Route exact path={"/learn/*"}>
-                                <Route index path={"learn"} element={<Learn />} />
-
-                                <Route path={"roadmaps"}>
+                            <Route>
+                                <Route path={"/roadmaps"}>
                                     <Route index element={<Roadmaps />} />
                                     <Route path={":title"} element={<Roadmap />} />
                                 </Route>
 
-                                <Route path={"courses"} element={<CoursesLayout />}>
+                                <Route path={"/courses"} element={<CoursesLayout />}>
                                     <Route index element={<Courses />} />
                                     <Route path={":id"} element={<CourseDetail />} />
                                 </Route>
 
-                                <Route path={"blogs"}>
+                                <Route path={"/blogs"}>
                                     <Route index element={<AllBlogs />} />
                                     <Route exact path={":title"} element={<ViewBlog />} />
                                 </Route>
                             </Route>
 
-                            <Route exact path={"/resources/*"}>
-                                <Route path={"events"}>
+                            <Route>
+                                <Route path={"/events"}>
                                     <Route index element={<Events />} />
                                     <Route path={":title"} element={<Event />} />
                                 </Route>
 
-                                <Route path={"jobs"} element={<Jobs />} />
-                                <Route path={"quiz"} element={<Quiz />} />
-                                <Route path={"interviewQuestions"} element={<InterviewQuestions />} />
-                                <Route path={"cyberNews"} element={<CyberNews />} />
+                                <Route path={"/jobs"} element={<Jobs />} />
+                                <Route path={"/quiz"} element={<Quiz />} />
+                                <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
+                                <Route path={"/cyberNews"} element={<CyberNews />} />
                             </Route>
-
-                            <Route exact path={"/register"} element={<Registration />}></Route>
                         </Routes>
                     </ScrollToTop>
-                    {/* {showFooter() && */}
-                    <Footer />
-                    {/* } */}
+                    {showFooter() && <Footer />}
                 </Container>
             )}
+            <ToastContainer />
         </div>
     );
 };

@@ -1,9 +1,10 @@
 import React from "react";
+import { ScaleLoader } from "react-spinners";
 
 const Loader = () => {
     return (
         <div>
-            <h1>Loader</h1>
+            <ScaleLoader color={"#20c20e"} />
         </div>
     );
 };

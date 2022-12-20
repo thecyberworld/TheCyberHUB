@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container } from "../components/Homepage/Registration";
 import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
@@ -8,21 +8,63 @@ import { PrimaryFilledButton } from "../components/MixComponents/Buttons/ButtonE
 // import { FaEnvelope } from "react-icons/fa";
 // import { FaLock } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
-import { BsCardText, MdTitle } from "react-icons/all";
+import { BsCardText } from "react-icons/all";
 
-const Registration = () => {
-    const handleSubmit = (e) => {
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { login, reset } from "../features/auth/authSlice";
+import Loader from "../components/MixComponents/Spinner/Loader";
+
+const Login = () => {
+    const [formData, setFormData] = useState({
+        username: "",
+        password: "",
+    });
+
+    const { username, password } = formData;
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message);
+        }
+        if (isSuccess || user) {
+            navigate("/dashboard");
+        }
+        dispatch(reset());
+    }, [user, isError, isSuccess, message, navigate, dispatch]);
+
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+        }));
+    };
+    const onSubmit = (e) => {
         e.preventDefault();
+        const userData = {
+            username,
+            password,
+        };
+        dispatch(login(userData));
     };
 
+    if (isLoading) {
+        return <Loader />;
+    }
     return (
         <Container>
             <CenterCard>
                 <Learn2CodePromotion>
                     <div id="reg-promo-content">
                         <span className="brand-logo">Thecyberworld</span>
-                        <h1 className="leading-title">Learn to Hack Interactively For Free</h1>
-                        <span>Watch Demo</span>
+                        <h1 className="leading-title">Learn Cybersecurity For Free</h1>
+                        {/* <span>Watch Demo</span> */}
                         <ul className="nav-links">
                             <li>Home</li>
                             <li>Tour</li>
@@ -32,30 +74,41 @@ const Registration = () => {
                         </ul>
                     </div>
                 </Learn2CodePromotion>
-                <RegistrationFormContainer onSubmit={handleSubmit}>
+                <RegistrationFormContainer onSubmit={onSubmit}>
                     <h1 className="registration__promotion__h1">Join over 25 million learners from around the globe</h1>
                     <p className="registration__promotion__p">
-                        Master the languages of the web: HTML, CSS and Javascript. This path will prepare you to build
-                        highly secure web applications.
+                        Master Cybersecurity. This path will prepare you to build you base strong in cyber security
                     </p>
                     <div className="registration__inputfields">
                         <CustomInputGroup>
                             <span>
                                 <FaUserCircle />
                             </span>
-                            <input type="text" placeholder="Username" aria-label="Username" autoComplete={false} />
-                        </CustomInputGroup>
-                        <CustomInputGroup>
-                            <span>
-                                <MdTitle />
-                            </span>
-                            <input type="text" placeholder="Email" aria-label="Email" autoComplete={false} />
+                            <input
+                                type="text"
+                                id={"username"}
+                                name={"username"}
+                                value={username}
+                                placeholder="Username"
+                                onChange={onChange}
+                                aria-label="Username"
+                                autoComplete={false}
+                            />
                         </CustomInputGroup>
                         <CustomInputGroup>
                             <span>
                                 <BsCardText />
                             </span>
-                            <input type="password" placeholder="Password" aria-label="Password" autoComplete={false} />
+                            <input
+                                type="password"
+                                id={"password"}
+                                name={"password"}
+                                value={password}
+                                placeholder="Password"
+                                onChange={onChange}
+                                aria-label="Password"
+                                autoComplete={false}
+                            />
                         </CustomInputGroup>
                     </div>
                     <div className="registration__ctas">
@@ -67,7 +120,7 @@ const Registration = () => {
                             </div>
                         </div>
                         <PrimaryFilledButton width={"100%"} type="submit">
-                            Start Learning Now
+                            Start Hacking
                         </PrimaryFilledButton>
                     </div>
                 </RegistrationFormContainer>
@@ -76,4 +129,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default Login;
