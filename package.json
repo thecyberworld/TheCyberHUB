@@ -11,14 +11,6 @@
     "preview": "vite preview",
     "prepare": "husky install"
   },
-  "reactSnap": {
-    "inlineCss": true,
-    "source": "dist",
-    "minifyHtml": {
-      "collapseWhitespace": false,
-      "removeComments": false
-    }
-  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.1",

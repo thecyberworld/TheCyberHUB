@@ -4,7 +4,7 @@ import "./UserOptions.css";
 import {
     BiLogOut,
     FaUserAstronaut,
-    FcSettings,
+    // FcSettings,
     IoLogInSharp,
     // MdDarkMode,
     MdDashboard,
@@ -56,27 +56,25 @@ const DropdownMenu = () => {
                 {!user ? (
                     <>
                         <DropdownItem to={"/login"} leftIcon={<IoLogInSharp />}>
-                            {" "}
-                            Login | Register{" "}
+                            Login
+                        </DropdownItem>
+                        <DropdownItem to={"/register"} leftIcon={<IoLogInSharp />}>
+                            Register
                         </DropdownItem>
                     </>
                 ) : (
                     <>
                         <DropdownItem to={"/profile"} leftIcon={<FaUserCircle />}>
-                            {" "}
-                            Profile{" "}
+                            Profile
                         </DropdownItem>
                         <DropdownItem to={"/dashboard"} leftIcon={<MdDashboard />}>
-                            {" "}
-                            Dashboard{" "}
+                            Dashboard
                         </DropdownItem>
-                        <DropdownItem to={"/settings"} leftIcon={<FcSettings />}>
-                            {" "}
-                            Settings{" "}
-                        </DropdownItem>
+                        {/* <DropdownItem to={"/settings"} leftIcon={<FcSettings />}> */}
+                        {/*    Settings */}
+                        {/* </DropdownItem> */}
                         <DropdownItem onClickLogout={onLogout} leftIcon={<BiLogOut />}>
-                            {" "}
-                            Logout{" "}
+                            Logout
                         </DropdownItem>
                     </>
                 )}

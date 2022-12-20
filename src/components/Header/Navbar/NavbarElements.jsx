@@ -121,7 +121,6 @@ export const Text = styled.div`
     margin-bottom: 2px;
 `;
 export const NavMenu = styled.div`
-    border: #ff8100 1px solid;
     display: flex;
     align-items: center;
     list-style: none;

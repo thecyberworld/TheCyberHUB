@@ -11,7 +11,7 @@ import {
     NavMenu,
     NavItem,
     NavLinks,
-    NavBtn,
+    // NavBtn,
     DropdownIcon,
     NavLogo,
 } from "./NavbarElements";
@@ -131,25 +131,6 @@ const Navbar = ({ isOpen, toggle }) => {
                     </NavbarContainer>
                     <Streak />
                     <UserOptions />
-                    <NavBtn>
-                        {/* {user ? ( */}
-                        {/*    <> */}
-                        {/*        <FilledButton onClick={onLogout}> */}
-                        {/*            <FaSignOutAlt/> /!*Logout*!/ */}
-                        {/*        </FilledButton> */}
-                        {/*    </> */}
-                        {/* ) : ( */}
-                        {/*    <> */}
-                        {/*        <FilledButton to="login"> */}
-                        {/*            <FaSignInAlt/> Login */}
-                        {/*        </FilledButton> */}
-                        {/*        <FilledButton to="register"> */}
-                        {/*            <FaUser/> Register */}
-                        {/*        </FilledButton> */}
-                        {/*    </> */}
-                        {/* )} */}
-                        {/* <UserIcon/> */}
-                    </NavBtn>
                 </Nav>
             </IconContext.Provider>
         </>

@@ -4,7 +4,8 @@ import { MdOutlineLocalFireDepartment } from "react-icons/all";
 export const StreakIcon = styled(MdOutlineLocalFireDepartment)`
     color: #4cc23e;
     font-size: 1.5rem;
-    margin-right: 5px;
+    margin-right: 15px;
+    margin-left: 5px;
 `;
 
 export const Count = styled.p`

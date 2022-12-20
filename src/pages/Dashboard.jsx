@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import GoalSetter from "../components/Dashboard/GoalSetter/GoalSetter";
-import { Section } from "../components/Learn/Courses/YouTubeVideosElements";
+// import GoalSetter from "../components/Dashboard/GoalSetter/GoalSetter";
+// import { Section } from "../components/Learn/Courses/YouTubeVideosElements";
 import { getUserDetails, reset } from "../features/userDetails/userDetailSlice";
 import Spinner from "../components/MixComponents/Spinner/Spinner";
+import { Wrapper } from "../components/Dashboard/Profile/ProfileElements";
 // import {Count, StreakIcon} from "../components/Dashboard/Streak/StreakElements";
 
 const Dashboard = () => {
@@ -12,9 +13,12 @@ const Dashboard = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
 
-    const { userDetails, isLoading, isError, message } = useSelector((state) => state.userDetails);
-
-    console.log(userDetails);
+    const {
+        // userDetails,
+        isLoading,
+        isError,
+        message,
+    } = useSelector((state) => state.userDetails);
 
     useEffect(() => {
         if (user && isError) {
@@ -37,13 +41,18 @@ const Dashboard = () => {
     }
 
     return (
-        <Section>
+        <Wrapper>
             <section className="heading">
                 <h1>Welcome {user && user.name}</h1>
             </section>
-
-            <GoalSetter />
-        </Section>
+            Dashboard will be live soon
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            {/* <GoalSetter /> */}
+        </Wrapper>
     );
 };
 

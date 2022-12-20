@@ -12,6 +12,12 @@ export const Wrapper = styled.div`
     }
 `;
 
+export const UserImage = styled.img`
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+`;
+
 export const SkillLevelContainer = styled.div`
     display: flex;
     flex-direction: column;
