@@ -21,7 +21,7 @@ export const PrimaryFilledButton = styled.button`
     align-items: center;
     transition: all 0.2s ease-in-out;
     color: black;
-    width: ${({ width }) => (width || "auto")};
+    width: ${({ width }) => width || "auto"};
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -136,7 +136,7 @@ export const RouterButton = styled(RouterLink)`
     border-style: solid;
     border-color: #343434;
     background: transparent;
-    margin-right: 20px; //border-radius: 50px;
+    //margin-right: 20px; //border-radius: 50px;
     white-space: nowrap;
     padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
     //color: ${({ dark }) => (dark ? "#ffffff" : "#0e0e0e")};
@@ -159,15 +159,9 @@ export const RouterButton = styled(RouterLink)`
 `;
 
 export const FilledButton = styled(RouterButton)`
-    background: #20c20e;
-    color: white;
-
     &:hover {
         transition: all 0.2s ease-in-out;
-        background: #20c20e;
-        color: black;
-        border-color: #343434;
-        font-size: 18px;
+        scale: 1.1;
     }
 `;
 

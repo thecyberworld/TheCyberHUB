@@ -12,8 +12,6 @@ import Certificate from "../../Certificate/Certificate";
 
 const CTF = () => {
     const [certId, setCert] = useState("");
-
-    console.log(certId);
     return (
         <CTFContainer>
             <GetCertificateContainer>

@@ -1,6 +1,6 @@
 // Homepage //
-export { default as Navbar } from "./Homepage/Navbar/Navbar/Navbar";
-export { default as Sidebar } from "./Homepage/Navbar/Sidebar/Sidebar";
+export { default as Navbar } from "./Header/Navbar/Navbar";
+export { default as Sidebar } from "./Header/Sidebar/Sidebar";
 export { default as Hero } from "./Homepage/Hero/Hero";
 export { default as Info } from "./Homepage/Info/Info";
 export { default as Socials } from "./Homepage/Socials/Socials";
