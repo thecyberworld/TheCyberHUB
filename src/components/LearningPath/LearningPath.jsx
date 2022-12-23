@@ -40,21 +40,21 @@ const LearningPath = () => {
                                             <Days key={days.id}>
                                                 <h3>{days.day}</h3>
                                                 {days.contents.map((content) => (
-                                                    <>
-                                                        <TopicBox
-                                                            key={content.id}
-                                                            onClick={() => handleHeadingClick(content.heading)}
-                                                            isSelected={content.heading === selectedContent}
-                                                        >
-                                                            <ContentHeading>{content.heading}</ContentHeading>
-                                                            <CheckboxContainer>
-                                                                <Checkbox
-                                                                    isSelected={content.heading === selectedContent}
-                                                                    type="checkbox"
-                                                                />
-                                                            </CheckboxContainer>
-                                                        </TopicBox>
-                                                    </>
+                                                    <TopicBox
+                                                        key={content.id}
+                                                        onClick={() => handleHeadingClick(content.heading)}
+                                                        isSelected={content.heading === selectedContent}
+                                                    >
+                                                        <ContentHeading>{content.heading}</ContentHeading>
+                                                        <CheckboxContainer>
+                                                            <Checkbox
+                                                                id={content.heading}
+                                                                value={content.heading}
+                                                                isSelected={content.heading === selectedContent}
+                                                                type="checkbox"
+                                                            />
+                                                        </CheckboxContainer>
+                                                    </TopicBox>
                                                 ))}
                                             </Days>
                                         ))}

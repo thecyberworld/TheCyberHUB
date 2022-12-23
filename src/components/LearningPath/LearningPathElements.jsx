@@ -3,8 +3,10 @@ import styled from "styled-components";
 export const LearningPathContainer = styled.div`
     display: flex;
     flex-direction: row;
-    width: 1200px;
-
+    width: 1300px;
+    margin-top: 50px;
+    border: #2a2a2a 1px solid;
+    padding: 50px;
     @media (max-width: 780px) {
         flex-direction: column;
     }
@@ -35,6 +37,7 @@ export const TopicBox = styled.div`
     height: 50px;
     border-radius: 5px;
     margin-bottom: 10px;
+    cursor: pointer;
     ${(props) =>
         props.isSelected &&
         `
@@ -104,12 +107,12 @@ export const Days = styled.div`
 `;
 
 export const VLine = styled.hr`
-    width: 1px;
-    height: 10em;
-
-    @media (max-width: 1100px) {
-        display: none;
-    }
+    height: auto;
+    border: #1a1a1a 1px solid;
+    background: #1a1a1a;
+    //@media (max-width: 1100px) {
+    //    display: none;
+    //}
 `;
 
 export const HLine = styled.hr`
