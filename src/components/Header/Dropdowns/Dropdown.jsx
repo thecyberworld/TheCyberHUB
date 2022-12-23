@@ -13,6 +13,7 @@ export default function Dropdown({ isOpen, toggle, closed, isResources, isLearn,
     const learn = [
         { title: "Roadmap", to: "/roadmaps", desc: "Step by step guide to becoming a cybersecurity professional" },
         { title: "Courses", to: "/courses", desc: "Learn from the best courses on the internet" },
+        { title: "Learning Path", to: "/learning-path", desc: "Learn with the proper path with community" },
     ];
 
     const resources = [

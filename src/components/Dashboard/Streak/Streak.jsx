@@ -8,8 +8,6 @@ const Streak = () => {
     const { user } = useSelector((state) => state.auth);
     const { userDetails, isLoading, isError, message } = useSelector((state) => state.userDetails);
 
-    const userData = userDetails.find((user) => user.id === user);
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,10 +27,6 @@ const Streak = () => {
     if (isLoading) {
         return <Spinner />;
     }
-    console.log(user);
-    console.log(userDetails);
-    console.log(userData);
-
     return (
         <StreakContainer>
             <Streaks>
