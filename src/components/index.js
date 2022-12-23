@@ -25,7 +25,7 @@ export { default as Event } from "./Resources/Events/ViewEvent/Event";
 export { default as CyberGames } from "./CyberGames/CyberGames";
 export { default as OSINTGame } from "./CyberGames/OSINTGame/OSINTGame";
 export { default as CTF } from "./CyberGames/CTF/CTF";
-export { default as About } from "./About/About";
+export { default as About } from "./Homepage/About/About";
 
 // Prep //
 export { default as InterviewQuestions } from "./Resources/InterviewQuestions/InterviewQuestions";
@@ -38,6 +38,6 @@ export { default as ComingSoon } from "./MixComponents/ComingSoon";
 
 export { default as OpensourceProjects } from "./OpensourceProjects/OpensourceProjects";
 export { default as Spinner } from "./MixComponents/Spinner/Spinner";
-export { default as AllBlogs } from "./Learn/Blogs/Blogs";
-export { default as ViewBlog } from "./Learn/Blogs/ViewBlog";
+export { default as AllBlogs } from "./Blogs/Blogs";
+export { default as ViewBlog } from "./Blogs/ViewBlog";
 export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";

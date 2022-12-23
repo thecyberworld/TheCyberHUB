@@ -11,13 +11,8 @@ import {
 
 export default function Dropdown({ isOpen, toggle, closed, isResources, isLearn, closeSidebar }) {
     const learn = [
-        {
-            title: "Roadmap",
-            to: "/roadmaps",
-            desc: "Step by step guide to becoming a cybersecurity professional",
-        },
+        { title: "Roadmap", to: "/roadmaps", desc: "Step by step guide to becoming a cybersecurity professional" },
         { title: "Courses", to: "/courses", desc: "Learn from the best courses on the internet" },
-        { title: "Blogs", to: "/blogs", desc: "Learn from the best blogs on the internet" },
     ];
 
     const resources = [

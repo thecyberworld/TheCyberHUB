@@ -90,19 +90,10 @@ const Sidebar = (props) => {
                                     {title}
                                 </SidebarLink>
                                 {dropdown === "learn" && learnClick && drop && (
-                                    <>
-                                        <Dropdown isLearn={true} toggle={toggle} closed={onClosed} isOpen={isOpen} />
-                                    </>
+                                    <Dropdown isLearn={true} toggle={toggle} closed={onClosed} isOpen={isOpen} />
                                 )}
                                 {dropdown === "resources" && resourcesClick && drop && (
-                                    <>
-                                        <Dropdown
-                                            isResources={true}
-                                            toggle={toggle}
-                                            closed={onClosed}
-                                            isOpen={isOpen}
-                                        />
-                                    </>
+                                    <Dropdown isResources={true} toggle={toggle} closed={onClosed} isOpen={isOpen} />
                                 )}
                             </NavItem>
                         ))}

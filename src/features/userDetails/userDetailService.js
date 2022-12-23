@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://api.thecyberhub.org/api/userDetails/";
+const API_URL = "/api/userDetails/";
 
 // Create new userDetail
 const createUserDetail = async (userDetailData, token) => {

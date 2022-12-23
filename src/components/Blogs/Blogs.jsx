@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Section } from "../../Resources/WriteUps/WriteUpsElements";
+import { Section } from "../Resources/WriteUps/WriteUpsElements";
 import BlogCard from "./BlogCard";
 import blogs from "./BlogsData";
 import { encodeURL } from "./util";
@@ -37,7 +37,7 @@ const Blogs = () => {
                             title={blog.title}
                             author={blog.author}
                             date={blog.date}
-                            content={blog.content}
+                            // content={blog.content}
                             tags={blog.tags}
                             key={blog.id}
                         />

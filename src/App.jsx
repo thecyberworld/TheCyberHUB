@@ -10,7 +10,6 @@ import Register from "./pages/Register";
 import {
     Navbar,
     Sidebar,
-    // Learn,
     Courses,
     CourseDetail,
     CoursesLayout,
@@ -34,6 +33,7 @@ import {
     ViewBlog,
     Roadmap,
 } from "./components";
+
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";

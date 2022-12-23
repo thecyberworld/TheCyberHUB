@@ -44,7 +44,7 @@ const Profile = () => {
     if (isLoading) {
         return <Spinner />;
     }
-
+    console.log(user.picture);
     return (
         <Wrapper>
             <ProfileContainer>
@@ -55,6 +55,7 @@ const Profile = () => {
                 Name: {user.name} <br />
                 <UserImage src={user.picture} />
                 Username: {user.username} <br />
+                Type: {user.userType} <br />
                 Email: {user.email} <br />
                 {/* <SkillLevelContainer> */}
                 {/*    <Heading> Task Completed </Heading> */}

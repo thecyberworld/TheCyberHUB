@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import CTFData from "../../../CyberGames/CTF/CTFData";
-import { encodeURL } from "../../../Learn/Blogs/util";
+import { encodeURL } from "../../../Blogs/util";
 import EventsData from "../EventsData/EventsData";
 import {
     EventComponent,

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-// import GoalSetter from "../components/Dashboard/GoalSetter/GoalSetter";
+import GoalSetter from "../components/Dashboard/GoalSetter/GoalSetter";
 // import { Section } from "../components/Learn/Courses/YouTubeVideosElements";
 import { getUserDetails, reset } from "../features/userDetails/userDetailSlice";
 import Spinner from "../components/MixComponents/Spinner/Spinner";
@@ -51,7 +51,7 @@ const Dashboard = () => {
             <br />
             <br />
             <br />
-            {/* <GoalSetter /> */}
+            <GoalSetter />
         </Wrapper>
     );
 };
