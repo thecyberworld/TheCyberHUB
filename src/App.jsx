@@ -38,6 +38,7 @@ import { Container } from "./components/MixComponents/Layout/LayoutElements";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Profile from "./components/Dashboard/Profile/Profile";
+import LearningPath from "./components/LearningPath/LearningPath";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -95,6 +96,7 @@ const App = () => {
                             <Route exact path={"/CyberGames"} element={<CyberGames />} />
                             <Route exact path={"/CTF"} element={<CTF />} />
                             <Route exact path={"/OSINT"} element={<OSINTGame />} />
+                            <Route exact path={"/learning-path"} element={<LearningPath />} />
 
                             <Route>
                                 <Route path={"/roadmaps"}>
