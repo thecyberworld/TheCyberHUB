@@ -97,8 +97,6 @@ const Navbar = ({ isOpen, toggle }) => {
                                     ),
                                     dropdown: "resources",
                                 },
-                                { to: "events", title: "Events", dropdown: "events" },
-                                { to: "projects", title: "Projects", dropdown: "projects" },
                                 { to: "community", title: "Community", dropdown: "community" },
                                 { to: "sponsors", title: "Sponsors", dropdown: "sponsors" },
                             ].map(({ to, title, dropdown }) => (

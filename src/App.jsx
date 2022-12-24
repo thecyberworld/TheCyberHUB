@@ -8,7 +8,6 @@ import {
 import {
     Navbar,
     Sidebar,
-    Learn,
     Courses,
     CourseDetail,
     CoursesLayout,
@@ -84,36 +83,34 @@ const App = () => {
                                 <Route path={"certificate"} element={<CertificatePage />} />
                                 <Route path={"certificate/:id"} element={<CertificateCard />} />
                             </Route>
-
-                            <Route exact path={"/learn/*"}>
-                                <Route index path={"learn"} element={<Learn />} />
-
-                                <Route path={"roadmaps"}>
+                            
+                            <Route>
+                                <Route path={"/roadmaps"}>
                                     <Route index element={<Roadmaps />} />
                                     <Route path={":title"} element={<Roadmap />} />
                                 </Route>
 
-                                <Route path={"courses"} element={<CoursesLayout />}>
+                                <Route path={"/courses"} element={<CoursesLayout />}>
                                     <Route index element={<Courses />} />
                                     <Route path={":id"} element={<CourseDetail />} />
                                 </Route>
 
-                                <Route path={"blogs"}>
+                                <Route path={"/blogs"}>
                                     <Route index element={<AllBlogs />} />
                                     <Route exact path={":title"} element={<ViewBlog />} />
                                 </Route>
                             </Route>
 
-                            <Route exact path={"/resources/*"}>
-                                <Route path={"events"}>
+                            <Route>
+                                <Route path={"/events"}>
                                     <Route index element={<Events />} />
                                     <Route path={":title"} element={<Event />} />
                                 </Route>
 
-                                <Route path={"jobs"} element={<Jobs />} />
-                                <Route path={"quiz"} element={<Quiz />} />
-                                <Route path={"interviewQuestions"} element={<InterviewQuestions />} />
-                                <Route path={"cyberNews"} element={<CyberNews />} />
+                                <Route path={"/jobs"} element={<Jobs />} />
+                                <Route path={"/quiz"} element={<Quiz />} />
+                                <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
+                                <Route path={"/cyberNews"} element={<CyberNews />} />
                             </Route>
 
                             <Route exact path={"/register"} element={<Registration />}></Route>
