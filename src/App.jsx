@@ -29,7 +29,6 @@ import {
     Sponsors,
     OpensourceProjects,
     Spinner,
-    AllBlogs,
     ViewBlog,
     Roadmap,
 } from "./components";
@@ -39,6 +38,10 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Profile from "./components/Dashboard/Profile/Profile";
 import LearningPath from "./components/LearningPath/LearningPath";
+import CreateBlog from "./components/Dashboard/BlogSetter/CreateBlog";
+import GoalSetter from "./components/Dashboard/GoalSetter/GoalSetter";
+import UserBlogs from "./components/Dashboard/BlogSetter/UserBlogs";
+import Blogs from "./components/Dashboard/BlogSetter/Blogs";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -79,6 +82,12 @@ const App = () => {
                         <Routes>
                             <Route index exact path={"/"} element={<Homepage />} />
 
+                            <Route path={"/dashboard/*"}>
+                                <Route index element={<Dashboard />} />
+                                <Route path={"goals"} element={<GoalSetter />} />
+                                <Route path={"blogs"} element={<UserBlogs />} />
+                                <Route path={"blogs/create-blog"} element={<CreateBlog />} />
+                            </Route>
                             <Route exact path={"/dashboard"} element={<Dashboard />} />
                             <Route exact path={"/login"} element={<Login />} />
                             <Route exact path={"/register"} element={<Register />} />
@@ -109,11 +118,14 @@ const App = () => {
                                     <Route path={":id"} element={<CourseDetail />} />
                                 </Route>
 
+                                {/* <Route exact path={"/blogs"} element={<Blogs />} /> */}
+
                                 <Route path={"/blogs"}>
-                                    <Route index element={<AllBlogs />} />
+                                    <Route index element={<Blogs />} />
                                     <Route exact path={":title"} element={<ViewBlog />} />
                                 </Route>
                             </Route>
+                            <Route exact path={"/create-blog"} element={<CreateBlog />} />
 
                             <Route>
                                 <Route path={"/events"}>

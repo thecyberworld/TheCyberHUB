@@ -6,7 +6,8 @@ export const Heading = styled.h3``;
 
 export const Wrapper = styled.div`
     margin: 100px auto;
-    color: #cecac3;
+    color: whitesmoke;
+    text-align: center;
 
     @media screen and (max-width: 760px) {
     }

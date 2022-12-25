@@ -12,6 +12,7 @@ const LearningPathData = [
                         day: "Day 1",
                         contents: [
                             {
+                                id: "123123123123",
                                 heading: "Introduction to Linux",
                                 content: (
                                     <div>
@@ -24,6 +25,7 @@ const LearningPathData = [
                                         ></IFrameVideo>
                                     </div>
                                 ),
+                                flag: "python",
                             },
                             {
                                 heading: "Introduction to Python",

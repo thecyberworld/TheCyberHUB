@@ -1,44 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import image from "./img.webp";
 
-import blogs from "./BlogsData";
 import { encodeURL } from "./util";
-import { Tag, Tags } from "./BlogCard";
-
-const ViewBlogComponent = styled.div`
-    width: 80%;
-    margin: 100px auto;
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-    padding-top: 0;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "Montserrat", sans-serif;
-    color: #cecac3;
-
-    * {
-        margin: 10px auto;
-    }
-    p {
-        font-family: "Roboto Mono", monospace;
-        text-align: left;
-        padding: 0 50px;
-        white-space: pre-line;
-        font-size: 20px;
-    }
-
-    img {
-        margin-top: 0;
-        width: 100%;
-        object-fit: contain;
-        border-radius: 5px;
-    }
-`;
+import { ViewBlogComponent } from "./BlogElements";
+import { Tags, Tag } from "../Dashboard/BlogSetter/BlogCardElements";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBlogs, reset } from "../../features/blogs/blogSlice";
+import Spinner from "../MixComponents/Spinner/Spinner";
 
 const ViewBlog = () => {
+    const dispatch = useDispatch();
+    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
+
+    useEffect(() => {
+        if (isError) {
+            console.log(message);
+        }
+
+        dispatch(getAllBlogs());
+
+        return () => {
+            dispatch(reset());
+        };
+    }, [dispatch, isError, message]);
+
+    if (isLoading) {
+        return <Spinner />;
+    }
+
     const { title } = useParams();
     const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
     return (
@@ -47,7 +37,7 @@ const ViewBlog = () => {
                 <img className="viewImg" src={image} alt="Blog Image" />
                 <h1>{searchedBlog.title}</h1>
                 <h3>
-                    {searchedBlog.author} | {searchedBlog.date}
+                    @{searchedBlog.username} | {searchedBlog.date}
                 </h3>
                 <p>{searchedBlog.content}</p>
             </ViewBlogComponent>

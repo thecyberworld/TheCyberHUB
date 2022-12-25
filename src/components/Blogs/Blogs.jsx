@@ -1,50 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Section } from "../Resources/WriteUps/WriteUpsElements";
-import BlogCard from "./BlogCard";
+import BlogCard from "../Dashboard/BlogSetter/BlogCard";
 import blogs from "./BlogsData";
 import { encodeURL } from "./util";
-
-const AllBlogsComponent = styled.div`
-    margin: 30px 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-
-    a {
-        text-decoration: none;
-        color: #cecac3;
-    }
-`;
+import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { AllBlogs } from "./BlogElements";
 
 const Blogs = () => {
     return (
-        <Section>
+        <Wrapper>
             <h1> Blogs </h1>
-            <AllBlogsComponent>
-                {blogs.map((blog, id) => (
-                    <Link
-                        key={id}
-                        className={"styles"}
-                        to={{
-                            pathname: `${encodeURL(blog.title)}`,
-                        }}
-                    >
-                        <BlogCard
-                            title={blog.title}
-                            author={blog.author}
-                            date={blog.date}
-                            // content={blog.content}
-                            tags={blog.tags}
-                            key={blog.id}
-                        />
-                    </Link>
-                ))}
-            </AllBlogsComponent>
-        </Section>
+            <div style={{ display: "flex" }}>
+                <AllBlogs>
+                    {blogs.map((blog, id) => (
+                        <Link key={id} className={"styles"} to={{ pathname: `${encodeURL(blog.title)}` }}>
+                            <BlogCard
+                                title={blog.title}
+                                author={blog.author}
+                                date={blog.date}
+                                // content={blog.content}
+                                tags={blog.tags}
+                                key={blog.id}
+                            />
+                        </Link>
+                    ))}
+                </AllBlogs>
+                {/* <BlogsSidebar/> */}
+            </div>
+        </Wrapper>
     );
 };
 

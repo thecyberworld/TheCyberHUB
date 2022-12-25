@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
 import Spinner from "../../MixComponents/Spinner/Spinner";
 import { useNavigate } from "react-router-dom";
+import { AddImage, BlogFormLabel } from "../../Blogs/CreateBlogs/CreateBlogElements";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -54,6 +55,10 @@ const Profile = () => {
                 <h1>Profile Details</h1>
                 Name: {user.name} <br />
                 <UserImage src={user.picture} />
+                <BlogFormLabel htmlFor="addHeaderImage">
+                    <AddImage />
+                </BlogFormLabel>
+                <input id="addHeaderImage" type="file" style={{ display: "none" }} />
                 Username: {user.username} <br />
                 Type: {user.userType} <br />
                 Email: {user.email} <br />
