@@ -25,6 +25,19 @@ const createBlog = async (blogData, token) => {
     return response.data;
 };
 
+// Update blog
+const updateBlog = async (id, blogData, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+
+    const response = await axios.patch(API_URL + id, blogData, config);
+
+    return response.data;
+};
+
 // Get user blogs
 const getBlogs = async (token) => {
     const config = {
@@ -54,6 +67,7 @@ const deleteBlog = async (blogId, token) => {
 const blogService = {
     getAllBlogs,
     createBlog,
+    updateBlog,
     getBlogs,
     deleteBlog,
 };

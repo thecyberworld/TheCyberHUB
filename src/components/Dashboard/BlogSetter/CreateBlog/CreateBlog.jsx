@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createBlog } from "../../../features/blogs/blogSlice";
-import { Wrapper } from "../Profile/ProfileElements";
+import { createBlog } from "../../../../features/blogs/blogSlice";
+import { Wrapper } from "../../Profile/ProfileElements";
 import { Link, useNavigate } from "react-router-dom";
-import { reset } from "../../../features/goals/goalSlice";
+import { reset } from "../../../../features/goals/goalSlice";
 import { CreateBlogContainer, AddImage, SectionCreateBlog } from "./CreateBlogElements";
+import axios from "axios";
 
 const CreateBlog = () => {
     const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const CreateBlog = () => {
     const [blogData, setBlogData] = useState({
         title: "",
         content: "",
+        coverImage: "",
         tags: [],
     });
 
@@ -48,13 +50,35 @@ const CreateBlog = () => {
             [e.target.name]: value,
         }));
     };
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState(""); // Add a state to store the file name
+    const onFileChange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setFile(file);
+            // setFileName(file.name);
+            setFileName(file.name.replace(/ /g, "_"));
+        };
+        reader.readAsDataURL(file);
+    };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+
+        const formData = new FormData();
+        formData.append("file", file); // Append the file to the form data object
+
+        try {
+            await axios.post("/api/upload", formData); // Send the form data object to the server
+        } catch (err) {
+            console.error(err);
+        }
 
         const blogData = {
             title,
             content,
+            coverImage: file.name,
             tags,
         };
 
@@ -62,6 +86,7 @@ const CreateBlog = () => {
         setBlogData({
             title: "",
             content: "",
+            coverImage: " ",
             tags: [],
         });
     };
@@ -73,8 +98,7 @@ const CreateBlog = () => {
                     <>
                         <h1>Blog created successfully</h1>
                         <h2>
-                            <Link to={"../blogs"} style={{ color: "cornflowerblue" }}>
-                                {" "}
+                            <Link to={"../"} style={{ color: "cornflowerblue" }}>
                                 Visit
                             </Link>
                         </h2>
@@ -84,19 +108,19 @@ const CreateBlog = () => {
                     <form onSubmit={onSubmit}>
                         <div className={"form-group"}>
                             <label style={{ color: "grey" }} htmlFor="addCoverImage">
-                                {" "}
-                                Add Cover Image <AddImage />{" "}
+                                Add Cover Image <AddImage />
                             </label>
                             <input
                                 type="file"
                                 name="addCoverImage"
                                 id="addCoverImage"
-                                onChange={onChange}
+                                onChange={onFileChange}
                                 style={{ display: "none" }}
                             />
-
+                            {fileName && <p>{fileName} selected</p>}
                             <label style={{ color: "grey" }} htmlFor="title">
-                                Title
+                                {" "}
+                                Title{" "}
                             </label>
                             <input
                                 type="title"
@@ -108,10 +132,10 @@ const CreateBlog = () => {
                             />
 
                             <label style={{ color: "grey" }} htmlFor="content">
-                                Content
+                                {" "}
+                                Content{" "}
                             </label>
                             <textarea
-                                type="content"
                                 name="content"
                                 id="content"
                                 value={content}
@@ -120,7 +144,8 @@ const CreateBlog = () => {
                             />
 
                             <label style={{ color: "grey" }} htmlFor="tags">
-                                Tags
+                                {" "}
+                                Tags{" "}
                             </label>
                             <input
                                 type="text"
@@ -134,7 +159,8 @@ const CreateBlog = () => {
 
                         <div className="blog_form_group">
                             <button className={"btn btn-block"} type={"submit"}>
-                                Add Blog
+                                {" "}
+                                Publish Blog
                             </button>
                         </div>
                     </form>

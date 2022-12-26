@@ -39,5 +39,5 @@ export { default as ComingSoon } from "./MixComponents/ComingSoon";
 export { default as OpensourceProjects } from "./OpensourceProjects/OpensourceProjects";
 export { default as Spinner } from "./MixComponents/Spinner/Spinner";
 export { default as AllBlogs } from "./Blogs/Blogs";
-export { default as ViewBlog } from "./Blogs/ViewBlog";
+export { default as ViewBlog } from "./Dashboard/BlogSetter/ViewBlog/ViewBlog";
 export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";

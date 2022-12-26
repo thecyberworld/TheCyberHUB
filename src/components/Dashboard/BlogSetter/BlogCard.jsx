@@ -22,6 +22,10 @@ import {
     MdModeComment,
     MdOutlineModeComment,
 } from "react-icons/all";
+import { deleteBlog } from "../../../features/blogs/blogSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
+import { encodeURL } from "../../Blogs/util";
 
 const BlogCard = ({ blog }) => {
     const liked = true;
@@ -35,10 +39,23 @@ const BlogCard = ({ blog }) => {
         day: "numeric",
         year: "numeric",
     }).format(date);
+    const dispatch = useDispatch();
+    const { user } = useSelector((state) => state.auth);
+    const { pathname } = useLocation();
 
     return (
         <BlogsContainer>
             <BlogsContainerTitle>
+                {pathname !== "/blogs" && user && user._id === blog.user ? (
+                    <button onClick={() => dispatch(deleteBlog(blog._id))} style={{ padding: "2px 10px" }}>
+                        X
+                    </button>
+                ) : null}
+                {pathname !== "/blogs" && user && user._id === blog.user ? (
+                    <Link key={blog._id} to={{ pathname: `edit/${encodeURL(blog.title)}` }}>
+                        <button style={{ padding: "2px 10px" }}>+</button>
+                    </Link>
+                ) : null}
                 <div className="blogImage-wrapper">
                     <img src={image} alt="Blog Image" width="100%" height="auto" />
                 </div>

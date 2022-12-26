@@ -4,7 +4,7 @@ import BlogCard from "../Dashboard/BlogSetter/BlogCard";
 import blogs from "./BlogsData";
 import { encodeURL } from "./util";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { AllBlogs } from "./BlogElements";
+import { AllBlogs } from "./BlogsElements";
 
 const Blogs = () => {
     return (

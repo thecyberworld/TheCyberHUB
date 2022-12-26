@@ -4,7 +4,7 @@ import { getAllBlogs, reset } from "../../../features/blogs/blogSlice";
 import Spinner from "../../MixComponents/Spinner/Spinner";
 import { Wrapper } from "../Profile/ProfileElements";
 import BlogCard from "./BlogCard";
-import { AllBlogs, BlogsComponent, MiddleContainer } from "../../Blogs/BlogElements";
+import { AllBlogs, BlogsComponent, MiddleContainer } from "../../Blogs/BlogsElements";
 import { encodeURL } from "../../Blogs/util";
 import { Link } from "react-router-dom";
 import RightBlogSidebar from "../../Blogs/BlogSidebar/RightBlogSidebar";
@@ -38,7 +38,7 @@ const Blogs = () => {
                 <MiddleContainer>
                     {blogs.length > 0 ? (
                         <AllBlogs>
-                            {blogs.map((blog, _id) => (
+                            {[...blogs].reverse().map((blog, _id) => (
                                 <Link key={_id} className={"styles"} to={{ pathname: `${encodeURL(blog.title)}` }}>
                                     <BlogCard key={blog._id} blog={blog} />
                                 </Link>

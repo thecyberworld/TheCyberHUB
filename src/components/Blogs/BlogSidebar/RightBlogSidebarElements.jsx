@@ -5,7 +5,7 @@ export const RightBlogSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 600px;
-    min-width: 20%;
+    min-width: 250px;
     align-items: start;
     justify-content: start;
     border: #4cc23e 1px solid;
