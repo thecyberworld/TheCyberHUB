@@ -32,6 +32,7 @@ export const ViewBlogHeader = styled.div`
         //padding: 0 50px;
         white-space: pre-line;
         font-size: 20px;
+        line-height: 1.5;
     }
     li {
         list-style-type: disc;
@@ -41,6 +42,7 @@ export const ViewBlogHeader = styled.div`
         padding: 0 10px;
         white-space: pre-line;
         font-size: 20px;
+        line-height: 1.5;
     }
 
     img {
