@@ -44,6 +44,7 @@ import Blogs from "./components/Dashboard/BlogSetter/Blogs";
 import SingleBlog from "./components/Dashboard/BlogSetter/SingleBlog/SingleBlog";
 import EditBlog from "./components/Dashboard/BlogSetter/EditBlog/EditBlog";
 import Tags from "./components/Dashboard/BlogSetter/Tags/Tags";
+import NotFound from "./NotFound";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -98,7 +99,9 @@ const App = () => {
                                 <Route index element={<Blogs />} />
                                 <Route exact path={"tags"} element={<Tags />} />
                                 <Route exact path={":title"} element={<SingleBlog />} />
+                                <Route element={<NotFound />} />
                             </Route>
+
                             <Route exact path={"/dashboard"} element={<Dashboard />} />
                             <Route exact path={"/login"} element={<Login />} />
                             <Route exact path={"/register"} element={<Register />} />
@@ -144,6 +147,8 @@ const App = () => {
                                 <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                                 <Route path={"/cyberNews"} element={<CyberNews />} />
                             </Route>
+                            {/* <Route element={<NotFound />} /> */}
+                            <Route path="*" element={<NotFound />} />
                         </Routes>
                     </ScrollToTop>
                     {showFooter() && <Footer />}
