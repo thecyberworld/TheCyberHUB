@@ -90,12 +90,13 @@ h3 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    color: #1a1c1d;
 }
 
 .goal {
     background-color: #f4f4f4;
-    margin: 10px 0;
-    padding: 20px 0 10px;
+    margin: 5px;
+    padding: 20px 10px;
     position: relative;
 }
 

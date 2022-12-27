@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createGoal } from "../../../features/goals/goalSlice";
 
-import "./GoalSetter.css";
-
 const GoalForm = () => {
     const [text, setText] = useState("");
 
@@ -11,20 +9,28 @@ const GoalForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-
         dispatch(createGoal({ text }));
         setText("");
     };
 
     return (
-        <section className="form">
+        <section className={"form"}>
             <form onSubmit={onSubmit}>
-                <div className="form-group">
-                    <label htmlFor="text">Goal</label>
-                    <input type="text" name="text" id="text" value={text} onChange={(e) => setText(e.target.value)} />
+                <div className={"form-group"}>
+                    <label htmlFor="goal">Goal</label>
+                    <input
+                        type="text"
+                        name="text"
+                        id="text"
+                        value={text}
+                        onChange={(e) => setText(e.target.value)}
+                        placeholder="Enter your goal"
+                    />
+                    <div className="form-group"></div>
                 </div>
+
                 <div className="form-group">
-                    <button className="btn btn-block" type="submit">
+                    <button className={"btn btn-block"} type={"submit"}>
                         Add Goal
                     </button>
                 </div>

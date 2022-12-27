@@ -29,8 +29,6 @@ import {
     Sponsors,
     OpensourceProjects,
     Spinner,
-    AllBlogs,
-    ViewBlog,
     Roadmap,
 } from "./components";
 
@@ -39,6 +37,12 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Profile from "./components/Dashboard/Profile/Profile";
 import LearningPath from "./components/LearningPath/LearningPath";
+import CreateBlog from "./components/Dashboard/BlogSetter/CreateBlog/CreateBlog";
+import GoalSetter from "./components/Dashboard/GoalSetter/GoalSetter";
+import UserBlogs from "./components/Dashboard/BlogSetter/UserBlogs";
+import Blogs from "./components/Dashboard/BlogSetter/Blogs";
+import SingleBlog from "./components/Dashboard/BlogSetter/SingleBlog/SingleBlog";
+import EditBlog from "./components/Dashboard/BlogSetter/EditBlog/EditBlog";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -79,6 +83,20 @@ const App = () => {
                         <Routes>
                             <Route index exact path={"/"} element={<Homepage />} />
 
+                            <Route path={"/dashboard/*"}>
+                                <Route index element={<Dashboard />} />
+                                <Route path={"goals"} element={<GoalSetter />} />
+                                <Route path={"blogs"}>
+                                    <Route index element={<UserBlogs />} />
+                                    <Route exact path={"create"} element={<CreateBlog />} />
+                                    <Route exact path={"edit/:title"} element={<EditBlog />} />
+                                </Route>
+                            </Route>
+
+                            <Route path={"/blogs"}>
+                                <Route index element={<Blogs />} />
+                                <Route exact path={":title"} element={<SingleBlog />} />
+                            </Route>
                             <Route exact path={"/dashboard"} element={<Dashboard />} />
                             <Route exact path={"/login"} element={<Login />} />
                             <Route exact path={"/register"} element={<Register />} />
@@ -109,11 +127,9 @@ const App = () => {
                                     <Route path={":id"} element={<CourseDetail />} />
                                 </Route>
 
-                                <Route path={"/blogs"}>
-                                    <Route index element={<AllBlogs />} />
-                                    <Route exact path={":title"} element={<ViewBlog />} />
-                                </Route>
+                                {/* <Route exact path={"/blogs"} element={<Blogs />} /> */}
                             </Route>
+                            <Route exact path={"/create-blog"} element={<CreateBlog />} />
 
                             <Route>
                                 <Route path={"/events"}>
