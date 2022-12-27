@@ -32,7 +32,7 @@ const UserBlogs = () => {
 
     return (
         <Wrapper>
-            <Link to={"create-blog"} style={{ color: "cornflowerblue" }}>
+            <Link to={"create"} style={{ color: "cornflowerblue" }}>
                 <h2>Create a new blog</h2>
             </Link>
 

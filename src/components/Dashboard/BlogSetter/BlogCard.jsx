@@ -33,15 +33,17 @@ const BlogCard = ({ blog }) => {
     const bookmarked = true;
     const commented = true;
 
-    const date = new Date(blog.createdAt);
-    const dateString = new Intl.DateTimeFormat("en-US", {
+    const blogUnFormattedDate = new Date(blog.createdAt);
+    const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
-    }).format(date);
+    }).format(blogUnFormattedDate);
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { pathname } = useLocation();
+    const coverImage = blog?.coverImage;
+    const coverImageUrl = `http://localhost:5000/images/blogImages/${coverImage}`;
 
     return (
         <BlogsContainer>
@@ -57,11 +59,11 @@ const BlogCard = ({ blog }) => {
                     </Link>
                 ) : null}
                 <div className="blogImage-wrapper">
-                    <img src={image} alt="Blog Image" width="100%" height="auto" />
+                    <img src={coverImageUrl || image} alt="Blog Image" width="100%" height="auto" />
                 </div>
                 <h3>{blog.title}</h3>
                 <h6>
-                    @{blog.username} • {dateString}
+                    @{blog.username} • {blogCreatedAt}
                 </h6>
             </BlogsContainerTitle>
             {/* <div> */}
