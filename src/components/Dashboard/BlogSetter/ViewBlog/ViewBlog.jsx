@@ -5,7 +5,7 @@ import { Tags, Tag } from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs, reset } from "../../../../features/blogs/blogSlice";
 import Spinner from "../../../MixComponents/Spinner/Spinner";
-import { ContainerViewBlog, ViewBlogHeader } from "./ViewBlogElements";
+import { ContainerViewBlog, ContentReactMarkdown, ViewBlogHeader } from "./ViewBlogElements";
 
 const ViewBlog = () => {
     const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const ViewBlog = () => {
     const { title } = useParams();
     const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
     const coverImage = searchedBlog?.coverImage;
+    const coverImageUrl = `http://localhost:5000/images/blogImages/${coverImage}`;
 
     useEffect(() => {
         if (isError) {
@@ -25,21 +26,25 @@ const ViewBlog = () => {
         };
     }, [dispatch, isError, message]);
 
-    const coverImageUrl = `http://localhost:5000/images/blogImages/${coverImage}`;
-
     if (isLoading) {
         return <Spinner />;
     }
 
+    const blogUnFormattedDate = new Date(searchedBlog.createdAt);
+    const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+    }).format(blogUnFormattedDate);
     return (
         <ContainerViewBlog>
             <ViewBlogHeader>
                 <img src={coverImageUrl} alt={coverImage} />
                 <h1> {searchedBlog.title} </h1>
                 <h3>
-                    @{searchedBlog.username} | {searchedBlog.date}{" "}
+                    @{searchedBlog.username} | {blogCreatedAt}
                 </h3>
-                <p> {searchedBlog.content} </p>
+                <ContentReactMarkdown>{searchedBlog.content}</ContentReactMarkdown>
             </ViewBlogHeader>
             <Tags>
                 {searchedBlog.tags.map((tag, index) => (

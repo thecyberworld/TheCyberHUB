@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import ReactMarkdown from "react-markdown";
 
+export const ContentReactMarkdown = styled(ReactMarkdown)`
+    text-align: start;
+`;
 export const ContainerViewBlog = styled.div`
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    border: #4cc23e 1px solid;
     margin: 50px;
 `;
 
@@ -26,7 +29,16 @@ export const ViewBlogHeader = styled.div`
     p {
         font-family: "Roboto Mono", monospace;
         text-align: left;
-        padding: 0 50px;
+        //padding: 0 50px;
+        white-space: pre-line;
+        font-size: 20px;
+    }
+    li {
+        list-style-type: disc;
+        font-family: "Roboto Mono", monospace;
+        text-align: left;
+        margin: 0 50px;
+        padding: 0 10px;
         white-space: pre-line;
         font-size: 20px;
     }

@@ -43,6 +43,7 @@ import UserBlogs from "./components/Dashboard/BlogSetter/UserBlogs";
 import Blogs from "./components/Dashboard/BlogSetter/Blogs";
 import SingleBlog from "./components/Dashboard/BlogSetter/SingleBlog/SingleBlog";
 import EditBlog from "./components/Dashboard/BlogSetter/EditBlog/EditBlog";
+import Tags from "./components/Dashboard/BlogSetter/Tags/Tags";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -95,6 +96,7 @@ const App = () => {
 
                             <Route path={"/blogs"}>
                                 <Route index element={<Blogs />} />
+                                <Route exact path={"tags"} element={<Tags />} />
                                 <Route exact path={":title"} element={<SingleBlog />} />
                             </Route>
                             <Route exact path={"/dashboard"} element={<Dashboard />} />

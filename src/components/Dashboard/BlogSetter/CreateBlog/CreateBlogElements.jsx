@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FcAddImage } from "react-icons/all";
 
+export const createContent = styled.input``;
 export const SectionCreateBlog = styled.div`
     display: flex;
     flex-direction: column;

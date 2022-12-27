@@ -15,6 +15,7 @@ const Blogs = () => {
                     {blogs.map((blog, id) => (
                         <Link key={id} className={"styles"} to={{ pathname: `${encodeURL(blog.title)}` }}>
                             <BlogCard
+                                coverImage={blog.coverImage}
                                 title={blog.title}
                                 author={blog.author}
                                 date={blog.date}

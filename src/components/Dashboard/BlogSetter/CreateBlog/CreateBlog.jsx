@@ -36,41 +36,68 @@ const CreateBlog = () => {
     const { title, content, tags } = blogData;
 
     const onChange = (e) => {
-        setBlogData((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }));
-
         let value = e.target.value;
         if (e.target.name === "tags") {
             value = value.split(",").map((tag) => tag.trim()); // Split the string on comma and trim each tag
+        }
+
+        if (file) {
+            if (e.target.name === "title") {
+                const newFile = new File(
+                    [file],
+                    `${
+                        value &&
+                        value
+                            .toLowerCase()
+                            .replace(/ +/g, "_")
+                            .replace(/[^a-zA-Z0-9]/g, "_")
+                            .replace(/_+/g, "_")
+                    }_coverImg.${file && file.type.split("/")[1]}`,
+                    { type: file && file.type },
+                );
+                setFile(newFile);
+                setFileName(newFile.name);
+            }
         }
         setBlogData((prevState) => ({
             ...prevState,
             [e.target.name]: value,
         }));
     };
+
     const [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState(""); // Add a state to store the file name
+    const [fileName, setFileName] = useState("");
     const onFileChange = (e) => {
         const file = e.target.files[0];
+
         const reader = new FileReader();
         reader.onloadend = () => {
-            setFile(file);
-            // setFileName(file.name);
-            setFileName(file.name.replace(/ /g, "_"));
+            const newFile = new File(
+                [reader.result],
+                `${
+                    title &&
+                    title
+                        .toLowerCase()
+                        .replace(/ +/g, "_")
+                        .replace(/[^a-zA-Z0-9]/g, "_")
+                        .replace(/_+/g, "_")
+                }_coverImg.${file && file.type.split("/")[1]}`,
+                { type: file && file.type },
+            );
+            setFile(newFile);
+            setFileName(file.name);
         };
-        reader.readAsDataURL(file);
+        reader.readAsArrayBuffer(file);
     };
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
-        formData.append("file", file); // Append the file to the form data object
+        formData.append("file", file);
 
         try {
-            await axios.post("/api/upload", formData); // Send the form data object to the server
+            await axios.post("/api/upload", formData);
         } catch (err) {
             console.error(err);
         }
@@ -137,7 +164,7 @@ const CreateBlog = () => {
                                 id="content"
                                 value={content}
                                 onChange={onChange}
-                                placeholder="Enter your content"
+                                placeholder="Enter your content in markdown"
                             />
 
                             <label style={{ color: "grey" }} htmlFor="tags">
