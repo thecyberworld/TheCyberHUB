@@ -37,7 +37,6 @@ const ViewBlog = () => {
                 <img src={coverImageUrl} alt={coverImage} />
                 <h1> {searchedBlog.title} </h1>
                 <h3>
-                    {" "}
                     @{searchedBlog.username} | {searchedBlog.date}{" "}
                 </h3>
                 <p> {searchedBlog.content} </p>

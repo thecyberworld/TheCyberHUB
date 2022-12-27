@@ -90,7 +90,6 @@ const CreateBlog = () => {
             tags: [],
         });
     };
-
     return (
         <Wrapper>
             <CreateBlogContainer>
@@ -119,8 +118,7 @@ const CreateBlog = () => {
                             />
                             {fileName && <p>{fileName} selected</p>}
                             <label style={{ color: "grey" }} htmlFor="title">
-                                {" "}
-                                Title{" "}
+                                Title
                             </label>
                             <input
                                 type="title"
@@ -132,8 +130,7 @@ const CreateBlog = () => {
                             />
 
                             <label style={{ color: "grey" }} htmlFor="content">
-                                {" "}
-                                Content{" "}
+                                Content
                             </label>
                             <textarea
                                 name="content"
@@ -144,8 +141,7 @@ const CreateBlog = () => {
                             />
 
                             <label style={{ color: "grey" }} htmlFor="tags">
-                                {" "}
-                                Tags{" "}
+                                Tags
                             </label>
                             <input
                                 type="text"
@@ -159,7 +155,6 @@ const CreateBlog = () => {
 
                         <div className="blog_form_group">
                             <button className={"btn btn-block"} type={"submit"}>
-                                {" "}
                                 Publish Blog
                             </button>
                         </div>
