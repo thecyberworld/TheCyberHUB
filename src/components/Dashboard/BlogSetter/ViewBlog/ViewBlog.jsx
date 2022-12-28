@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { encodeURL } from "../../../Blogs/util";
 import { Tags, Tag } from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs, reset } from "../../../../features/blogs/blogSlice";
+import { addComment, getAllBlogs, reset } from "../../../../features/blogs/blogSlice";
 import Spinner from "../../../MixComponents/Spinner/Spinner";
 import {
     CommentContainer,
@@ -16,6 +16,12 @@ import {
 import NotFound from "../../../../NotFound";
 
 const ViewBlog = () => {
+    const [addCommentData, setAddCommentData] = useState({
+        comment: "",
+    });
+
+    const { comment } = addCommentData;
+
     const dispatch = useDispatch();
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
 
@@ -55,16 +61,24 @@ const ViewBlog = () => {
         comment: comment?.comment,
         replies: comment?.replies,
     }));
-    console.log(comments.replies);
 
-    // const replies = comments.replies.map(reply => ({
-    //     id: reply?._id,
-    //     blogId: reply?.blogId,
-    //     commentId: reply?.commentId,
-    //     username: reply?.username,
-    //     reply: reply?.reply
-    // }))
-    // console.log(replies.reply)
+    const onChange = (e) => {
+        setAddCommentData({
+            ...addCommentData,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const addCommentData = {
+            comment,
+        };
+        dispatch(addComment({ blogId: searchedBlog._id, addCommentData }));
+        setAddCommentData({
+            comment: "",
+        });
+    };
 
     return (
         <ContainerViewBlog>
@@ -83,14 +97,29 @@ const ViewBlog = () => {
             </Tags>
 
             <CommentContainer>
-                {comments.map((userComment, id) => (
+                {comments?.map((userComment, id) => (
                     <CommentSection key={id}>
                         {userComment?.comment}
                         {userComment?.replies.map((reply, id) => (
-                            <ReplySection key={id}>{reply.reply}</ReplySection>
+                            <ReplySection key={id}>{reply?.reply}</ReplySection>
                         ))}
                     </CommentSection>
                 ))}
+
+                <form onSubmit={handleSubmit} className={"form-group"}>
+                    <label htmlFor="goal">Add Comment</label>
+                    <input
+                        type="text"
+                        name="comment"
+                        id={"comment"}
+                        value={comment}
+                        onChange={onChange}
+                        placeholder="Add a comment"
+                    />
+                    <button className={"btn btn-block"} type="submit">
+                        Submit
+                    </button>
+                </form>
             </CommentContainer>
         </ContainerViewBlog>
     );
