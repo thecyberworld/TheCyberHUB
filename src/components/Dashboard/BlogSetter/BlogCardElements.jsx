@@ -91,7 +91,7 @@ export const Tags = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin: 5px 0;
+    margin: 10px 0 20px 0;
 `;
 
 export const Tag = styled.div`

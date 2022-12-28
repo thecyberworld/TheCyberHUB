@@ -5,7 +5,14 @@ import { Tags, Tag } from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs, reset } from "../../../../features/blogs/blogSlice";
 import Spinner from "../../../MixComponents/Spinner/Spinner";
-import { ContainerViewBlog, ContentReactMarkdown, ViewBlogHeader } from "./ViewBlogElements";
+import {
+    CommentContainer,
+    CommentSection,
+    ContainerViewBlog,
+    ContentReactMarkdown,
+    ReplySection,
+    ViewBlogHeader,
+} from "./ViewBlogElements";
 import NotFound from "../../../../NotFound";
 
 const ViewBlog = () => {
@@ -42,6 +49,23 @@ const ViewBlog = () => {
         year: "numeric",
     }).format(blogUnFormattedDate);
 
+    const comments = searchedBlog?.comments.map((comment) => ({
+        id: comment?._id,
+        username: comment?.username,
+        comment: comment?.comment,
+        replies: comment?.replies,
+    }));
+    console.log(comments.replies);
+
+    // const replies = comments.replies.map(reply => ({
+    //     id: reply?._id,
+    //     blogId: reply?.blogId,
+    //     commentId: reply?.commentId,
+    //     username: reply?.username,
+    //     reply: reply?.reply
+    // }))
+    // console.log(replies.reply)
+
     return (
         <ContainerViewBlog>
             <ViewBlogHeader>
@@ -57,6 +81,17 @@ const ViewBlog = () => {
                     <Tag key={index}>{tag}</Tag>
                 ))}
             </Tags>
+
+            <CommentContainer>
+                {comments.map((userComment, id) => (
+                    <CommentSection key={id}>
+                        {userComment?.comment}
+                        {userComment?.replies.map((reply, id) => (
+                            <ReplySection key={id}>{reply.reply}</ReplySection>
+                        ))}
+                    </CommentSection>
+                ))}
+            </CommentContainer>
         </ContainerViewBlog>
     );
 };

@@ -8,7 +8,7 @@ export const ContainerViewBlog = styled.div`
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    margin: 50px;
+    margin-top: 50px;
 `;
 
 export const ViewBlogHeader = styled.div`
@@ -20,7 +20,6 @@ export const ViewBlogHeader = styled.div`
     justify-content: space-between;
     font-family: "Montserrat", sans-serif;
     color: #cecac3;
-    margin-bottom: 50px;
 
     * {
         margin: 10px auto;
@@ -51,4 +50,22 @@ export const ViewBlogHeader = styled.div`
         object-fit: contain;
         border-radius: 5px;
     }
+`;
+
+export const CommentContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+`;
+export const CommentSection = styled.div`
+    text-align: left;
+    width: 500px;
+    margin: 10px;
+`;
+
+export const ReplySection = styled.div`
+    text-align: left;
+    margin-left: 15px;
 `;
