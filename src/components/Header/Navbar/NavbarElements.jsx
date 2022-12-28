@@ -132,7 +132,7 @@ export const NavMenu = styled.div`
     }
 `;
 
-export const NavItem = styled.p`
+export const NavItem = styled.div`
     height: 80px;
 `;
 

@@ -68,6 +68,18 @@ export const deleteBlog = createAsyncThunk("blogs/delete", async (id, thunkAPI) 
     }
 });
 
+// Add comment to blog
+export const addComment = createAsyncThunk("blog/addComment", async (blogId, commentData, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await blogService.addComment(blogId, commentData, token);
+    } catch (error) {
+        const message =
+            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 export const blogSlice = createSlice({
     name: "blog",
     initialState,
@@ -100,6 +112,30 @@ export const blogSlice = createSlice({
                 );
             })
             .addCase(updateBlog.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
+            })
+            .addCase(addComment.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(addComment.fulfilled, (state, action) => {
+                // Find the index of the blog in the state.blogs array that needs to be updated
+                const blogIndex = state.blogs.findIndex((blog) => blog._id === action.payload._id);
+
+                // If the blog is found, update it in the state.blogs array by pushing the new comment to the comments array
+                if (blogIndex !== -1) {
+                    state.blogs[blogIndex] = {
+                        ...state.blogs[blogIndex],
+                        comments: [...state.blogs[blogIndex].comments, action.payload.comment],
+                    };
+                }
+                // If the blog is not found, push the updated blog object to the state.blogs array
+                else {
+                    state.blogs.push(action.payload);
+                }
+            })
+            .addCase(addComment.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.message = action.payload;
