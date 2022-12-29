@@ -45,6 +45,7 @@ import SingleBlog from "./components/Dashboard/BlogSetter/SingleBlog/SingleBlog"
 import EditBlog from "./components/Dashboard/BlogSetter/EditBlog/EditBlog";
 import Tags from "./components/Dashboard/BlogSetter/Tags/Tags";
 import NotFound from "./NotFound";
+import CertificateCard from "./components/Certificate/CertificateCard";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -115,6 +116,12 @@ const App = () => {
                             <Route exact path={"/sponsors"} element={<Sponsors />} />
                             <Route exact path={"/about"} element={<About />} />
                             <Route exact path={"/projects"} element={<OpensourceProjects />} />
+
+                            <Route exact path={"/ctf"}>
+                                <Route index element={<CTF />} />
+                                {/* <Route path={"certificate"} element={<CertificatePage />} /> */}
+                                <Route path={"certificate/:id"} element={<CertificateCard />} />
+                            </Route>
 
                             <Route exact path={"/CyberGames"} element={<CyberGames />} />
                             <Route exact path={"/CTF"} element={<CTF />} />
