@@ -36,7 +36,7 @@ const EditBlog = () => {
         return <Spinner />;
     }
     const { title } = useParams();
-    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
+    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {tags:[]};
 
     const onChange = (e) => {
         let value = e.target.value;
