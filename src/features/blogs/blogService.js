@@ -9,7 +9,7 @@ const addComment = async (blogId, commentData, token) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        const response = await axios.post(`${API_URL}${blogId}/comment`, commentData, config);
+        const response = await axios.post(`${API_URL}${blogId}/comment`, {comment: commentData}, config);
         return response.data;
     } catch (error) {
         throw new Error(error);

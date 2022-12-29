@@ -69,8 +69,9 @@ export const deleteBlog = createAsyncThunk("blogs/delete", async (id, thunkAPI) 
 });
 
 // Add comment to blog
-export const addComment = createAsyncThunk("blog/addComment", async (blogId, commentData, thunkAPI) => {
+export const addComment = createAsyncThunk("blog/addComment", async ({blogId,addCommentData}, thunkAPI) => {
     try {
+        const commentData = addCommentData.comment
         const token = thunkAPI.getState().auth.user.token;
         return await blogService.addComment(blogId, commentData, token);
     } catch (error) {
