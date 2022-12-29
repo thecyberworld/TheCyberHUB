@@ -57,7 +57,7 @@ const EditBlog = () => {
             tags: blogData.tags || searchedBlog.tags,
         };
 
-        dispatch(updateBlog(searchedBlog._id, updatedBlogData));
+        dispatch(updateBlog({id: searchedBlog._id, blogData: updatedBlogData}));
         // setEditMode(false);
         navigate("../");
     };

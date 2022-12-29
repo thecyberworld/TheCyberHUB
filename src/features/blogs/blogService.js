@@ -46,8 +46,8 @@ const updateBlog = async (id, blogData, token) => {
             Authorization: `Bearer ${token}`,
         },
     };
-
-    const response = await axios.patch(API_URL + id, blogData, config);
+    
+    const response = await axios.put(API_URL + id, blogData, config);
 
     return response.data;
 };
