@@ -69,9 +69,9 @@ export const deleteBlog = createAsyncThunk("blogs/delete", async (id, thunkAPI) 
 });
 
 // Add comment to blog
-export const addComment = createAsyncThunk("blog/addComment", async ({blogId,addCommentData}, thunkAPI) => {
+export const addComment = createAsyncThunk("blog/addComment", async ({ blogId, addCommentData }, thunkAPI) => {
     try {
-        const commentData = addCommentData.comment
+        const commentData = addCommentData.comment;
         const token = thunkAPI.getState().auth.user.token;
         return await blogService.addComment(blogId, commentData, token);
     } catch (error) {
@@ -121,9 +121,10 @@ export const blogSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(addComment.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
                 // Find the index of the blog in the state.blogs array that needs to be updated
                 const blogIndex = state.blogs.findIndex((blog) => blog._id === action.payload._id);
-
                 // If the blog is found, update it in the state.blogs array by pushing the new comment to the comments array
                 if (blogIndex !== -1) {
                     state.blogs[blogIndex] = {
