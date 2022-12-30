@@ -106,7 +106,7 @@ const EditBlog = () => {
                             <button type="submit" className="btn btn-primary">
                                 Update Blog
                             </button>
-                            <button type="button" className="btn btn-secondary" onClick={() => useNavigate("../")}>
+                            <button type="button" className="btn btn-secondary" onClick={() => navigate("../")}>
                                 Cancel
                             </button>
                         </div>
