@@ -51,10 +51,12 @@ const EditBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        let tagData = blogData.tags.length === 0 ? searchedBlog.tags : blogData.tags;
+
         const updatedBlogData = {
             title: blogData.title || searchedBlog.title,
             content: blogData.content || searchedBlog.content,
-            tags: blogData.tags || searchedBlog.tags,
+            tags: tagData,
         };
 
         dispatch(updateBlog({id: searchedBlog._id, blogData: updatedBlogData}));
