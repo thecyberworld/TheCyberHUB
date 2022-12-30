@@ -36,7 +36,7 @@ const EditBlog = () => {
         return <Spinner />;
     }
     const { title } = useParams();
-    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
+    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {tags:[]};
 
     const onChange = (e) => {
         let value = e.target.value;
@@ -51,13 +51,15 @@ const EditBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        let tagData = blogData.tags.length === 0 ? searchedBlog.tags : blogData.tags;
+
         const updatedBlogData = {
             title: blogData.title || searchedBlog.title,
             content: blogData.content || searchedBlog.content,
-            tags: blogData.tags || searchedBlog.tags,
+            tags: tagData,
         };
 
-        dispatch(updateBlog(searchedBlog._id, updatedBlogData));
+        dispatch(updateBlog({id: searchedBlog._id, blogData: updatedBlogData}));
         // setEditMode(false);
         navigate("../");
     };
@@ -104,7 +106,7 @@ const EditBlog = () => {
                             <button type="submit" className="btn btn-primary">
                                 Update Blog
                             </button>
-                            <button type="button" className="btn btn-secondary" onClick={() => useNavigate("../")}>
+                            <button type="button" className="btn btn-secondary" onClick={() => navigate("../")}>
                                 Cancel
                             </button>
                         </div>

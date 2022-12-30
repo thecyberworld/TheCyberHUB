@@ -8,7 +8,7 @@ import {
     InvalidCertificate,
 } from "./CTFElements";
 import "./CTF.css";
-import Certificate from "../../Certificate/Certificate";
+import Certificate from "../../Certificate/CertificateCard";
 
 const CTF = () => {
     const [certId, setCert] = useState("");

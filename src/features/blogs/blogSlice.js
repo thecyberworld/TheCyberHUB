@@ -22,7 +22,7 @@ export const createBlog = createAsyncThunk("blogs/create", async (blogData, thun
 });
 
 // Update existing blog
-export const updateBlog = createAsyncThunk("blogs/update", async (id, blogData, thunkAPI) => {
+export const updateBlog = createAsyncThunk("blogs/update", async ({id, blogData}, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await blogService.updateBlog(id, blogData, token);
