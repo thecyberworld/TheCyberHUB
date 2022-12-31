@@ -1,45 +1,38 @@
 import styled from "styled-components";
-import { FcAddImage } from "react-icons/all";
 
-export const createContent = styled.input``;
-export const SectionCreateBlog = styled.div`
+export const AddCommentFormContainer = styled.div`
     display: flex;
     flex-direction: column;
-`;
-export const CreateBlogContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-width: 1200px;
-`;
-export const AddImage = styled(FcAddImage)`
-    font-size: 25px;
-    cursor: pointer;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 10px;
+    margin: 20px;
+    width: 100%;
+    min-width: 800px;
+    max-width: 1200px;
 `;
 
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 1000px;
-    margin: 10px;
+    max-width: 600px;
 `;
 
 export const Label = styled.label``;
 
-export const Input = styled.input`
+export const TextArea = styled.textarea`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border-radius: 5px;
+    //border-radius: 5px;
+    //padding: 10px;
     background: transparent;
     border: transparent;
     color: #fff;
     width: 100%;
     height: 50px;
-    font-size: 30px;
-    text-underline-offset: 5px;
-    margin: 10px 0;
 
     ::placeholder {
         color: #fff;
@@ -55,19 +48,19 @@ export const Input = styled.input`
         color: #fff;
     }
 `;
-
-export const TextArea = styled.textarea`
-    margin: 10px 0;
-    font-size: 25px;
+export const Input = styled.input`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    border-radius: 5px;
     background: transparent;
     border: transparent;
     color: #fff;
     width: 100%;
-    height: 400px;
+    height: 50px;
+    font-size: 15px;
+    text-underline-offset: 5px;
 
     ::placeholder {
         color: #fff;

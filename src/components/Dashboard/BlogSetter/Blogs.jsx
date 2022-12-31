@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs, reset } from "../../../features/blogs/blogSlice";
 import Spinner from "../../MixComponents/Spinner/Spinner";
 import { Wrapper } from "../Profile/ProfileElements";
-import BlogCard from "./BlogCard";
+import BlogCard from "./BlogCard/BlogCard";
 import { AllBlogs, BlogsComponent, MiddleContainer } from "../../Blogs/BlogsElements";
 import { encodeURL } from "../../Blogs/util";
 import { Link } from "react-router-dom";

@@ -1,19 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { encodeURL } from "../../../Blogs/util";
-import { Tags, Tag } from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
+import { Tag, Tags } from "../BlogCard/BlogCardElements";
 import { addComment, getAllBlogs, reset } from "../../../../features/blogs/blogSlice";
+import { CommentContainer, ContainerViewBlog, ContentReactMarkdown, ViewBlogHeader } from "./ViewBlogElements";
 import Spinner from "../../../MixComponents/Spinner/Spinner";
-import {
-    CommentContainer,
-    CommentSection,
-    ContainerViewBlog,
-    ContentReactMarkdown,
-    ReplySection,
-    ViewBlogHeader,
-} from "./ViewBlogElements";
 import NotFound from "../../../../NotFound";
+import ViewComments from "../Comments/ViewComments";
+import AddCommentForm from "../Comments/AddCommentForm";
 
 const ViewBlog = () => {
     const [addCommentData, setAddCommentData] = useState({
@@ -21,7 +16,7 @@ const ViewBlog = () => {
     });
 
     const { comment } = addCommentData;
-
+    const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
 
@@ -97,29 +92,8 @@ const ViewBlog = () => {
             </Tags>
 
             <CommentContainer>
-                {comments?.map((userComment, id) => (
-                    <CommentSection key={id}>
-                        {userComment?.comment}
-                        {userComment?.replies.map((reply, id) => (
-                            <ReplySection key={id}>{reply?.reply}</ReplySection>
-                        ))}
-                    </CommentSection>
-                ))}
-
-                <form onSubmit={handleSubmit} className={"form-group"}>
-                    <label htmlFor="goal">Add Comment</label>
-                    <input
-                        type="text"
-                        name="comment"
-                        id={"comment"}
-                        value={comment}
-                        onChange={onChange}
-                        placeholder="Add a comment"
-                    />
-                    <button className={"btn btn-block"} type="submit">
-                        Submit
-                    </button>
-                </form>
+                <ViewComments comments={comments} user={user} />
+                <AddCommentForm comment={comment} onChange={onChange} handleSubmit={handleSubmit} />
             </CommentContainer>
         </ContainerViewBlog>
     );

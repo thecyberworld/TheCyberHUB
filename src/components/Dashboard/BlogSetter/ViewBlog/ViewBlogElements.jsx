@@ -59,13 +59,3 @@ export const CommentContainer = styled.div`
     align-items: center;
     margin: 10px;
 `;
-export const CommentSection = styled.div`
-    text-align: left;
-    width: 500px;
-    margin: 10px;
-`;
-
-export const ReplySection = styled.div`
-    text-align: left;
-    margin-left: 15px;
-`;
