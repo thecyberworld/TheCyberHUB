@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BlogCard from "../Dashboard/BlogSetter/BlogCard";
+import BlogCard from "../Dashboard/BlogSetter/BlogCard/BlogCard";
 import blogs from "./BlogsData";
 import { encodeURL } from "./util";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";

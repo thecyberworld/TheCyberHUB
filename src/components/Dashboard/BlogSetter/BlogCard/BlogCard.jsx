@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../Blogs/img.webp";
+import image from "../../../Blogs/img.webp";
 import {
     BlogsContainer,
     BlogsContainerTitle,
@@ -22,10 +22,10 @@ import {
     MdModeComment,
     MdOutlineModeComment,
 } from "react-icons/all";
-import { deleteBlog } from "../../../features/blogs/blogSlice";
+import { deleteBlog } from "../../../../features/blogs/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { encodeURL } from "../../Blogs/util";
+import { encodeURL } from "../../../Blogs/util";
 
 const BlogCard = ({ blog }) => {
     const liked = true;

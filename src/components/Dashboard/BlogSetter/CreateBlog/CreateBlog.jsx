@@ -4,7 +4,16 @@ import { createBlog } from "../../../../features/blogs/blogSlice";
 import { Wrapper } from "../../Profile/ProfileElements";
 import { Link, useNavigate } from "react-router-dom";
 import { reset } from "../../../../features/goals/goalSlice";
-import { CreateBlogContainer, AddImage, SectionCreateBlog } from "./CreateBlogElements";
+import {
+    CreateBlogContainer,
+    AddImage,
+    SectionCreateBlog,
+    Form,
+    Label,
+    TextArea,
+    Input,
+    Submit,
+} from "./CreateBlogElements";
 import axios from "axios";
 
 const CreateBlog = () => {
@@ -131,12 +140,12 @@ const CreateBlog = () => {
                     </>
                 ) : null}
                 <SectionCreateBlog>
-                    <form onSubmit={onSubmit}>
-                        <div className={"form-group"}>
-                            <label style={{ color: "grey" }} htmlFor="addCoverImage">
+                    <Form onSubmit={onSubmit}>
+                        <div>
+                            <Label style={{ color: "grey" }} htmlFor="addCoverImage">
                                 Add Cover Image <AddImage />
-                            </label>
-                            <input
+                            </Label>
+                            <Input
                                 type="file"
                                 name="addCoverImage"
                                 id="addCoverImage"
@@ -144,48 +153,46 @@ const CreateBlog = () => {
                                 style={{ display: "none" }}
                             />
                             {fileName && <p>{fileName} selected</p>}
-                            <label style={{ color: "grey" }} htmlFor="title">
-                                Title
-                            </label>
-                            <input
+                            {/* <Label style={{ color: "grey" }} htmlFor="title"> */}
+                            {/*    Title */}
+                            {/* </Label> */}
+                            <Input
                                 type="title"
                                 name="title"
                                 id="title"
                                 value={title}
                                 onChange={onChange}
-                                placeholder="Enter your blog"
+                                placeholder="Title"
                             />
 
-                            <label style={{ color: "grey" }} htmlFor="content">
-                                Content
-                            </label>
-                            <textarea
+                            {/* <Label style={{ color: "grey" }} htmlFor="content"> */}
+                            {/*    Content */}
+                            {/* </Label> */}
+                            <TextArea
                                 name="content"
                                 id="content"
                                 value={content}
                                 onChange={onChange}
-                                placeholder="Enter your content in markdown"
+                                placeholder="Enter your content here in markdown"
                             />
 
-                            <label style={{ color: "grey" }} htmlFor="tags">
+                            <Label style={{ color: "grey" }} htmlFor="tags">
                                 Tags
-                            </label>
-                            <input
+                            </Label>
+                            <Input
                                 type="text"
                                 name="tags"
                                 id="tags"
                                 value={tags}
                                 onChange={onChange}
-                                placeholder="Enter a list of tags separated by comma (e.g. tag1, tag2, tag3)"
+                                placeholder="tag1, tag2, tag3"
                             />
                         </div>
 
-                        <div className="blog_form_group">
-                            <button className={"btn btn-block"} type={"submit"}>
-                                Publish Blog
-                            </button>
+                        <div>
+                            <Submit type={"submit"}>Publish Blog</Submit>
                         </div>
-                    </form>
+                    </Form>
                 </SectionCreateBlog>
             </CreateBlogContainer>
         </Wrapper>

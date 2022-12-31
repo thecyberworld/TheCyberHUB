@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBlogs, reset } from "../../../features/blogs/blogSlice";
 import Spinner from "../../MixComponents/Spinner/Spinner";
 import { Wrapper } from "../Profile/ProfileElements";
-import BlogCard from "./BlogCard";
+import BlogCard from "./BlogCard/BlogCard";
 const UserBlogs = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
