@@ -30,4 +30,3 @@ dist-ssr
 *.sw?
 .eslintcache
 .env
-.htaccess
