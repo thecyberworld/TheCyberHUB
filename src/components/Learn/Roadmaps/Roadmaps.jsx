@@ -9,7 +9,7 @@ import {
 } from "./RoadmapsElements";
 
 import RoadmapsData from "./RoadmapsData";
-import { encodeURL } from "../../Blogs/util";
+import { encodeURL } from "../../Dashboard/BlogSetter/util";
 import { RouterLink } from "./RoadmapElements";
 
 const Colors = ["greenyellow", "cornflowerblue", "darkorange", "darkgray", "mediumpurple"];

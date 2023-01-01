@@ -38,6 +38,20 @@ export { default as ComingSoon } from "./MixComponents/ComingSoon";
 
 export { default as OpensourceProjects } from "./OpensourceProjects/OpensourceProjects";
 export { default as Spinner } from "./MixComponents/Spinner/Spinner";
-export { default as AllBlogs } from "./Blogs/Blogs";
 export { default as ViewBlog } from "./Dashboard/BlogSetter/ViewBlog/ViewBlog";
 export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";
+
+export { default as Dashboard } from "../pages/Dashboard";
+export { default as Login } from "../pages/Login";
+export { default as Profile } from "../components/Dashboard/Profile/Profile";
+export { default as EditProfile } from "../components/Dashboard/Profile/EditProfile";
+export { default as LearningPath } from "../components/LearningPath/LearningPath";
+export { default as CreateBlog } from "../components/Dashboard/BlogSetter/CreateBlog/CreateBlog";
+export { default as GoalSetter } from "../components/Dashboard/GoalSetter/GoalSetter";
+export { default as UserBlogs } from "../components/Dashboard/BlogSetter/UserBlogs";
+export { default as Blogs } from "../components/Dashboard/BlogSetter/Blogs";
+export { default as SingleBlog } from "../components/Dashboard/BlogSetter/SingleBlog/SingleBlog";
+export { default as EditBlog } from "../components/Dashboard/BlogSetter/EditBlog/EditBlog";
+export { default as Tags } from "../components/Dashboard/BlogSetter/Tags/Tags";
+export { default as NotFound } from "../NotFound";
+export { default as CertificateCard } from "../components/Certificate/CertificateCard";

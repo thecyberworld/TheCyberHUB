@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import authService from "./authService";
 
 // Get user from local storage
@@ -30,6 +30,18 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
     } catch (error) {
         const message =
             (error.response && error.response.data && error.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
+// Update existing User
+export const updateUser = createAsyncThunk("user/update", async ({ userData }, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await authService.updateUser(userData, token);
+    } catch (error) {
+        const message =
+            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message);
     }
 });
@@ -76,6 +88,19 @@ export const authSlice = createSlice({
             })
             .addCase(logout.fulfilled, (state) => {
                 state.user = null;
+            })
+            .addCase(updateUser.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateUser.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isSuccess = true;
+                state.user = { ...state.user, ...action.payload };
+            })
+            .addCase(updateUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.message = action.payload;
             });
     },
 });

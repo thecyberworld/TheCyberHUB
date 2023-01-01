@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { encodeURL } from "../../../Blogs/util";
+import { encodeURL } from "../util";
 import { useDispatch, useSelector } from "react-redux";
 import { Tag, Tags } from "../BlogCard/BlogCardElements";
 import { addComment, getAllBlogs, reset } from "../../../../features/blogs/blogSlice";

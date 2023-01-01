@@ -13,7 +13,7 @@ import {
     PastEventsContainer,
     RouterLink,
 } from "./EventsElement";
-import { encodeURL } from "../../Blogs/util";
+import { encodeURL } from "../../Dashboard/BlogSetter/util";
 
 function padTo2Digits(num) {
     return num.toString().padStart(2, "0");
