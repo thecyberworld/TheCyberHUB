@@ -30,22 +30,23 @@ import {
     OpensourceProjects,
     Spinner,
     Roadmap,
+    Dashboard,
+    Login,
+    Profile,
+    EditProfile,
+    LearningPath,
+    CreateBlog,
+    GoalSetter,
+    UserBlogs,
+    Blogs,
+    SingleBlog,
+    EditBlog,
+    Tags,
+    NotFound,
+    CertificateCard,
 } from "./components";
 
 import { Container } from "./components/MixComponents/Layout/LayoutElements";
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
-import Profile from "./components/Dashboard/Profile/Profile";
-import LearningPath from "./components/LearningPath/LearningPath";
-import CreateBlog from "./components/Dashboard/BlogSetter/CreateBlog/CreateBlog";
-import GoalSetter from "./components/Dashboard/GoalSetter/GoalSetter";
-import UserBlogs from "./components/Dashboard/BlogSetter/UserBlogs";
-import Blogs from "./components/Dashboard/BlogSetter/Blogs";
-import SingleBlog from "./components/Dashboard/BlogSetter/SingleBlog/SingleBlog";
-import EditBlog from "./components/Dashboard/BlogSetter/EditBlog/EditBlog";
-import Tags from "./components/Dashboard/BlogSetter/Tags/Tags";
-import NotFound from "./NotFound";
-import CertificateCard from "./components/Certificate/CertificateCard";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -107,6 +108,7 @@ const App = () => {
                             <Route exact path={"/login"} element={<Login />} />
                             <Route exact path={"/register"} element={<Register />} />
                             <Route exact path={"/profile"} element={<Profile />} />
+                            <Route exact path={"/profile/edit"} element={<EditProfile />} />
 
                             <Route path={"/events/*"}>
                                 <Route index element={<Events />} />

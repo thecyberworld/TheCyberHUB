@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // import image from "../../../Blogs/img.webp";
 
-import { encodeURL } from "../../../Blogs/util";
+import { encodeURL } from "../util";
 // import {Tags, Tag} from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs, updateBlog, reset } from "../../../../features/blogs/blogSlice";
@@ -36,7 +36,9 @@ const EditBlog = () => {
         return <Spinner />;
     }
     const { title } = useParams();
-    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {tags:[]};
+    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {
+        tags: [],
+    };
 
     const onChange = (e) => {
         let value = e.target.value;
@@ -51,7 +53,7 @@ const EditBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        let tagData = blogData.tags.length === 0 ? searchedBlog.tags : blogData.tags;
+        const tagData = blogData.tags.length === 0 ? searchedBlog.tags : blogData.tags;
 
         const updatedBlogData = {
             title: blogData.title || searchedBlog.title,
@@ -59,7 +61,7 @@ const EditBlog = () => {
             tags: tagData,
         };
 
-        dispatch(updateBlog({id: searchedBlog._id, blogData: updatedBlogData}));
+        dispatch(updateBlog({ id: searchedBlog._id, blogData: updatedBlogData }));
         // setEditMode(false);
         navigate("../");
     };

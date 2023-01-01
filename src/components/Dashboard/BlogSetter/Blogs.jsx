@@ -5,10 +5,10 @@ import Spinner from "../../MixComponents/Spinner/Spinner";
 import { Wrapper } from "../Profile/ProfileElements";
 import BlogCard from "./BlogCard/BlogCard";
 import { AllBlogs, BlogsComponent, MiddleContainer } from "../../Blogs/BlogsElements";
-import { encodeURL } from "../../Blogs/util";
+import { encodeURL } from "./util";
 import { Link } from "react-router-dom";
-import RightBlogSidebar from "../../Blogs/BlogSidebar/RightBlogSidebar";
-import LeftBlogSidebar from "../../Blogs/BlogSidebar/LeftBlogSidebar";
+import RightBlogSidebar from "./BlogSidebar/RightBlogSidebar";
+import LeftBlogSidebar from "./BlogSidebar/LeftBlogSidebar";
 
 const Blogs = () => {
     const dispatch = useDispatch();

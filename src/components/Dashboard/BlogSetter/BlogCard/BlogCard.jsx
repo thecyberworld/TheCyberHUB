@@ -1,5 +1,4 @@
 import React from "react";
-import image from "../../../Blogs/img.webp";
 import {
     BlogsContainer,
     BlogsContainerTitle,
@@ -25,8 +24,8 @@ import {
 import { deleteBlog } from "../../../../features/blogs/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import { encodeURL } from "../../../Blogs/util";
-
+import { encodeURL } from "../util";
+const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f71a7-df74-43b9-8330-af9740d9e8ba.png";
 const BlogCard = ({ blog }) => {
     const liked = true;
     const viewed = true;

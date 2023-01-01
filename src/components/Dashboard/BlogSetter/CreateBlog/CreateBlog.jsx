@@ -5,14 +5,14 @@ import { Wrapper } from "../../Profile/ProfileElements";
 import { Link, useNavigate } from "react-router-dom";
 import { reset } from "../../../../features/goals/goalSlice";
 import {
-    CreateBlogContainer,
     AddImage,
-    SectionCreateBlog,
+    CreateBlogContainer,
     Form,
-    Label,
-    TextArea,
     Input,
+    Label,
+    SectionCreateBlog,
     Submit,
+    TextArea,
 } from "./CreateBlogElements";
 import axios from "axios";
 
@@ -111,20 +111,10 @@ const CreateBlog = () => {
             console.error(err);
         }
 
-        const blogData = {
-            title,
-            content,
-            coverImage: file.name,
-            tags,
-        };
+        const blogData = { title, content, coverImage: file.name, tags };
 
         dispatch(createBlog(blogData));
-        setBlogData({
-            title: "",
-            content: "",
-            coverImage: " ",
-            tags: [],
-        });
+        setBlogData({ title: "", content: "", coverImage: " ", tags: [] });
     };
     return (
         <Wrapper>
@@ -153,9 +143,6 @@ const CreateBlog = () => {
                                 style={{ display: "none" }}
                             />
                             {fileName && <p>{fileName} selected</p>}
-                            {/* <Label style={{ color: "grey" }} htmlFor="title"> */}
-                            {/*    Title */}
-                            {/* </Label> */}
                             <Input
                                 type="title"
                                 name="title"
@@ -164,10 +151,6 @@ const CreateBlog = () => {
                                 onChange={onChange}
                                 placeholder="Title"
                             />
-
-                            {/* <Label style={{ color: "grey" }} htmlFor="content"> */}
-                            {/*    Content */}
-                            {/* </Label> */}
                             <TextArea
                                 name="content"
                                 id="content"
@@ -175,7 +158,6 @@ const CreateBlog = () => {
                                 onChange={onChange}
                                 placeholder="Enter your content here in markdown"
                             />
-
                             <Label style={{ color: "grey" }} htmlFor="tags">
                                 Tags
                             </Label>
@@ -188,7 +170,6 @@ const CreateBlog = () => {
                                 placeholder="tag1, tag2, tag3"
                             />
                         </div>
-
                         <div>
                             <Submit type={"submit"}>Publish Blog</Submit>
                         </div>

@@ -1,17 +1,9 @@
 import React, { useEffect } from "react";
-import {
-    Wrapper,
-    ProfileContainer,
-    UserImage,
-    // SkillLevel,
-    // Heading, SkillLevelContainer,
-    // SkillLevels,
-} from "./ProfileElements";
+import { ProfileContainer, UserImage, Wrapper } from "./ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
 import Spinner from "../../MixComponents/Spinner/Spinner";
-import { useNavigate } from "react-router-dom";
-import { AddImage, BlogFormLabel } from "../../Blogs/CreateBlogs/CreateBlogElements";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -45,53 +37,28 @@ const Profile = () => {
     if (isLoading) {
         return <Spinner />;
     }
-    console.log(user.picture);
+
+    const profilePicture = user.picture;
+    const dummyPicture =
+        "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
+    const profilePictureUrl =
+        profilePicture === dummyPicture ? profilePicture : `http://localhost:5000/images/${profilePicture}`;
+
     return (
         <Wrapper>
             <ProfileContainer>
                 <section className="heading">
                     <h1>Welcome {user && user.name}</h1>
                 </section>
+                <Link style={{ color: "whitesmoke" }} to={"edit"}>
+                    Edit profile
+                </Link>
                 <h1>Profile Details</h1>
                 Name: {user.name} <br />
-                <UserImage src={user.picture} />
-                <BlogFormLabel htmlFor="addHeaderImage">
-                    <AddImage />
-                </BlogFormLabel>
-                <input id="addHeaderImage" type="file" style={{ display: "none" }} />
+                <UserImage src={profilePictureUrl} />
                 Username: {user.username} <br />
                 Type: {user.userType} <br />
                 Email: {user.email} <br />
-                {/* <SkillLevelContainer> */}
-                {/*    <Heading> Task Completed </Heading> */}
-                {/*    <SkillLevels> */}
-                {/*        <SkillLevel> 0 </SkillLevel> */}
-                {/*    </SkillLevels> */}
-                {/* </SkillLevelContainer> */}
-                {/* <SkillLevelContainer> */}
-                {/*    <Heading> Select Your Level </Heading> */}
-                {/*    <SkillLevels> */}
-                {/*        <SkillLevel> Beginner </SkillLevel> */}
-                {/*        <SkillLevel> Intermediate </SkillLevel> */}
-                {/*        <SkillLevel> Expert </SkillLevel> */}
-                {/*    </SkillLevels> */}
-                {/* </SkillLevelContainer> */}
-                {/* <SkillLevelContainer> */}
-                {/*    <Heading> Select Your Role </Heading> */}
-                {/*    <SkillLevels> */}
-                {/*        <SkillLevel> Student </SkillLevel> */}
-                {/*        <SkillLevel> Intern </SkillLevel> */}
-                {/*        <SkillLevel> Professional </SkillLevel> */}
-                {/*    </SkillLevels> */}
-                {/* </SkillLevelContainer> */}
-                {/* <SkillLevelContainer> */}
-                {/*    <Heading> Select Your Role </Heading> */}
-                {/*    <SkillLevels> */}
-                {/*        <SkillLevel> Student </SkillLevel> */}
-                {/*        <SkillLevel> Intern </SkillLevel> */}
-                {/*        <SkillLevel> Professional </SkillLevel> */}
-                {/*    </SkillLevels> */}
-                {/* </SkillLevelContainer> */}
             </ProfileContainer>
         </Wrapper>
     );

@@ -14,8 +14,8 @@ export const Wrapper = styled.div`
 `;
 
 export const UserImage = styled.img`
-    width: 250px;
-    height: 250px;
+    width: 100px;
+    height: 100px;
     border-radius: 100%;
 `;
 

@@ -53,10 +53,13 @@ const Register = () => {
         if (password !== password2) {
             toast.error("Passwords do not match");
         } else {
+            const dummyPicture =
+                "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
             const userData = {
                 name,
                 username,
                 email,
+                picture: dummyPicture,
                 password,
             };
 
