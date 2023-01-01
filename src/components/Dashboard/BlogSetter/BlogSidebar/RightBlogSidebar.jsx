@@ -1,6 +1,6 @@
 import React from "react";
 import { BlogStatus, DraftStatus, RightBlogSidebarContainer, SeeAll, TrendingBlogs } from "./RightBlogSidebarElements";
-import { SubContainerHeading, SubContainerTop } from "../../../Blogs/BlogsElements";
+import { SubContainerHeading, SubContainerTop } from "../BlogsElements";
 
 const RightBlogSidebar = () => {
     return (
