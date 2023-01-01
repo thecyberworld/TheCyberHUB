@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_URL = "/api/userDetails/";
+let API_URL = "";
+if (import.meta.env.VITE_WEB_ENV === "dev_production") {
+    API_URL = `${import.meta.env.VITE_API_URL}/api/userDetails/`;
+} else API_URL = "api/userDetails/";
 
 // Create new userDetail
 const createUserDetail = async (userDetailData, token) => {

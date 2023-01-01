@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const API_URL = "/api/users/";
-// const API_URL = "https://dev.api.thecyberhub.org/api/users/";
+let API_URL = "";
+if (import.meta.env.VITE_WEB_ENV === "dev_production") {
+    API_URL = `${import.meta.env.VITE_API_URL}/api/users/`;
+} else API_URL = "api/users/";
 
 // Register user
 const register = async (userData) => {
