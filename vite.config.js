@@ -7,7 +7,13 @@ export default defineConfig({
         proxy: {
             // "/api": "http://localhost:5000",
             // "/api": "https://api.thecyberhub.org",
-            "/api": "https://dev.api.thecyberhub.org",
+            "/api": {
+                // target: "http://localhost:5000",
+                // target: "https://api.thecyberhub.org",
+                target: "https://dev.api.thecyberhub.org",
+                changeOrigin: true,
+                secure: false,
+            },
         },
         host: "0.0.0.0",
         port: 3000,
