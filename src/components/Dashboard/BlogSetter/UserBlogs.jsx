@@ -37,10 +37,10 @@ const UserBlogs = () => {
             </Link>
 
             <section className={"content"}>
-                {blogs.length > 0 ? (
+                {blogs && blogs?.length > 0 ? (
                     <div className={"goals"}>
                         {blogs.map((blog) => (
-                            <BlogCard key={blog._id} blog={blog} />
+                            <BlogCard key={blog?._id} blog={blog} />
                         ))}
                     </div>
                 ) : (

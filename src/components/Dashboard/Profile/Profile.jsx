@@ -57,7 +57,7 @@ const Profile = () => {
                 Name: {user.name} <br />
                 <UserImage src={profilePictureUrl} />
                 Username: {user.username} <br />
-                Type: {user.userType} <br />
+                {/* Type: {user.userType} <br /> */}
                 Email: {user.email} <br />
             </ProfileContainer>
         </Wrapper>

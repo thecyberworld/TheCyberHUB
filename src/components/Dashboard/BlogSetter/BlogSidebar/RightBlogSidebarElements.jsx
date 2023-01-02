@@ -8,7 +8,12 @@ export const RightBlogSidebarContainer = styled.div`
     min-width: 250px;
     align-items: start;
     justify-content: start;
-    border: #4cc23e 1px solid;
+
+    @media screen and (max-width: 970px) {
+        transition: 0.1s ease-in-out;
+        width: auto;
+        min-width: auto;
+    }
 `;
 
 export const SeeAll = styled(Link)`

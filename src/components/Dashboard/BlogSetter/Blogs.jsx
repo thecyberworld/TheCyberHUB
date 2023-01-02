@@ -38,7 +38,7 @@ const Blogs = () => {
                 <MiddleContainer>
                     {blogs && blogs?.length > 0 ? (
                         <AllBlogs>
-                            {[...blogs].reverse().map((blog, id) => (
+                            {blogs.map((blog, id) => (
                                 <Link key={id} className={"styles"} to={{ pathname: `${encodeURL(blog?.title)}` }}>
                                     <BlogCard key={blog?._id} blog={blog} />
                                 </Link>
