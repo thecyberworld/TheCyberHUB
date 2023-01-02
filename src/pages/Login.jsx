@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Container } from "../components/Homepage/Registration";
 import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
-import { CustomInputGroup } from "../components/MixComponents/InputField/CustomInputField";
+import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
-import { PrimaryFilledButton } from "../components/MixComponents/Buttons/ButtonElements";
+import { PrimaryFilledButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
 // import { FaEnvelope } from "react-icons/fa";
 // import { FaLock } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
-import Loader from "../components/MixComponents/Spinner/Loader";
+import Loader from "../components/Other/MixComponents/Spinner/Loader";
 
 const Login = () => {
     const [formData, setFormData] = useState({

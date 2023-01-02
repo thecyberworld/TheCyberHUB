@@ -2,7 +2,7 @@ import React from "react";
 
 import { useParams } from "react-router-dom";
 import RoadmapsData from "./RoadmapsData";
-import { encodeURL } from "../../Dashboard/BlogSetter/util";
+import { encodeURL } from "../../Blogs/util";
 import {
     RoadmapContainer,
     RedirectLink,

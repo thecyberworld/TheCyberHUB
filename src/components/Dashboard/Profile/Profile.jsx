@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ProfileContainer, UserImage, Wrapper } from "./ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
-import Spinner from "../../MixComponents/Spinner/Spinner";
+import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {

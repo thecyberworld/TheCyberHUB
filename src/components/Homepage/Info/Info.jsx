@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, ButtonLink, RouterButton, OpenSourceButton } from "../../MixComponents/Buttons/ButtonElements";
+import { Button, ButtonLink, RouterButton, OpenSourceButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 import {
     InfoContainer,
     InfoWrapper,

@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
-import GoalForm from "./GoalForm";
-import GoalItem from "./GoalItem";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getGoals, reset } from "../../../features/goals/goalSlice";
+import { getBlogs, reset } from "../../../features/blogs/blogSlice";
 import Spinner from "../../Other/MixComponents/Spinner/Spinner";
-import "./GoalSetter.css";
 import { Wrapper } from "../Profile/ProfileElements";
-const GoalSetter = () => {
+import BlogCard from "../../Blogs/BlogCard/BlogCard";
+const UserBlogs = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const { goals, isLoading, isError, message } = useSelector((state) => state.goals);
+    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
 
     useEffect(() => {
         if (isError) {
@@ -20,7 +18,7 @@ const GoalSetter = () => {
         if (!user) {
             navigate("/login");
         } else {
-            dispatch(getGoals());
+            dispatch(getBlogs());
         }
 
         return () => {
@@ -34,21 +32,23 @@ const GoalSetter = () => {
 
     return (
         <Wrapper>
-            <GoalForm />
+            <Link to={"create"} style={{ color: "cornflowerblue" }}>
+                <h2>Create a new blog</h2>
+            </Link>
 
             <section className={"content"}>
-                {goals.length > 0 ? (
+                {blogs && blogs?.length > 0 ? (
                     <div className={"goals"}>
-                        {goals.map((goal) => (
-                            <GoalItem key={goal._id} goal={goal} />
+                        {blogs.map((blog) => (
+                            <BlogCard key={blog?._id} blog={blog} />
                         ))}
                     </div>
                 ) : (
-                    <h3> You have not set any goals</h3>
+                    <h3> You have not set any blogs</h3>
                 )}
             </section>
         </Wrapper>
     );
 };
 
-export default GoalSetter;
+export default UserBlogs;

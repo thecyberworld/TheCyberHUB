@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,45 +8,47 @@ import Homepage from "./pages/Homepage";
 import ScrollToTop from "./components/ScrollToTop";
 import Register from "./pages/Register";
 import {
-    Navbar,
-    Sidebar,
-    Courses,
-    CourseDetail,
-    CoursesLayout,
-    Roadmaps,
-    CyberNews,
-    Jobs,
-    Quiz,
-    InterviewQuestions,
-    Events,
-    Event,
-    Community,
     About,
+    Blogs,
+    CertificateCard,
+    Community,
+    CourseDetail,
+    Courses,
+    CoursesLayout,
+    CreateBlog,
     CTF,
     CyberGames,
-    OSINTGame,
-    Footer,
-    Sponsors,
-    OpensourceProjects,
-    Spinner,
-    Roadmap,
+    CyberNews,
     Dashboard,
-    Login,
-    Profile,
-    EditProfile,
-    LearningPath,
-    CreateBlog,
-    GoalSetter,
-    UserBlogs,
-    Blogs,
-    SingleBlog,
     EditBlog,
-    Tags,
+    EditProfile,
+    Event,
+    Events,
+    Footer,
+    GoalSetter,
+    InterviewQuestions,
+    Jobs,
+    LearningPath,
+    Login,
+    Navbar,
     NotFound,
-    CertificateCard,
+    OpensourceProjects,
+    OSINTGame,
+    Profile,
+    Quiz,
+    Roadmap,
+    Roadmaps,
+    Sidebar,
+    SingleBlog,
+    Spinner,
+    Sponsors,
+    Tags,
+    UserBlogs,
 } from "./components";
 
-import { Container } from "./components/MixComponents/Layout/LayoutElements";
+import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
+import Tools from "./components/Tools/Tools";
+import BreachCheck from "./components/Tools/BreachCheck/BreachCheck";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -95,6 +97,11 @@ const App = () => {
                                     <Route exact path={"create"} element={<CreateBlog />} />
                                     <Route exact path={"edit/:title"} element={<EditBlog />} />
                                 </Route>
+                            </Route>
+
+                            <Route path={"/tools/*"}>
+                                <Route index element={<Tools />} />
+                                <Route path={"breachCheck"} element={<BreachCheck />} />
                             </Route>
 
                             <Route path={"/blogs"}>

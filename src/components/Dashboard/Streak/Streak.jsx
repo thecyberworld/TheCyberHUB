@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
-import Spinner from "../../MixComponents/Spinner/Spinner";
+import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import { Count, StreakContainer, StreakIcon, Streaks } from "./StreakElements";
 
 const Streak = () => {
