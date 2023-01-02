@@ -14,28 +14,22 @@ const LeftBlogSidebar = () => {
         <LeftBlogSidebarContainer>
             <ExploreContainer>
                 <ExploreHeading>
-                    {" "}
-                    <CgFeed /> My Feed{" "}
+                    <CgFeed /> My Feed
                 </ExploreHeading>
                 <ExploreHeading>
-                    {" "}
-                    <MdOutlineTravelExplore /> Explore{" "}
+                    <MdOutlineTravelExplore /> Explore
                 </ExploreHeading>
                 <ExploreHeading>
-                    {" "}
-                    <MdNoteAlt /> Drafts{" "}
+                    <MdNoteAlt /> Drafts
                 </ExploreHeading>
                 <ExploreHeading>
-                    {" "}
-                    <BsFillBookmarksFill /> Bookmarks{" "}
+                    <BsFillBookmarksFill /> Bookmarks
                 </ExploreHeading>
                 <ExploreHeading>
-                    {" "}
-                    <AiTwotoneFlag /> Capture The Flag{" "}
+                    <AiTwotoneFlag /> CTF
                 </ExploreHeading>
                 <ExploreHeading>
-                    {" "}
-                    <BsChevronDoubleRight /> More{" "}
+                    <BsChevronDoubleRight /> More
                 </ExploreHeading>
             </ExploreContainer>
         </LeftBlogSidebarContainer>

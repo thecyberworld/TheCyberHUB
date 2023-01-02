@@ -3,7 +3,7 @@ import axios from "axios";
 let API_URL = "";
 if (import.meta.env.VITE_WEB_ENV === "dev_production") {
     API_URL = `${import.meta.env.VITE_API_URL}/api/blogs/`;
-} else API_URL = "api/blogs/";
+} else API_URL = "/api/blogs/";
 
 const addComment = async (blogId, commentData, token) => {
     try {

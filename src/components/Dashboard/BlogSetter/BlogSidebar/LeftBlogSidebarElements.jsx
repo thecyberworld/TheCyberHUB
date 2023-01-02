@@ -10,7 +10,11 @@ export const LeftBlogSidebarContainer = styled.div`
     min-width: 250px;
     align-items: flex-start;
     justify-content: flex-start;
-    border: #4cc23e 1px solid;
+
+    @media screen and (max-width: 970px) {
+        width: auto;
+        min-width: auto;
+    }
 `;
 
 export const ExploreHeading = styled.p`
