@@ -20,5 +20,5 @@ export const CardTools = styled.div`
 `;
 
 export const RouterLink = styled(LinkRouter)`
-    color: #ff0000;
+    color: whitesmoke;
 `;
