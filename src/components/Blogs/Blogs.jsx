@@ -9,6 +9,7 @@ import { encodeURL } from "./util";
 import { Link } from "react-router-dom";
 import RightBlogSidebar from "./BlogSidebar/RightBlogSidebar";
 import LeftBlogSidebar from "./BlogSidebar/LeftBlogSidebar";
+import { RouterLink } from "../Tools/ToolsElements";
 
 const Blogs = () => {
     const dispatch = useDispatch();
@@ -32,20 +33,28 @@ const Blogs = () => {
 
     return (
         <Wrapper>
+            Temporarily Displaying this Create blog button <br />
+            <RouterLink to={"/dashboard/blogs/create"}> Create Blog </RouterLink>
+            <br />
             {/* <h1> Blogs </h1> */}
             <BlogsComponent>
                 <LeftBlogSidebar />
                 <MiddleContainer>
                     {blogs && blogs?.length > 0 ? (
-                        <AllBlogs>
-                            {blogs.map((blog, id) => (
-                                <Link key={id} className={"styles"} to={{ pathname: `${encodeURL(blog?.title)}` }}>
-                                    <BlogCard key={blog?._id} blog={blog} />
-                                </Link>
-                            ))}
-                        </AllBlogs>
+                        <>
+                            <AllBlogs>
+                                {blogs.map((blog, id) => (
+                                    <Link key={id} className={"styles"} to={{ pathname: `${encodeURL(blog?.title)}` }}>
+                                        <BlogCard key={blog?._id} blog={blog} />
+                                    </Link>
+                                ))}
+                            </AllBlogs>
+                        </>
                     ) : (
-                        <h3>There are no blogs to display</h3>
+                        <>
+                            <h3>There are no blogs to display</h3>
+                            <RouterLink to={"/dashboard/blogs/create"}> Create Blog </RouterLink>
+                        </>
                     )}
                 </MiddleContainer>
                 <RightBlogSidebar />
