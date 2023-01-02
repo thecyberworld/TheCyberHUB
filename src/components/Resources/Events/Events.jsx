@@ -1,6 +1,6 @@
 import React from "react";
 import EventsData from "./EventsData/EventsData";
-import CTFData from "../../CyberGames/CTF/CTFData";
+import CTFData from "../../Other/CyberGames/CTF/CTFData";
 import PastEvents from "./PastEvents/PastEvents";
 import OnGoingEvents from "./OnGoingEvents/OnGoingEvents";
 import UpComingEvents from "./UpComingEvents/UpComingEvents";
@@ -13,7 +13,7 @@ import {
     PastEventsContainer,
     RouterLink,
 } from "./EventsElement";
-import { encodeURL } from "../../Dashboard/BlogSetter/util";
+import { encodeURL } from "../../Blogs/util";
 
 function padTo2Digits(num) {
     return num.toString().padStart(2, "0");

@@ -100,6 +100,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                 },
                                 { to: "blogs", title: "Blogs", dropdown: "blogs" },
                                 { to: "dashboard/blogs/create", title: "Create Blog", dropdown: "create-blogs" },
+                                { to: "tools", title: "Tools", dropdown: "tools" },
                                 { to: "community", title: "Community", dropdown: "community" },
                                 // { to: "sponsors", title: "Sponsors", dropdown: "sponsors" },
                             ].map(({ to, title, dropdown }) => (

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Spinner from "../../MixComponents/Spinner/Spinner";
-import { ContainerViewBlog, ViewBlogHeader } from "../BlogSetter/ViewBlog/ViewBlogElements";
+import Spinner from "../../Other/MixComponents/Spinner/Spinner";
+import { ContainerViewBlog, ViewBlogHeader } from "../../Blogs/ViewBlog/ViewBlogElements";
 import { UserImage, Wrapper } from "./ProfileElements";
 import { EditProfileContainer, Form, Input, Label } from "./EditProfileElements";
 import { updateUser } from "../../../features/auth/authSlice";
-import { AddImage } from "../BlogSetter/CreateBlog/CreateBlogElements";
+import { AddImage } from "../../Blogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
 import { getUserDetails } from "../../../features/userDetails/userDetailSlice";
 

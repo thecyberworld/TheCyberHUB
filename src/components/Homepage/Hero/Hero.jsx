@@ -11,7 +11,7 @@ import {
     ArrowForward,
     ArrowRight,
 } from "./HeroElements";
-import { Button } from "../../MixComponents/Buttons/ButtonElements";
+import { Button } from "../../Other/MixComponents/Buttons/ButtonElements";
 import Video from "../../../assets/video/thecyberhubBackgroundVideo.mp4";
 
 const Hero = () => {
@@ -26,9 +26,9 @@ const Hero = () => {
     return (
         <HeroContainer id={"home"}>
             <HeroBg>
-                {/*{loading  &&*/}
-                {/*    <ImageBg src={Image}/>*/}
-                {/*}*/}
+                {/* {loading  && */}
+                {/*    <ImageBg src={Image}/> */}
+                {/* } */}
                 <VideoBg autoPlay loop muted src={Video} type={"video/mp4"} />
             </HeroBg>
 

@@ -3,7 +3,7 @@ import GoalForm from "./GoalForm";
 import { useDispatch, useSelector } from "react-redux";
 import { GoalsContainer } from "./GoalElements";
 import { deleteGoal, getGoals, reset } from "../../../../features/goals/goalSlice";
-import Spinner from "../../../MixComponents/Spinner/Spinner";
+import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
 
 const GoalSetter = () => {
     const dispatch = useDispatch();
