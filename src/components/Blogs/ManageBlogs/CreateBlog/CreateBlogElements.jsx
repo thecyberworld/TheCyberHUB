@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FcAddImage } from "react-icons/all";
+import { Link } from "react-router-dom";
 
 export const createContent = styled.input``;
 export const SectionCreateBlog = styled.div`
@@ -9,19 +10,48 @@ export const SectionCreateBlog = styled.div`
 export const CreateBlogContainer = styled.div`
     display: flex;
     flex-direction: column;
-    min-width: 1200px;
-`;
-export const AddImage = styled(FcAddImage)`
-    font-size: 25px;
-    cursor: pointer;
+    width: 1200px;
+    //max-width: 100%;
 `;
 
+export const AddCoverImageSection = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+export const ImageUploadAndPreviewSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+export const AddImage = styled(FcAddImage)`
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 200%;
+`;
+
+export const ImageUploadLabel = styled.label`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1c1d;
+    color: #f4f4f4;
+    border: 1px solid #1a1c1d;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+`;
+export const ImageUploadInput = styled.input``;
+
+export const ImageSelected = styled.p`
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+`;
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 1000px;
-    margin: 10px;
 `;
 
 export const Label = styled.label`
@@ -36,7 +66,6 @@ export const Input = styled.input`
     align-items: center;
     border-radius: 5px;
     background: transparent;
-    //border: transparent;
     color: #fff;
     width: 100%;
     height: 50px;
@@ -45,6 +74,7 @@ export const Input = styled.input`
     margin: 10px 0;
     border: #222222 1px solid;
     padding: 25px;
+    font-family: "Poppins", sans-serif;
 
     ::placeholder {
         color: #fff;
@@ -62,6 +92,7 @@ export const Input = styled.input`
 `;
 
 export const TextArea = styled.textarea`
+    font-family: "Poppins", sans-serif;
     border: #222222 1px solid;
     padding: 25px;
     margin: 10px 0;
@@ -82,12 +113,6 @@ export const TextArea = styled.textarea`
     &:focus {
         outline: none;
     }
-
-    &:hover {
-        background: transparent;
-        //border: transparent;
-        color: #fff;
-    }
 `;
 
 export const TagInput = styled.input`
@@ -97,7 +122,6 @@ export const TagInput = styled.input`
     align-items: center;
     border-radius: 5px;
     background: transparent;
-    //border: transparent;
     color: #fff;
     width: 100%;
     height: 50px;
@@ -114,12 +138,6 @@ export const TagInput = styled.input`
     &:focus {
         outline: none;
     }
-
-    &:hover {
-        background: transparent;
-        //border: transparent;
-        color: #fff;
-    }
 `;
 
 export const Submit = styled.button`
@@ -133,4 +151,11 @@ export const Submit = styled.button`
     cursor: pointer;
     font-size: 13px;
     font-family: "Roboto", sans-serif;
+`;
+
+export const RouterButtonLink = styled(Link)`
+    background: rgba(28, 28, 28, 0.66);
+    color: #fffdfd;
+    margin: 10px 0;
+    padding: 5px 15px;
 `;

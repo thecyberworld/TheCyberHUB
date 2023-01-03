@@ -16,12 +16,26 @@ import NotFound from "../../../NotFound";
 import ViewComments from "../Comments/ViewComments";
 import AddCommentForm from "../Comments/AddCommentForm";
 import remarkGfm from "remark-gfm";
+import styled from "styled-components";
 
+const CodeBlock = styled.pre`
+    background: #1f1f1f;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1rem;
+    white-space: pre-wrap;
+`;
+// const CodeBlock = ({ value, language }) => {
+//     return (
+//         <SyntaxHighlighter language={language}>
+//             {value}
+//         </SyntaxHighlighter>
+//     );
+// };
 const ViewBlog = () => {
     const [addCommentData, setAddCommentData] = useState({
         comment: "",
     });
-
     const { comment } = addCommentData;
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
@@ -95,6 +109,7 @@ const ViewBlog = () => {
                         components={{
                             h2: "h1",
                         }}
+                        renderers={{ code: CodeBlock }}
                     >
                         {blog?.content}
                     </ContentReactMarkdown>

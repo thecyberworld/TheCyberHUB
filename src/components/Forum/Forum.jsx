@@ -3,11 +3,15 @@ import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import { ContainerForum } from "./ForumElements";
 import Card from "./Card";
 import forumData from "./ForumData";
+import { RouterButtonLink } from "../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 
 const Forum = () => {
     return (
         <Wrapper>
-            Ask question | Post a Solution
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <RouterButtonLink to={"/dashboard/forum/create"}> Ask Question </RouterButtonLink>
+                <RouterButtonLink to={"/dashboard/forum/create"}> Post a Solution </RouterButtonLink>
+            </div>
             <ContainerForum>
                 {forumData.map((item, id) => (
                     <Card

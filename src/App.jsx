@@ -50,7 +50,7 @@ import { Container } from "./components/Other/MixComponents/Layout/LayoutElement
 import Tools from "./components/Tools/Tools";
 import BreachCheck from "./components/Tools/BreachCheck/BreachCheck";
 import Forum from "./components/Forum/Forum";
-import ViewQuestion from "./components/Forum/ViewQuestion";
+import ForumSubPage from "./components/Forum/ForumSubPage";
 
 const App = () => {
     const [loading, setLoading] = useState(false);
@@ -115,7 +115,7 @@ const App = () => {
 
                             <Route path={"/forum"}>
                                 <Route index element={<Forum />} />
-                                <Route exact path={":title"} element={<ViewQuestion />} />
+                                <Route exact path={":title"} element={<ForumSubPage />} />
                                 <Route element={<NotFound />} />
                             </Route>
 

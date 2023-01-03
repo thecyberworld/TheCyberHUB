@@ -7,6 +7,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
     padding: 50px;
 
     * {
+        font-family: "Poppins", sans-serif;
         margin: 10px auto;
     }
 
@@ -39,9 +40,15 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
     h6 {
         font-size: 0.67em;
     }
+    code {
+        font-family: "Roboto Mono", monospace;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
 
     p {
-        font-family: "Roboto Mono", monospace;
+        //font-family: "Roboto Mono", monospace;
+        font-family: "Poppins", sans-serif;
         text-align: left;
         white-space: pre-line;
         font-size: 20px;
@@ -50,18 +57,20 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
 
     ol {
         list-style-type: decimal;
-        font-family: "Roboto Mono", monospace;
+        //font-family: "Roboto Mono", monospace;
         text-align: left;
         font-size: 20px;
         line-height: 1.5;
         margin: 0 -60px;
         padding-left: -10px;
     }
+
     ul {
     }
+
     li {
         list-style-type: square;
-        font-family: "Roboto Mono", monospace;
+        //font-family: "Roboto Mono", monospace;
         text-align: left;
         margin: 0 50px;
         padding: 0 10px;
@@ -79,6 +88,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
 `;
 export const ContentSection = styled.div`
     background: #111111;
+    min-height: 685px;
 `;
 export const ContainerViewBlog = styled.p`
     display: flex;
@@ -93,7 +103,7 @@ export const ViewBlogHeader = styled.div`
     display: flex;
     flex-direction: column;
     padding-top: 0;
-    font-family: "Montserrat", sans-serif;
+    //font-family: "Montserrat", sans-serif;
     color: #cecac3;
     max-width: 1000px;
 `;

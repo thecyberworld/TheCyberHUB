@@ -5,7 +5,6 @@ export const BlogsComponent = styled.div`
     width: 100%;
     max-width: 1500px;
     justify-content: space-between;
-    border: #2f80ed 1px solid;
 `;
 
 export const MiddleContainer = styled.div`
