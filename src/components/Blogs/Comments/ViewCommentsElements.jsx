@@ -22,6 +22,7 @@ export const SectionUserPicture = styled.div`
     margin: 5px 10px 0px;
 `;
 export const UserPicture = styled.img`
+    width: 40px;
     border-radius: 5px;
 `;
 
@@ -30,7 +31,6 @@ export const SectionCommentDetails = styled.div`
 `;
 export const Username = styled.h5``;
 export const Comment = styled.p`
-    border: #4cc23e 1px solid;
     margin: 10px auto;
     max-width: 600px;
     word-wrap: break-word;

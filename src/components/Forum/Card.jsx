@@ -43,9 +43,6 @@ const Card = ({ title, description, username, date, categories, views, answers, 
                         <Title> {title} </Title>
                         <Description> {description} </Description>
                     </RouterLink>
-                    {/* <Categories> {categories.map((category, id) => ( */}
-                    {/*     <Category key={id}>{category}</Category> */}
-                    {/* ))} </Categories> */}
                 </SubSection>
                 <DetailsSection>
                     <Votes>{votes} votes </Votes>

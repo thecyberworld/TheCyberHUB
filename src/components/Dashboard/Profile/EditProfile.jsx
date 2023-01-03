@@ -6,7 +6,7 @@ import { ContainerViewBlog, ViewBlogHeader } from "../../Blogs/ViewBlog/ViewBlog
 import { UserImage, Wrapper } from "./ProfileElements";
 import { EditProfileContainer, Form, Input, Label } from "./EditProfileElements";
 import { updateUser } from "../../../features/auth/authSlice";
-import { AddImage } from "../../Blogs/CreateBlog/CreateBlogElements";
+import { AddImage } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
 import { getUserDetails } from "../../../features/userDetails/userDetailSlice";
 

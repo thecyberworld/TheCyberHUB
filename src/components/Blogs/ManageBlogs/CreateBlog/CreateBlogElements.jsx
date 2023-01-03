@@ -24,7 +24,10 @@ export const Form = styled.form`
     margin: 10px;
 `;
 
-export const Label = styled.label``;
+export const Label = styled.label`
+    border: #222222 1px solid;
+    padding: 5px;
+`;
 
 export const Input = styled.input`
     display: flex;
@@ -33,13 +36,15 @@ export const Input = styled.input`
     align-items: center;
     border-radius: 5px;
     background: transparent;
-    border: transparent;
+    //border: transparent;
     color: #fff;
     width: 100%;
     height: 50px;
-    font-size: 30px;
+    font-size: 20px;
     text-underline-offset: 5px;
     margin: 10px 0;
+    border: #222222 1px solid;
+    padding: 25px;
 
     ::placeholder {
         color: #fff;
@@ -51,23 +56,24 @@ export const Input = styled.input`
 
     &:hover {
         background: transparent;
-        border: transparent;
+        //border: transparent;
         color: #fff;
     }
 `;
 
 export const TextArea = styled.textarea`
+    border: #222222 1px solid;
+    padding: 25px;
     margin: 10px 0;
-    font-size: 25px;
+    font-size: 17px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     background: transparent;
-    border: transparent;
     color: #fff;
     width: 100%;
-    height: 400px;
+    height: 550px;
 
     ::placeholder {
         color: #fff;
@@ -79,7 +85,39 @@ export const TextArea = styled.textarea`
 
     &:hover {
         background: transparent;
-        border: transparent;
+        //border: transparent;
+        color: #fff;
+    }
+`;
+
+export const TagInput = styled.input`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    background: transparent;
+    //border: transparent;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    font-size: 15px;
+    text-underline-offset: 5px;
+    margin: 10px 0;
+    border: #222222 1px solid;
+    padding: 25px;
+
+    ::placeholder {
+        color: #fff;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: transparent;
+        //border: transparent;
         color: #fff;
     }
 `;

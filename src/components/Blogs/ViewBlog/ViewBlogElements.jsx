@@ -3,38 +3,64 @@ import ReactMarkdown from "react-markdown";
 
 export const ContentReactMarkdown = styled(ReactMarkdown)`
     text-align: start;
-`;
-export const ContainerViewBlog = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-top: 50px;
-`;
-
-export const ViewBlogHeader = styled.div`
-    display: flex;
-    flex-direction: column;
     max-width: 1000px;
-    padding-top: 0;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "Montserrat", sans-serif;
-    color: #cecac3;
+    padding: 50px;
 
     * {
         margin: 10px auto;
     }
 
+    a {
+        color: #f4f4f4;
+    }
+
+    h1 {
+        font-size: 2em;
+        border-bottom: 1px #2a2a2a solid;
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        font-size: 1.17em;
+    }
+
+    h4 {
+        font-size: 1em;
+    }
+
+    h5 {
+        font-size: 0.83em;
+    }
+
+    h6 {
+        font-size: 0.67em;
+    }
+
     p {
         font-family: "Roboto Mono", monospace;
         text-align: left;
-        //padding: 0 50px;
         white-space: pre-line;
         font-size: 20px;
         line-height: 1.5;
     }
+
+    ol {
+        list-style-type: decimal;
+        font-family: "Roboto Mono", monospace;
+        text-align: left;
+        font-size: 20px;
+        line-height: 1.5;
+        margin: 0 -60px;
+        padding-left: -10px;
+    }
+    ul {
+    }
     li {
-        list-style-type: disc;
+        list-style-type: square;
         font-family: "Roboto Mono", monospace;
         text-align: left;
         margin: 0 50px;
@@ -50,6 +76,26 @@ export const ViewBlogHeader = styled.div`
         object-fit: contain;
         border-radius: 5px;
     }
+`;
+export const ContentSection = styled.div`
+    background: #111111;
+`;
+export const ContainerViewBlog = styled.p`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+    max-width: 1000px;
+`;
+
+export const ViewBlogHeader = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-top: 0;
+    font-family: "Montserrat", sans-serif;
+    color: #cecac3;
+    max-width: 1000px;
 `;
 
 export const CommentContainer = styled.div`

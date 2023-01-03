@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // import image from "../../../Blogs/img.webp";
 
-import { encodeURL } from "../util";
+import { encodeURL } from "../../util";
 // import {Tags, Tag} from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs, updateBlog, reset } from "../../../features/blogs/blogSlice";
-import Spinner from "../../Other/MixComponents/Spinner/Spinner";
-import { ContainerViewBlog, ViewBlogHeader } from "../ViewBlog/ViewBlogElements";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { getAllBlogs, updateBlog, reset } from "../../../../features/blogs/blogSlice";
+import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
+import { ContainerViewBlog, ViewBlogHeader } from "../../ViewBlog/ViewBlogElements";
+import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 
 const EditBlog = () => {
     const dispatch = useDispatch();
