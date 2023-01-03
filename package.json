@@ -27,6 +27,7 @@
     "react-scroll": "^1.8.8",
     "react-spinners": "^0.13.6",
     "react-spinners-kit": "^1.9.1",
+    "react-syntax-highlighter": "^15.5.0",
     "react-toastify": "^9.1.1",
     "react-transition-group": "^4.4.5",
     "remark-gfm": "^3.0.1",

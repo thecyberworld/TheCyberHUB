@@ -13,6 +13,7 @@ import { RouterLink } from "../Tools/ToolsElements";
 import TrendingBlogs from "./TrendingBlogs/TrendingBlogs";
 import NewBlogCard from "./BlogCard/NewBlogCard";
 import LeftBlogSidebar from "./BlogSidebar/LeftBlogSidebar";
+import { RouterButtonLink } from "./ManageBlogs/CreateBlog/CreateBlogElements";
 
 const Blogs = () => {
     const dispatch = useDispatch();
@@ -36,6 +37,8 @@ const Blogs = () => {
 
     return (
         <Wrapper>
+            <RouterButtonLink to={"/dashboard/blogs/create"}> Create Blog </RouterButtonLink>
+            <br />
             <BlogsComponent>
                 <LeftBlogSidebar />
                 <MiddleContainer>

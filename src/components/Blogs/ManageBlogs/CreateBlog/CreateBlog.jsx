@@ -5,19 +5,23 @@ import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import { Link, useNavigate } from "react-router-dom";
 import { reset } from "../../../../features/goals/goalSlice";
 import {
+    AddCoverImageSection,
     AddImage,
     CreateBlogContainer,
     Form,
+    ImageSelected,
+    ImageUploadAndPreviewSection,
+    ImageUploadInput,
+    ImageUploadLabel,
     Input,
-    Label,
     SectionCreateBlog,
     Submit,
     TagInput,
     TextArea,
 } from "./CreateBlogElements";
 import axios from "axios";
-import { ContentReactMarkdown, ContentSection } from "../../ViewBlog/ViewBlogElements";
-import remarkGfm from "remark-gfm";
+import PreviewMarkdown from "../../PreviewMarkdown";
+import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
 
 const CreateBlog = () => {
     const dispatch = useDispatch();
@@ -28,7 +32,6 @@ const CreateBlog = () => {
     const onPreview = () => {
         setPreview(true);
     };
-
     const closePreview = () => {
         setPreview(false);
     };
@@ -127,6 +130,7 @@ const CreateBlog = () => {
         const blogData = { title, content, coverImage: file.name, tags };
 
         dispatch(createBlog(blogData));
+
         setBlogData({ title: "", content: "", coverImage: "", tags: [] });
         setFileName("");
     };
@@ -138,45 +142,46 @@ const CreateBlog = () => {
                         <h1>Blog created successfully</h1>
                         <h2>
                             <Link to={"../"} style={{ color: "cornflowerblue" }}>
-                                Visit
+                                {" "}
+                                Visit{" "}
                             </Link>
                         </h2>
                     </>
                 ) : null}
-                {!preview && <Submit onClick={onPreview}>Show Preview</Submit>}
-                {preview && <Submit onClick={closePreview}>Close Preview</Submit>}
+                <ImageUploadAndPreviewSection>
+                    <AddCoverImageSection>
+                        <ImageUploadLabel style={{ color: "grey" }} htmlFor="addCoverImage">
+                            <AddImage /> Add Cover Image
+                        </ImageUploadLabel>
+                        <ImageUploadInput
+                            type="file"
+                            name="addCoverImage"
+                            id="addCoverImage"
+                            onChange={onFileChange}
+                            style={{ display: "none" }}
+                        />
+                        <ImageSelected> {file && <p>{fileName} selected</p>} </ImageSelected>
+                    </AddCoverImageSection>
+
+                    <PreviewSection>
+                        {!preview ? (
+                            <Button onClick={onPreview}>
+                                <PreviewIcon /> Show Preview
+                            </Button>
+                        ) : (
+                            <Button onClick={closePreview}>
+                                <PreviewIcon /> Close Preview
+                            </Button>
+                        )}
+                    </PreviewSection>
+                </ImageUploadAndPreviewSection>
+
                 {preview ? (
-                    <div>
-                        <h1>{title}</h1>
-                        <ContentSection>
-                            <ContentReactMarkdown
-                                remarkPlugins={[remarkGfm]}
-                                components={{
-                                    h2: "h1",
-                                }}
-                            >
-                                {content}
-                            </ContentReactMarkdown>
-                        </ContentSection>
-                        <div>
-                            <Submit type={"submit"}>Publish Blog</Submit>
-                        </div>
-                    </div>
+                    <PreviewMarkdown preview={preview} closePreview={closePreview} title={title} content={content} />
                 ) : (
                     <SectionCreateBlog>
                         <Form onSubmit={onSubmit}>
                             <div>
-                                <Label style={{ color: "grey" }} htmlFor="addCoverImage">
-                                    Add Cover Image <AddImage />
-                                </Label>
-                                <Input
-                                    type="file"
-                                    name="addCoverImage"
-                                    id="addCoverImage"
-                                    onChange={onFileChange}
-                                    style={{ display: "none" }}
-                                />
-                                {file && <p>{fileName} selected</p>}
                                 <Input
                                     type="title"
                                     name="title"

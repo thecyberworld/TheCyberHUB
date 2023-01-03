@@ -41,7 +41,7 @@ const Card = ({ title, description, username, date, categories, views, answers, 
                 <SubSection>
                     <RouterLink to={{ pathname: `${encodeURL(title)}` }}>
                         <Title> {title} </Title>
-                        <Description> {description} </Description>
+                        <Description> {description.slice(0, 150)}... </Description>
                     </RouterLink>
                 </SubSection>
                 <DetailsSection>
@@ -55,14 +55,11 @@ const Card = ({ title, description, username, date, categories, views, answers, 
             </MainSection>
             <FooterDetailsSection>
                 <Categories>
-                    {" "}
                     {categories.map((category, id) => (
                         <Category key={id}>{category}</Category>
-                    ))}{" "}
+                    ))}
                 </Categories>
-
                 <Date>
-                    {" "}
                     by @{username} {timeString}{" "}
                 </Date>
             </FooterDetailsSection>

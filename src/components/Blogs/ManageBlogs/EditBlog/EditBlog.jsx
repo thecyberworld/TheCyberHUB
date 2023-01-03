@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import image from "../../../Blogs/img.webp";
-
 import { encodeURL } from "../../util";
 // import {Tags, Tag} from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs, updateBlog, reset } from "../../../../features/blogs/blogSlice";
+import { getAllBlogs, reset, updateBlog } from "../../../../features/blogs/blogSlice";
 import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
-import { ContainerViewBlog, ViewBlogHeader } from "../../ViewBlog/ViewBlogElements";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
+import {
+    CreateBlogContainer,
+    Form,
+    Input,
+    SectionCreateBlog,
+    Submit,
+    TagInput,
+    TextArea,
+} from "../CreateBlog/CreateBlogElements";
+import PreviewMarkdown from "../../PreviewMarkdown";
 
 const EditBlog = () => {
     const dispatch = useDispatch();
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
+    const [preview, setPreview] = useState(false); // added state variable for preview
     const navigate = useNavigate();
     // const [editMode, setEditMode] = useState(true);
     const [blogData, setBlogData] = useState({
@@ -39,7 +48,13 @@ const EditBlog = () => {
     const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {
         tags: [],
     };
+    const onPreview = () => {
+        setPreview(true);
+    };
 
+    const closePreview = () => {
+        setPreview(false);
+    };
     const onChange = (e) => {
         let value = e.target.value;
         if (e.target.name === "tags") {
@@ -68,64 +83,52 @@ const EditBlog = () => {
 
     return (
         <Wrapper>
-            <ContainerViewBlog>
-                <ViewBlogHeader>
-                    {/* {!editMode ? ( */}
-                    {/*    <> */}
-                    {/*        <img src={image} alt="Blog Image"/> */}
-                    {/*        <h1>{searchedBlog.title}</h1> */}
-                    {/*        <h3>@{searchedBlog.username} | {searchedBlog.date}</h3> */}
-                    {/*        <p>{searchedBlog.content}</p> */}
-                    {/*    </> */}
-                    {/* ) : ( */}
-                    <form onSubmit={onSubmit}>
-                        <div className="form-group">
-                            <label htmlFor="title">Title</label>
-                            <input
-                                type="text"
-                                name="title"
-                                id="title"
-                                value={blogData.title || searchedBlog.title}
-                                onChange={onChange}
-                            />
-                            <label htmlFor="content">Content</label>
-                            <textarea
-                                name="content"
-                                id="content"
-                                value={blogData.content || searchedBlog.content}
-                                onChange={onChange}
-                            />
-                            <label htmlFor="tags">Tags</label>
-                            <input
-                                type="text"
-                                name="tags"
-                                id="tags"
-                                value={blogData.tags.join(", ") || searchedBlog.tags.join(", ")}
-                                onChange={onChange}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-primary">
-                                Update Blog
-                            </button>
-                            <button type="button" className="btn btn-secondary" onClick={() => navigate("../")}>
-                                Cancel
-                            </button>
-                        </div>
-                    </form>
-                    {/* )} */}
-                </ViewBlogHeader>
-                {/* <Tags> */}
-                {/*    {searchedBlog.tags.map((tag, index) => ( */}
-                {/*        <Tag key={index}>{tag}</Tag> */}
-                {/*    ))} */}
-                {/* </Tags> */}
-                {/* {!editMode ? ( */}
-                {/*    <button className="btn btn-secondary" onClick={() => setEditMode(true)}> */}
-                {/*        Edit this Blog */}
-                {/*    </button> */}
-                {/* ) : null} */}
-            </ContainerViewBlog>
+            {!preview && <Submit onClick={onPreview}>Show Preview</Submit>}
+            {preview ? (
+                <PreviewMarkdown
+                    preview={preview}
+                    closePreview={closePreview}
+                    title={blogData.title || searchedBlog.title}
+                    content={blogData.content || searchedBlog.content}
+                />
+            ) : (
+                <CreateBlogContainer>
+                    <SectionCreateBlog>
+                        <Form onSubmit={onSubmit}>
+                            <div>
+                                <Input
+                                    type="text"
+                                    name="title"
+                                    id="title"
+                                    value={blogData.title || searchedBlog.title}
+                                    onChange={onChange}
+                                />
+                                <TextArea
+                                    name="content"
+                                    id="content"
+                                    value={blogData.content || searchedBlog.content}
+                                    onChange={onChange}
+                                />
+                                <TagInput
+                                    type="text"
+                                    name="tags"
+                                    id="tags"
+                                    value={blogData.tags.join(", ") || searchedBlog.tags.join(", ")}
+                                    onChange={onChange}
+                                />
+                            </div>
+                            <div>
+                                <Submit type="submit" className="btn btn-primary">
+                                    Update Blog
+                                </Submit>
+                                <Submit type="button" className="btn btn-secondary" onClick={() => navigate("../")}>
+                                    Cancel
+                                </Submit>
+                            </div>
+                        </Form>
+                    </SectionCreateBlog>
+                </CreateBlogContainer>
+            )}
         </Wrapper>
     );
 };
