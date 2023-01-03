@@ -57,8 +57,7 @@ export const BlogsContainerTitle = styled.div`
 `;
 
 export const Counts = styled.div`
-    width: 150px;
-
+    margin-right: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -70,16 +69,21 @@ export const Bookmark = styled.div`
     justify-content: center;
 `;
 export const Comments = styled.div`
+    margin-right: 10px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 export const Likes = styled.div`
+    margin-right: 10px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
 `;
 export const Views = styled.div`
+    font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;

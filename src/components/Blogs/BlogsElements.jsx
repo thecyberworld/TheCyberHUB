@@ -4,11 +4,12 @@ export const BlogsComponent = styled.div`
     display: flex;
     width: 100%;
     max-width: 1500px;
+    justify-content: space-between;
+    border: #2f80ed 1px solid;
 `;
 
 export const MiddleContainer = styled.div`
     display: flex;
-    width: auto;
     margin: 0 10px;
     align-items: start;
     justify-content: start;

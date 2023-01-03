@@ -4,11 +4,18 @@ import { encodeURL } from "../util";
 import { useDispatch, useSelector } from "react-redux";
 import { Tag, Tags } from "../BlogCard/BlogCardElements";
 import { addComment, getAllBlogs, reset } from "../../../features/blogs/blogSlice";
-import { CommentContainer, ContainerViewBlog, ContentReactMarkdown, ViewBlogHeader } from "./ViewBlogElements";
+import {
+    CommentContainer,
+    ContainerViewBlog,
+    ContentReactMarkdown,
+    ContentSection,
+    ViewBlogHeader,
+} from "./ViewBlogElements";
 import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import NotFound from "../../../NotFound";
 import ViewComments from "../Comments/ViewComments";
 import AddCommentForm from "../Comments/AddCommentForm";
+import remarkGfm from "remark-gfm";
 
 const ViewBlog = () => {
     const [addCommentData, setAddCommentData] = useState({
@@ -21,9 +28,9 @@ const ViewBlog = () => {
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
 
     const { title } = useParams();
-    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
-    const coverImage = searchedBlog?.coverImage;
-    const coverImageUrl = `http://localhost:5000/images/blogImages/${coverImage}`;
+    const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
+    const coverImage = blog?.coverImage;
+    const coverImageUrl = `http://localhost:5000/images/${coverImage}`;
 
     useEffect(() => {
         if (isError) {
@@ -35,7 +42,7 @@ const ViewBlog = () => {
         };
     }, [dispatch, isError, message]);
 
-    if (!searchedBlog) {
+    if (!blog) {
         return <NotFound />;
     }
 
@@ -43,14 +50,14 @@ const ViewBlog = () => {
         return <Spinner />;
     }
 
-    const blogUnFormattedDate = new Date(searchedBlog?.createdAt);
+    const blogUnFormattedDate = new Date(blog?.createdAt);
     const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
         month: "short",
         day: "numeric",
         year: "numeric",
     }).format(blogUnFormattedDate);
 
-    const comments = searchedBlog?.comments.map((comment) => ({
+    const comments = blog?.comments.map((comment) => ({
         id: comment?._id,
         username: comment?.username,
         comment: comment?.comment,
@@ -69,24 +76,32 @@ const ViewBlog = () => {
         const addCommentData = {
             comment,
         };
-        dispatch(addComment({ blogId: searchedBlog._id, addCommentData }));
+        dispatch(addComment({ blogId: blog._id, addCommentData }));
         setAddCommentData({
             comment: "",
         });
     };
-
     return (
         <ContainerViewBlog>
             <ViewBlogHeader>
                 <img src={coverImageUrl} alt={coverImage} />
-                <h1> {searchedBlog?.title} </h1>
+                <h1> {blog?.title} </h1>
                 <h3>
-                    @{searchedBlog?.username} | {blogCreatedAt}
+                    @{blog?.username} | {blogCreatedAt}
                 </h3>
-                <ContentReactMarkdown>{searchedBlog?.content}</ContentReactMarkdown>
+                <ContentSection>
+                    <ContentReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={{
+                            h2: "h1",
+                        }}
+                    >
+                        {blog?.content}
+                    </ContentReactMarkdown>
+                </ContentSection>
             </ViewBlogHeader>
             <Tags>
-                {searchedBlog?.tags.map((tag, index) => (
+                {blog?.tags.map((tag, index) => (
                     <Tag key={index}>{tag}</Tag>
                 ))}
             </Tags>

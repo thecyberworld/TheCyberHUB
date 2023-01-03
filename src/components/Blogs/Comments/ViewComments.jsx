@@ -11,13 +11,16 @@ import {
 } from "./ViewCommentsElements";
 
 const ViewComments = (props) => {
+    const profilePicture = props.user.picture;
+    const profilePictureUrl = `http://localhost:5000/images/${profilePicture}`;
+
     return (
         <ViewCommentsContainer>
             {props.comments.length} Comments
             {props.comments?.map((userComment, id) => (
                 <CommentSection key={id}>
                     <SectionUserPicture>
-                        <UserPicture style={{ height: "35px", display: "flex" }} src={props.user.picture} alt="" />
+                        <UserPicture src={profilePictureUrl} alt={props.user.picture} />
                     </SectionUserPicture>
                     <SectionCommentDetails>
                         <Username>{userComment?.username}</Username>
