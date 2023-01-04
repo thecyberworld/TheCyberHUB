@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CertificateContainer, CertificateComponent, CertificateFooter } from "./CertificateElements";
-import { InvalidCertificate } from "../Other/CyberGames/CTF/CTFElements";
+import { InvalidCertificate } from "../CyberGames/CTF/CTFElements";
 import { useParams } from "react-router-dom";
 
 const CertificateCard = () => {
