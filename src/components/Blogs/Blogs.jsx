@@ -5,8 +5,6 @@ import Spinner from "../Other/MixComponents/Spinner/Spinner";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 // import BlogCard from "./BlogCard/BlogCard";
 import { AllBlogs, BlogsComponent, MiddleContainer } from "./BlogsElements";
-import { encodeURL } from "./util";
-import { Link } from "react-router-dom";
 // import RightBlogSidebar from "./BlogSidebar/RightBlogSidebar";
 // import LeftBlogSidebar from "./BlogSidebar/LeftBlogSidebar";
 import { RouterLink } from "../Tools/ToolsElements";
@@ -43,15 +41,11 @@ const Blogs = () => {
                 <LeftBlogSidebar />
                 <MiddleContainer>
                     {blogs && blogs?.length > 0 ? (
-                        <>
-                            <AllBlogs>
-                                {blogs.map((blog, id) => (
-                                    <Link key={id} className={"styles"} to={{ pathname: `${encodeURL(blog?.title)}` }}>
-                                        <NewBlogCard key={blog?._id} blog={blog} />
-                                    </Link>
-                                ))}
-                            </AllBlogs>
-                        </>
+                        <AllBlogs>
+                            {blogs.map((blog) => (
+                                <NewBlogCard key={blog?._id} blog={blog} />
+                            ))}
+                        </AllBlogs>
                     ) : (
                         <>
                             <h3>There are no blogs to display</h3>
