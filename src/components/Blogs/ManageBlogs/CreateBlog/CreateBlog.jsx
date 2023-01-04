@@ -121,7 +121,12 @@ const CreateBlog = () => {
             formData.append("file", file);
 
             try {
-                await axios.post("/api/upload", formData);
+                let API_URL = "";
+                if (import.meta.env.VITE_WEB_ENV === "dev_production") {
+                    API_URL = `${import.meta.env.VITE_API_URL}/api/upload/`;
+                } else API_URL = "/api/upload/";
+
+                await axios.post(API_URL, formData);
             } catch (err) {
                 console.error(err);
             }

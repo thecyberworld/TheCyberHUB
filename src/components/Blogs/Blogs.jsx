@@ -7,7 +7,6 @@ import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import { AllBlogs, BlogsComponent, MiddleContainer } from "./BlogsElements";
 // import RightBlogSidebar from "./BlogSidebar/RightBlogSidebar";
 // import LeftBlogSidebar from "./BlogSidebar/LeftBlogSidebar";
-import { RouterLink } from "../Tools/ToolsElements";
 import TrendingBlogs from "./TrendingBlogs/TrendingBlogs";
 import NewBlogCard from "./BlogCard/NewBlogCard";
 import LeftBlogSidebar from "./BlogSidebar/LeftBlogSidebar";
@@ -49,7 +48,6 @@ const Blogs = () => {
                     ) : (
                         <>
                             <h3>There are no blogs to display</h3>
-                            <RouterLink to={"/dashboard/blogs/create"}> Create Blog </RouterLink>
                         </>
                     )}
                 </MiddleContainer>
