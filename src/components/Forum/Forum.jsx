@@ -8,6 +8,7 @@ import { RouterButtonLink } from "../Blogs/ManageBlogs/CreateBlog/CreateBlogElem
 const Forum = () => {
     return (
         <Wrapper>
+            {"// Frontend Only right now //"}
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <RouterButtonLink to={"/dashboard/forum/create"}> Ask Question </RouterButtonLink>
                 <RouterButtonLink to={"/dashboard/forum/create"}> Post a Solution </RouterButtonLink>

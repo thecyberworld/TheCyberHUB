@@ -44,7 +44,6 @@ const ForumSubPage = () => {
             [e.target.name]: value,
         }));
     };
-    console.log(comment);
     const onSubmit = (e) => {
         e.preventDefault();
 

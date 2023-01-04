@@ -100,6 +100,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                 },
                                 { to: "blogs", title: "Blogs", dropdown: "blogs" },
                                 { to: "forum", title: "Forum", dropdown: "forum" },
+                                { to: "social", title: "Social", dropdown: "social" },
                                 { to: "tools", title: "Tools", dropdown: "tools" },
                                 // { to: "community", title: "Community", dropdown: "community" },
                                 // { to: "sponsors", title: "Sponsors", dropdown: "sponsors" },

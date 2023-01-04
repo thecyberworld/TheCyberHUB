@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bgImage from "./../../assets/images/certificate-bg.png";
+import bgImage from "../../../assets/images/certificate-bg.png";
 
 export const CertificateContainer = styled.div`
     margin-top: 40px;

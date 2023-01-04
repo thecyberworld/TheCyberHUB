@@ -68,7 +68,7 @@ export const CommentTextArea = styled.textarea`
     background: transparent;
     color: #fff;
     width: 100%;
-    height: 250px;
+    min-height: 250px;
 
     ::placeholder {
         color: #fff;
@@ -82,6 +82,7 @@ export const CommentTextArea = styled.textarea`
 export const CommentContentMarkdownPreview = styled(ContentReactMarkdown)`
     max-width: 100%;
     padding: 25px;
+    min-height: 250px;
     height: 100%;
     font-size: 17px;
 
@@ -89,6 +90,7 @@ export const CommentContentMarkdownPreview = styled(ContentReactMarkdown)`
         font-family: "Poppins", sans-serif;
         margin: 0;
     }
+
     p {
         //font-family: "Roboto Mono", monospace;
         font-family: "Poppins", sans-serif;
