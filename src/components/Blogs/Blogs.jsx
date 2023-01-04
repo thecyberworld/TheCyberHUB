@@ -17,20 +17,14 @@ const Blogs = () => {
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
 
     useEffect(() => {
-        if (isError) {
-            console.log(message);
-        }
+        if (isError) console.log(message);
 
         dispatch(getAllBlogs());
 
-        return () => {
-            dispatch(reset());
-        };
+        return () => dispatch(reset());
     }, [dispatch, isError, message]);
 
-    if (isLoading) {
-        return <Spinner />;
-    }
+    if (isLoading) return <Spinner />;
 
     return (
         <Wrapper>

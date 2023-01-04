@@ -22,7 +22,7 @@ export const createBlog = createAsyncThunk("blogs/create", async (blogData, thun
 });
 
 // Update existing blog
-export const updateBlog = createAsyncThunk("blogs/update", async ({id, blogData}, thunkAPI) => {
+export const updateBlog = createAsyncThunk("blogs/update", async ({ id, blogData }, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await blogService.updateBlog(id, blogData, token);
@@ -48,7 +48,12 @@ export const getBlogs = createAsyncThunk("blogs/getUserBlogs", async (_, thunkAP
 // Get all blogs
 export const getAllBlogs = createAsyncThunk("blogs/getAllBlogs", async (_, thunkAPI) => {
     try {
-        const response = await fetch("/api/blogs/all");
+        let API_URL = "";
+        if (import.meta.env.VITE_WEB_ENV === "dev_production") {
+            API_URL = `${import.meta.env.VITE_API_URL}/api/blogs/all`;
+        } else API_URL = "/api/blogs/all";
+
+        const response = await fetch(API_URL);
         const data = await response.json();
         return data;
     } catch (error) {

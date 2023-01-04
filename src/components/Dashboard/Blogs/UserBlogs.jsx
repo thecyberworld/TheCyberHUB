@@ -13,23 +13,14 @@ const UserBlogs = () => {
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
 
     useEffect(() => {
-        if (isError) {
-            console.log(message);
-        }
-        if (!user) {
-            navigate("/login");
-        } else {
-            dispatch(getBlogs());
-        }
+        if (isError) console.log(message);
+        if (!user) navigate("/login");
+        else dispatch(getBlogs());
 
-        return () => {
-            dispatch(reset());
-        };
+        return () => dispatch(reset());
     }, [user, navigate, dispatch, isError, message]);
 
-    if (isLoading) {
-        return <Spinner />;
-    }
+    if (isLoading) return <Spinner />;
 
     return (
         <Wrapper>
