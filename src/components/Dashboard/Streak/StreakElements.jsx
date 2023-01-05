@@ -26,6 +26,7 @@ export const StreakContainer = styled.div`
     text-align: center;
     justify-content: center;
 `;
+
 export const Streaks = styled.div`
     color: #4cc23e;
     display: flex;

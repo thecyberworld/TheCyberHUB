@@ -10,12 +10,7 @@ const Profile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const {
-        // userDetails,
-        isLoading,
-        isError,
-        message,
-    } = useSelector((state) => state.userDetails);
+    const { isLoading, isError, message } = useSelector((state) => state.userDetails);
 
     useEffect(() => {
         if (user && isError) console.log(message);
@@ -45,7 +40,6 @@ const Profile = () => {
                 Name: {user.name} <br />
                 <UserImage src={profilePictureUrl} />
                 Username: {user.username} <br />
-                {/* Type: {user.userType} <br /> */}
                 Email: {user.email} <br />
             </ProfileContainer>
         </Wrapper>

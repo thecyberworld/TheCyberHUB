@@ -1,6 +1,19 @@
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
+export const BlogImage = styled.img`
+    margin-bottom: 1rem;
+    text-align: center;
+`;
+
+export const BlogTitle = styled.h1`
+    margin-bottom: 1rem;
+    text-align: center;
+    margin-top: 20px;
+`;
+
+export const UsernameAndDate = styled.h3``;
+
 export const PreviewMarkdownHeading = styled.h1`
     padding: 25px 50px 15px;
 `;
@@ -12,16 +25,16 @@ export const TagsSection = styled.div`
 `;
 
 export const Tag = styled.p`
-    background: #1a1a1a;
+    background: #142638;
     padding: 0 10px;
     margin: 5px 10px 5px 0;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     transition: transform 0.3s;
 
     &:hover {
-        transform: scale(1.02);
+        transform: scale(1.03);
     }
 `;
 
@@ -114,20 +127,21 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
 
 export const ContentSection = styled.div`
     background: #111111;
-    width: 100%;
 `;
 
-export const ContainerViewBlog = styled.p`
+export const ContainerViewBlog = styled.div`
+    max-width: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 1px solid sandybrown;
 `;
 
 export const ViewBlogHeader = styled.div`
     display: flex;
     flex-direction: column;
-    padding-top: 0;
+    align-items: center;
     //font-family: "Montserrat", sans-serif;
     color: #cecac3;
 `;

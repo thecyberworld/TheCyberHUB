@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { encodeURL } from "../../util";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
-import PreviewMarkdown from "../../PreviewMarkdown";
+import PreviewBlogContent from "../../PreviewBlogContent";
 import { getAllBlogs, reset, updateBlog } from "../../../../features/blogs/blogSlice";
 import {
     AddCoverImageSection,
@@ -113,7 +113,7 @@ const EditBlog = () => {
                 </PreviewSection>
             </ImageUploadAndPreviewSection>
             {preview ? (
-                <PreviewMarkdown
+                <PreviewBlogContent
                     preview={preview}
                     closePreview={closePreview}
                     title={blogData.title || blog.title}

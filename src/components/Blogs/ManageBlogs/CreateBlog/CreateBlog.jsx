@@ -9,23 +9,18 @@ import {
     AddImage,
     Container,
     CreateBlogContainer,
-    Form,
-    Heading1,
     Heading2,
+    Heading3,
     ImageSelected,
     ImageUploadAndPreviewSection,
     ImageUploadInput,
     ImageUploadLabel,
-    Input,
-    SectionCreateBlog,
-    Submit,
-    TagInput,
-    TextArea,
 } from "./CreateBlogElements";
 import axios from "axios";
-import PreviewMarkdown from "../../PreviewMarkdown";
+import PreviewBlogContent from "../../PreviewBlogContent";
 import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
 import getApiUrl from "../../../../features/apiUrl";
+import BlogPostForm from "../BlogPostForm";
 
 const CreateBlog = () => {
     const dispatch = useDispatch();
@@ -129,12 +124,12 @@ const CreateBlog = () => {
             <CreateBlogContainer>
                 {isSuccess ? (
                     <Container>
-                        <Heading1> Your blog has been unleashed upon the world! </Heading1>
-                        <Heading2>
+                        <Heading2> Your blog has been unleashed upon the world! </Heading2>
+                        <Heading3>
                             <Link to={`/blogs`} style={{ color: "cornflowerblue" }}>
                                 Check out your blog
                             </Link>
-                        </Heading2>
+                        </Heading3>
                     </Container>
                 ) : null}
                 <ImageUploadAndPreviewSection>
@@ -160,12 +155,10 @@ const CreateBlog = () => {
                     <PreviewSection>
                         {!preview ? (
                             <Button onClick={onPreview}>
-                                {" "}
                                 <PreviewIcon /> Show Preview{" "}
                             </Button>
                         ) : (
                             <Button onClick={closePreview}>
-                                {" "}
                                 <PreviewIcon /> Close Preview{" "}
                             </Button>
                         )}
@@ -173,7 +166,7 @@ const CreateBlog = () => {
                 </ImageUploadAndPreviewSection>
 
                 {preview ? (
-                    <PreviewMarkdown
+                    <PreviewBlogContent
                         preview={preview}
                         closePreview={closePreview}
                         title={title}
@@ -181,38 +174,7 @@ const CreateBlog = () => {
                         tags={tags}
                     />
                 ) : (
-                    <SectionCreateBlog>
-                        <Form onSubmit={onSubmit}>
-                            <div>
-                                <Input
-                                    type="title"
-                                    name="title"
-                                    id="title"
-                                    value={title}
-                                    onChange={onChange}
-                                    placeholder="Title"
-                                />
-                                <TextArea
-                                    name="content"
-                                    id="content"
-                                    value={content}
-                                    onChange={onChange}
-                                    placeholder="Enter your content here in markdown"
-                                />
-                                <TagInput
-                                    type="text"
-                                    name="tags"
-                                    id="tags"
-                                    value={tags}
-                                    onChange={onChange}
-                                    placeholder="tag1, tag2, tag3"
-                                />
-                            </div>
-                            <div>
-                                <Submit type={"submit"}>Publish Blog</Submit>
-                            </div>
-                        </Form>
-                    </SectionCreateBlog>
+                    <BlogPostForm title={title} content={content} tags={tags} onSubmit={onSubmit} onChange={onChange} />
                 )}
             </CreateBlogContainer>
         </Wrapper>

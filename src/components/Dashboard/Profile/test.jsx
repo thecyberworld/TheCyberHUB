@@ -3,13 +3,13 @@ import React from "react";
 const Test = () => {
     return (
         <div>
-            {/*   <Heading1> Task Completed </Heading1> */}
+            {/*   <Heading2> Task Completed </Heading2> */}
             {/*   <SkillLevels> */}
             {/*       <SkillLevel> 0 </SkillLevel> */}
             {/*   </SkillLevels> */}
             {/* </SkillLevelContainer> */}
             {/* <SkillLevelContainer> */}
-            {/*   <Heading1> Select Your Level </Heading1> */}
+            {/*   <Heading2> Select Your Level </Heading2> */}
             {/*   <SkillLevels> */}
             {/*       <SkillLevel> Beginner </SkillLevel> */}
             {/*       <SkillLevel> Intermediate </SkillLevel> */}
@@ -17,7 +17,7 @@ const Test = () => {
             {/*   </SkillLevels> */}
             {/* </SkillLevelContainer> */}
             {/* <SkillLevelContainer> */}
-            {/*   <Heading1> Select Your Role </Heading1> */}
+            {/*   <Heading2> Select Your Role </Heading2> */}
             {/*   <SkillLevels> */}
             {/*       <SkillLevel> Student </SkillLevel> */}
             {/*       <SkillLevel> Intern </SkillLevel> */}
@@ -25,7 +25,7 @@ const Test = () => {
             {/*   </SkillLevels> */}
             {/* </SkillLevelContainer> */}
             {/* <SkillLevelContainer> */}
-            {/*   <Heading1> Select Your Role </Heading1> */}
+            {/*   <Heading2> Select Your Role </Heading2> */}
             {/*   <SkillLevels> */}
             {/*       <SkillLevel> Student </SkillLevel> */}
             {/*       <SkillLevel> Intern </SkillLevel> */}

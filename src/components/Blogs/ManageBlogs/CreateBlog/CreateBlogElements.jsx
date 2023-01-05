@@ -49,8 +49,8 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
 `;
-export const Heading1 = styled.h1``;
-export const Heading2 = styled.h1``;
+export const Heading2 = styled.h2``;
+export const Heading3 = styled.h3``;
 export const ImageSelected = styled.p`
     //margin-left: 25px;
 `;
