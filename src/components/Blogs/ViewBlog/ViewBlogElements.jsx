@@ -1,10 +1,33 @@
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
+export const PreviewMarkdownHeading = styled.h1`
+    padding: 25px 50px 15px;
+`;
+
+export const TagsSection = styled.div`
+    padding: 25px 50px;
+    display: flex;
+    font-size: 150%;
+`;
+
+export const Tag = styled.p`
+    background: #1a1a1a;
+    padding: 0 10px;
+    margin: 5px 10px 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+`;
+
 export const ContentReactMarkdown = styled(ReactMarkdown)`
     text-align: start;
-    max-width: 1000px;
-    padding: 50px;
+    padding: 25px 50px;
 
     * {
         font-family: "Poppins", sans-serif;
@@ -18,7 +41,6 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
     h1 {
         font-size: 2em;
         border-bottom: 1px #2a2a2a solid;
-        width: 100%;
     }
 
     h2 {
@@ -40,10 +62,14 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
     h6 {
         font-size: 0.67em;
     }
+
     code {
         font-family: "Roboto Mono", monospace;
         white-space: pre-wrap;
         word-break: break-word;
+        background-color: #1d1f21;
+        border-radius: 5px;
+        overflow-wrap: break-word;
     }
 
     p {
@@ -81,22 +107,21 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
 
     img {
         margin-top: 0;
-        width: 100%;
         object-fit: contain;
         border-radius: 5px;
     }
 `;
+
 export const ContentSection = styled.div`
     background: #111111;
-    min-height: 685px;
+    width: 100%;
 `;
+
 export const ContainerViewBlog = styled.p`
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
-    max-width: 1000px;
 `;
 
 export const ViewBlogHeader = styled.div`
@@ -105,7 +130,6 @@ export const ViewBlogHeader = styled.div`
     padding-top: 0;
     //font-family: "Montserrat", sans-serif;
     color: #cecac3;
-    max-width: 1000px;
 `;
 
 export const CommentContainer = styled.div`

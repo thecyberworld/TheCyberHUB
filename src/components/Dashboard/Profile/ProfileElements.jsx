@@ -6,8 +6,13 @@ export const Heading = styled.h3``;
 
 export const Wrapper = styled.div`
     margin: 100px auto;
+    width: 100%;
     color: whitesmoke;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px;
 
     @media screen and (max-width: 760px) {
     }

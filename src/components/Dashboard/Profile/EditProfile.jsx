@@ -9,6 +9,7 @@ import { updateUser } from "../../../features/auth/authSlice";
 import { AddImage } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
 import { getUserDetails } from "../../../features/userDetails/userDetailSlice";
+import getApiUrl from "../../../features/apiUrl";
 
 const EditProfile = () => {
     const dispatch = useDispatch();
@@ -106,10 +107,7 @@ const EditProfile = () => {
         formData.append("file", file);
 
         try {
-            let API_URL = "";
-            if (import.meta.env.VITE_WEB_ENV === "dev_production") {
-                API_URL = `${import.meta.env.VITE_API_URL}/api/upload/`;
-            } else API_URL = "/api/upload/";
+            const API_URL = getApiUrl("api/upload/");
 
             await axios.post(API_URL, formData);
         } catch (err) {

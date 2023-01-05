@@ -2,7 +2,7 @@
 // import {
 //     CertificateContainer,
 //     GetCertificateContainer,
-//     Heading,
+//     Heading1,
 //     InputBox,
 //     InvalidCertificate,
 // } from "../CyberGames/CTF/CTFElements";
@@ -15,12 +15,12 @@
 //     return (
 //         <div>
 //             {/*<GetCertificateContainer>*/}
-//                 {/*<Heading> Certificate </Heading>*/}
-//                 {/*<Heading> How to get Certificate</Heading>*/}
-//                 {/*<Heading> Get your certificate from here </Heading>*/}
+//                 {/*<Heading1> Certificate </Heading1>*/}
+//                 {/*<Heading1> How to get Certificate</Heading1>*/}
+//                 {/*<Heading1> Get your certificate from here </Heading1>*/}
 //
 //             {/*    <RouterLink to={"certificate"}>*/}
-//             {/*        <Heading> Get Certificate </Heading>*/}
+//             {/*        <Heading1> Get Certificate </Heading1>*/}
 //             {/*    </RouterLink>*/}
 //             {/*    <InputBox*/}
 //             {/*        type="text"*/}

@@ -1,9 +1,7 @@
 import axios from "axios";
+import getApiUrl from "../apiUrl";
 
-let API_URL = "";
-if (import.meta.env.VITE_WEB_ENV === "dev_production") {
-    API_URL = `${import.meta.env.VITE_API_URL}/api/users/`;
-} else API_URL = "/api/users/";
+const API_URL = getApiUrl("api/users/");
 
 // Register user
 const register = async (userData) => {

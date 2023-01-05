@@ -1,10 +1,7 @@
 import axios from "axios";
+import getApiUrl from "../apiUrl";
 
-let API_URL = "";
-if (import.meta.env.VITE_WEB_ENV === "dev_production") {
-    API_URL = `${import.meta.env.VITE_API_URL}/api/blogs/`;
-} else API_URL = "/api/blogs/";
-
+const API_URL = getApiUrl("api/blogs/");
 const addComment = async (blogId, commentData, token) => {
     try {
         const config = {
@@ -12,7 +9,7 @@ const addComment = async (blogId, commentData, token) => {
                 Authorization: `Bearer ${token}`,
             },
         };
-        const response = await axios.post(`${API_URL}${blogId}/comment`, { comment: commentData }, config);
+        const response = await axios.post(API_URL + blogId + "/comment", { comment: commentData }, config);
         return response.data;
     } catch (error) {
         throw new Error(error);

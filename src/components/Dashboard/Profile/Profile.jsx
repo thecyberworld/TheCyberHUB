@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
 import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import { Link, useNavigate } from "react-router-dom";
+import getApiUrl from "../../../features/apiUrl";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -15,34 +16,21 @@ const Profile = () => {
         isError,
         message,
     } = useSelector((state) => state.userDetails);
-    if (!user) {
-        navigate("/");
-    }
+
     useEffect(() => {
-        if (user && isError) {
-            console.log(message);
-        }
-
-        if (!user) {
-            navigate("/");
-        } else {
-            dispatch(getUserDetails());
-        }
-
-        return () => {
-            dispatch(reset());
-        };
+        if (user && isError) console.log(message);
+        if (!user) navigate("/");
+        else dispatch(getUserDetails());
+        return () => dispatch(reset());
     }, [isError, message, dispatch, user, navigate]);
 
-    if (isLoading) {
-        return <Spinner />;
-    }
+    if (isLoading) return <Spinner />;
 
+    const API_URL = getApiUrl("images");
     const profilePicture = user.picture;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
-    const profilePictureUrl =
-        profilePicture === dummyPicture ? profilePicture : `http://localhost:5000/images/${profilePicture}`;
+    const profilePictureUrl = profilePicture === dummyPicture ? profilePicture : `${API_URL}/${profilePicture}`;
 
     return (
         <Wrapper>
@@ -53,7 +41,7 @@ const Profile = () => {
                 <Link style={{ color: "whitesmoke" }} to={"edit"}>
                     Edit profile
                 </Link>
-                <h1>Profile Details</h1>
+                <h1> Profile Details </h1>
                 Name: {user.name} <br />
                 <UserImage src={profilePictureUrl} />
                 Username: {user.username} <br />

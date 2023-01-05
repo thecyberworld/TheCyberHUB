@@ -1,9 +1,7 @@
 import axios from "axios";
+import getApiUrl from "../apiUrl";
 
-let API_URL = "";
-if (import.meta.env.VITE_WEB_ENV === "dev_production") {
-    API_URL = `${import.meta.env.VITE_API_URL}/api/goals/`;
-} else API_URL = "/api/goals/";
+const API_URL = getApiUrl("api/goals/");
 
 // Create new goal
 const createGoal = async (goalData, token) => {

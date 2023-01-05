@@ -9,10 +9,12 @@ import {
     UserPicture,
     ViewCommentsContainer,
 } from "./ViewCommentsElements";
+import getApiUrl from "../../../features/apiUrl";
 
 const ViewComments = (props) => {
     const profilePicture = props.user.picture;
-    const profilePictureUrl = `http://localhost:5000/images/${profilePicture}`;
+    const API_URL = getApiUrl("images");
+    const profilePictureUrl = `${API_URL}/${profilePicture}`;
 
     return (
         <ViewCommentsContainer>

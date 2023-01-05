@@ -10,8 +10,8 @@ export const SectionCreateBlog = styled.div`
 export const CreateBlogContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 1200px;
-    //max-width: 100%;
+    width: 100%;
+    max-width: 1500px;
 `;
 
 export const AddCoverImageSection = styled.div`
@@ -20,6 +20,7 @@ export const AddCoverImageSection = styled.div`
     align-items: center;
 `;
 export const ImageUploadAndPreviewSection = styled.div`
+    width: 100%;
     display: flex;
     justify-content: space-between;
 `;
@@ -42,16 +43,22 @@ export const ImageUploadLabel = styled.label`
 `;
 export const ImageUploadInput = styled.input``;
 
-export const ImageSelected = styled.p`
-    margin-left: 20px;
+export const Container = styled.div`
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 `;
+export const Heading1 = styled.h1``;
+export const Heading2 = styled.h1``;
+export const ImageSelected = styled.p`
+    //margin-left: 25px;
+`;
+
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 1000px;
 `;
 
 export const Label = styled.label`
@@ -142,11 +149,11 @@ export const TagInput = styled.input`
 
 export const Submit = styled.button`
     padding: 10px;
+    margin: 10px 0;
     background: #1e1e1e;
     border: transparent;
     color: whitesmoke;
     border-radius: 5px;
-    margin: 5px 0;
     width: 100%;
     cursor: pointer;
     font-size: 13px;

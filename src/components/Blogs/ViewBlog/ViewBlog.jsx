@@ -17,6 +17,7 @@ import ViewComments from "../Comments/ViewComments";
 import AddCommentForm from "../Comments/AddCommentForm";
 import remarkGfm from "remark-gfm";
 import styled from "styled-components";
+import getApiUrl from "../../../features/apiUrl";
 
 const CodeBlock = styled.pre`
     background: #1f1f1f;
@@ -43,8 +44,11 @@ const ViewBlog = () => {
 
     const { title } = useParams();
     const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
+
+    const API_URL = getApiUrl("images");
+
     const coverImage = blog?.coverImage;
-    const coverImageUrl = `http://localhost:5000/images/${coverImage}`;
+    const coverImageUrl = `${API_URL}/${coverImage}`;
 
     useEffect(() => {
         if (isError) {

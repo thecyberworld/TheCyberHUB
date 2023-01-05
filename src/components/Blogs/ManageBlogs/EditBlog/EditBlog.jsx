@@ -1,29 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-// import image from "../../../Blogs/img.webp";
 import { encodeURL } from "../../util";
-// import {Tags, Tag} from "../BlogCardElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs, reset, updateBlog } from "../../../../features/blogs/blogSlice";
 import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
-import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
+import PreviewMarkdown from "../../PreviewMarkdown";
+import { getAllBlogs, reset, updateBlog } from "../../../../features/blogs/blogSlice";
 import {
+    AddCoverImageSection,
+    AddImage,
     CreateBlogContainer,
     Form,
+    ImageUploadAndPreviewSection,
+    ImageUploadLabel,
     Input,
     SectionCreateBlog,
     Submit,
     TagInput,
     TextArea,
 } from "../CreateBlog/CreateBlogElements";
-import PreviewMarkdown from "../../PreviewMarkdown";
+import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
+import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
+// import getApiUrl from "../../../../features/apiUrl";
+// import axios from "axios";
 
 const EditBlog = () => {
     const dispatch = useDispatch();
     const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
     const [preview, setPreview] = useState(false); // added state variable for preview
     const navigate = useNavigate();
-    // const [editMode, setEditMode] = useState(true);
     const [blogData, setBlogData] = useState({
         title: "",
         content: "",
@@ -31,30 +35,21 @@ const EditBlog = () => {
     });
 
     useEffect(() => {
-        if (isError) {
-            console.log(message);
-        }
+        if (isError) console.log(message);
         dispatch(getAllBlogs());
-
-        return () => {
-            dispatch(reset());
-        };
+        return () => dispatch(reset());
     }, [dispatch, isError, message]);
 
-    if (isLoading) {
-        return <Spinner />;
-    }
+    if (isLoading) return <Spinner />;
+
     const { title } = useParams();
-    const searchedBlog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {
+    const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {
         tags: [],
     };
-    const onPreview = () => {
-        setPreview(true);
-    };
 
-    const closePreview = () => {
-        setPreview(false);
-    };
+    const onPreview = () => setPreview(true);
+    const closePreview = () => setPreview(false);
+
     const onChange = (e) => {
         let value = e.target.value;
         if (e.target.name === "tags") {
@@ -68,28 +63,62 @@ const EditBlog = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const tagData = blogData.tags.length === 0 ? searchedBlog.tags : blogData.tags;
+        const tagData = blogData.tags.length === 0 ? blog.tags : blogData.tags;
 
         const updatedBlogData = {
-            title: blogData.title || searchedBlog.title,
-            content: blogData.content || searchedBlog.content,
+            title: blogData.title || blog.title,
+            content: blogData.content || blog.content,
             tags: tagData,
         };
 
-        dispatch(updateBlog({ id: searchedBlog._id, blogData: updatedBlogData }));
-        // setEditMode(false);
+        dispatch(updateBlog({ id: blog._id, blogData: updatedBlogData }));
         navigate("../");
     };
 
+    console.log(blogData.tags.length !== 0 ? blogData.tags : blog.tags);
+    console.log(blogData.tags || blog.tags);
+    console.log(blogData.tags);
+    console.log(blog.tags);
+
     return (
         <Wrapper>
-            {!preview && <Submit onClick={onPreview}>Show Preview</Submit>}
+            <ImageUploadAndPreviewSection>
+                <AddCoverImageSection>
+                    <ImageUploadLabel style={{ color: "grey" }} htmlFor="addCoverImage">
+                        <AddImage /> Updating Cover Image is not Implemented yet
+                        {/* {!fileName ? <> Add Cover Image </> : */}
+                        {/*    !preview && (!fileName && <ImageSelected> Please select an image </ImageSelected> */}
+                        {/*    )} */}
+                        {/* <ImageSelected> {file && <p>{fileName} selected</p>} </ImageSelected> */}
+                    </ImageUploadLabel>
+                    {/* <ImageUploadInput */}
+                    {/*    type="file" name="addCoverImage" id="addCoverImage" */}
+                    {/*    // onChange={onFileChange} */}
+                    {/*    style={{display: "none"}} */}
+                    {/* /> */}
+                </AddCoverImageSection>
+
+                <PreviewSection>
+                    {!preview ? (
+                        <Button onClick={onPreview}>
+                            {" "}
+                            <PreviewIcon /> Show Preview{" "}
+                        </Button>
+                    ) : (
+                        <Button onClick={closePreview}>
+                            {" "}
+                            <PreviewIcon /> Close Preview{" "}
+                        </Button>
+                    )}
+                </PreviewSection>
+            </ImageUploadAndPreviewSection>
             {preview ? (
                 <PreviewMarkdown
                     preview={preview}
                     closePreview={closePreview}
-                    title={blogData.title || searchedBlog.title}
-                    content={blogData.content || searchedBlog.content}
+                    title={blogData.title || blog.title}
+                    content={blogData.content || blog.content}
+                    tags={blogData.tags.length !== 0 ? blogData.tags : blog.tags}
                 />
             ) : (
                 <CreateBlogContainer>
@@ -100,20 +129,20 @@ const EditBlog = () => {
                                     type="text"
                                     name="title"
                                     id="title"
-                                    value={blogData.title || searchedBlog.title}
+                                    value={blogData.title || blog.title}
                                     onChange={onChange}
                                 />
                                 <TextArea
                                     name="content"
                                     id="content"
-                                    value={blogData.content || searchedBlog.content}
+                                    value={blogData.content || blog.content}
                                     onChange={onChange}
                                 />
                                 <TagInput
                                     type="text"
                                     name="tags"
                                     id="tags"
-                                    value={blogData.tags.join(", ") || searchedBlog.tags.join(", ")}
+                                    value={blogData.tags.join(", ") || blog.tags.join(", ")}
                                     onChange={onChange}
                                 />
                             </div>

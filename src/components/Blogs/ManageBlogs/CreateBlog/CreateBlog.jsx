@@ -7,8 +7,11 @@ import { reset } from "../../../../features/goals/goalSlice";
 import {
     AddCoverImageSection,
     AddImage,
+    Container,
     CreateBlogContainer,
     Form,
+    Heading1,
+    Heading2,
     ImageSelected,
     ImageUploadAndPreviewSection,
     ImageUploadInput,
@@ -22,6 +25,7 @@ import {
 import axios from "axios";
 import PreviewMarkdown from "../../PreviewMarkdown";
 import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
+import getApiUrl from "../../../../features/apiUrl";
 
 const CreateBlog = () => {
     const dispatch = useDispatch();
@@ -29,24 +33,13 @@ const CreateBlog = () => {
     const { user } = useSelector((state) => state.auth);
     const { isSuccess, isError, message } = useSelector((state) => state.blogs);
     const [preview, setPreview] = useState(false); // added state variable for preview
-    const onPreview = () => {
-        setPreview(true);
-    };
-    const closePreview = () => {
-        setPreview(false);
-    };
+    const onPreview = () => setPreview(true);
+    const closePreview = () => setPreview(false);
 
     useEffect(() => {
-        if (isError) {
-            console.log(message);
-        }
-        if (!user) {
-            navigate("/login");
-        }
-
-        return () => {
-            dispatch(reset());
-        };
+        if (isError) console.log(message);
+        if (!user) navigate("/login");
+        return () => dispatch(reset());
     }, [user, isError, message, isSuccess, navigate, dispatch]);
 
     const [blogData, setBlogData] = useState({
@@ -55,14 +48,14 @@ const CreateBlog = () => {
         coverImage: "",
         tags: [],
     });
-
     const { title, content, tags } = blogData;
+
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState("");
 
     const onChange = (e) => {
         let value = e.target.value;
-        if (e.target.name === "tags") {
-            value = value.split(",").map((tag) => tag.trim()); // Split the string on comma and trim each tag
-        }
+        if (e.target.name === "tags") value = value.split(",").map((tag) => tag.trim());
 
         if (file) {
             if (e.target.name === "title") {
@@ -75,11 +68,10 @@ const CreateBlog = () => {
                             .replace(/ +/g, "_")
                             .replace(/[^a-zA-Z0-9]/g, "_")
                             .replace(/_+/g, "_")
-                    }_coverImg.${file && file.type.split("/")[1]}`,
+                    }_cover_image.${file && file.type.split("/")[1]}`,
                     { type: file && file.type },
                 );
                 setFile(newFile);
-                setFileName(newFile.name);
             }
         }
         setBlogData((prevState) => ({
@@ -88,10 +80,9 @@ const CreateBlog = () => {
         }));
     };
 
-    const [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState("");
     const onFileChange = (e) => {
         const file = e.target.files[0];
+        if (file) setFileName(file.name);
 
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -104,11 +95,10 @@ const CreateBlog = () => {
                         .replace(/ +/g, "_")
                         .replace(/[^a-zA-Z0-9]/g, "_")
                         .replace(/_+/g, "_")
-                }_coverImg.${file && file.type.split("/")[1]}`,
+                }_cover_image.${file && file.type.split("/")[1]}`,
                 { type: file && file.type },
             );
             setFile(newFile);
-            setFileName(file.name);
         };
         reader.readAsArrayBuffer(file);
     };
@@ -121,11 +111,7 @@ const CreateBlog = () => {
             formData.append("file", file);
 
             try {
-                let API_URL = "";
-                if (import.meta.env.VITE_WEB_ENV === "dev_production") {
-                    API_URL = `${import.meta.env.VITE_API_URL}/api/upload/`;
-                } else API_URL = "/api/upload/";
-
+                const API_URL = getApiUrl("api/upload");
                 await axios.post(API_URL, formData);
             } catch (err) {
                 console.error(err);
@@ -133,7 +119,6 @@ const CreateBlog = () => {
         }
 
         const blogData = { title, content, coverImage: file.name, tags };
-
         dispatch(createBlog(blogData));
 
         setBlogData({ title: "", content: "", coverImage: "", tags: [] });
@@ -143,20 +128,25 @@ const CreateBlog = () => {
         <Wrapper>
             <CreateBlogContainer>
                 {isSuccess ? (
-                    <>
-                        <h1>Blog created successfully</h1>
-                        <h2>
-                            <Link to={"../"} style={{ color: "cornflowerblue" }}>
-                                {" "}
-                                Visit{" "}
+                    <Container>
+                        <Heading1> Your blog has been unleashed upon the world! </Heading1>
+                        <Heading2>
+                            <Link to={`/blogs`} style={{ color: "cornflowerblue" }}>
+                                Check out your blog
                             </Link>
-                        </h2>
-                    </>
+                        </Heading2>
+                    </Container>
                 ) : null}
                 <ImageUploadAndPreviewSection>
                     <AddCoverImageSection>
                         <ImageUploadLabel style={{ color: "grey" }} htmlFor="addCoverImage">
-                            <AddImage /> Add Cover Image
+                            <AddImage />
+                            {!fileName ? (
+                                <> Add Cover Image </>
+                            ) : (
+                                !preview && !fileName && <ImageSelected> Please select an image </ImageSelected>
+                            )}
+                            <ImageSelected> {file && <p>{fileName} selected</p>} </ImageSelected>
                         </ImageUploadLabel>
                         <ImageUploadInput
                             type="file"
@@ -165,24 +155,31 @@ const CreateBlog = () => {
                             onChange={onFileChange}
                             style={{ display: "none" }}
                         />
-                        <ImageSelected> {file && <p>{fileName} selected</p>} </ImageSelected>
                     </AddCoverImageSection>
 
                     <PreviewSection>
                         {!preview ? (
                             <Button onClick={onPreview}>
-                                <PreviewIcon /> Show Preview
+                                {" "}
+                                <PreviewIcon /> Show Preview{" "}
                             </Button>
                         ) : (
                             <Button onClick={closePreview}>
-                                <PreviewIcon /> Close Preview
+                                {" "}
+                                <PreviewIcon /> Close Preview{" "}
                             </Button>
                         )}
                     </PreviewSection>
                 </ImageUploadAndPreviewSection>
 
                 {preview ? (
-                    <PreviewMarkdown preview={preview} closePreview={closePreview} title={title} content={content} />
+                    <PreviewMarkdown
+                        preview={preview}
+                        closePreview={closePreview}
+                        title={title}
+                        content={content}
+                        tags={tags}
+                    />
                 ) : (
                     <SectionCreateBlog>
                         <Form onSubmit={onSubmit}>

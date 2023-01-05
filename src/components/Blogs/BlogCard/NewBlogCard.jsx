@@ -35,7 +35,7 @@ const API_URL = getApiUrl("images");
 
 const NewBlogCard = ({ blog }) => {
     const coverImage = blog?.coverImage;
-    const coverImageUrl = `${API_URL}/${coverImage}`;
+    const coverImageUrl = `${API_URL}/${coverImage}` || image;
     const liked = true;
     const viewed = true;
     // const bookmarked = true;
