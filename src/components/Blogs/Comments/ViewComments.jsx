@@ -12,9 +12,9 @@ import {
 import getApiUrl from "../../../features/apiUrl";
 
 const ViewComments = (props) => {
-    const profilePicture = props.user.picture;
     const API_URL = getApiUrl("images");
-    const profilePictureUrl = `${API_URL}/${profilePicture}`;
+    const dummyPicture =
+        "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
 
     return (
         <ViewCommentsContainer>
@@ -22,11 +22,17 @@ const ViewComments = (props) => {
             {props.comments?.map((userComment, id) => (
                 <CommentSection key={id}>
                     <SectionUserPicture>
-                        <UserPicture src={profilePictureUrl} alt={props.user.picture} />
+                        <UserPicture
+                            src={
+                                userComment.picture !== undefined ? `${API_URL}/${userComment?.picture}` : dummyPicture
+                            }
+                            alt={userComment?.picture}
+                        />
                     </SectionUserPicture>
                     <SectionCommentDetails>
                         <Username>{userComment?.username}</Username>
-                        <CommentDate> Date: {userComment?.date}</CommentDate>
+                        <CommentDate> Jan 26, 2023</CommentDate>
+                        {/* <CommentDate> Date: {userComment?.date}</CommentDate> */}
                         {/* {new Intl.DateTimeFormat("en-US", { */}
                         {/*    month: "short", */}
                         {/*    day: "numeric", */}
