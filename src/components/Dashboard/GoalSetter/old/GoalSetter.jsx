@@ -3,7 +3,7 @@ import GoalForm from "./GoalForm";
 import { useDispatch, useSelector } from "react-redux";
 import { GoalsContainer } from "./GoalElements";
 import { deleteGoal, getGoals, reset } from "../../../../features/goals/goalSlice";
-import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
+import { CircleSpinner } from "react-spinners-kit";
 
 const GoalSetter = () => {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const GoalSetter = () => {
     }, [isError, message, dispatch]);
 
     if (isLoading) {
-        return <Spinner />;
+        return <CircleSpinner size={20} color={"#1fc10d"} />;
     }
 
     console.log(goals);

@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "../components/Homepage/Registration";
 import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
 import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
 import { PrimaryFilledButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
-// import { FaEnvelope } from "react-icons/fa";
-// import { FaLock } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { BsCardText, MdTitle } from "react-icons/all";
-// HiFire
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
-import Loader from "../components/Other/MixComponents/Spinner/Loader";
+import { CircleSpinner } from "react-spinners-kit";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -68,7 +65,7 @@ const Register = () => {
     };
 
     if (isLoading) {
-        return <Loader />;
+        return <CircleSpinner size={20} color={"#1fc10d"} />;
     }
     return (
         <Container>

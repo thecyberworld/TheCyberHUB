@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { encodeURL } from "../../util";
 import { useDispatch, useSelector } from "react-redux";
-import Spinner from "../../../Other/MixComponents/Spinner/Spinner";
 import PreviewBlogContent from "../../PreviewBlogContent";
 import { getAllBlogs, reset, updateBlog } from "../../../../features/blogs/blogSlice";
 import {
@@ -20,6 +19,7 @@ import {
 } from "../CreateBlog/CreateBlogElements";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
+import { CircleSpinner } from "react-spinners-kit";
 // import getApiUrl from "../../../../features/apiUrl";
 // import axios from "axios";
 
@@ -35,12 +35,14 @@ const EditBlog = () => {
     });
 
     useEffect(() => {
-        if (isError) console.log(message);
+        if (isError) {
+            console.log(message);
+        }
         dispatch(getAllBlogs());
         return () => dispatch(reset());
     }, [dispatch, isError, message]);
 
-    if (isLoading) return <Spinner />;
+    if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
 
     const { title } = useParams();
     const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import { ContainerViewBlog, ViewBlogHeader } from "../../Blogs/ViewBlog/ViewBlogElements";
 import { UserImage, Wrapper } from "./ProfileElements";
 import { EditProfileContainer, Form, Input, Label } from "./EditProfileElements";
@@ -10,6 +9,7 @@ import { AddImage } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements"
 import axios from "axios";
 import { getUserDetails } from "../../../features/userDetails/userDetailSlice";
 import getApiUrl from "../../../features/apiUrl";
+import { CircleSpinner } from "react-spinners-kit";
 
 const EditProfile = () => {
     const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const EditProfile = () => {
     }, [dispatch, isError, user, navigate, message]);
 
     if (isLoading) {
-        return <Spinner />;
+        return <CircleSpinner size={20} color={"#1fc10d"} />;
     }
 
     const [file, setFile] = useState(null);

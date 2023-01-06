@@ -14,7 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
-import Loader from "../components/Other/MixComponents/Spinner/Loader";
+import { CircleSpinner } from "react-spinners-kit";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -55,8 +55,9 @@ const Login = () => {
     };
 
     if (isLoading) {
-        return <Loader />;
+        return <CircleSpinner size={20} color={"#1fc10d"} />;
     }
+
     return (
         <Container>
             <CenterCard>

@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { ProfileContainer, UserImage, Wrapper } from "./ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
-import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import { Link, useNavigate } from "react-router-dom";
 import getApiUrl from "../../../features/apiUrl";
+import { CircleSpinner } from "react-spinners-kit";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Profile = () => {
         return () => dispatch(reset());
     }, [isError, message, dispatch, user, navigate]);
 
-    if (isLoading) return <Spinner />;
+    if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
 
     const API_URL = getApiUrl("images");
     const profilePicture = user.picture;

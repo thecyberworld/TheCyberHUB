@@ -6,6 +6,7 @@ import forumData from "../../Forum/ForumData";
 const TrendingBlogs = () => {
     return (
         <ComponentTrendingBlogs>
+            <h1> Trending Blogs </h1>
             {"// Dummy Data //"}
             {forumData.map((item, id) => (
                 <TrendingBlogCard

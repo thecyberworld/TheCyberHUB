@@ -14,12 +14,12 @@ import {
     UsernameAndDate,
     ViewBlogHeader,
 } from "./ViewBlogElements";
-import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import NotFound from "../../../NotFound";
 import ViewComments from "../Comments/ViewComments";
 import AddCommentForm from "../Comments/AddCommentForm";
 import getApiUrl from "../../../features/apiUrl";
 import PreviewMarkdown from "./PreviewMarkdown";
+import { CircleSpinner } from "react-spinners-kit";
 
 const ViewBlog = () => {
     const [addCommentData, setAddCommentData] = useState({ comment: "" });
@@ -35,13 +35,15 @@ const ViewBlog = () => {
     const coverImageUrl = `${API_URL}/${coverImage}`;
 
     useEffect(() => {
-        if (isError) console.log(message);
+        if (isError) {
+            console.log(message);
+        }
         dispatch(getAllBlogs());
         return () => dispatch(reset());
     }, [dispatch, isError, message]);
 
     if (!blog) return <NotFound />;
-    if (isLoading) return <Spinner />;
+    if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
 
     const blogUnFormattedDate = new Date(blog?.createdAt);
     const blogCreatedAt = new Intl.DateTimeFormat("en-US", {

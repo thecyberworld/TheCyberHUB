@@ -54,13 +54,13 @@ import ForumSubPage from "./components/Forum/ForumSubPage";
 import Social from "./components/Social/Social";
 
 const App = () => {
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const { pathname } = useLocation();
 
     useEffect(() => {
-        setLoading(true);
+        setIsLoading(true);
         setTimeout(() => {
-            setLoading(false);
+            setIsLoading(false);
         }, 3000);
     }, []);
 
@@ -77,7 +77,8 @@ const App = () => {
 
     return (
         <div>
-            {loading ? (
+            {" "}
+            {isLoading ? (
                 <Spinner />
             ) : (
                 <Container>
@@ -184,7 +185,7 @@ const App = () => {
                     </ScrollToTop>
                     {showFooter() && <Footer />}
                 </Container>
-            )}
+            )}{" "}
             <ToastContainer />
         </div>
     );

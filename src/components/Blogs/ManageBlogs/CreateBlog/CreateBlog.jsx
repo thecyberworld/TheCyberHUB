@@ -32,7 +32,9 @@ const CreateBlog = () => {
     const closePreview = () => setPreview(false);
 
     useEffect(() => {
-        if (isError) console.log(message);
+        if (isError) {
+            console.log(message);
+        }
         if (!user) navigate("/login");
         return () => dispatch(reset());
     }, [user, isError, message, isSuccess, navigate, dispatch]);

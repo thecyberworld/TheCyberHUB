@@ -4,9 +4,9 @@ import GoalItem from "./GoalItem";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getGoals, reset } from "../../../features/goals/goalSlice";
-import Spinner from "../../Other/MixComponents/Spinner/Spinner";
 import "./GoalSetter.css";
 import { Wrapper } from "../Profile/ProfileElements";
+import { CircleSpinner } from "react-spinners-kit";
 const GoalSetter = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const GoalSetter = () => {
     }, [user, navigate, dispatch, isError, message]);
 
     if (isLoading) {
-        return <Spinner />;
+        return <CircleSpinner size={20} color={"#1fc10d"} />;
     }
 
     return (
