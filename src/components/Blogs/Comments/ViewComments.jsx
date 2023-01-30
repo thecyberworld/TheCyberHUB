@@ -9,10 +9,9 @@ import {
     UserPicture,
     ViewCommentsContainer,
 } from "./ViewCommentsElements";
-import getApiUrl from "../../../features/apiUrl";
 
 const ViewComments = (props) => {
-    const API_URL = getApiUrl("images");
+    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
 

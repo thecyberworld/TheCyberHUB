@@ -25,7 +25,6 @@ import { deleteBlog } from "../../../features/blogs/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { encodeURL } from "../util";
-import getApiUrl from "../../../features/apiUrl";
 const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f71a7-df74-43b9-8330-af9740d9e8ba.png";
 const BlogCard = ({ blog }) => {
     const liked = true;
@@ -43,7 +42,7 @@ const BlogCard = ({ blog }) => {
     const { user } = useSelector((state) => state.auth);
     const { pathname } = useLocation();
 
-    const API_URL = getApiUrl("images");
+    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
 
     const coverImage = blog?.coverImage;
     const coverImageUrl = `${API_URL}/${coverImage}`;

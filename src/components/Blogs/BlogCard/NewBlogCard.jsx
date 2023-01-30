@@ -28,10 +28,9 @@ import {
 import { deleteBlog } from "../../../features/blogs/blogSlice";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import getApiUrl from "../../../features/apiUrl";
 const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f71a7-df74-43b9-8330-af9740d9e8ba.png";
 
-const API_URL = getApiUrl("images");
+const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
 
 const NewBlogCard = ({ blog }) => {
     const coverImage = blog?.coverImage;

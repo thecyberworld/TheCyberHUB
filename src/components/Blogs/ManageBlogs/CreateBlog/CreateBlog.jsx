@@ -106,6 +106,7 @@ const CreateBlog = () => {
         if (file) {
             const formData = new FormData();
             formData.append("file", file);
+            formData.append("key", `blog_images/${file.name}`);
 
             try {
                 const API_URL = getApiUrl("api/upload");

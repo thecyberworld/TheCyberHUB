@@ -17,7 +17,6 @@ import {
 import NotFound from "../../../NotFound";
 import ViewComments from "../Comments/ViewComments";
 import AddCommentForm from "../Comments/AddCommentForm";
-import getApiUrl from "../../../features/apiUrl";
 import PreviewMarkdown from "./PreviewMarkdown";
 import { CircleSpinner } from "react-spinners-kit";
 
@@ -30,7 +29,7 @@ const ViewBlog = () => {
     const { title } = useParams();
     const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
 
-    const API_URL = getApiUrl("images");
+    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
     const coverImage = blog?.coverImage;
     const coverImageUrl = `${API_URL}/${coverImage}`;
 
