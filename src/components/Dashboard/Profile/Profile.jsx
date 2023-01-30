@@ -3,7 +3,6 @@ import { ProfileContainer, UserImage, Wrapper } from "./ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
 import { Link, useNavigate } from "react-router-dom";
-import getApiUrl from "../../../features/apiUrl";
 import { CircleSpinner } from "react-spinners-kit";
 
 const Profile = () => {
@@ -21,7 +20,7 @@ const Profile = () => {
 
     if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
 
-    const API_URL = getApiUrl("images");
+    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
     const profilePicture = user.picture;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
