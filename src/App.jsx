@@ -47,11 +47,11 @@ import {
 } from "./components";
 
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
-import Tools from "./components/Tools/Tools";
-import BreachCheck from "./components/Tools/BreachCheck/BreachCheck";
-import Forum from "./components/Forum/Forum";
-import ForumSubPage from "./components/Forum/ForumSubPage";
-import Social from "./components/Social/Social";
+import Tools from "./components/Beta/BreachCheck/Tools/Tools";
+import BreachCheck from "./components/Beta/BreachCheck/BreachCheck";
+// import Forum from "./components/Beta/Forum/Forum";
+// import ForumSubPage from "./components/Beta/Forum/ForumSubPage";
+// import Social from "./components/Beta/Social/Social";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -115,17 +115,17 @@ const App = () => {
                                 <Route element={<NotFound />} />
                             </Route>
 
-                            <Route path={"/forum"}>
-                                <Route index element={<Forum />} />
-                                <Route exact path={":title"} element={<ForumSubPage />} />
-                                <Route element={<NotFound />} />
-                            </Route>
+                            {/* <Route path={"/forum"}> */}
+                            {/*    <Route index element={<Forum />} /> */}
+                            {/*    <Route exact path={":title"} element={<ForumSubPage />} /> */}
+                            {/*    <Route element={<NotFound />} /> */}
+                            {/* </Route> */}
 
-                            <Route path={"/social"}>
-                                <Route index element={<Social />} />
-                                {/* <Route exact path={":title"} element={<ForumSubPage />} /> */}
-                                <Route element={<NotFound />} />
-                            </Route>
+                            {/* <Route path={"/social"}> */}
+                            {/*    <Route index element={<Social />} /> */}
+                            {/*    /!* <Route exact path={":title"} element={<ForumSubPage />} /> *!/ */}
+                            {/*    <Route element={<NotFound />} /> */}
+                            {/* </Route> */}
 
                             <Route exact path={"/dashboard"} element={<Dashboard />} />
                             <Route exact path={"/login"} element={<Login />} />

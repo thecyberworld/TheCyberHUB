@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { MdOutlinePreview } from "react-icons/all";
 import ReactMarkdown from "react-markdown";
-import { ContentReactMarkdown } from "../Blogs/ViewBlog/ViewBlogElements";
+import { ContentReactMarkdown } from "../../Blogs/ViewBlog/ViewBlogElements";
 
 export const ForumSubPageContainer = styled.div`
     max-width: 1500px;

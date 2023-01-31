@@ -90,7 +90,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
         font-family: "Poppins", sans-serif;
         text-align: left;
         white-space: pre-line;
-        font-size: 20px;
+        font-size: 15px;
         line-height: 1.5;
     }
 
@@ -127,6 +127,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
 
 export const ContentSection = styled.div`
     background: #111111;
+    width: 100%;
 `;
 
 export const ContainerViewBlog = styled.div`
@@ -135,7 +136,6 @@ export const ContainerViewBlog = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 1px solid sandybrown;
 `;
 
 export const ViewBlogHeader = styled.div`

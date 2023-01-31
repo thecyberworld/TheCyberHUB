@@ -12,7 +12,16 @@ export const ContainerCard = styled.div`
     background: #111111;
 `;
 
-export const BlogImageSection = styled.div``;
+export const BlogImageSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+`;
+
+export const EditBlogSection = styled.div`
+    display: flex;
+    justify-content: end;
+`;
 export const BlogImage = styled.img``;
 export const MainSection = styled.div`
     display: flex;

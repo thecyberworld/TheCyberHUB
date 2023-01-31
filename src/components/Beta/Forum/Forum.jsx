@@ -1,9 +1,9 @@
 import React from "react";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { ContainerForum } from "./ForumElements";
 import Card from "./Card";
 import forumData from "./ForumData";
-import { RouterButtonLink } from "../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
+import { RouterButtonLink } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 
 const Forum = () => {
     return (

@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { IconContext } from "react-icons/lib";
 import { animateScroll as scroll } from "react-scroll";
 import { FaBars } from "react-icons/fa";
 
 import {
+    DropdownIcon,
+    MobileIcon,
     Nav,
     NavbarContainer,
-    NavLogoRouter,
-    MobileIcon,
-    NavMenu,
     NavItem,
     NavLinks,
-    // NavBtn,
-    DropdownIcon,
     NavLogo,
+    NavLogoRouter,
+    NavMenu,
 } from "./NavbarElements";
 
 import Dropdown from "../Dropdowns/Dropdown";
 import logo from "../../../assets/images/WebsiteLogo/ThecyberhubLogo.png";
-import Streak from "../../Dashboard/Streak/Streak";
 import UserOptions from "../UserOptions/UserOptions";
 
 const Navbar = ({ isOpen, toggle }) => {
@@ -49,10 +46,6 @@ const Navbar = ({ isOpen, toggle }) => {
         } else setDrop(false);
     };
 
-    // const closeDropHandler = () => {
-    //     setDrop(false);
-    // };
-
     const changeNav = () => {
         if (window.scrollY >= 80) {
             setScrollNav(true);
@@ -69,72 +62,66 @@ const Navbar = ({ isOpen, toggle }) => {
 
     return (
         <>
-            <IconContext.Provider value={{ color: "#fff" }}>
-                <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav}>
-                    <NavbarContainer>
-                        <NavLogoRouter to={"/"} onClick={toggleHome}>
-                            <NavLogo src={logo} />
-                        </NavLogoRouter>
-                        <MobileIcon onClick={toggle}>
-                            <FaBars />
-                        </MobileIcon>
-                        <NavMenu>
-                            {[
-                                {
-                                    title: (
-                                        <>
-                                            <p onClick={() => onClickLearn()}>Learn</p>
-                                            <DropdownIcon onClick={() => onClickLearn()} />
-                                        </>
-                                    ),
-                                    dropdown: "learn",
-                                },
-                                {
-                                    title: (
-                                        <>
-                                            <p onClick={() => onClickResources()}>Resources</p>
-                                            <DropdownIcon onClick={() => onClickResources()} />
-                                        </>
-                                    ),
-                                    dropdown: "resources",
-                                },
-                                { to: "blogs", title: "Blogs", dropdown: "blogs" },
-                                { to: "forum", title: "Forum", dropdown: "forum" },
-                                { to: "social", title: "Social", dropdown: "social" },
-                                { to: "tools", title: "Tools", dropdown: "tools" },
-                                // { to: "community", title: "Community", dropdown: "community" },
-                                // { to: "sponsors", title: "Sponsors", dropdown: "sponsors" },
-                            ].map(({ to, title, dropdown }) => (
-                                <NavItem
-                                    onMouseEnter={() => dropHandler(dropdown)}
-                                    onMouseLeave={() => dropHandler(dropdown)}
-                                    key={dropdown}
-                                >
-                                    <NavLinks to={to}>{title}</NavLinks>
-                                    {dropdown === "learn" && learnClick && drop && (
-                                        <Dropdown
-                                            isLearn={true}
-                                            toggle={setOnClosed}
-                                            closed={onClosed}
-                                            isOpen={isOpen}
-                                        />
-                                    )}
-                                    {dropdown === "resources" && resourcesClick && drop && (
-                                        <Dropdown
-                                            isResources={true}
-                                            toggle={setOnClosed}
-                                            closed={onClosed}
-                                            isOpen={isOpen}
-                                        />
-                                    )}
-                                </NavItem>
-                            ))}
-                        </NavMenu>
-                    </NavbarContainer>
-                    <Streak />
-                    <UserOptions />
-                </Nav>
-            </IconContext.Provider>
+            <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav}>
+                <NavbarContainer>
+                    <NavLogoRouter to={"/"} onClick={toggleHome}>
+                        <NavLogo src={logo} />
+                    </NavLogoRouter>
+
+                    <MobileIcon onClick={toggle}>
+                        <FaBars />
+                    </MobileIcon>
+
+                    <NavMenu>
+                        {[
+                            {
+                                title: (
+                                    <>
+                                        <p onClick={() => onClickLearn()}>Learn</p>
+                                        <DropdownIcon onClick={() => onClickLearn()} />
+                                    </>
+                                ),
+                                dropdown: "learn",
+                            },
+                            {
+                                title: (
+                                    <>
+                                        <p onClick={() => onClickResources()}>Resources</p>
+                                        <DropdownIcon onClick={() => onClickResources()} />
+                                    </>
+                                ),
+                                dropdown: "resources",
+                            },
+                            { to: "blogs", title: "Blogs", dropdown: "blogs" },
+                            { to: "community", title: "Community", dropdown: "community" },
+                            { to: "sponsors", title: "Sponsors", dropdown: "sponsors" },
+                        ].map(({ to, title, dropdown }) => (
+                            <NavItem
+                                onMouseEnter={() => dropHandler(dropdown)}
+                                onMouseLeave={() => dropHandler(dropdown)}
+                                key={dropdown}
+                            >
+                                <NavLinks to={to}>{title}</NavLinks>
+                                {dropdown === "learn" && learnClick && drop && (
+                                    <Dropdown isLearn={true} toggle={setOnClosed} closed={onClosed} isOpen={isOpen} />
+                                )}
+                                {dropdown === "resources" && resourcesClick && drop && (
+                                    <Dropdown
+                                        isResources={true}
+                                        toggle={setOnClosed}
+                                        closed={onClosed}
+                                        isOpen={isOpen}
+                                    />
+                                )}
+                            </NavItem>
+                        ))}
+                    </NavMenu>
+                </NavbarContainer>
+
+                {/* <Streak /> */}
+
+                <UserOptions />
+            </Nav>
         </>
     );
 };

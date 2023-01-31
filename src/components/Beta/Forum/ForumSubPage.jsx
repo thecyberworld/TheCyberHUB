@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { useParams } from "react-router-dom";
 import forumData from "./ForumData";
-import { encodeURL } from "../Blogs/util";
+import { encodeURL } from "../../Blogs/util";
 import {
     Button,
     CommentTextArea,

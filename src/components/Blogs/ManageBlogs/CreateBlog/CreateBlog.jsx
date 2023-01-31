@@ -18,7 +18,7 @@ import {
 } from "./CreateBlogElements";
 import axios from "axios";
 import PreviewBlogContent from "../../PreviewBlogContent";
-import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
+import { Button, PreviewIcon, PreviewSection } from "../../../Beta/Forum/ForumSubPageElements";
 import getApiUrl from "../../../../features/apiUrl";
 import BlogPostForm from "../BlogPostForm";
 

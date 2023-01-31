@@ -16,8 +16,8 @@ import {
     Views,
     Votes,
 } from "./CardElements";
-import { encodeURL } from "../Blogs/util";
-import { RouterLink } from "../Tools/ToolsElements";
+import { encodeURL } from "../../Blogs/util";
+import { RouterLink } from "../BreachCheck/Tools/ToolsElements";
 
 const Card = ({ title, description, username, date, categories, views, answers, answerAccepted, votes }) => {
     const postedTime = moment(date);

@@ -9,7 +9,7 @@ import {
     SubSection,
     Title,
 } from "./TrendingBlogCardElements";
-import { RouterLink } from "../../Tools/ToolsElements";
+import { RouterLink } from "../../Beta/BreachCheck/Tools/ToolsElements";
 import { encodeURL } from "../util";
 
 const TrendingBlogCard = ({ title, categories, username, timeString }) => {

@@ -81,7 +81,6 @@ const ViewBlog = () => {
                 <BlogImage src={coverImageUrl} alt={coverImage} />
                 <BlogTitle> {blog?.title} </BlogTitle>
                 <UsernameAndDate>
-                    {" "}
                     @{blog?.username} | {blogCreatedAt}{" "}
                 </UsernameAndDate>
                 <ContentSection>
