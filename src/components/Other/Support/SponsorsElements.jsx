@@ -8,16 +8,9 @@ export const SponsorsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     color: #fff;
-    border: #f1c40f 1px solid;
-
-    @media screen and (max-width: 768px) {
-        margin: 100px auto;
-    }
 `;
 
 export const SponsorsH1 = styled.h1`
-    border: #f1c40f 1px solid;
-
     font-family: "Roboto Mono", monospace;
     text-align: left;
     font-size: 35px;
