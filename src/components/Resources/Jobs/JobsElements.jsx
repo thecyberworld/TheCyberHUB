@@ -24,7 +24,6 @@ export const JobsDropdownIcon = styled(FaChevronDown)`
 `;
 
 export const JobSection = styled.section`
-    border: #f1c40f 1px solid;
     color: #cecac3;
     max-width: 1400px;
 
