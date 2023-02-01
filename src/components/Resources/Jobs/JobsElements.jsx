@@ -15,7 +15,7 @@ export const ScrollButton = styled(Button)`
 `;
 
 export const JobIntroHeader = styled(Header)`
-    height: 100vh;
+    height: 650px;
 `;
 
 export const JobsDropdownIcon = styled(FaChevronDown)`
@@ -24,8 +24,9 @@ export const JobsDropdownIcon = styled(FaChevronDown)`
 `;
 
 export const JobSection = styled.section`
-    margin: 100px 20px;
+    border: #f1c40f 1px solid;
     color: #cecac3;
+    max-width: 1400px;
 
     & div.grid {
         padding: 0.2rem;
@@ -41,7 +42,7 @@ export const JobSection = styled.section`
 export const JobContainer = styled.div`
     background-color: rgba(32, 194, 14, 0.04);
     //width: 20em;
-    width: 27em;
+    width: 440px;
 
     min-height: 500px;
     margin: 10px;
@@ -49,7 +50,7 @@ export const JobContainer = styled.div`
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
-    padding: 1.2rem;
+    padding: 25px;
     row-gap: 0.8rem;
 
     transition: 260ms all;
@@ -81,7 +82,7 @@ export const JobTitle = styled.h2`
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.3rem;
+    font-size: 18px;
     font-weight: bolder;
     letter-spacing: 0.1rem;
 `;
@@ -111,6 +112,7 @@ export const JobLocation = styled.div`
 export const JobDetails = styled.div`
     display: flex;
     flex-wrap: wrap;
+    font-size: 13px;
     gap: 0.9rem;
     justify-content: start;
 
@@ -149,13 +151,13 @@ export const JobDetails = styled.div`
     }
 
     & div.badge span {
-        font-size: smaller;
+        font-size: 15px;
         font-weight: bolder;
     }
 `;
 
 export const JobReq = styled.div`
-    padding: 0 1rem;
+    font-size: 13px;
 
     & > ul {
         font-weight: 400;

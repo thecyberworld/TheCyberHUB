@@ -47,11 +47,8 @@ import {
 } from "./components";
 
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
-import Tools from "./components/Beta/BreachCheck/Tools/Tools";
-import BreachCheck from "./components/Beta/BreachCheck/BreachCheck";
-// import Forum from "./components/Beta/Forum/Forum";
-// import ForumSubPage from "./components/Beta/Forum/ForumSubPage";
-// import Social from "./components/Beta/Social/Social";
+import Tools from "./components/Beta/Tools/Tools";
+import BreachCheck from "./components/Beta/Tools/BreachCheck/BreachCheck";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -77,7 +74,6 @@ const App = () => {
 
     return (
         <div>
-            {" "}
             {isLoading ? (
                 <Spinner />
             ) : (
@@ -138,7 +134,7 @@ const App = () => {
                                 <Route path={":slug"} element={<Event />} />
                             </Route>
                             <Route exact path={"/community"} element={<Community />} />
-                            <Route exact path={"/sponsors"} element={<Sponsors />} />
+                            <Route exact path={"/support"} element={<Sponsors />} />
                             <Route exact path={"/about"} element={<About />} />
                             <Route exact path={"/projects"} element={<OpensourceProjects />} />
 

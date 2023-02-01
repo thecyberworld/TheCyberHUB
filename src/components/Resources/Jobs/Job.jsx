@@ -54,7 +54,7 @@ export default function Job(props) {
             <JobReq>
                 <ul>
                     {props.jobReq.map((item, i) => (
-                        <li key={i}>{item}</li>
+                        <li key={i}>{item.slice(0, 50)}</li>
                     ))}
                 </ul>
             </JobReq>

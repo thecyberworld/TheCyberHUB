@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
-import { FaBars } from "react-icons/fa";
 
 import {
     DropdownIcon,
-    MobileIcon,
     Nav,
     NavbarContainer,
     NavItem,
@@ -64,19 +62,18 @@ const Navbar = ({ isOpen, toggle }) => {
         <>
             <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav}>
                 <NavbarContainer>
+                    {/* <MobileIcon onClick={toggle}> */}
+                    {/*    <FaBars /> */}
+                    {/* </MobileIcon> */}
                     <NavLogoRouter to={"/"} onClick={toggleHome}>
                         <NavLogo src={logo} />
                     </NavLogoRouter>
-
-                    <MobileIcon onClick={toggle}>
-                        <FaBars />
-                    </MobileIcon>
-
                     <NavMenu>
                         {[
                             {
                                 title: (
                                     <>
+                                        {" "}
                                         <p onClick={() => onClickLearn()}>Learn</p>
                                         <DropdownIcon onClick={() => onClickLearn()} />
                                     </>
@@ -86,6 +83,7 @@ const Navbar = ({ isOpen, toggle }) => {
                             {
                                 title: (
                                     <>
+                                        {" "}
                                         <p onClick={() => onClickResources()}>Resources</p>
                                         <DropdownIcon onClick={() => onClickResources()} />
                                     </>
@@ -94,7 +92,7 @@ const Navbar = ({ isOpen, toggle }) => {
                             },
                             { to: "blogs", title: "Blogs", dropdown: "blogs" },
                             { to: "community", title: "Community", dropdown: "community" },
-                            { to: "sponsors", title: "Sponsors", dropdown: "sponsors" },
+                            { to: "support", title: "Support", dropdown: "support" },
                         ].map(({ to, title, dropdown }) => (
                             <NavItem
                                 onMouseEnter={() => dropHandler(dropdown)}
@@ -116,11 +114,10 @@ const Navbar = ({ isOpen, toggle }) => {
                             </NavItem>
                         ))}
                     </NavMenu>
+                    <UserOptions />
                 </NavbarContainer>
 
                 {/* <Streak /> */}
-
-                <UserOptions />
             </Nav>
         </>
     );

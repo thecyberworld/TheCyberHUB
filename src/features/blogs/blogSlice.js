@@ -130,7 +130,7 @@ export const blogSlice = createSlice({
                 if (blogIndex !== -1) {
                     state.blogs[blogIndex] = {
                         ...state.blogs[blogIndex],
-                        comments: [...state.blogs[blogIndex].comments, action.payload.comment],
+                        comments: [...(state.blogs[blogIndex].comments || []), action.payload.comment],
                     };
                 }
                 // If the blog is not found, push the updated blog object to the state.blogs array

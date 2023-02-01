@@ -2,43 +2,45 @@ import React from "react";
 import contributeSvg from "../../../assets/images/open-source-contribution.svg";
 import communitySvg from "../../../assets/images/undraw_public_discussion_re_w9up.svg";
 import ResourcesSvg from "../../../assets/images/undraw_firmware_re_fgdy.svg";
-import logoThecyberworld from "../../../assets/images/WebsiteLogo/thecyberworld-green01.png";
+import logoThecyberworld from "../../../assets/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png";
 import VersionControlSvg from "../../../assets/images/undraw_version_control_re_mg66.svg";
 
 import { FaGithub } from "react-icons/fa";
 // import { GoPrimitiveDot } from "react-icons/go";
-
 import { IconsSpacing, IconsSpacing2 } from "../../Other/MixComponents/Buttons/ButtonElements";
 import { BsFillPlayFill } from "react-icons/bs";
 import { DotSymbol } from "./InfoElements";
 
 export const aboutData = {
     id: "about",
-    idTo: "community",
-    idTo2: "contribute",
-    buttonType: "scroll",
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
-    topLine: "Thecyberworld About",
+    topLine: "Thecyberworld Community",
     headline: "About Thecyberworld",
     description: (
         <>
-            <DotSymbol /> Thecyberhub Website, App, Extension, Bot are by @thecyberworld community <br />
-            <br />
-            <DotSymbol /> Community with more than 100,000 members. <br />
-            <br />
-            <DotSymbol /> Community&apos;s goal is to help new folks to get started with open-source and cyber-security.
+            <DotSymbol /> Cyber Security courses for FREE (coming soon) <br /> <br />
+            <DotSymbol /> Community&apos;s goal is to help new folks to get started with Opensource and Cybersecurity.
             <br />
             <br />
-            <DotSymbol /> Open-source projects. <br />
+            <DotSymbol /> Community with more than 150,000 members. <br />
+            <br />
+            <DotSymbol /> Thecyberhub Website, Mobile App, Web Extensions, and <br /> Bots are built by @thecyberworld
+            community <br />
+            <br />
+            <DotSymbol /> Opensource projects. <br />
             <br />
             <DotSymbol /> A Hub of Cyber Security. <br />
             <br />
         </>
     ),
-    buttonLabel: "Join community",
+    buttonLabel1: "Join our community",
+    link1: "/community",
+    buttonType1: "router",
     buttonLabel2: "Contribute to Opensource",
+    link2: "contribute",
+    buttonType2: "scroll",
     imgStart: false,
     img: logoThecyberworld,
     alt: "Car",
@@ -49,9 +51,8 @@ export const aboutData = {
 
 export const ResourcesData = {
     id: "resources",
-    idTo: "resources",
-    buttonType: "router",
-    link: "/roadmaps",
+    buttonType1: "router",
+    link1: "/roadmaps",
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
@@ -63,12 +64,14 @@ export const ResourcesData = {
             Courses, ctfs, events, blogs, tools, writeups, roadmaps, and much more.
         </>
     ),
-    buttonLabel: (
+    buttonLabel1: (
         <>
-            Explore
+            {" "}
+            Explore{" "}
             <IconsSpacing2>
-                <BsFillPlayFill />
-            </IconsSpacing2>
+                {" "}
+                <BsFillPlayFill />{" "}
+            </IconsSpacing2>{" "}
         </>
     ),
     imgStart: true,
@@ -82,22 +85,24 @@ export const ResourcesData = {
 export const communityData = {
     id: "community",
     idTo: "join",
-    buttonType: "router",
-    link: "/community",
-    link2: "https://www.linktree.com/thecyberworld",
+    buttonLabel1: "Join community",
+    link1: "https://discord.gg/thecyberworld-799183504759324672",
+    buttonType1: "redirect",
+    buttonLabel2: "All community links",
+    link2: "https://linktr.ee/thecyberworld",
+    buttonType2: "redirect",
     lightBg: false,
     lightText: true,
     lightTextDesc: true,
-    topLine: "Join our About",
-    headline: "Over 100,0000 members",
+    topLine: "Join our Community",
+    headline: "150,000+ members",
     description: (
         <>
             Community&apos;s goal is to help new folks to get started with open-source, cyber-security and to help
             existing folks get more involved in the open-source and cyber-security communities.
         </>
     ),
-    buttonLabel: "Join community",
-    imgStart: false,
+    imgStart: true,
     img: communitySvg,
     alt: "Secure data",
     dark: true,
@@ -119,14 +124,20 @@ export const contributeData = {
             contributing guidelines in each repository for guidance on how to get started.
         </>
     ),
-    buttonLabel: (
+    buttonLabel1: (
         <>
             <IconsSpacing>
-                <FaGithub />
+                {" "}
+                <FaGithub />{" "}
             </IconsSpacing>
-            Contribute now
+            Contribute to Github
         </>
     ),
+    link1: "https://github.com/thecyberworld",
+    buttonType1: "redirect",
+    buttonLabel2: <>Contribute to Community</>,
+    link2: "/community",
+    buttonType2: "router",
     imgStart: false,
     img: contributeSvg,
     alt: "Secure data",

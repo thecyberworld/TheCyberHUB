@@ -1,13 +1,14 @@
 import styled from "styled-components";
+import { GoPrimitiveSquare } from "react-icons/all";
 
 export const SponsorsContainer = styled.div`
-    padding: 10px 20px;
     width: 100%;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: #fff;
-    margin: 150px auto;
+    border: #f1c40f 1px solid;
 
     @media screen and (max-width: 768px) {
         margin: 100px auto;
@@ -15,22 +16,48 @@ export const SponsorsContainer = styled.div`
 `;
 
 export const SponsorsH1 = styled.h1`
-    font-family: "Roboto Mono", monospace;
-    text-align: center;
-    margin: 0 auto 50px auto;
+    border: #f1c40f 1px solid;
 
+    font-family: "Roboto Mono", monospace;
+    text-align: left;
+    font-size: 35px;
+    margin: 25px;
     @media screen and (max-width: 768px) {
         font-size: 1.8rem;
     }
 `;
 
-export const SponsorsP = styled.p`
-    font-family: "Roboto Mono", monospace;
+export const SponsorsDescriptionContainer = styled.div`
+    padding: 25px;
+    background: #0e0e0e;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const SponsorsDescription = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export const DotSymbol = styled(GoPrimitiveSquare)`
+    color: #20c20e;
+    margin: 23px 10px 0;
+    font-size: 0.5rem;
+    display: inline;
+    justify-content: center;
     text-align: center;
-    margin: 0 auto 50px auto;
+`;
+export const SponsorsP = styled.p`
+    margin: 10px;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    font-size: 20px;
 `;
 
 export const SponsorsLink = styled.a`
+    width: 100%;
+    margin: 25px 0;
     font-family: "Roboto Mono", monospace;
     display: flex;
     justify-content: center;
@@ -39,8 +66,6 @@ export const SponsorsLink = styled.a`
     align-items: center;
     color: #fff;
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
     text-align: center;
     cursor: auto;
 
@@ -51,7 +76,6 @@ export const SponsorsLink = styled.a`
 `;
 
 export const BuyMeACoffeeImage = styled.img`
-    margin: 50px auto;
     cursor: pointer;
 
     &:hover {

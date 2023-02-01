@@ -6,10 +6,10 @@ export const AddCommentFormContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     border-radius: 10px;
-    margin: 20px;
+    margin: 25px;
     width: 100%;
-    min-width: 800px;
     max-width: 1200px;
+    padding: 25px;
 `;
 
 export const Form = styled.form`

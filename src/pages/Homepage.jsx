@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, Info, Contribute, Socials } from "../components";
+import { Hero, Info, Socials } from "../components";
 import { aboutData, ResourcesData, communityData, contributeData } from "../components/Homepage/Info/Data";
 
 const Homepage = () => {
@@ -8,7 +8,7 @@ const Homepage = () => {
             <Hero />
             <Info {...aboutData} />
             <Info {...ResourcesData} />
-            <Contribute {...contributeData} />
+            <Info {...contributeData} />
             <Info {...communityData} />
             <Socials />
         </>

@@ -45,7 +45,7 @@ a {
     justify-content: center;
 }
 
-/* Icon Button */
+/* Icon ScrollButton */
 .icon-button {
     --button-size: calc(var(--nav-size) * 0.5);
     width: var(--button-size);

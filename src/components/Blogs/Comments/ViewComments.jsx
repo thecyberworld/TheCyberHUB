@@ -17,7 +17,6 @@ const ViewComments = (props) => {
 
     return (
         <ViewCommentsContainer>
-            {props.comments.length} Comments
             {props.comments?.map((userComment, id) => (
                 <CommentSection key={id}>
                     <SectionUserPicture>

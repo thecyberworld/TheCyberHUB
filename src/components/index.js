@@ -5,7 +5,7 @@ export { default as Hero } from "./Homepage/Hero/Hero";
 export { default as Info } from "./Homepage/Info/Info";
 export { default as Socials } from "./Homepage/Socials/Socials";
 export { default as Community } from "./Community/Community";
-export { default as Sponsors } from "./Other/Sponsors/Sponsors";
+export { default as Sponsors } from "./Other/Support/Sponsors";
 
 // Learn //
 export { default as Learn } from "./Learn/Learn";
@@ -32,7 +32,6 @@ export { default as InterviewQuestions } from "./Resources/InterviewQuestions/In
 export { default as Quiz } from "./Resources/Quiz/Quiz";
 export { default as Jobs } from "./Resources/Jobs/Jobs";
 
-export { default as Contribute } from "./Other/MixComponents/Contribute/Contribute";
 export { default as Footer } from "./Homepage/Footer/Footer";
 export { default as ComingSoon } from "./Other/MixComponents/ComingSoon";
 

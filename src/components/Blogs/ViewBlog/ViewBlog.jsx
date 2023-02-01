@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { encodeURL } from "../util";
 import { useDispatch, useSelector } from "react-redux";
-import { addComment, getAllBlogs, reset } from "../../../features/blogs/blogSlice";
+import { getAllBlogs, reset } from "../../../features/blogs/blogSlice";
 import {
     BlogImage,
+    BlogImageContainer,
     BlogTitle,
     CommentContainer,
     ContainerViewBlog,
@@ -21,28 +22,27 @@ import PreviewMarkdown from "./PreviewMarkdown";
 import { CircleSpinner } from "react-spinners-kit";
 
 const ViewBlog = () => {
-    const [addCommentData, setAddCommentData] = useState({ comment: "" });
-    const { comment } = addCommentData;
-    const { user } = useSelector((state) => state.auth);
-    const dispatch = useDispatch();
-    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
     const { title } = useParams();
-    const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
 
-    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
-    const coverImage = blog?.coverImage;
-    const coverImageUrl = `${API_URL}/${coverImage}`;
+    const { user } = useSelector((state) => state.auth);
+    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (isError) {
             console.log(message);
+        } else {
+            dispatch(getAllBlogs());
         }
-        dispatch(getAllBlogs());
-        return () => dispatch(reset());
+        return () => {
+            dispatch(reset());
+        };
     }, [dispatch, isError, message]);
 
-    if (!blog) return <NotFound />;
+    const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
+
     if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
+    if (!blog) return <NotFound />;
 
     const blogUnFormattedDate = new Date(blog?.createdAt);
     const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
@@ -51,37 +51,19 @@ const ViewBlog = () => {
         year: "numeric",
     }).format(blogUnFormattedDate);
 
-    const comments = blog?.comments.map((comment) => ({
-        id: comment?._id,
-        username: comment?.username,
-        comment: comment?.comment,
-        replies: comment?.replies,
-    }));
-
-    const onChange = (e) => {
-        setAddCommentData({
-            ...addCommentData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        const addCommentData = { comment };
-        dispatch(addComment({ blogId: blog._id, addCommentData }));
-        setAddCommentData({
-            comment: "",
-        });
-    };
+    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
+    const coverImage = blog?.coverImage;
+    const coverImageUrl = `${API_URL}/${coverImage}`;
 
     return (
         <ContainerViewBlog>
             <ViewBlogHeader>
-                <BlogImage src={coverImageUrl} alt={coverImage} />
+                <BlogImageContainer>
+                    <BlogImage src={coverImageUrl} alt={coverImage} />
+                </BlogImageContainer>
                 <BlogTitle> {blog?.title} </BlogTitle>
                 <UsernameAndDate>
-                    @{blog?.username} | {blogCreatedAt}{" "}
+                    @{blog?.username} | {blogCreatedAt}
                 </UsernameAndDate>
                 <ContentSection>
                     <PreviewMarkdown content={blog.content} />
@@ -93,8 +75,8 @@ const ViewBlog = () => {
                 ))}
             </TagsSection>
             <CommentContainer>
-                <ViewComments comments={comments} user={user} />
-                <AddCommentForm comment={comment} onChange={onChange} handleSubmit={handleSubmit} />
+                <ViewComments comments={blog?.comments} user={user} />
+                <AddCommentForm blog_id={blog._id} />
             </CommentContainer>
         </ContainerViewBlog>
     );

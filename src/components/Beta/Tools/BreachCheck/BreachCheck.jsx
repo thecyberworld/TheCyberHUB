@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import {
     ContainerBreachCheck,
     EmailInput,

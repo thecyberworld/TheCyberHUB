@@ -1,18 +1,23 @@
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
 
+export const BlogImageContainer = styled.div`
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #111111;
+`;
 export const BlogImage = styled.img`
-    margin-bottom: 1rem;
-    text-align: center;
+    border-radius: 5px;
 `;
 
 export const BlogTitle = styled.h1`
-    margin-bottom: 1rem;
     text-align: center;
     margin-top: 20px;
 `;
 
-export const UsernameAndDate = styled.h3``;
+export const UsernameAndDate = styled.h4`
+    margin: 5px auto;
+`;
 
 export const PreviewMarkdownHeading = styled.h1`
     padding: 25px 50px 15px;
@@ -90,7 +95,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
         font-family: "Poppins", sans-serif;
         text-align: left;
         white-space: pre-line;
-        font-size: 15px;
+        font-size: 18px;
         line-height: 1.5;
     }
 
@@ -128,10 +133,12 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
 export const ContentSection = styled.div`
     background: #111111;
     width: 100%;
+    margin: 5px auto;
 `;
 
 export const ContainerViewBlog = styled.div`
     max-width: 1000px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -144,12 +151,15 @@ export const ViewBlogHeader = styled.div`
     align-items: center;
     //font-family: "Montserrat", sans-serif;
     color: #cecac3;
+    width: 100%;
 `;
 
 export const CommentContainer = styled.div`
+    background-color: #111111;
+    border-radius: 5px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
 `;

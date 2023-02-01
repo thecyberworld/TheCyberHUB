@@ -22,6 +22,7 @@ export const Nav = styled.nav`
     background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
     height: 80px;
     margin-top: -80px;
+    margin: 0 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,15 +37,11 @@ export const Nav = styled.nav`
 
 export const NavbarContainer = styled.div`
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     height: 80px;
     z-index: 1;
     width: 100%;
-    padding: 0 24px;
     max-width: 1200px;
-    @media screen and (max-width: 940px) {
-        padding: 0 5px;
-    }
 `;
 
 export const NavLogoRouter = styled(LinkRouter)`
@@ -54,22 +51,13 @@ export const NavLogoRouter = styled(LinkRouter)`
     color: #fff;
     cursor: pointer;
     font-size: 1.5rem;
-    margin: 0 5px;
     font-weight: bold;
     text-decoration: none;
 `;
 
 export const NavLogo = styled.img`
     height: 60px;
-    color: #fff;
-    justify-self: flex-start;
     cursor: pointer;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    margin-left: 5px;
-    font-weight: bold;
-    text-decoration: none;
     @media screen and (max-width: 880px) {
         margin: 0;
         padding: 0;
@@ -82,19 +70,6 @@ export const NavLogo = styled.img`
     }
 `;
 
-// Text logo
-// export const NavLogoRouter = styled(LinkRouter)`
-//   color: #fff;
-//   justify-self: flex-start;
-//   cursor: pointer;
-//   font-size: 1.5rem;
-//   display: flex;
-//   align-items: center;
-//   margin-left: 24px;
-//   font-weight: bold;
-//   text-decoration: none;
-// `
-
 export const MobileIcon = styled.div`
     display: none;
     @media screen and (max-width: 900px) {
@@ -106,7 +81,8 @@ export const MobileIcon = styled.div`
         font-size: 1.5rem;
         cursor: pointer;
         color: #fff;
-        margin-top: 10px;
+        margin-top: 5px;
+        margin-right: 25px;
     }
     @media screen and (max-width: 340px) {
         display: inline-flex;
@@ -116,16 +92,14 @@ export const MobileIcon = styled.div`
         width: 30%;
     }
 `;
-export const Text = styled.div`
-    margin-left: 5px;
-    margin-bottom: 2px;
-`;
+
 export const NavMenu = styled.div`
     display: flex;
     align-items: center;
     list-style: none;
     text-align: center;
     margin: 0 1rem;
+    width: 70%;
 
     @media screen and (max-width: 900px) {
         display: none;
@@ -151,9 +125,9 @@ export const NavLinks = styled(LinkRouter)`
         border-bottom: 3px solid #20c20e;
     }
 
-    //&.active {
-    //    border-bottom: 3px solid #20c20e;
-    //}
+    &.active {
+        border-bottom: 3px solid #20c20e;
+    }
 `;
 export const NavLinkRouter = styled.a`
     color: #fff;

@@ -14,19 +14,10 @@ import {
     SubSection,
     Title,
 } from "./NewBlogCardElements";
-import { RouterLink } from "../../Beta/BreachCheck/Tools/ToolsElements";
+import { RouterLink } from "../../Beta/Tools/ToolsElements";
 import { encodeURL } from "../util";
 // import {Comments, Counts, Likes, Views} from "./BlogCardElements";
-import {
-    AiFillDelete,
-    // AiOutlineLike,
-    // AiTwotoneLike,
-    BiEdit,
-    // CgEye,
-    // CgEyeAlt,
-    // MdModeComment,
-    // MdOutlineModeComment,
-} from "react-icons/all";
+import { AiFillDelete, BiEdit } from "react-icons/all";
 import { deleteBlog } from "../../../features/blogs/blogSlice";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,7 +61,6 @@ const NewBlogCard = ({ blog }) => {
                                 </button>
                             ) : null}
                         </EditBlogSection>
-
                         <BlogImage src={coverImageUrl || image} alt={blog.coverImage} width="100%" height="auto" />
                     </BlogImageSection>
                 </DetailsSection>
@@ -82,8 +72,7 @@ const NewBlogCard = ({ blog }) => {
                     ))}
                 </Categories>
                 <Date>
-                    {" "}
-                    @{blog.username} | {blog.createdAt}{" "}
+                    @{blog.username} | {blog.createdAt}
                 </Date>
                 {/* <Counts> */}
                 {/*    <Comments> {commented ? <MdModeComment/> : <MdOutlineModeComment/>} 10 </Comments> */}

@@ -14,15 +14,15 @@ export const CreateBlogContainer = styled.div`
     max-width: 1500px;
 `;
 
+export const ImageUploadAndPreviewSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
 export const AddCoverImageSection = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`;
-export const ImageUploadAndPreviewSection = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
 `;
 export const AddImage = styled(FcAddImage)`
     margin-right: 10px;
@@ -44,6 +44,7 @@ export const ImageUploadLabel = styled.label`
 export const ImageUploadInput = styled.input``;
 
 export const Container = styled.div`
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,6 +164,5 @@ export const Submit = styled.button`
 export const RouterButtonLink = styled(Link)`
     background: rgba(28, 28, 28, 0.66);
     color: #fffdfd;
-    margin: 10px 0;
     padding: 5px 15px;
 `;

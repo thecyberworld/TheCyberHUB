@@ -1,5 +1,13 @@
+import React from "react";
 import {
-    FaStar, FaBriefcase, FaClock, FaTelegramPlane, FaBolt, FaCircle, FaMoneyCheckAlt, FaUserPlus
+    FaStar,
+    FaBriefcase,
+    FaClock,
+    FaTelegramPlane,
+    FaBolt,
+    FaCircle,
+    FaMoneyCheckAlt,
+    FaUserPlus,
 } from "react-icons/fa";
 
 const iconSize = 15;
@@ -10,24 +18,54 @@ export const JobsData = [
         status: "new",
         jobTitle: "Data Analysts",
         jobRoleTitle: "Cloudstaff",
-        jobRating: (<>4.1 <FaStar size={iconSize} style={{color: "orange"}}/></>),
+        jobRating: (
+            <>
+                4.1 <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
         jobLocation: "Remote",
         jobDetails: [
-            {item: (<><FaMoneyCheckAlt size={iconSize}/> $10,000 - $40,000 a month</>),},
-            {item: (<><FaBriefcase size={iconSize}/> Full-time</>),},
-            {item: (<><FaClock size={iconSize}/> Morning shift</>),},
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} /> $10,000 - $40,000 a month
+                    </>
+                ),
+            },
+            {
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} /> Full-time
+                    </>
+                ),
+            },
+            {
+                item: (
+                    <>
+                        <FaClock size={iconSize} /> Morning shift
+                    </>
+                ),
+            },
         ],
         jobDetails2: [
-            <><FaTelegramPlane size={iconSize} style={{color: "#20c20e"}}/> Apply securely with Thecyberhub Resume</>,
-            <><FaBolt size={iconSize} style={{color: "#20c20e"}}/> Responsive employer</>,
+            <>
+                <FaTelegramPlane size={iconSize} style={{ color: "#20c20e" }} /> Apply securely with Thecyberhub Resume
+            </>,
+            <>
+                <FaBolt size={iconSize} style={{ color: "#20c20e" }} /> Responsive employer
+            </>,
         ],
         jobReq: [
-            <>Technical expertise in data models, database design development, data mining, and segmentation technique.</>,
-            <>Strong knowledge of and experience with reporting packages (Business Objects, etc.), databases...</>,
+            "Technical expertise in data models, database design development, data mining, and segmentation technique.",
+            "Strong knowledge of and experience with reporting packages (Business Objects, etc.), databases...",
         ],
         jobTimeline: {
             datePosted: "Posted 3 days ago",
-            separator: (<><FaCircle/></>),
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
             directory: "remote",
         },
     },
@@ -35,24 +73,59 @@ export const JobsData = [
         id: "Content Copywriter",
         jobTitle: "Content Copywriter for travel blog",
         jobRoleTitle: "Trip101 Pte ltd",
-        jobRating: (<>5.0<FaStar size={iconSize} style={{color: "orange"}}/></>),
+        jobRating: (
+            <>
+                5.0
+                <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
         jobLocation: "India",
         jobDetails: [
-            {item: (<><FaMoneyCheckAlt size={iconSize}/>$7000 - $30,000 a month</>),},
-            {badge: "1", item: (<><FaBriefcase size={iconSize}/>Part-time</>),},
-            {badge: "2", item: (<><FaClock size={iconSize}/>Weekend availability</>),},
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} />
+                        $7000 - $30,000 a month
+                    </>
+                ),
+            },
+            {
+                badge: "1",
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} />
+                        Part-time
+                    </>
+                ),
+            },
+            {
+                badge: "2",
+                item: (
+                    <>
+                        <FaClock size={iconSize} />
+                        Weekend availability
+                    </>
+                ),
+            },
         ],
         jobDetails2: [
-            <><FaClock size={iconSize} style={{color: "orange"}}/>Urgently hiring</>,
-            <><FaUserPlus size={iconSize} style={{color: "orange"}}/>Hiring multiple candidates</>,
+            <>
+                <FaClock size={iconSize} style={{ color: "orange" }} />
+                Urgently hiring
+            </>,
+            <>
+                <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+                Hiring multiple candidates
+            </>,
         ],
-        jobReq: [
-            <>Produce a minimum of 5 articles per month.</>,
-            <>Curate travel content for a global readership.</>
-        ],
+        jobReq: ["Produce a minimum of 5 articles per month.", "Curate travel content for a global readership."],
         jobTimeline: {
             datePosted: "Hiring ongoing",
-            separator: (<><FaCircle/></>),
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
             directory: "remote",
         },
     },
@@ -60,24 +133,57 @@ export const JobsData = [
         id: "Frontend Engineer",
         jobTitle: "Frontend Engineer",
         jobRoleTitle: "Thecyberhub",
-        jobRating: (<>5.0<FaStar size={iconSize} style={{color: "orange"}}/></>),
+        jobRating: (
+            <>
+                5.0
+                <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
         jobLocation: "Hybrid",
         jobDetails: [
-            {item: (<><FaMoneyCheckAlt size={iconSize}/>$10,000 - $35,000 a month</>),},
-            {badge: "3", item: (<><FaBriefcase size={iconSize}/>Full-time</>),},
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} />
+                        $10,000 - $35,000 a month
+                    </>
+                ),
+            },
+            {
+                badge: "3",
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} />
+                        Full-time
+                    </>
+                ),
+            },
         ],
         jobDetails2: [
-            <><FaTelegramPlane size={iconSize} style={{color: "#20c20e"}}/>Apply securely with Thecyberhub Resume</>,
-            <><FaBolt size={iconSize} style={{color: "#20c20e"}}/>Responsive employe</>,
-            <><FaUserPlus size={iconSize} style={{color: "orange"}}/>Hiring multiple candidates</>,
+            <>
+                <FaTelegramPlane size={iconSize} style={{ color: "#20c20e" }} />
+                Apply securely with Thecyberhub Resume
+            </>,
+            <>
+                <FaBolt size={iconSize} style={{ color: "#20c20e" }} />
+                Responsive employe
+            </>,
+            <>
+                <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+                Hiring multiple candidates
+            </>,
         ],
         jobReq: [
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         ],
         jobTimeline: {
             datePosted: "Hiring ongoing",
-            separator: (<><FaCircle/></>),
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
             directory: "remote",
         },
     },
@@ -85,25 +191,66 @@ export const JobsData = [
         id: "Backend Engineer",
         jobTitle: "Backend Engineer",
         jobRoleTitle: "Thecyberhub",
-        jobRating: (<>4.6<FaStar size={iconSize} style={{color: "orange"}}/></>),
+        jobRating: (
+            <>
+                4.6
+                <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
         jobLocation: "Remote",
         jobDetails: [
-            {item: (<><FaMoneyCheckAlt size={iconSize}/>$10,000 - $20,000 a month</>),},
-            {badge: "4", item: (<><FaBriefcase size={iconSize}/>Part-time</>),},
-            {badge: "2", item: (<><FaClock size={iconSize}/>Weekend availability</>),},
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} />
+                        $10,000 - $20,000 a month
+                    </>
+                ),
+            },
+            {
+                badge: "4",
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} />
+                        Part-time
+                    </>
+                ),
+            },
+            {
+                badge: "2",
+                item: (
+                    <>
+                        <FaClock size={iconSize} />
+                        Weekend availability
+                    </>
+                ),
+            },
         ],
         jobDetails2: [
-            <><FaTelegramPlane size={iconSize} style={{color: "#20c20e"}}/>Apply securely with Thecyberhub Resume</>,
-            <><FaBolt size={iconSize} style={{color: "#20c20e"}}/>Responsive employer</>,
-            <><FaUserPlus size={iconSize} style={{color: "orange"}}/>Hiring multiple candidates</>,
+            <>
+                <FaTelegramPlane size={iconSize} style={{ color: "#20c20e" }} />
+                Apply securely with Thecyberhub Resume
+            </>,
+            <>
+                <FaBolt size={iconSize} style={{ color: "#20c20e" }} />
+                Responsive employer
+            </>,
+            <>
+                <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+                Hiring multiple candidates
+            </>,
         ],
         jobReq: [
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         ],
         jobTimeline: {
             datePosted: "Hiring ongoing",
-            separator: (<><FaCircle/></>),
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
             directory: "remote",
         },
     },
@@ -111,26 +258,69 @@ export const JobsData = [
         id: "Product Designer",
         jobTitle: "Product Designer",
         jobRoleTitle: "Thecyberhub",
-        jobRating: (<>4.8<FaStar size={iconSize} style={{color: "orange"}}/></>),
+        jobRating: (
+            <>
+                4.8
+                <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
         jobLocation: "Hybrid",
         jobDetails: [
-            {item: (<><FaMoneyCheckAlt size={iconSize}/>$10,000 - $40,000 a month</>),},
-            {badge: "4", item: (<><FaBriefcase size={iconSize}/>Full-time</>),},
-            {item: (<><FaClock size={iconSize}/>Morning shift</>),},
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} />
+                        $10,000 - $40,000 a month
+                    </>
+                ),
+            },
+            {
+                badge: "4",
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} />
+                        Full-time
+                    </>
+                ),
+            },
+            {
+                item: (
+                    <>
+                        <FaClock size={iconSize} />
+                        Morning shift
+                    </>
+                ),
+            },
         ],
         jobDetails2: [
-            <><FaClock size={iconSize} style={{color: "orange"}}/>Urgently hiring</>,
-            <><FaTelegramPlane size={iconSize} style={{color: "#20c20e"}}/>Apply securely with Thecyberhub Resume</>,
-            <><FaBolt size={iconSize} style={{color: "#20c20e"}}/>Responsive employer</>,
-            <><FaUserPlus size={iconSize} style={{color: "orange"}}/>Hiring multiple candidates</>,
+            <>
+                <FaClock size={iconSize} style={{ color: "orange" }} />
+                Urgently hiring
+            </>,
+            <>
+                <FaTelegramPlane size={iconSize} style={{ color: "#20c20e" }} />
+                Apply securely with Thecyberhub Resume
+            </>,
+            <>
+                <FaBolt size={iconSize} style={{ color: "#20c20e" }} />
+                Responsive employer
+            </>,
+            <>
+                <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+                Hiring multiple candidates
+            </>,
         ],
         jobReq: [
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         ],
         jobTimeline: {
             datePosted: "Hiring ongoing",
-            separator: (<><FaCircle/></>),
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
             directory: "remote",
         },
     },
@@ -138,26 +328,70 @@ export const JobsData = [
         id: "DevOps Engineer",
         jobTitle: "DevOps Engineer",
         jobRoleTitle: "Thecyberhub",
-        jobRating: (<>5.0<FaStar size={iconSize} style={{color: "orange"}}/></>),
+        jobRating: (
+            <>
+                5.0
+                <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
         jobLocation: "U.S.A",
         jobDetails: [
-            {item: (<><FaMoneyCheckAlt size={iconSize}/>$10,000 - $50,000 a month</>),},
-            {badge: "5", item: (<><FaBriefcase size={iconSize}/>Full-time</>),},
-            {badge: "2", item: (<><FaClock size={iconSize}/>Morning shift</>),},
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} />
+                        $10,000 - $50,000 a month
+                    </>
+                ),
+            },
+            {
+                badge: "5",
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} />
+                        Full-time
+                    </>
+                ),
+            },
+            {
+                badge: "2",
+                item: (
+                    <>
+                        <FaClock size={iconSize} />
+                        Morning shift
+                    </>
+                ),
+            },
         ],
         jobDetails2: [
-            <><FaClock size={iconSize} style={{color: "orange"}}/>Urgently hiring</>,
-            <><FaTelegramPlane size={iconSize} style={{color: "#20c20e"}}/>Apply securely with Thecyberhub Resume</>,
-            <><FaBolt size={iconSize} style={{color: "#20c20e"}}/>Responsive employer</>,
-            <><FaUserPlus size={iconSize} style={{color: "orange"}}/>Hiring multiple candidates</>,
+            <>
+                <FaClock size={iconSize} style={{ color: "orange" }} />
+                Urgently hiring
+            </>,
+            <>
+                <FaTelegramPlane size={iconSize} style={{ color: "#20c20e" }} />
+                Apply securely with Thecyberhub Resume
+            </>,
+            <>
+                <FaBolt size={iconSize} style={{ color: "#20c20e" }} />
+                Responsive employer
+            </>,
+            <>
+                <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+                Hiring multiple candidates
+            </>,
         ],
         jobReq: [
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
-            <>Lorem ipsum dolor sit amet consectetur adipisicing elit.</>,
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
         ],
         jobTimeline: {
             datePosted: "Hiring ongoing",
-            separator: (<><FaCircle/></>),
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
             directory: "remote",
         },
     },

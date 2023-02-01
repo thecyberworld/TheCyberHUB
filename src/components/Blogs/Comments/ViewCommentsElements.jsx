@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const ViewCommentsContainer = styled.div``;
+export const ViewCommentsContainer = styled.div`
+    width: 100%;
+`;
 
 export const CommentSection = styled.div`
     display: flex;
@@ -19,7 +21,8 @@ export const ReplyButton = styled.button`
 `;
 
 export const SectionUserPicture = styled.div`
-    margin: 5px 10px 0px;
+    margin: 10px;
+    margin-top: 13px;
 `;
 export const UserPicture = styled.img`
     width: 40px;
@@ -27,12 +30,22 @@ export const UserPicture = styled.img`
 `;
 
 export const SectionCommentDetails = styled.div`
+    margin: 10px;
     max-width: 600px;
 `;
-export const Username = styled.h5``;
+export const Username = styled.p`
+    font-size: 15px;
+`;
+
+export const CommentDate = styled.p`
+    font-size: 12px;
+`;
+
 export const Comment = styled.p`
+    background-color: #252525;
     margin: 10px auto;
+    padding: 10px;
     max-width: 600px;
     word-wrap: break-word;
+    border-radius: 5px;
 `;
-export const CommentDate = styled.p``;

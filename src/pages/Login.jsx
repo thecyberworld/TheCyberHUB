@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "../components/Homepage/Registration";
 import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
 import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
-import { PrimaryFilledButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
+import { GlowingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
 // import { FaEnvelope } from "react-icons/fa";
 // import { FaLock } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { BsCardText } from "react-icons/all";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
@@ -120,9 +120,9 @@ const Login = () => {
                                 <span role="link">Terms of Use</span>
                             </div>
                         </div>
-                        <PrimaryFilledButton width={"100%"} type="submit">
+                        <GlowingButton width={"100%"} type="submit">
                             Start Hacking
-                        </PrimaryFilledButton>
+                        </GlowingButton>
                     </div>
                 </RegistrationFormContainer>
             </CenterCard>
