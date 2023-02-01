@@ -97,7 +97,7 @@ export const RedirectButton = styled.a`
     }
 `;
 
-export const GlowingButton = styled(RouterLink)`
+export const GlowingButton = styled.button`
     text-decoration: none;
     border-radius: 5px;
     border-width: 1px;
