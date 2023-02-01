@@ -3,6 +3,7 @@ import { animateScroll as scroll } from "react-scroll";
 
 import {
     DropdownIcon,
+    MobileIcon,
     Nav,
     NavbarContainer,
     NavItem,
@@ -15,6 +16,7 @@ import {
 import Dropdown from "../Dropdowns/Dropdown";
 import logo from "../../../assets/images/WebsiteLogo/ThecyberhubLogo.png";
 import UserOptions from "../UserOptions/UserOptions";
+import { FaBars } from "react-icons/all";
 
 const Navbar = ({ isOpen, toggle }) => {
     const [scrollNav, setScrollNav] = useState(false);
@@ -62,9 +64,9 @@ const Navbar = ({ isOpen, toggle }) => {
         <>
             <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav}>
                 <NavbarContainer>
-                    {/* <MobileIcon onClick={toggle}> */}
-                    {/*    <FaBars /> */}
-                    {/* </MobileIcon> */}
+                    <MobileIcon onClick={toggle}>
+                        <FaBars />
+                    </MobileIcon>
                     <NavLogoRouter to={"/"} onClick={toggleHome}>
                         <NavLogo src={logo} />
                     </NavLogoRouter>

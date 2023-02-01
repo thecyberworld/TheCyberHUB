@@ -13,7 +13,7 @@ import {
 } from "react-icons/all";
 
 import { useDispatch, useSelector } from "react-redux";
-import { RouterLink, UserOptionsContainer } from "./UserOptionsElements";
+import { RouterLink, UserOptionsContainer, UserOptionsDropdownContainer } from "./UserOptionsElements";
 import { logout, reset } from "../../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 // import Streak from "../../Dashboard/Streak/Streak";
@@ -51,7 +51,7 @@ const DropdownMenu = () => {
         );
     };
     return (
-        <UserOptionsContainer className={"dropdown"}>
+        <UserOptionsDropdownContainer className={"dropdown"}>
             <div className={"menu"}>
                 {!user ? (
                     <>
@@ -80,18 +80,18 @@ const DropdownMenu = () => {
                 )}
                 {/* <DropdownItem leftIcon={<MdDarkMode />}> DarkMode </DropdownItem> */}
             </div>
-        </UserOptionsContainer>
+        </UserOptionsDropdownContainer>
     );
 };
 
 const UserOptions = () => {
     return (
-        <ul className={"navbar-nav"}>
+        <UserOptionsContainer className={"navbar-nav"}>
             {/* <NavItem icon={<MdNotifications/>}/> */}
             <NavItem icon={<FaUserAstronaut />}>
                 <DropdownMenu></DropdownMenu>
             </NavItem>
-        </ul>
+        </UserOptionsContainer>
     );
 };
 
