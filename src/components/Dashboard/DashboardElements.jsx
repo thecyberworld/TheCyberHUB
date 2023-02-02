@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 export const DashboardContainer = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
 `;
 
 export const DashboardItemsContainer = styled.div`

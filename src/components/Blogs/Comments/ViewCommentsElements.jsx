@@ -48,4 +48,9 @@ export const Comment = styled.p`
     max-width: 600px;
     word-wrap: break-word;
     border-radius: 5px;
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
 `;

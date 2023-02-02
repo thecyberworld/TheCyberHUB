@@ -19,7 +19,6 @@ const Blogs = () => {
         return () => dispatch(reset());
     }, [dispatch, isError, message]);
 
-    // if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
     return (
         <Wrapper>
             <RouterButtonLink to={"/dashboard/blogs/create"}> Create Blog </RouterButtonLink>

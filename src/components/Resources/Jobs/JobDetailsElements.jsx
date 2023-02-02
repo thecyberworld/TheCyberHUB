@@ -1,93 +1,32 @@
 import styled from "styled-components";
+import { DotSymbol } from "../../Homepage/Info/InfoElements";
 
-import { Button, Header } from "../../Community/CommunityElements";
-import { FaChevronDown } from "react-icons/fa";
-
-export const ScrollButton = styled(Button)`
-    outline: 2px solid #363636;
-    transition: 260ms all;
-
-    &:hover {
-        background: #20c20e;
-        outline-color: #545454;
-        outline-offset: 2px;
-    }
-`;
-
-export const JobSection = styled.section`
-    color: #cecac3;
-    max-width: 1400px;
-    width: 100%;
-
-    & div.grid {
-        padding: 0.2rem;
-        margin: 2rem auto;
-        max-width: 100rem;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
-`;
-
-export const JobIntroHeader = styled(Header)`
-    height: 650px;
-`;
-
-export const JobsDropdownIcon = styled(FaChevronDown)`
-    margin: 2px 0 0 5px;
-    font-size: 11px;
-`;
-
-export const JobsDetailContainer = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-`;
-
-export const JobsCardSection = styled.div`
-    padding: 5px;
-    display: flex;
-    min-width: 30%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    max-height: 1000px;
-`;
-
-export const JobsDetailSection = styled.div`
-    padding: 5px;
-    min-width: 65%;
-`;
-
-export const JobContainer = styled.div`
+export const JobDetailsContainer = styled.div`
     background-color: rgba(32, 194, 14, 0.04);
     width: 100%;
-    max-width: 440px;
-    min-height: 450px;
+
     margin: 10px;
     outline: 1px solid #2a2a2a;
     border-radius: 0.5rem;
     display: flex;
     flex-direction: column;
+    padding: 25px;
     row-gap: 0.8rem;
-    padding: 15px 10px 10px 20px;
+
     transition: 260ms all;
 
     &:hover {
-        outline-color: #545454;
         outline-offset: 2px;
     }
 `;
 
-export const JobHero = styled.div`
+export const JobDetailsHero = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: start;
 `;
 
-export const JobHeader = styled.div`
+export const JobDetailsHeader = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -98,7 +37,7 @@ export const JobHeader = styled.div`
     }
 `;
 
-export const JobTitle = styled.h2`
+export const JobDetailsTitle = styled.h2`
     background: linear-gradient(to right, #b1faa9, #f6dbaa);
     background-clip: text;
     -webkit-background-clip: text;
@@ -108,24 +47,24 @@ export const JobTitle = styled.h2`
     letter-spacing: 0.1rem;
 `;
 
-export const JobRole = styled.div`
+export const JobDetailsRole = styled.div`
     display: flex;
     column-gap: 0.5rem;
 `;
 
-export const JobRoleTitle = styled.span`
+export const JobDetailsRoleTitle = styled.span`
     font-weight: 500;
     letter-spacing: 0.1rem;
 `;
 
-export const JobRating = styled.span`
+export const JobDetailsRating = styled.span`
     display: inline-flex;
     column-gap: 0.2rem;
     align-items: center;
     font-weight: bold;
 `;
 
-export const JobLocation = styled.div`
+export const JobDetailsLocation = styled.div`
     & > span {
         font-weight: 300;
     }
@@ -135,14 +74,14 @@ export const JobDetails = styled.div`
     display: flex;
     flex-wrap: wrap;
     font-size: 13px;
-    gap: 0.9rem;
+    gap: 10px;
     justify-content: start;
 
     & > div {
         background: #1a1c1d;
         outline: 1px solid #2a2a2a;
         border-radius: 3px;
-        padding: 0.1rem 0.3rem;
+        padding: 3px 7px;
         position: relative;
     }
 
@@ -178,25 +117,43 @@ export const JobDetails = styled.div`
     }
 `;
 
-export const JobReq = styled.div`
-    font-size: 13px;
-    margin: 15px 0;
-    & > ul {
-        font-weight: 400;
-        letter-spacing: 0.08rem;
-        /* list-style-position: inside; */
-    }
+export const ListIcon = styled(DotSymbol)`
+    color: #20c20e;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    font-size: 0.5rem;
+    display: inline;
+    justify-content: center;
+    text-align: center;
+`;
 
-    & li::marker {
-        color: #20c20e;
-    }
+export const JobDetailsReq = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const ListContainer = styled.div`
+    background: #0a0a0a;
+    padding: 5px;
+    padding-left: 10px;
+`;
+export const List = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `;
 
 export const JobDescSection = styled.div`
-    margin-top: 10px;
+    margin: 10px 0;
 `;
-
-export const JobTimeline = styled(JobDetails)`
+export const ListContent = styled.p`
+    margin: 5px;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    text-align: left;
+    font-size: 15px;
+`;
+export const JobDetailsTimeline = styled(JobDetails)`
     color: #20c20e;
     column-gap: 0.4rem;
     font-size: 0.89rem;

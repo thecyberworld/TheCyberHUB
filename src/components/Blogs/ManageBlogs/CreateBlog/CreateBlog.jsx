@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createBlog } from "../../../../features/blogs/blogSlice";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { reset } from "../../../../features/goals/goalSlice";
 import {
     AddCoverImageSection,
     AddImage,
-    Container,
     CreateBlogContainer,
-    Heading2,
-    Heading3,
     ImageSelected,
     ImageUploadAndPreviewSection,
     ImageUploadInput,
@@ -28,6 +25,7 @@ const CreateBlog = () => {
     const { user } = useSelector((state) => state.auth);
     const { isSuccess, isError, message } = useSelector((state) => state.blogs);
     const [preview, setPreview] = useState(false); // added state variable for preview
+    const [showLoadingButton, setShowLoadingButton] = useState(false);
     const onPreview = () => setPreview(true);
     const closePreview = () => setPreview(false);
 
@@ -102,6 +100,7 @@ const CreateBlog = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        setShowLoadingButton(true);
 
         if (file) {
             const formData = new FormData();
@@ -125,16 +124,6 @@ const CreateBlog = () => {
     return (
         <Wrapper>
             <CreateBlogContainer>
-                {isSuccess ? (
-                    <Container>
-                        <Heading2> Your blog has been unleashed upon the world! </Heading2>
-                        <Heading3>
-                            <Link to={`/blogs`} style={{ color: "cornflowerblue" }}>
-                                Check out your blog
-                            </Link>
-                        </Heading3>
-                    </Container>
-                ) : null}
                 <ImageUploadAndPreviewSection>
                     <AddCoverImageSection>
                         <ImageUploadLabel style={{ color: "grey" }} htmlFor="addCoverImage">
@@ -158,11 +147,11 @@ const CreateBlog = () => {
                     <PreviewSection>
                         {!preview ? (
                             <Button onClick={onPreview}>
-                                <PreviewIcon /> Show Preview{" "}
+                                <PreviewIcon /> Show Preview
                             </Button>
                         ) : (
                             <Button onClick={closePreview}>
-                                <PreviewIcon /> Close Preview{" "}
+                                <PreviewIcon /> Close Preview
                             </Button>
                         )}
                     </PreviewSection>
@@ -177,7 +166,15 @@ const CreateBlog = () => {
                         tags={tags}
                     />
                 ) : (
-                    <BlogPostForm title={title} content={content} tags={tags} onSubmit={onSubmit} onChange={onChange} />
+                    <BlogPostForm
+                        title={title}
+                        content={content}
+                        tags={tags}
+                        onSubmit={onSubmit}
+                        onChange={onChange}
+                        showLoadingButton={showLoadingButton}
+                        onSuccess={isSuccess}
+                    />
                 )}
             </CreateBlogContainer>
         </Wrapper>

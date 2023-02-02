@@ -4,10 +4,10 @@ import { BsCheck } from "react-icons/all";
 export const ContainerCard = styled.div`
     display: flex;
     flex-direction: column;
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     text-align: start;
     margin: 10px;
-    border-bottom: #313131 1px solid;
     border-radius: 5px;
     background: #111111;
 `;
@@ -22,22 +22,32 @@ export const EditBlogSection = styled.div`
     display: flex;
     justify-content: end;
 `;
-export const BlogImage = styled.img``;
+export const BlogImage = styled.img`
+    width: 100%;
+    max-width: 300px;
+`;
 export const MainSection = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @media screen and (max-width: 600px) {
+    }
 `;
 export const SubSection = styled.div`
     padding: 25px 25px 15px 25px;
-    min-width: 400px;
+    width: 100%;
+    @media screen and (max-width: 600px) {
+        padding: 10px 10px 15px 15px;
+    }
 `;
 
 export const DetailsSection = styled.div`
     display: flex;
     flex-direction: column;
     text-align: start;
-    min-width: 300px;
+    max-width: 300px;
+    width: 100%;
 `;
 
 export const HeaderDetailsSection = styled.div`
@@ -52,9 +62,18 @@ export const FooterDetailsSection = styled.div`
     padding: 5px 5px 5px 0;
 `;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+    @media screen and (max-width: 600px) {
+        font-size: 12px;
+    }
+`;
 
-export const Description = styled.p``;
+export const Description = styled.p`
+    @media screen and (max-width: 600px) {
+        font-size: 8px;
+        //display: none;
+    }
+`;
 export const Username = styled.p``;
 export const Date = styled.p`
     font-size: 10px;
@@ -63,6 +82,9 @@ export const Date = styled.p`
 export const Categories = styled.p`
     margin-left: 25px;
     display: flex;
+    @media screen and (max-width: 600px) {
+        margin-left: 15px;
+    }
 `;
 export const Category = styled.p`
     background: #142638;
@@ -75,6 +97,9 @@ export const Category = styled.p`
 
     &:hover {
         transform: scale(1.02);
+    }
+    @media screen and (max-width: 600px) {
+        font-size: 9px;
     }
 `;
 

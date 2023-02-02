@@ -1,5 +1,7 @@
 import React from "react";
 import { Form, Input, SectionCreateBlog, Submit, TagInput, TextArea } from "./CreateBlog/CreateBlogElements";
+import { LoadingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { CircleSpinner } from "react-spinners-kit";
 
 const BlogPostForm = (props) => {
     return (
@@ -32,6 +34,19 @@ const BlogPostForm = (props) => {
                 </div>
                 <div>
                     <Submit type={"submit"}>Publish Blog</Submit>
+                    {props.onSuccess ? (
+                        <>
+                            <LoadingButton width={"100%"} type="submit">
+                                Published Successfully
+                            </LoadingButton>
+                        </>
+                    ) : (
+                        props.showLoadingButton && (
+                            <LoadingButton width={"100%"} type="submit">
+                                <CircleSpinner size={20} color={"#131313"} />
+                            </LoadingButton>
+                        )
+                    )}
                 </div>
             </Form>
         </SectionCreateBlog>

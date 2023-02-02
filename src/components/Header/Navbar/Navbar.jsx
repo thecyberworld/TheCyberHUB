@@ -75,7 +75,6 @@ const Navbar = ({ isOpen, toggle }) => {
                             {
                                 title: (
                                     <>
-                                        {" "}
                                         <p onClick={() => onClickLearn()}>Learn</p>
                                         <DropdownIcon onClick={() => onClickLearn()} />
                                     </>
@@ -85,7 +84,6 @@ const Navbar = ({ isOpen, toggle }) => {
                             {
                                 title: (
                                     <>
-                                        {" "}
                                         <p onClick={() => onClickResources()}>Resources</p>
                                         <DropdownIcon onClick={() => onClickResources()} />
                                     </>

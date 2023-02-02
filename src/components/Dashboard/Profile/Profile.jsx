@@ -20,7 +20,7 @@ const Profile = () => {
 
     if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
 
-    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
+    const API_URL = import.meta.env.VITE_CDN_URL;
     const profilePicture = user.picture;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";

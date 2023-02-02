@@ -13,11 +13,9 @@ import {
     JobTimeline,
 } from "./JobsElements";
 
-import { FaEllipsisV } from "react-icons/fa";
-
 export default function Job(props) {
     return (
-        <JobContainer>
+        <JobContainer onClick={props.onClick}>
             <JobHero>
                 <JobHeader>
                     {props.status && <span className="status">{props.status}</span>}
@@ -30,7 +28,7 @@ export default function Job(props) {
                         <span>{props.jobLocation}</span>
                     </JobLocation>
                 </JobHeader>
-                <FaEllipsisV />
+                {/* <FaEllipsisV /> */}
             </JobHero>
             <JobDetails>
                 {props.jobDetails.map((item, i) => (
@@ -44,17 +42,17 @@ export default function Job(props) {
                     </div>
                 ))}
             </JobDetails>
-            <JobDetails>
-                {props.jobDetails2.map((item, i) => (
-                    <div key={i}>
-                        <span>{item}</span>
-                    </div>
-                ))}
-            </JobDetails>
+            {/* <JobDetails> */}
+            {/*    {props.jobDetails2.map((item, i) => ( */}
+            {/*        <div key={i}> */}
+            {/*            <span>{item}</span> */}
+            {/*        </div> */}
+            {/*    ))} */}
+            {/* </JobDetails> */}
             <JobReq>
                 <ul>
-                    {props.jobReq.map((item, i) => (
-                        <li key={i}>{item.slice(0, 50)}</li>
+                    {props.jobReq.slice(0, 2).map((item, i) => (
+                        <li key={i}>{item}</li>
                     ))}
                 </ul>
             </JobReq>

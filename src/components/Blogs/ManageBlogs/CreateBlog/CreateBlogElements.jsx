@@ -165,4 +165,11 @@ export const RouterButtonLink = styled(Link)`
     background: rgba(28, 28, 28, 0.66);
     color: #fffdfd;
     padding: 5px 15px;
+    @media screen and (max-width: 600px) {
+        font-size: 12px;
+    }
+    &:hover {
+        transition: 0.1s ease-in-out;
+        scale: 1.1;
+    }
 `;

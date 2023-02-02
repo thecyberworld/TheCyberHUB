@@ -9,7 +9,7 @@ import { FaGithub } from "react-icons/fa";
 // import { GoPrimitiveDot } from "react-icons/go";
 import { IconsSpacing, IconsSpacing2 } from "../../Other/MixComponents/Buttons/ButtonElements";
 import { BsFillPlayFill } from "react-icons/bs";
-import { DotSymbol } from "./InfoElements";
+import { List, ListContainer, ListContent, ListIcon } from "../../Resources/Jobs/JobDetailsElements";
 
 export const aboutData = {
     id: "about",
@@ -19,21 +19,36 @@ export const aboutData = {
     topLine: "Thecyberworld Community",
     headline: "About Thecyberworld",
     description: (
-        <>
-            <DotSymbol /> Cyber Security courses for FREE (coming soon) <br /> <br />
-            <DotSymbol /> Community&apos;s goal is to help new folks to get started with Opensource and Cybersecurity.
-            <br />
-            <br />
-            <DotSymbol /> Community with more than 150,000 members. <br />
-            <br />
-            <DotSymbol /> Thecyberhub Website, Mobile App, Web Extensions, and <br /> Bots are built by @thecyberworld
-            community <br />
-            <br />
-            <DotSymbol /> Opensource projects. <br />
-            <br />
-            <DotSymbol /> A Hub of Cyber Security. <br />
-            <br />
-        </>
+        <ListContainer style={{ background: "initial" }}>
+            <List>
+                <ListIcon />{" "}
+                <ListContent style={{ fontSize: "initial" }}>
+                    Cyber Security courses for FREE (coming soon){" "}
+                </ListContent>
+            </List>
+            <List>
+                <ListIcon />{" "}
+                <ListContent style={{ fontSize: "initial" }}>
+                    Community&apos;s goal is to help new folks to get started with Opensource and Cybersecurity.
+                </ListContent>
+            </List>
+            <List>
+                <ListIcon />{" "}
+                <ListContent style={{ fontSize: "initial" }}>Community with more than 150,000 members. </ListContent>
+            </List>
+            <List>
+                <ListIcon />{" "}
+                <ListContent style={{ fontSize: "initial" }}>
+                    Thecyberhub Website, Mobile App, Web Extensions, and Bots are built by @thecyberworld community
+                </ListContent>
+            </List>
+            <List>
+                <ListIcon /> <ListContent style={{ fontSize: "initial" }}>Opensource projects.</ListContent>
+            </List>
+            <List>
+                <ListIcon /> <ListContent style={{ fontSize: "initial" }}>A Hub of Cyber Security.</ListContent>
+            </List>
+        </ListContainer>
     ),
     buttonLabel1: "Join our community",
     link1: "/community",

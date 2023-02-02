@@ -136,6 +136,7 @@ export const LoadingButton = styled.button`
     border-radius: 5px;
     border-width: 1px;
     border-style: solid;
+    width: 100%;
     border-color: #343434;
     white-space: nowrap;
     padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
@@ -163,6 +164,5 @@ export const LoadingButton = styled.button`
         }
     }
     @media screen and (max-width: 600px) {
-        margin: 10px;
     }
 `;

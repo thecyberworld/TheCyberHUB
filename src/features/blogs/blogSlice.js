@@ -123,19 +123,24 @@ export const blogSlice = createSlice({
             })
             .addCase(addComment.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.isSuccess = true;
-                // Find the index of the blog in the state.blogs array that needs to be updated
-                const blogIndex = state.blogs.findIndex((blog) => blog._id === action.payload._id);
-                // If the blog is found, update it in the state.blogs array by pushing the new comment to the comments array
-                if (blogIndex !== -1) {
-                    state.blogs[blogIndex] = {
-                        ...state.blogs[blogIndex],
-                        comments: [...(state.blogs[blogIndex].comments || []), action.payload.comment],
-                    };
-                }
-                // If the blog is not found, push the updated blog object to the state.blogs array
-                else {
-                    state.blogs.push(action.payload);
+                // Check if the new comment has been added to the blog
+                if (action.payload.comment) {
+                    state.isSuccess = true;
+                    // Find the index of the blog in the state.blogs array that needs to be updated
+                    const blogIndex = state.blogs.findIndex((blog) => blog._id === action.payload._id);
+                    // If the blog is found, update it in the state.blogs array by pushing the new comment to the comments array
+                    if (blogIndex !== -1) {
+                        state.blogs[blogIndex] = {
+                            ...state.blogs[blogIndex],
+                            comments: [...(state.blogs[blogIndex].comments || []), action.payload.comment],
+                        };
+                    }
+                    // If the blog is not found, push the updated blog object to the state.blogs array
+                    else {
+                        state.blogs.push(action.payload);
+                    }
+                } else {
+                    state.isSuccess = false;
                 }
             })
             .addCase(addComment.rejected, (state, action) => {

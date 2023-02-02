@@ -42,7 +42,7 @@ const BlogCard = ({ blog }) => {
     const { user } = useSelector((state) => state.auth);
     const { pathname } = useLocation();
 
-    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
+    const API_URL = import.meta.env.VITE_CDN_URL;
 
     const coverImage = blog?.coverImage;
     const coverImageUrl = `${API_URL}/${coverImage}`;

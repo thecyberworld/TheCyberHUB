@@ -19,7 +19,6 @@ import NotFound from "../../../NotFound";
 import ViewComments from "../Comments/ViewComments";
 import AddCommentForm from "../Comments/AddCommentForm";
 import PreviewMarkdown from "./PreviewMarkdown";
-import { CircleSpinner } from "react-spinners-kit";
 
 const ViewBlog = () => {
     const { title } = useParams();
@@ -41,8 +40,8 @@ const ViewBlog = () => {
 
     const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
 
-    if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
     if (!blog) return <NotFound />;
+    console.log(blog?.createdAt);
 
     const blogUnFormattedDate = new Date(blog?.createdAt);
     const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
@@ -51,7 +50,7 @@ const ViewBlog = () => {
         year: "numeric",
     }).format(blogUnFormattedDate);
 
-    const API_URL = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images";
+    const API_URL = import.meta.env.VITE_CDN_URL;
     const coverImage = blog?.coverImage;
     const coverImageUrl = `${API_URL}/${coverImage}`;
 
@@ -66,17 +65,17 @@ const ViewBlog = () => {
                     @{blog?.username} | {blogCreatedAt}
                 </UsernameAndDate>
                 <ContentSection>
-                    <PreviewMarkdown content={blog.content} />
+                    <PreviewMarkdown content={blog?.content} />
                 </ContentSection>
             </ViewBlogHeader>
             <TagsSection>
-                {blog.tags.map((tag, id) => (
+                {blog?.tags.map((tag, id) => (
                     <Tag key={id}>{tag}</Tag>
                 ))}
             </TagsSection>
             <CommentContainer>
                 <ViewComments comments={blog?.comments} user={user} />
-                <AddCommentForm blog_id={blog._id} />
+                <AddCommentForm blog_id={blog?._id} isLoading={isLoading} />
             </CommentContainer>
         </ContainerViewBlog>
     );
