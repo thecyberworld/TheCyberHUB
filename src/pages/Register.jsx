@@ -4,7 +4,7 @@ import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
 import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
-import { GlowingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
+import { GlowingButton, LoadingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
 import { FaUserCircle } from "react-icons/fa";
 import { BsCardText, MdTitle } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,9 +64,6 @@ const Register = () => {
         }
     };
 
-    if (isLoading) {
-        return <CircleSpinner size={20} color={"#1fc10d"} />;
-    }
     return (
         <Container>
             <CenterCard>
@@ -174,9 +171,16 @@ const Register = () => {
                                 <span role="link">Terms of Use</span>
                             </div>
                         </div>
-                        <GlowingButton width={"100%"} type="submit">
-                            Start Hacking
-                        </GlowingButton>
+
+                        {!isLoading ? (
+                            <GlowingButton width={"100%"} type="submit">
+                                Start Hacking
+                            </GlowingButton>
+                        ) : (
+                            <LoadingButton width={"100%"} type="submit">
+                                <CircleSpinner size={20} color={"#131313"} />
+                            </LoadingButton>
+                        )}
                     </div>
                 </RegistrationFormContainer>
             </CenterCard>
