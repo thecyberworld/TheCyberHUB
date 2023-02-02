@@ -54,10 +54,6 @@ const Login = () => {
         dispatch(login(userData));
     };
 
-    if (isLoading) {
-        return <CircleSpinner size={20} color={"#1fc10d"} />;
-    }
-
     return (
         <Container>
             <CenterCard>
