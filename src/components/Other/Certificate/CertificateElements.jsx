@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import bgImage from "../../../assets/images/certificate-bg.png";
+import { GlowingButton } from "../MixComponents/Buttons/ButtonElements";
 
 export const CertificateContainer = styled.div`
     margin-top: 40px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #fff;
@@ -97,4 +99,26 @@ export const CertificateFooter = styled.div`
             font-size: 1.5rem;
         }
     }
+`;
+
+export const DownloadCertificateSection = styled.div`
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    & > p {
+        margin: 5px;
+        font-size: 20px;
+    }
+`;
+
+export const DownloadCertificateAs = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`;
+
+export const DownloadButton = styled(GlowingButton)`
+    margin: 5px;
+    padding: 7px 25px;
 `;

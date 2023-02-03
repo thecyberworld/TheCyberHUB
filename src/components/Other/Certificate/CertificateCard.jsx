@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { CertificateContainer, CertificateComponent, CertificateFooter } from "./CertificateElements";
+import {
+    CertificateComponent,
+    CertificateContainer,
+    CertificateFooter,
+    DownloadButton,
+    DownloadCertificateAs,
+    DownloadCertificateSection,
+} from "./CertificateElements";
 import { InvalidCertificate } from "../CyberGames/CTF/CTFElements";
 import { useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import JsPDF from "jspdf";
-import { GlowingButton } from "../MixComponents/Buttons/ButtonElements";
-
+import { AiFillFileImage, VscFilePdf } from "react-icons/all";
+import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 const CertificateCard = () => {
     const [certificate, setCertificate] = useState();
     const baseUrl = "https://thecyberhub-next.vercel.app/api/";
@@ -20,6 +27,7 @@ const CertificateCard = () => {
             const data = await res.data;
             setCertificate(data);
         }
+
         fetchCertificate();
     }, []);
 
@@ -32,21 +40,47 @@ const CertificateCard = () => {
         }, 5000);
     }, []);
 
-    const downloadCertificate = () => {
-        html2canvas(document.querySelector("#certificate")).then((canvas) => {
-            const pdf = new JsPDF("l", "pt", [canvas.width, canvas.height]);
-            pdf.addImage(canvas, "JPEG", 0, 0, canvas.width, canvas.height);
-            pdf.save("certificate.pdf");
+    const downloadCertificate = (asPdf = true) => {
+        html2canvas(document.querySelector("#certificate"), { scale: 5 }).then((canvas) => {
+            if (asPdf) {
+                const pdf = new JsPDF("l", "pt", [canvas.width, canvas.height]);
+                pdf.addImage(canvas, "JPEG", 0, 0, canvas.width, canvas.height);
+                pdf.save("certificate.pdf");
+            } else {
+                canvas.toBlob(
+                    (blob) => {
+                        const link = document.createElement("a");
+                        link.href = URL.createObjectURL(blob);
+                        link.download = "certificate.jpeg";
+                        link.click();
+                    },
+                    "image/jpeg",
+                    1,
+                );
+            }
         });
     };
-
     return (
-        <CertificateContainer>
-            {certificate ? (
-                loading ? (
-                    <InvalidCertificate>loading</InvalidCertificate>
-                ) : (
+        <Wrapper>
+            <CertificateContainer>
+                {certificate ? (
+                    // loading ? (
+                    //     <InvalidCertificate>loading</InvalidCertificate>
+                    // ) : (
                     <>
+                        <DownloadCertificateSection>
+                            <p> Download your certificate as </p>
+                            <DownloadCertificateAs>
+                                <DownloadButton onClick={downloadCertificate}>
+                                    <VscFilePdf />
+                                    <p> PDF </p>
+                                </DownloadButton>
+                                <DownloadButton onClick={downloadCertificate(false)}>
+                                    <AiFillFileImage />
+                                    <p> Image </p>
+                                </DownloadButton>
+                            </DownloadCertificateAs>
+                        </DownloadCertificateSection>
                         <CertificateComponent id="certificate">
                             <div className="certificate-word">Certificate</div>
                             <div className="achievement-word">of achievement</div>
@@ -71,17 +105,17 @@ const CertificateCard = () => {
                                 </div>
                             </CertificateFooter>
                         </CertificateComponent>
-                        <GlowingButton onClick={downloadCertificate}>Download</GlowingButton>
                     </>
-                )
-            ) : loading ? (
-                " "
-            ) : (
-                <InvalidCertificate>
-                    <h4>Invalid certificate id</h4>
-                </InvalidCertificate>
-            )}
-        </CertificateContainer>
+                ) : // )
+                loading ? (
+                    " "
+                ) : (
+                    <InvalidCertificate>
+                        <h4>Invalid certificate id</h4>
+                    </InvalidCertificate>
+                )}
+            </CertificateContainer>
+        </Wrapper>
     );
 };
 
