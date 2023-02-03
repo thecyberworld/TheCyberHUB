@@ -1,5 +1,5 @@
 import React from "react";
-import { LoadingBlogContainer, LoadingContainer, LoadingLine } from "./LoadingBlogCardElements";
+import { LoadingBlogContainer, LoadingContainer, LoadingImage, LoadingLine } from "./LoadingBlogCardElements";
 import {
     BlogImageSection,
     ContainerCard,
@@ -9,12 +9,18 @@ import {
     SubSection,
     Title,
 } from "./NewBlogCardElements";
-import { RouterLink } from "../../Beta/Tools/ToolsElements";
 
-const LoadingAnimation = ({ height }) => {
+const LoadingLineAnimation = ({ height }) => {
     return (
         <LoadingContainer>
             <LoadingLine height={height} />
+        </LoadingContainer>
+    );
+};
+const LoadingImageAnimation = ({ height }) => {
+    return (
+        <LoadingContainer>
+            <LoadingImage height={height} />
         </LoadingContainer>
     );
 };
@@ -25,24 +31,19 @@ const LoadingBlogCard = () => {
             <LoadingBlogContainer>
                 <MainSection>
                     <SubSection>
-                        <RouterLink>
-                            <Title>
-                                {" "}
-                                <LoadingAnimation height={12} />{" "}
-                            </Title>
-                            <Description>
-                                {" "}
-                                <LoadingAnimation height={10} />{" "}
-                            </Description>
-                            <Description>
-                                {" "}
-                                <LoadingAnimation height={10} />{" "}
-                            </Description>
-                        </RouterLink>
+                        <Title>
+                            <LoadingLineAnimation height={12} />
+                        </Title>
+                        <Description>
+                            <LoadingLineAnimation height={10} />
+                        </Description>
+                        <Description>
+                            <LoadingLineAnimation height={10} />
+                        </Description>
                     </SubSection>
                     <DetailsSection>
                         <BlogImageSection>
-                            <LoadingAnimation height={150} />
+                            <LoadingImageAnimation height={150} />
                         </BlogImageSection>
                     </DetailsSection>
                 </MainSection>

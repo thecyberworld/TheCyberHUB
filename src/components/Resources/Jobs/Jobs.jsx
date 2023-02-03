@@ -24,6 +24,7 @@ const Jobs = () => {
     return (
         <Wrapper>
             <JobSection>
+                {/* {!detailsVisible ? (<> */}
                 <JobIntroHeader>
                     <Overlay />
                     <Container>
@@ -32,7 +33,7 @@ const Jobs = () => {
                         </Heading>
                         <Paragraph>
                             Explore job opportunities across various fields with our comprehensive job board. <br />
-                            Improve your skills and gain real-world experience through our unpaid internship program.{" "}
+                            Improve your skills and gain real-world experience through our unpaid internship program.
                             <br />
                             Performance-based incentives and perks await you after three months, including swag and
                             more!
@@ -46,28 +47,74 @@ const Jobs = () => {
                     </Container>
                 </JobIntroHeader>
 
+                {/* </>) : (null)} */}
+
                 <JobsDetailContainer id="jobs">
-                    <JobsCardSection
-                        onClick={() => {
-                            setDetailsVisible(true);
-                        }}
-                        style={detailsVisible ? { overflowY: "scroll", height: "100%" } : {}}
-                    >
-                        {JobsData.map((data) => (
-                            <Job
-                                key={data.id}
+                    {window.innerWidth > 1000 ? (
+                        <>
+                            {/*  Desktop view  */}
+                            <JobsCardSection
                                 onClick={() => {
-                                    setSelectedJob(data);
+                                    setDetailsVisible(true);
                                 }}
-                                {...data}
-                            />
-                        ))}
-                    </JobsCardSection>
-                    {detailsVisible ? (
-                        <JobsDetailSection style={{ float: "right", width: "30%" }}>
-                            {selectedJob ? <JobDetailsPage key={selectedJob.id} {...selectedJob} /> : null}
-                        </JobsDetailSection>
-                    ) : null}
+                                style={detailsVisible ? { overflowY: "scroll", height: "100%" } : {}}
+                                className={detailsVisible ? "active" : ""}
+                            >
+                                {JobsData.map((data) => (
+                                    <Job
+                                        key={data.id}
+                                        onClick={() => {
+                                            setSelectedJob(data);
+                                        }}
+                                        {...data}
+                                    />
+                                ))}
+                            </JobsCardSection>
+                            {detailsVisible ? (
+                                <JobsDetailSection style={{ float: "right", width: "30%" }}>
+                                    {selectedJob ? <JobDetailsPage key={selectedJob.id} {...selectedJob} /> : null}
+                                </JobsDetailSection>
+                            ) : null}
+                        </>
+                    ) : (
+                        <>
+                            {/*  Mobile view  */}
+                            <JobsCardSection
+                                onClick={() => {
+                                    setDetailsVisible(!detailsVisible);
+                                }}
+                                style={
+                                    detailsVisible
+                                        ? { display: "none" }
+                                        : {
+                                              overflowY: "scroll",
+                                              height: "100%",
+                                          }
+                                }
+                            >
+                                {JobsData.map((data) => (
+                                    <Job
+                                        key={data.id}
+                                        onClick={() => {
+                                            setSelectedJob(data);
+                                        }}
+                                        {...data}
+                                    />
+                                ))}
+                            </JobsCardSection>
+                            {detailsVisible ? (
+                                <JobsDetailSection style={{ float: "right", width: "30%" }}>
+                                    {selectedJob ? (
+                                        <JobDetailsPage
+                                            key={selectedJob.id}
+                                            {...selectedJob}
+                                            onClick={() => setDetailsVisible(false)}
+                                        />
+                                    ) : null}
+                                </JobsDetailSection>
+                            ) : null}
+                        </>
+                    )}
                 </JobsDetailContainer>
             </JobSection>
         </Wrapper>

@@ -30,9 +30,16 @@ export const LoadingContainer = styled.div`
 
 export const LoadingLine = styled.div`
     overflow: hidden;
-    width: 100%;
     height: ${(props) => props.height}px;
     border-radius: 5px;
+    background-color: #414141;
+    animation: ${animate} 1s ease-in-out infinite;
+`;
+
+export const LoadingImage = styled.div`
+    overflow: hidden;
+    width: 100px;
+    height: ${(props) => props.height || props.width * 0.6}px;
     background-color: #414141;
     animation: ${animate} 1s ease-in-out infinite;
 `;

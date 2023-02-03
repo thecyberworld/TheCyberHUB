@@ -13,7 +13,7 @@ const ComingSoon = () => {
             }}
         >
             <h1>
-                👨‍💻 <i>More on the way</i> 👩‍💻{" "}
+                👨‍💻 <i>More on the way</i> 👩‍💻
             </h1>
         </div>
     );

@@ -30,7 +30,7 @@ const TrendingBlogCard = ({ title, categories, username, timeString }) => {
                 </Categories>
 
                 <Date>
-                    by @{username} {timeString}{" "}
+                    by @{username} {timeString}
                 </Date>
             </FooterDetailsSection>
         </ContainerTrendingBlogCard>

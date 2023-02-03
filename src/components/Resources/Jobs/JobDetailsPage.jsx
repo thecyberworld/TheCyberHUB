@@ -17,10 +17,12 @@ import {
     ListContent,
     ListIcon,
 } from "./JobDetailsElements";
+import { BackArrow } from "./JobsElements";
 
 export default function JobDetailsPage(props) {
     return (
         <JobDetailsContainer>
+            <BackArrow onClick={props.onClick} />
             <JobDetailsHero>
                 <JobDetailsHeader>
                     {props.status && <span className="status">{props.status}</span>}

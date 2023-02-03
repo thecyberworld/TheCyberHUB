@@ -4,7 +4,7 @@ import goalReducer from "../features/goals/goalSlice";
 import blogReducer from "../features/blogs/blogSlice";
 import userDetailReducer from "../features/userDetails/userDetailSlice";
 
-import { cyberNewsApi } from "../services/cyberNewsApi";
+// import { cyberNewsApi } from "../services/cyberNewsApi";
 
 export default configureStore({
     reducer: {
@@ -12,6 +12,6 @@ export default configureStore({
         goals: goalReducer,
         blogs: blogReducer,
         userDetails: userDetailReducer,
-        [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
+        // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },
 });

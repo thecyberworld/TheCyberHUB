@@ -29,9 +29,8 @@ const Sponsors = () => {
                         </SponsorsP>
                     </SponsorsDescription>
                     <SponsorsDescription>
-                        <DotSymbol />{" "}
+                        <DotSymbol />
                         <SponsorsP>
-                            {" "}
                             We are working on Cyber Security courses and We will release courses for free very soon.
                         </SponsorsP>
                     </SponsorsDescription>

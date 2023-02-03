@@ -103,16 +103,13 @@ const Footer = () => {
                         <FooterLinkItems>
                             <FooterLinkTitle> Videos (coming soon) </FooterLinkTitle>
                             <FooterRedirectLink href={SocialLinks.youtube} target={"_blank"}>
-                                {" "}
-                                About Community{" "}
+                                About Community
                             </FooterRedirectLink>
                             <FooterRedirectLink href={SocialLinks.youtube} target={"_blank"}>
-                                {" "}
-                                How to Join Community{" "}
+                                How to Join Community
                             </FooterRedirectLink>
                             <FooterRedirectLink href={SocialLinks.youtube} target={"_blank"}>
-                                {" "}
-                                How to Contribute to the Community{" "}
+                                How to Contribute to the Community
                             </FooterRedirectLink>
                         </FooterLinkItems>
                     </FooterLinksWrapper>

@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { register, reset } from "../features/auth/authSlice";
 import { CircleSpinner } from "react-spinners-kit";
+import { RouterLink } from "../components/Resources/Events/EventsElement";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -69,7 +70,9 @@ const Register = () => {
             <CenterCard>
                 <Learn2CodePromotion>
                     <div id="reg-promo-content">
-                        <span className="brand-logo">Thecyberworld</span>
+                        <RouterLink to={"/"} className="brand-logo">
+                            Thecyberhub
+                        </RouterLink>
                         <h1 className="leading-title">Learn Cybersecurity For Free</h1>
                         {/* <span>Watch Demo</span> */}
                         <ul className="nav-links">

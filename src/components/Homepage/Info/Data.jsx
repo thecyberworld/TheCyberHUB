@@ -21,23 +21,21 @@ export const aboutData = {
     description: (
         <ListContainer style={{ background: "initial" }}>
             <List>
-                <ListIcon />{" "}
-                <ListContent style={{ fontSize: "initial" }}>
-                    Cyber Security courses for FREE (coming soon){" "}
-                </ListContent>
+                <ListIcon />
+                <ListContent style={{ fontSize: "initial" }}>Cyber Security courses for FREE (coming soon)</ListContent>
             </List>
             <List>
-                <ListIcon />{" "}
+                <ListIcon />
                 <ListContent style={{ fontSize: "initial" }}>
                     Community&apos;s goal is to help new folks to get started with Opensource and Cybersecurity.
                 </ListContent>
             </List>
             <List>
-                <ListIcon />{" "}
+                <ListIcon />
                 <ListContent style={{ fontSize: "initial" }}>Community with more than 150,000 members. </ListContent>
             </List>
             <List>
-                <ListIcon />{" "}
+                <ListIcon />
                 <ListContent style={{ fontSize: "initial" }}>
                     Thecyberhub Website, Mobile App, Web Extensions, and Bots are built by @thecyberworld community
                 </ListContent>
@@ -81,12 +79,10 @@ export const ResourcesData = {
     ),
     buttonLabel1: (
         <>
-            {" "}
-            Explore{" "}
+            Explore
             <IconsSpacing2>
-                {" "}
-                <BsFillPlayFill />{" "}
-            </IconsSpacing2>{" "}
+                <BsFillPlayFill />
+            </IconsSpacing2>
         </>
     ),
     imgStart: true,
@@ -142,8 +138,7 @@ export const contributeData = {
     buttonLabel1: (
         <>
             <IconsSpacing>
-                {" "}
-                <FaGithub />{" "}
+                <FaGithub />
             </IconsSpacing>
             Contribute to Github
         </>

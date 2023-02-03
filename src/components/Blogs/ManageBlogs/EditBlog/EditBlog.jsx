@@ -19,13 +19,10 @@ import {
 } from "../CreateBlog/CreateBlogElements";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import { Button, PreviewIcon, PreviewSection } from "../../../Beta/Forum/ForumSubPageElements";
-import { CircleSpinner } from "react-spinners-kit";
-// import getApiUrl from "../../../../features/apiUrl";
-// import axios from "axios";
 
 const EditBlog = () => {
     const dispatch = useDispatch();
-    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
+    const { blogs, isError, message } = useSelector((state) => state.blogs);
     const [preview, setPreview] = useState(false); // added state variable for preview
     const navigate = useNavigate();
     const [blogData, setBlogData] = useState({
@@ -41,8 +38,6 @@ const EditBlog = () => {
         dispatch(getAllBlogs());
         return () => dispatch(reset());
     }, [dispatch, isError, message]);
-
-    if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
 
     const { title } = useParams();
     const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase()) || {
@@ -84,46 +79,44 @@ const EditBlog = () => {
 
     return (
         <Wrapper>
-            <ImageUploadAndPreviewSection>
-                <AddCoverImageSection>
-                    <ImageUploadLabel style={{ color: "grey" }} htmlFor="addCoverImage">
-                        <AddImage /> Updating Cover Image is not Implemented yet
-                        {/* {!fileName ? <> Add Cover Image </> : */}
-                        {/*    !preview && (!fileName && <ImageSelected> Please select an image </ImageSelected> */}
-                        {/*    )} */}
-                        {/* <ImageSelected> {file && <p>{fileName} selected</p>} </ImageSelected> */}
-                    </ImageUploadLabel>
-                    {/* <ImageUploadInput */}
-                    {/*    type="file" name="addCoverImage" id="addCoverImage" */}
-                    {/*    // onChange={onFileChange} */}
-                    {/*    style={{display: "none"}} */}
-                    {/* /> */}
-                </AddCoverImageSection>
+            <CreateBlogContainer>
+                <ImageUploadAndPreviewSection>
+                    <AddCoverImageSection>
+                        <ImageUploadLabel style={{ color: "grey" }} htmlFor="addCoverImage">
+                            <AddImage /> Updating Cover Image is not Implemented yet
+                            {/* {!fileName ? <> Add Cover Image </> : */}
+                            {/*    !preview && (!fileName && <ImageSelected> Please select an image </ImageSelected> */}
+                            {/*    )} */}
+                            {/* <ImageSelected> {file && <p>{fileName} selected</p>} </ImageSelected> */}
+                        </ImageUploadLabel>
+                        {/* <ImageUploadInput */}
+                        {/*    type="file" name="addCoverImage" id="addCoverImage" */}
+                        {/*    // onChange={onFileChange} */}
+                        {/*    style={{display: "none"}} */}
+                        {/* /> */}
+                    </AddCoverImageSection>
 
-                <PreviewSection>
-                    {!preview ? (
-                        <Button onClick={onPreview}>
-                            {" "}
-                            <PreviewIcon /> Show Preview{" "}
-                        </Button>
-                    ) : (
-                        <Button onClick={closePreview}>
-                            {" "}
-                            <PreviewIcon /> Close Preview{" "}
-                        </Button>
-                    )}
-                </PreviewSection>
-            </ImageUploadAndPreviewSection>
-            {preview ? (
-                <PreviewBlogContent
-                    preview={preview}
-                    closePreview={closePreview}
-                    title={blogData.title || blog.title}
-                    content={blogData.content || blog.content}
-                    tags={blogData.tags.length !== 0 ? blogData.tags : blog.tags}
-                />
-            ) : (
-                <CreateBlogContainer>
+                    <PreviewSection>
+                        {!preview ? (
+                            <Button onClick={onPreview}>
+                                <PreviewIcon /> Show Preview
+                            </Button>
+                        ) : (
+                            <Button onClick={closePreview}>
+                                <PreviewIcon /> Close Preview
+                            </Button>
+                        )}
+                    </PreviewSection>
+                </ImageUploadAndPreviewSection>
+                {preview ? (
+                    <PreviewBlogContent
+                        preview={preview}
+                        closePreview={closePreview}
+                        title={blogData.title || blog.title}
+                        content={blogData.content || blog.content}
+                        tags={blogData.tags.length !== 0 ? blogData.tags : blog.tags}
+                    />
+                ) : (
                     <SectionCreateBlog>
                         <Form onSubmit={onSubmit}>
                             <div>
@@ -158,8 +151,8 @@ const EditBlog = () => {
                             </div>
                         </Form>
                     </SectionCreateBlog>
-                </CreateBlogContainer>
-            )}
+                )}
+            </CreateBlogContainer>
         </Wrapper>
     );
 };

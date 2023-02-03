@@ -5,8 +5,6 @@ import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2C
 import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
 import { GlowingButton, LoadingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
-// import { FaEnvelope } from "react-icons/fa";
-// import { FaLock } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { BsCardText } from "react-icons/all";
 
@@ -15,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { login, reset } from "../features/auth/authSlice";
 import { CircleSpinner } from "react-spinners-kit";
+import { RouterLink } from "../components/Resources/Events/EventsElement";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -28,13 +27,12 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth);
-
     useEffect(() => {
-        if (isError) {
-            toast.error(message);
-        }
         if (isSuccess || user) {
             navigate("/dashboard");
+        }
+        if (isError) {
+            toast.error("Invalid user data");
         }
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
@@ -45,13 +43,17 @@ const Login = () => {
             [e.target.name]: e.target.value,
         }));
     };
+
     const onSubmit = (e) => {
         e.preventDefault();
-        const userData = {
-            username,
-            password,
-        };
-        dispatch(login(userData));
+
+        if (username !== "" && password !== "") {
+            const userData = {
+                username,
+                password,
+            };
+            dispatch(login(userData));
+        }
     };
 
     return (
@@ -59,9 +61,10 @@ const Login = () => {
             <CenterCard>
                 <Learn2CodePromotion>
                     <div id="reg-promo-content">
-                        <span className="brand-logo">Thecyberworld</span>
+                        <RouterLink to={"/"} className="brand-logo">
+                            Thecyberhub
+                        </RouterLink>
                         <h1 className="leading-title">Learn Cybersecurity For Free</h1>
-                        {/* <span>Watch Demo</span> */}
                         <ul className="nav-links">
                             <li>Home</li>
                             <li>Tour</li>
@@ -116,6 +119,7 @@ const Login = () => {
                                 <span role="link">Terms of Use</span>
                             </div>
                         </div>
+
                         {!isLoading ? (
                             <GlowingButton width={"100%"} type="submit">
                                 Start Hacking

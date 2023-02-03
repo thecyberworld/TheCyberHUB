@@ -17,6 +17,7 @@ export const CreateBlogContainer = styled.div`
 export const ImageUploadAndPreviewSection = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
 `;
 
 export const AddCoverImageSection = styled.div`
@@ -168,6 +169,7 @@ export const RouterButtonLink = styled(Link)`
     @media screen and (max-width: 600px) {
         font-size: 12px;
     }
+
     &:hover {
         transition: 0.1s ease-in-out;
         scale: 1.1;

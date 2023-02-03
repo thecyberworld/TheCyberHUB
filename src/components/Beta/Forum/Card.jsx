@@ -60,7 +60,7 @@ const Card = ({ title, description, username, date, categories, views, answers, 
                     ))}
                 </Categories>
                 <Date>
-                    by @{username} {timeString}{" "}
+                    by @{username} {timeString}
                 </Date>
             </FooterDetailsSection>
         </ContainerCard>

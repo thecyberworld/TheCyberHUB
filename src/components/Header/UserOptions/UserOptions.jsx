@@ -39,6 +39,7 @@ const DropdownMenu = () => {
         dispatch(reset());
         navigate("/");
     };
+
     const { user } = useSelector((state) => state.auth);
 
     const DropdownItem = (props) => {

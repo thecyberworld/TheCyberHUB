@@ -42,7 +42,6 @@ export default function SideDropdown(props) {
     return (
         <div style={props.sidebar ? mobStyle : dStyle}>
             <li style={{ marginRight: "180px" }}>
-                {" "}
                 {prepList.map((i, id) => (
                     <Item key={id}>
                         <Link onClick={props.toggle} style={{ textDecoration: "none", color: "white" }} to={i.url}>

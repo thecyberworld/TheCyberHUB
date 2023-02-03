@@ -1,9 +1,84 @@
 import React from "react";
-import { FaStar, FaBriefcase, FaClock, FaTelegramPlane, FaBolt, FaCircle, FaMoneyCheckAlt } from "react-icons/fa";
+import { FaStar, FaBriefcase, FaTelegramPlane, FaBolt, FaCircle, FaMoneyCheckAlt } from "react-icons/fa";
 
 const iconSize = 15;
 
 export const JobsData = [
+    {
+        id: "Business Development Internship",
+        status: "new",
+        jobTitle: "Business Development Internship",
+        jobRoleTitle: "Business Development Intern",
+        jobRating: (
+            <>
+                4 <FaStar size={iconSize} style={{ color: "orange" }} />
+            </>
+        ),
+        jobLocation: "Remote",
+        jobDetails: [
+            {
+                item: (
+                    <>
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                    </>
+                ),
+            },
+            {
+                item: (
+                    <>
+                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                    </>
+                ),
+            },
+        ],
+        jobDetails2: [
+            <>
+                <FaTelegramPlane size={iconSize} style={{ color: "#20c20e" }} /> Apply securely with Resume
+            </>,
+            <>
+                <FaBolt size={iconSize} style={{ color: "#20c20e" }} /> Responsive employer
+            </>,
+        ],
+        jobDesc1: (
+            <p>
+                Our company is seeking highly motivated interns for business development projects in the field of cyber
+                security.
+            </p>
+        ),
+        jobDesc2: (
+            <p>
+                This is a unique opportunity for individuals interested in building a career in business development.
+                Your role will be to analyze and research companies to determine their need for cyber security services.
+                If a company is not currently utilizing these services, you will then be responsible for scheduling a
+                meeting and presenting our services to them. Send your resume and cover letter to [Insert email or
+                contact information here]. css Our company is committed to diversity and equal opportunity and does not
+                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
+                status, veteran status, or disability status.
+            </p>
+        ),
+        jobReq: [
+            "Strong research and analytical skills",
+            "Excellent written and verbal communication skills",
+            "Familiarity with business development techniques",
+            "Passion for technology and cyber security",
+            "Ability to work independently and as a team",
+        ],
+        jobRes: [
+            "Conduct research and analysis on companies to determine their need for cyber security services",
+            "Schedule and attend meetings with potential clients to present our services",
+            "Contribute to the growth and success of the company through business development efforts",
+            "Gain valuable experience and knowledge in the field of business development",
+        ],
+        jobTimeline: {
+            datePosted: "Posted 2 days ago",
+            separator: (
+                <>
+                    <FaCircle />
+                </>
+            ),
+            directory: "remote",
+        },
+    },
     {
         id: "MERN Stack Internship",
         status: "new",
@@ -338,7 +413,7 @@ export const JobsData = [
         jobDesc1: (
             <p>
                 Join the team at Thecyberworld as a SOC Analyst Intern and help protect businesses against cyber
-                threats.{" "}
+                threats.
             </p>
         ),
         jobDesc2: (
@@ -376,10 +451,10 @@ export const JobsData = [
         },
     },
     {
-        id: "Sales and Marketing Internship",
+        id: "React Native Android Developer Internship",
         status: "new",
-        jobTitle: "Sales and Marketing Internship",
-        jobRoleTitle: "Sales and Marketing Intern",
+        jobTitle: "React Native Android Developer Internship",
+        jobRoleTitle: "React Native Android Developer Intern",
         jobRating: (
             <>
                 4 <FaStar size={iconSize} style={{ color: "orange" }} />
@@ -390,22 +465,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Unpaid Internship
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Commission based salary after 3
-                        months
-                    </>
-                ),
-            },
-            {
-                item: (
-                    <>
-                        <FaClock size={iconSize} style={{ color: "orange" }} /> Flexible shift
+                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -420,33 +487,32 @@ export const JobsData = [
         ],
         jobDesc1: (
             <p>
-                Our company is seeking highly motivated interns for sales and marketing projects in the field of cyber
-                security.
+                Our company is seeking a highly motivated intern with experience in React Native and Android development
+                to assist in converting our MERN website with Redux into a native Android app.
             </p>
         ),
         jobDesc2: (
             <p>
-                This is a unique opportunity for individuals interested in building a career in sales and marketing.
-                Your role will be to analyze and research companies to determine their need for cyber security services.
-                If a company is not currently utilizing these services, you will then be responsible for scheduling a
-                meeting and presenting our services to them. Send your resume and cover letter to [Insert email or
-                contact information here]. css Our company is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                This is an excellent opportunity to gain hands-on experience in the field of mobile development while
+                working on a real-world project. You will be working closely with our development team to bring our
+                website to life on the Android platform. Send your resume and cover letter to [Insert email or contact
+                information here]. Our company is committed to diversity and equal opportunity and does not discriminate
+                based on race, religion, color, national origin, gender, sexual orientation, age, marital status,
+                veteran status, or disability status.
             </p>
         ),
         jobReq: [
-            "Strong research and analytical skills",
-            "Excellent written and verbal communication skills",
-            "Familiarity with sales and marketing techniques",
-            "Passion for technology and cyber security",
+            "Experience with React Native and Android development",
+            "Knowledge of MERN stack and Redux",
+            "Excellent problem-solving skills",
+            "Strong attention to detail",
             "Ability to work independently and as a team",
         ],
         jobRes: [
-            "Conduct research and analysis on companies to determine their need for cyber security services",
-            "Schedule and attend meetings with potential clients to present our services",
-            "Contribute to the growth and success of the company through sales and marketing efforts",
-            "Gain valuable experience and knowledge in the field of sales and marketing",
+            "Assist in converting a MERN website with Redux into a native Android app",
+            "Gain hands-on experience in the field of mobile development",
+            "Collaborate with development team to bring the website to life on the Android platform",
+            "Contribute to the growth and success of the company through your development efforts",
         ],
         jobTimeline: {
             datePosted: "Posted 2 days ago",

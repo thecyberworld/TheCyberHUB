@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import { Button, Header } from "../../Community/CommunityElements";
 import { FaChevronDown } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/all";
 
 export const ScrollButton = styled(Button)`
     outline: 2px solid #363636;
@@ -11,6 +12,16 @@ export const ScrollButton = styled(Button)`
         background: #20c20e;
         outline-color: #545454;
         outline-offset: 2px;
+    }
+
+    & > span {
+        &:hover {
+            color: #1a1c1d;
+        }
+
+        @media only screen and (max-width: 800px) {
+            font-size: 15px;
+        }
     }
 `;
 
@@ -31,7 +42,13 @@ export const JobSection = styled.section`
 `;
 
 export const JobIntroHeader = styled(Header)`
-    height: 650px;
+    color: #cecac3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 25px;
+    height: 600px;
 `;
 
 export const JobsDropdownIcon = styled(FaChevronDown)`
@@ -43,6 +60,16 @@ export const JobsDetailContainer = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
+
+    @media only screen and (max-width: 1000px) {
+        flex-direction: column;
+    }
+`;
+
+export const BackArrow = styled(IoMdArrowRoundBack)`
+    @media only screen and (min-width: 1000px) {
+        display: none;
+    }
 `;
 
 export const JobsCardSection = styled.div`
@@ -53,12 +80,24 @@ export const JobsCardSection = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    max-height: 1000px;
+    max-height: 100%;
+    cursor: pointer;
+    &.active {
+        max-height: 1000px;
+        overflow-y: scroll;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        max-height: 800px;
+    }
 `;
 
 export const JobsDetailSection = styled.div`
     padding: 5px;
     min-width: 65%;
+    @media only screen and (max-width: 1000px) {
+        min-width: 100%;
+    }
 `;
 
 export const JobContainer = styled.div`
@@ -181,6 +220,7 @@ export const JobDetails = styled.div`
 export const JobReq = styled.div`
     font-size: 13px;
     margin: 15px 0;
+
     & > ul {
         font-weight: 400;
         letter-spacing: 0.08rem;

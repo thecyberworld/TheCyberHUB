@@ -82,7 +82,7 @@ export const MobileIcon = styled.div`
         cursor: pointer;
         color: #fff;
         margin-top: 5px;
-        margin-right: 25px;
+        margin-right: 35px;
     }
     @media screen and (max-width: 340px) {
         display: inline-flex;

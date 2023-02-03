@@ -12,23 +12,27 @@ export const SponsorsContainer = styled.div`
     color: #fff;
 `;
 
-export const SponsorsH1 = styled.h1`
+export const SponsorsH1 = styled.p`
     display: flex;
     text-align: center;
     align-items: center;
-
     font-family: "Roboto Mono", monospace;
-    font-size: 30px;
     margin: 25px;
-    @media screen and (max-width: 768px) {
-        font-size: 1.5rem;
+    font-size: 25px;
+    font-weight: bold;
+    @media screen and (max-width: 720px) {
+        flex-direction: column;
+        margin: 0 0 15px 0;
     }
 `;
-export const TextGreenBG = styled.div`
-    background: #73ff00;
-    color: #1a1c1d;
-    margin: 0 10px;
-    padding: 0 10px;
+
+export const TextGreenBG = styled.p`
+    color: #73ff00;
+    margin: 0 15px;
+    @media screen and (max-width: 450px) {
+        margin: 0;
+        font-size: 23px;
+    }
 `;
 
 export const SponsorsDescriptionContainer = styled.div`
@@ -81,11 +85,9 @@ export const SponsorsLink = styled.a`
 
 export const BuyMeACoffeeImage = styled.img`
     cursor: pointer;
+    color: #73ff00;
     background: #73ff00;
-    &:hover {
-        transform: scale(1.1);
-        transition: all 0.3s ease-in-out;
-    }
+    border-radius: 5px;
 
     @media screen and (max-width: 768px) {
         margin: 0;

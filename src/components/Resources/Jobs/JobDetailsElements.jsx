@@ -4,7 +4,6 @@ import { DotSymbol } from "../../Homepage/Info/InfoElements";
 export const JobDetailsContainer = styled.div`
     background-color: rgba(32, 194, 14, 0.04);
     width: 100%;
-
     margin: 10px;
     outline: 1px solid #2a2a2a;
     border-radius: 0.5rem;
@@ -12,11 +11,14 @@ export const JobDetailsContainer = styled.div`
     flex-direction: column;
     padding: 25px;
     row-gap: 0.8rem;
-
     transition: 260ms all;
 
     &:hover {
         outline-offset: 2px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        margin: 0;
     }
 `;
 
