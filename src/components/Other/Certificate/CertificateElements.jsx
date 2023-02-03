@@ -21,7 +21,6 @@ export const CertificateComponent = styled.div`
     background-size: cover;
     border: 0.3rem solid #222;
     align-items: center;
-    border-radius: 0.6rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,9 +87,9 @@ export const CertificateFooter = styled.div`
 
     .signature-block {
         .signature {
-            font-family: "Condiment", sans-serif;
             padding: 1rem 1rem 0.2rem 1rem;
             border-bottom: 2px solid #ccc;
+            font-family: "Caveat", cursive;
         }
 
         .signature-word {
