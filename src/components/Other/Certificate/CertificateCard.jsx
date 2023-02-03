@@ -5,7 +5,7 @@ import { InvalidCertificate } from "../CyberGames/CTF/CTFElements";
 import { useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import JsPDF from "jspdf";
-import { GlowingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { GlowingButton } from "../MixComponents/Buttons/ButtonElements";
 
 const CertificateCard = () => {
     const [certificate, setCertificate] = useState();
