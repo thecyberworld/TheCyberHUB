@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const EmailNotVerifiedContainer = styled.div`
     //background: transparent;
     //background: #08ff00;
-    background: #000000;
     width: 100%;
     display: flex;
     justify-content: center;
-    // background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
+    background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
     align-items: center;
     text-align: center;
     top: 80px;

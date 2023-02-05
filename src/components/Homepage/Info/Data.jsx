@@ -1,6 +1,6 @@
 import React from "react";
 import contributeSvg from "../../../assets/images/open-source-contribution.svg";
-import communitySvg from "../../../assets/images/undraw_public_discussion_re_w9up.svg";
+// import communitySvg from "../../../assets/images/undraw_public_discussion_re_w9up.svg";
 import ResourcesSvg from "../../../assets/images/undraw_firmware_re_fgdy.svg";
 import logoThecyberworld from "../../../assets/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png";
 import VersionControlSvg from "../../../assets/images/undraw_version_control_re_mg66.svg";
@@ -114,7 +114,8 @@ export const communityData = {
         </>
     ),
     imgStart: true,
-    img: communitySvg,
+    // img: communitySvg,
+    video: true,
     alt: "Secure data",
     dark: true,
     primary: true,

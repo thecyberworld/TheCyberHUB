@@ -1,5 +1,5 @@
 import React from "react";
-import { ScrollButton, RedirectButton, RouterButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { RedirectButton, RouterButton, ScrollButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 import {
     BtnWrap,
     Column1,
@@ -30,6 +30,7 @@ const InfoSection = ({
     buttonLabel2,
     imgStart,
     img,
+    video,
     alt,
     dark,
     dark2,
@@ -122,7 +123,19 @@ const InfoSection = ({
                         </Column1>
                         <Column2>
                             <ImgWrap>
-                                <Img src={img} alt={alt} />
+                                {img ? (
+                                    <Img src={img} alt={alt} />
+                                ) : (
+                                    <iframe
+                                        width="500px"
+                                        height="300px"
+                                        src="https://www.youtube.com/embed/r5CDqVnWFFQ"
+                                        title="Community Introduction | Thecyberworld"
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        allowFullScreen
+                                    ></iframe>
+                                )}
                             </ImgWrap>
                         </Column2>
                     </InfoRow>

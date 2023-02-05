@@ -1,76 +1,109 @@
 import React, { useEffect, useState } from "react";
 import { EmailNotVerifiedContainer, EmailNotVerifiedText, ResendButton } from "./EmailNotVerifiedElements";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
-const EmailNotVerified = () => {
-    const { user } = useSelector((state) => state.auth);
+const EmailNotVerified = ({ user }) => {
+    if (!user) {
+        return null;
+    }
+    const [message, setMessage] = useState("");
+    const [scrollNav, setScrollNav] = useState(false);
 
-    if (user) {
-        const [message, setMessage] = useState("");
+    const [timeLeft, setTimeLeft] = useState(60);
+    const [isCounting, setIsCounting] = useState(false);
+    const [userData, setUserData] = useState({});
+    // const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-        const [timeLeft, setTimeLeft] = useState(60);
-        const [isCounting, setIsCounting] = useState(false);
+    useEffect(() => {
+        setIsLoading(true);
 
-        useEffect(() => {
-            let intervalId = null;
-            if (isCounting) {
-                intervalId = setInterval(() => {
-                    setTimeLeft((timeLeft) => {
-                        if (timeLeft <= 0) {
-                            clearInterval(intervalId);
-                            setIsCounting(false);
-                            return 0;
-                        }
-                        return timeLeft - 1;
-                    });
-                }, 1000);
-            }
-            return () => clearInterval(intervalId);
-        }, [isCounting]);
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+    }, []);
 
-        const resendEmail = () => {
-            setTimeLeft(60);
-            setIsCounting(true);
-            axios
-                .post(
-                    "http://localhost:5000/account/resend-verification-email",
-                    {},
-                    {
-                        headers: {
-                            Authorization: `Bearer ${user.token}`,
-                        },
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await axios.get("/api/users/user", {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`,
                     },
-                )
-                .then((res) => {
-                    setMessage(res.data.message);
-                    console.log(res.data.message);
-                })
-                .catch((error) => {
-                    console.error(error.response.data.message);
                 });
+
+                setUserData(response.data);
+            } catch (err) {
+                // setError(err.response?.data?.message || "An error occurred");
+            }
         };
 
-        const isVerified = user.isVerified === "true";
+        fetchUserData();
+        let intervalId = null;
+        if (isCounting) {
+            intervalId = setInterval(() => {
+                setTimeLeft((timeLeft) => {
+                    if (timeLeft <= 0) {
+                        clearInterval(intervalId);
+                        setIsCounting(false);
+                        return 0;
+                    }
+                    return timeLeft - 1;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(intervalId);
+    }, [isCounting]);
 
-        return (
-            <EmailNotVerifiedContainer>
-                {!isVerified ? (
-                    <EmailNotVerifiedText>
-                        Email Verification link has been sent, please verify it.
-                        {!isCounting ? (
-                            <ResendButton onClick={resendEmail}> Resend </ResendButton>
-                        ) : (
-                            <ResendButton> Retry after {timeLeft >= 0 ? timeLeft : 0} </ResendButton>
-                        )}
-                        {message && <div style={{ color: "cornflowerblue" }}>{message}</div>}
-                    </EmailNotVerifiedText>
-                ) : (
-                    <></>
-                )}
-            </EmailNotVerifiedContainer>
-        );
-    }
+    const resendEmail = () => {
+        setTimeLeft(1);
+        setIsCounting(true);
+        axios
+            .post(
+                "http://localhost:5000/account/resend-verification-email",
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                },
+            )
+            .then((res) => {
+                setMessage(res.data.message);
+            })
+            .catch((error) => {
+                setMessage(error.response.data.message);
+            });
+    };
+
+    const changeNav = () => {
+        if (window.scrollY >= 80) {
+            setScrollNav(true);
+        } else {
+            setScrollNav(false);
+        }
+    };
+    useEffect(() => {
+        window.addEventListener("scroll", changeNav);
+    }, []);
+
+    return (
+        <EmailNotVerifiedContainer scrollNav={scrollNav}>
+            {!isLoading && !userData.isVerified ? (
+                <EmailNotVerifiedText>
+                    Email Verification link has been sent, please verify it.
+                    {!isCounting ? (
+                        <ResendButton onClick={resendEmail}> Resend </ResendButton>
+                    ) : (
+                        <ResendButton> Retry after {timeLeft >= 0 ? timeLeft : 0} </ResendButton>
+                    )}
+                    {message && <div style={{ color: "cornflowerblue" }}>{message}</div>}
+                </EmailNotVerifiedText>
+            ) : (
+                <></>
+            )}
+        </EmailNotVerifiedContainer>
+    );
 };
 
 export default EmailNotVerified;

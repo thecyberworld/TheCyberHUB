@@ -49,6 +49,7 @@ import Tools from "./components/Beta/Tools/Tools";
 import BreachCheck from "./components/Beta/Tools/BreachCheck/BreachCheck";
 import EmailNotVerified from "./components/Dashboard/EmailNotVerified";
 import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
+import { useSelector } from "react-redux";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -61,10 +62,10 @@ const App = () => {
 
         setTimeout(() => {
             setIsLoading(false);
-        }, 5000);
+        }, 0);
         setTimeout(() => {
             setShowWebsite(true);
-        }, 3000);
+        }, 0);
     }, []);
 
     const showFooter = () => {
@@ -78,6 +79,7 @@ const App = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
+    const { user } = useSelector((state) => state.auth);
     if (isLoading) return <Spinner />;
     if (showWebsite)
         return (
@@ -89,7 +91,7 @@ const App = () => {
                             <Navbar toggle={toggle} />
                         </>
                     )}
-                    <EmailNotVerified />
+                    {user ? <EmailNotVerified user={user} /> : null}
                     <ScrollToTop>
                         <Routes>
                             <Route index exact path={"/"} element={<Homepage />} />
