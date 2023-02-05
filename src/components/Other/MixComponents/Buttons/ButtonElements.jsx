@@ -166,3 +166,35 @@ export const LoadingButton = styled.button`
     @media screen and (max-width: 600px) {
     }
 `;
+
+export const RouterButtonGreen = styled(RouterLink)`
+    text-decoration: none;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #343434;
+    white-space: nowrap;
+    padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
+    font-size: ${({ fontBig }) => (fontBig ? "20px" : "16px")};
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    color: #000000;
+    background: #20c20e;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #20c20e;
+        color: black;
+        scale: 1.1;
+        border-color: #343434;
+        // font-size: 18px;
+    }
+
+    @media screen and (max-width: 600px) {
+        margin: 10px;
+    }
+`;

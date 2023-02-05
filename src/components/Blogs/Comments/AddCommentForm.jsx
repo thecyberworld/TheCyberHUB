@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { AddCommentFormContainer, Form, Input, Submit } from "./AddCommentFormElements";
-import { addComment } from "../../../features/blogs/blogSlice";
+import { AddCommentFormContainer, Form, Input } from "./AddCommentFormElements";
+import { addComment, getAllBlogs } from "../../../features/blogs/blogSlice";
 import { useDispatch } from "react-redux";
-import { LoadingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { GlowingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 
 const AddCommentForm = (props) => {
     const [addCommentData, setAddCommentData] = useState({ comment: "" });
     const { comment } = addCommentData;
     const [error, setError] = useState("");
-    const [isSuccess, setIsSuccess] = useState(false);
-
     const dispatch = useDispatch();
 
     const onChange = (e) => {
@@ -30,7 +28,7 @@ const AddCommentForm = (props) => {
                 comment: "",
             });
             setError("");
-            setIsSuccess(true);
+            dispatch(getAllBlogs());
         } else {
             setError("Please add a comment first.");
         }
@@ -47,13 +45,9 @@ const AddCommentForm = (props) => {
                     onChange={onChange}
                     placeholder="Add your comment here..."
                 />
-                <Submit type="submit">Submit</Submit>
-
-                {isSuccess && (
-                    <LoadingButton width={"100%"} type="submit">
-                        Published Successfully
-                    </LoadingButton>
-                )}
+                <GlowingButton width={"100%"} type="submit">
+                    Submit
+                </GlowingButton>
             </Form>
             {error && <p style={{ marginTop: "10px" }}>{error}</p>}
         </AddCommentFormContainer>

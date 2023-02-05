@@ -72,11 +72,6 @@ const EditBlog = () => {
         navigate("../");
     };
 
-    console.log(blogData.tags.length !== 0 ? blogData.tags : blog.tags);
-    console.log(blogData.tags || blog.tags);
-    console.log(blogData.tags);
-    console.log(blog.tags);
-
     return (
         <Wrapper>
             <CreateBlogContainer>

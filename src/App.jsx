@@ -12,9 +12,6 @@ import {
     Blogs,
     CertificateCard,
     Community,
-    CourseDetail,
-    Courses,
-    CoursesLayout,
     CreateBlog,
     CTF,
     CyberGames,
@@ -150,10 +147,10 @@ const App = () => {
                                     <Route path={":title"} element={<Roadmap />} />
                                 </Route>
 
-                                <Route path={"/courses"} element={<CoursesLayout />}>
-                                    <Route index element={<Courses />} />
-                                    <Route path={":id"} element={<CourseDetail />} />
-                                </Route>
+                                {/* <Route path={"/courses"} element={<CoursesLayout />}> */}
+                                {/*    <Route index element={<Courses />} /> */}
+                                {/*    <Route path={":id"} element={<CourseDetail />} /> */}
+                                {/* </Route> */}
 
                                 {/* <Route exact path={"/blogs"} element={<Blogs />} /> */}
                             </Route>

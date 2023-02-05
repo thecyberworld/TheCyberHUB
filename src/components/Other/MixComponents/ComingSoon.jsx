@@ -1,21 +1,21 @@
 import React from "react";
 import "../../../index.css";
-
+import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 const ComingSoon = () => {
     return (
-        <div
-            style={{
-                background: "#000000",
-                color: "#fff",
-                textAlign: "center",
-                padding: "0 0 200px 0",
-                margin: "0 0 0 0",
-            }}
-        >
-            <h1>
-                👨‍💻 <i>More on the way</i> 👩‍💻
-            </h1>
-        </div>
+        <Wrapper>
+            <div
+                style={{
+                    fontFamily: "Roboto Mono, monospace",
+                    background: "#000000",
+                    color: "#ababab",
+                    textAlign: "center",
+                    padding: "100px 0 0 0",
+                }}
+            >
+                <h1>Coming Soon</h1>
+            </div>
+        </Wrapper>
     );
 };
 

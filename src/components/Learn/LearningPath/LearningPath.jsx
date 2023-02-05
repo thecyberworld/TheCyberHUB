@@ -28,6 +28,7 @@ const LearningPath = () => {
 
     return (
         <Wrapper>
+            Coming Soon
             <LearningPathContainer>
                 <LeftContainer>
                     <ContentNavigation>

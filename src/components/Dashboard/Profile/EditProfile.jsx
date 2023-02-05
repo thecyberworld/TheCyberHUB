@@ -125,8 +125,6 @@ const EditProfile = () => {
         if (profileData.username === "") delete updatedUserData.username;
         if (profileData.email === "") delete updatedUserData.email;
 
-        console.log(updatedUserData);
-
         dispatch(updateUser({ id: user.id, userData: updatedUserData }));
     };
 

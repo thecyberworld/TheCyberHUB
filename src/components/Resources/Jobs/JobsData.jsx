@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar, FaBriefcase, FaTelegramPlane, FaBolt, FaCircle, FaMoneyCheckAlt } from "react-icons/fa";
+import { FaBolt, FaBriefcase, FaCircle, FaMoneyCheckAlt, FaStar, FaTelegramPlane } from "react-icons/fa";
 
 const iconSize = 15;
 
@@ -50,10 +50,17 @@ export const JobsData = [
                 This is a unique opportunity for individuals interested in building a career in business development.
                 Your role will be to analyze and research companies to determine their need for cyber security services.
                 If a company is not currently utilizing these services, you will then be responsible for scheduling a
-                meeting and presenting our services to them. Send your resume and cover letter to [Insert email or
-                contact information here]. css Our company is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                meeting and presenting our services to them.
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Our company is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [
@@ -122,11 +129,17 @@ export const JobsData = [
         ),
         jobDesc2: (
             <p>
-                This is a unique opportunity for individuals interested in building a career in cyber security. If
-                you&apos;re eager to learn and make a difference, send your resume and cover letter to
-                info@thecyber-sec.com. Thecyberworld is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                This is a unique opportunity for individuals interested in building a career in cyber security.
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Thecyberworld is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [
@@ -195,11 +208,17 @@ export const JobsData = [
         ),
         jobDesc2: (
             <p>
-                This is a unique opportunity for individuals interested in building a career in content creation. If
-                you&apos;re eager to learn and make a difference, send your resume and cover letter to
-                info@thecyber-sec.com. Our company is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                This is a unique opportunity for individuals interested in building a career in content creation.
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Our company is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [
@@ -271,11 +290,18 @@ export const JobsData = [
         ),
         jobDesc2: (
             <p>
-                This is a unique opportunity for individuals interested in building a career in web development. If
-                you&apos;re eager to learn and make a difference, send your resume and cover letter to
-                info@thecyber-sec.com. Our company is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                This is a unique opportunity for individuals interested in building a career in web development. <br />
+                <br />
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Our company is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [
@@ -344,11 +370,17 @@ export const JobsData = [
         ),
         jobDesc2: (
             <p>
-                This is a unique opportunity for individuals interested in building a career in penetration testing. If
-                you&apos;re eager to learn and make a difference, send your resume and cover letter to
-                info@thecyber-sec.com. Thecyberworld is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                This is a unique opportunity for individuals interested in building a career in penetration testing.
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Thecyberworld is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [
@@ -418,11 +450,17 @@ export const JobsData = [
         ),
         jobDesc2: (
             <p>
-                This is an excellent opportunity for individuals interested in the field of cyber security. If
-                you&apos;re eager to learn and make a difference, send your resume and cover letter to
-                info@thecyber-sec.com. Thecyberworld is committed to diversity and equal opportunity and does not
-                discriminate based on race, religion, color, national origin, gender, sexual orientation, age, marital
-                status, veteran status, or disability status.
+                This is an excellent opportunity for individuals interested in the field of cyber security.
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Thecyberworld is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [
@@ -495,10 +533,17 @@ export const JobsData = [
             <p>
                 This is an excellent opportunity to gain hands-on experience in the field of mobile development while
                 working on a real-world project. You will be working closely with our development team to bring our
-                website to life on the Android platform. Send your resume and cover letter to [Insert email or contact
-                information here]. Our company is committed to diversity and equal opportunity and does not discriminate
-                based on race, religion, color, national origin, gender, sexual orientation, age, marital status,
-                veteran status, or disability status.
+                website to life on the Android platform.
+                <br />
+                <br />
+                If you&apos;re eager to learn and make a difference,
+                <br /> Send your resume and cover letter to
+                <b style={{ color: "yellowgreen" }}> info@thecyber-sec.com </b>.
+                <br />
+                <br />
+                Our company is committed to diversity and equal opportunity and does not discriminate based on race,
+                religion, color, national origin, gender, sexual orientation, age, marital status, veteran status, or
+                disability status.
             </p>
         ),
         jobReq: [

@@ -18,23 +18,20 @@ import {
     ViewBlogHeader,
 } from "./ViewBlogElements";
 import NotFound from "../../../NotFound";
-import ViewComments from "../Comments/ViewComments";
-import AddCommentForm from "../Comments/AddCommentForm";
 import PreviewMarkdown from "./PreviewMarkdown";
+import BlogComments from "../Comments/BlogComments";
 
 const ViewBlog = () => {
     const { title } = useParams();
 
-    const { user } = useSelector((state) => state.auth);
-    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
+    const { blogs, isError, message } = useSelector((state) => state.blogs);
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (isError) {
             console.log(message);
-        } else {
-            dispatch(getAllBlogs());
         }
+        dispatch(getAllBlogs());
         return () => {
             dispatch(reset());
         };
@@ -43,8 +40,6 @@ const ViewBlog = () => {
     const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
 
     if (!blog) return <NotFound />;
-    console.log(blog?.createdAt);
-
     const blogUnFormattedDate = new Date(blog?.createdAt);
     const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
         month: "short",
@@ -83,8 +78,9 @@ const ViewBlog = () => {
                     ))}
                 </TagsSection>
                 <CommentContainer>
-                    <ViewComments comments={blog?.comments} user={user} />
-                    <AddCommentForm blog_id={blog?._id} isLoading={isLoading} />
+                    <BlogComments blog={blog} />
+                    {/* <ViewComments comments={blog?.comments} /> */}
+                    {/* <AddCommentForm blog_id={blog?._id} isLoading={isLoading} /> */}
                 </CommentContainer>
             </ContainerViewBlog>
         </>

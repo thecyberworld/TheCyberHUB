@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import blogService from "./blogService";
-import getApiUrl from "../apiUrl";
 
 const initialState = {
     blogs: [],
@@ -49,11 +48,12 @@ export const getBlogs = createAsyncThunk("blogs/getUserBlogs", async (_, thunkAP
 // Get all blogs
 export const getAllBlogs = createAsyncThunk("blogs/getAllBlogs", async (_, thunkAPI) => {
     try {
-        const response = await fetch(getApiUrl("api/blogs/all"));
-        const data = await response.json();
-        return data;
+        return await blogService.getAllBlogs();
     } catch (error) {
         console.error(error);
+        const message =
+            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
     }
 });
 

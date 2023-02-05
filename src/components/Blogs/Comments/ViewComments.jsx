@@ -9,6 +9,7 @@ import {
     UserPicture,
     ViewCommentsContainer,
 } from "./ViewCommentsElements";
+import { CircleSpinner } from "react-spinners-kit";
 
 const ViewComments = (props) => {
     const API_URL = import.meta.env.VITE_CDN_URL;
@@ -30,20 +31,11 @@ const ViewComments = (props) => {
                     <SectionCommentDetails>
                         <Username>{userComment?.username}</Username>
                         <CommentDate> Jan 26, 2023</CommentDate>
-                        {/* <CommentDate> Date: {userComment?.date}</CommentDate> */}
-                        {/* {new Intl.DateTimeFormat("en-US", { */}
-                        {/*    month: "short", */}
-                        {/*    day: "numeric", */}
-                        {/*    year: "numeric", */}
-                        {/* }).format(new Date(userComment?.createdAt))} */}
                         <Comment>{userComment?.comment}</Comment>
-                        {/* <ReplyButton>Reply</ReplyButton> */}
-                        {/* {userComment?.replies.map((reply, id) => ( */}
-                        {/*    <ReplySection key={id}>{reply?.reply}</ReplySection> */}
-                        {/* ))} */}
                     </SectionCommentDetails>
                 </CommentSection>
             ))}
+            {props.isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
         </ViewCommentsContainer>
     );
 };

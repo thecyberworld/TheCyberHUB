@@ -4,7 +4,11 @@ import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
 import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
-import { GlowingButton, LoadingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
+import {
+    GlowingButton,
+    LoadingButton,
+    RouterButtonGreen,
+} from "../components/Other/MixComponents/Buttons/ButtonElements";
 import { FaUserCircle } from "react-icons/fa";
 import { BsCardText, MdTitle } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
@@ -184,6 +188,10 @@ const Register = () => {
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
                         )}
+
+                        <RouterButtonGreen to={"/login"} width={"100%"}>
+                            Login
+                        </RouterButtonGreen>
                     </div>
                 </RegistrationFormContainer>
             </CenterCard>

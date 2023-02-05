@@ -20,7 +20,6 @@ const GoalSetter = () => {
         return <CircleSpinner size={20} color={"#1fc10d"} />;
     }
 
-    console.log(goals);
     return (
         <GoalsContainer>
             <p>Goals Dashboard</p>

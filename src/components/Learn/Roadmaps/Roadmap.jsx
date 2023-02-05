@@ -35,7 +35,11 @@ const Roadmap = () => {
                             <DotIcon /> {resources.section}
                         </RoadmapSectionHeading>
                         {resources?.resources.map((resource, id) => (
-                            <RedirectLink key={id} href={resource.url} target={"_blank"}>
+                            <RedirectLink
+                                key={id}
+                                href={resource.url !== "Coming Soon" ? resource.url : null}
+                                target={"_blank"}
+                            >
                                 <RoadmapDetailsCard>
                                     <RoadmapContentHeading>
                                         <CircleIcon /> {resource.title}

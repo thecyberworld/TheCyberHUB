@@ -4,7 +4,11 @@ import { CenterCard } from "../components/Homepage/Registration/CenterCard";
 import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
 import { CustomInputGroup } from "../components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
-import { GlowingButton, LoadingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
+import {
+    GlowingButton,
+    LoadingButton,
+    RouterButtonGreen,
+} from "../components/Other/MixComponents/Buttons/ButtonElements";
 import { FaUserCircle } from "react-icons/fa";
 import { BsCardText } from "react-icons/all";
 
@@ -32,8 +36,11 @@ const Login = () => {
             navigate("/dashboard");
         }
         if (isError) {
-            toast.error("Invalid user data");
+            if (message === "Request failed with status code 429") {
+                toast.error("Please try again in 1 minute");
+            } else toast.error(message);
         }
+
         dispatch(reset());
     }, [user, isError, isSuccess, message, navigate, dispatch]);
 
@@ -129,6 +136,9 @@ const Login = () => {
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
                         )}
+                        <RouterButtonGreen to={"/register"} width={"100%"}>
+                            Register
+                        </RouterButtonGreen>
                     </div>
                 </RegistrationFormContainer>
             </CenterCard>

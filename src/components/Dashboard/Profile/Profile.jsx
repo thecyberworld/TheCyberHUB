@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, reset } from "../../../features/userDetails/userDetailSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { CircleSpinner } from "react-spinners-kit";
+import ComingSoon from "../../Other/MixComponents/ComingSoon";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -24,6 +25,9 @@ const Profile = () => {
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
     const profilePictureUrl = profilePicture === dummyPicture ? profilePicture : `${API_URL}/${profilePicture}`;
 
+    if (import.meta.env.VITE_WEB_ENV === "production") {
+        return <ComingSoon />;
+    }
     return (
         <Wrapper>
             <ProfileContainer>
