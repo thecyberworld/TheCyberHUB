@@ -28,12 +28,9 @@ const GoalSetter = () => {
         };
     }, [user, navigate, dispatch, isError, message]);
 
-    if (isLoading) {
-        return <CircleSpinner size={20} color={"#1fc10d"} />;
-    }
-
     return (
         <Wrapper>
+            {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
             <GoalForm />
 
             <section className={"content"}>

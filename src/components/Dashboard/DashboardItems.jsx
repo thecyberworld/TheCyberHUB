@@ -5,7 +5,6 @@ const DashboardItems = () => {
     return (
         <DashboardItemsContainer>
             <DashboardItemsLink to={"/dashboard/blogs"}>Blogs</DashboardItemsLink>
-
             <DashboardItemsLink to={"/dashboard/goals"}>Goals</DashboardItemsLink>
         </DashboardItemsContainer>
     );

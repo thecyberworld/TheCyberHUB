@@ -18,14 +18,19 @@ const Profile = () => {
         return () => dispatch(reset());
     }, [isError, message, dispatch, user, navigate]);
 
-    if (isLoading) return <CircleSpinner size={20} color={"#1fc10d"} />;
-
     const API_URL = import.meta.env.VITE_CDN_URL;
     const profilePicture = user.picture;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
     const profilePictureUrl = profilePicture === dummyPicture ? profilePicture : `${API_URL}/${profilePicture}`;
 
+    const isVerified = user.isVerified === "true";
+
+    if (isVerified) {
+        console.log("isVerified: true");
+    } else {
+        console.log("isVerified: false");
+    }
     return (
         <Wrapper>
             <ProfileContainer>
@@ -36,6 +41,7 @@ const Profile = () => {
                     Edit profile
                 </Link>
                 <h1> Profile Details </h1>
+                {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
                 Name: {user.name} <br />
                 <UserImage src={profilePictureUrl} />
                 Username: {user.username} <br />

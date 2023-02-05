@@ -17,7 +17,6 @@ import Dropdown from "../Dropdowns/Dropdown";
 import logo from "../../../assets/images/WebsiteLogo/ThecyberhubLogo.png";
 import UserOptions from "../UserOptions/UserOptions";
 import { FaBars } from "react-icons/all";
-
 const Navbar = ({ isOpen, toggle }) => {
     const [scrollNav, setScrollNav] = useState(false);
     const [drop, setDrop] = useState(false);
