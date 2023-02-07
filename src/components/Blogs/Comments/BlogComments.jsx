@@ -62,7 +62,7 @@ const BlogComments = ({ blog }) => {
                             <UserPicture
                                 src={
                                     userComment.picture !== undefined
-                                        ? `${API_URL}/${userComment?.picture}`
+                                        ? `${API_URL}/blog_images/${userComment?.picture}`
                                         : dummyPicture
                                 }
                                 alt={userComment?.picture}

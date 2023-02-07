@@ -23,7 +23,9 @@ const ViewComments = (props) => {
                     <SectionUserPicture>
                         <UserPicture
                             src={
-                                userComment.picture !== undefined ? `${API_URL}/${userComment?.picture}` : dummyPicture
+                                userComment.picture !== undefined
+                                    ? `${API_URL}/blog_images/${userComment?.picture}`
+                                    : dummyPicture
                             }
                             alt={userComment?.picture}
                         />

@@ -45,7 +45,7 @@ const BlogCard = ({ blog }) => {
     const API_URL = import.meta.env.VITE_CDN_URL;
 
     const coverImage = blog?.coverImage;
-    const coverImageUrl = `${API_URL}/${coverImage}`;
+    const coverImageUrl = `${API_URL}/blog_images/${coverImage}`;
 
     return (
         <BlogsContainer>

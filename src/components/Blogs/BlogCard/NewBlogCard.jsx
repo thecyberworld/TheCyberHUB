@@ -28,7 +28,7 @@ const API_URL = import.meta.env.VITE_CDN_URL;
 
 const NewBlogCard = ({ blog }) => {
     const coverImage = blog?.coverImage;
-    const coverImageUrl = `${API_URL}/${coverImage}` || image;
+    const coverImageUrl = `${API_URL}/blog_images/${coverImage}` || image;
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { pathname } = useLocation();
