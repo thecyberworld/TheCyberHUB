@@ -37,7 +37,11 @@ const ViewBlog = () => {
         };
     }, [dispatch, isError, message]);
 
-    const blog = blogs.find((blog) => encodeURL(blog.title).toLowerCase() === title.toLowerCase());
+    const blog = blogs.find(
+        (blog) =>
+            `${encodeURL(blog.title)}-by-${blog.username}`.toLowerCase() === title.toLowerCase() &&
+            title.toLowerCase().includes(blog.username),
+    );
 
     if (!blog) return <NotFound />;
     const blogUnFormattedDate = new Date(blog?.createdAt);
@@ -46,6 +50,8 @@ const ViewBlog = () => {
         day: "numeric",
         year: "numeric",
     }).format(blogUnFormattedDate);
+    console.log(blog.username);
+    console.log(title.toLowerCase().includes(blog.username));
 
     const API_URL = import.meta.env.VITE_CDN_URL;
     const coverImage = blog?.coverImage;
@@ -74,7 +80,7 @@ const ViewBlog = () => {
                 </ViewBlogHeader>
                 <TagsSection>
                     {blog?.tags.map((tag, id) => (
-                        <Tag key={id}>{tag}</Tag>
+                        <Tag key={id}>{tag.slice(0, 40)}</Tag>
                     ))}
                 </TagsSection>
                 <CommentContainer>

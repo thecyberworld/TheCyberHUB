@@ -36,7 +36,16 @@ const UserBlogs = () => {
                     ))}
                 </div>
             ) : (
-                <h3> You have not set any blogs</h3>
+                <div
+                    style={{
+                        fontFamily: "Roboto Mono, monospace",
+                        color: "#ababab",
+                        textAlign: "center",
+                        margin: "100px 0 0 0",
+                    }}
+                >
+                    <h3 style={{ fontSize: "30px" }}> You have not set any blogs</h3>
+                </div>
             )}
         </Wrapper>
     );

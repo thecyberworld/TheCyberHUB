@@ -106,7 +106,6 @@ const Register = () => {
                                 placeholder="Full Name"
                                 onChange={onChange}
                                 aria-label="name"
-                                autoComplete={false}
                             />
                         </CustomInputGroup>
                         <CustomInputGroup>
@@ -121,7 +120,6 @@ const Register = () => {
                                 placeholder="Username"
                                 onChange={onChange}
                                 aria-label="Username"
-                                autoComplete={false}
                             />
                         </CustomInputGroup>
                         <CustomInputGroup>
@@ -136,7 +134,6 @@ const Register = () => {
                                 placeholder="Email"
                                 onChange={onChange}
                                 aria-label="Email"
-                                autoComplete={false}
                             />
                         </CustomInputGroup>
                         <CustomInputGroup>
@@ -151,7 +148,6 @@ const Register = () => {
                                 placeholder="Password"
                                 onChange={onChange}
                                 aria-label="Password"
-                                autoComplete={false}
                             />
                         </CustomInputGroup>
                         <CustomInputGroup>
@@ -166,18 +162,17 @@ const Register = () => {
                                 placeholder="Confirm Password"
                                 onChange={onChange}
                                 aria-label="Confirm Password"
-                                autoComplete={false}
                             />
                         </CustomInputGroup>
                     </div>
                     <div className="registration__ctas">
-                        <div className="registration__tandc">
-                            <input role="checkbox" type="checkbox" autoComplete="" />
-                            <div>
-                                I agree to all statements included in
-                                <span role="link">Terms of Use</span>
-                            </div>
-                        </div>
+                        {/* <div className="registration__tandc"> */}
+                        {/*    <input role="checkbox" type="checkbox" autoComplete="" /> */}
+                        {/*    <div> */}
+                        {/*        I agree to all statements included in */}
+                        {/*        <span role="link">Terms of Use</span> */}
+                        {/*    </div> */}
+                        {/* </div> */}
 
                         {!isLoading ? (
                             <GlowingButton width={"100%"} type="submit">
@@ -188,7 +183,6 @@ const Register = () => {
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
                         )}
-
                         <RouterButtonGreen to={"/login"} width={"100%"}>
                             Login
                         </RouterButtonGreen>

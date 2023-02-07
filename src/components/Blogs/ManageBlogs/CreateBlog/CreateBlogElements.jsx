@@ -16,6 +16,7 @@ export const CreateBlogContainer = styled.div`
 
 export const ImageUploadAndPreviewSection = styled.div`
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 `;
@@ -41,8 +42,19 @@ export const ImageUploadLabel = styled.label`
     border-radius: 3px;
     padding: 10px 20px;
     cursor: pointer;
+
+    @media screen and (max-width: 500px) {
+        padding: 5px 5px;
+    }
 `;
 export const ImageUploadInput = styled.input``;
+
+export const TextGrey = styled.p`
+    color: #707070;
+    padding: 5px;
+    margin: 5px;
+    font-size: 15px;
+`;
 
 export const Container = styled.div`
     width: 100%;
@@ -163,9 +175,11 @@ export const Submit = styled.button`
 `;
 
 export const RouterButtonLink = styled(Link)`
-    background: rgba(28, 28, 28, 0.66);
-    color: #fffdfd;
+    background: #1a1c1d;
+    border-radius: 5px;
+    color: #0bff0b;
     padding: 5px 15px;
+    margin: 5px 15px;
     @media screen and (max-width: 600px) {
         font-size: 12px;
     }

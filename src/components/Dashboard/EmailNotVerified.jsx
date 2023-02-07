@@ -6,13 +6,12 @@ const EmailNotVerified = ({ user }) => {
     if (!user) {
         return null;
     }
+
     const [message, setMessage] = useState("");
     const [scrollNav, setScrollNav] = useState(false);
-
     const [timeLeft, setTimeLeft] = useState(60);
     const [isCounting, setIsCounting] = useState(false);
     const [userData, setUserData] = useState({});
-    // const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -34,11 +33,14 @@ const EmailNotVerified = ({ user }) => {
 
                 setUserData(response.data);
             } catch (err) {
-                // setError(err.response?.data?.message || "An error occurred");
+                console.error(err);
             }
         };
 
         fetchUserData();
+    }, [user.token]);
+
+    useEffect(() => {
         let intervalId = null;
         if (isCounting) {
             intervalId = setInterval(() => {
@@ -56,7 +58,7 @@ const EmailNotVerified = ({ user }) => {
     }, [isCounting]);
 
     const resendEmail = () => {
-        setTimeLeft(1);
+        setTimeLeft(60);
         setIsCounting(true);
         axios
             .post(
@@ -83,8 +85,10 @@ const EmailNotVerified = ({ user }) => {
             setScrollNav(false);
         }
     };
+
     useEffect(() => {
         window.addEventListener("scroll", changeNav);
+        return () => window.removeEventListener("scroll", changeNav);
     }, []);
 
     return (

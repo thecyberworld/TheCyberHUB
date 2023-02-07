@@ -9,6 +9,7 @@ export const BlogsComponent = styled.div`
 `;
 
 export const MiddleContainer = styled.div`
+    width: 100%;
     display: flex;
     align-items: start;
     justify-content: space-between;
@@ -21,6 +22,7 @@ export const SubContainerTop = styled.div`
 `;
 
 export const SubContainerHeading = styled.h4``;
+
 export const AllBlogs = styled.div`
     width: 100%;
     display: flex;

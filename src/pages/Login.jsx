@@ -119,13 +119,13 @@ const Login = () => {
                         </CustomInputGroup>
                     </div>
                     <div className="registration__ctas">
-                        <div className="registration__tandc">
-                            <input role="checkbox" type="checkbox" autoComplete="" />
-                            <div>
-                                I agree to all statements included in
-                                <span role="link">Terms of Use</span>
-                            </div>
-                        </div>
+                        {/* <div className="registration__tandc"> */}
+                        {/*    <input role="checkbox" type="checkbox" autoComplete="" /> */}
+                        {/*    <div> */}
+                        {/*        I agree to all statements included in */}
+                        {/*        <span role="link">Terms of Use</span> */}
+                        {/*    </div> */}
+                        {/* </div> */}
 
                         {!isLoading ? (
                             <GlowingButton width={"100%"} type="submit">

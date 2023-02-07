@@ -18,6 +18,37 @@ export const BlogImageSection = styled.div`
     justify-content: end;
 `;
 
+export const ButtonEdit = styled.button`
+    background: #1a1c1d;
+    color: #adadad;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    height: 20px;
+    padding: 5px 10px;
+
+    &:hover {
+        scale: 1.1;
+        color: #22ff1a;
+        transition: 0.3s ease-in-out;
+    }
+`;
+
+export const ButtonDelete = styled.button`
+    background: #1a1c1d;
+    color: #adadad;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    height: 20px;
+
+    &:hover {
+        scale: 1.1;
+        color: #ff2121;
+        transition: 0.3s ease-in-out;
+    }
+`;
+
 export const EditBlogSection = styled.div`
     display: flex;
     justify-content: end;
@@ -34,9 +65,11 @@ export const MainSection = styled.div`
     @media screen and (max-width: 600px) {
     }
 `;
+
 export const SubSection = styled.div`
     padding: 25px 25px 15px 25px;
-    width: 100%;
+    max-width: 60%;
+
     @media screen and (max-width: 600px) {
         padding: 10px 10px 15px 15px;
     }
@@ -46,8 +79,8 @@ export const DetailsSection = styled.div`
     display: flex;
     flex-direction: column;
     text-align: start;
-    max-width: 300px;
     width: 100%;
+    max-width: 40%;
 `;
 
 export const HeaderDetailsSection = styled.div`
@@ -63,18 +96,21 @@ export const FooterDetailsSection = styled.div`
 `;
 
 export const Title = styled.h3`
+    word-wrap: break-word;
     @media screen and (max-width: 600px) {
         font-size: 12px;
     }
 `;
 
 export const Description = styled.p`
+    word-wrap: break-word;
     @media screen and (max-width: 600px) {
         font-size: 8px;
-        //display: none;
     }
 `;
-export const Username = styled.p``;
+export const Username = styled.p`
+    padding: 0 5px 0 0;
+`;
 export const Date = styled.p`
     font-size: 10px;
     margin: 0 5px 0 0;
@@ -82,6 +118,8 @@ export const Date = styled.p`
 export const Categories = styled.p`
     margin-left: 25px;
     display: flex;
+    flex-wrap: wrap;
+    word-wrap: break-word;
     @media screen and (max-width: 600px) {
         margin-left: 15px;
     }
@@ -98,6 +136,7 @@ export const Category = styled.p`
     &:hover {
         transform: scale(1.02);
     }
+
     @media screen and (max-width: 600px) {
         font-size: 9px;
     }

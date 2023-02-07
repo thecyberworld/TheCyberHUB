@@ -12,6 +12,44 @@ export const DotSymbol = styled(GoPrimitiveSquare)`
     text-align: center;
 `;
 
+export const YouTubeVideoContainer = styled.div`
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 100px;
+    }
+`;
+
+export const YouTubeVideoIFrame = styled.iframe`
+    width: 500px;
+    height: 300px;
+
+    @media screen and (max-width: 1000px) {
+        width: 400px;
+        height: 300px;
+    }
+    @media screen and (max-width: 900px) {
+        width: 280px;
+        height: 200px;
+    }
+    @media screen and (max-width: 760px) {
+        width: 500px;
+        height: 300px;
+    }
+    @media screen and (max-width: 600px) {
+        width: 350px;
+        height: 250px;
+    }
+    @media screen and (max-width: 400px) {
+        width: 280px;
+        height: 200px;
+    }
+`;
+
 export const InfoContainer = styled.div`
     color: #fff;
 

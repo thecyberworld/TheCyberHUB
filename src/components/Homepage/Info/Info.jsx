@@ -13,6 +13,8 @@ import {
     Subtitle,
     TextWrapper,
     TopLine,
+    YouTubeVideoContainer,
+    YouTubeVideoIFrame,
 } from "./InfoElements";
 
 const InfoSection = ({
@@ -122,21 +124,21 @@ const InfoSection = ({
                             </TextWrapper>
                         </Column1>
                         <Column2>
-                            <ImgWrap>
-                                {img ? (
+                            {img ? (
+                                <ImgWrap>
                                     <Img src={img} alt={alt} />
-                                ) : (
-                                    <iframe
-                                        width="500px"
-                                        height="300px"
+                                </ImgWrap>
+                            ) : (
+                                <YouTubeVideoContainer>
+                                    <YouTubeVideoIFrame
                                         src="https://www.youtube.com/embed/r5CDqVnWFFQ"
                                         title="Community Introduction | Thecyberworld"
                                         frameBorder="0"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                         allowFullScreen
-                                    ></iframe>
-                                )}
-                            </ImgWrap>
+                                    ></YouTubeVideoIFrame>
+                                </YouTubeVideoContainer>
+                            )}
                         </Column2>
                     </InfoRow>
                 </InfoWrapper>

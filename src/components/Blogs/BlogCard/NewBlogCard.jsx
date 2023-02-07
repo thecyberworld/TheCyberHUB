@@ -2,6 +2,8 @@ import React from "react";
 import {
     BlogImage,
     BlogImageSection,
+    ButtonDelete,
+    ButtonEdit,
     Categories,
     Category,
     ContainerCard,
@@ -12,6 +14,7 @@ import {
     MainSection,
     SubSection,
     Title,
+    Username,
 } from "./NewBlogCardElements";
 import { RouterLink } from "../../Beta/Tools/ToolsElements";
 import { encodeURL } from "../util";
@@ -34,9 +37,9 @@ const NewBlogCard = ({ blog }) => {
         <ContainerCard>
             <MainSection>
                 <SubSection>
-                    <RouterLink to={{ pathname: `${encodeURL(blog.title)}` }}>
+                    <RouterLink to={{ pathname: `/blogs/${encodeURL(blog.title)}-by-${blog.username}` }}>
                         <Title> {blog.title} </Title>
-                        <Description> {blog.content.slice(0, 100)} </Description>
+                        <Description> {blog.content.slice(0, 80)} </Description>
                     </RouterLink>
                 </SubSection>
                 <DetailsSection>
@@ -44,15 +47,18 @@ const NewBlogCard = ({ blog }) => {
                         <EditBlogSection>
                             {pathname !== "/blogs" && user && user._id === blog.user ? (
                                 <Link key={blog._id} to={{ pathname: `edit/${encodeURL(blog.title)}` }}>
-                                    <button style={{ padding: "2px 10px" }}>
+                                    <ButtonEdit style={{ padding: "2px 10px" }}>
                                         <BiEdit />
-                                    </button>
+                                    </ButtonEdit>
                                 </Link>
                             ) : null}
                             {pathname !== "/blogs" && user && user._id === blog.user ? (
-                                <button onClick={() => dispatch(deleteBlog(blog?._id))} style={{ padding: "2px 10px" }}>
+                                <ButtonDelete
+                                    onClick={() => dispatch(deleteBlog(blog._id))}
+                                    style={{ padding: "2px 10px" }}
+                                >
                                     <AiFillDelete />
-                                </button>
+                                </ButtonDelete>
                             ) : null}
                         </EditBlogSection>
                         <BlogImage src={coverImageUrl || image} alt={blog.coverImage} width="100%" height="auto" />
@@ -61,11 +67,12 @@ const NewBlogCard = ({ blog }) => {
             </MainSection>
             <FooterDetailsSection>
                 <Categories>
-                    {blog.tags.map((tag, id) => (
-                        <Category key={id}>{tag}</Category>
+                    {blog.tags.slice(0, 3).map((tag, id) => (
+                        <Category key={id}>{tag.slice(0, 30)}</Category>
                     ))}
+                    {blog.tags.length > 3 ? <Category>+ {blog.tags.length - 3}</Category> : null}
                 </Categories>
-                {/* <Date> @{blog.username} | Feb 2, 2023 </Date> */}
+                <Username> @{blog.username}</Username>
             </FooterDetailsSection>
         </ContainerCard>
     );

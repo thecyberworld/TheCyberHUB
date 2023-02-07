@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, SectionCreateBlog, Submit, TagInput, TextArea } from "./CreateBlog/CreateBlogElements";
-import { LoadingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { LoadingButton, LoadingRedirectButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 import { CircleSpinner } from "react-spinners-kit";
 
 const BlogPostForm = (props) => {
@@ -13,14 +13,22 @@ const BlogPostForm = (props) => {
                         name="title"
                         id="title"
                         value={props.title}
-                        onChange={props.onChange}
+                        onChange={(e) => {
+                            if (e.target.value.length <= 100) {
+                                props.onChange(e);
+                            }
+                        }}
                         placeholder="Title"
+                        maxlength="100"
                     />
                     <TextArea
                         name="content"
                         id="content"
                         value={props.content}
+                        onDrop={props.handleDrop}
                         onChange={props.onChange}
+                        onDragOver={props.handleDragOver}
+                        onPaste={props.handlePaste}
                         placeholder="Enter your content here in markdown"
                     />
                     <TagInput
@@ -36,13 +44,13 @@ const BlogPostForm = (props) => {
                     <Submit type={"submit"}>Publish Blog</Submit>
                     {props.onSuccess ? (
                         <>
-                            <LoadingButton width={"100%"} type="submit">
+                            <LoadingRedirectButton to={"/blogs"} width={"100%"}>
                                 Published Successfully
-                            </LoadingButton>
+                            </LoadingRedirectButton>
                         </>
                     ) : (
-                        props.showLoadingButton && (
-                            <LoadingButton width={"100%"} type="submit">
+                        props.isLoading && (
+                            <LoadingButton width={"100%"}>
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
                         )

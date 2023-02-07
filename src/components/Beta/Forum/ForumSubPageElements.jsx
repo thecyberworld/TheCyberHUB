@@ -35,6 +35,10 @@ export const Button = styled.button`
     align-items: center;
     cursor: pointer;
     padding: 10px 20px;
+    @media screen and (max-width: 500px) {
+        padding: 5px 5px;
+        width: 100%;
+    }
 `;
 
 export const PreviewIcon = styled(MdOutlinePreview)`

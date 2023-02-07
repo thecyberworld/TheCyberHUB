@@ -13,6 +13,9 @@ export const BlogImage = styled.img`
 export const BlogTitle = styled.h1`
     text-align: center;
     margin-top: 20px;
+    word-wrap: break-word;
+    width: 100%;
+    max-width: 1000px;
 
     @media screen and (max-width: 600px) {
         width: 100%;
@@ -22,6 +25,9 @@ export const BlogTitle = styled.h1`
 
 export const UsernameAndDate = styled.h4`
     margin: 5px auto;
+    word-wrap: break-word;
+    max-width: 8000px;
+
     @media screen and (max-width: 600px) {
         font-size: 12px;
     }
@@ -35,6 +41,9 @@ export const TagsSection = styled.div`
     padding: 25px 50px;
     display: flex;
     font-size: 150%;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    max-width: 1000px;
 
     @media screen and (max-width: 600px) {
         flex-wrap: wrap;
@@ -52,6 +61,9 @@ export const Tag = styled.p`
     cursor: pointer;
     font-size: 16px;
     transition: transform 0.3s;
+    flex-wrap: wrap;
+    word-wrap: break-word;
+    max-width: 400px;
 
     &:hover {
         transform: scale(1.03);
@@ -61,7 +73,8 @@ export const Tag = styled.p`
 export const ContentReactMarkdown = styled(ReactMarkdown)`
   text-align: start;
   padding: 25px 50px;
-
+  word-wrap: break-word;
+  
   * {
     font-family: "Poppins", sans-serif;
     margin: 10px auto;
