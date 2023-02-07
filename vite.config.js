@@ -1,16 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
+let targetURL = "http://localhost:5000";
+if (import.meta.env.VITE_API_URL === "production") {
+    targetURL = import.meta.env.VITE_API_URL;
+} else targetURL = "http://localhost:5000";
+
 export default defineConfig({
     server: {
         proxy: {
-            // "/api": "http://localhost:5000",
-            // "/api": "https://api.thecyberhub.org",
             "/api": {
-                target: "http://localhost:5000",
-                // target: "https://api.thecyberhub.org",
-                // target: "https://dev.api.thecyberhub.org",
+                target: targetURL,
                 changeOrigin: true,
                 secure: false,
             },
@@ -18,8 +18,5 @@ export default defineConfig({
         host: "0.0.0.0",
         port: 3000,
     },
-    // preview: {
-    //     port: 8080
-    // },
     plugins: [react()],
 });

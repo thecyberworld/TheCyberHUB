@@ -57,12 +57,17 @@ const EmailNotVerified = ({ user }) => {
         return () => clearInterval(intervalId);
     }, [isCounting]);
 
+    let APIURL = "http://localhost:5000";
+    if (import.meta.env.VITE_API_URL === "production") {
+        APIURL = import.meta.env.VITE_API_URL;
+    } else APIURL = "http://localhost:5000";
+
     const resendEmail = () => {
         setTimeLeft(60);
         setIsCounting(true);
         axios
             .post(
-                "http://localhost:5000/account/resend-verification-email",
+                `${APIURL}/account/resend-verification-email`,
                 {},
                 {
                     headers: {

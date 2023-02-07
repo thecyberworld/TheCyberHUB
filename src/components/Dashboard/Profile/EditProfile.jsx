@@ -135,7 +135,7 @@ const EditProfile = () => {
 
     if (profilePicture === dummyPicture) {
         profilePictureUrl = profilePicture;
-    } else profilePictureUrl = `http://localhost:5000/images/${profilePicture}`;
+    } else profilePictureUrl = `${import.meta.env.VITE_CDN_URL}/profile_pictures/${profilePicture}`;
 
     return (
         <Wrapper>
