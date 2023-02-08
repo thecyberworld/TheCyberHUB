@@ -64,7 +64,7 @@ const Socials = () => {
                 </SocialsCard>
                 <SocialsCard>
                     <SocialIconLinkedin
-                        href="https://linkedin.com/company/thecyberworld"
+                        href="https://linkedin.com/company/thecyberw0rld"
                         target="_blank"
                         aria-label="Linkedin"
                     >
