@@ -8,6 +8,10 @@ export const RegistrationFormContainer = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @media screen and (max-width: 1200px) {
+        border: #33e33c 5px solid;
+        padding: 50px 10%;
+    }
     @media screen and (max-width: 500px) {
         padding: 25px;
     }
