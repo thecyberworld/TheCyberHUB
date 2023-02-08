@@ -50,8 +50,6 @@ const ViewBlog = () => {
         day: "numeric",
         year: "numeric",
     }).format(blogUnFormattedDate);
-    console.log(blog.username);
-    console.log(title.toLowerCase().includes(blog.username));
 
     const API_URL = import.meta.env.VITE_CDN_URL;
     const coverImage = blog?.coverImage;

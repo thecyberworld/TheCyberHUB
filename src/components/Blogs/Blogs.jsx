@@ -32,20 +32,18 @@ const Blogs = () => {
                     </MiddleContainer>
                 ) : (
                     <MiddleContainer>
-                        {blogs && Array.isArray(blogs) ? (
-                            <AllBlogs>
-                                {blogs
+                        <AllBlogs>
+                            {blogs && Array.isArray(blogs) ? (
+                                blogs
                                     .slice()
                                     .reverse()
-                                    .map((blog) => (
-                                        <NewBlogCard key={blog?._id} blog={blog} />
-                                    ))}
-                            </AllBlogs>
-                        ) : (
-                            <>
-                                <h3>There are no blogs to display</h3>
-                            </>
-                        )}
+                                    .map((blog) => <NewBlogCard key={blog?._id} blog={blog} />)
+                            ) : (
+                                <>
+                                    <h3>There are no blogs to display</h3>
+                                </>
+                            )}
+                        </AllBlogs>
                     </MiddleContainer>
                 )}
             </BlogsComponent>

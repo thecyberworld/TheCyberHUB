@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const AddCommentFormContainer = styled.div`
-    border: #33e33c 1px solid;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

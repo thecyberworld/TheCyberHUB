@@ -28,9 +28,9 @@ const Navbar = ({ isOpen, toggle }) => {
     const onClickResources = () => {
         if (drop) setResourcesClick(false);
     };
-    const onClickLearn = () => {
-        if (drop) setLearnClick(false);
-    };
+    // const onClickLearn = () => {
+    //     if (drop) setLearnClick(false);
+    // };
 
     const dropHandler = (title) => {
         if (title === "learn") {
@@ -72,15 +72,15 @@ const Navbar = ({ isOpen, toggle }) => {
                     </NavLogoRouter>
                     <NavMenu>
                         {[
-                            {
-                                title: (
-                                    <>
-                                        <p onClick={() => onClickLearn()}>Learn</p>
-                                        <DropdownIcon onClick={() => onClickLearn()} />
-                                    </>
-                                ),
-                                dropdown: "learn",
-                            },
+                            // {
+                            //     title: (
+                            //         <>
+                            //             <p onClick={() => onClickLearn()}>Learn</p>
+                            //             <DropdownIcon onClick={() => onClickLearn()} />
+                            //         </>
+                            //     ),
+                            //     dropdown: "learn",
+                            // },
                             {
                                 title: (
                                     <>
@@ -91,6 +91,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                 dropdown: "resources",
                             },
                             { to: "blogs", title: "Blogs", dropdown: "blogs" },
+                            { to: "jobs", title: "Jobs", dropdown: "jobs" },
                             { to: "community", title: "Community", dropdown: "community" },
                             { to: "support", title: "Support", dropdown: "support" },
                         ].map(({ to, title, dropdown }) => (

@@ -26,7 +26,7 @@ export const DropdownContainer = styled.div`
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(100px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(3, 3, 3, 0.18);
+    //border: 1px solid rgba(3, 3, 3, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 `;
 
@@ -36,7 +36,7 @@ export const DropdownItemsContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     text-align: center;
-    max-width: 50rem;
+    max-width: 60rem;
     height: auto;
     margin: 0 auto;
     margin-bottom: 1rem;
@@ -54,7 +54,7 @@ export const DropdownItemContainer = styled.div`
     color: black;
     position: relative;
     margin: 1rem;
-    width: 200px;
+    width: 250px;
 
     &:hover {
         cursor: pointer;

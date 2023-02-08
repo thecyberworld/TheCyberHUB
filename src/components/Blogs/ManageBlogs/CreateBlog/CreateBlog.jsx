@@ -132,8 +132,8 @@ const CreateBlog = () => {
 
     const maxFileSize = 500000; // 500KB
     const onChange = (e) => {
-        let value = e.target.value;
-        if (e.target.name === "tags") value = value.split(",").map((tag) => tag.trim());
+        const value = e.target.value;
+        // if (e.target.name === "tags") value = value.split(",").map((tag) => tag.trim());
 
         if (file) {
             if (e.target.name === "title") {
@@ -194,13 +194,20 @@ const CreateBlog = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const blog = blogs.find((blog) => blog.username === user.username && blog.title === title);
-        if (blog !== undefined && title === blog.title) {
-            toast.error("You already have a blog with this title please change the title and try again");
-            return;
+        if (title !== " ") {
+            const blog = blogs.find((blog) => blog.username === user.username && blog.title === title);
+            if (blog !== undefined && title === blog.title) {
+                toast.error("You already have a blog with this title please change the title and try again");
+                return;
+            }
         }
 
-        if (file) {
+        let multipleTags = tags.split(",");
+        multipleTags = multipleTags.map((tag) => tag.trim());
+        if (title !== "" && content !== "" && file && tags.length !== 0) {
+            const blogData = { title: title.trim(), content, coverImage: file.name, tags: multipleTags };
+            dispatch(createBlog(blogData));
+
             const formData = new FormData();
             formData.append("file", file);
             formData.append("key", `blog_images/${file.name}`);
@@ -211,11 +218,6 @@ const CreateBlog = () => {
             } catch (err) {
                 console.error(err);
             }
-        }
-
-        if (title !== "" && content !== "" && file && tags.length !== 0) {
-            const blogData = { title: title.trim(), content, coverImage: file.name, tags };
-            dispatch(createBlog(blogData));
 
             setBlogData({ title: "", content: "", coverImage: "", tags: [] });
             setFileName("");

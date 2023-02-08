@@ -276,5 +276,4 @@ export const CommentContainer = styled.div`
     justify-content: center;
     align-items: center;
     text-wrap: normal;
-    border: #33e33c 1px solid;
 `;
