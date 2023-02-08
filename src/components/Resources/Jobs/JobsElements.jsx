@@ -67,6 +67,22 @@ export const JobsDetailContainer = styled.div`
 `;
 
 export const BackArrow = styled(IoMdArrowRoundBack)`
+    background: linear-gradient(to right, #ffb933, #54f843);
+    border-radius: 50%;
+    color: #ffffff;
+    padding: 5px;
+    font-size: 30px;
+
+    cursor: pointer;
+    transition: 260ms all;
+
+    &:hover {
+        background: linear-gradient(to right, #ffb933, #54f843);
+        outline-color: #545454;
+        outline-offset: 2px;
+        scale: 1.1;
+    }
+
     @media only screen and (min-width: 1000px) {
         display: none;
     }

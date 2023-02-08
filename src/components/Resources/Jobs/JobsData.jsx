@@ -11,7 +11,7 @@ export const JobsData = [
         jobRoleTitle: "Business Development Intern",
         jobRating: (
             <>
-                4 <FaStar size={iconSize} style={{ color: "orange" }} />
+                4 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -19,14 +19,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -93,7 +93,7 @@ export const JobsData = [
         jobRoleTitle: "MERN Stack Developer",
         jobRating: (
             <>
-                5 <FaStar size={iconSize} style={{ color: "orange" }} />
+                5 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -101,14 +101,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -172,7 +172,7 @@ export const JobsData = [
         jobRoleTitle: "Content Creator",
         jobRating: (
             <>
-                4.5 <FaStar size={iconSize} style={{ color: "orange" }} />
+                4.5 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -180,14 +180,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -254,7 +254,7 @@ export const JobsData = [
         jobRoleTitle: "Next.js Developer",
         jobRating: (
             <>
-                5 <FaStar size={iconSize} style={{ color: "orange" }} />
+                5 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -262,14 +262,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -334,7 +334,7 @@ export const JobsData = [
         jobRoleTitle: "Penetration Tester",
         jobRating: (
             <>
-                5 <FaStar size={iconSize} style={{ color: "orange" }} />
+                5 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -342,14 +342,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -414,7 +414,7 @@ export const JobsData = [
         jobRoleTitle: "SOC Analyst",
         jobRating: (
             <>
-                5 <FaStar size={iconSize} style={{ color: "orange" }} />
+                5 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -422,14 +422,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -495,7 +495,7 @@ export const JobsData = [
         jobRoleTitle: "React Native Android Developer Intern",
         jobRating: (
             <>
-                4 <FaStar size={iconSize} style={{ color: "orange" }} />
+                4 <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
             </>
         ),
         jobLocation: "Remote",
@@ -503,14 +503,14 @@ export const JobsData = [
             {
                 item: (
                     <>
-                        <FaMoneyCheckAlt size={iconSize} style={{ color: "orange" }} /> Including Swag
+                        <FaMoneyCheckAlt size={iconSize} style={{ color: "yellowgreen" }} /> Including Swag
                     </>
                 ),
             },
             {
                 item: (
                     <>
-                        <FaBriefcase size={iconSize} style={{ color: "orange" }} /> Performance-based incentives
+                        <FaBriefcase size={iconSize} style={{ color: "yellowgreen" }} /> Performance-based incentives
                     </>
                 ),
             },
@@ -576,7 +576,7 @@ export const JobsData = [
     //     jobRating: (
     //         <>
     //             5.0
-    //             <FaStar size={iconSize} style={{ color: "orange" }} />
+    //             <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
     //         </>
     //     ),
     //     jobLocation: "India",
@@ -610,11 +610,11 @@ export const JobsData = [
     //     ],
     //     jobDetails2: [
     //         <>
-    //             <FaClock size={iconSize} style={{ color: "orange" }} />
+    //             <FaClock size={iconSize} style={{ color: "yellowgreen" }} />
     //             Urgently hiring
     //         </>,
     //         <>
-    //             <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+    //             <FaUserPlus size={iconSize} style={{ color: "yellowgreen" }} />
     //             Hiring multiple candidates
     //         </>,
     //     ],
@@ -639,7 +639,7 @@ export const JobsData = [
     //     jobRating: (
     //         <>
     //             5.0
-    //             <FaStar size={iconSize} style={{ color: "orange" }} />
+    //             <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
     //         </>
     //     ),
     //     jobLocation: "Hybrid",
@@ -672,7 +672,7 @@ export const JobsData = [
     //             Responsive employe
     //         </>,
     //         <>
-    //             <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+    //             <FaUserPlus size={iconSize} style={{ color: "yellowgreen" }} />
     //             Hiring multiple candidates
     //         </>,
     //     ],
@@ -700,7 +700,7 @@ export const JobsData = [
     //     jobRating: (
     //         <>
     //             4.6
-    //             <FaStar size={iconSize} style={{ color: "orange" }} />
+    //             <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
     //         </>
     //     ),
     //     jobLocation: "Remote",
@@ -742,7 +742,7 @@ export const JobsData = [
     //             Responsive employer
     //         </>,
     //         <>
-    //             <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+    //             <FaUserPlus size={iconSize} style={{ color: "yellowgreen" }} />
     //             Hiring multiple candidates
     //         </>,
     //     ],
@@ -770,7 +770,7 @@ export const JobsData = [
     //     jobRating: (
     //         <>
     //             4.8
-    //             <FaStar size={iconSize} style={{ color: "orange" }} />
+    //             <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
     //         </>
     //     ),
     //     jobLocation: "Hybrid",
@@ -803,7 +803,7 @@ export const JobsData = [
     //     ],
     //     jobDetails2: [
     //         <>
-    //             <FaClock size={iconSize} style={{ color: "orange" }} />
+    //             <FaClock size={iconSize} style={{ color: "yellowgreen" }} />
     //             Urgently hiring
     //         </>,
     //         <>
@@ -815,7 +815,7 @@ export const JobsData = [
     //             Responsive employer
     //         </>,
     //         <>
-    //             <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+    //             <FaUserPlus size={iconSize} style={{ color: "yellowgreen" }} />
     //             Hiring multiple candidates
     //         </>,
     //     ],
@@ -843,7 +843,7 @@ export const JobsData = [
     //     jobRating: (
     //         <>
     //             5.0
-    //             <FaStar size={iconSize} style={{ color: "orange" }} />
+    //             <FaStar size={iconSize} style={{ color: "yellowgreen" }} />
     //         </>
     //     ),
     //     jobLocation: "U.S.A",
@@ -877,7 +877,7 @@ export const JobsData = [
     //     ],
     //     jobDetails2: [
     //         <>
-    //             <FaClock size={iconSize} style={{ color: "orange" }} />
+    //             <FaClock size={iconSize} style={{ color: "yellowgreen" }} />
     //             Urgently hiring
     //         </>,
     //         <>
@@ -889,7 +889,7 @@ export const JobsData = [
     //             Responsive employer
     //         </>,
     //         <>
-    //             <FaUserPlus size={iconSize} style={{ color: "orange" }} />
+    //             <FaUserPlus size={iconSize} style={{ color: "yellowgreen" }} />
     //             Hiring multiple candidates
     //         </>,
     //     ],
