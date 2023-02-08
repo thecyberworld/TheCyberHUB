@@ -5,6 +5,9 @@ export const RegistrationFormContainer = styled.form`
     height: 100%;
     padding: 43px 14%;
     max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     & .registration__promotion__h1 {
         color: white;

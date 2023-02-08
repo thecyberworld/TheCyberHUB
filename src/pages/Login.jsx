@@ -72,13 +72,13 @@ const Login = () => {
                             Thecyberhub
                         </RouterLink>
                         <h1 className="leading-title">Learn Cybersecurity For Free</h1>
-                        <ul className="nav-links">
-                            <li>Home</li>
-                            <li>Tour</li>
-                            <li>Courses</li>
-                            <li>Articles</li>
-                            <li>Blog</li>
-                        </ul>
+                        {/* <ul className="nav-links"> */}
+                        {/*    <li>Home</li> */}
+                        {/*    <li>Tour</li> */}
+                        {/*    <li>Courses</li> */}
+                        {/*    <li>Articles</li> */}
+                        {/*    <li>Blog</li> */}
+                        {/* </ul> */}
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer onSubmit={onSubmit}>

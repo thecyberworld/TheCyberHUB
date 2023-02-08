@@ -101,13 +101,13 @@ const Register = () => {
                         </RouterLink>
                         <h1 className="leading-title">Learn Cybersecurity For Free</h1>
                         {/* <span>Watch Demo</span> */}
-                        <ul className="nav-links">
-                            <li>Home</li>
-                            <li>Tour</li>
-                            <li>Courses</li>
-                            <li>Articles</li>
-                            <li>Blog</li>
-                        </ul>
+                        {/* <ul className="nav-links"> */}
+                        {/*    <li>Home</li> */}
+                        {/*    <li>Tour</li> */}
+                        {/*    <li>Courses</li> */}
+                        {/*    <li>Articles</li> */}
+                        {/*    <li>Blog</li> */}
+                        {/* </ul> */}
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer onSubmit={onSubmit}>
@@ -201,7 +201,7 @@ const Register = () => {
                                 Start Hacking
                             </GlowingButton>
                         ) : (
-                            <LoadingButton width={"100%"} type="submit">
+                            <LoadingButton width={"100%"}>
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
                         )}

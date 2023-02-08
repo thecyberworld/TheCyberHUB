@@ -127,7 +127,7 @@ export const GlowingButton = styled.button`
     }
 
     @media screen and (max-width: 600px) {
-        margin: 10px;
+        padding: 10px 10px;
     }
 `;
 
@@ -164,6 +164,7 @@ export const LoadingButton = styled.button`
         }
     }
     @media screen and (max-width: 600px) {
+        padding: 10px 10px;
     }
 `;
 
@@ -200,6 +201,7 @@ export const LoadingRedirectButton = styled(RouterLink)`
         }
     }
     @media screen and (max-width: 600px) {
+        padding: 10px 10px;
     }
 `;
 
@@ -231,6 +233,6 @@ export const RouterButtonGreen = styled(RouterLink)`
     }
 
     @media screen and (max-width: 600px) {
-        margin: 10px;
+        padding: 10px 10px;
     }
 `;
