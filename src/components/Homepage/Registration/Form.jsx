@@ -8,7 +8,9 @@ export const RegistrationFormContainer = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    @media screen and (max-width: 500px) {
+        padding: 25px;
+    }
     & .registration__promotion__h1 {
         color: white;
         font-size: 25px;

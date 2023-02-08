@@ -29,6 +29,7 @@ export const Learn2CodePromotion = styled.div`
             margin: 40px 0 20px;
             font-size: 50px;
             width: min-content;
+
             @media screen and (max-width: 500px) {
                 font-size: 40px;
             }
