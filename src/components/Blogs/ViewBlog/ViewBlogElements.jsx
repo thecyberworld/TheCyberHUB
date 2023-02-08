@@ -74,7 +74,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
   text-align: start;
   padding: 25px 50px;
   word-wrap: break-word;
-  
+
   * {
     font-family: "Poppins", sans-serif;
     margin: 10px auto;
@@ -156,6 +156,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
     object-fit: contain;
     border-radius: 5px;
   }
+
   @media screen and (max-width: 600px) {
     padding: 10px 20px;
 
@@ -169,32 +170,32 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
     }
 
     h1 {
-      font-size: 20px ;
+      font-size: 20px;
       border-bottom: 1px #2a2a2a solid;
     }
 
     h2 {
-      font-size: 18px ;
+      font-size: 18px;
     }
 
     h3 {
-      font-size: 17px ;
+      font-size: 17px;
     }
 
     h4 {
-      font-size: 16px ;
+      font-size: 16px;
     }
 
     h5 {
-      font-size: 15px ;
+      font-size: 15px;
     }
 
     h6 {
-      font-size: 14px ;
+      font-size: 14px;
     }
 
     code {
-      font-size: 14px ;
+      font-size: 14px;
       font-family: "Roboto Mono", monospace;
       white-space: pre-wrap;
       word-break: break-word;
@@ -208,7 +209,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
       font-family: "Poppins", sans-serif;
       text-align: left;
       white-space: pre-line;
-      font-size: 13px ;
+      font-size: 13px;
       line-height: 1.5;
     }
 
@@ -216,7 +217,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
       list-style-type: decimal;
       //font-family: "Roboto Mono", monospace;
       text-align: left;
-      font-size: 13px ;
+      font-size: 13px;
       line-height: 1.5;
       margin: 0 -60px;
       padding-left: -10px;
@@ -232,7 +233,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
       margin: 0 50px;
       padding: 0 10px;
       white-space: pre-line;
-      font-size: 13px ;
+      font-size: 13px;
       line-height: 1.5;
     }
 
@@ -240,7 +241,7 @@ export const ContentReactMarkdown = styled(ReactMarkdown)`
       margin-top: 0;
       object-fit: contain;
       border-radius: 5px;
-  } 
+    }
 `;
 
 export const ContentSection = styled.div`
@@ -272,7 +273,8 @@ export const CommentContainer = styled.div`
     border-radius: 5px;
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-wrap: normal;
+    border: #33e33c 1px solid;
 `;

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { AddCommentFormContainer, Form, Input } from "./AddCommentFormElements";
 import { GlowingButton, RouterButtonGreen } from "../../Other/MixComponents/Buttons/ButtonElements";
 import {
+    BlogsCommentsContainer,
     Comment,
-    CommentDate,
     CommentSection,
     SectionCommentDetails,
     SectionUserPicture,
@@ -35,7 +35,7 @@ const BlogComments = ({ blog }) => {
         e.preventDefault();
 
         if (comment !== "") {
-            const newComment = { username: "dummy", picture: "", comment };
+            const newComment = { username: user.username, picture: user.picture, comment };
             const updatedComments = [...blog.comments, newComment];
             setComments({ ...blog, comments: updatedComments });
             const addCommentData = { comment };
@@ -54,15 +54,15 @@ const BlogComments = ({ blog }) => {
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
 
     return (
-        <div>
+        <BlogsCommentsContainer>
             <ViewCommentsContainer>
                 {comments.comments?.map((userComment, id) => (
                     <CommentSection key={id}>
                         <SectionUserPicture>
                             <UserPicture
                                 src={
-                                    userComment.picture !== undefined
-                                        ? `${API_URL}/blog_images/${userComment?.picture}`
+                                    userComment.picture === ""
+                                        ? `${API_URL}/profile_pictures/${userComment?.picture}`
                                         : dummyPicture
                                 }
                                 alt={userComment?.picture}
@@ -70,7 +70,7 @@ const BlogComments = ({ blog }) => {
                         </SectionUserPicture>
                         <SectionCommentDetails>
                             <Username>{userComment?.username}</Username>
-                            <CommentDate> Jan 26, 2023</CommentDate>
+                            {/* <CommentDate> Jan 26, 2023</CommentDate> */}
                             <Comment>{userComment?.comment}</Comment>
                         </SectionCommentDetails>
                     </CommentSection>
@@ -101,7 +101,7 @@ const BlogComments = ({ blog }) => {
             </AddCommentFormContainer>
 
             {/* <AddCommentForm blog_id={blog?._id} isLoading={isLoading} /> */}
-        </div>
+        </BlogsCommentsContainer>
     );
 };
 

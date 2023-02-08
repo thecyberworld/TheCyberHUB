@@ -213,7 +213,7 @@ const CreateBlog = () => {
             }
         }
 
-        if (title !== "" && content !== "" && file && tags !== "") {
+        if (title !== "" && content !== "" && file && tags.length !== 0) {
             const blogData = { title: title.trim(), content, coverImage: file.name, tags };
             dispatch(createBlog(blogData));
 

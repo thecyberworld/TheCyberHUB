@@ -1,7 +1,15 @@
 import styled from "styled-components";
 
+export const BlogsCommentsContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #33e33c;
+    width: 100%;
+`;
 export const ViewCommentsContainer = styled.div`
     width: 100%;
+    border: 1px solid #33e33c;
 `;
 
 export const CommentSection = styled.div`

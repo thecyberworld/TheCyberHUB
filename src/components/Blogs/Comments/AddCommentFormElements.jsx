@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const AddCommentFormContainer = styled.div`
+    border: #33e33c 1px solid;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     border-radius: 10px;
-    margin: 25px;
     width: 100%;
     max-width: 1200px;
     padding: 25px;
