@@ -18,7 +18,7 @@ const Streak = () => {
         return () => dispatch(reset());
     }, [isError, message, dispatch, user]);
 
-    if (isLoading) {
+    if (!isLoading) {
         return (
             <StreakContainer>
                 <Streaks>

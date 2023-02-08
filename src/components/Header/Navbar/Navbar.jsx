@@ -116,7 +116,6 @@ const Navbar = ({ isOpen, toggle }) => {
                         ))}
                         <RouterButtonLink to={"/dashboard/blogs/create"}> Create Blog </RouterButtonLink>
                     </NavMenu>
-
                     <UserOptions />
                 </NavbarContainer>
 
