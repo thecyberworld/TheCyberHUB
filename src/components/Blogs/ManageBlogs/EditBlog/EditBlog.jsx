@@ -19,6 +19,9 @@ import {
 } from "../CreateBlog/CreateBlogElements";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import { Button, PreviewIcon, PreviewSection } from "../../../Beta/Forum/ForumSubPageElements";
+import { toast } from "react-toastify";
+import getApiUrl from "../../../../features/apiUrl";
+import axios from "axios";
 
 const EditBlog = () => {
     const dispatch = useDispatch();
@@ -57,6 +60,91 @@ const EditBlog = () => {
             [e.target.name]: value,
         }));
     };
+
+    const handleDrop = async (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (!file) return;
+        if (!file.type.startsWith("image/")) {
+            toast.error("Invalid file type. Only images are allowed.");
+            return;
+        }
+        const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
+
+        if (!allowedTypes.includes(file.type)) {
+            toast.error("Invalid file type. Only png and jpg are allowed.");
+            return;
+        }
+        const maxFileSize = 1000000; // 1000KB
+        if (file.size > maxFileSize) {
+            toast.error(`File size should be less than ${maxFileSize / 1000}KB.`);
+            return;
+        }
+        try {
+            const currentDateTimeNumber = new Date().getTime();
+            const fileName = `${currentDateTimeNumber}.${file && file.type.split("/")[1]}`;
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("key", `blog_images/${fileName}`);
+            const API_URL = getApiUrl("api/upload");
+            await axios.post(API_URL, formData);
+            const newImageUrl = `https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images/${fileName}`;
+            setBlogData((prevState) => ({
+                ...prevState,
+                content: prevState.content + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`,
+            }));
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+    const handlePaste = async (e) => {
+        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+        let file = null;
+
+        // Check if the paste event contains an image
+        for (const item of items) {
+            if (item.type.startsWith("image")) {
+                file = item.getAsFile();
+                break;
+            }
+        }
+        if (!file) return;
+        if (!file.type.startsWith("image/")) {
+            toast.error("Invalid file type. Only images are allowed.");
+            return;
+        }
+
+        if (file.type !== ("image/png" || "image/jpeg" || "image/jpg")) {
+            toast.error("Invalid file type. Only png and jpg are allowed.");
+            return;
+        }
+        const maxFileSize = 1000000; // 1000KB
+        if (file.size > maxFileSize) {
+            toast.error(`File size should be less than ${maxFileSize / 1000}KB.`);
+            return;
+        }
+        try {
+            const currentDateTimeNumber = new Date().getTime();
+            const fileName = `${currentDateTimeNumber}.${file && file.type.split("/")[1]}`;
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("key", `blog_images/${fileName}`);
+            const API_URL = getApiUrl("api/upload");
+            await axios.post(API_URL, formData);
+            const newImageUrl = `https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/blog_images/${fileName}`;
+            setBlogData((prevState) => ({
+                ...prevState,
+                content: prevState.content + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`,
+            }));
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
+    };
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -127,6 +215,9 @@ const EditBlog = () => {
                                     id="content"
                                     value={blogData.content || blog.content}
                                     onChange={onChange}
+                                    onDrop={handleDrop}
+                                    onDragOver={handleDragOver}
+                                    onPaste={handlePaste}
                                 />
                                 <TagInput
                                     type="text"

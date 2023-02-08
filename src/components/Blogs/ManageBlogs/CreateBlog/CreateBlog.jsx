@@ -31,6 +31,17 @@ const CreateBlog = () => {
     const onPreview = () => setPreview(true);
     const closePreview = () => setPreview(false);
 
+    const [blogData, setBlogData] = useState({
+        title: "",
+        content: "",
+        coverImage: "",
+        tags: [],
+    });
+    const { title, content, tags } = blogData;
+    const [file, setFile] = useState(null);
+    const [fileName, setFileName] = useState("");
+
+    const maxFileSize = 500000; // 500KB
     useEffect(() => {
         if (isError) {
             console.log(message);
@@ -91,8 +102,6 @@ const CreateBlog = () => {
             toast.error("Invalid file type. Only images are allowed.");
             return;
         }
-
-        console.log(file.type);
         if (file.type !== ("image/png" || "image/jpeg" || "image/jpg")) {
             toast.error("Invalid file type. Only png and jpg are allowed.");
             return;
@@ -120,17 +129,6 @@ const CreateBlog = () => {
         }
     };
 
-    const [blogData, setBlogData] = useState({
-        title: "",
-        content: "",
-        coverImage: "",
-        tags: [],
-    });
-    const { title, content, tags } = blogData;
-    const [file, setFile] = useState(null);
-    const [fileName, setFileName] = useState("");
-
-    const maxFileSize = 500000; // 500KB
     const onChange = (e) => {
         const value = e.target.value;
         // if (e.target.name === "tags") value = value.split(",").map((tag) => tag.trim());
