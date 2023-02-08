@@ -50,22 +50,44 @@ const Register = () => {
             [e.target.name]: e.target.value,
         }));
     };
+
+    const whitelistedDomains = [
+        "gmail.com",
+        "yahoo.com",
+        "outlook.com",
+        "hotmail.com",
+        "icloud.com",
+        "protonmail.com",
+        "pm.me",
+        "proton.me",
+        "@protonmail.ch",
+    ];
+
     const onSubmit = (e) => {
         e.preventDefault();
         if (password !== password2) {
             toast.error("Passwords do not match");
         } else {
-            const dummyPicture =
-                "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
-            const userData = {
-                name,
-                username,
-                email,
-                picture: dummyPicture,
-                password,
-            };
+            const domain = email.split("@")[1];
+            if (domain === undefined) {
+                toast.error("Please enter a valid email");
+                return;
+            }
+            if (whitelistedDomains.indexOf(domain) === -1) {
+                toast.error(`Sorry, ${domain} email domain is not allowed`);
+            } else {
+                const dummyPicture =
+                    "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
+                const userData = {
+                    name,
+                    username,
+                    email,
+                    picture: dummyPicture,
+                    password,
+                };
 
-            dispatch(register(userData));
+                dispatch(register(userData));
+            }
         }
     };
 
