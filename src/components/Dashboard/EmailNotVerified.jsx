@@ -25,7 +25,7 @@ const EmailNotVerified = ({ user }) => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get("/api/users/user", {
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/user`, {
                     headers: {
                         Authorization: `Bearer ${user.token}`,
                     },
