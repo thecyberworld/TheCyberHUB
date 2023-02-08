@@ -10,7 +10,7 @@ import {
     RouterButtonGreen,
 } from "../components/Other/MixComponents/Buttons/ButtonElements";
 import { FaUserCircle } from "react-icons/fa";
-import { BsCardText, MdTitle } from "react-icons/all";
+import { AiTwotoneMail, CgPassword, SiNamecheap } from "react-icons/all";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -65,29 +65,18 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        const domain = email.split("@")[1];
         if (password !== password2) {
             toast.error("Passwords do not match");
+        } else if (password.length < 8) {
+            toast.error("Password must be at least 8 characters");
+        } else if (domain === undefined) {
+            toast.error("Please enter a valid email");
+        } else if (whitelistedDomains.indexOf(domain) === -1) {
+            toast.error(`Sorry, ${domain} email domain is not allowed`);
         } else {
-            const domain = email.split("@")[1];
-            if (domain === undefined) {
-                toast.error("Please enter a valid email");
-                return;
-            }
-            if (whitelistedDomains.indexOf(domain) === -1) {
-                toast.error(`Sorry, ${domain} email domain is not allowed`);
-            } else {
-                const dummyPicture =
-                    "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
-                const userData = {
-                    name,
-                    username,
-                    email,
-                    picture: dummyPicture,
-                    password,
-                };
-
-                dispatch(register(userData));
-            }
+            const userData = { name, username, email, password };
+            dispatch(register(userData));
         }
     };
 
@@ -100,14 +89,6 @@ const Register = () => {
                             Thecyberhub
                         </RouterLink>
                         <h1 className="leading-title">Learn Cybersecurity For Free</h1>
-                        {/* <span>Watch Demo</span> */}
-                        {/* <ul className="nav-links"> */}
-                        {/*    <li>Home</li> */}
-                        {/*    <li>Tour</li> */}
-                        {/*    <li>Courses</li> */}
-                        {/*    <li>Articles</li> */}
-                        {/*    <li>Blog</li> */}
-                        {/* </ul> */}
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer onSubmit={onSubmit}>
@@ -118,7 +99,7 @@ const Register = () => {
                     <div className="registration__inputfields">
                         <CustomInputGroup>
                             <span>
-                                <FaUserCircle />
+                                <SiNamecheap />
                             </span>
                             <input
                                 type="text"
@@ -146,7 +127,7 @@ const Register = () => {
                         </CustomInputGroup>
                         <CustomInputGroup>
                             <span>
-                                <MdTitle />
+                                <AiTwotoneMail />
                             </span>
                             <input
                                 type="text"
@@ -160,7 +141,7 @@ const Register = () => {
                         </CustomInputGroup>
                         <CustomInputGroup>
                             <span>
-                                <BsCardText />
+                                <CgPassword />
                             </span>
                             <input
                                 type="password"
@@ -174,7 +155,7 @@ const Register = () => {
                         </CustomInputGroup>
                         <CustomInputGroup>
                             <span>
-                                <BsCardText />
+                                <CgPassword />
                             </span>
                             <input
                                 type="password"
@@ -188,14 +169,6 @@ const Register = () => {
                         </CustomInputGroup>
                     </div>
                     <div className="registration__ctas">
-                        {/* <div className="registration__tandc"> */}
-                        {/*    <input role="checkbox" type="checkbox" autoComplete="" /> */}
-                        {/*    <div> */}
-                        {/*        I agree to all statements included in */}
-                        {/*        <span role="link">Terms of Use</span> */}
-                        {/*    </div> */}
-                        {/* </div> */}
-
                         {!isLoading ? (
                             <GlowingButton width={"100%"} type="submit">
                                 Start Hacking

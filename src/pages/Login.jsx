@@ -10,7 +10,7 @@ import {
     RouterButtonGreen,
 } from "../components/Other/MixComponents/Buttons/ButtonElements";
 import { FaUserCircle } from "react-icons/fa";
-import { BsCardText } from "react-icons/all";
+import { CgPassword } from "react-icons/all";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -104,7 +104,7 @@ const Login = () => {
                         </CustomInputGroup>
                         <CustomInputGroup>
                             <span>
-                                <BsCardText />
+                                <CgPassword />
                             </span>
                             <input
                                 type="password"
