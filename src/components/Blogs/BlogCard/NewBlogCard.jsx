@@ -67,9 +67,10 @@ const NewBlogCard = ({ blog }) => {
             </MainSection>
             <FooterDetailsSection>
                 <Categories>
-                    {blog.tags.slice(0, 3).map((tag, id) => (
-                        <Category key={id}>{tag.slice(0, 30)}</Category>
-                    ))}
+                    {blog.tags
+                        .slice(0, 3)
+                        .map((tag, id) => (tag.length !== 0 ? <Category key={id}>{tag.slice(0, 30)}</Category> : null))}
+
                     {blog.tags.length > 3 ? <Category>+ {blog.tags.length - 3}</Category> : null}
                 </Categories>
                 <Username> @{blog.username}</Username>

@@ -80,7 +80,7 @@ const Sidebar = (props) => {
                                 ),
                                 dropdown: "resources",
                             },
-                            { to: "blogs", title: "Blogs", dropdown: "blogs" },
+                            // { to: "blogs", title: "Blogs", dropdown: "blogs" },
                             { to: "jobs", title: "Jobs", dropdown: "jobs" },
                             { to: "community", title: "Community", dropdown: "community" },
                             { to: "support", title: "Support", dropdown: "support" },

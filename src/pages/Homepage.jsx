@@ -1,6 +1,7 @@
 import React from "react";
 import { Hero, Info, Socials } from "../components";
 import { aboutData, ResourcesData, communityData, contributeData } from "../components/Homepage/Info/Data";
+import ContactForm from "../components/ContactForm/ContactForm";
 
 const Homepage = () => {
     return (
@@ -11,6 +12,7 @@ const Homepage = () => {
             <Info {...contributeData} />
             <Info {...communityData} />
             <Socials />
+            <ContactForm />
         </>
     );
 };

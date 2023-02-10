@@ -1,11 +1,13 @@
 import React from "react";
-import { DashboardItemsContainer, DashboardItemsLink } from "./DashboardElements";
+import { DashboardItemsContainer } from "./DashboardElements";
+import FormData from "./FormData/FormData";
 
 const DashboardItems = () => {
     return (
         <DashboardItemsContainer>
-            <DashboardItemsLink to={"/dashboard/blogs"}>Blogs</DashboardItemsLink>
-            <DashboardItemsLink to={"/dashboard/goals"}>Goals</DashboardItemsLink>
+            <FormData />
+            {/* <DashboardItemsLink to={"/dashboard/blogs"}>Blogs</DashboardItemsLink> */}
+            {/* <DashboardItemsLink to={"/dashboard/goals"}>Goals</DashboardItemsLink> */}
         </DashboardItemsContainer>
     );
 };

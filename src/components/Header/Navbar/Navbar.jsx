@@ -15,9 +15,9 @@ import {
 
 import Dropdown from "../Dropdowns/Dropdown";
 import logo from "../../../assets/images/WebsiteLogo/ThecyberhubLogo.png";
-import UserOptions from "../UserOptions/UserOptions";
+// import UserOptions from "../UserOptions/UserOptions";
 import { FaBars } from "react-icons/all";
-import { RouterButtonLink } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
+// import { RouterButtonLink } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 const Navbar = ({ isOpen, toggle }) => {
     const [scrollNav, setScrollNav] = useState(false);
     const [drop, setDrop] = useState(false);
@@ -90,7 +90,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                 ),
                                 dropdown: "resources",
                             },
-                            { to: "blogs", title: "Blogs", dropdown: "blogs" },
+                            // { to: "blogs", title: "Blogs", dropdown: "blogs" },
                             { to: "jobs", title: "Jobs", dropdown: "jobs" },
                             { to: "community", title: "Community", dropdown: "community" },
                             { to: "support", title: "Support", dropdown: "support" },
@@ -114,9 +114,9 @@ const Navbar = ({ isOpen, toggle }) => {
                                 )}
                             </NavItem>
                         ))}
-                        <RouterButtonLink to={"/dashboard/blogs/create"}> Create Blog </RouterButtonLink>
+                        {/* <RouterButtonLink to={"/dashboard/blogs/create"}> Create Blog </RouterButtonLink> */}
                     </NavMenu>
-                    <UserOptions />
+                    {/* <UserOptions /> */}
                 </NavbarContainer>
 
                 {/* <Streak /> */}

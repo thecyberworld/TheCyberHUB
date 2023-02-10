@@ -68,11 +68,14 @@ const Footer = () => {
                             ))}
                         </FooterLinkItems>
                         <FooterLinkItems>
-                            <FooterLinkTitle>Contact Us</FooterLinkTitle>
-                            <FooterRouterLink to="/community">Contact</FooterRouterLink>
-                            <FooterRouterLink to="/community">Feedback</FooterRouterLink>
-                            <FooterRouterLink to="/community">Support (Discord)</FooterRouterLink>
-                            <FooterRouterLink to="/support">Sponsorships</FooterRouterLink>
+                            <FooterLinkTitle>Community</FooterLinkTitle>
+                            <FooterRouterLink to="/jobs">Internship</FooterRouterLink>
+                            <FooterRouterLink to="/contact">Contact</FooterRouterLink>
+                            <FooterRouterLink to="/contact">Feedback</FooterRouterLink>
+                            <FooterSocialLinksDiscord to={SocialLinks.discord}>
+                                Support (Discord)
+                            </FooterSocialLinksDiscord>
+                            <FooterRouterLink to="/support">Support</FooterRouterLink>
                         </FooterLinkItems>
                         <FooterLinkItems>
                             <FooterLinkTitle> Social Media </FooterLinkTitle>

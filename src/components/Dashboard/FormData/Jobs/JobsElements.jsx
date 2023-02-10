@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Button, Header } from "../../Community/CommunityElements";
+import { Button, Header } from "../../../Community/CommunityElements";
 import { FaChevronDown } from "react-icons/fa";
 import { IoMdArrowRoundBack } from "react-icons/all";
 import { Link } from "react-router-dom";
@@ -55,7 +55,7 @@ export const JobIntroHeader = styled(Header)`
     align-items: center;
     position: relative;
     margin: 25px;
-    height: 600px;
+    height: 200px;
 `;
 
 export const JobsDropdownIcon = styled(FaChevronDown)`
@@ -127,7 +127,7 @@ export const JobContainer = styled.div`
     background-color: rgba(32, 194, 14, 0.04);
     width: 100%;
     max-width: 440px;
-    min-height: 450px;
+    max-height: 300px;
     margin: 10px;
     outline: 1px solid #2a2a2a;
     border-radius: 0.5rem;
@@ -136,6 +136,7 @@ export const JobContainer = styled.div`
     row-gap: 0.8rem;
     padding: 15px 10px 10px 20px;
     transition: 260ms all;
+    color: #2f2f2f;
 
     &:hover {
         outline-color: #545454;
