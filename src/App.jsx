@@ -62,10 +62,10 @@ const App = () => {
 
         setTimeout(() => {
             setIsLoading(false);
-        }, 3000);
+        }, 0);
         setTimeout(() => {
             setShowWebsite(true);
-        }, 2000);
+        }, 0);
     }, []);
 
     const showFooter = () => {
