@@ -42,10 +42,9 @@ const TermsAndCondition = () => {
                 <TermsDescription>
                     Thecyberhub.org and its licensors own all right, title and interest in and to the services,
                     including all software and technology used to provide the services. Thecyberhub.org&quot;s services
-                    are protected by copyright, trademark, and other laws of both the United States and foreign
-                    countries. You agree not to modify, adapt, translate, prepare derivative works from, decompile,
-                    reverse engineer, disassemble or otherwise attempt to derive source code from Thecyberhub.org&quot;s
-                    services.
+                    are protected by copyright, trademark, and other laws of both the India and foreign countries. You
+                    agree not to modify, adapt, translate, prepare derivative works from, decompile, reverse engineer,
+                    disassemble or otherwise attempt to derive source code from Thecyberhub.org&quot;s services.
                 </TermsDescription>
 
                 <TermsHeading> Disclaimer of Warranties: </TermsHeading>
@@ -72,7 +71,8 @@ const TermsAndCondition = () => {
 
                 <TermsHeading> Governing Law: </TermsHeading>
                 <TermsDescription>
-                    These terms and conditions shall be governed by and construed in accordance with the laws of India.
+                    These terms and conditions shall be governed by and construed in accordance with the laws of the
+                    India.
                 </TermsDescription>
             </TermsAndConditionContainer>
         </Wrapper>
