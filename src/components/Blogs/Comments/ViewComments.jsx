@@ -18,12 +18,12 @@ const ViewComments = (props) => {
 
     return (
         <ViewCommentsContainer>
-            {props.comments?.map((userComment, id) => (
+            {props?.comments?.map((userComment, id) => (
                 <CommentSection key={id}>
                     <SectionUserPicture>
                         <UserPicture
                             src={
-                                userComment.picture !== undefined
+                                userComment?.picture !== undefined
                                     ? `${API_URL}/blog_images/${userComment?.picture}`
                                     : dummyPicture
                             }
@@ -37,7 +37,7 @@ const ViewComments = (props) => {
                     </SectionCommentDetails>
                 </CommentSection>
             ))}
-            {props.isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
+            {props?.isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
         </ViewCommentsContainer>
     );
 };
