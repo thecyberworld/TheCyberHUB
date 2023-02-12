@@ -1,11 +1,12 @@
 import React from "react";
-import { GiMineExplosion } from "react-icons/all";
+import { ExpContainer, ExpIcon, ExpText } from "./ExpElemenets";
 
 const Exp = () => {
     return (
-        <div style={{ color: "whitesmoke" }}>
-            <GiMineExplosion style={{ color: "orange" }} /> 49 Exp
-        </div>
+        <ExpContainer>
+            <ExpText> 1 </ExpText>
+            <ExpIcon />
+        </ExpContainer>
     );
 };
 

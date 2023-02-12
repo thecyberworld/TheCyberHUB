@@ -44,6 +44,9 @@ export const NavbarContainer = styled.div`
     max-width: 1200px;
 `;
 
+export const NavUsersDetailsSection = styled.div`
+    display: flex;
+`;
 export const NavLogoRouter = styled(LinkRouter)`
     display: flex;
     justify-self: flex-start;
@@ -58,6 +61,7 @@ export const NavLogoRouter = styled(LinkRouter)`
 export const NavLogo = styled.img`
     height: 60px;
     cursor: pointer;
+
     @media screen and (max-width: 880px) {
         margin: 0;
         padding: 0;
@@ -81,7 +85,7 @@ export const MobileIcon = styled.div`
         font-size: 1.5rem;
         cursor: pointer;
         color: #fff;
-        margin-top: 5px;
+        margin-top: 3px;
         margin-right: 35px;
     }
     @media screen and (max-width: 340px) {

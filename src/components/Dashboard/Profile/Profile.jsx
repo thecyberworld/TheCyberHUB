@@ -20,30 +20,29 @@ const Profile = () => {
     }, [isError, message, dispatch, user, navigate]);
 
     const API_URL = import.meta.env.VITE_CDN_URL;
-    const profilePicture = user.picture;
+    const profilePicture = user?.picture;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
-    const profilePictureUrl = user.picture === "" ? dummyPicture : `${API_URL}/blog_images/${profilePicture}`;
-    console.log(user.username);
+    const profilePictureUrl = user?.picture === "" ? dummyPicture : `${API_URL}/blog_images/${profilePicture}`;
 
-    if (import.meta.env.VITE_WEB_ENV === "production") {
+    if (import.meta.env.VITE_WEB_ENV === "localhost") {
         return <ComingSoon />;
     }
     return (
         <Wrapper>
             <ProfileContainer>
                 <section className="heading">
-                    <h1>Welcome {user && user.name}</h1>
+                    <h1>Welcome {user && user?.name}</h1>
                 </section>
                 <Link style={{ color: "whitesmoke" }} to={"edit"}>
                     Edit profile
                 </Link>
                 <h1> Profile Details </h1>
                 {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
-                Name: {user.name} <br />
+                Name: {user?.name} <br />
                 <UserImage src={profilePictureUrl} />
-                Username: {user.username} <br />
-                Email: {user.email} <br />
+                Username: {user?.username} <br />
+                Email: {user?.email} <br />
             </ProfileContainer>
         </Wrapper>
     );

@@ -290,6 +290,12 @@ const ContactForm = () => {
                                     <ContactFormSelectOption value="Business Development Sales Marketing Internship">
                                         Business Development | Sales | Marketing Internship
                                     </ContactFormSelectOption>
+                                    <ContactFormSelectOption value="Penetration Testing Internship">
+                                        Penetration Testing Internship
+                                    </ContactFormSelectOption>
+                                    <ContactFormSelectOption value="SOC Analyst Internship">
+                                        SOC Analyst Internship
+                                    </ContactFormSelectOption>
                                     <ContactFormSelectOption value="Content Creator Internship">
                                         Content Creator Internship
                                     </ContactFormSelectOption>
@@ -301,12 +307,6 @@ const ContactForm = () => {
                                     </ContactFormSelectOption>
                                     <ContactFormSelectOption value="React Native Developer Internship">
                                         React Native Developer Internship
-                                    </ContactFormSelectOption>
-                                    <ContactFormSelectOption value="Penetration Testing Internship">
-                                        Penetration Testing Internship
-                                    </ContactFormSelectOption>
-                                    <ContactFormSelectOption value="SOC Analyst Internship">
-                                        SOC Analyst Internship
                                     </ContactFormSelectOption>
                                 </ContactFormSelect>
                             </CoverLeft>

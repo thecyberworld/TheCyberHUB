@@ -6,12 +6,20 @@ import JobDetailsPage from "./Jobs/JobDetailsPage";
 import { useSelector } from "react-redux";
 import { Wrapper } from "../Profile/ProfileElements";
 import { NotFound } from "../../index";
+import { useNavigate } from "react-router-dom";
 
 const FormData = () => {
+    const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
     if (!user) {
         return <NotFound />;
     }
+
+    useEffect(() => {
+        if ((user && user.username !== "kabir0x23") || user.username !== "0xFTW") {
+            navigate("/");
+        }
+    }, [user, navigate]);
 
     if (user.username === "kabir0x23" || user.username === "0xFTW") {
         const [formData, setFormData] = useState([]);
