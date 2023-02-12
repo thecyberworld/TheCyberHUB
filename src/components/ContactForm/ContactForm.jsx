@@ -290,23 +290,23 @@ const ContactForm = () => {
                                     <ContactFormSelectOption value="Business Development Sales Marketing Internship">
                                         Business Development | Sales | Marketing Internship
                                     </ContactFormSelectOption>
-                                    <ContactFormSelectOption value="MERN Stack Internship">
-                                        MERN Stack Internship
-                                    </ContactFormSelectOption>
                                     <ContactFormSelectOption value="Content Creator Internship">
                                         Content Creator Internship
                                     </ContactFormSelectOption>
-                                    <ContactFormSelectOption value="Next.js Internship">
-                                        Next.js Internship
+                                    <ContactFormSelectOption value="MERN Stack Internship">
+                                        MERN Stack Internship
+                                    </ContactFormSelectOption>
+                                    <ContactFormSelectOption value="Next.js Developer Internship">
+                                        Next.js Developer Internship
+                                    </ContactFormSelectOption>
+                                    <ContactFormSelectOption value="React Native Developer Internship">
+                                        React Native Developer Internship
                                     </ContactFormSelectOption>
                                     <ContactFormSelectOption value="Penetration Testing Internship">
                                         Penetration Testing Internship
                                     </ContactFormSelectOption>
                                     <ContactFormSelectOption value="SOC Analyst Internship">
                                         SOC Analyst Internship
-                                    </ContactFormSelectOption>
-                                    <ContactFormSelectOption value="React Native Android Developer Internship">
-                                        React Native Android Developer Internship
                                     </ContactFormSelectOption>
                                 </ContactFormSelect>
                             </CoverLeft>

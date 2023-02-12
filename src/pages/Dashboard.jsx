@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 import { Wrapper } from "../components/Dashboard/Profile/ProfileElements";
 import DashboardItems from "../components/Dashboard/DashboardItems";
-// import { DashboardContainer } from "../components/Dashboard/DashboardElements";
+import { DashboardContainer } from "../components/Dashboard/DashboardElements";
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -12,19 +12,19 @@ const Dashboard = () => {
 
     useEffect(() => {
         if (!user) {
-            navigate("/login");
+            navigate("/");
         }
     }, [user, navigate]);
 
     return (
         <Wrapper>
-            {/* <DashboardContainer> */}
-            {/*    <section className={"heading"}> */}
-            {/*        <p> Dashboard</p> */}
-            {/* <h1> Welcome {user && user.name} </h1> */}
-            {/* </section> */}
-            <DashboardItems />
-            {/* </DashboardContainer> */}
+            <DashboardContainer>
+                <section className={"heading"}>
+                    <p> Dashboard</p>
+                    <h1> Welcome {user && user.name} </h1>
+                </section>
+                <DashboardItems />
+            </DashboardContainer>
         </Wrapper>
     );
 };

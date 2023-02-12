@@ -168,7 +168,17 @@ const Register = () => {
                             />
                         </CustomInputGroup>
                     </div>
+
                     <div className="registration__ctas">
+                        <div className="registration__tandc">
+                            <input role="checkbox" type="checkbox" autoComplete="" />
+                            <div>
+                                I agree to all statements included in
+                                <RouterLink to={"/terms-conditions"}>
+                                    <span style={{ color: "#20c20e" }}>Terms of Use</span>
+                                </RouterLink>
+                            </div>
+                        </div>
                         {!isLoading ? (
                             <GlowingButton width={"100%"} type="submit">
                                 Start Hacking
