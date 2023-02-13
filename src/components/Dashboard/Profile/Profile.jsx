@@ -25,7 +25,7 @@ const Profile = () => {
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
     const profilePictureUrl = user?.picture === "" ? dummyPicture : `${API_URL}/blog_images/${profilePicture}`;
 
-    if (import.meta.env.VITE_WEB_ENV === "localhost") {
+    if (import.meta.env.VITE_WEB_ENV === "production") {
         return <ComingSoon />;
     }
     return (
