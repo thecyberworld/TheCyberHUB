@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { EmailNotVerifiedContainer, EmailNotVerifiedText, ResendButton } from "./EmailNotVerifiedElements";
 import axios from "axios";
+import getApiUrl from "../../features/apiUrl";
 
 const EmailNotVerified = ({ user }) => {
     if (!user) {
@@ -25,7 +26,7 @@ const EmailNotVerified = ({ user }) => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/user`, {
+                const response = await axios.get(getApiUrl("api/users/user"), {
                     headers: {
                         Authorization: `Bearer ${user.token}`,
                     },
@@ -57,17 +58,12 @@ const EmailNotVerified = ({ user }) => {
         return () => clearInterval(intervalId);
     }, [isCounting]);
 
-    let APIURL = "http://localhost:5000";
-    if (import.meta.env.VITE_API_URL === "production") {
-        APIURL = import.meta.env.VITE_API_URL;
-    } else APIURL = "http://localhost:5000";
-
     const resendEmail = () => {
         setTimeLeft(60);
         setIsCounting(true);
         axios
             .post(
-                `${APIURL}/account/resend-verification-email`,
+                getApiUrl("account/resend-verification-email"),
                 {},
                 {
                     headers: {

@@ -36,7 +36,6 @@ import {
     Sidebar,
     SingleBlog,
     Sponsors,
-    Tags,
     UserBlogs,
 } from "./components";
 
@@ -103,7 +102,6 @@ const App = () => {
 
                             <Route path={"/blogs"}>
                                 <Route index element={<Blogs />} />
-                                <Route exact path={"tags"} element={<Tags />} />
                                 <Route exact path={":title"} element={<SingleBlog />} />
                                 <Route element={<NotFound />} />
                             </Route>
