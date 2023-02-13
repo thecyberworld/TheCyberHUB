@@ -301,6 +301,7 @@ const CreateBlog = () => {
                         handleDrop={handleDrop}
                         handleDragOver={handleDragOver}
                         handlePaste={handlePaste}
+                        user={user}
                     />
                 )}
             </CreateBlogContainer>

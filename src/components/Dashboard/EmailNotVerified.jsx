@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { EmailNotVerifiedContainer, EmailNotVerifiedText, ResendButton } from "./EmailNotVerifiedElements";
 import axios from "axios";
 import getApiUrl from "../../features/apiUrl";
+import { useUserData } from "./checkUserVerified";
 
 const EmailNotVerified = ({ user }) => {
     if (!user) {
@@ -12,7 +13,6 @@ const EmailNotVerified = ({ user }) => {
     const [scrollNav, setScrollNav] = useState(false);
     const [timeLeft, setTimeLeft] = useState(60);
     const [isCounting, setIsCounting] = useState(false);
-    const [userData, setUserData] = useState({});
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -23,23 +23,7 @@ const EmailNotVerified = ({ user }) => {
         }, 2000);
     }, []);
 
-    useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await axios.get(getApiUrl("api/users/user"), {
-                    headers: {
-                        Authorization: `Bearer ${user.token}`,
-                    },
-                });
-
-                setUserData(response.data);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        fetchUserData();
-    }, [user.token]);
+    const userVerified = useUserData({ user }).isVerified;
 
     useEffect(() => {
         let intervalId = null;
@@ -92,9 +76,11 @@ const EmailNotVerified = ({ user }) => {
         return () => window.removeEventListener("scroll", changeNav);
     }, []);
 
+    console.log(userVerified);
+
     return (
         <EmailNotVerifiedContainer scrollNav={scrollNav}>
-            {!isLoading && !userData.isVerified ? (
+            {!isLoading && !userVerified ? (
                 <EmailNotVerifiedText>
                     Email Verification link has been sent, please verify it.
                     {!isCounting ? (
