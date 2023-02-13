@@ -69,8 +69,9 @@ export const NavLogo = styled.img`
     @media screen and (max-width: 500px) {
         margin: 0 0 0 0;
     }
-    @media screen and (max-width: 350px) {
-        margin: 0 -20px 0 0;
+
+    @media screen and (max-width: 400px) {
+        height: 50px;
     }
 `;
 

@@ -20,6 +20,7 @@ import {
 import NotFound from "../../../NotFound";
 import PreviewMarkdown from "./PreviewMarkdown";
 import BlogComments from "../Comments/BlogComments";
+import { toast } from "react-toastify";
 
 const ViewBlog = () => {
     const { title } = useParams();
@@ -30,7 +31,11 @@ const ViewBlog = () => {
     useEffect(() => {
         if (isError) {
             console.log(message);
+            if (message === "AxiosError: Request failed with status code 429") {
+                toast("You have reached the maximum number of requests. Please try again later.", { type: "error" });
+            }
         }
+
         dispatch(getAllBlogs());
         return () => {
             dispatch(reset());
@@ -80,7 +85,7 @@ const ViewBlog = () => {
                     {blog?.tags.map((tag, id) => (tag.length !== 0 ? <Tag key={id}>{tag.slice(0, 40)}</Tag> : <></>))}
                 </TagsSection>
                 <CommentContainer>
-                    <BlogComments blog={blog} />
+                    <BlogComments blog={blog} isError={isError} message={message} />
                     {/* <ViewComments comments={blog?.comments} /> */}
                     {/* <AddCommentForm blog_id={blog?._id} isLoading={isLoading} /> */}
                 </CommentContainer>

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { Wrapper } from "../Profile/ProfileElements";
 import { NotFound } from "../../index";
 import { useNavigate } from "react-router-dom";
+import getApiUrl from "../../../features/apiUrl";
 
 const FormData = () => {
     const navigate = useNavigate();
@@ -30,7 +31,7 @@ const FormData = () => {
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("user")).token;
         // https://dev.api.thecyberhub.org
-        fetch("https://dev.api.thecyberhub.org/api/form/getFormData", {
+        fetch(getApiUrl("api/form/getFormData"), {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,

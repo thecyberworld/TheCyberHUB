@@ -35,7 +35,7 @@ const BlogComments = ({ blog }) => {
         e.preventDefault();
 
         if (comment !== "") {
-            const newComment = { username: user.username, picture: user.picture, comment };
+            const newComment = { username: user?.username, comment };
             const updatedComments = [...blog.comments, newComment];
             setComments({ ...blog, comments: updatedComments });
             const addCommentData = { comment };
@@ -61,7 +61,7 @@ const BlogComments = ({ blog }) => {
                         <SectionUserPicture>
                             <UserPicture
                                 src={
-                                    userComment.picture === ""
+                                    userComment?.picture === ""
                                         ? `${API_URL}/profile_pictures/${userComment?.picture}`
                                         : dummyPicture
                                 }

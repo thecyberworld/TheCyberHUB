@@ -27,6 +27,7 @@ import {
     ResumeIcon,
     WebIcon,
 } from "./ContactFormElements.jsx";
+import getApiUrl from "../../features/apiUrl";
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -85,7 +86,6 @@ const ContactForm = () => {
             contextHeading,
             submissionFrom: "thecyberhub.org",
         };
-
         if (name.length === 0) {
             setError("Please fill all of the fields");
         } else if (email.length === 0) {
@@ -99,10 +99,12 @@ const ContactForm = () => {
             (reason === "internship" && reasonType.length === 0)
         ) {
             setError("Please fill all of the fields");
+        } else if (reason === "internship" && resume.length === 0) {
+            setError("Please include the resume link");
         } else {
             // https://dev.api.thecyberhub.org/api/form/submit
             // http://localhost:5000/api/form/submit
-            fetch("https://dev.api.thecyberhub.org/api/form/submit", {
+            fetch(getApiUrl("api/form/submit"), {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -321,7 +323,9 @@ const ContactForm = () => {
                                         id="resume"
                                         value={formData.resume}
                                         onChange={handleChange}
-                                        placeholder={"Please share your resume link here (You can upload on drive)"}
+                                        placeholder={
+                                            "Resume link (You can upload on drive and make the link accessible)"
+                                        }
                                     />
                                 </CoverLeft>
                             </Cover>

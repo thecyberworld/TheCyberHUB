@@ -11,7 +11,7 @@ export const ExpContainer = styled.div`
     }
     @media screen and (max-width: 768px) {
     }
-    @media screen and (max-width: 400px) {
+    @media screen and (max-width: 350px) {
         display: none;
     }
 `;
