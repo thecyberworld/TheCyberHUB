@@ -6,24 +6,25 @@ import JobDetailsPage from "./Jobs/JobDetailsPage";
 import { useSelector } from "react-redux";
 import { Wrapper } from "../Profile/ProfileElements";
 import { NotFound } from "../../index";
-import { useNavigate } from "react-router-dom";
+// import {useNavigate} from "react-router-dom";
 import getApiUrl from "../../../features/apiUrl";
 
 const FormData = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
     if (!user) {
         return <NotFound />;
+    } else if (user.username !== "kabir0x23" && user.username !== "0xFTW") {
+        return <NotFound />;
     }
-
-    useEffect(() => {
-        if (user && user.username !== "kabir0x23") {
-            navigate("/");
-        }
-        if (user && user.username !== "0xFTW") {
-            navigate("/");
-        }
-    }, [user, navigate]);
+    // useEffect(() => {
+    //     if (user && user.username !== "kabir0x23") {
+    //         navigate("/");
+    //     }
+    //     if (user && user.username !== "0xFTW") {
+    //         navigate("/");
+    //     }
+    // }, [user, navigate]);
 
     const [formData, setFormData] = useState([]);
     const [errorMessage, setErrorMessage] = useState();
