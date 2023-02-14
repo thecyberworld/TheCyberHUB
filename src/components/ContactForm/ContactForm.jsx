@@ -373,11 +373,11 @@ const ContactForm = () => {
                             placeholder={reason === "internship" ? "Cover Letter " : "Message"}
                         />
                     </CoverLeft>
-                    {/* {!isSuccess ? ( */}
-                    <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
-                        Submit
-                    </ContactFormSubmit>
-                    {/* ) : null} */}
+                    {!isSuccess ? (
+                        <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
+                            Submit
+                        </ContactFormSubmit>
+                    ) : null}
 
                     {error && !isSuccess && <ErrorMessage>{"Please fill all of the fields"}</ErrorMessage>}
                     {error2 && !isSuccess && (
