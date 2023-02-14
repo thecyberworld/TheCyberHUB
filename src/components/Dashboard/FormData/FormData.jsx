@@ -17,9 +17,11 @@ const FormData = () => {
     }
 
     useEffect(() => {
-        if ((user && user.username !== "kabir0x23") || user.username !== "0xFTW") {
-            // navigate("/");
-            // console.log(user.username)
+        if (user && user.username !== "kabir0x23") {
+            navigate("/");
+        }
+        if (user && user.username !== "0xFTW") {
+            navigate("/");
         }
     }, [user, navigate]);
 

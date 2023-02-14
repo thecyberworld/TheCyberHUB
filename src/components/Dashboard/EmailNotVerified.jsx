@@ -76,8 +76,6 @@ const EmailNotVerified = ({ user }) => {
         return () => window.removeEventListener("scroll", changeNav);
     }, []);
 
-    console.log(userVerified);
-
     return (
         <EmailNotVerifiedContainer scrollNav={scrollNav}>
             {!isLoading && !userVerified ? (

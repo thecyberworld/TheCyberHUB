@@ -28,6 +28,8 @@ import {
     WebIcon,
 } from "./ContactFormElements.jsx";
 import getApiUrl from "../../features/apiUrl";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ContactForm = () => {
     const [formData, setFormData] = useState({
@@ -102,39 +104,36 @@ const ContactForm = () => {
         } else if (reason === "internship" && resume.length === 0) {
             setError("Please include the resume link");
         } else {
-            // https://dev.api.thecyberhub.org/api/form/submit
-            // http://localhost:5000/api/form/submit
-            fetch(getApiUrl("api/form/submit"), {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(filledFormData),
-            })
-                .then((res) => res.json())
-                .then((data) => data.message === "Something went wrong. Please try again later." && setError2(true))
-                .then(
-                    setFormData({
-                        name: "",
-                        email: "",
-                        company: "",
-                        website: "",
-                        pentestBefore: "",
-                        reason: "",
-                        phoneNumber: "",
-                        reasonType: "",
-                        resume: "",
-                        message: "",
-                        contextHeading: "",
-                    }),
-                )
-                .catch((err) => {
-                    setError2(true);
-                    console.log(err);
-                    setIsSuccess(false);
+            axios
+                .post(getApiUrl("api/form/submit"), filledFormData, {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
                 })
-                .then(console.log("Submit Successfully"))
-                .then(error2 === false ? setIsSuccess(true) : setIsSuccess(false));
+                .then((response) => {
+                    if (response.data.message === "Form submitted successfully") {
+                        setIsSuccess(true);
+                        setError(false);
+                        setError2(false);
+                    }
+                    console.log(response.data.message);
+                    if (response.data.message === "Something went wrong. Please try again later.") {
+                        setError2(true);
+                        setIsSuccess(false);
+                    }
+                })
+                .catch((error) => {
+                    if (error.message === "Network Error") {
+                        setError2(true);
+                        setIsSuccess(false);
+                    } else if (error.response.status === 429) {
+                        toast.error("Please wait 1 Minute before submitting again");
+                        setIsSuccess(false);
+                    } else {
+                        setError2(true);
+                        setIsSuccess(false);
+                    }
+                });
         }
     };
 
@@ -374,11 +373,11 @@ const ContactForm = () => {
                             placeholder={reason === "internship" ? "Cover Letter " : "Message"}
                         />
                     </CoverLeft>
-                    {!isSuccess ? (
-                        <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
-                            Submit
-                        </ContactFormSubmit>
-                    ) : null}
+                    {/* {!isSuccess ? ( */}
+                    <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
+                        Submit
+                    </ContactFormSubmit>
+                    {/* ) : null} */}
 
                     {error && !isSuccess && <ErrorMessage>{"Please fill all of the fields"}</ErrorMessage>}
                     {error2 && !isSuccess && (
