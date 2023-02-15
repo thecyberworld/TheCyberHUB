@@ -88,9 +88,7 @@ const EmailNotVerified = ({ user }) => {
                     )}
                     {message && <div style={{ color: "cornflowerblue" }}>{message}</div>}
                 </EmailNotVerifiedText>
-            ) : (
-                <></>
-            )}
+            ) : null}
         </EmailNotVerifiedContainer>
     );
 };
