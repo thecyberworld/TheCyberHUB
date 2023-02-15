@@ -9,10 +9,10 @@ export default defineConfig({
             // "/api": "https://api.thecyberhub.org",
             "/api": {
                 // target: import.meta.env.VITE_API_URL,
-                target: "http://localhost:5000",
+                // target: "http://localhost:5000",
                 // target: "https://api.thecyberhub.org",
                 // target: "https://alpha-testing-please-do-not-hack-us-1.thecyberhub.org",
-                // target: "https://dev.api./thecyberhub.org",
+                target: "https://dev.api./thecyberhub.org",
                 changeOrigin: true,
                 secure: false,
             },
