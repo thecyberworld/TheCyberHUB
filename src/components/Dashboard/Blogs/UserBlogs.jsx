@@ -18,7 +18,6 @@ const UserBlogs = () => {
         dispatch(getBlogs());
         return () => dispatch(reset());
     }, [dispatch, isError, message]);
-
     return (
         <Wrapper>
             <BlogsComponent>
@@ -34,15 +33,13 @@ const UserBlogs = () => {
                 ) : (
                     <MiddleContainer>
                         <AllBlogs>
-                            {blogs && Array.isArray(blogs) ? (
+                            {blogs && blogs.length > 0 ? (
                                 blogs
                                     .slice()
                                     .reverse()
                                     .map((blog) => <NewBlogCard key={blog?._id} blog={blog} />)
                             ) : (
-                                <>
-                                    <h1 style={{ color: "white" }}>There are no blogs to display</h1>
-                                </>
+                                <h1 style={{ color: "white" }}>There are no blogs to display</h1>
                             )}
                         </AllBlogs>
                     </MiddleContainer>

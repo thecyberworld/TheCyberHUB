@@ -51,7 +51,6 @@ const Register = () => {
             [e.target.name]: e.target.value,
         }));
     };
-    console.log(termsAndConditions);
 
     const whitelistedDomains = [
         "gmail.com",
