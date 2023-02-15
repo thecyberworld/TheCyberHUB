@@ -21,11 +21,12 @@ import NotFound from "../../../NotFound";
 import PreviewMarkdown from "./PreviewMarkdown";
 import BlogComments from "../Comments/BlogComments";
 import { toast } from "react-toastify";
+import { CircleSpinner } from "react-spinners-kit";
 
 const ViewBlog = () => {
     const { title } = useParams();
 
-    const { blogs, isError, message } = useSelector((state) => state.blogs);
+    const { blogs, isLoading, isError, message } = useSelector((state) => state.blogs);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -48,7 +49,15 @@ const ViewBlog = () => {
             title.toLowerCase().includes(blog.username),
     );
 
+    if (isLoading) {
+        return (
+            <>
+                <CircleSpinner size={100} color="#20c20e" loading={isLoading} />
+            </>
+        );
+    }
     if (!blog) return <NotFound />;
+
     const blogUnFormattedDate = new Date(blog?.createdAt);
     const blogCreatedAt = new Intl.DateTimeFormat("en-US", {
         month: "short",
