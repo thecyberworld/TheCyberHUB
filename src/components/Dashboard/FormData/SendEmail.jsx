@@ -73,7 +73,6 @@ const SendEmail = (pops) => {
                 message: "",
             });
         }
-        console.log(emailData);
     };
 
     return (
