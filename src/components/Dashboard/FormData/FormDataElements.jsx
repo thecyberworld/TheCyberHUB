@@ -18,15 +18,7 @@ export const FormDataCard = styled.div`
 `;
 
 export const FromDataSection = styled.div`
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 25px;
-    padding: 25px;
-
-    @media screen and (max-width: 768px) {
-        grid-template-columns: 1fr;
-    }
+    width: 100%;
 `;
 
 export const FormTypesContainer = styled.div``;

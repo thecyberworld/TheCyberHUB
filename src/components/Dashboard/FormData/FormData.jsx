@@ -8,6 +8,7 @@ import { Wrapper } from "../Profile/ProfileElements";
 import { NotFound } from "../../index";
 // import {useNavigate} from "react-router-dom";
 import getApiUrl from "../../../features/apiUrl";
+import SendEmail from "./SendEmail";
 
 const FormData = () => {
     // const navigate = useNavigate();
@@ -90,32 +91,12 @@ const FormData = () => {
             <FormDataContainer>
                 {errorMessage && <p>{errorMessage}</p>}
                 <FormTypesContainer>
-                    <FormType onClick={() => handleShowState("showPentest")}>Pentests</FormType>
+                    <FormType onClick={() => handleShowState("showPentest")}>Services</FormType>
                     <FormType onClick={() => handleShowState("showInternship")}>Internships</FormType>
                     <FormType onClick={() => handleShowState("showFeedback")}>Feedback</FormType>
                     <FormType onClick={() => handleShowState("showOthers")}>Others</FormType>
                 </FormTypesContainer>
-                {/* {showPentest && ( */}
-                {/*    <FormTypesContainer> */}
-                {/*        <FormType onClick={() => handleShowState('WebApplicationPentest')}>Web Application Pentest</FormType> */}
-                {/*        <FormType onClick={() => handleShowState('APIPentest')}>API Pentest</FormType> */}
-                {/*        <FormType onClick={() => handleShowState('MobileApplicationPentest')}>Mobile Application Pentest</FormType> */}
-                {/*        <FormType onClick={() => handleShowState('CloudPentest')}>Cloud Pentest</FormType> */}
-                {/*        <FormType onClick={() => handleShowState('IOTandOTPentest')}>IOT and OT Pentest</FormType> */}
-                {/*        <FormType onClick={() => handleShowState('NetworkPentest')}>Network Pentest</FormType> */}
-                {/*    </FormTypesContainer> */}
-                {/* )} */}
-                {/* {showInternship && ( */}
-                {/*    <FormTypesContainer> */}
-                {/*        <FormType onClick={() => handleShowState('Business Development/Sales/Marketing Internship')}>Business Development/Sales/Marketing Internship </FormType> */}
-                {/*        <FormType onClick={() => handleShowState('MERN Stack Internship')}>MERN Stack Internship </FormType> */}
-                {/*        <FormType onClick={() => handleShowState('Content Creator Internship')}>Content Creator Internship </FormType> */}
-                {/*        <FormType onClick={() => handleShowState('Next.js Internship')}>Next.js Internship </FormType> */}
-                {/*        <FormType onClick={() => handleShowState('Penetration Testing Internship')}>Penetration Testing Internship </FormType> */}
-                {/*        <FormType onClick={() => handleShowState('SOC Analyst Internship')}>SOC Analyst Internship </FormType> */}
-                {/*    </FormTypesContainer> */}
-                {/* )} */}
-                <FromDataSection></FromDataSection>
+                <FromDataSection>{showPentest ? <SendEmail /> : null}</FromDataSection>
                 <JobsDetailContainer id="jobs">
                     {window.innerWidth > 1000 ? (
                         <>
