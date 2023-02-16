@@ -15,7 +15,7 @@ import {
 } from "../../ContactForm/ContactFormElements";
 import { toast } from "react-toastify";
 
-const SendEmail = (props) => {
+const SendEmail = (pops) => {
     const [emailData, setEmailData] = useState({
         email: "",
         subject: "",
@@ -23,7 +23,6 @@ const SendEmail = (props) => {
     });
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const [error2, setError2] = useState(false);
     const handleChange = (e) => {
         setEmailData({
             ...emailData,
@@ -33,7 +32,6 @@ const SendEmail = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setError(false);
-        setError2(false);
         setIsSuccess(false);
 
         const token = JSON.parse(localStorage.getItem("user")).token;
@@ -46,36 +44,36 @@ const SendEmail = (props) => {
             })
             .then((response) => {
                 if (response.data.message === "Email sent successfully") {
-                    console.log(response.data.message);
                     setIsSuccess(true);
                     setError(false);
-                    setError2(false);
                 }
+                toast.success(response.data.message);
                 console.log(response.data.message);
                 if (response.data.message === "Something went wrong. Please try again later.") {
-                    setError2(true);
+                    setError(true);
                     setIsSuccess(false);
                 }
             })
             .catch((error) => {
                 if (error.message === "Network Error") {
-                    setError2(true);
+                    setError(true);
                     setIsSuccess(false);
                 } else if (error.response.status === 429) {
                     toast.error("Please wait 1 Minute before submitting again");
                     setIsSuccess(false);
                 } else {
-                    setError2(true);
+                    setError(true);
                     setIsSuccess(false);
                 }
             });
-        if (isSuccess && !error2) {
+        if (isSuccess && !error) {
             setEmailData({
                 email: "",
                 subject: "",
                 message: "",
             });
         }
+        console.log(emailData);
     };
 
     return (
@@ -126,8 +124,7 @@ const SendEmail = (props) => {
                 </ContactFormSubmit>
                 {/* ) : null} */}
 
-                {error && !isSuccess && <ErrorMessage>{"Please fill all of the fields"}</ErrorMessage>}
-                {error2 && !isSuccess && <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>}
+                {error && !isSuccess && <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>}
             </ContactFormSection>
             {/* {isSuccess && !error ? <GlowingButton>Submit Successfully</GlowingButton> : null} */}
         </div>
