@@ -15,9 +15,11 @@ const Exp = () => {
         return () => dispatch(reset());
     }, [dispatch]);
 
+    const userBlogs = blogs.filter((blog) => blog.username === user?.username);
+
     return (
         <ExpContainer>
-            <ExpText> {user ? blogs.length * 50 : 0} </ExpText>
+            <ExpText> {user ? userBlogs.length * 50 : 0} </ExpText>
             <ExpIcon />
         </ExpContainer>
     );
