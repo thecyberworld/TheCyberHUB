@@ -16,11 +16,12 @@ import {
 } from "./NavbarElements";
 
 import Dropdown from "../Dropdowns/Dropdown";
-import logo from "../../../assets/images/WebsiteLogo/ThecyberhubLogo.png";
 import UserOptions from "../UserOptions/UserOptions";
 import { FaBars } from "react-icons/all";
 import { RouterButtonLink } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import Exp from "../Exp";
+import { getCDNUrl } from "../../../features/apiUrl";
+const logo = `${getCDNUrl}/assets/images/WebsiteLogo/ThecyberhubLogo.png`;
 // import { RouterButtonLink } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 const Navbar = ({ isOpen, toggle }) => {
     const [scrollNav, setScrollNav] = useState(false);
