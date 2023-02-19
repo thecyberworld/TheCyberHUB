@@ -5,6 +5,7 @@ import { getUserDetails, reset } from "../../../features/userDetails/userDetailS
 import { Link, useNavigate } from "react-router-dom";
 import { CircleSpinner } from "react-spinners-kit";
 import ComingSoon from "../../Other/MixComponents/ComingSoon";
+import { getCDNUrl, webEnv } from "../../../features/apiUrl";
 
 const Profile = () => {
     const navigate = useNavigate();
@@ -19,13 +20,13 @@ const Profile = () => {
         return () => dispatch(reset());
     }, [isError, message, dispatch, user, navigate]);
 
-    const API_URL = import.meta.env.VITE_CDN_URL;
+    const API_URL = getCDNUrl;
     const profilePicture = user?.picture;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
     const profilePictureUrl = user?.picture === "" ? dummyPicture : `${API_URL}/blog_images/${profilePicture}`;
 
-    if (import.meta.env.VITE_WEB_ENV === "production") {
+    if (webEnv === "production") {
         return <ComingSoon />;
     }
     return (

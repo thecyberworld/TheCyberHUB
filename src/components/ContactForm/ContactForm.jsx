@@ -27,7 +27,7 @@ import {
     ResumeIcon,
     WebIcon,
 } from "./ContactFormElements.jsx";
-import getApiUrl from "../../features/apiUrl";
+import { getApiUrl } from "../../features/apiUrl";
 import axios from "axios";
 import { toast } from "react-toastify";
 

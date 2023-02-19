@@ -22,6 +22,7 @@ import PreviewMarkdown from "./PreviewMarkdown";
 import BlogComments from "../Comments/BlogComments";
 import { toast } from "react-toastify";
 import { CircleSpinner } from "react-spinners-kit";
+import { getCDNUrl } from "../../../features/apiUrl";
 
 const ViewBlog = () => {
     const { title } = useParams();
@@ -65,7 +66,7 @@ const ViewBlog = () => {
         year: "numeric",
     }).format(blogUnFormattedDate);
 
-    const API_URL = import.meta.env.VITE_CDN_URL;
+    const API_URL = getCDNUrl;
     const coverImage = blog?.coverImage;
     const coverImageUrl = `${API_URL}/blog_images/${coverImage}`;
 

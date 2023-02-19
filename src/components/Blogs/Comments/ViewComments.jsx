@@ -10,9 +10,10 @@ import {
     ViewCommentsContainer,
 } from "./ViewCommentsElements";
 import { CircleSpinner } from "react-spinners-kit";
+import { getCDNUrl } from "../../../features/apiUrl";
 
 const ViewComments = (props) => {
-    const API_URL = import.meta.env.VITE_CDN_URL;
+    const API_URL = getCDNUrl;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
 

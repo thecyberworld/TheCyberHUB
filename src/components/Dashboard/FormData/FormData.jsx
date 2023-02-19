@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { Wrapper } from "../Profile/ProfileElements";
 import { NotFound } from "../../index";
 // import {useNavigate} from "react-router-dom";
-import getApiUrl from "../../../features/apiUrl";
+import { getApiUrl } from "../../../features/apiUrl";
 import SendEmail from "./SendEmail";
 
 const FormData = () => {

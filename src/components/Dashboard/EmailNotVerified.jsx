@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { EmailNotVerifiedContainer, EmailNotVerifiedText, ResendButton } from "./EmailNotVerifiedElements";
 import axios from "axios";
-import getApiUrl from "../../features/apiUrl";
+import { getApiUrl } from "../../features/apiUrl";
 import { useUserData } from "./checkUserVerified";
 
 const EmailNotVerified = ({ user }) => {

@@ -14,6 +14,7 @@ import {
     ViewCommentsContainer,
 } from "./ViewCommentsElements";
 import { useUserData } from "../../Dashboard/checkUserVerified";
+import { getCDNUrl } from "../../../features/apiUrl";
 const BlogComments = ({ blog }) => {
     const [addCommentData, setAddCommentData] = useState({ comment: "" });
     const { comment } = addCommentData;
@@ -49,7 +50,7 @@ const BlogComments = ({ blog }) => {
             setError("Please add a comment first.");
         }
     };
-    const API_URL = import.meta.env.VITE_CDN_URL;
+    const API_URL = getCDNUrl;
     const dummyPicture =
         "https://user-images.githubusercontent.com/44284877/210164205-8dfa753b-f98a-4b25-a243-164c9790b625.png";
     const userVerified = useUserData({ user }).isVerified;

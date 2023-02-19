@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import getApiUrl from "../../../features/apiUrl";
+import { getApiUrl } from "../../../features/apiUrl";
 import {
     ContactFormInput,
     ContactFormLabel,
