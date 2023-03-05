@@ -10,19 +10,72 @@ export const Wrapper = styled.div`
     color: whitesmoke;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 0 25px;
 
     @media screen and (max-width: 760px) {
     }
 `;
+export const ProfileDetailsContainer = styled.div`
+    margin: 2%;
+`;
+export const BlogPostContainer = styled.div`
+    margin: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
 
+export const CommentContainer = styled.div`
+    flex: 1;
+    background-color: black,
+    flex-direction: row;
+    margin-bottom: -20%;
+    
+`;
+export const CommentAmountContainer = styled.div`
+    flex: 1;
+    background-color: #fff,
+    flex-direction: row;
+    zIndex: 2;
+`;
+export const BlogCard = styled.div`
+    margin: 1%;
+    border-color: #62f56c;
+    border-width: 5px;
+    border-style: solid;
+    width: 40%;
+    height: 350px;
+    border-radius: 5%;
+    overflow: hidden;
+`;
 export const UserImage = styled.img`
     width: 100px;
     height: 100px;
     border-radius: 100%;
+    margin-top: -5%;
+    margin-inline: 5% 5%;
+    object-fit: cover;
 `;
+export const BlogCoverImage = styled.img`
+    width: 100%;
+    height: 90%;
+    border-radius: 5%;
+    flex: 1;
+    margin-bottom: -20%;
+`;
+export const UserBanner = styled.img`
+    width: 100%;
+    object-fit: cover;
+    height: 250px;
+    margin-top: -10%;
+`;
+export const UserInfo = styled.div``;
+
+export const HeaderSection = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+export const HeaderContainer = styled.div``;
 
 export const SkillLevelContainer = styled.div`
     display: flex;
