@@ -23,12 +23,14 @@ import { getCDNUrl, webEnv } from "../../../features/apiUrl";
 import BackGroundImage from "../../../assets/images/DevelopmentImages/coffee-computer.jpeg";
 import { BsFillGearFill } from "react-icons/bs";
 import { IoChatbubbleEllipses } from "react-icons/io5";
+import NewBlogCard from "../../Blogs/BlogCard/NewBlogCard";
 
 const Profile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { isLoading, isError, message } = useSelector((state) => state.userDetails);
+    const { blogs} = useSelector((state) => state.blogs);
 
     useEffect(() => {
         if (user && isError) console.log(message);
@@ -69,12 +71,15 @@ const Profile = () => {
                             <BsFillGearFill style={{ zIndex: 2 }} size={25} />
                         </Link>
                     </HeaderSection>
-
+                    
+                    {/* Change background image to working user's image - using static images */}
                     <UserBanner src={BackGroundImage} />
                     <UserImage src={profilePictureUrl} />
                 </HeaderContainer>
                 <ProfileDetailsContainer>
-                    <h3> Profile Details </h3>
+                    <h3 style={{
+                        marginInline: '2%'
+                    }}> Profile Details </h3>
                     {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
 
                     <UserInfo>
@@ -83,117 +88,7 @@ const Profile = () => {
                     </UserInfo>
                 </ProfileDetailsContainer>
             </ProfileContainer>
-            <h1 style={{ marginInline: "5%" }}>Your Blogs</h1>
-            <BlogPostContainer>
-                <BlogCard>
-                    <div
-                        style={{
-                            marginTop: "2%",
-                            flex: 1,
-                        }}
-                    >
-                        <h3
-                            style={{
-                                height: "15%",
-                                marginInline: "5%",
-                                textAlign: "center",
-                            }}
-                        >
-                            Learn to code in React{" "}
-                        </h3>
-                    </div>
-
-                    <BlogCoverImage src={BackGroundImage} />
-                    <CommentContainer>
-                        <CommentAmountContainer
-                            style={{
-                                flex: 1,
-                                zIndex: 5,
-                                backgroundColor: "#f7543b",
-                                width: "3%",
-                                borderRadius: "20%",
-                                marginLeft: "4%",
-                                marginBottom: "-5%",
-                                position: "absolute",
-                            }}
-                        >
-                            <p
-                                style={{
-                                    textAlign: "center",
-                                }}
-                            >
-                                10+
-                            </p>
-                        </CommentAmountContainer>
-
-                        <IoChatbubbleEllipses
-                            style={{
-                                flex: 1,
-                                margin: "2%",
-                                padding: "2%",
-                                borderRadius: "20%",
-                                backgroundColor: "black",
-                            }}
-                            size={50}
-                            color="white"
-                        />
-                    </CommentContainer>
-                </BlogCard>
-                <BlogCard>
-                    <div
-                        style={{
-                            marginTop: "2%",
-                            flex: 1,
-                        }}
-                    >
-                        <h3
-                            style={{
-                                height: "15%",
-                                marginInline: "5%",
-                                textAlign: "center",
-                            }}
-                        >
-                            Learn to code in React{" "}
-                        </h3>
-                    </div>
-
-                    <BlogCoverImage src={BackGroundImage} />
-                    <CommentContainer>
-                        <CommentAmountContainer
-                            style={{
-                                flex: 1,
-                                zIndex: 5,
-                                backgroundColor: "#f7543b",
-                                width: "3%",
-                                borderRadius: "20%",
-                                marginLeft: "4%",
-                                marginBottom: "-5%",
-                                position: "absolute",
-                            }}
-                        >
-                            <p
-                                style={{
-                                    textAlign: "center",
-                                }}
-                            >
-                                10+
-                            </p>
-                        </CommentAmountContainer>
-
-                        <IoChatbubbleEllipses
-                            style={{
-                                flex: 1,
-                                margin: "2%",
-                                padding: "2%",
-                                borderRadius: "20%",
-                                backgroundColor: "black",
-                            }}
-                            size={50}
-                            color="white"
-                        />
-                    </CommentContainer>
-                </BlogCard>
-            </BlogPostContainer>
+            
         </Wrapper>
     );
 };

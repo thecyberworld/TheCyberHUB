@@ -69,7 +69,9 @@ export const UserBanner = styled.img`
     height: 250px;
     margin-top: -10%;
 `;
-export const UserInfo = styled.div``;
+export const UserInfo = styled.div`
+    padding: 2%
+`;
 
 export const HeaderSection = styled.div`
     display: flex;
