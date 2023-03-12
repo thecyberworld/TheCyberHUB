@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import {
-    BlogCard,
-    BlogCoverImage,
-    BlogPostContainer,
-    CommentAmountContainer,
-    CommentContainer,
     HeaderContainer,
     HeaderSection,
     ProfileContainer,
-    ProfileDetailsContainer,
+    ProfileDetailsSection,
+    ProfileUserDetailsContainer,
     UserBanner,
     UserImage,
     UserInfo,
@@ -20,17 +16,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { CircleSpinner } from "react-spinners-kit";
 import ComingSoon from "../../Other/MixComponents/ComingSoon";
 import { getCDNUrl, webEnv } from "../../../features/apiUrl";
-import BackGroundImage from "../../../assets/images/DevelopmentImages/coffee-computer.jpeg";
 import { BsFillGearFill } from "react-icons/bs";
-import { IoChatbubbleEllipses } from "react-icons/io5";
-import NewBlogCard from "../../Blogs/BlogCard/NewBlogCard";
 
 const Profile = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { isLoading, isError, message } = useSelector((state) => state.userDetails);
-    const { blogs} = useSelector((state) => state.blogs);
 
     useEffect(() => {
         if (user && isError) console.log(message);
@@ -53,9 +45,6 @@ const Profile = () => {
             <ProfileContainer>
                 <HeaderContainer>
                     <HeaderSection className="heading">
-                        <h5 style={{ zIndex: 2, backgroundColor: "black", paddingInline: "5%" }}>
-                            Welcome {user && user?.username}
-                        </h5>
                         <Link
                             style={{
                                 color: "whitesmoke",
@@ -71,24 +60,35 @@ const Profile = () => {
                             <BsFillGearFill style={{ zIndex: 2 }} size={25} />
                         </Link>
                     </HeaderSection>
-                    
+
                     {/* Change background image to working user's image - using static images */}
-                    <UserBanner src={BackGroundImage} />
+                    <UserBanner
+                        src={
+                            "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/assets/images/Registeration/CybersecurityRegPage.png"
+                        }
+                    />
                     <UserImage src={profilePictureUrl} />
                 </HeaderContainer>
-                <ProfileDetailsContainer>
-                    <h3 style={{
-                        marginInline: '2%'
-                    }}> Profile Details </h3>
-                    {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
+                <ProfileDetailsSection>
+                    <ProfileUserDetailsContainer>
+                        <h3
+                            style={{
+                                marginInline: "2%",
+                            }}
+                        >
+                            {" "}
+                            Profile Details{" "}
+                        </h3>
+                        {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
 
-                    <UserInfo>
-                        <h4>Name: {user?.name}</h4>
-                        <h5>Email: {user?.email}</h5> <br />
-                    </UserInfo>
-                </ProfileDetailsContainer>
+                        <UserInfo>
+                            <h5>Name: {user?.name}</h5>
+                            <h5>Email: {user?.email}</h5>
+                            <h5>Username: {user?.username}</h5> <br />
+                        </UserInfo>
+                    </ProfileUserDetailsContainer>
+                </ProfileDetailsSection>
             </ProfileContainer>
-            
         </Wrapper>
     );
 };

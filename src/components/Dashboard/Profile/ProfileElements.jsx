@@ -1,6 +1,14 @@
 import styled from "styled-components";
 
-export const ProfileContainer = styled.div``;
+export const ProfileContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1500px;
+    width: 100%;
+`;
 
 export const Heading = styled.h3``;
 
@@ -11,12 +19,12 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     @media screen and (max-width: 760px) {
     }
 `;
-export const ProfileDetailsContainer = styled.div`
-    margin: 2%;
+export const ProfileUserDetailsContainer = styled.div`
+    border: 5px solid #111111;
+    padding: 25px;
 `;
 export const BlogPostContainer = styled.div`
     margin: 2%;
@@ -25,18 +33,26 @@ export const BlogPostContainer = styled.div`
     justify-content: center;
 `;
 
+export const ProfileDetailsSection = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+`;
+
 export const CommentContainer = styled.div`
     flex: 1;
-    background-color: black,
+    background-color: black;
     flex-direction: row;
     margin-bottom: -20%;
-    
 `;
 export const CommentAmountContainer = styled.div`
-    flex: 1;
-    background-color: #fff,
-    flex-direction: row;
-    zIndex: 2;
+  flex: 1;
+  background-color: #fff,
+  flex-direction: row;
+  zIndex: 2;
 `;
 export const BlogCard = styled.div`
     margin: 1%;
@@ -64,20 +80,26 @@ export const BlogCoverImage = styled.img`
     margin-bottom: -20%;
 `;
 export const UserBanner = styled.img`
+    border: 5px solid #111111;
     width: 100%;
     object-fit: cover;
-    height: 250px;
-    margin-top: -10%;
+    height: 100%;
+    max-height: 250px;
+    margin-top: -100px;
+    @media screen and (max-width: 760px) {
+        max-height: 150px;
+    }
 `;
-export const UserInfo = styled.div`
-    padding: 2%
-`;
+export const UserInfo = styled.div``;
 
 export const HeaderSection = styled.div`
     display: flex;
     flex-direction: row;
 `;
-export const HeaderContainer = styled.div``;
+export const HeaderContainer = styled.div`
+    max-width: 1500px;
+    width: 100%;
+`;
 
 export const SkillLevelContainer = styled.div`
     display: flex;
