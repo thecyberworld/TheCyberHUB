@@ -40,6 +40,7 @@ const Profile = () => {
     if (webEnv !== "production") {
         return <ComingSoon />;
     }
+    console.log(user?.picture);
     return (
         <Wrapper>
             <ProfileContainer>
@@ -48,11 +49,9 @@ const Profile = () => {
                         <Link
                             style={{
                                 color: "whitesmoke",
-
                                 display: "flex",
                                 flex: 1,
                                 justifyContent: "flex-end",
-
                                 marginRight: 10,
                             }}
                             to={"edit"}
@@ -67,7 +66,7 @@ const Profile = () => {
                             "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com/assets/images/Registeration/CybersecurityRegPage.png"
                         }
                     />
-                    <UserImage src={profilePictureUrl} />
+                    <UserImage src={user?.picture || profilePictureUrl} />
                 </HeaderContainer>
                 <ProfileDetailsSection>
                     <ProfileUserDetailsContainer>
@@ -76,8 +75,7 @@ const Profile = () => {
                                 marginInline: "2%",
                             }}
                         >
-                            {" "}
-                            Profile Details{" "}
+                            Profile Details
                         </h3>
                         {isLoading && <CircleSpinner size={20} color={"#1fc10d"} />}
 

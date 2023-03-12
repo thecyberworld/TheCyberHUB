@@ -19,6 +19,9 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+
     @media screen and (max-width: 760px) {
     }
 `;
@@ -49,10 +52,10 @@ export const CommentContainer = styled.div`
     margin-bottom: -20%;
 `;
 export const CommentAmountContainer = styled.div`
-  flex: 1;
-  background-color: #fff,
-  flex-direction: row;
-  zIndex: 2;
+    flex: 1;
+    background-color: #fff;
+    flex-direction: row;
+    zindex: 2;
 `;
 export const BlogCard = styled.div`
     margin: 1%;
