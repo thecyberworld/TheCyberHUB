@@ -3,7 +3,7 @@ const SocialLinksTemplate = [
     { icon: "FaTwitter", platform: "Twitter", profileUsername: "", websiteLink: "https://twitter.com/" },
     { icon: "FaLinkedin", platform: "LinkedIn", profileUsername: "", websiteLink: "https://www.linkedin.com/in/" },
     { icon: "FaGithub", platform: "GitHub", profileUsername: "", websiteLink: "https://github.com/" },
-    { icon: "FaMedium", platform: "Medium", profileUsername: "", websiteLink: "https://medium.com/" },
+    { icon: "FaMedium", platform: "Medium", profileUsername: "", websiteLink: "https://medium.com/@" },
     { icon: "IoEarth", platform: "Website", profileUsername: "", websiteLink: "" },
 ];
 

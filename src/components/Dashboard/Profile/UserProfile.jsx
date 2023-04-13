@@ -21,7 +21,8 @@ const UserProfile = () => {
     const { userDetail, isLoading, isError, message } = useSelector((state) => state.userDetail);
     const [isEdit, setIsEdit] = useState(false);
 
-    const { username } = useParams();
+    let { username } = useParams();
+    username = username.split("@").join("");
 
     useEffect(() => {
         if (isError) console.log(message);

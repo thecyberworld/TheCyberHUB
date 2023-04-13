@@ -104,7 +104,7 @@ export const UserBanner = styled.img`
     object-fit: cover;
     height: 100%;
     max-height: 250px;
-    margin-top: -50px;
+    margin-top: -30px;
     @media screen and (max-width: 760px) {
         max-height: 150px;
     }
