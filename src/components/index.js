@@ -43,7 +43,6 @@ export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";
 export { default as Dashboard } from "../pages/Dashboard";
 export { default as Login } from "../pages/Login";
 export { default as UserProfile } from "../components/Dashboard/Profile/UserProfile";
-export { default as EditProfile } from "../components/Dashboard/Profile/EditProfile";
 export { default as LearningPath } from "./Learn/LearningPath/LearningPath";
 export { default as CreateBlog } from "./Blogs/ManageBlogs/CreateBlog/CreateBlog";
 export { default as GoalSetter } from "../components/Dashboard/GoalSetter/GoalSetter";
