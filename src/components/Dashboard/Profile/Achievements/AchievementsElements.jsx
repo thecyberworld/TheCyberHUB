@@ -34,6 +34,9 @@ export const AchievementLink = styled.a`
     &:hover {
         color: #007bff;
     }
+    //@media (max-width: 700px) {
+    //  flex-wrap: wrap;
+    //}
 `;
 
 export const IconDot = styled(BsDot)`
@@ -64,7 +67,8 @@ export const EditTitle = styled.input`
     font-size: 18px;
     margin: 5px 0;
     padding: 7px 10px;
-    width: 250px;
+    //min-width: 250px;
+    width: 100%;
 
     &:focus {
         outline: none;

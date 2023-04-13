@@ -8,7 +8,7 @@ import {
     AddButtonSection,
     EditTitle,
     IconDot,
-} from "./AchievementsElements";
+} from "../Achievements/AchievementsElements";
 import { IconAdd, RemoveButton } from "../SkillSet/SkillSetElements";
 
 const UserProjects = ({ projects, setUserDetailData, isEdit }) => {

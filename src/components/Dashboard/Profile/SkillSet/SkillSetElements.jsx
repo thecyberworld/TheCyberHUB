@@ -35,6 +35,31 @@ export const SkillSetListItem = styled.li`
     align-items: center;
     margin: 5px 0;
     gap: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+        gap: 5px;
+        justify-content: center;
+    }
+`;
+
+export const SkillName = styled.p`
+    font-size: 18px;
+    background: #212121;
+    color: #e7e7e7;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 0 7px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 0 5px;
+    }
 `;
 
 export const AddSkillInput = styled.input`
@@ -51,19 +76,6 @@ export const AddSkillInput = styled.input`
 `;
 export const UserDetailsContainer = styled.div`
     width: 100%;
-`;
-
-export const SkillName = styled.p`
-    font-size: 18px;
-    background: #212121;
-    color: #e7e7e7;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-    padding: 0 7px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
 `;
 
 export const SkillLevel = styled.p``;
