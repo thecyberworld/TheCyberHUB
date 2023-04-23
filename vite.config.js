@@ -37,4 +37,9 @@ export default defineConfig({
     //     port: 8080
     // },
     plugins: [react()],
+  build: {
+        rollupOptions: {
+            external: ["node:path"]
+        }
+    }
 });
