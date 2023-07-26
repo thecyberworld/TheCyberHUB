@@ -21,6 +21,7 @@
     "jspdf": "^2.5.1",
     "moment": "^2.29.4",
     "path-to-regexp": "^6.2.1",
+    "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-calendar-heatmap": "^1.9.0",
     "react-chartjs-2": "^5.2.0",
