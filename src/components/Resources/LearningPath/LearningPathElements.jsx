@@ -59,7 +59,7 @@ export const LearningPathWrapper = styled.div`
 export const BackArrow = styled(IoMdArrowRoundBack)`
     background: #33e33c;
     border-radius: 50%;
-    color: #ffffff;
+    color: #f5f5f5;
     padding: 5px;
     font-size: 30px;
     cursor: pointer;
@@ -79,7 +79,7 @@ export const BackArrow = styled(IoMdArrowRoundBack)`
 export const ForwardArrow = styled(IoMdArrowRoundForward)`
     background: #33e33c;
     border-radius: 50%;
-    color: #ffffff;
+    color: #f5f5f5;
     padding: 5px;
     font-size: 30px;
     cursor: pointer;
