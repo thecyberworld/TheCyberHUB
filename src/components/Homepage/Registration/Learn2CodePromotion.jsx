@@ -15,7 +15,7 @@ export const Learn2CodePromotion = styled.div`
     & #reg-promo-content {
         width: 100%;
         margin: 0 auto;
-        color: white;
+        color: #f5f5f5;
         height: 100%;
         display: flex;
         flex-direction: column;
@@ -30,7 +30,7 @@ export const Learn2CodePromotion = styled.div`
 
         & .brand-logo {
             font-weight: 600;
-            color: #33e33c;
+            color: #ff6b08;
             font-size: 25px;
             @media screen and (max-width: 850px) {
                 font-size: 20px;
@@ -39,7 +39,7 @@ export const Learn2CodePromotion = styled.div`
             transition: all 0.3s ease-in-out;
 
             &:hover {
-                color: #00ff0c;
+                color: #ff771f;
                 transform: scale(1.01);
                 transition: all 0.3s ease-in-out;
             }

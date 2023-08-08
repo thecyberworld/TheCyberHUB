@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { FaEdit, FaPlus } from "react-icons/fa";
+import {
+    // FaEdit,
+    FaPlus,
+} from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 
 export const SkillSetContainer = styled.div`
@@ -14,19 +17,19 @@ export const SkillSetContainer = styled.div`
     border-radius: 5px;
 `;
 
-export const SkillSetCategory = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-`;
-export const SkillSetCategoryH = styled.h5``;
-
-export const SkillSetList = styled.ul`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
-`;
+// export const SkillSetCategory = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     align-items: start;
+// `;
+// export const SkillSetCategoryH = styled.h5``;
+//
+// export const SkillSetList = styled.ul`
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     gap: 5px;
+// `;
 
 export const SkillSetListItem = styled.li`
     display: flex;
@@ -80,16 +83,16 @@ export const UserDetailsContainer = styled.div`
     gap: 10px;
 `;
 
-export const SkillLevel = styled.p``;
+// export const SkillLevel = styled.p``;
+//
+// export const EditButtonSection = styled.div`
+//     display: flex;
+//     width: 100%;
+//     flex-direction: row;
+//     justify-content: space-between;
+// `;
 
-export const EditButtonSection = styled.div`
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
-export const EditButton = styled(FaEdit)`
+export const EditButton = styled.div`
     cursor: pointer;
 
     &:hover {

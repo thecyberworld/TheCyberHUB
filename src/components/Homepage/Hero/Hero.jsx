@@ -15,7 +15,8 @@ import {
 import { ScrollButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 import { getCdnAssets } from "../../../features/apiUrl";
 
-const Video = `${getCdnAssets}/video/thecyberhubBackgroundVideo.mp4`;
+const video = `${getCdnAssets}/video/bgvideo.mp4`;
+// import video from '../../../assets/video/green_video3.mp4';
 
 const Hero = () => {
     const [hover, setHover] = useState(false);
@@ -27,7 +28,7 @@ const Hero = () => {
     return (
         <HeroContainer id={"home"}>
             <HeroBg>
-                <VideoBg autoPlay loop muted src={Video} type={"video/mp4"} />
+                <VideoBg autoPlay loop muted src={video} type={"video/mp4"} />
             </HeroBg>
 
             <HeroContent>
@@ -47,7 +48,7 @@ const Hero = () => {
                         exact="true"
                         offset={-80}
                     >
-                        Get Started {hover ? <ArrowForward /> : <ArrowRight />}
+                        Get Started {hover ? <ArrowRight /> : <ArrowForward />}
                     </ScrollButton>
                 </HeroBtnWrapper>
             </HeroContent>
