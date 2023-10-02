@@ -8,6 +8,7 @@ import { DashboardContainer } from "./DashboardElements";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../features/apiStatus";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
+import NoteApp from "./Notetaker/NoteApp";
 // import Sidebar from "./Sidebar/Sidebar";
 // import AuthPopup from "../../pages/AuthPopup/AuthPopup";
 
@@ -33,7 +34,8 @@ const Dashboard = () => {
     return (
         <Wrapper>
             <DashboardContainer>
-                <DashboardItems />
+                {/* <DashboardItems /> */}
+                <NoteApp />
             </DashboardContainer>
         </Wrapper>
     );
