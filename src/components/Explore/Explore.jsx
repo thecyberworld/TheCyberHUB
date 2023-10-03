@@ -30,10 +30,10 @@ const Explore = () => {
 
     // const {user} = useSelector(state => state.auth);
     const { isApiLoading, isApiWorking } = apiStatus();
-    const { userDetails } = useSelector((state) => state.userDetail);
+    const { userDetails, isUserDetailLoading } = useSelector((state) => state.userDetail);
     const { feeds, isFeedLoading } = useSelector((state) => state.feeds);
-    const { blogs } = useSelector((state) => state.blogs);
-    const { ctf } = useSelector((state) => state.ctf);
+    const { blogs, isBlogLoading } = useSelector((state) => state.blogs);
+    const { ctf, isCtfLoading } = useSelector((state) => state.ctf);
     // const {forums} = useSelector((state) => state.forums);
 
     useEffect(() => {
@@ -165,7 +165,12 @@ const Explore = () => {
 
                 <RightContainer>
                     {selectedType === "all" || selectedType === "users" ? (
-                        <Users userDetails={userDetails} searchTerm={searchTerm} displayAt={"explore"} />
+                        <Users
+                            userDetails={userDetails}
+                            isUserDetailLoading={isUserDetailLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
                     ) : null}
 
                     {selectedType === "all" || selectedType === "feeds" ? (
@@ -178,7 +183,12 @@ const Explore = () => {
                     ) : null}
 
                     {selectedType === "all" || selectedType === "blogs" ? (
-                        <BlogCards blogs={blogsData} searchTerm={searchTerm} displayAt={"explore"} />
+                        <BlogCards
+                            blogs={blogsData}
+                            isBlogLoading={isBlogLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
                     ) : null}
 
                     {/* {selectedType === "all" || selectedType === "forum" ? ( */}
@@ -186,7 +196,12 @@ const Explore = () => {
                     {/* ) : null} */}
 
                     {selectedType === "all" || selectedType === "ctf" ? (
-                        <CtfChallenges ctf={ctfData} searchTerm={searchTerm} displayAt={"explore"} />
+                        <CtfChallenges
+                            ctf={ctfData}
+                            isCtfLoading={isCtfLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
                     ) : null}
                 </RightContainer>
             </ExploreContainer>

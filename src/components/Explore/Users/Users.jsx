@@ -14,8 +14,9 @@ import {
 } from "./UsersElements";
 import { RouteLink } from "../../Dashboard/Sidebar/SidebarElements";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 
-const Users = ({ userDetails, searchTerm }) => {
+const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -27,6 +28,8 @@ const Users = ({ userDetails, searchTerm }) => {
 
         return () => dispatch(userDetailReset());
     }, [dispatch]);
+
+    if (isUserDetailLoading) return <LoadingSpinner />;
 
     // based on name or username
     const filteredUsers = userDetails?.filter(

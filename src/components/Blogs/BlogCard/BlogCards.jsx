@@ -1,8 +1,10 @@
 import React from "react";
 import { AllBlogs } from "../BlogsElements";
 import BlogCard from "./BlogCard";
+import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 
-const BlogCards = ({ blogs, searchTerm, blogsBookmarksData, displayAt }) => {
+const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displayAt }) => {
+    if (isBlogLoading) return <LoadingSpinner />;
     const filteredData = blogs?.filter((blog) => {
         // Check if blog is bookmarked
         const isBookmarked = blogsBookmarksData
