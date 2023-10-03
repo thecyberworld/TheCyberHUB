@@ -2,9 +2,12 @@ import React from "react";
 import { AllBlogs } from "../BlogsElements";
 import BlogCard from "./BlogCard";
 import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "../../../NotFound";
 
 const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displayAt }) => {
     if (isBlogLoading) return <LoadingSpinner />;
+    if (!blogs.length) return <NotFound title="Blogs Not Found" description="There are no blog posts" />;
+
     const filteredData = blogs?.filter((blog) => {
         // Check if blog is bookmarked
         const isBookmarked = blogsBookmarksData
