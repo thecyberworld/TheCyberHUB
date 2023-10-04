@@ -1,22 +1,30 @@
 import { useState, React } from "react";
+import './NoteApp.css'
 
 const AddNote = ({ handleAddNote }) => {
     const [noteText, setNoteText] = useState("");
     const [characterLimit, setCharacterLimit] = useState(200);
+    const [characterLimitError, setCharacterLimitError] = useState(false);
 
     const handleChange = (event) => {
         setNoteText(event.target.value);
+        if (noteText.trim().length > characterLimit) {
+            setCharacterLimitError(true);
+        } else {
+            setCharacterLimitError(false);
+        }
     };
 
     const handleSaveClick = () => {
-        if (noteText.trim().length > 0) {
+        if (noteText.trim().length > 0 && noteText.trim().length < characterLimit) {
             handleAddNote(noteText);
             setNoteText("");
         }
     };
 
+
     return (
-        <div>
+        <div className="note">
             <textarea
                 rows="8"
                 cols="10"
@@ -25,8 +33,8 @@ const AddNote = ({ handleAddNote }) => {
                 onChange={handleChange}
             ></textarea>
             <div>
-                <small>{characterLimit - noteText.length} characters remaining.</small>
-                <button onClick={handleSaveClick}>Save</button>
+                <small className={characterLimitError ? "character-limit-error" : "character-limit"}>{characterLimit - noteText.length} characters remaining.</small>
+                <button className="add-note-button" onClick={handleSaveClick}>Add</button>
             </div>
         </div>
     );

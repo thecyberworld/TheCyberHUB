@@ -6,18 +6,14 @@ const NoteApp = () => {
     const [notes, setNotes] = useState([]);
 
     useEffect(() => {
-        const savedNotes = JSON.parse(localStorage.getItem("notes"));
-        if (savedNotes) {
+        const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
+        if (savedNotes != '') {
             setNotes(savedNotes);
         }
     }, []);
 
     useEffect(() => {
         localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
-        const notesData = JSON.parse(localStorage.getItem("notes"));
-        if (notesData) {
-            setNotes(notesData);
-        }
     }, [notes]);
 
     const addNote = (text) => {
@@ -35,7 +31,7 @@ const NoteApp = () => {
     };
 
     return (
-        <div>
+        <div className="wrapper">
             <NoteList notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />
         </div>
     );

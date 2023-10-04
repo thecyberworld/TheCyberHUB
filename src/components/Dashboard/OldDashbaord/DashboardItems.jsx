@@ -1,10 +1,11 @@
 import React from "react";
 import { DashboardItemsContainer } from "../DashboardElements";
+import NoteApp from "../Notetaker/NoteApp";
 
 const DashboardItems = () => {
     return (
         <DashboardItemsContainer>
-            <p> Dashboard Items </p>
+
         </DashboardItemsContainer>
     );
 };
