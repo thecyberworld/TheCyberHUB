@@ -13,13 +13,14 @@ const Sidebar = () => {
             <RouteLink to={"/dashboard/bookmarks"}>
                 <SidebarTitle> Bookmarks </SidebarTitle>
             </RouteLink>
-
             <RouteLink to={"/dashboard/blogs"}>
                 <SidebarTitle> User Blogs </SidebarTitle>
             </RouteLink>
-
             <RouteLink to={"/dashboard/goals"}>
                 <SidebarTitle> Goals </SidebarTitle>
+            </RouteLink>
+            <RouteLink to={"/dashboard/settings/profile"}>
+                <SidebarTitle> Settings </SidebarTitle>
             </RouteLink>
 
             {/* <SidebarTitle> Analytics </SidebarTitle> */}
