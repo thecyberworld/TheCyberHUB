@@ -8,6 +8,10 @@ export const FooterContainer = styled.footer`
     margin-top: auto;
     width: 100%;
     padding: 100px;
+
+    @media screen and (max-width: 600px) {
+        padding: 24px;
+    }
 `;
 
 export const FooterWrap = styled.div`
