@@ -77,6 +77,7 @@ export const FooterScrollLink = styled(ScrollLink)`
     color: #f5f5f5;
     text-decoration: none;
     font-size: 15px;
+    cursor: pointer;
 
     &:hover {
         color: #ff6b08;
