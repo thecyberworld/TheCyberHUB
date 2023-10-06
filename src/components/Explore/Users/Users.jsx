@@ -14,8 +14,10 @@ import {
 } from "./UsersElements";
 import { RouteLink } from "../../Dashboard/Sidebar/SidebarElements";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "../../../NotFound";
 
-const Users = ({ userDetails, searchTerm }) => {
+const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -28,6 +30,9 @@ const Users = ({ userDetails, searchTerm }) => {
         return () => dispatch(userDetailReset());
     }, [dispatch]);
 
+    if (isUserDetailLoading) return <LoadingSpinner />;
+    if (!userDetails.length)
+        return <NotFound title="User Detailes Not Found" description="There are no user details" />;
     // based on name or username
     const filteredUsers = userDetails?.filter(
         (user) =>
