@@ -7,6 +7,7 @@ import { getBookmarks } from "../../features/bookmarks/bookmarkSlice";
 import { getViews } from "../../features/feeds/views/viewSlice";
 import { getFeedComments } from "../../features/feeds/feedComments/feedCommentsSlice";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "../../NotFound";
 
 const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt }) => {
     const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     }, [dispatch]);
 
     if (isFeedLoading) return <LoadingSpinner />;
+    if (!feeds.length) return <NotFound title="Feeds Not Found" description="There are no feeds" />;
 
     const filteredData = feeds?.filter((feed) => {
         const contentIncludesSearchTerm =

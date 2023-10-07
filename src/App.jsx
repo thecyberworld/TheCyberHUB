@@ -49,6 +49,7 @@ import AuthRoute from "./pages/AuthRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
+import SettingsRoute from "./components/Dashboard/Settings";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -116,6 +117,8 @@ const App = () => {
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
+
+                        <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
 
