@@ -27,6 +27,8 @@ const UserProfile = () => {
 
     const { blogs, isBlogLoading } = useSelector((state) => state.blogs);
     const { username } = useParams();
+    console.log(username);
+    console.log(1);
 
     const userDetail = userDetails?.find((user) => user?.username === username);
 
@@ -59,15 +61,16 @@ const UserProfile = () => {
         userDetail?.length === 0 ||
         userDetail === "Request failed with status code 404" ||
         message === "Request failed with status code 500"
-    ) {
+    )
         return (
             <Wrapper>
-                <NotFound />
+                {" "}
+                <NotFound />{" "}
             </Wrapper>
         );
-    }
 
     const { aboutMe, skills, achievements, projects } = userDetail || {};
+
     return (
         <Wrapper>
             <ProfileContainer>

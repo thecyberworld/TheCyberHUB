@@ -60,6 +60,7 @@ const Blogs = () => {
                         <LoadingBlogCard />
                         <LoadingBlogCard />
                         <LoadingBlogCard />
+                        <LoadingBlogCard />
                     </AllBlogs>
                 </MiddleContainer>
             </Wrapper>
