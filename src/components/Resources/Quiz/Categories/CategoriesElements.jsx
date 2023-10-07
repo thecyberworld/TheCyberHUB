@@ -118,7 +118,7 @@ export const QuestionButton = styled.button`
     transition: 0.1s ease;
 
     &:hover {
-        background-color: rgb(95, 232, 49);
+        background-color: #ff6b08;
         color: #000000;
     }
 
@@ -151,7 +151,7 @@ export const CategoriesSection = styled.section`
 export const MobileCategories = styled(CategoriesSection)`
     background-color: #1a1c1d;
     border-radius: 1rem;
-    box-shadow: 0 0 3px 1px rgba(44, 222, 76, 0.56);
+    box-shadow: 0 0 3px 1px rgb(222, 97, 14);
     flex-direction: column;
     justify-content: start;
     max-width: fit-content;
@@ -181,7 +181,7 @@ export const CategoriesButton = styled.button`
     transition: 0.3s ease;
 
     &:hover {
-        background-color: rgb(95, 232, 49);
+        background-color: #ff6b08;
         color: #000000;
     }
 

@@ -27,6 +27,16 @@ const SIDEBAR_LINKS = [
         label: "Display",
         href: "/dashboard/settings/display",
     },
+    {
+        id: 6,
+        label: "Dashboard",
+        href: "/dashboard",
+    },
+    {
+        id: 7,
+        label: "Home",
+        href: "/",
+    },
 ];
 
 export default function Sidebar() {

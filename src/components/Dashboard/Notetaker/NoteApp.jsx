@@ -7,7 +7,7 @@ const NoteApp = () => {
 
     useEffect(() => {
         const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
-        if (savedNotes != '') {
+        if (savedNotes !== "") {
             setNotes(savedNotes);
         }
     }, []);
@@ -26,7 +26,7 @@ const NoteApp = () => {
     };
 
     const deleteNote = (id) => {
-        const newNotes = notes.filter((note) => note.id !== id);
+        const newNotes = notes?.filter((note) => note.id !== id);
         setNotes(newNotes);
     };
 
