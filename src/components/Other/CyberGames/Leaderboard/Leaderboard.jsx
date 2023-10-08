@@ -8,7 +8,6 @@ import {
     LeaderboardTableData,
     LeaderboardTablePoints,
     LeaderboardTableHeader,
-    LeaderboardTableHeaderUsers,
     LeaderboardTableHeaderPoints,
     LeaderboardTableRow,
     RefreshButton,
@@ -72,7 +71,7 @@ const Leaderboard = () => {
                         <tbody>
                             <LeaderboardTableRow>
                                 <LeaderboardTableHeader>Rank</LeaderboardTableHeader>
-                                <LeaderboardTableHeaderUsers>Users</LeaderboardTableHeaderUsers>
+                                <LeaderboardTableHeader>Users</LeaderboardTableHeader>
                                 <LeaderboardTableHeaderPoints>Points</LeaderboardTableHeaderPoints>
                             </LeaderboardTableRow>
                             {userDetails &&
