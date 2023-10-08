@@ -56,6 +56,21 @@ export const LeaderboardTableData = styled.td`
     text-align: start;
 `;
 
+export const LeaderboardTextIconData = styled.span`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+`
+export const LeaderboardFirstRow = styled.span`
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 5px
+`
+
 export const LeaderboardTablePoints = styled.td`
     border: 1px solid #181818;
     padding: 5px 12px;
