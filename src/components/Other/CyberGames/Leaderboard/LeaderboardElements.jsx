@@ -43,12 +43,6 @@ export const LeaderboardTableHeader = styled.th`
     text-align:start;
     padding: 12px;
 `;
-export const LeaderboardTableHeaderUsers = styled.th`
-    background-color: #101010;
-    border: 1px solid #181818;
-    padding: 12px;
-    text-align: start;
-`;
 export const LeaderboardTableHeaderPoints = styled.th`
     background-color: #101010;
     border: 1px solid #181818;
