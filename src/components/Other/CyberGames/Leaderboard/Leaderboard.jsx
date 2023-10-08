@@ -13,10 +13,12 @@ import {
     RefreshButton,
     TopPlayerSection,
     Username,
+    LeaderboardTextIconData,
+    LeaderboardFirstRow,
 } from "./LeaderboardElements";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import { RouterLink } from "../../../Tools/ToolsElements";
-import { RankCgCrown } from "../../../Dashboard/Profile/UserPoints/UserPointsElements";
+import { RankTrophy } from "../../../Dashboard/Profile/UserPoints/UserPointsElements";
 import UnderMaintenance from "../../UnderMaintenance/UnderMaintenance";
 import { CircleSpinner } from "react-spinners-kit";
 import apiStatus from "../../../../features/apiStatus";
@@ -80,17 +82,38 @@ const Leaderboard = () => {
                                     .sort((a, b) => (b?.exp || 0) - (a?.exp || 0))
                                     .map((user, index) => (
                                         <LeaderboardTableRow key={index}>
-                                            <LeaderboardTableData>{index + 1}</LeaderboardTableData>
+                                            <LeaderboardTableData>
+                                                <LeaderboardTextIconData>
+                                                    {index === 0 ? (
+                                                        <LeaderboardFirstRow>
+                                                            <RankTrophy style={{ color: '#FFD700' }} />
+                                                            {index+1}
+                                                        </LeaderboardFirstRow>
+                                                    ) : <> <RankTrophy /> {index + 1}</>
+                                                }
+                                                </LeaderboardTextIconData>
+                                            </LeaderboardTableData>
                                             <LeaderboardTableData>
                                                 <TopPlayerSection>
-                                                    {index === 0 ? <RankCgCrown style={{ margin: "0" }} /> : null}
                                                     <RouterLink to={`/@${user?.username}`}>
-                                                        <Username>{user?.username}</Username>
+                                                        {index === 0 ? (
+                                                            <Username>
+                                                                    <LeaderboardFirstRow>
+                                                                    {user?.username}
+                                                                    </LeaderboardFirstRow>
+                                                                </Username>
+                                                        ):<Username>{user?.username}</Username>
+                                                        }
                                                     </RouterLink>
-                                                    {index === 0 ? <RankCgCrown style={{ margin: "0" }} /> : null}
                                                 </TopPlayerSection>
                                             </LeaderboardTableData>
-                                            <LeaderboardTablePoints>{user?.exp || 0}</LeaderboardTablePoints>
+                                            <LeaderboardTablePoints>
+                                                {index === 0 ? (
+                                                    <LeaderboardFirstRow>
+                                                    {user?.exp || 0}
+                                                    </LeaderboardFirstRow>
+                                                ) :<>{user?.exp || 0}</>}
+                                            </LeaderboardTablePoints>
                                         </LeaderboardTableRow>
                                     ))}
                         </tbody>
