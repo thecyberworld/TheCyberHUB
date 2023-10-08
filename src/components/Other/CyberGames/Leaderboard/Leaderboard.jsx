@@ -6,7 +6,10 @@ import {
     LeaderboardHeader,
     LeaderboardTable,
     LeaderboardTableData,
+    LeaderboardTablePoints,
     LeaderboardTableHeader,
+    LeaderboardTableHeaderUsers,
+    LeaderboardTableHeaderPoints,
     LeaderboardTableRow,
     RefreshButton,
     TopPlayerSection,
@@ -69,8 +72,8 @@ const Leaderboard = () => {
                         <tbody>
                             <LeaderboardTableRow>
                                 <LeaderboardTableHeader>Rank</LeaderboardTableHeader>
-                                <LeaderboardTableHeader>Users</LeaderboardTableHeader>
-                                <LeaderboardTableHeader>Points</LeaderboardTableHeader>
+                                <LeaderboardTableHeaderUsers>Users</LeaderboardTableHeaderUsers>
+                                <LeaderboardTableHeaderPoints>Points</LeaderboardTableHeaderPoints>
                             </LeaderboardTableRow>
                             {userDetails &&
                                 [...userDetails]
@@ -88,7 +91,7 @@ const Leaderboard = () => {
                                                     {index === 0 ? <RankCgCrown style={{ margin: "0" }} /> : null}
                                                 </TopPlayerSection>
                                             </LeaderboardTableData>
-                                            <LeaderboardTableData>{user?.exp || 0}</LeaderboardTableData>
+                                            <LeaderboardTablePoints>{user?.exp || 0}</LeaderboardTablePoints>
                                         </LeaderboardTableRow>
                                     ))}
                         </tbody>
