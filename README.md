@@ -1,12 +1,12 @@
 <h1 align="center"> TheCyberHUB </h1>
 
-![TheCyberHUB by Thecyberworld Community](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/2bb4b449-110b-4402-8860-8f302dad61dc)
+![TheCyberHUB by Thecyberworld Community](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/4262f73b-45ee-439a-b7f3-94480b5555dd)
 
-<!-- ![thecyberhub](https://user-images.githubusercontent.com/44284877/180642062-a9a66f83-746c-468e-97a8-707c259a92cd.png) -->
+[//]: # "![thecyberhub](https://user-images.githubusercontent.com/44284877/180642062-a9a66f83-746c-468e-97a8-707c259a92cd.png)"
 
 <p align="center">
     👨‍💻 Website link:
-    <a href="https://thecyberhub.org/"> thecyberhub </a>
+    <a href="https://www.thecyberhub.org/"> TheCyberHUB </a>
 </p>
 <div align="center">
 
@@ -22,7 +22,6 @@
 -   [🤖 Installation Guidelines](#-installation-guidelines)
     -   [👇 Prerequisites](#-prerequisites)
     -   [🛠️ Installation Steps](#-installation-steps)
--   [Try Website](https://thecyberhub.org)
 -   [👨‍💻 Contributing](#-contributing)
 -   [🛡️ License](#-license)
 -   [🙏 Support](#-support)
