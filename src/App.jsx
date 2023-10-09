@@ -50,6 +50,7 @@ import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
+import TCHBot from "./components/Chatbot/TCHBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -163,6 +164,7 @@ const App = () => {
                         <Route path={"*"} element={<NotFound />} />
                     </Routes>
                 </ScrollToTop>
+                <TCHBot />
                 {!hideHomeHeader() && <Footer />}
             </Container>
             <ToastContainer
