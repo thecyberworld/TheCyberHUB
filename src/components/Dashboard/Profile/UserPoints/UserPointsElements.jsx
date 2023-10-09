@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { TbCrown } from "react-icons/tb";
+import { BsTrophyFill } from "react-icons/bs";
 
 export const UserPointsContainer = styled.div`
     background: #090909;
@@ -36,10 +36,8 @@ export const RankNumber = styled.p`
     font-weight: 600;
 `;
 
-export const RankCgCrown = styled(TbCrown)`
-    margin-bottom: -10px;
-    color: #ff6b08;
-    font-size: 30px;
+export const RankTrophy = styled(BsTrophyFill)`
+    color: white;
 `;
 
 export const UserExpContainer = styled.div``;
