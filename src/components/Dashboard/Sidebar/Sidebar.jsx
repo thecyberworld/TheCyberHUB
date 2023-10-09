@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     DashboardSidebarContainer,
     RouteLink,
@@ -13,10 +13,24 @@ import {
     BiSolidChevronRighIcon,
     UserProfile,
     UserProfileDescription,
-    BiSolidCircleIcon
+    BiSolidCircleIcon,
 } from "./SidebarElements";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
+import { cdnContentImagesUrl } from "../../../features/apiUrl";
 
 const Sidebar = () => {
+    const dispatch = useDispatch();
+    const { userDetails } = useSelector((state) => state.userDetail);
+    const { user } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        if (user) dispatch(getAllUserDetails());
+    }, [dispatch, user]);
+
+    const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
+    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
+
     const [isOpen, setIsOpen] = useState(true);
 
     const sidebarItems = [
@@ -24,20 +38,19 @@ const Sidebar = () => {
         { to: "/dashboard/bookmarks", icon: <BiBookmarksIcon />, label: "Bookmarks" },
         { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
-        { to: "/dashboard/settings/profile", icon: <CiSettingsIcon />, label: "Settings" }
+        { to: "/dashboard/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
     ];
 
     return (
         <DashboardSidebarContainer isOpen={isOpen}>
-
             <UserProfile isOpen={isOpen}>
                 <div className="user-profile-image">
-                    <img src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80' alt="Profile Picture" />
+                    <img src={avatar} alt={userDetail?.username + " Profile Picture"} />
                     <BiSolidCircleIcon />
                 </div>
                 <UserProfileDescription isOpen={isOpen}>
-                    <h3>John Cena</h3>
-                    <span>@johncena</span>
+                    <h3>{userDetail?.name}</h3>
+                    <span>@{userDetail?.username}</span>
                 </UserProfileDescription>
 
                 <ToggleButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
@@ -45,12 +58,11 @@ const Sidebar = () => {
                 </ToggleButton>
             </UserProfile>
 
-
             <section className={"heading"}>
-                <p> {isOpen && 'Dashboard'}</p>
+                <p> {isOpen && "Dashboard"}</p>
             </section>
 
-            {sidebarItems.map(item => (
+            {sidebarItems.map((item) => (
                 <RouteLink key={item.to} to={item.to} isOpen={isOpen}>
                     {item.icon}
                     {isOpen && <SidebarTitle isOpen={isOpen}> {item.label} </SidebarTitle>}
