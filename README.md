@@ -1,6 +1,6 @@
 <h1 align="center"> TheCyberHUB </h1>
 
-![TheCyberHUB by Thecyberworld Community](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/4262f73b-45ee-439a-b7f3-94480b5555dd)
+![TheCyberHUB by Thecyberworld Community](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/e56a35cc-9f6c-4032-a209-efaa1d328894)
 
 [//]: # "![thecyberhub](https://user-images.githubusercontent.com/44284877/180642062-a9a66f83-746c-468e-97a8-707c259a92cd.png)"
 
