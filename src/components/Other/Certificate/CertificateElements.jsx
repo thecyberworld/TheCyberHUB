@@ -179,3 +179,45 @@ export const DownloadButton = styled(ButtonGreen)`
     margin: 5px;
     padding: 7px 25px;
 `;
+
+export const ShareCertificateSection = styled.div`
+    width: 100%;
+    align-items: center;
+    text-align: center;
+
+    & > p {
+        margin: 5px;
+        font-size: 20px;
+    }
+`;
+export const ShareCertificateSocials = styled.div`
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+`;
+export const Twitter = styled.a`
+    color: #f5f5f5;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+
+    &:hover {
+        color: #1d9bf0;
+        scale: 1.2;
+        transition: 0.3s ease-out;
+    }
+`;
+export const Linkedin = styled.a`
+    color: #f5f5f5;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+
+    &:hover {
+        color: #0072b1;
+        scale: 1.2;
+        transition: 0.3s ease-out;
+    }
+`;
