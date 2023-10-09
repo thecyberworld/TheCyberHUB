@@ -79,7 +79,11 @@ const App = () => {
     };
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+        const overflowStatus = document.body.style.overflow;
+        document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
+    };
 
     const { user } = useSelector((state) => state.auth);
 
