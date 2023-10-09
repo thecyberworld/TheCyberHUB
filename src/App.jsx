@@ -52,6 +52,7 @@ import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
 import ChatBot from "./components/ChatBot/ChatBot";
 
+
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { pathname } = useLocation();
@@ -80,7 +81,11 @@ const App = () => {
     };
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+        const overflowStatus = document.body.style.overflow;
+        document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
+    };
 
     const { user } = useSelector((state) => state.auth);
 
