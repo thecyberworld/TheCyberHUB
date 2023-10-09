@@ -87,22 +87,22 @@ const CertificateCard = () => {
     const shareOnTwitter = () => {
         const tweet =
             "I just got my certificate for " +
-            certificate.ctf +
-            " from @thecyberw0rld. Check it out at https://thecyberhub.org/CTF/certificate/" +
-            certificate._id;
+            certificate?.ctf +
+            " from @thecyberw0rld community. Check it out at https://thecyberhub.org/ctf/certificate/" +
+            certificate?._id;
         window.open("https://twitter.com/intent/tweet?text=" + tweet);
     };
 
     const shareOnLinkedIn = () => {
         const text =
             "I just got my certificate for " +
-            certificate.ctf +
-            " from @thecyberworld. Check it out at https://thecyberhub.org/CTF/certificate/" +
-            certificate._id;
+            certificate?.ctf +
+            " from @thecyberworld community. Check it out at https://thecyberhub.org/ctf/certificate/" +
+            certificate?._id;
         const url = "https://www.linkedin.com/feed/?shareActive=true&text=" + text;
         window.open(url);
     };
-    //
+
     if (isLoading) {
         return (
             <Wrapper>
