@@ -11,9 +11,10 @@ import { ThecyberhubBot, BotButtonCont } from "./ChatbotElements";
 // import { FaRobot } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
 import { getCdnAssets } from "../../features/apiUrl";
+
 const logoThecyberworld = `${getCdnAssets}/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png`;
 
-export default function TCHBot() {
+export default function ChatBot() {
     const [callBot, setCallBot] = useState(false);
 
     const talkToBot = useCallback(() => {
@@ -28,13 +29,7 @@ export default function TCHBot() {
             <BotButtonCont>
                 <button onClick={talkToBot}>
                     {!callBot ? (
-                        <img
-                            style={{
-                                padding: "5px",
-                            }}
-                            src={logoThecyberworld}
-                            alt={""}
-                        />
+                        <img style={{ padding: "5px" }} src={logoThecyberworld} alt={""} />
                     ) : (
                         <CgClose size={35} style={{ color: "white" }} />
                     )}
