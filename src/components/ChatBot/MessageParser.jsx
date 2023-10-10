@@ -1,4 +1,3 @@
-// MessageParser code
 class MessageParser {
     constructor(actionProvider, state) {
         this.actionProvider = actionProvider;
@@ -10,7 +9,6 @@ class MessageParser {
         const lowerCaseMessageArr = lowerCaseMessage.split(" ");
         const actions = this.actionProvider;
 
-        // Detect the User's name
         if (lowerCaseMessage === "") {
             actions.warn();
         } else if (lowerCaseMessage.includes("is") || lowerCaseMessage.includes("am")) {

@@ -1,12 +1,11 @@
 import React from "react";
 
-// // Config code
 import { createChatBotMessage } from "react-chatbot-kit";
 
 import AssistOptions from "./Widgets/Assists/AssistOptions";
 import AssistLinks from "./Widgets/Assists/AssistLinks";
 
-import TCHBotAvatar from "./Widgets/BotComponents/TCHBotAvatar";
+import ChatBotAvatar from "./Widgets/BotComponents/ChatBotAvatar";
 
 const botName = "TCHBot";
 
@@ -19,7 +18,7 @@ const config = {
     state: {
         optionName: "",
     },
-    customComponents: { botAvatar: (props) => <TCHBotAvatar {...props} /> },
+    customComponents: { botAvatar: (props) => <ChatBotAvatar {...props} /> },
     widgets: [
         {
             widgetName: "assistOptions",

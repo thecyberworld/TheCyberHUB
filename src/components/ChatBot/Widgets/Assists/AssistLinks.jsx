@@ -16,5 +16,11 @@ export default function AssistLinks(props) {
             : "";
     });
 
-    return <LinkList>{linkMarkup}</LinkList>;
+    return (
+        <LinkList>
+            {linkMarkup.map((item, id) => (
+                <div key={id}> {item} </div>
+            ))}
+        </LinkList>
+    );
 }

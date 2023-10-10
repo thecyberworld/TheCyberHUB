@@ -11,8 +11,6 @@ const rootElement = document.getElementById("root");
 export const webEnv = import.meta.env.VITE_WEB_ENV || "production";
 const hostname = window.location.hostname;
 
-console.log(hostname);
-
 ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
         {webEnv === "security" || (webEnv === "development" && hostname !== "localhost") ? (

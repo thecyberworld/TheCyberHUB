@@ -27,8 +27,6 @@ const UserProfile = () => {
 
     const { blogs, isBlogLoading } = useSelector((state) => state.blogs);
     const { username } = useParams();
-    console.log(username);
-    console.log(1);
 
     const userDetail = userDetails?.find((user) => user?.username === username);
 

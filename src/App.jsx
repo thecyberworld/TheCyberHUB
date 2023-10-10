@@ -52,7 +52,6 @@ import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
 import ChatBot from "./components/ChatBot/ChatBot";
 
-
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { pathname } = useLocation();

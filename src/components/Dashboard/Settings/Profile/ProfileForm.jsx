@@ -46,10 +46,6 @@ export default function SettingsForm() {
                 ...curr,
                 error: "Email required!",
             }));
-
-        console.log("new username: ", username.value);
-        console.log("new password: ", password.value);
-        console.log("new email: ", email.value);
     }
 
     return (
