@@ -22,9 +22,11 @@ import {
 } from "../CategoriesData";
 import CategoriesButtons from "./CategoriesButtons";
 import RenderProgressIndicator from "../../../../utils/components/RenderProgressIndicator";
+import QuizStartSection from "../QuizStartSection";
 
 export default function Categories() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [quizStart, setQuizStart] = useState(false);
     const [showScore, setShowScore] = useState(false);
     const [score, setScore] = useState(0);
     const [scoreList, setScoreList] = useState(0);
@@ -96,33 +98,44 @@ export default function Categories() {
                 showDropdown={showDropdown}
             />
             <QuizSection>
-                {showScore ? (
-                    <ScoreSection>
-                        <ScoreInfo>
-                            You scored {score} out of {questions.length}
-                        </ScoreInfo>
-                        <ResetButton onClick={() => handleResetButton(score)}>Start again</ResetButton>
-                    </ScoreSection>
+                {quizStart ? (
+                    <>
+                        {showScore ? (
+                            <ScoreSection>
+                                <ScoreInfo>
+                                    You scored {score} out of {questions.length}
+                                </ScoreInfo>
+                                <ResetButton onClick={() => handleResetButton(score)}>Start again</ResetButton>
+                            </ScoreSection>
+                        ) : (
+                            <QuizBody>
+                                <QuestionSection>
+                                    <QuestionCount>
+                                        <RenderProgressIndicator
+                                            length={questions.length}
+                                            currentQuestion={currentQuestion}
+                                        />
+                                        <span>Question {currentQuestion + 1}</span>
+                                    </QuestionCount>
+                                    <QuestionText>{questions[currentQuestion].questionText}</QuestionText>
+                                </QuestionSection>
+                                <AnswerSection>
+                                    {questions[currentQuestion].answerOptions.map((answerOption, i) => (
+                                        <QuestionButton
+                                            key={i}
+                                            onClick={() =>
+                                                handleAnswerButtonClick(answerOption.isCorrect, questions.length)
+                                            }
+                                        >
+                                            {answerOption.answerText}
+                                        </QuestionButton>
+                                    ))}
+                                </AnswerSection>
+                            </QuizBody>
+                        )}
+                    </>
                 ) : (
-                    <QuizBody>
-                        <QuestionSection>
-                            <QuestionCount>
-                                <RenderProgressIndicator questionsArray={questions} currentQuestion={currentQuestion} />
-                                <span>Question {currentQuestion + 1}</span>
-                            </QuestionCount>
-                            <QuestionText>{questions[currentQuestion].questionText}</QuestionText>
-                        </QuestionSection>
-                        <AnswerSection>
-                            {questions[currentQuestion].answerOptions.map((answerOption, i) => (
-                                <QuestionButton
-                                    key={i}
-                                    onClick={() => handleAnswerButtonClick(answerOption.isCorrect, questions.length)}
-                                >
-                                    {answerOption.answerText}
-                                </QuestionButton>
-                            ))}
-                        </AnswerSection>
-                    </QuizBody>
+                    <QuizStartSection setQuizStart={setQuizStart} />
                 )}
             </QuizSection>
         </section>
