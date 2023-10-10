@@ -7,7 +7,7 @@ import AssistLinks from "./Widgets/Assists/AssistLinks";
 
 import ChatBotAvatar from "./Widgets/BotComponents/ChatBotAvatar";
 
-const botName = "TCHBot";
+const botName = "ChatBot";
 
 const config = {
     initialMessages: [
