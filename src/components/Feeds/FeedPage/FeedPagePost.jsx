@@ -76,7 +76,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                             (tag, id) =>
                                 tag !== "" && (
                                     <RouteLink to={`/explore/${tag}`} key={id}>
-                                        <PostTag key={id}>#{tag}</PostTag>
+                                        <PostTag key={id}>{tag}</PostTag>
                                     </RouteLink>
                                 ),
                         )}

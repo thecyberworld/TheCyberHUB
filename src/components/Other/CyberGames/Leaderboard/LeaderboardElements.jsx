@@ -31,23 +31,50 @@ export const LeaderboardTable = styled.table`
 export const LeaderboardTableRow = styled.tr`
     background-color: #181818;
     color: #dadada;
-    text-align: center;
-    align-items: center;
     padding: 8px;
+    &:hover{
+        background-color: #333333;
+    }
 `;
 
 export const LeaderboardTableHeader = styled.th`
     background-color: #101010;
     border: 1px solid #181818;
+    text-align:start;
     padding: 12px;
-    text-align: center;
+`;
+export const LeaderboardTableHeaderPoints = styled.th`
+    background-color: #101010;
+    border: 1px solid #181818;
+    padding: 12px;
+    text-align: right;
 `;
 
 export const LeaderboardTableData = styled.td`
-    background: #131313;
     border: 1px solid #181818;
-    padding: 5px;
-    text-align: center;
+    padding: 5px 12px;
+    text-align: start;
+`;
+
+export const LeaderboardTextIconData = styled.span`
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+`
+export const LeaderboardFirstRow = styled.span`
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 5px
+`
+
+export const LeaderboardTablePoints = styled.td`
+    border: 1px solid #181818;
+    padding: 5px 12px;
+    text-align: right;
 `;
 
 export const RefreshSection = styled.div`
@@ -67,7 +94,7 @@ export const RefreshButton = styled(MdRefresh)`
 export const TopPlayerSection = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 5px;
 `;

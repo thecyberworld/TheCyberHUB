@@ -1,12 +1,12 @@
 <h1 align="center"> TheCyberHUB </h1>
 
-![thecyberhub](https://user-images.githubusercontent.com/44284877/194150142-1df54766-b8bb-4d9c-9e86-26907e324551.gif)
+![TheCyberHUB by Thecyberworld Community](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/e56a35cc-9f6c-4032-a209-efaa1d328894)
 
-<!-- ![thecyberhub](https://user-images.githubusercontent.com/44284877/180642062-a9a66f83-746c-468e-97a8-707c259a92cd.png) -->
+[//]: # "![thecyberhub](https://user-images.githubusercontent.com/44284877/180642062-a9a66f83-746c-468e-97a8-707c259a92cd.png)"
 
 <p align="center">
     👨‍💻 Website link:
-    <a href="https://thecyberhub.org/"> thecyberhub </a>
+    <a href="https://www.thecyberhub.org/"> TheCyberHUB </a>
 </p>
 <div align="center">
 
@@ -17,15 +17,15 @@
 </div>
 
 ## Table of contents 💻
-- [Title](#thecyberhub-hub-of-cyber-security)
-- [🤖 Installation Guidelines](#-installation-guidelines)
-  - [👇 Prerequisites](#-prerequisites)
-  - [🛠️ Installation Steps](#-installation-steps)
-- [Try Website](https://thecyberhub.org)
-- [👨‍💻 Contributing](#-contributing)
-- [🛡️ License](#-license)
-- [🙏 Support](#-support)
-- [📨 Contact US](#-contact-us)
+
+-   [Title](#thecyberhub-hub-of-cyber-security)
+-   [🤖 Installation Guidelines](#-installation-guidelines)
+    -   [👇 Prerequisites](#-prerequisites)
+    -   [🛠️ Installation Steps](#-installation-steps)
+-   [👨‍💻 Contributing](#-contributing)
+-   [🛡️ License](#-license)
+-   [🙏 Support](#-support)
+-   [📨 Contact US](#-contact-us)
 
 ---
 
@@ -35,28 +35,30 @@
 
 Before installation, please make sure you have already installed the following tools:
 
-- [Git](https://git-scm.com/downloads)
-- [Nodejs](https://nodejs.org/en/download/)
-
+-   [Git](https://git-scm.com/downloads)
+-   [Nodejs](https://nodejs.org/en/download/)
 
 ### 🛠 Installation Steps
 
-1. Fork the project
+1. Fork the project (click on fork, uncheck **_copy the only `main` branch_**, and create fork)
+   ![image](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/0233f1e8-e05a-473b-b1b9-8dc52a6338bd)
 2. Clone the forked project
 3. Navigate to the cloned project directory
-4. Install the dependencies with `npm install`
-5. Run `npm run dev` to start the server
-6. Open the browser to visit the website at http://localhost:3000/
+4. Move to the dev branch: `git checkout dev`
+5. Install the dependencies with `npm install`
+6. Rename `example.env` to `.env`
+7. Run `npm run dev` to start the server
+8. Open the browser to visit the website at http://localhost:3000/
 
-> If you are new to Git and GitHub then must check out **[git-github-practice](https://github.com/CryptoverseWeb3/git-github-practice)** repository **first** and contribute to it before you contributing to other open-source projects.
+> If you are new to Git and GitHub then must check out **[start-opensource](https://github.com/thecyberworld/start-opensource)** repository **first** and contribute to it before you contributing to other open-source projects.
 
 ---
 
 ## 👨‍💻 Contributing
 
-- Contributions make the open source community such an amazing place to learn, inspire, and create.
-- Any contributions you make are **truly appreciated**.
-- Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
+-   Contributions make the open source community such an amazing place to learn, inspire, and create.
+-   Any contributions you make are **truly appreciated**.
+-   Check out our [contribution guidelines](/CONTRIBUTING.md) for more information.
 
 ---
 

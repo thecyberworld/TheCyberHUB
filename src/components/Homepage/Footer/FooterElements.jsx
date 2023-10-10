@@ -8,6 +8,10 @@ export const FooterContainer = styled.footer`
     margin-top: auto;
     width: 100%;
     padding: 100px;
+
+    @media screen and (max-width: 600px) {
+        padding: 24px;
+    }
 `;
 
 export const FooterWrap = styled.div`
@@ -77,6 +81,7 @@ export const FooterScrollLink = styled(ScrollLink)`
     color: #f5f5f5;
     text-decoration: none;
     font-size: 15px;
+    cursor: pointer;
 
     &:hover {
         color: #ff6b08;

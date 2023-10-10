@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    RankCgCrown,
+    RankTrophy,
     RankContainer,
     RankNumber,
     RankNumberContainer,
@@ -23,7 +23,7 @@ const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
         <UserPointsContainer>
             <RankContainer>
                 <RankNumberContainer>
-                    {userRank === 1 ? <RankCgCrown /> : null}
+                    {userRank === 1 ? <RankTrophy /> : null}
                     <RankNumber userRank={userRank}>{userRank}</RankNumber>
                 </RankNumberContainer>
                 <h5>Rank</h5>
