@@ -30,6 +30,11 @@ export const SocialsCard = styled.a`
         transform: scale(1.05);
         transition: all 0.2s ease-in-out;
     }
+    @media (max-width: 780px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 `;
 
 export const SocialCardDiscord = styled(SocialsCard)`
