@@ -50,6 +50,7 @@ import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
+// import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -79,7 +80,11 @@ const App = () => {
     };
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+        const overflowStatus = document.body.style.overflow;
+        document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
+    };
 
     const { user } = useSelector((state) => state.auth);
 
@@ -159,6 +164,7 @@ const App = () => {
                         <Route path={"*"} element={<NotFound />} />
                     </Routes>
                 </ScrollToTop>
+                {/* <ChatBot /> */}
                 {!hideHomeHeader() && <Footer />}
             </Container>
             <ToastContainer
