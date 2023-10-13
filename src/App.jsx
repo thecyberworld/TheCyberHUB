@@ -33,6 +33,7 @@ import UserTimestamps from "./features/UserTimestamps";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
+import TimeLineEvent from "./components/Opportunities/TimeLineEvent/TimeLineEvent";
 import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
@@ -137,6 +138,7 @@ const App = () => {
 
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
+                        <Route exact path={"/timeline-events"} element={<TimeLineEvent />} />
                         <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
 
                         <Route exact path={"/CyberGames"} element={<CyberGames />} />

@@ -1,0 +1,137 @@
+{
+    "events": [
+        {
+            "status": "upcoming",
+            "date": "2023-10-15",
+            "startTime": "09:00",
+            "endTime": "10:00",
+            "location": "Online",
+            "eventName": "30 min Team Meeting by John Cena",
+            "reschedule": false,
+            "participants": [
+                {
+                    "name": "John Doe",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Jane Smith",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        },
+        {
+            "status": "past",
+            "date": "2023-10-10",
+            "startTime": "14:00",
+            "endTime": "15:30",
+            "location": "Conference Room A",
+            "eventName": "Project Kickoff with The Rock",
+            "reschedule": true,
+            "participants": [
+                {
+                    "name": "Alice Johnson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Bob Brown",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        },
+        {
+            "status": "upcoming",
+            "date": "2023-10-15",
+            "startTime": "09:00",
+            "endTime": "10:00",
+            "location": "Online",
+            "eventName": "Team Meeting",
+            "reschedule": false,
+            "participants": [
+                {
+                    "name": "John Doe",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Jane Smith",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        },
+        {
+            "status": "past",
+            "date": "2023-10-13",
+            "startTime": "14:00",
+            "endTime": "15:30",
+            "location": "Conference Room A",
+            "eventName": "Project Kickoff",
+            "reschedule": false,
+            "participants": [
+                {
+                    "name": "Alice Johnson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Bob Brown",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        },
+        {
+            "status": "upcoming",
+            "date": "2023-10-11",
+            "startTime": "11:00",
+            "endTime": "12:00",
+            "location": "Online",
+            "eventName": "Marketing Strategy Meeting",
+            "reschedule": false,
+            "participants": [
+                {
+                    "name": "Chris Evans",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Emma Watson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        },
+        {
+            "status": "upcoming",
+            "date": "2023-11-20",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "location": "Conference Room B",
+            "eventName": "Year-end Review",
+            "reschedule": false,
+            "participants": [
+                {
+                    "name": "Robert Downey Jr.",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Scarlett Johansson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        },
+        {
+            "status": "upcoming",
+            "date": "2024-01-15",
+            "startTime": "10:00",
+            "endTime": "11:00",
+            "location": "Online",
+            "eventName": "Product Launch Discussion",
+            "reschedule": false,
+            "participants": [
+                {
+                    "name": "Chris Hemsworth",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Natalie Portman",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ]
+        }
+    ]
+}

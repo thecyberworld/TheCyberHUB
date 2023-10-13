@@ -43,6 +43,11 @@ export default function Dropdown({
             to: "/thecyberspeak",
             desc: "Engage, Learn, Inspire. Speak or Attend and Be part of our Weekly Cyber Community Event.",
         },
+        {
+            title: "TheCyberEvents",
+            to: "/timeline-events",
+            desc: "Checkout our Weekly Cyber Community Event and start booking on our calender",
+        },
     ];
 
     const resources = [
