@@ -35,6 +35,10 @@ export const SocialsCard = styled.a`
         justify-content: center;
         align-items: center;
     }
+
+    @media (max-width: 480px) {
+        padding: 25px;
+    }
 `;
 
 export const SocialCardDiscord = styled(SocialsCard)`
@@ -87,6 +91,10 @@ export const SocialCardFacebook = styled(SocialsCard)`
 `;
 export const SocialH1 = styled.h1`
     font-size: 2rem;
+
+    @media (max-width: 480px) {
+        font-size: 25px;
+    }
 `;
 
 export const SocialsContainer = styled.div`
