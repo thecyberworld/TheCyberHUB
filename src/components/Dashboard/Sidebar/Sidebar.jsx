@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
     DashboardSidebarContainer,
-    RouteLink,
     SidebarTitle,
     ToggleButton,
     BiHomeCircleIcon,
@@ -14,6 +13,7 @@ import {
     UserProfile,
     UserProfileDescription,
     BiSolidCircleIcon,
+    SideBarLink,
 } from "./SidebarElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
@@ -63,10 +63,10 @@ const Sidebar = () => {
             </section>
 
             {sidebarItems.map((item) => (
-                <RouteLink key={item.to} to={item.to} isOpen={isOpen}>
+                <SideBarLink key={item.to} to={item.to} isOpen={isOpen}>
                     {item.icon}
                     {isOpen && <SidebarTitle isOpen={isOpen}> {item.label} </SidebarTitle>}
-                </RouteLink>
+                </SideBarLink>
             ))}
         </DashboardSidebarContainer>
     );

@@ -111,6 +111,8 @@ const App = () => {
                         <Route path={"/explore/*"} element={<ExploreRoutes />} />
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
                         <Route path={"/blogs/*"} element={<BlogsRoute />} />
+                        <Route exact path={"/blogs/create-blog"} element={<CreateBlog />} />
+
                         <Route path={"/forum/*"} element={<ForumRoute />} />
                         <Route path={"/events/*"} element={<EventsRoute />} />
 
@@ -145,12 +147,11 @@ const App = () => {
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
                         <Route exact path={"/timeline-events"} element={<TimeLineEvent />} />
                         <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
+                        <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} />
 
                         <Route exact path={"/CyberGames"} element={<CyberGames />} />
                         <Route exact path={"/OSINT"} element={<OSINTGame />} />
                         <Route exact path={"/course"} element={<LearningPath />} />
-
-                        <Route exact path={"/create-blog"} element={<CreateBlog />} />
 
                         <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} />
 

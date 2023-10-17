@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { ExploreContentContainer } from "../ExploreElements";
-import { LuUserCheck } from "react-icons/lu";
+import { PiSealCheckDuotone } from "react-icons/pi";
 
 export const UsersContainer = styled(ExploreContentContainer)`
     grid-auto-rows: ${(props) => (props.displayAt === "explore" ? "1fr" : "0fr")};
@@ -11,8 +11,9 @@ export const UsersContainer = styled(ExploreContentContainer)`
     }
 `;
 
-export const IconVerified = styled(LuUserCheck)`
-    color: #1da1f2;
+export const IconVerified = styled(PiSealCheckDuotone)`
+    //color: #1da1f2;
+    color: #ff6b08;
     font-size: 1.2rem;
 `;
 
@@ -66,7 +67,7 @@ export const Header = styled.div`
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
-    gap: 25px;
+    gap: 10px;
     width: 100%;
 `;
 
@@ -76,6 +77,11 @@ export const Name = styled.p`
 `;
 export const Username = styled.p`
     color: #808080;
+
+    &:hover {
+        color: #eeeeee;
+        text-decoration: underline;
+    }
 `;
 
 export const UserBio = styled.p``;

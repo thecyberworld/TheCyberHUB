@@ -16,6 +16,7 @@ import { RouteLink } from "../../Dashboard/Sidebar/SidebarElements";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
 import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "../../../NotFound";
+import { LeftSection } from "../../Feeds/FeedPosts/FeedPostsElements";
 
 const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
     const dispatch = useDispatch();
@@ -54,8 +55,20 @@ const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
                         <UserDetail>
                             <Header>
                                 <Name>{user.name}</Name>
-                                <Username>@{user.username}</Username>
-                                {user?.verified && <IconVerified />}
+                                <LeftSection
+                                    style={{
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <Username>@{user.username}</Username>
+                                    {user?.verified && (
+                                        <IconVerified
+                                            style={{
+                                                fontSize: "1rem",
+                                            }}
+                                        />
+                                    )}
+                                </LeftSection>
                             </Header>
                             <UserBio>{user.bio}</UserBio>
                         </UserDetail>
