@@ -62,8 +62,7 @@ const UserProfile = () => {
     )
         return (
             <Wrapper>
-                {" "}
-                <NotFound />{" "}
+                <NotFound />
             </Wrapper>
         );
 

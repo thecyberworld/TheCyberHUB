@@ -39,7 +39,11 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
             <RightSection>
                 <PostHeader>
                     <RouteLink to={`/@${feed?.username}`}>
-                        <LeftSection>
+                        <LeftSection
+                            style={{
+                                alignItems: "center",
+                            }}
+                        >
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
                             {feed?.verified && <IconVerified />}
                         </LeftSection>
