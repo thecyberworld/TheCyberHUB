@@ -27,7 +27,7 @@ export const DashboardSidebarContainer = styled.div`
     // stick to the top
     position: sticky;
     top: 0;
-    width: ${(props) => (props.isOpen ? "40%" : "10%")};
+    min-width: ${(props) => (props.isOpen ? "250px" : "75px")};
     transition: width 0.3s ease-in-out;
 
     .heading {
@@ -46,7 +46,8 @@ export const SideBarLink = styled(NavLink)`
     display: flex;
     align-items: center;
     border-radius: 8px;
-    height: 80px;
+    height: 50px;
+    gap: 16px;
     padding-left: ${(props) => (props.isOpen ? "24px" : "0")};
     transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
     width: 100%;
@@ -54,8 +55,8 @@ export const SideBarLink = styled(NavLink)`
 
     &:hover,
     &.active {
-        background: ${(props) => (props.isOpen ? "#4422EF" : "")};
-        color: ${(props) => (props.isOpen ? "" : "#4422EF")};
+        background: ${(props) => (props.isOpen ? "#009dec" : "")};
+        color: ${(props) => (props.isOpen ? "" : "#009dff")};
     }
 `;
 
@@ -67,7 +68,6 @@ export const SidebarTitle = styled.h2`
     opacity: ${(props) => (props.isOpen ? "1" : "0")};
     transition: opacity 0.6s ease-in-out 0.2s;
     margin-bottom: 0;
-    margin-left: 16px;
 `;
 
 export const ToggleButton = styled.div`
@@ -75,8 +75,9 @@ export const ToggleButton = styled.div`
     position: absolute;
     right: ${(props) => (props.isOpen ? "-32px" : "-68px")};
     background-color: ${(props) => (props.isOpen ? "#000000" : "#090909")};
-    padding: 12px;
+    padding: 10px;
     border-radius: ${(props) => (props.isOpen ? "12px" : "0 12px 12px 0")};
+    background-color: ${(props) => (props.isOpen ? "transparent" : "#181818")};
 `;
 
 export const UserProfile = styled.div`

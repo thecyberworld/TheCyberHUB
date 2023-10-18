@@ -4,13 +4,23 @@ import { RouterButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 
 const ChatHome = () => {
     return (
-        <Wrapper style={{ fontSize: 25, display: "flex", flexDirection: "column" }}>
-            <h1>Welcome</h1>
+        <Wrapper
+            style={{
+                fontSize: 25,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                gap: "10px",
+            }}
+        >
+            <h2>Welcome</h2>
             <p>
                 Want to connect and communicate <br />
                 with a vibrant community of like-minded people?
             </p>
-            <br />
+            <br /> <br />
             <RouterButton to="/chat">Join the Chatroom!</RouterButton>
         </Wrapper>
     );

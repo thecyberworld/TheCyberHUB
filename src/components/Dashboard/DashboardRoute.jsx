@@ -11,19 +11,30 @@ const DashboardRoute = () => {
         <DashboardRoutesContainer>
             <Sidebar />
 
-            <Routes>
-                <Route index element={<Dashboard />} />
-                <Route path={"goals"} element={<GoalSetter />} />
-                <Route path={"bookmarks"} element={<Bookmarks />} />
-                <Route path={"chat"} element={<ChatHome />} />
-                <Route path={"blogs"}>
-                    <Route index element={<UserBlogs />} />
-                    <Route exact path={"create"} element={<CreateBlogV2 />} />
-                    <Route exact path={"edit/:blogTitle"} element={<EditBlog />} />
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                    height: "100%",
+                }}
+            >
+                <Routes>
+                    <Route index element={<Dashboard />} />
+                    <Route path={"goals"} element={<GoalSetter />} />
+                    <Route path={"bookmarks"} element={<Bookmarks />} />
+                    <Route path={"chat"} element={<ChatHome />} />
+                    <Route path={"blogs"}>
+                        <Route index element={<UserBlogs />} />
+                        <Route exact path={"create"} element={<CreateBlogV2 />} />
+                        <Route exact path={"edit/:blogTitle"} element={<EditBlog />} />
+                        <Route path={"*"} element={<NotFound />} />
+                    </Route>
                     <Route path={"*"} element={<NotFound />} />
-                </Route>
-                <Route path={"*"} element={<NotFound />} />
-            </Routes>
+                </Routes>
+            </div>
         </DashboardRoutesContainer>
     );
 };
