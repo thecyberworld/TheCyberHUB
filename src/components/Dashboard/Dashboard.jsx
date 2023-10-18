@@ -3,13 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { Wrapper } from "./Profile/ProfileElements";
-import DashboardItems from "./OldDashbaord/DashboardItems";
 import { DashboardContainer } from "./DashboardElements";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../features/apiStatus";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import NoteApp from "./Notetaker/NoteApp";
-// import Sidebar from "./Sidebar/Sidebar";
 // import AuthPopup from "../../pages/AuthPopup/AuthPopup";
 
 const Dashboard = () => {
@@ -33,10 +30,7 @@ const Dashboard = () => {
 
     return (
         <Wrapper>
-            <DashboardContainer>
-                {/* <DashboardItems /> */}
-                <NoteApp />
-            </DashboardContainer>
+            <DashboardContainer>{/* <DashboardItems /> */}</DashboardContainer>
         </Wrapper>
     );
 };

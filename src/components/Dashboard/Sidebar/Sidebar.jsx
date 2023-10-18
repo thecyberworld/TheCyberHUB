@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
 import { CgOpenCollective } from "react-icons/cg";
+import { PiNotebookDuotone } from "react-icons/pi";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -39,17 +40,8 @@ const Sidebar = () => {
     const sidebarItems = [
         { to: "/", icon: <BiHomeCircleIcon />, label: "Home" },
         { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Community" },
-        {
-            to: "/dashboard/tools",
-            icon: (
-                <CgOpenCollective
-                    style={{
-                        fontSize: "1.6rem",
-                    }}
-                />
-            ),
-            label: "Tools",
-        },
+        { to: "/dashboard/tools", icon: <CgOpenCollective style={{ fontSize: "1.6rem" }} />, label: "Tools" },
+        { to: "/dashboard/notes", icon: <PiNotebookDuotone style={{ fontSize: "1.6rem" }} />, label: "Notes" },
         { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
         { to: "/dashboard/bookmarks", icon: <BiBookmarksIcon />, label: "Bookmarks" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
@@ -75,14 +67,22 @@ const Sidebar = () => {
 
             <section className={"heading"}>{isOpen && <p> Dashboard </p>}</section>
 
-            {/* <SidebarTitle> Analytics </SidebarTitle> */}
-            {/* <SidebarTitle> Settings </SidebarTitle> */}
-            {sidebarItems.map((item) => (
-                <SideBarLink key={item.to} to={item.to} isOpen={isOpen}>
-                    {item.icon}
-                    {isOpen && <SidebarTitle isOpen={isOpen}> {item.label} </SidebarTitle>}
-                </SideBarLink>
-            ))}
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                }}
+            >
+                {sidebarItems.map((item) => (
+                    <SideBarLink key={item.to} to={item.to} isOpen={isOpen}>
+                        {item.icon}
+                        {isOpen && <SidebarTitle isOpen={isOpen}> {item.label} </SidebarTitle>}
+                    </SideBarLink>
+                ))}
+            </div>
         </DashboardSidebarContainer>
     );
 };

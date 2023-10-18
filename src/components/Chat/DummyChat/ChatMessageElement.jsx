@@ -36,6 +36,6 @@ export const MessageContentSelf = styled.div`
 
 export const Timestamp = styled.div`
     font-size: 12px;
-    color: #777;
+    color: #bdbdbd;
     margin-top: 5px;
 `;

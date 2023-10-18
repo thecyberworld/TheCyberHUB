@@ -1,6 +1,6 @@
 import React from "react";
 import { SidebarContainer, RouteLink, SidebarTitle } from "./SidebarElement";
-import { FaUserCircle, FaCaretDown } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import chatData from "../DummyChat/ChatData";
 
@@ -9,27 +9,36 @@ const Sidebar = () => {
 
     return (
         <SidebarContainer>
-            <section style={{ display: "flex", flexDirection: "row", margin: "0.2" }}>
+            <section style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
                 <h2>
                     <FaUserCircle />
                 </h2>
-                <h4>
-                    {user.name}
+                <span>
+                    <b> {user.name} </b>
                     <p>@{user.username}</p>
-                </h4>
+                </span>
             </section>
             <br />
 
-            {chatData.channels.map((channel) => (
-                <RouteLink key={channel.id} to={`/chat/${channel.id}`}>
-                    <SidebarTitle>
-                        <FaCaretDown /> {channel.channelname}
-                    </SidebarTitle>
-                </RouteLink>
-            ))}
+            <h3>Channels</h3>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    gap: "0.5rem",
+                }}
+            >
+                {chatData.channels.map((channel) => (
+                    <RouteLink key={channel.id} to={`/chat/${channel.id}`}>
+                        <SidebarTitle> {channel.channelname} </SidebarTitle>
+                    </RouteLink>
+                ))}
+            </div>
 
             <RouteLink to={"/dashboard"}>
-                <SidebarTitle>Back to Dashboard</SidebarTitle>
+                <h4>Back to Dashboard</h4>
             </RouteLink>
         </SidebarContainer>
     );

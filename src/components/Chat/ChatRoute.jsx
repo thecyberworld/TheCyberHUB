@@ -10,12 +10,22 @@ const ChatRoute = () => {
         <ChatRoutesContainer>
             <Sidebar />
 
-            <Routes>
-                {/* <Route index element={<Chat />} /> */}
-                {chatData.channels.map((channel) => (
-                    <Route key={channel.id} path={channel.id} element={<Chat channelId={channel.id} />} />
-                ))}
-            </Routes>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "100%",
+                }}
+            >
+                <Routes>
+                    {/* <Route index element={<Chat />} /> */}
+                    {chatData.channels.map((channel) => (
+                        <Route key={channel.id} path={channel.id} element={<Chat channelId={channel.id} />} />
+                    ))}
+                </Routes>
+            </div>
         </ChatRoutesContainer>
     );
 };

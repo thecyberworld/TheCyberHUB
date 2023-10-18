@@ -12,7 +12,7 @@ export const SidebarContainer = styled.div`
     border-radius: 10px;
     color: #f5f5f5;
     border-right: #2a2a2a 1px solid;
-    gap: 15px;
+    gap: 25px;
 
     // stick to the top
     position: sticky;
@@ -24,10 +24,9 @@ export const RouteLink = styled(Link)`
     color: #f5f5f5;
 `;
 
-export const SidebarTitle = styled.h3`
+export const SidebarTitle = styled.p`
     color: #f5f5f5;
     font-size: 1rem;
-    font-weight: 600;
     cursor: pointer;
     transition: 0.3s ease-in-out;
 `;
