@@ -18,6 +18,10 @@ const Sidebar = () => {
                 <SidebarTitle> User Blogs </SidebarTitle>
             </RouteLink>
 
+            <RouteLink to={"/dashboard/chat"}>
+                <SidebarTitle> Community </SidebarTitle>
+            </RouteLink>
+
             <RouteLink to={"/dashboard/goals"}>
                 <SidebarTitle> Goals </SidebarTitle>
             </RouteLink>
