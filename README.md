@@ -45,7 +45,7 @@ Before installation, please make sure you have already installed the following t
 2. Clone the forked project
 3. Navigate to the cloned project directory
 4. Move to the dev branch: `git checkout dev`
-5. Install the dependencies with `npm install`
+5. Install the dependencies with `npm ci` (ci: clean install)
 6. Copy `example.env` to `.env` (_do not remove example.env_)
 7. Run `npm run dev` to start the server
 8. Open the browser to visit the website at http://localhost:3000/
