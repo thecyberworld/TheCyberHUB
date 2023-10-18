@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link, Link as LinkRouter } from "react-router-dom";
 import { AiFillCaretDown } from "react-icons/ai";
-import { TbCrown } from "react-icons/tb";
+import { BsTrophyFill } from "react-icons/bs";
 
 export const DropdownIcon = styled(AiFillCaretDown)`
     margin: 0px 0 0 5px;
@@ -190,8 +190,8 @@ export const RouterNavLeaderboardButtonLink = styled(Link)`
     }
 `;
 
-export const CrownIcon = styled(TbCrown)`
-    color: #ff6b08;
+export const RankTrophy = styled(BsTrophyFill)`
+    color: white;
     font-size: 30px;
 `;
 

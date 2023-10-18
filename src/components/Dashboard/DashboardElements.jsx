@@ -12,8 +12,8 @@ export const DashboardRoutesContainer = styled.div`
 
 export const DashboardContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
     width: 100%;
     max-width: 1500px;
 `;

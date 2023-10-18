@@ -60,6 +60,7 @@ const Blogs = () => {
                         <LoadingBlogCard />
                         <LoadingBlogCard />
                         <LoadingBlogCard />
+                        <LoadingBlogCard />
                     </AllBlogs>
                 </MiddleContainer>
             </Wrapper>
@@ -74,7 +75,7 @@ const Blogs = () => {
         <Wrapper>
             <BlogsContainer>
                 <BlogsSection>
-                    <RouterNavCreateButtonLink to={"/dashboard/blogs/create"}>Create Blog</RouterNavCreateButtonLink>
+                    <RouterNavCreateButtonLink to={"/blogs/create-blog"}>Create Blog</RouterNavCreateButtonLink>
                     <MiddleContainer>
                         {/* <div> */}
                         {/*    <LeftBlogSidebar /> */}
