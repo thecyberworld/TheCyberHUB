@@ -9,6 +9,7 @@ import {
     BiSolidChevronLeft,
     BiSolidChevronRight,
     BiSolidCircle,
+    BiChat,
 } from "react-icons/bi";
 
 export const DashboardSidebarContainer = styled.div`
@@ -135,3 +136,4 @@ export const BiLogoAlgoliaIcon = createStyledIcon(BiLogoAlgolia);
 export const CiSettingsIcon = createStyledIcon(BiCog);
 export const BiSolidChevronLeftIcon = createStyledIcon(BiSolidChevronLeft);
 export const BiSolidChevronRighIcon = createStyledIcon(BiSolidChevronRight);
+export const BiChatIcon = createStyledIcon(BiChat);

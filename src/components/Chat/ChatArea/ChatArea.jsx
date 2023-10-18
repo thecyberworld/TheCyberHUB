@@ -2,12 +2,12 @@ import React from "react";
 import { ChatContainer, LeftNav, RightNav } from "../ChatElement";
 import { FaPhoneAlt, FaVideo, FaUserCircle } from "react-icons/fa";
 
-const ChatArea = () => {
+const ChatArea = ({ name }) => {
     return (
         <>
             <ChatContainer>
                 <LeftNav>
-                    Security / <h6>General</h6>
+                    {name} / <h6>General</h6>
                 </LeftNav>
                 <RightNav>
                     <li>

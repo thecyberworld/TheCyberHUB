@@ -26,7 +26,7 @@ export const ChatItemsContainer = styled.div`
     width: 100%;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-evenly;
     margin: 25px;
     border-radius: 10px;

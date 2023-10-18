@@ -2,6 +2,7 @@ import React from "react";
 import { SidebarContainer, RouteLink, SidebarTitle } from "./SidebarElement";
 import { FaUserCircle, FaCaretDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import chatData from "../DummyChat/ChatData";
 
 const Sidebar = () => {
     const { user } = useSelector((state) => state.auth);
@@ -19,34 +20,13 @@ const Sidebar = () => {
             </section>
             <br />
 
-            <RouteLink>
-                <SidebarTitle>
-                    <FaCaretDown /> Announcement
-                </SidebarTitle>
-            </RouteLink>
-            <RouteLink>
-                <SidebarTitle>
-                    <FaCaretDown /> Support
-                </SidebarTitle>
-            </RouteLink>
-
-            <RouteLink>
-                <SidebarTitle>
-                    <FaCaretDown /> Help
-                </SidebarTitle>
-            </RouteLink>
-
-            <RouteLink>
-                <SidebarTitle>
-                    <FaCaretDown /> Security
-                </SidebarTitle>
-            </RouteLink>
-
-            <RouteLink>
-                <SidebarTitle>
-                    <FaCaretDown /> Pro-Player Only
-                </SidebarTitle>
-            </RouteLink>
+            {chatData.channels.map((channel) => (
+                <RouteLink key={channel.id} to={`/chat/${channel.id}`}>
+                    <SidebarTitle>
+                        <FaCaretDown /> {channel.channelname}
+                    </SidebarTitle>
+                </RouteLink>
+            ))}
 
             <RouteLink to={"/dashboard"}>
                 <SidebarTitle>Back to Dashboard</SidebarTitle>

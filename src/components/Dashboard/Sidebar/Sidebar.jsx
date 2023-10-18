@@ -14,6 +14,8 @@ import {
     UserProfileDescription,
     BiSolidCircleIcon,
     SideBarLink,
+    RouteLink,
+    BiChatIcon,
 } from "./SidebarElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
@@ -39,6 +41,7 @@ const Sidebar = () => {
         { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
         { to: "/dashboard/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
+        { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Community" },
     ];
 
     return (
