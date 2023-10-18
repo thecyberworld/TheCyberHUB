@@ -50,6 +50,7 @@ import AuthRoute from "./pages/AuthRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
+import ChatRoute from "./components/Chat/ChatRoute";
 import SettingsRoute from "./components/Dashboard/Settings";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
@@ -73,11 +74,12 @@ const App = () => {
 
     const hideHomeHeader = () => {
         const pathDashboard = pathname.includes("/dashboard");
+        const chat = pathname.includes("/chat");
         const pathLogin = pathname.includes("/login");
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
-        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword;
+        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword || chat;
     };
 
     const [isOpen, setIsOpen] = useState(false);
@@ -129,6 +131,7 @@ const App = () => {
                         <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
+                        <Route path={"/chat/*"} element={<ChatRoute />} />
 
                         <Route exact path={"/contact"} element={<ContactForm />} />
 

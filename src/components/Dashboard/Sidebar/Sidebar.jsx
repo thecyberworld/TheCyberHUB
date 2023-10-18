@@ -14,10 +14,13 @@ import {
     UserProfileDescription,
     BiSolidCircleIcon,
     SideBarLink,
+    // RouteLink,
+    BiChatIcon,
 } from "./SidebarElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import { CgOpenCollective } from "react-icons/cg";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -35,8 +38,20 @@ const Sidebar = () => {
 
     const sidebarItems = [
         { to: "/", icon: <BiHomeCircleIcon />, label: "Home" },
-        { to: "/dashboard/bookmarks", icon: <BiBookmarksIcon />, label: "Bookmarks" },
+        { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Community" },
+        {
+            to: "/dashboard/tools",
+            icon: (
+                <CgOpenCollective
+                    style={{
+                        fontSize: "1.6rem",
+                    }}
+                />
+            ),
+            label: "Tools",
+        },
         { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
+        { to: "/dashboard/bookmarks", icon: <BiBookmarksIcon />, label: "Bookmarks" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
         { to: "/dashboard/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
     ];
@@ -58,10 +73,10 @@ const Sidebar = () => {
                 </ToggleButton>
             </UserProfile>
 
-            <section className={"heading"}>
-                <p> {isOpen && "Dashboard"}</p>
-            </section>
+            <section className={"heading"}>{isOpen && <p> Dashboard </p>}</section>
 
+            {/* <SidebarTitle> Analytics </SidebarTitle> */}
+            {/* <SidebarTitle> Settings </SidebarTitle> */}
             {sidebarItems.map((item) => (
                 <SideBarLink key={item.to} to={item.to} isOpen={isOpen}>
                     {item.icon}

@@ -7,7 +7,7 @@ export const DashboardRoutesContainer = styled.div`
     align-items: start;
     justify-content: space-between;
     width: 100%;
-    max-width: 1500px;
+    //max-width: 1500px;
 `;
 
 export const DashboardContainer = styled.div`
