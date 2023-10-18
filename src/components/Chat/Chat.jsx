@@ -1,4 +1,3 @@
-// Chat.js
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -7,19 +6,18 @@ import ChatArea from "./ChatArea/ChatArea";
 import ChatMessage from "./DummyChat/ChatMessage";
 import ChatMessageSelf from "./DummyChat/ChatMessageSelf";
 import chatData from "./DummyChat/ChatData";
+import SendMessage from "./SendMessage";
 
 const Chat = () => {
     const { user } = useSelector((state) => state.auth);
-    const location = useLocation(); // Use useLocation to get the URL location
+    const location = useLocation();
     const channelId = location.pathname.replace("/chat/", "");
     const [channel, setChannel] = useState(null);
 
     useEffect(() => {
-        // Find the channel by channelId
         const foundChannel = chatData.channels.find((ch) => ch.id === channelId);
         setChannel(foundChannel);
     }, [channelId]);
-    console.log(channelId);
 
     if (!channel) {
         return (
@@ -41,6 +39,7 @@ const Chat = () => {
                     <ChatMessage key={index} {...message} />
                 ),
             )}
+            <SendMessage />
         </ChatItemsContainer>
     );
 };
