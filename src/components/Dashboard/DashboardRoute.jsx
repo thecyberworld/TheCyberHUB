@@ -5,6 +5,8 @@ import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import Sidebar from "./Sidebar/Sidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
+import NoteApp from "./Notetaker/NoteApp";
+import Tools from "../Tools/Tools";
 
 const DashboardRoute = () => {
     return (
@@ -26,6 +28,8 @@ const DashboardRoute = () => {
                     <Route path={"goals"} element={<GoalSetter />} />
                     <Route path={"bookmarks"} element={<Bookmarks />} />
                     <Route path={"chat"} element={<ChatHome />} />
+                    <Route path={"notes"} element={<NoteApp />} />
+                    <Route path={"tools"} element={<Tools />} />
                     <Route path={"blogs"}>
                         <Route index element={<UserBlogs />} />
                         <Route exact path={"create"} element={<CreateBlogV2 />} />

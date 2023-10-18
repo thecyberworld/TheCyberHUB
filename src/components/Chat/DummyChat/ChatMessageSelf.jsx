@@ -1,13 +1,25 @@
 import React from "react";
 import { MessageContainerSelf, MessageContentSelf, Timestamp, SenderImage } from "./ChatMessageElement";
 
-const ChatMessageSelf = ({ message, image, time, sender }) => {
+const ChatMessageSelf = ({ username, message, image, time, sender }) => {
     return (
         <MessageContainerSelf>
-            <SenderImage src={image} alt="Sender's Image" />
+            <SenderImage src={image} alt="" />
             <MessageContentSelf>
+                <h4>{username}</h4>
                 <p>{message}</p>
-                <Timestamp>Today at {time}</Timestamp>
+                <Timestamp
+                    style={{
+                        color: "#dcdcdc",
+                        fontSize: "10px",
+                        fontWeight: "bold",
+                        textAlign: "right",
+                        marginRight: "10px",
+                        marginTop: "5px",
+                    }}
+                >
+                    {time}
+                </Timestamp>
             </MessageContentSelf>
         </MessageContainerSelf>
     );

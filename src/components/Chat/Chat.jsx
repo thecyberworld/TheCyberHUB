@@ -32,13 +32,23 @@ const Chat = () => {
     return (
         <ChatItemsContainer>
             <ChatArea name={channel.channelname} />
-            {channel.messages.map((message, index) =>
-                message.username === user.username ? (
-                    <ChatMessageSelf key={index} {...message} />
-                ) : (
-                    <ChatMessage key={index} {...message} />
-                ),
-            )}
+            <div
+                style={{
+                    height: "100%",
+                    overflowY: "scroll",
+                    display: "flex",
+                    flexDirection: "column-reverse",
+                    padding: "0 10px",
+                }}
+            >
+                {channel.messages.map((message, index) =>
+                    message.username === user.username ? (
+                        <ChatMessageSelf key={index} {...message} />
+                    ) : (
+                        <ChatMessage key={index} {...message} />
+                    ),
+                )}
+            </div>
             <SendMessage />
         </ChatItemsContainer>
     );

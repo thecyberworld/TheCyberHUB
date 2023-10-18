@@ -5,7 +5,7 @@ export const ChatRoutesContainer = styled.div`
     align-items: start;
     justify-content: space-between;
     width: 100%;
-    max-width: 1500px;
+    //max-width: 1500px;
 `;
 
 export const ChatContainer = styled.div`
@@ -16,18 +16,19 @@ export const ChatContainer = styled.div`
     z-index: 1000;
     top: 0;
     width: 100%;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid gray;
 
-    max-width: 1500px;
+    //max-width: 1500px;
 `;
 
 export const ChatItemsContainer = styled.div`
     width: 100%;
+    height: 100vh;
+    border: 1px solid gray;
 
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    margin: 25px;
+    justify-content: space-between;
     border-radius: 10px;
     color: #f5f5f5;
 
@@ -37,40 +38,37 @@ export const ChatItemsContainer = styled.div`
 `;
 
 export const LeftNav = styled.div`
-    font-size: 28px;
-    margin-right: 1px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: "Fire Code", monospace;
     display: flex;
     align-items: center;
 `;
 export const RightNav = styled.div`
-    font-size: 28px;
-    margin-right: 1px;
-    width: 15%;
+    font-size: 20px;
+    gap: 25px;
     display: flex;
     list-style: none;
-    justify-content: space-between;
     align-items: center;
 `;
 
 export const Chatbox = styled.div`
-    width: 100%
+    width: 100%;
     display: flex;
     flex-direction: row;
 `;
 
 export const MessageInputContainer = styled.div`
-    border-top: 1px solid #ccc;
-    margin-top: 130px;
+    border-top: 1px solid gray;
+    width: 100%;
     position: relative;
 `;
 
 export const Message = styled.div`
-    margin-top: 5px;
-    margin-left: 65px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
     outline: none !important;
-    border-radius: 20px;
-    width: 80% !important;
-    background-color: #fff;
+    background-color: #282828;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -78,20 +76,19 @@ export const Message = styled.div`
 
 export const Input = styled.input`
     border: none !important;
-    border-radius: 20px !important;
+    border-radius: 0 0 0 10px;
     display: block;
     height: calc(2.25rem + 2px);
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
+    color: #ffffff;
+    background-color: #414141;
     background-clip: padding-box;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     position: relative;
     flex: 1 1 auto;
     width: 1%;
-    margin-bottom: 0;
 
     &:focus {
         outline: none;
