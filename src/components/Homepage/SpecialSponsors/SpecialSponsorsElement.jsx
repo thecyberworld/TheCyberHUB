@@ -6,6 +6,7 @@ export const SponsorsWrapper = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: 100px;
 `;
 
 export const SponsorsH1 = styled.a`

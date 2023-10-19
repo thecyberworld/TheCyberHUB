@@ -19,7 +19,8 @@ import {
     OSINTGame,
     Quiz,
     Sidebar,
-    Sponsors,
+    SpecialSponsors,
+    Support,
 } from "./components";
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
 import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
@@ -127,7 +128,9 @@ const App = () => {
                         </Route>
 
                         <Route exact path={"/community"} element={<Community />} />
-                        <Route exact path={"/support"} element={<Sponsors />} />
+                        <Route exact path={"/support"} element={<Support />} />
+                        <Route exact path={"/sponsors"} element={<SpecialSponsors />} />
+
                         <Route exact path={"/about"} element={<About />} />
                         <Route exact path={"/terms-conditions"} element={<TermsAndCondition />} />
                         <Route exact path={"/privacy-policy"} element={<PrivacyPolicy />} />

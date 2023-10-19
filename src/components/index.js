@@ -6,7 +6,7 @@ export { default as Info } from "./Homepage/Info/Info";
 export { default as Socials } from "./Homepage/Socials/Socials";
 export { default as SpecialSponsors } from "./Homepage/SpecialSponsors/SpecialSponsors";
 export { default as Community } from "./Other/Community/Community";
-export { default as Sponsors } from "./Other/Support/Sponsors";
+export { default as Support } from "./Other/Support/Sponsors";
 
 // Learn //
 export { default as Learn } from "./Learn/Learn";
