@@ -8,12 +8,13 @@ export const SponsorsWrapper = styled.div`
     width: 100%;
 `;
 
-export const SponsorsH1 = styled.h1`
-    font-size: 1.8rem;
+export const SponsorsH1 = styled.a`
+    font-size: 1.6rem;
+    font-weight: 600;
     color: #f5f5f5;
     margin: 0;
     @media screen and (max-width: 1024px) {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     @media screen and (max-width: 768px) {
         font-size: 1rem;
@@ -49,7 +50,7 @@ export const SponsorsLayout = styled.div`
     overflow: hidden;
 `;
 
-export const SponorsHeader = styled.div`
+export const SponsorsTopHeader = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
@@ -57,6 +58,21 @@ export const SponorsHeader = styled.div`
     background: #101010;
     padding: 0.8rem 0;
     ${"" /* border-radius: 1rem 1rem 0 0 ; */}
+`;
+export const SponsorsFooterBar = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #101010;
+    padding: 0.8rem 0;
+    margin-top: 0.6rem;
+    border-radius: 0 0 1rem 1rem;
+    ${"" /* border-radius: 1rem 1rem 0 0 ; */}
+
+    @media screen and (max-width: 768px) {
+        margin-top: 0.3rem;
+    }
 `;
 
 export const SponsorsGrid1 = styled.div`
@@ -75,7 +91,7 @@ export const SponsorsGrid1 = styled.div`
 export const SponsorsGrid2 = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 1fr;
     grid-gap: 10px;
     margin: 10px 0;
@@ -117,12 +133,15 @@ export const SponsorsGridCol = styled.div`
     justify-content: center;
     align-items: center;
     background: #101010;
+
     &:hover {
         background: #f5f5f5;
     }
-    &:hover h1 {
+
+    &:hover a {
         color: #101010;
     }
+
     &:hover img {
         filter: grayscale(0) invert(0);
     }
@@ -159,5 +178,29 @@ export const SponsorsGridColTop = styled(SponsorsGridCol)`
     padding: 5rem 0;
     @media screen and (max-width: 768px) {
         padding: 3rem 0;
+    }
+`;
+
+export const SponsorButton = styled.a`
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #5e5959;
+    color: #f5f5f5;
+    white-space: nowrap;
+    padding: 10px 22px;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: #545454;
+        color: #f5f5f5;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 `;
