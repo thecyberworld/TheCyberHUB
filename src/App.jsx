@@ -34,6 +34,7 @@ import UserTimestamps from "./features/UserTimestamps";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
+import TimeLineEvent from "./components/Opportunities/TimeLineEvent/TimeLineEvent";
 import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
@@ -50,6 +51,9 @@ import AuthRoute from "./pages/AuthRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
+import ChatRoute from "./components/Chat/ChatRoute";
+import SettingsRoute from "./components/Dashboard/Settings";
+// import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -71,15 +75,20 @@ const App = () => {
 
     const hideHomeHeader = () => {
         const pathDashboard = pathname.includes("/dashboard");
+        const chat = pathname.includes("/chat");
         const pathLogin = pathname.includes("/login");
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
-        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword;
+        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword || chat;
     };
 
     const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+        const overflowStatus = document.body.style.overflow;
+        document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
+    };
 
     const { user } = useSelector((state) => state.auth);
 
@@ -105,6 +114,8 @@ const App = () => {
                         <Route path={"/explore/*"} element={<ExploreRoutes />} />
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
                         <Route path={"/blogs/*"} element={<BlogsRoute />} />
+                        <Route exact path={"/blogs/create-blog"} element={<CreateBlog />} />
+
                         <Route path={"/forum/*"} element={<ForumRoute />} />
                         <Route path={"/events/*"} element={<EventsRoute />} />
 
@@ -118,7 +129,10 @@ const App = () => {
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
 
+                        <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
+
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
+                        <Route path={"/chat/*"} element={<ChatRoute />} />
 
                         <Route exact path={"/contact"} element={<ContactForm />} />
 
@@ -137,13 +151,13 @@ const App = () => {
 
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
+                        <Route exact path={"/timeline-events"} element={<TimeLineEvent />} />
                         <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
+                        <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} />
 
                         <Route exact path={"/CyberGames"} element={<CyberGames />} />
                         <Route exact path={"/OSINT"} element={<OSINTGame />} />
                         <Route exact path={"/course"} element={<LearningPath />} />
-
-                        <Route exact path={"/create-blog"} element={<CreateBlog />} />
 
                         <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} />
 
@@ -159,6 +173,7 @@ const App = () => {
                         <Route path={"*"} element={<NotFound />} />
                     </Routes>
                 </ScrollToTop>
+                {/* <ChatBot /> */}
                 {!hideHomeHeader() && <Footer />}
             </Container>
             <ToastContainer

@@ -7,23 +7,28 @@ import { getBookmarks } from "../../features/bookmarks/bookmarkSlice";
 import { getViews } from "../../features/feeds/views/viewSlice";
 import { getFeedComments } from "../../features/feeds/feedComments/feedCommentsSlice";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "../../NotFound";
 
 const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { feedLikes } = useSelector((state) => state.feedLikes);
-    const { bookmarks } = useSelector((state) => state.bookmarks);
+    const { bookmarks, isBookmarkLoading, isBookmarkError, bookmarkMessage } = useSelector((state) => state.bookmarks);
     const { views } = useSelector((state) => state.views);
     const { feedComments } = useSelector((state) => state.feedComments);
 
     useEffect(() => {
+        if (isBookmarkError) console.log(bookmarkMessage);
+
         dispatch(getFeedLikes());
         dispatch(getBookmarks());
         dispatch(getViews());
         dispatch(getFeedComments());
-    }, [dispatch]);
+    }, [dispatch, isBookmarkError, bookmarkMessage]);
 
-    if (isFeedLoading) return <LoadingSpinner />;
+    if (isFeedLoading || isBookmarkLoading) return <LoadingSpinner />;
+
+    if (!feeds.length) return <NotFound title="Feeds Not Found" description="There are no feeds" />;
 
     const filteredData = feeds?.filter((feed) => {
         const contentIncludesSearchTerm =

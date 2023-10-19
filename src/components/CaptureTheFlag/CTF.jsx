@@ -20,7 +20,7 @@ import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../features/apiStatus";
 // import CtfCard from "./CtfCard";
 import CtfChallenges from "./CTFCards/CtfChallenges";
-import { CrownIcon } from "../Header/Navbar/NavbarElements";
+import { RankTrophy } from "../Header/Navbar/NavbarElements";
 import { RouteLink } from "../Dashboard/Sidebar/SidebarElements";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 
@@ -125,7 +125,7 @@ const CTF = () => {
                                 backgroundColor: "#252525",
                             }}
                         >
-                            <CrownIcon style={{ fontSize: "1.5rem" }} />
+                            <RankTrophy style={{ fontSize: "1rem" }} />
                             <span> Leaderboard </span>
                         </SearchDifficulty>
                     </RouteLink>

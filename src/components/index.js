@@ -53,3 +53,6 @@ export { default as SingleBlog } from "./Blogs/SingleBlog/SingleBlog";
 export { default as EditBlog } from "./Blogs/ManageBlogs/EditBlog/EditBlog";
 export { default as NotFound } from "../NotFound";
 export { default as CertificateCard } from "./Other/Certificate/CertificateCard";
+
+export { default as ChatHome } from "./Dashboard/Chat/ChatHome";
+export { default as Chat } from "./Chat/Chat";
