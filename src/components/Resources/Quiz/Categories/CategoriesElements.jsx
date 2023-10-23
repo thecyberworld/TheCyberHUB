@@ -126,7 +126,6 @@ export const QuestionButton = styled.button`
     transition: 0.1s ease;
 
     &:hover {
-
         background-color: #ff6b07;
 
         color: #000000;
@@ -146,7 +145,11 @@ export const CategoriesSection = styled.section`
     padding: 25px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    @media screen and (max-width: 769px) {
+        justify-content: space-between;
+    }
 
     & > span {
         cursor: pointer;
@@ -161,9 +164,7 @@ export const CategoriesSection = styled.section`
 export const MobileCategories = styled(CategoriesSection)`
     background-color: #1a1c1d;
     border-radius: 1rem;
-
     box-shadow: 0 0 3px 1px #ff6b07;
-
     flex-direction: column;
     justify-content: start;
     max-width: fit-content;
@@ -188,12 +189,13 @@ export const CategoriesButton = styled.button`
     font-weight: bold;
     margin: 0 10px;
     padding: 10px;
+    width: 22%;
+    height: 100px;
     border-radius: 4px;
     letter-spacing: -0.03rem;
     transition: 0.3s ease;
 
     &:hover {
- 
         background-color: #ff6b07;
 
         color: #000000;
@@ -204,6 +206,8 @@ export const CategoriesButton = styled.button`
     }
 
     @media screen and (max-width: 768px) {
+        width: fit-content;
+        height: fit-content;
         display: ${(props) => (props.type === props.show ? "inline-block" : "none")};
     }
 `;
