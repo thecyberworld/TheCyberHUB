@@ -5,7 +5,7 @@ export const FeedPostsContainer = styled(ExploreContentContainer)`
     background-color: ${(props) => (props.displayAt === "explore" ? "#090909" : "#000000")};
     padding: ${(props) => (props.displayAt === "explore" ? "15px" : "0")};
 
-    grid-auto-rows: ${(props) => (props.displayAt === "explore" ? "1fr" : "0fr")};
+    grid-auto-rows: ${(props) => (props.displayAt === "explore" ? "max-content" : "0fr")};
     gap: ${(props) => (props.displayAt === "explore" ? "25px" : "0")};
 
     @media screen and (max-width: 1230px) {
