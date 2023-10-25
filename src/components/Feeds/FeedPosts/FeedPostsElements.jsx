@@ -45,7 +45,7 @@ export const LeftSection = styled.div`
     flex-direction: row;
     align-items: start;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 5px;
 `;
 
 export const RightSection = styled.div`

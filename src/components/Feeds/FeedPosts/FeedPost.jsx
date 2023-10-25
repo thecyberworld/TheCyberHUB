@@ -30,10 +30,14 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
             <RightSection>
                 <RouteLink to={`/feeds/${feed?._id}`}>
                     <PostHeader>
-                        <LeftSection>
+                        <LeftSection
+                            style={{
+                                alignItems: "center",
+                            }}
+                        >
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
                             {feed?.verified && <IconVerified />}
-                        </LeftSection>{" "}
+                        </LeftSection>
                         •<PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                     </PostHeader>
                     <PostContent>

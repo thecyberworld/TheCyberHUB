@@ -36,16 +36,6 @@ const RulesOfEngagement = () => {
                     >
                         security.api.thecyberhub.org
                     </a>
-                    <br />
-                    <DotSymbol />
-                    <a
-                        style={{ color: "#00b2ff" }}
-                        href="https://security.thecyber-sec.com"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        security.thecyber-sec.com
-                    </a>
                     <br /> <br />
                     Testing should not be conducted on any other domains or IP addresses owned by TheCyberHUB without
                     explicit prior written consent. <br /> <br />

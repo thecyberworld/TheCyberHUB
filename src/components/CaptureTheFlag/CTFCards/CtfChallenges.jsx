@@ -2,8 +2,13 @@ import React from "react";
 import { CTFCardsContainer, CTFLink } from "../CTFElements";
 import { encodeURL } from "../../Blogs/util";
 import CtfCard from "../CtfCard";
+import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "../../../NotFound";
 
-const CtfChallenges = ({ ctf, user, userDetail, searchTerm, ctfBookmarksData }) => {
+const CtfChallenges = ({ ctf, user, userDetail, isCtfLoading, searchTerm, ctfBookmarksData }) => {
+    if (isCtfLoading) return <LoadingSpinner />;
+    if (!ctf.length) return <NotFound title="CTFs Not Found" description="There are no ctfs" />;
+
     const filteredData = ctf.filter((challenge) => {
         // Check if ctf is bookmarked
         const isBookmarked = ctfBookmarksData

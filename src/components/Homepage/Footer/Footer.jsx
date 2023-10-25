@@ -73,8 +73,8 @@ const Footer = () => {
                         <FooterLinkItems>
                             <FooterLinkTitle>Community</FooterLinkTitle>
                             <FooterRouterLink to="/explore">Explore</FooterRouterLink>
+                            <FooterRouterLink to="/feeds">Feeds</FooterRouterLink>
                             <FooterRouterLink to="/blogs">Blogs</FooterRouterLink>
-                            <FooterRouterLink to="/forums">Forum</FooterRouterLink>
                             <FooterRouterLink to="/ctf">CTF</FooterRouterLink>
                         </FooterLinkItems>
 

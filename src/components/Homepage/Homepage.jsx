@@ -1,5 +1,6 @@
 import React from "react";
-import { Hero, Info, Socials } from "../index";
+import { Hero, Info, Socials, SpecialSponsors } from "../index";
+// import { SpecialSponsors } from "./SpecialSponsors/SpecialSponsors"
 import { aboutData, ResourcesData, communityData, contributeData } from "./Info/Data";
 import ContactForm from "./ContactForm/ContactForm";
 
@@ -12,6 +13,7 @@ const Homepage = () => {
             <Info {...contributeData} />
             <Info {...communityData} />
             <Socials />
+            <SpecialSponsors />
             <ContactForm />
         </>
     );

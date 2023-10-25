@@ -75,12 +75,20 @@ export const QuizProgressIndicator = styled.div`
     gap: 4rem;
 `;
 
-export const IndicatorDot = styled.div`
-    border-radius: 50%;
-    height: 7px;
-    width: 7px;
-    background-color: ${(props) => (props.questionCompleted ? "white" : "rgba(62, 62, 62, 0.76)")};
-    transition: 0.5s ease;
+export const ProgressBar = styled.progress`
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    grid-column: 1 / -1;
+
+    ::-webkit-progress-bar {
+        background-color: #fff;
+        border-radius: 100px;
+    }
+    ::-webkit-progress-value {
+        background-color: #ff6b07;
+        border-radius: 100px;
+    }
 `;
 
 export const QuestionCount = styled.div`
@@ -118,7 +126,9 @@ export const QuestionButton = styled.button`
     transition: 0.1s ease;
 
     &:hover {
-        background-color: rgb(95, 232, 49);
+
+        background-color: #ff6b07;
+
         color: #000000;
     }
 
@@ -151,7 +161,9 @@ export const CategoriesSection = styled.section`
 export const MobileCategories = styled(CategoriesSection)`
     background-color: #1a1c1d;
     border-radius: 1rem;
-    box-shadow: 0 0 3px 1px rgba(44, 222, 76, 0.56);
+
+    box-shadow: 0 0 3px 1px #ff6b07;
+
     flex-direction: column;
     justify-content: start;
     max-width: fit-content;
@@ -181,7 +193,9 @@ export const CategoriesButton = styled.button`
     transition: 0.3s ease;
 
     &:hover {
-        background-color: rgb(95, 232, 49);
+ 
+        background-color: #ff6b07;
+
         color: #000000;
     }
 

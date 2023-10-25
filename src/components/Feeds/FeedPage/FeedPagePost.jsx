@@ -39,7 +39,11 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
             <RightSection>
                 <PostHeader>
                     <RouteLink to={`/@${feed?.username}`}>
-                        <LeftSection>
+                        <LeftSection
+                            style={{
+                                alignItems: "center",
+                            }}
+                        >
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
                             {feed?.verified && <IconVerified />}
                         </LeftSection>
@@ -76,7 +80,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                             (tag, id) =>
                                 tag !== "" && (
                                     <RouteLink to={`/explore/${tag}`} key={id}>
-                                        <PostTag key={id}>#{tag}</PostTag>
+                                        <PostTag key={id}>{tag}</PostTag>
                                     </RouteLink>
                                 ),
                         )}
