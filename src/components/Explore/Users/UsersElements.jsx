@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { ExploreContentContainer } from "../ExploreElements";
-import { LuVerified } from "react-icons/lu";
+// import { LuVerified } from "react-icons/lu";
+import { MdVerified } from "react-icons/md";
 
 export const UsersContainer = styled(ExploreContentContainer)`
     grid-auto-rows: ${(props) => (props.displayAt === "explore" ? "1fr" : "0fr")};
@@ -11,7 +12,7 @@ export const UsersContainer = styled(ExploreContentContainer)`
     }
 `;
 
-export const IconVerified = styled(LuVerified)`
+export const IconVerified = styled(MdVerified)`
     color: #1da1f2;
     font-size: 1.2rem;
 `;
