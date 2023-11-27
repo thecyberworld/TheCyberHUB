@@ -1,7 +1,9 @@
-// import React, { useState, useEffect } from "react";
 // import NoteList from "./NoteList";
 // import { nanoid } from "nanoid";
-import React from "react";
+import React, { useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { FiEdit } from "react-icons/fi";
+import { MdOutlineSearch } from "react-icons/md";
 import {
     NotesContainer,
     NotesSidebarContainer,
@@ -11,11 +13,14 @@ import {
     NotesSidebarCardsContainer,
     NotesDescr,
     NotesDescrContainer,
+    NotesSidebarHeaderTitle,
+    NotesSidebarSearchInput,
 } from "./NoteElements";
+import "./NoteApp.css";
 
 const NoteApp = () => {
     // const [notes, setNotes] = useState([]);
-
+    const [search, setSearch] = useState("");
     // useEffect(() => {
     //     const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
     //     if (savedNotes !== "") {
@@ -44,8 +49,20 @@ const NoteApp = () => {
     return (
         <NotesContainer>
             <NotesSidebarContainer>
-                <NotesSidebarHeader></NotesSidebarHeader>
-                <NotesSidebarSearch></NotesSidebarSearch>
+                <NotesSidebarHeader>
+                    <RxHamburgerMenu className="icon" size="24px" title="menu" />
+                    <NotesSidebarHeaderTitle>All Notes</NotesSidebarHeaderTitle>
+                    <FiEdit className="icon" size="24px" title="new" />
+                </NotesSidebarHeader>
+                <NotesSidebarSearch>
+                    <MdOutlineSearch className="icon" size="24px" title="search" />
+                    <NotesSidebarSearchInput
+                        type="text"
+                        placeholder="Search all notes and tags"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                </NotesSidebarSearch>
                 <NotesSidebarCardsContainer></NotesSidebarCardsContainer>
             </NotesSidebarContainer>
             <NotesDescrContainer>
@@ -53,9 +70,8 @@ const NoteApp = () => {
                 <NotesDescr></NotesDescr>
             </NotesDescrContainer>
         </NotesContainer>
-        // <div className="wrapper">
+
         //     <NoteList notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />
-        // </div>
     );
 };
 

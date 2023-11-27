@@ -24,7 +24,6 @@
     overflow-x: none;
 }
 
-
 .note button {
     background-color: #828282;
     color: #090909;
@@ -48,7 +47,7 @@
 }
 
 .note .character-limit-error {
-    color: red
+    color: red;
 }
 
 .container {
@@ -57,6 +56,10 @@
     align-items: flex-start;
 }
 
-.wrapper {
-    overflow-y: hidden;
+.icon {
+    color: #646464;
+}
+.icon:hover {
+    color: #818181;
+    cursor: pointer;
 }
