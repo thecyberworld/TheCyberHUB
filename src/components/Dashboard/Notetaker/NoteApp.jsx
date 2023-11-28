@@ -3,19 +3,18 @@
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiEdit } from "react-icons/fi";
-import { MdOutlineSearch } from "react-icons/md";
 import {
     NotesContainer,
     NotesSidebarContainer,
     NotesSidebarHeader,
     NotesDescrHeader,
-    NotesSidebarSearch,
     NotesSidebarCardsContainer,
     NotesDescr,
     NotesDescrContainer,
     NotesSidebarHeaderTitle,
-    NotesSidebarSearchInput,
+    SearchContainer,
 } from "./NoteElements";
+import SearchInputBox from "../../Common/SearchInputBox";
 import "./NoteApp.css";
 
 const NoteApp = () => {
@@ -54,15 +53,14 @@ const NoteApp = () => {
                     <NotesSidebarHeaderTitle>All Notes</NotesSidebarHeaderTitle>
                     <FiEdit className="icon" size="24px" title="new" />
                 </NotesSidebarHeader>
-                <NotesSidebarSearch>
-                    <MdOutlineSearch className="icon" size="24px" title="search" />
-                    <NotesSidebarSearchInput
-                        type="text"
+                <SearchContainer>
+                    <SearchInputBox
                         placeholder="Search all notes and tags"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                </NotesSidebarSearch>
+                </SearchContainer>
+
                 <NotesSidebarCardsContainer></NotesSidebarCardsContainer>
             </NotesSidebarContainer>
             <NotesDescrContainer>

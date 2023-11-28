@@ -9,8 +9,11 @@ export const NotesContainer = styled.div`
 export const NotesSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 370px;
     height: 100vh;
+    @media screen and (max-width: 800px) {
+        width: 35%;
+    }
 `;
 
 export const NotesSidebarHeader = styled.div`
@@ -28,28 +31,12 @@ export const NotesSidebarHeaderTitle = styled.h3`
     margin-bottom: 0;
     font-family: "Roboto Mono", monospace;
 `;
-export const NotesSidebarSearch = styled.div`
+export const SearchContainer = styled.div`
     display: flex;
-    align-items: center;
-    padding: 0 10px;
     border: 2px solid #111111;
     background-color: #111111;
     border-top: 0px;
-    height: 2.7rem;
-`;
-
-export const NotesSidebarSearchInput = styled.input`
-    margin-left: 10px;
-    width: 100%;
-    height: 2rem;
-    border: 2px solid #111111;
-    border-bottom: 2px solid #646464;
-    background-color: #111111;
-    outline: 0;
-    color: #fff;
-    padding: 0 5px 0 0;
-    font-size: 16px;
-    text-transform: capitalize;
+    height: 3rem;
 `;
 
 export const NotesSidebarCardsContainer = styled.div`
@@ -62,7 +49,7 @@ export const NotesSidebarCardsContainer = styled.div`
 export const NotesDescrContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 70%;
+    flex: 1;
     height: 100vh;
 `;
 
