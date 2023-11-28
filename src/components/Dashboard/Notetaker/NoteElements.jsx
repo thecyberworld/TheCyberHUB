@@ -39,11 +39,43 @@ export const SearchContainer = styled.div`
     height: 3rem;
 `;
 
-export const NotesSidebarCardsContainer = styled.div`
+export const NotesListContainer = styled.ul`
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     border: 2px solid #111111;
     border-top: 0px;
-    padding: 0 10px;
+    padding: 20px 15px;
+`;
+
+export const NoteItemElement = styled.li`
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    padding: 10px;
+    gap: 5px;
+    background-color: #090909;
+    color: #f5f5f5;
+    &:hover {
+        background-color: #383838;
+        cursor: pointer;
+    }
+    @media screen and (max-width: 500px) {
+        font-size: 1.5rem;
+        padding: 25px;
+    }
+`;
+
+export const NoteItemShortTitle = styled.h4`
+    font-weight: 900;
+`;
+
+export const NoteItemShortDescr = styled.p`
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
 `;
 
 export const NotesDescrContainer = styled.div`

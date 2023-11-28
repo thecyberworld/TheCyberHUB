@@ -1,16 +1,14 @@
 import React from "react";
-import Note from "./Note";
-import AddNote from "./AddNote";
+import { NotesListContainer } from "./NoteElements";
+import NoteItem from "./NoteItem";
 
-const NoteList = ({ id, notes, handleAddNote, handleDeleteNote }) => {
+const NoteList = ({ children }) => {
     return (
-        <div className="container">
-            {notes?.map((note) => (
-                <Note key={note.id} id={note.id} text={note.text} handleDeleteNote={handleDeleteNote} />
+        <NotesListContainer>
+            {children.map((note) => (
+                <NoteItem key={note.id} {...note} />
             ))}
-            <AddNote handleAddNote={handleAddNote} />
-        </div>
+        </NotesListContainer>
     );
 };
-
 export default NoteList;

@@ -1,0 +1,57 @@
+/* .note {
+    background-color: #242526;
+    color: #828282;
+    border: 1px solid #828282;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
+    max-height: 300px;
+    width: 300px;
+    overflow-x: none;
+    overflow-wrap: break-word;
+    word-break: break-all;
+}
+
+.note textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #242526;
+    color: #828282;
+    font-size: 16px;
+    resize: none;
+    outline: none;
+    overflow-x: none;
+}
+
+.note button {
+    background-color: #828282;
+    color: #090909;
+    border: none;
+    padding: 8px 16px;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.note button:hover {
+    background-color: #090909;
+    color: #828282;
+}
+
+.note .delete-button {
+    margin-bottom: -5px;
+    margin-left: 260px;
+    cursor: pointer;
+}
+
+.note .character-limit-error {
+    color: red;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+} */
