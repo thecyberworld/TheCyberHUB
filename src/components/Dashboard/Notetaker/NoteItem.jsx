@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { NoteItemElement, NoteItemShortDescr, NoteItemShortTitle } from "./NoteElements";
+import { NoteItemElement, NoteItemShortDescription, NoteItemShortTitle } from "./NoteElements";
 
 const shortText = (text, letters) => {
-    return text.length > letters ? `${text.slice(0, letters)}...` : text;
+    const textCleanFromTags = text.replace(/<[^>]+>/g, "");
+    return textCleanFromTags.length > letters ? `${textCleanFromTags.slice(0, letters)}...` : textCleanFromTags;
 };
 
-const NoteItem = ({ title, descr }) => {
+const NoteItem = ({ id, title, description, onPick }) => {
     const [shortTitle, setShortTitle] = useState("");
     const [shortDescr, setShortDescr] = useState("");
 
     useEffect(() => {
-        setShortTitle(shortText(title, 35));
-        setShortDescr(shortText(descr, 70));
-    }, [title, descr]);
+        setShortTitle(shortText(title, 30));
+        setShortDescr(shortText(description, 60));
+    }, [title, description]);
 
     return (
-        <NoteItemElement>
+        <NoteItemElement onClick={() => onPick(id)}>
             <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
-            <NoteItemShortDescr>{shortDescr}</NoteItemShortDescr>
+            <NoteItemShortDescription>{shortDescr}</NoteItemShortDescription>
         </NoteItemElement>
     );
 };
