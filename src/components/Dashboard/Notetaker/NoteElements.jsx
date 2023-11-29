@@ -47,6 +47,7 @@ export const NotesListContainer = styled.ul`
     border: 2px solid #111111;
     border-top: 0px;
     padding: 20px 15px;
+    overflow-y: auto;
 `;
 
 export const NoteItemElement = styled.li`
@@ -73,29 +74,35 @@ export const NoteItemShortTitle = styled.h4`
     font-weight: 900;
 `;
 
-export const NoteItemShortDescr = styled.p`
+export const NoteItemShortDescription = styled.p`
     font-family: "Roboto", sans-serif;
     font-weight: 100;
 `;
 
-export const NotesDescrContainer = styled.div`
+export const NotesDescriptionContainer = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
     height: 100vh;
 `;
 
-export const NotesDescrHeader = styled.div`
+export const NotesDescriptionHeader = styled.div`
     border: 2px solid #111111;
     border-left: 0px;
     padding: 0 10px;
     height: 3rem;
 `;
 
-export const NotesDescr = styled.div`
+export const NotesDescription = styled.div`
     flex: 1;
     border: 2px solid #111111;
     border-top: 0px;
     border-left: 0px;
     padding: 0 10px;
+    color: #f5f5f5;
+    padding: 20px;
 `;
+
+export const DescriptionTitle = styled.h1``;
+
+export const DescriptionContent = styled.p``;

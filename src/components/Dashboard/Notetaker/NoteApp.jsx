@@ -7,11 +7,13 @@ import {
     NotesContainer,
     NotesSidebarContainer,
     NotesSidebarHeader,
-    NotesDescrHeader,
-    NotesDescr,
-    NotesDescrContainer,
+    NotesDescriptionHeader,
+    NotesDescription,
+    NotesDescriptionContainer,
     NotesSidebarHeaderTitle,
     SearchContainer,
+    DescriptionTitle,
+    DescriptionContent,
 } from "./NoteElements";
 import SearchInputBox from "../../Common/SearchInputBox";
 import "./NoteApp.css";
@@ -20,23 +22,31 @@ import NoteList from "./NoteList";
 const DUMMY_DATA = [
     {
         id: 1,
-        title: "If you discover a security vulnerability,we want to hear about it.",
-        descr: "If you have discovered a security vulnerability on our website, we encourage you to report it to us as soon as possible.",
-        active: false,
-        pinned: false,
+        title: "Exploring JWT Security and Vulnerabilities",
+        description:
+            "JSON Web Tokens (JWT) are widely used for authentication and authorization. However, like any technology, they have potential vulnerabilities that need to be understood and addressed.",
     },
     {
         id: 2,
         title: "Responsible Disclosure",
-        descr: "We take the security of our website very seriously and appreciate the contributions of security researchers to help keep our website secure. If you discover a security vulnerability, please report it to us using the contact information provided below. We ask that you please do not publicly disclose the vulnerability until we have had a chance to investigate and address the issue.",
-        active: false,
+        description:
+            "We take the security of our website very seriously and appreciate the contributions of security researchers to help keep our website secure. If you discover a security vulnerability, please report it to us using the contact information provided below. We ask that you please do not publicly disclose the vulnerability until we have had a chance to investigate and address the issue.",
+        pinned: false,
+    },
+    {
+        id: 3,
+        title: "What is two-factor authentication and how does it work?",
+        description:
+            "I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?",
         pinned: false,
     },
 ];
 
 const NoteApp = () => {
     const [notes, setNotes] = useState(DUMMY_DATA);
-    const [search, setSearch] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredNotes, setFilteredNotes] = useState([]);
+    const [pickedNote, setPickedNote] = useState({});
     useEffect(() => {
         const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
         if (savedNotes !== "") {
@@ -48,6 +58,24 @@ const NoteApp = () => {
         localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
     }, [notes]);
 
+    useEffect(() => {
+        const newFilteredNotes = notes.filter((note) => {
+            return (
+                note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+                note?.description?.toLowerCase().includes(searchTerm?.toLowerCase())
+            );
+        });
+        console.log(newFilteredNotes, searchTerm);
+        setFilteredNotes(newFilteredNotes);
+    }, [searchTerm]);
+
+    const handleSearchTermChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+    const handlePickNote = (noteId) => {
+        const pickedNote = notes.find((note) => note.id === noteId);
+        setPickedNote(pickedNote !== -1 ? pickedNote : {});
+    };
     // const addNote = (text) => {
     //     const newNote = {
     //         text,
@@ -73,17 +101,20 @@ const NoteApp = () => {
                 <SearchContainer>
                     <SearchInputBox
                         placeholder="Search all notes and tags"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
+                        value={searchTerm}
+                        onChange={handleSearchTermChange}
                     />
                 </SearchContainer>
 
-                <NoteList>{notes}</NoteList>
+                <NoteList onPick={handlePickNote}>{filteredNotes}</NoteList>
             </NotesSidebarContainer>
-            <NotesDescrContainer>
-                <NotesDescrHeader></NotesDescrHeader>
-                <NotesDescr></NotesDescr>
-            </NotesDescrContainer>
+            <NotesDescriptionContainer>
+                <NotesDescriptionHeader></NotesDescriptionHeader>
+                <NotesDescription>
+                    <DescriptionTitle>{pickedNote.title}</DescriptionTitle>
+                    <DescriptionContent>{pickedNote.description}</DescriptionContent>
+                </NotesDescription>
+            </NotesDescriptionContainer>
         </NotesContainer>
 
         //     <NoteList notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />
