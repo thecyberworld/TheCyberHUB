@@ -53,6 +53,8 @@ import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import ChatRoute from "./components/Chat/ChatRoute";
 import SettingsRoute from "./components/Dashboard/Settings";
+import HackBook from "./components/HackBook/HackBook";
+import MarkdownContentFromGitHub from "./components/HackBook/test-github-api";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
@@ -135,6 +137,8 @@ const App = () => {
                         <Route path={"/chat/*"} element={<ChatRoute />} />
 
                         <Route exact path={"/contact"} element={<ContactForm />} />
+                        <Route exact path={"/hackbook"} element={<HackBook />} />
+                        <Route exact path={"/MarkdownContentFromGitHub"} element={<MarkdownContentFromGitHub />} />
 
                         <Route>
                             <Route exact path={"/@:username"} element={<UserProfile />} />
