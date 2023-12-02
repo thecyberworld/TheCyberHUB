@@ -49,7 +49,18 @@ export const NotesListContainer = styled.ul`
     padding: 20px 15px;
     overflow-y: auto;
 `;
-
+export const NoteItemPinningContainer = styled.div`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: ${(props) => (props.isPinned ? "block" : "none")};
+`;
+export const NoteItemElementContainer = styled.div`
+    position: relative;
+    &:hover ${NoteItemPinningContainer} {
+        display: block;
+    }
+`;
 export const NoteItemElement = styled.li`
     display: flex;
     flex-direction: column;
@@ -58,7 +69,7 @@ export const NoteItemElement = styled.li`
     width: 100%;
     padding: 10px;
     gap: 5px;
-    background-color: #090909;
+    background-color: ${(props) => (props.isPinned ? "#2a2a2a" : "#090909")};
     color: #f5f5f5;
     &:hover {
         background-color: #383838;
@@ -89,10 +100,18 @@ export const NotesDescriptionContainer = styled.div`
 export const NotesDescriptionHeader = styled.div`
     border: 2px solid #111111;
     border-left: 0px;
-    padding: 0 10px;
+    padding: 0 20px;
     height: 3rem;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 `;
-
+export const NotesDescriptionIconsContainer = styled.div`
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
 export const NotesDescription = styled.div`
     flex: 1;
     border: 2px solid #111111;

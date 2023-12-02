@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { NoteItemElement, NoteItemShortDescription, NoteItemShortTitle } from "./NoteElements";
+import {
+    NoteItemElement,
+    NoteItemElementContainer,
+    NoteItemPinningContainer,
+    NoteItemShortDescription,
+    NoteItemShortTitle,
+} from "./NoteElements";
+import NotePinning from "./NotePinning";
 
 const shortText = (text, letters) => {
     const textCleanFromTags = text.replace(/<[^>]+>/g, "");
     return textCleanFromTags.length > letters ? `${textCleanFromTags.slice(0, letters)}...` : textCleanFromTags;
 };
 
-const NoteItem = ({ id, title, description, onPick }) => {
+const NoteItem = ({ id, title, description, pinned, onPick, onPin }) => {
     const [shortTitle, setShortTitle] = useState("");
     const [shortDescr, setShortDescr] = useState("");
 
@@ -16,10 +23,15 @@ const NoteItem = ({ id, title, description, onPick }) => {
     }, [title, description]);
 
     return (
-        <NoteItemElement onClick={() => onPick(id)}>
-            <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
-            <NoteItemShortDescription>{shortDescr}</NoteItemShortDescription>
-        </NoteItemElement>
+        <NoteItemElementContainer>
+            <NoteItemElement isPinned={pinned} onClick={() => onPick(id)}>
+                <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
+                <NoteItemShortDescription>{shortDescr}</NoteItemShortDescription>
+            </NoteItemElement>
+            <NoteItemPinningContainer isPinned={pinned}>
+                <NotePinning isPinned={pinned} onPin={onPin} noteId={id} />
+            </NoteItemPinningContainer>
+        </NoteItemElementContainer>
     );
 };
 export default NoteItem;

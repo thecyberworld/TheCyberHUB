@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -40,7 +41,7 @@ export const RouteLink = styled(Link)`
     text-decoration: none;
     color: #f5f5f5;
 `;
-export const SideBarLink = styled(NavLink)`
+export const SideBarLink = styled(({ isOpen, ...props }) => <NavLink {...props} />)`
     text-decoration: none;
     color: #f5f5f5;
     display: flex;

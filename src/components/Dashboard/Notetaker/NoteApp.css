@@ -1,7 +1,13 @@
 .icon {
     color: #646464;
 }
+.icon-delete {
+    color: #bc0101;
+}
+.icon-pin {
+    color: rgb(47, 108, 129);
+}
 .icon:hover {
-    color: #818181;
+    opacity: 0.7;
     cursor: pointer;
 }
