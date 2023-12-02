@@ -2,22 +2,18 @@
 // import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { FiEdit } from "react-icons/fi";
+import { MdNoteAdd } from "react-icons/md";
 import {
     NotesContainer,
     NotesSidebarContainer,
     NotesSidebarHeader,
-    NotesDescriptionHeader,
-    NotesDescription,
-    NotesDescriptionContainer,
     NotesSidebarHeaderTitle,
     SearchContainer,
-    DescriptionTitle,
-    DescriptionContent,
 } from "./NoteElements";
 import SearchInputBox from "../../Common/SearchInputBox";
 import "./NoteApp.css";
 import NoteList from "./NoteList";
+import NoteDescription from "./NoteDescription";
 
 const DUMMY_DATA = [
     {
@@ -65,9 +61,8 @@ const NoteApp = () => {
                 note?.description?.toLowerCase().includes(searchTerm?.toLowerCase())
             );
         });
-        console.log(newFilteredNotes, searchTerm);
         setFilteredNotes(newFilteredNotes);
-    }, [searchTerm]);
+    }, [searchTerm, notes]);
 
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
@@ -75,6 +70,24 @@ const NoteApp = () => {
     const handlePickNote = (noteId) => {
         const pickedNote = notes.find((note) => note.id === noteId);
         setPickedNote(pickedNote !== -1 ? pickedNote : {});
+    };
+    const handlePinNote = (noteId) => {
+        let needToHappen = true;
+        setNotes((prevNotes) => {
+            const pinnedNoteIndex = prevNotes.findIndex((note) => note.id === noteId);
+            if (pinnedNoteIndex > -1 && needToHappen) {
+                prevNotes[pinnedNoteIndex].pinned = !prevNotes[pinnedNoteIndex].pinned;
+            }
+            needToHappen = false;
+            const sortNotes = prevNotes.sort((a, b) => {
+                if (a.pinned !== b.pinned) {
+                    if (a.pinned === true) return -1;
+                    return 1;
+                }
+                return 0;
+            });
+            return [...sortNotes];
+        });
     };
     // const addNote = (text) => {
     //     const newNote = {
@@ -85,18 +98,18 @@ const NoteApp = () => {
     //     setNotes(newNotes);
     // };
 
-    // const deleteNote = (id) => {
-    //     const newNotes = notes?.filter((note) => note.id !== id);
-    //     setNotes(newNotes);
-    // };
-
+    const handleDataWhenDeleteNote = (id) => {
+        const newNotes = notes?.filter((note) => note.id !== id);
+        setNotes(newNotes);
+    };
+    console.log(filteredNotes);
     return (
         <NotesContainer>
             <NotesSidebarContainer>
                 <NotesSidebarHeader>
-                    <RxHamburgerMenu className="icon" size="24px" title="menu" />
+                    <RxHamburgerMenu className="icon" size="24px" title="Menu" />
                     <NotesSidebarHeaderTitle>All Notes</NotesSidebarHeaderTitle>
-                    <FiEdit className="icon" size="24px" title="new" />
+                    <MdNoteAdd className="icon" size="24px" title="New" />
                 </NotesSidebarHeader>
                 <SearchContainer>
                     <SearchInputBox
@@ -106,15 +119,13 @@ const NoteApp = () => {
                     />
                 </SearchContainer>
 
-                <NoteList onPick={handlePickNote}>{filteredNotes}</NoteList>
+                <NoteList onPin={handlePinNote} onPick={handlePickNote}>
+                    {filteredNotes}
+                </NoteList>
             </NotesSidebarContainer>
-            <NotesDescriptionContainer>
-                <NotesDescriptionHeader></NotesDescriptionHeader>
-                <NotesDescription>
-                    <DescriptionTitle>{pickedNote.title}</DescriptionTitle>
-                    <DescriptionContent>{pickedNote.description}</DescriptionContent>
-                </NotesDescription>
-            </NotesDescriptionContainer>
+            <NoteDescription onPin={handlePinNote} onDelete={handleDataWhenDeleteNote}>
+                {pickedNote}
+            </NoteDescription>
         </NotesContainer>
 
         //     <NoteList notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />
