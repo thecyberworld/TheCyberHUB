@@ -43,6 +43,7 @@ const NoteApp = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredNotes, setFilteredNotes] = useState([]);
     const [pickedNote, setPickedNote] = useState({});
+    const [needToAdd, setNeedToAdd] = useState(false);
     useEffect(() => {
         const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
         if (savedNotes !== "") {
@@ -89,6 +90,9 @@ const NoteApp = () => {
             return [...sortNotes];
         });
     };
+    const handleAddNewNote = () => {
+        setNeedToAdd(true);
+    };
     // const addNote = (text) => {
     //     const newNote = {
     //         text,
@@ -102,14 +106,13 @@ const NoteApp = () => {
         const newNotes = notes?.filter((note) => note.id !== id);
         setNotes(newNotes);
     };
-    console.log(filteredNotes);
     return (
         <NotesContainer>
             <NotesSidebarContainer>
                 <NotesSidebarHeader>
                     <RxHamburgerMenu className="icon" size="24px" title="Menu" />
                     <NotesSidebarHeaderTitle>All Notes</NotesSidebarHeaderTitle>
-                    <MdNoteAdd className="icon" size="24px" title="New" />
+                    <MdNoteAdd className="icon" size="24px" title="New" onClick={handleAddNewNote} />
                 </NotesSidebarHeader>
                 <SearchContainer>
                     <SearchInputBox
@@ -123,7 +126,7 @@ const NoteApp = () => {
                     {filteredNotes}
                 </NoteList>
             </NotesSidebarContainer>
-            <NoteDescription onPin={handlePinNote} onDelete={handleDataWhenDeleteNote}>
+            <NoteDescription onPin={handlePinNote} onDelete={handleDataWhenDeleteNote} needToAdd={needToAdd}>
                 {pickedNote}
             </NoteDescription>
         </NotesContainer>
