@@ -91,6 +91,7 @@ export const NoteItemShortDescription = styled.p`
 `;
 
 export const NotesDescriptionContainer = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -113,7 +114,12 @@ export const NotesDescriptionIconsContainer = styled.div`
     align-items: center;
 `;
 export const NotesDescription = styled.div`
-    flex: 1;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     border: 2px solid #111111;
     border-top: 0px;
     border-left: 0px;
@@ -122,6 +128,6 @@ export const NotesDescription = styled.div`
     padding: 20px;
 `;
 
-export const DescriptionTitle = styled.h1``;
+export const DescriptionTitle = styled.div``;
 
-export const DescriptionContent = styled.p``;
+export const DescriptionContent = styled.div``;

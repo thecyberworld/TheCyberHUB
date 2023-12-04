@@ -25,21 +25,11 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd }) => {
         onDelete(children.id);
         setShowNote({});
     };
-    if (needToAdd) {
-        return (
-            <NotesDescriptionContainer>
-                <NotesDescriptionHeader></NotesDescriptionHeader>
-                <NotesDescription>
-                    <DescriptionTitle>{needToAdd && <MarkdownEditor />}</DescriptionTitle>
-                    <DescriptionContent>{needToAdd && <MarkdownEditor />}</DescriptionContent>
-                </NotesDescription>
-            </NotesDescriptionContainer>
-        );
-    }
+
     return (
         <NotesDescriptionContainer>
             <NotesDescriptionHeader>
-                {showNote.title && (
+                {!needToAdd && !needToEdit && showNote.title && (
                     <NotesDescriptionIconsContainer>
                         <BiSolidEdit className="icon" size="24px" title="Edit" onClick={setNeedToEdit} />
                         <NotePinning isPinned={showNote.pinned} onPin={onPin} noteId={showNote.id} />
@@ -55,10 +45,18 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd }) => {
             </NotesDescriptionHeader>
             <NotesDescription>
                 <DescriptionTitle>
-                    {needToEdit ? <MarkdownEditor content={showNote.title} /> : showNote.title}
+                    {needToAdd || needToEdit ? (
+                        <MarkdownEditor content={needToEdit ? `# ${showNote.title}` : "# "} label="title" />
+                    ) : (
+                        <h1>{showNote.title}</h1>
+                    )}
                 </DescriptionTitle>
                 <DescriptionContent>
-                    {needToEdit ? <MarkdownEditor content={showNote.description} /> : showNote.description}
+                    {needToAdd || needToEdit ? (
+                        <MarkdownEditor content={needToEdit ? showNote.description : ""} label="description" />
+                    ) : (
+                        <p>{showNote.description}</p>
+                    )}
                 </DescriptionContent>
             </NotesDescription>
         </NotesDescriptionContainer>
