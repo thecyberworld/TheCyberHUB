@@ -24,16 +24,13 @@ const DUMMY_DATA = [
     },
     {
         id: 2,
-        title: "Responsible Disclosure",
         description:
             "We take the security of our website very seriously and appreciate the contributions of security researchers to help keep our website secure. If you discover a security vulnerability, please report it to us using the contact information provided below. We ask that you please do not publicly disclose the vulnerability until we have had a chance to investigate and address the issue.",
-        pinned: false,
+        pinned: true,
     },
     {
         id: 3,
         title: "What is two-factor authentication and how does it work?",
-        description:
-            "I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?I've been hearing a lot about two-factor authentication lately, but I'm not sure what it is or how it works. Can anyone explain it to me?",
         pinned: false,
     },
 ];
@@ -44,10 +41,20 @@ const NoteApp = () => {
     const [filteredNotes, setFilteredNotes] = useState([]);
     const [pickedNote, setPickedNote] = useState({});
     const [needToAdd, setNeedToAdd] = useState(false);
+
     useEffect(() => {
         const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
         if (savedNotes !== "") {
-            setNotes(savedNotes);
+            setNotes((savedNotes) => {
+                const sortNotes = savedNotes.sort((a, b) => {
+                    if (a.pinned !== b.pinned) {
+                        if (a.pinned === true) return -1;
+                        return 1;
+                    }
+                    return 0;
+                });
+                return [...sortNotes];
+            });
         }
     }, []);
 
@@ -106,6 +113,10 @@ const NoteApp = () => {
         const newNotes = notes?.filter((note) => note.id !== id);
         setNotes(newNotes);
     };
+    const handleCancelAdd = () => {
+        setNeedToAdd(false);
+        setPickedNote({});
+    };
     return (
         <NotesContainer>
             <NotesSidebarContainer>
@@ -126,7 +137,13 @@ const NoteApp = () => {
                     {filteredNotes}
                 </NoteList>
             </NotesSidebarContainer>
-            <NoteDescription onPin={handlePinNote} onDelete={handleDataWhenDeleteNote} needToAdd={needToAdd}>
+            <NoteDescription
+                onPin={handlePinNote}
+                onDelete={handleDataWhenDeleteNote}
+                needToAdd={needToAdd}
+                onAdd={handleAddNewNote}
+                onCancelAdd={handleCancelAdd}
+            >
                 {pickedNote}
             </NoteDescription>
         </NotesContainer>

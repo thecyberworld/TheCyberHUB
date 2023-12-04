@@ -108,7 +108,7 @@ export const NotesDescriptionHeader = styled.div`
     align-items: center;
 `;
 export const NotesDescriptionIconsContainer = styled.div`
-    width: 150px;
+    width: ${(props) => props.icons * 50}px;
     display: flex;
     justify-content: space-between;
     align-items: center;
