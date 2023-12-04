@@ -97,7 +97,7 @@ const NoteApp = () => {
             return [...sortNotes];
         });
     };
-    const handleAddNewNote = () => {
+    const handleOpenAddNewNoteMode = () => {
         setNeedToAdd(true);
     };
     // const addNote = (text) => {
@@ -113,7 +113,7 @@ const NoteApp = () => {
         const newNotes = notes?.filter((note) => note.id !== id);
         setNotes(newNotes);
     };
-    const handleCancelAdd = () => {
+    const handleCloseMDEditorMode = () => {
         setNeedToAdd(false);
         setPickedNote({});
     };
@@ -123,7 +123,7 @@ const NoteApp = () => {
                 <NotesSidebarHeader>
                     <RxHamburgerMenu className="icon" size="24px" title="Menu" />
                     <NotesSidebarHeaderTitle>All Notes</NotesSidebarHeaderTitle>
-                    <MdNoteAdd className="icon" size="24px" title="New" onClick={handleAddNewNote} />
+                    <MdNoteAdd className="icon" size="24px" title="New" onClick={handleOpenAddNewNoteMode} />
                 </NotesSidebarHeader>
                 <SearchContainer>
                     <SearchInputBox
@@ -141,8 +141,7 @@ const NoteApp = () => {
                 onPin={handlePinNote}
                 onDelete={handleDataWhenDeleteNote}
                 needToAdd={needToAdd}
-                onAdd={handleAddNewNote}
-                onCancelAdd={handleCancelAdd}
+                onCloseAddMode={handleCloseMDEditorMode}
             >
                 {pickedNote}
             </NoteDescription>

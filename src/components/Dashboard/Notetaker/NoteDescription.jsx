@@ -13,7 +13,7 @@ import NotePinning from "./NotePinning";
 import { RiMore2Fill } from "react-icons/ri";
 import MarkdownEditor from "../../Common/MarkdownEditor";
 
-const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCancelAdd }) => {
+const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode }) => {
     const [showNote, setShowNote] = useState(children);
     const [needToEdit, setNeedToEdit] = useState(false);
 
@@ -25,10 +25,13 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCancelAdd }) 
         onDelete(children.id);
         setShowNote({});
     };
-    const handleCancel = () => {
+    const handleClose = () => {
         if (needToEdit) return setNeedToEdit(false);
-        onCancelAdd(false);
+        onCloseAddMode(false);
         setShowNote({});
+    };
+    const handleSaveNote = () => {
+        handleClose();
     };
     return (
         <NotesDescriptionContainer>
@@ -48,8 +51,8 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCancelAdd }) 
                 )}
                 {(needToAdd || needToEdit) && (
                     <NotesDescriptionIconsContainer icons={2}>
-                        <BiSolidSave className="icon icon-save" size="24px" title="Save" />
-                        <MdCancel className="icon icon-cancel" size="24px" title="Cancel" onClick={handleCancel} />
+                        <BiSolidSave className="icon icon-save" size="24px" title="Save" onClick={handleSaveNote} />
+                        <MdCancel className="icon icon-cancel" size="24px" title="Cancel" onClick={handleClose} />
                         <RiMore2Fill className="icon" size="24px" title="More" />
                     </NotesDescriptionIconsContainer>
                 )}
