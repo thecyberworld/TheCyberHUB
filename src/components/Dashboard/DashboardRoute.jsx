@@ -5,7 +5,7 @@ import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import Sidebar from "./Sidebar/Sidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
-import NoteApp from "./Notetaker/NoteApp";
+import NotesApp from "./NotesApp/NotesApp";
 import Tools from "../Tools/Tools";
 
 const DashboardRoute = () => {
@@ -28,7 +28,7 @@ const DashboardRoute = () => {
                     <Route path={"goals"} element={<GoalSetter />} />
                     <Route path={"bookmarks"} element={<Bookmarks />} />
                     <Route path={"chat"} element={<ChatHome />} />
-                    <Route path={"notes"} element={<NoteApp />} />
+                    <Route path={"notes"} element={<NotesApp />} />
                     <Route path={"tools"} element={<Tools />} />
                     <Route path={"blogs"}>
                         <Route index element={<UserBlogs />} />

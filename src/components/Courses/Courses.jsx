@@ -2,12 +2,14 @@ import React from "react";
 import FreeCourse from "./LearningPath/FreeCourse";
 import { CoursesContainer } from "./CoursesElements";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import NewCourses from "./NewCourses/NewCourses";
 
 const Courses = () => {
     return (
         <Wrapper>
             <CoursesContainer>
-                <FreeCourse />
+                {/* <FreeCourse /> */}
+                <NewCourses/>
             </CoursesContainer>
         </Wrapper>
     );

@@ -32,6 +32,7 @@ const FreeCourse = () => {
     const [selectedHeading, setSelectedHeading] = useState(null);
     const [selectedContent, setSelectedContent] = useState(null);
     const [showNavigation, setShowNavigation] = useState(true);
+    const [filterContent, setFilterContent] = useState(null)
 
     useEffect(() => {
         if (!user) {
@@ -39,6 +40,15 @@ const FreeCourse = () => {
         }
         setSelectedHeading(selectFirstHeading);
     }, [user, navigate]);
+
+    const selectFilterDay = (filter) => {
+        if(filterContent === filter){
+            setFilterContent(null)
+        }
+        else{
+            setFilterContent(filter)
+        }
+    }
 
     const handleHeadingClick = (heading) => {
         setSelectedHeading(heading);
@@ -68,6 +78,7 @@ const FreeCourse = () => {
                                             <Weeks key={index}>
                                                 <h2>{week.week}</h2>
                                                 {week?.days.map((days, index) => (
+                                                    filterContent === null || filterContent === days.day ?
                                                     <Days key={index}>
                                                         <h3>{days.day}</h3>
                                                         {days.contents.map((content, index) => (
@@ -83,11 +94,12 @@ const FreeCourse = () => {
                                                                         value={content.heading}
                                                                         isSelected={content.heading === selectedContent}
                                                                         type="checkbox"
+                                                                        onClick={() => {selectFilterDay(days.day)}}
                                                                     />
                                                                 </CheckboxContainer>
                                                             </TopicBox>
                                                         ))}
-                                                    </Days>
+                                                    </Days> : null
                                                 ))}
                                             </Weeks>
                                         ))}
