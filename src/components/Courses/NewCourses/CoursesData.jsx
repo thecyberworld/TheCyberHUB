@@ -8,11 +8,11 @@ const coursesData = {
         "videos": [
           {
             "title": "Introduction to HTML",
-            "imageUrl": "https://example.com/html-intro.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           },
           {
             "title": "CSS Styling Techniques",
-            "imageUrl": "https://example.com/css-styling.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           }
         ]
       },
@@ -21,11 +21,11 @@ const coursesData = {
         "videos": [
           {
             "title": "JavaScript Basics",
-            "imageUrl": "https://example.com/js-basics.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           },
           {
             "title": "DOM Manipulation",
-            "imageUrl": "https://example.com/dom-manipulation.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           }
         ]
       }
@@ -41,11 +41,11 @@ const coursesData = {
         "videos": [
           {
             "title": "Getting Started with Git",
-            "imageUrl": "https://example.com/git-started.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           },
           {
             "title": "Understanding Open Source Licensing",
-            "imageUrl": "https://example.com/oss-licensing.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           }
         ]
       },
@@ -54,11 +54,11 @@ const coursesData = {
         "videos": [
           {
             "title": "Engaging with Open Source Projects",
-            "imageUrl": "https://example.com/oss-engagement.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           },
           {
             "title": "Best Practices in Open Source",
-            "imageUrl": "https://example.com/oss-bestpractices.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           }
         ]
       }
@@ -74,11 +74,11 @@ const coursesData = {
         "videos": [
           {
             "title": "Intro to Linux",
-            "imageUrl": "https://example.com/linux-intro.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           },
           {
             "title": "Linux Security",
-            "imageUrl": "https://example.com/linux-security.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           }
         ]
       },
@@ -88,11 +88,11 @@ const coursesData = {
           {
             "title": "Web App Security Overview",
             "howToStart": "How to start web app testing",
-            "imageUrl": "https://example.com/web-app-security.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           },
           {
             "title": "Performing Security Tests",
-            "imageUrl": "https://example.com/security-testing.jpg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
           }
         ]
       }

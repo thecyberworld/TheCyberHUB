@@ -32,67 +32,45 @@ import {
   VLine,
   Weeks,
 } from "../LearningPath/LearningPathElements";
+import { RouterLink } from "../../Tools/ToolsElements";
+import { encodeURL } from "../../Blogs/util";
 import { useState } from "react";
 
 const NewCourses = () => {
-  const [filterContent, setFilterContent] = useState(null)
+  const [filterContent, setFilterContent] = useState("")
 
   const doFilterContent = (filter) => {
-    if(filterContent === null){
+    if (filterContent === null) {
       setFilterContent(filter)
     }
-    else{
+    else {
       setFilterContent(null)
     }
     console.log(filterContent)
   }
 
-    return(
-
-        <div>
-        {Object.values(CoursesData).map((courseData, index) => (
-          filterContent === null || filterContent === courseData.courseName ?
-          <div>
-            <Card key={index} onClick={() => { doFilterContent(courseData.courseName)}}>
-            <div>
+  return (
+    <>
+      {Object.values(CoursesData).map((courseData, index) => (
+        <>
+          <RouterLink to={{ pathname: `${encodeURL(courseData.courseName)}` }}>
+            <Card key={index} onClick={() => { doFilterContent(courseData.courseName) }}>
+              <div>
                 <Img src={courseData.thumbnail} alt="card__image" width="600" />
-            </div>
-            <CardBody>
+              </div>
+              <CardBody>
                 <VideoHeading>
-                    <Link href="" target={"_blank"}>
-                      {courseData.courseName}
-                    </Link>
+                  <Link href="" target={"_blank"}>
+                    {courseData.courseName}
+                  </Link>
                 </VideoHeading>
-            </CardBody>
-          </Card>
-          {filterContent !== null ?  courseData.sections.map((section, index) => (
-            <div key={index}>
-              <Weeks key={index}><h3>{section.sectionName}</h3></Weeks>
-              
-              <Days key={index}>
-              <ul>
-                {section.videos.map((video, videoIndex) => (
-                  <>
-                  <TopicBox
-                    key={index}
-                  >
-                    <ContentHeading>{video.title}</ContentHeading>
-                    <CheckboxContainer>
-                        <Checkbox
-                            type="checkbox"
-                            />
-                    </CheckboxContainer>
-                </TopicBox>
-                  </>
-                ))}
-              </ul>
-              </Days>
-            </div>
-          )) : null}
-        </div>
-        : null))}
-      </div>
-    )
+              </CardBody>
+            </Card>
+          </RouterLink>
+        </>
+      ))}
+    </>
+  )
 }
 
 export default NewCourses;

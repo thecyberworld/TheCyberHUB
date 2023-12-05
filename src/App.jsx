@@ -53,6 +53,7 @@ import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import ChatRoute from "./components/Chat/ChatRoute";
 import SettingsRoute from "./components/Dashboard/Settings";
+import Course from "./components/Courses/NewCourses/Course";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
@@ -126,7 +127,7 @@ const App = () => {
 
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
-
+                        <Route exact path={"courses/:title"} element={<Course/>} />
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
 
                         <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
