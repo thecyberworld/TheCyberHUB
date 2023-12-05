@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
     DescriptionContent,
+    DescriptionDisplayTitle,
     DescriptionTitle,
     NotesDescription,
     NotesDescriptionContainer,
@@ -12,6 +13,7 @@ import { BiSolidEdit, BiSolidSave } from "react-icons/bi";
 import NotePinning from "./NotePinning";
 import { RiMore2Fill } from "react-icons/ri";
 import MarkdownEditor from "../../Common/MarkdownEditor";
+import InputEditor from "../../Common/InputEditor";
 
 const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode }) => {
     const [showNote, setShowNote] = useState(children);
@@ -60,12 +62,11 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode 
             <NotesDescription>
                 <DescriptionTitle>
                     {needToAdd || needToEdit ? (
-                        <MarkdownEditor
-                            content={needToEdit && showNote.title ? `# ${showNote.title}` : "# "}
-                            label="title"
-                        />
+                        <InputEditor label="title" content={needToEdit && showNote.title ? showNote.title : ""} />
                     ) : (
-                        <h1>{showNote.title || (showNote.id ? `UntitledNote #${showNote.id}` : "")}</h1>
+                        <DescriptionDisplayTitle>
+                            {showNote.title || (showNote.id ? `UntitledNote #${showNote.id}` : "")}
+                        </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
                 <DescriptionContent>
@@ -75,7 +76,10 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode 
                             label="description"
                         />
                     ) : (
-                        <p>{showNote.description || (showNote.id ? `undescribedNote` : "")}</p>
+                        <MarkdownEditor
+                            content={showNote.description || (showNote.id ? `undescribedNote` : "")}
+                            previewModeOnly
+                        />
                     )}
                 </DescriptionContent>
             </NotesDescription>

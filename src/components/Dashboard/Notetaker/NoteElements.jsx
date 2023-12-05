@@ -120,9 +120,6 @@ export const NotesDescription = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    border: 2px solid #111111;
-    border-top: 0px;
-    border-left: 0px;
     padding: 0 10px;
     color: #f5f5f5;
     padding: 20px;
@@ -131,3 +128,5 @@ export const NotesDescription = styled.div`
 export const DescriptionTitle = styled.div``;
 
 export const DescriptionContent = styled.div``;
+
+export const DescriptionDisplayTitle = styled.h1``;

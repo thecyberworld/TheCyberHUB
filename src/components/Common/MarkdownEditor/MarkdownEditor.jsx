@@ -9,11 +9,14 @@ import {
 import rehypeSanitize from "rehype-sanitize";
 import "./MarkdownEditor.css";
 
-const MarkdownEditor = ({ content, label }) => {
+const MarkdownEditor = ({ content, label, previewModeOnly }) => {
     const [value, setValue] = useState();
     useEffect(() => {
         setValue(content);
     }, [content]);
+
+    if (previewModeOnly)
+        return <MDEditor.Markdown source={value} style={{ whiteSpace: "normal", backgroundColor: "#000" }} />;
 
     return (
         <MarkdownContainer>
