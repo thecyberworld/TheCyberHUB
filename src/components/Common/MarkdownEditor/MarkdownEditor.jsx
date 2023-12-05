@@ -22,7 +22,10 @@ const MarkdownEditor = ({ content, label, previewModeOnly }) => {
         <MarkdownContainer>
             <MarkdownLabel>{label}</MarkdownLabel>
             <MarkdownEditorPreviewContainer>
-                <MDEditor.Markdown source={value} style={{ whiteSpace: "normal" }} />
+                <MDEditor.Markdown
+                    source={value}
+                    style={{ whiteSpace: "normal", paddingLeft: "5px", paddingRight: "5px" }}
+                />
             </MarkdownEditorPreviewContainer>
             <MarkdownEditorContainer>
                 <MDEditor

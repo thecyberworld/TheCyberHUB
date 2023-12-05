@@ -12,11 +12,12 @@ export const InputEditorTheInput = styled.input`
     color: #b5b5b5;
     width: 100%;
     border-radius: 8px;
-    border: none;
+    border: 1px solid #333342;
     outline: none;
     font-size: 18px;
     line-height: 24px;
     text-transform: capitalize;
+    margin-top: 20px;
 `;
 export const InputEditorLabel = styled.h2`
     text-transform: uppercase;
@@ -27,4 +28,6 @@ export const InputEditorLabel = styled.h2`
 
 export const InputEditorPreview = styled.h1`
     text-transform: capitalize;
+    background-color: #0d1117;
+    padding: 0 5px;
 `;
