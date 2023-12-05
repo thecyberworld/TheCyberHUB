@@ -91,6 +91,7 @@ export const NoteItemShortDescription = styled.p`
 `;
 
 export const NotesDescriptionContainer = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -107,21 +108,25 @@ export const NotesDescriptionHeader = styled.div`
     align-items: center;
 `;
 export const NotesDescriptionIconsContainer = styled.div`
-    width: 150px;
+    width: ${(props) => props.icons * 50}px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
 export const NotesDescription = styled.div`
-    flex: 1;
-    border: 2px solid #111111;
-    border-top: 0px;
-    border-left: 0px;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     padding: 0 10px;
     color: #f5f5f5;
     padding: 20px;
 `;
 
-export const DescriptionTitle = styled.h1``;
+export const DescriptionTitle = styled.div``;
 
-export const DescriptionContent = styled.p``;
+export const DescriptionContent = styled.div``;
+
+export const DescriptionDisplayTitle = styled.h1``;
