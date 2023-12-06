@@ -9,7 +9,7 @@ import {
 import NotePinning from "./NotePinning";
 
 const shortText = (text, letters) => {
-    const textCleanFromTags = text?.replace(/<[^>]+>/g, "");
+    const textCleanFromTags = text?.replace(/<[^>]+>|-|\[|\]|#/g, "");
     return textCleanFromTags?.length > letters ? `${textCleanFromTags.slice(0, letters)}...` : textCleanFromTags;
 };
 
