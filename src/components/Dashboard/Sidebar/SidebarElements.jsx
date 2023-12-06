@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -40,7 +41,7 @@ export const RouteLink = styled(Link)`
     text-decoration: none;
     color: #f5f5f5;
 `;
-export const SideBarLink = styled(NavLink)`
+export const SideBarLink = styled(({ isOpen, ...props }) => <NavLink {...props} />)`
     text-decoration: none;
     color: #f5f5f5;
     display: flex;
@@ -73,11 +74,10 @@ export const SidebarTitle = styled.h2`
 export const ToggleButton = styled.div`
     cursor: pointer;
     position: absolute;
-    right: ${(props) => (props.isOpen ? "-32px" : "-68px")};
-    background-color: ${(props) => (props.isOpen ? "#000000" : "#090909")};
-    padding: 10px;
-    border-radius: ${(props) => (props.isOpen ? "12px" : "0 12px 12px 0")};
-    background-color: ${(props) => (props.isOpen ? "transparent" : "#181818")};
+    top: 100px;
+    right: ${(props) => (props.isOpen ? "-32px" : "")};
+    padding: ${(props) => (props.isOpen ? "10px" : "17px")};
+    border-radius: 12px;
 `;
 
 export const UserProfile = styled.div`

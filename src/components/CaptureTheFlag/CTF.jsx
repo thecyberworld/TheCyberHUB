@@ -2,18 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import { getAllCTFs } from "../../features/ctf/ctfSlice";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    CTFContainer,
-    CTFHeader,
-    CTFHeading,
-    Option,
-    SearchBox,
-    SearchContainer,
-    SearchDifficulty,
-    SearchIcon,
-    SearchInput,
-    Select,
-} from "./CTFElements";
+import { CTFContainer, CTFHeader, CTFHeading, Option, SearchContainer, SearchDifficulty, Select } from "./CTFElements";
 import { getUserDetail } from "../../features/userDetail/userDetailSlice";
 // import { encodeURL } from "../Blogs/util";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
@@ -23,6 +12,7 @@ import CtfChallenges from "./CTFCards/CtfChallenges";
 import { RankTrophy } from "../Header/Navbar/NavbarElements";
 import { RouteLink } from "../Dashboard/Sidebar/SidebarElements";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
+import SearchInputBox from "../Common/SearchInputBox";
 
 const CTF = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -83,15 +73,7 @@ const CTF = () => {
                 {/* </Link> */}
 
                 <SearchContainer>
-                    <SearchBox>
-                        <SearchIcon />
-                        <SearchInput
-                            type="text"
-                            placeholder="Search by name"
-                            value={searchTerm}
-                            onChange={handleSearchTermChange}
-                        />
-                    </SearchBox>
+                    <SearchInputBox placeholder="Search by name" value={searchTerm} onChange={handleSearchTermChange} />
                     <SearchDifficulty>
                         Type
                         <Select value={selectedType} onChange={handleTypeSelect}>
