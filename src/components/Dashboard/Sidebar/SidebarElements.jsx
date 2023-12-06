@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import {
     BiHomeCircle,
     BiBookmarks,
-    BiLogoBlogger,
     BiLogoAlgolia,
     BiCog,
     BiSolidChevronLeft,
@@ -12,6 +11,7 @@ import {
     BiSolidCircle,
     BiChat,
 } from "react-icons/bi";
+import { PiReadCvLogo } from "react-icons/pi";
 
 export const DashboardSidebarContainer = styled.div`
     display: flex;
@@ -132,7 +132,7 @@ export const BiSolidCircleIcon = styled(BiSolidCircle)`
 
 export const BiHomeCircleIcon = createStyledIcon(BiHomeCircle);
 export const BiBookmarksIcon = createStyledIcon(BiBookmarks);
-export const BiLogoBloggericon = createStyledIcon(BiLogoBlogger);
+export const BiLogoBloggericon = createStyledIcon(PiReadCvLogo);
 export const BiLogoAlgoliaIcon = createStyledIcon(BiLogoAlgolia);
 export const CiSettingsIcon = createStyledIcon(BiCog);
 export const BiSolidChevronLeftIcon = createStyledIcon(BiSolidChevronLeft);
