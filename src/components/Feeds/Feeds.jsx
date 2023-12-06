@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { FeedsContainer, MiddleSection } from "./FeedsElements";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import AddFeed from "./PostForm/AddFeed";
@@ -10,12 +10,8 @@ import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../features/apiStatus";
 import FeedTags from "./FeedTags/FeedTags";
-import {
-    LeftContainer,
-    SearchContainer,
-} from "../Explore/ExploreElements";
-import { SearchBox, SearchIcon, SearchInput } from "../CaptureTheFlag/CTFElements";
-
+import { LeftContainer, SearchContainer } from "../Explore/ExploreElements";
+import { SearchBox, SearchIcon, SearchInput } from "../Common/SearchInputBox/SearchInputBoxElements";
 
 const Feeds = () => {
     const dispatch = useDispatch();
@@ -24,7 +20,7 @@ const Feeds = () => {
     const { userDetails, isUserDetailLoading, isUserDetailError, userDetailMessage } = useSelector(
         (state) => state.userDetail,
     );
-    
+
     useEffect(() => {
         if (isFeedError) console.log(feedMessage);
         if (isUserDetailError) console.log(userDetailMessage);
@@ -63,7 +59,7 @@ const Feeds = () => {
                     <AddFeed showPostTags={true} userDetails={userDetails} />
                     <FeedPosts feeds={combinedData} isFeedLoading={isFeedLoading} />
                 </MiddleSection>
-                <LeftContainer style={{padding:"25px 0"}}>
+                <LeftContainer style={{ padding: "25px 0" }}>
                     <SearchContainer>
                         <SearchBox>
                             <SearchIcon />
