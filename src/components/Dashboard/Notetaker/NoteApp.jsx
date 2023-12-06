@@ -45,6 +45,7 @@ const NoteApp = () => {
     };
     const handleOpenAddNewNoteMode = () => {
         setNeedToAdd(true);
+        setPickedNote({});
     };
     const handleCloseMDEditorMode = () => {
         setNeedToAdd(false);
