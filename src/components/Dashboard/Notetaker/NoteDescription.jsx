@@ -14,17 +14,19 @@ import NotePinning from "./NotePinning";
 import { RiMore2Fill } from "react-icons/ri";
 import MarkdownEditor from "../../Common/MarkdownEditor";
 import InputEditor from "../../Common/InputEditor";
+import { useDispatch } from "react-redux";
+import { noteAdd, noteEdit, noteRemove } from "../../../features/notes/notesSlice";
 
-const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode }) => {
+const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
+    const dispatch = useDispatch();
     const [showNote, setShowNote] = useState(children);
     const [needToEdit, setNeedToEdit] = useState(false);
-
     useEffect(() => {
         setShowNote(children);
     }, [children]);
 
     const handleDeleteNote = () => {
-        onDelete(children.id);
+        dispatch(noteRemove(children.id));
         setShowNote({});
     };
     const handleClose = () => {
@@ -32,7 +34,27 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode 
         onCloseAddMode(false);
         setShowNote({});
     };
-    const handleSaveNote = () => {
+    const handleCopyNoteData = (label, content) => {
+        setShowNote((prevCopyNote) => {
+            return {
+                ...prevCopyNote,
+                [label]: content,
+            };
+        });
+    };
+    const handleSaveNote = (newNote) => {
+        if (!newNote.title && !newNote.description) {
+            dispatch(noteRemove(newNote.id));
+            onChangePickedNote({});
+            handleClose();
+            return;
+        }
+        if (needToEdit) {
+            dispatch(noteEdit({ ...newNote, id: children.id }));
+        } else if (needToAdd) {
+            dispatch(noteAdd(newNote));
+        }
+        onChangePickedNote(newNote);
         handleClose();
     };
     return (
@@ -53,7 +75,12 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode 
                 )}
                 {(needToAdd || needToEdit) && (
                     <NotesDescriptionIconsContainer icons={2}>
-                        <BiSolidSave className="icon icon-save" size="24px" title="Save" onClick={handleSaveNote} />
+                        <BiSolidSave
+                            className="icon icon-save"
+                            size="24px"
+                            title="Save"
+                            onClick={() => handleSaveNote(showNote)}
+                        />
                         <MdCancel className="icon icon-cancel" size="24px" title="Cancel" onClick={handleClose} />
                         <RiMore2Fill className="icon" size="24px" title="More" />
                     </NotesDescriptionIconsContainer>
@@ -62,10 +89,14 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode 
             <NotesDescription>
                 <DescriptionTitle>
                     {needToAdd || needToEdit ? (
-                        <InputEditor label="title" content={needToEdit && showNote.title ? showNote.title : ""} />
+                        <InputEditor
+                            label="title"
+                            content={needToEdit && showNote.title ? showNote.title : ""}
+                            onCopyChanges={handleCopyNoteData}
+                        />
                     ) : (
                         <DescriptionDisplayTitle>
-                            {showNote.title || (showNote.id ? `UntitledNote #${showNote.id}` : "")}
+                            {showNote.title || (showNote.id ? `UntitledNote #${showNote.id.substr(0, 5)}` : "")}
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
@@ -74,6 +105,7 @@ const NoteDescription = ({ children, onPin, onDelete, needToAdd, onCloseAddMode 
                         <MarkdownEditor
                             content={needToEdit && showNote.description ? showNote.description : ""}
                             label="description"
+                            onCopyChanges={handleCopyNoteData}
                         />
                     ) : (
                         <MarkdownEditor

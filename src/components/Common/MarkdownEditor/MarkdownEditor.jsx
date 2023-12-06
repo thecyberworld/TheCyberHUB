@@ -9,28 +9,36 @@ import {
 import rehypeSanitize from "rehype-sanitize";
 import "./MarkdownEditor.css";
 
-const MarkdownEditor = ({ content, label, previewModeOnly }) => {
+const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
     const [value, setValue] = useState();
     useEffect(() => {
         setValue(content);
-    }, [content]);
+    }, [content, label]);
 
     if (previewModeOnly)
         return <MDEditor.Markdown source={value} style={{ whiteSpace: "normal", backgroundColor: "#000" }} />;
 
+    const handleChange = (value) => {
+        setValue(value);
+        onCopyChanges(label, value);
+    };
     return (
         <MarkdownContainer>
             <MarkdownLabel>{label}</MarkdownLabel>
             <MarkdownEditorPreviewContainer>
                 <MDEditor.Markdown
                     source={value}
-                    style={{ whiteSpace: "normal", paddingLeft: "5px", paddingRight: "5px" }}
+                    style={{
+                        whiteSpace: "normal",
+                        paddingLeft: "5px",
+                        paddingRight: "5px",
+                    }}
                 />
             </MarkdownEditorPreviewContainer>
             <MarkdownEditorContainer>
                 <MDEditor
                     value={value}
-                    onChange={setValue}
+                    onChange={handleChange}
                     previewOptions={{
                         rehypePlugins: [[rehypeSanitize]],
                     }}
