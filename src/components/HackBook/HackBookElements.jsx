@@ -49,7 +49,6 @@ export const ContentNav = styled.div`
     flex-direction: column;
     align-content: center;
     //padding: 10px;
-    max-width: 400px;
     width: 100%;
     border: #2f2f2f 1px solid;
     border-radius: 10px 0 0 10px;
