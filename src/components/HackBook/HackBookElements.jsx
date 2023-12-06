@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { RoadmapContentHeading, RoadmapDetailsCard } from "../Learn/Roadmaps/RoadmapElements";
+import { RoadmapContentHeading } from "../Learn/Roadmaps/RoadmapElements";
 
 export const HackBookContainer = styled.div`
     display: flex;
@@ -18,7 +18,11 @@ export const HackBookTitle = styled.h1`
     justify-content: center;
 `;
 
-export const HackBookHeading = styled.h2`
+export const HackBookHeading = styled.p``;
+
+export const UL = styled.div`
+    font-size: 20px;
+    font-weight: 600;
     padding: 0 18px;
     text-align: center;
     align-content: center;
@@ -33,15 +37,10 @@ export const ContentNavData = styled.div`
     justify-content: center;
 `;
 
-export const UL = styled(RoadmapDetailsCard)`
-    flex-direction: column;
-    font-size: 18px;
-    justify-content: center;
-`;
-
 export const LI = styled(RoadmapContentHeading)`
     width: 100%;
     font-size: 16px;
+    //padding: 0 0 0 25px;
 `;
 
 export const ContentNav = styled.div`

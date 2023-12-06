@@ -78,17 +78,20 @@ const HackBook = () => {
                         <ContentNavData>
                             {Object.keys(hackBookData).map((dirName, id) => (
                                 <RoadmapDetails key={id}>
-                                    <HackBookHeading> {dirName} </HackBookHeading>
                                     <UL>
-                                        {Object.keys(hackBookData[dirName]).map((fileName, fileId) => (
-                                            <RoadmapDetailsCard
-                                                key={fileId}
-                                                onClick={() => handleFileClick(dirName, fileName)}
-                                            >
-                                                <LI>{fileName}</LI>
-                                            </RoadmapDetailsCard>
-                                        ))}
+                                        <HackBookHeading> {dirName} </HackBookHeading>
                                     </UL>
+                                    {Object.keys(hackBookData[dirName]).map((fileName, fileId) => (
+                                        <RoadmapDetailsCard
+                                            key={fileId}
+                                            onClick={() => handleFileClick(dirName, fileName)}
+                                        >
+                                            <LI>
+                                                {" "}
+                                                {">"} {fileName}
+                                            </LI>
+                                        </RoadmapDetailsCard>
+                                    ))}
                                 </RoadmapDetails>
                             ))}
                         </ContentNavData>

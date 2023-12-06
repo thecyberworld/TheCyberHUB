@@ -34,7 +34,7 @@ const GoalSetter = () => {
     if (isApiLoading) {
         return (
             <Wrapper>
-                <CircleSpinner size={20} color={"#1fc10d"} isLoading={isApiLoading} />
+                <CircleSpinner size={20} color={"#ff6b08"} isLoading={isApiLoading} />
             </Wrapper>
         );
     }
