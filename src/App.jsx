@@ -24,13 +24,13 @@ import {
 } from "./components";
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
 import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import ContactForm from "./components/Homepage/ContactForm/ContactForm";
 import TermsAndCondition from "./components/Resources/TermsAndCondition";
 import PrivacyPolicy from "./components/Resources/PrivacyPolicy";
 import FormData from "./components/Dashboard/FormData/FormData";
 import UserProfile from "./components/Dashboard/Profile/UserProfile";
-import UserTimestamps from "./features/UserTimestamps";
+// import UserTimestamps from "./features/UserTimestamps";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
@@ -53,6 +53,7 @@ import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import ChatRoute from "./components/Chat/ChatRoute";
 import SettingsRoute from "./components/Dashboard/Settings";
+import HackBook from "./components/HackBook/HackBook";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
@@ -90,14 +91,13 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    const { user } = useSelector((state) => state.auth);
+    // const { user } = useSelector((state) => state.auth);
 
     if (isLoading) return <Spinner />;
 
     return (
         <>
-            {" "}
-            {user && <UserTimestamps user={user} />}
+            {/* {user && <UserTimestamps user={user} />} */}
             <Container>
                 {!hideHomeHeader() && (
                     <>
@@ -135,6 +135,7 @@ const App = () => {
                         <Route path={"/chat/*"} element={<ChatRoute />} />
 
                         <Route exact path={"/contact"} element={<ContactForm />} />
+                        <Route exact path={"/hackbook"} element={<HackBook />} />
 
                         <Route>
                             <Route exact path={"/@:username"} element={<UserProfile />} />

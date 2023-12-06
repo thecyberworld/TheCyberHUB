@@ -77,7 +77,8 @@ export const RoadmapDetails = styled.div`
     background: #090909;
     width: 100%;
     border-radius: 5px;
-    padding: 25px;
+    padding: 5px 25px;
+    gap: 5px;
 `;
 
 export const RoadmapContentHeading = styled.p`
@@ -92,7 +93,7 @@ export const RoadmapContentHeading = styled.p`
     cursor: pointer;
     background: #121212;
     margin: 5px;
-    padding: 5px 5px 5px 15px;
+    padding: 0px 15px;
     width: 100%;
 
     &:hover {
