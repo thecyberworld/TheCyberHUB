@@ -9,7 +9,7 @@ import {
 import NotePinning from "./NotePinning";
 
 const shortText = (text, letters) => {
-    const textCleanFromTags = text?.replace(/<[^>]+>/g, "");
+    const textCleanFromTags = text?.replace(/<[^>]+>|-|\[|\]|#/g, "");
     return textCleanFromTags?.length > letters ? `${textCleanFromTags.slice(0, letters)}...` : textCleanFromTags;
 };
 
@@ -18,7 +18,7 @@ const NoteItem = ({ id, title, description, pinned, onPick, onPin }) => {
     const [shortDescr, setShortDescr] = useState("");
 
     useEffect(() => {
-        setShortTitle(() => (title ? shortText(title, 30) : `UntitledNote #${id}`));
+        setShortTitle(() => (title ? shortText(title, 30) : `UntitledNote #${id.substr(0, 5)}`));
         setShortDescr(() => (description ? shortText(description, 60) : "undescribedNote"));
     }, [title, description]);
 

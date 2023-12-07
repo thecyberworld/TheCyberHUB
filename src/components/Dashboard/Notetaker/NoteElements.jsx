@@ -31,6 +31,12 @@ export const NotesSidebarHeaderTitle = styled.h3`
     margin-bottom: 0;
     font-family: "Roboto Mono", monospace;
 `;
+export const NotesListNoFound = styled.h4`
+    color: #787878;
+    text-align: center;
+    margin-bottom: 0;
+    font-family: "Roboto Mono", monospace;
+`;
 export const SearchContainer = styled.div`
     display: flex;
     border: 2px solid #111111;
@@ -82,6 +88,7 @@ export const NoteItemElement = styled.li`
 `;
 
 export const NoteItemShortTitle = styled.h4`
+    text-transform: capitalize;
     font-weight: 900;
 `;
 
@@ -129,4 +136,6 @@ export const DescriptionTitle = styled.div``;
 
 export const DescriptionContent = styled.div``;
 
-export const DescriptionDisplayTitle = styled.h1``;
+export const DescriptionDisplayTitle = styled.h1`
+    text-transform: capitalize;
+`;
