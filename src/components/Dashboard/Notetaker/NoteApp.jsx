@@ -13,18 +13,27 @@ import "./NoteApp.css";
 import NoteList from "./NoteList";
 import NoteDescription from "./NoteDescription";
 import { useDispatch, useSelector } from "react-redux";
-import { notePin } from "../../../features/notes/notesSlice";
+import { getNotes, noteReset, pinNote } from "../../../features/notes/notesSlice";
+import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 
 const NoteApp = () => {
     const dispatch = useDispatch();
-    const { notes } = useSelector(({ notes }) => notes);
+    const { notes, isNoteLoading, isNoteError, noteMessage } = useSelector((state) => state.notes);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredNotes, setFilteredNotes] = useState([]);
     const [pickedNote, setPickedNote] = useState({});
     const [needToAdd, setNeedToAdd] = useState(false);
 
     useEffect(() => {
-        const newFilteredNotes = notes.filter((note) => {
+        if (isNoteError) {
+            console.log(noteMessage);
+        }
+        dispatch(getNotes());
+        return () => dispatch(noteReset());
+    }, [dispatch, isNoteError, noteMessage]);
+
+    useEffect(() => {
+        const newFilteredNotes = notes?.filter((note) => {
             return (
                 note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
                 note?.description?.toLowerCase().includes(searchTerm?.toLowerCase())
@@ -37,11 +46,13 @@ const NoteApp = () => {
         setSearchTerm(e.target.value);
     };
     const handlePickNote = (noteId) => {
-        const pickedNote = notes.find((note) => note.id === noteId);
+        const pickedNote = notes.find((note) => note._id === noteId);
         setPickedNote(pickedNote !== -1 ? pickedNote : {});
     };
     const handlePinNote = (noteId) => {
-        dispatch(notePin(noteId));
+        const pinnedNote = notes.find((note) => note._id === noteId);
+        const noteData = { ...pinnedNote, pinned: !pinnedNote.pinned };
+        dispatch(pinNote({ id: noteId, noteData }));
     };
     const handleOpenAddNewNoteMode = () => {
         setNeedToAdd(true);
@@ -51,6 +62,7 @@ const NoteApp = () => {
         setNeedToAdd(false);
         setPickedNote({});
     };
+    console.log(isNoteLoading);
     return (
         <NotesContainer>
             <NotesSidebarContainer>
@@ -66,9 +78,13 @@ const NoteApp = () => {
                         onChange={handleSearchTermChange}
                     />
                 </SearchContainer>
-                <NoteList onPin={handlePinNote} onPick={handlePickNote}>
-                    {filteredNotes}
-                </NoteList>
+                {isNoteLoading ? (
+                    <LoadingSpinner />
+                ) : (
+                    <NoteList onPin={handlePinNote} onPick={handlePickNote}>
+                        {filteredNotes}
+                    </NoteList>
+                )}
             </NotesSidebarContainer>
             <NoteDescription
                 onPin={handlePinNote}
