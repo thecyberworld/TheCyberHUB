@@ -75,7 +75,7 @@ const Blogs = () => {
         <Wrapper>
             <BlogsContainer>
                 <BlogsSection>
-                    <RouterNavCreateButtonLink to={"/blogs/create-blog"}>Create Blog</RouterNavCreateButtonLink>
+                    <RouterNavCreateButtonLink to={"/dashboard/blogs/create"}>Create Blog</RouterNavCreateButtonLink>
                     <MiddleContainer>
                         {/* <div> */}
                         {/*    <LeftBlogSidebar /> */}

@@ -144,10 +144,7 @@ const ViewBlog = () => {
                 <meta property="og:title" content={blog?.title} />
                 <meta property="og:description" content={blog?.description} />
                 <meta property="og:image" content={coverImageUrl} />
-                <meta
-                    property="og:url"
-                    content={`https://thecyberhub.org/blogs/@${blog.username}/${encodeURL(blog?.title)}`}
-                />
+                <meta property="og:url" content={`https://thecyberhub.org/blogs/${encodeURL(blog?.title)}`} />
             </Helmet>
             {/* <ViewBlogContainer> */}
             <ContainerViewBlog>

@@ -12,9 +12,9 @@ const GetCertificate = ({ ctfCertificates, ctfId, user, isCompleted, isCertExist
     //     dispatch(getUserDetail(user.username));
     // };
     const certificateId = ctfCertificates?.find((cert) => cert.ctfId === ctfId)?.ctfCertificateId;
-    let redirectUrlParams = `/@${user}`;
+    let redirectUrlParams = `/user/${user}`;
     if (certificateId === undefined) {
-        redirectUrlParams = `/@${user.username}`;
+        redirectUrlParams = `/user/${user.username}`;
     } else {
         redirectUrlParams = `/CTF/certificate/${certificateId}`;
     }
