@@ -6,7 +6,7 @@ const BlogsRoute = () => {
     return (
         <Routes>
             <Route index element={<Blogs />} />
-            <Route exact path={":username/:title"} element={<SingleBlog />} />
+            <Route exact path={":title"} element={<SingleBlog />} />
             {/* <Route element={<NotFound/>}/> */}
             <Route path={"*"} element={<NotFound />} />
         </Routes>

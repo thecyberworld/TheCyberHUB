@@ -138,8 +138,8 @@ const App = () => {
                         <Route exact path={"/hackbook"} element={<HackBook />} />
 
                         <Route>
-                            <Route exact path={"/:username"} element={<UserProfile />} />
-                            <Route exact path={"/edit/@:username"} element={<EditPublicProfile />} />
+                            <Route exact path={"/user/:username"} element={<UserProfile />} />
+                            <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 
                         <Route exact path={"/community"} element={<Community />} />

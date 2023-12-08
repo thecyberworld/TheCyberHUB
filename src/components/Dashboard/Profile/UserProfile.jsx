@@ -27,9 +27,8 @@ const UserProfile = () => {
 
     const { blogs, isBlogLoading } = useSelector((state) => state.blogs);
     const { username } = useParams();
-    const usernameFiltered = username.split("@")[1];
 
-    const userDetail = userDetails?.find((user) => user?.username === usernameFiltered);
+    const userDetail = userDetails?.find((user) => user?.username === username);
 
     useEffect(() => {
         if (isError) {
