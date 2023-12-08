@@ -38,17 +38,22 @@ import { encodeURL } from "../../Blogs/util";
 import { useParams } from "react-router";
 
 const Course = () => {
-  const [filterContent, setFilterContent] = useState("")
+  // const [filterContent, setFilterContent] = useState("")
   const { title } = useParams();
 
-  const doFilterContent = (filter) => {
-    if (filterContent === null) {
-      setFilterContent(filter)
-    }
-    else {
-      setFilterContent(null)
-    }
-    console.log(filterContent)
+  // const doFilterContent = (filter) => {
+  //   if (filterContent === null) {
+  //     setFilterContent(filter)
+  //   }
+  //   else {
+  //     setFilterContent(null)
+  //   }
+  //   console.log(filterContent)
+  // }
+
+  const changeImgSrc = (src) => {
+    console.log(src,"1")
+    document.getElementById("image").src = src  
   }
 
   const course = Object.values(CoursesData)?.find((course) => `${encodeURL(course?.courseName)}`.toLowerCase() === title.toLowerCase());
@@ -68,7 +73,7 @@ const Course = () => {
                           key={index}
                         >
                           <ContentHeading>{video.title}</ContentHeading>
-                          <CheckboxContainer>
+                          <CheckboxContainer onChange={() => changeImgSrc(video.imageUrl)}>
                             <Checkbox
                               type="checkbox"
                               />
@@ -82,7 +87,7 @@ const Course = () => {
             )) }
             </div>
             <RightContainer>
-            
+              <img src="" id="image"/>
             </RightContainer>
     </Wrapper>
   )

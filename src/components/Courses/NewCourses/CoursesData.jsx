@@ -12,7 +12,7 @@ const coursesData = {
           },
           {
             "title": "CSS Styling Techniques",
-            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692553050989.png"
           }
         ]
       },
@@ -25,7 +25,7 @@ const coursesData = {
           },
           {
             "title": "DOM Manipulation",
-            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692553050989.png"
           }
         ]
       }
@@ -45,7 +45,7 @@ const coursesData = {
           },
           {
             "title": "Understanding Open Source Licensing",
-            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692553050989.png"
           }
         ]
       },
@@ -58,7 +58,7 @@ const coursesData = {
           },
           {
             "title": "Best Practices in Open Source",
-            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692553050989.png"
           }
         ]
       }
@@ -78,7 +78,7 @@ const coursesData = {
           },
           {
             "title": "Linux Security",
-            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692553050989.png"
           }
         ]
       },
@@ -92,7 +92,7 @@ const coursesData = {
           },
           {
             "title": "Performing Security Tests",
-            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692552293764.jpeg"
+            "imageUrl": "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/blog/1692553050989.png"
           }
         ]
       }
