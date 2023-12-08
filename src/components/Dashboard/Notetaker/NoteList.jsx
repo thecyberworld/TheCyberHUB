@@ -7,7 +7,7 @@ const NoteList = ({ children, onPick, onPin }) => {
         <NotesListContainer>
             {!children.length && <NotesListNoFound>There Are No Notes</NotesListNoFound>}
             {children.map((note) => (
-                <NoteItem key={note.id} {...note} onPick={onPick} onPin={onPin} />
+                <NoteItem key={note._id} {...note} onPick={onPick} onPin={onPin} />
             ))}
         </NotesListContainer>
     );

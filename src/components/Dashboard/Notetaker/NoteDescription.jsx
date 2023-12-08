@@ -15,7 +15,7 @@ import { RiMore2Fill } from "react-icons/ri";
 import MarkdownEditor from "../../Common/MarkdownEditor";
 import InputEditor from "../../Common/InputEditor";
 import { useDispatch } from "react-redux";
-import { noteAdd, noteEdit, noteRemove } from "../../../features/notes/notesSlice";
+import { createNote, updateNote, deleteNote } from "../../../features/notes/notesSlice";
 
 const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
     }, [children]);
 
     const handleDeleteNote = () => {
-        dispatch(noteRemove(children.id));
+        dispatch(deleteNote(children._id));
         setShowNote({});
     };
     const handleClose = () => {
@@ -36,6 +36,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
     };
     const handleCopyNoteData = (label, content) => {
         setShowNote((prevCopyNote) => {
+            if (label === "description") label = "content";
             return {
                 ...prevCopyNote,
                 [label]: content,
@@ -43,16 +44,16 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         });
     };
     const handleSaveNote = (newNote) => {
-        if (!newNote.title && !newNote.description) {
-            dispatch(noteRemove(newNote.id));
+        if (!newNote.title && !newNote.content) {
+            dispatch(deleteNote(newNote._id));
             onChangePickedNote({});
             handleClose();
             return;
         }
         if (needToEdit) {
-            dispatch(noteEdit({ ...newNote, id: children.id }));
+            dispatch(updateNote({ id: children._id, noteData: newNote }));
         } else if (needToAdd) {
-            dispatch(noteAdd(newNote));
+            dispatch(createNote(newNote));
         }
         onChangePickedNote(newNote);
         handleClose();
@@ -60,10 +61,10 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
     return (
         <NotesDescriptionContainer>
             <NotesDescriptionHeader>
-                {!needToAdd && !needToEdit && (showNote.title || showNote.description) && (
+                {!needToAdd && !needToEdit && (showNote.title || showNote.content) && (
                     <NotesDescriptionIconsContainer icons={3}>
                         <BiSolidEdit className="icon" size="24px" title="Edit" onClick={setNeedToEdit} />
-                        <NotePinning isPinned={showNote.pinned} onPin={onPin} noteId={showNote.id} />
+                        <NotePinning isPinned={showNote.pinned} onPin={onPin} noteId={showNote._id} />
                         <MdDeleteForever
                             className="icon icon-delete"
                             size="24px"
@@ -96,20 +97,20 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                         />
                     ) : (
                         <DescriptionDisplayTitle>
-                            {showNote.title || (showNote.id ? `UntitledNote #${showNote.id.substr(0, 5)}` : "")}
+                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(0, 5)}` : "")}
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
                 <DescriptionContent>
                     {needToAdd || needToEdit ? (
                         <MarkdownEditor
-                            content={needToEdit && showNote.description ? showNote.description : ""}
+                            content={needToEdit && showNote.content ? showNote.content : ""}
                             label="description"
                             onCopyChanges={handleCopyNoteData}
                         />
                     ) : (
                         <MarkdownEditor
-                            content={showNote.description || (showNote.id ? `undescribedNote` : "")}
+                            content={showNote.content || (showNote._id ? `undescribedNote` : "")}
                             previewModeOnly
                         />
                     )}
