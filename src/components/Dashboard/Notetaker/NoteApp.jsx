@@ -62,6 +62,7 @@ const NoteApp = () => {
         setNeedToAdd(false);
         setPickedNote({});
     };
+    console.log(isNoteLoading);
     return (
         <NotesContainer>
             <NotesSidebarContainer>
