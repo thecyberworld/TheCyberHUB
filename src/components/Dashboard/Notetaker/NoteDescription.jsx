@@ -23,6 +23,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
     const [needToEdit, setNeedToEdit] = useState(false);
     useEffect(() => {
         setShowNote(children);
+        setNeedToEdit(false);
     }, [children]);
 
     const handleDeleteNote = () => {
@@ -44,7 +45,6 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         });
     };
     const handleSaveNote = (newNote) => {
-        console.log(newNote);
         if (!newNote.title && !newNote.content) {
             dispatch(deleteNote(newNote._id));
             onChangePickedNote({});
