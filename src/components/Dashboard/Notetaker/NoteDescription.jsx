@@ -32,8 +32,8 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
     };
     const handleClose = () => {
         if (needToEdit) {
-            setNeedToEdit(false);
             setShowNote(children);
+            setNeedToEdit(false);
             return;
         }
         onCloseAddMode(false);
