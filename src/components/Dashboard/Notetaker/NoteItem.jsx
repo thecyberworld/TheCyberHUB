@@ -13,23 +13,23 @@ const shortText = (text, letters) => {
     return textCleanFromTags?.length > letters ? `${textCleanFromTags.slice(0, letters)}...` : textCleanFromTags;
 };
 
-const NoteItem = ({ id, title, description, pinned, onPick, onPin }) => {
+const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
     const [shortTitle, setShortTitle] = useState("");
     const [shortDescr, setShortDescr] = useState("");
 
     useEffect(() => {
-        setShortTitle(() => (title ? shortText(title, 30) : `UntitledNote #${id.substr(0, 5)}`));
-        setShortDescr(() => (description ? shortText(description, 60) : "undescribedNote"));
-    }, [title, description]);
+        setShortTitle(() => (title ? shortText(title, 30) : `UntitledNote #${_id.substr(0, 5)}`));
+        setShortDescr(() => (content ? shortText(content, 60) : "undescribedNote"));
+    }, [title, content]);
 
     return (
         <NoteItemElementContainer>
-            <NoteItemElement isPinned={pinned} onClick={() => onPick(id)}>
+            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)}>
                 <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
                 <NoteItemShortDescription>{shortDescr}</NoteItemShortDescription>
             </NoteItemElement>
             <NoteItemPinningContainer isPinned={pinned}>
-                <NotePinning isPinned={pinned} onPin={onPin} noteId={id} />
+                <NotePinning isPinned={pinned} onPin={onPin} noteId={_id} />
             </NoteItemPinningContainer>
         </NoteItemElementContainer>
     );
