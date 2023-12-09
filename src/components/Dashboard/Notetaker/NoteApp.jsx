@@ -36,7 +36,7 @@ const NoteApp = () => {
         const newFilteredNotes = notes?.filter((note) => {
             return (
                 note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
-                note?.description?.toLowerCase().includes(searchTerm?.toLowerCase())
+                note?.content?.toLowerCase().includes(searchTerm?.toLowerCase())
             );
         });
         setFilteredNotes(newFilteredNotes);
