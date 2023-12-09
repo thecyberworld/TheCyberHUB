@@ -44,10 +44,9 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
     const handleCheckBoxChange = (e) => {
         const textOfCheckBox = e.target.parentNode.textContent;
         const valueListOfLines = value.split("\n");
-        const findCheckedBoxLineIndex = valueListOfLines.findIndex((item) => {
-            console.log(item?.replace(/- \[ \]|- \[[^]]+/, ""), textOfCheckBox.split("\n")[0]);
-            return compareStrings(item?.replace(/- \[ \]|- \[[^]]+/, ""), textOfCheckBox.split("\n")[0]);
-        });
+        const findCheckedBoxLineIndex = valueListOfLines.findIndex((item) =>
+            compareStrings(item?.replace(/- \[ \]|- \[[^]]+/, ""), textOfCheckBox.split("\n")[0]),
+        );
         valueListOfLines[findCheckedBoxLineIndex] = valueListOfLines[findCheckedBoxLineIndex].replace(
             /- \[ \]|- \[[^]]+/,
             (match) => (match === "- [ ]" ? "- [X]" : "- [ ]"),
