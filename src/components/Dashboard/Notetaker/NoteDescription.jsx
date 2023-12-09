@@ -19,10 +19,11 @@ import { createNote, updateNote, deleteNote } from "../../../features/notes/note
 
 const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
     const dispatch = useDispatch();
-    const [showNote, setShowNote] = useState(children);
+    const [showNote, setShowNote] = useState(children || {});
     const [needToEdit, setNeedToEdit] = useState(false);
     useEffect(() => {
         setShowNote(children);
+        setNeedToEdit(false);
     }, [children]);
 
     const handleDeleteNote = () => {
@@ -30,7 +31,11 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         setShowNote({});
     };
     const handleClose = () => {
-        if (needToEdit) return setNeedToEdit(false);
+        if (needToEdit) {
+            setNeedToEdit(false);
+            setShowNote(children);
+            return;
+        }
         onCloseAddMode(false);
         setShowNote({});
     };
@@ -97,7 +102,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                         />
                     ) : (
                         <DescriptionDisplayTitle>
-                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(0, 5)}` : "")}
+                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(-10)}` : "")}
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>

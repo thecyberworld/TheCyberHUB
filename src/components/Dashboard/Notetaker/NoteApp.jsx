@@ -36,7 +36,7 @@ const NoteApp = () => {
         const newFilteredNotes = notes?.filter((note) => {
             return (
                 note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
-                note?.description?.toLowerCase().includes(searchTerm?.toLowerCase())
+                note?.content?.toLowerCase().includes(searchTerm?.toLowerCase())
             );
         });
         setFilteredNotes(newFilteredNotes);
@@ -47,6 +47,7 @@ const NoteApp = () => {
     };
     const handlePickNote = (noteId) => {
         const pickedNote = notes.find((note) => note._id === noteId);
+        setNeedToAdd(false);
         setPickedNote(pickedNote !== -1 ? pickedNote : {});
     };
     const handlePinNote = (noteId) => {
