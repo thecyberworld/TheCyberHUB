@@ -19,7 +19,7 @@ import { createNote, updateNote, deleteNote } from "../../../features/notes/note
 
 const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
     const dispatch = useDispatch();
-    const [showNote, setShowNote] = useState(children);
+    const [showNote, setShowNote] = useState(children || {});
     const [needToEdit, setNeedToEdit] = useState(false);
     useEffect(() => {
         setShowNote(children);
@@ -44,6 +44,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         });
     };
     const handleSaveNote = (newNote) => {
+        console.log(newNote);
         if (!newNote.title && !newNote.content) {
             dispatch(deleteNote(newNote._id));
             onChangePickedNote({});
