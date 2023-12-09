@@ -97,7 +97,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                         />
                     ) : (
                         <DescriptionDisplayTitle>
-                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(0, 5)}` : "")}
+                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(-10)}` : "")}
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
