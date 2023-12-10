@@ -1,5 +1,6 @@
 import CoursesData from "./CoursesData"
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
@@ -36,6 +37,8 @@ import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { useState } from "react";
 import { encodeURL } from "../../Blogs/util";
 import { useParams } from "react-router";
+import { ArrowForward, ArrowRight } from "../../Homepage/Hero/HeroElements";
+import { BsArrowLeft } from "react-icons/bs";
 
 const Course = () => {
   // const [filterContent, setFilterContent] = useState("")
@@ -61,6 +64,7 @@ const Course = () => {
     
     <Wrapper>
         <div>
+          <Button href="/Courses">Go Back</Button>
             { course.sections.map((section, index) => (
               <LeftContainer key={index}>
                 <Weeks key={index}><h3>{section.sectionName}</h3></Weeks>
@@ -69,11 +73,11 @@ const Course = () => {
                   <ul>
                     {section.videos.map((video, videoIndex) => (
                       <>
-                        <TopicBox
+                        <TopicBox onClick={() => changeImgSrc(video.imageUrl)}
                           key={index}
                         >
-                          <ContentHeading>{video.title}</ContentHeading>
-                          <CheckboxContainer onChange={() => changeImgSrc(video.imageUrl)}>
+                          <ContentHeading >{video.title}</ContentHeading>
+                          <CheckboxContainer>
                             <Checkbox
                               type="checkbox"
                               />

@@ -67,6 +67,15 @@ export const Card = styled.div`
     margin-bottom: 30px;
 `;
 
+export const Cards = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 1em;
+    margin-bottom: 30px;
+`;
+
 export const CardBody = styled.div`
     padding: 1rem;
     display: flex;
@@ -127,4 +136,31 @@ export const ChannelImg = styled.img`
 
 export const UserInfo = styled.div`
     color: #666;
+`;
+
+export const Button = styled.a`
+    margin: auto 10px 10px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #343434;
+    background: transparent;
+    white-space: nowrap;
+    padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
+    font-size: ${({ fontBig }) => (fontBig ? "20px" : "16px")};
+    outline: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    color: #ff6b08;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: transparent;
+        border-color: #343434;
+        font-size: 18px;
+    }
 `;

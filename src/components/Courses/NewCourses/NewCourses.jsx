@@ -1,5 +1,6 @@
 import CoursesData from "./CoursesData"
 import {
+  Cards,
   Card,
   CardBody,
   CardFooter,
@@ -35,6 +36,7 @@ import {
 import { RouterLink } from "../../Tools/ToolsElements";
 import { encodeURL } from "../../Blogs/util";
 import { useState } from "react";
+// import { Cards } from "../../Forum/ForumPosts/ForumPostsElements";
 
 const NewCourses = () => {
   const [filterContent, setFilterContent] = useState("")
@@ -50,7 +52,7 @@ const NewCourses = () => {
   }
 
   return (
-    <>
+    <Cards>
       {Object.values(CoursesData).map((courseData, index) => (
         <>
           <RouterLink to={{ pathname: `${encodeURL(courseData.courseName)}` }}>
@@ -69,7 +71,7 @@ const NewCourses = () => {
           </RouterLink>
         </>
       ))}
-    </>
+    </Cards>
   )
 }
 
