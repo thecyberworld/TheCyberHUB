@@ -9,9 +9,11 @@ import {
 import rehypeSanitize from "rehype-sanitize";
 import "./MarkdownEditor.css";
 import CheckBoxClickable from "./CheckBoxClickable";
+import useEditorImage from "./useEditorImage";
 
-const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
+const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageName }) => {
     const [value, setValue] = useState("");
+    const { onPasteImage, onDragOverImage, onDropImage } = useEditorImage(setValue, pageName);
     useEffect(() => {
         setValue(content);
     }, [content, label]);
@@ -68,6 +70,9 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
                     }}
                     preview="edit"
                     visibleDragbar={false}
+                    onDrop={onDropImage}
+                    onDragOver={onDragOverImage}
+                    onPaste={onPasteImage}
                 />
             </MarkdownEditorContainer>
         </MarkdownContainer>

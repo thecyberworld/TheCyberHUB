@@ -112,11 +112,13 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                             content={needToEdit && showNote.content ? showNote.content : ""}
                             label="description"
                             onCopyChanges={handleCopyNoteData}
+                            pageName="notes"
                         />
                     ) : (
                         <MarkdownEditor
                             content={showNote.content || (showNote._id ? `undescribedNote` : "")}
                             previewModeOnly
+                            pageName="notes"
                         />
                     )}
                 </DescriptionContent>
