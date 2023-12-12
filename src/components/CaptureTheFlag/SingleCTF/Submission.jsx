@@ -17,12 +17,25 @@ import { CircleSpinner } from "react-spinners-kit";
 
 const Submission = ({ ctfId, flags, user, userDetail, userDetailIsLoading, setIsCompleted, setIsCertExisted }) => {
     const dispatch = useDispatch();
-    const [buttonColor, setButtonColor] = useState("#131313");
+    // const [buttonColor, setButtonColor] = useState("#131313");
+    const buttonColor = "#131313";
     const [submitFlagId, setSubmitFlagId] = useState(null);
+    const [isLoading, setIsLoading] = useState({});
+    // const handleSubmit = (flagId) => {
+    //     setSubmitFlagId(flagId);
+    //     setTimeout(() => {
+    //         setSubmitFlagId(null);
+    //     }, 1000);
+    // };
+
     const handleSubmit = (flagId) => {
+        setIsLoading((prev) => ({ ...prev, [flagId]: true }));
         setSubmitFlagId(flagId);
+
+        // submit logic
         setTimeout(() => {
             setSubmitFlagId(null);
+            setIsLoading((prev) => ({ ...prev, [flagId]: false }));
         }, 1000);
     };
 
@@ -148,15 +161,15 @@ const Submission = ({ ctfId, flags, user, userDetail, userDetailIsLoading, setIs
                                 onClick={() => handleFlagSubmit(flag._id)}
                                 style={{ color: buttonColor === "#f77000" && "#f77000" }}
                             >
-                                {userDetailIsLoading ? (
+                                {userDetailIsLoading && isLoading[flag._id] ? (
                                     <CircleSpinner size={20} color="#ff6b08" />
                                 ) : flag._id === submitFlagId ? (
-                                    <span style={{color: '#f77000'}}>Wrong Answer</span>
+                                    <span style={{ color: "#f77000" }}>Wrong Answer</span>
                                 ) : (
                                     "Submit"
                                 )}
                             </FlagSubmit>
-                        )}                        
+                        )}
                         {flag.hint === "" ? null : (
                             <>
                                 {hintFlagId === flag._id ? (
