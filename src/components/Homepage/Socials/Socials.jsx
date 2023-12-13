@@ -23,6 +23,7 @@ import {
     FaTwitter,
     FaYoutube,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { H1 } from "../ContactForm/ContactFormElements";
 
 const Socials = () => {
@@ -56,7 +57,7 @@ const Socials = () => {
                         target="_blank"
                         aria-label="Twitter"
                     >
-                        <FaTwitter /> <SocialH1> Twitter </SocialH1>
+                        <FaXTwitter /> <SocialH1> Twitter </SocialH1>
                     </SocialCardTwitter>
 
                     <SocialCardLinkedin
