@@ -102,7 +102,7 @@ const ResetPassword = () => {
                                 placeholder="Password"
                                 onChange={onChange}
                                 aria-label="Password"
-                                autoComplete={null}
+                                autoComplete="off"
                             />
                         </CustomInputGroup>
                         <CustomInputGroup>
@@ -117,7 +117,7 @@ const ResetPassword = () => {
                                 placeholder="Confirm Password"
                                 onChange={onChange}
                                 aria-label="Password"
-                                autoComplete={null}
+                                autoComplete="off"
                             />
                         </CustomInputGroup>
                     </div>
