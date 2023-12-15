@@ -1,10 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
-import { getApiUrl, getCdnAssets } from "../../../features/apiUrl";
+import { cdnContentImagesUrl, getApiUrl } from "../../../features/apiUrl";
 import { toast } from "react-toastify";
 
 const useEditorImage = (setContent, pageName) => {
     const [errorMessage, setErrorMessage] = useState("");
+
+    const handleUploadAndDisplayImage = async (file) => {
+        const fileName = `${pageName}-${Date.now()}.${file && file.type.split("/")[1]}`;
+        const reader = new FileReader();
+        reader.onloadend = async () => {
+            const newFile = new File([reader.result], fileName, { type: file && file.type });
+            const formData = new FormData();
+            formData.append("image", newFile);
+            console.log(newFile);
+            const API_URL = getApiUrl("api/upload");
+            await axios.post(API_URL, formData);
+            const newImageUrl = cdnContentImagesUrl(`/${pageName}/${fileName.split("-")[1]}`);
+            setContent((prevContent) => prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`);
+        };
+        reader.readAsArrayBuffer(file);
+    };
 
     const handleDrop = async (e) => {
         e.preventDefault();
@@ -26,16 +42,7 @@ const useEditorImage = (setContent, pageName) => {
             return;
         }
         try {
-            const currentDateTimeNumber = new Date().getTime();
-            const fileName = `${currentDateTimeNumber}.${file && file.type.split("/")[1]}`;
-            const formData = new FormData();
-            formData.append("image", file);
-            formData.append("folderName", `images/${pageName}`);
-            formData.append("fileName", `${fileName}`);
-            const API_URL = getApiUrl("api/upload");
-            await axios.post(API_URL, formData);
-            const newImageUrl = `${getCdnAssets}/images/${pageName}/${fileName}`;
-            setContent((prevContent) => prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`);
+            handleUploadAndDisplayImage(file);
         } catch (err) {
             if (err.message === "Request failed with status code 429") {
                 setErrorMessage("You are uploading images too fast. Please wait a few seconds and try again.");
@@ -72,16 +79,7 @@ const useEditorImage = (setContent, pageName) => {
             return;
         }
         try {
-            const currentDateTimeNumber = new Date().getTime();
-            const fileName = `${currentDateTimeNumber}.${file && file.type.split("/")[1]}`;
-            const formData = new FormData();
-            formData.append("image", file);
-            formData.append("folderName", `images/${pageName}`);
-            formData.append("fileName", `${fileName}`);
-            const API_URL = getApiUrl("api/upload");
-            await axios.post(API_URL, formData);
-            const newImageUrl = `${getCdnAssets}/images/${pageName}/${fileName}`;
-            setContent((prevContent) => prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`);
+            handleUploadAndDisplayImage(file);
         } catch (err) {
             if (err.message === "Request failed with status code 429") {
                 setErrorMessage("You are uploading images too fast. Please wait a few seconds and try again.");
