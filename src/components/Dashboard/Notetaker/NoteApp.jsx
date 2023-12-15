@@ -48,7 +48,13 @@ const NoteApp = () => {
     const handlePickNote = (noteId) => {
         const pickedNote = notes.find((note) => note._id === noteId);
         setNeedToAdd(false);
-        setPickedNote(pickedNote !== -1 ? pickedNote : {});
+        setPickedNote(
+            pickedNote === -1
+                ? {}
+                : pickedNote.title.includes("UntitledNote")
+                ? { ...pickedNote, title: "" }
+                : pickedNote,
+        );
     };
     const handlePinNote = (noteId) => {
         const pinnedNote = notes.find((note) => note._id === noteId);

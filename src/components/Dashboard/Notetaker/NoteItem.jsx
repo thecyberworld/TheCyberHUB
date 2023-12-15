@@ -8,9 +8,11 @@ import {
 } from "./NoteElements";
 import NotePinning from "./NotePinning";
 
+const cleanFromTags = (text) => {
+    return text?.replace(/<[^>]+>|-|\[[^]]+|#/g, "").replace(/!\[(.*?)\]\([^)]*\)/g, "$1", "");
+};
 const shortText = (text, letters) => {
-    const textCleanFromTags = text?.replace(/<[^>]+>|-|\[[^]]+|#/g, "");
-    return textCleanFromTags?.length > letters ? `${textCleanFromTags.slice(0, letters)}...` : textCleanFromTags;
+    return text?.length > letters ? `${text.slice(0, letters)}...` : text;
 };
 
 const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
@@ -18,15 +20,19 @@ const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
     const [shortDescr, setShortDescr] = useState("");
 
     useEffect(() => {
-        setShortTitle(() => (title ? shortText(title, 30) : `UntitledNote #${_id.substr(-10)}`));
-        setShortDescr(() => (content ? shortText(content, 60) : "undescribedNote"));
+        setShortTitle(() => title && shortText(title, 30));
+        setShortDescr(() => {
+            if (!content) return "(Empty)";
+            const cleanContent = cleanFromTags(content);
+            return shortText(cleanContent, 60);
+        });
     }, [title, content]);
 
     return (
         <NoteItemElementContainer>
             <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)}>
                 <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
-                <NoteItemShortDescription>{shortDescr}</NoteItemShortDescription>
+                <NoteItemShortDescription empty={shortDescr === "(Empty)"}>{shortDescr}</NoteItemShortDescription>
             </NoteItemElement>
             <NoteItemPinningContainer isPinned={pinned}>
                 <NotePinning isPinned={pinned} onPin={onPin} noteId={_id} />

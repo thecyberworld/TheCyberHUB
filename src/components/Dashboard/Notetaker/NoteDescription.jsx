@@ -102,7 +102,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                         />
                     ) : (
                         <DescriptionDisplayTitle>
-                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(-10)}` : "")}
+                            {showNote.title || (showNote._id ? `Untitled Note` : "")}
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
@@ -115,11 +115,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                             pageName="notes"
                         />
                     ) : (
-                        <MarkdownEditor
-                            content={showNote.content || (showNote._id ? `undescribedNote` : "")}
-                            previewModeOnly
-                            pageName="notes"
-                        />
+                        <MarkdownEditor content={showNote.content || ""} previewModeOnly pageName="notes" />
                     )}
                 </DescriptionContent>
             </NotesDescription>
