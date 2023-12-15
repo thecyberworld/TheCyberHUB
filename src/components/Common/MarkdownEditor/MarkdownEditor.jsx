@@ -9,11 +9,18 @@ import {
 import rehypeSanitize from "rehype-sanitize";
 import "./MarkdownEditor.css";
 import CheckBoxClickable from "./CheckBoxClickable";
-import useEditorImage from "./useEditorImage";
+import useImageUploadEvents from "./useImageUploadEvents";
 
 const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageName }) => {
     const [value, setValue] = useState("");
-    const { onPasteImage, onDragOverImage, onDropImage } = useEditorImage(setValue, pageName);
+
+    const handleChange = (value) => {
+        setValue(value);
+        onCopyChanges(label, value);
+    };
+
+    const { onPasteImage, onDragOverImage, onDropImage } = useImageUploadEvents(value, handleChange, pageName);
+
     useEffect(() => {
         setValue(content);
     }, [content, label]);
@@ -31,10 +38,6 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageNa
             />
         );
     }
-    const handleChange = (value) => {
-        setValue(value);
-        onCopyChanges(label, value);
-    };
 
     return (
         <MarkdownContainer>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { cdnContentImagesUrl, getApiUrl } from "../../../features/apiUrl";
 import { toast } from "react-toastify";
 
-const useEditorImage = (setContent, pageName) => {
+const useImageUploadEvents = (prevContent, setContent, pageName) => {
     const [errorMessage, setErrorMessage] = useState("");
 
     const handleUploadAndDisplayImage = async (file) => {
@@ -17,7 +17,7 @@ const useEditorImage = (setContent, pageName) => {
             const API_URL = getApiUrl("api/upload");
             await axios.post(API_URL, formData);
             const newImageUrl = cdnContentImagesUrl(`/${pageName}/${fileName.split("-")[1]}`);
-            setContent((prevContent) => prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`);
+            setContent(prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`);
         };
         reader.readAsArrayBuffer(file);
     };
@@ -96,4 +96,4 @@ const useEditorImage = (setContent, pageName) => {
 
     return { onDropImage: handleDrop, onDragOverImage: handleDragOver, onPasteImage: handlePaste };
 };
-export default useEditorImage;
+export default useImageUploadEvents;

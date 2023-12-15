@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
     DescriptionContent,
     DescriptionDisplayTitle,
@@ -39,7 +39,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         onCloseAddMode(false);
         setShowNote({});
     };
-    const handleCopyNoteData = (label, content) => {
+    const handleCopyNoteData = useCallback((label, content) => {
         setShowNote((prevCopyNote) => {
             if (label === "description") label = "content";
             return {
@@ -47,7 +47,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                 [label]: content,
             };
         });
-    };
+    });
     const handleSaveNote = (newNote) => {
         if (!newNote.title && !newNote.content) {
             dispatch(deleteNote(newNote._id));
