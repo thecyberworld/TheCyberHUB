@@ -34,6 +34,9 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageNa
                     input: (props) => {
                         return <CheckBoxClickable disabled={true} {...props} />;
                     },
+                    img: (props) => {
+                        return <img {...props} className="image" />;
+                    },
                 }}
             />
         );
@@ -50,6 +53,7 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageNa
                         paddingLeft: "5px",
                         paddingRight: "5px",
                     }}
+                    className="preview"
                     components={{
                         input: (props) => {
                             return (
@@ -60,6 +64,9 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageNa
                                     onChangeValue={handleChange}
                                 />
                             );
+                        },
+                        img: (props) => {
+                            return <img {...props} className="image" />;
                         },
                     }}
                 />

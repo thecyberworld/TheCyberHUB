@@ -95,6 +95,10 @@ export const NoteItemShortTitle = styled.h4`
 export const NoteItemShortDescription = styled.p`
     font-family: "Roboto", sans-serif;
     font-weight: 100;
+    width: 100%;
+    overflow-wrap: break-word;
+    font-style: ${(props) => (props.empty ? "italic" : "")};
+    opacity: ${(props) => (props.empty ? "0.7" : "")};
 `;
 
 export const NotesDescriptionContainer = styled.div`
@@ -125,17 +129,23 @@ export const NotesDescription = styled.div`
     top: 3rem;
     left: 0;
     width: 100%;
+    max-height: calc(100vh - 3rem);
     display: flex;
     flex-direction: column;
     padding: 0 10px;
     color: #f5f5f5;
     padding: 20px;
+    overflow-y: auto;
 `;
 
-export const DescriptionTitle = styled.div``;
+export const DescriptionTitle = styled.div`
+    width: 100%;
+    overflow-wrap: break-word;
+`;
 
 export const DescriptionContent = styled.div``;
 
 export const DescriptionDisplayTitle = styled.h1`
     text-transform: capitalize;
+    width: 100%;
 `;

@@ -17,8 +17,7 @@ export const MarkdownEditorPreviewContainer = styled.div`
 export const MarkdownEditorContainer = styled.div``;
 
 export const MarkdownLabel = styled.h2`
-    text-transform: uppercase;
+    text-transform: capitalize;
     text-align: center;
     color: #4f4f4f;
-    text-decoration-line: underline;
 `;
