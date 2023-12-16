@@ -54,12 +54,13 @@ import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import ChatRoute from "./components/Chat/ChatRoute";
 import SettingsRoute from "./components/Dashboard/Settings";
 import HackBook from "./components/HackBook/HackBook";
+import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const { pathname } = useLocation();
 
+    const { pathname } = useLocation();
     const hostname = window.location.hostname;
 
     useEffect(() => {
@@ -73,6 +74,8 @@ const App = () => {
             }, 5000);
         }
     }, []);
+
+    isAuthenticated();
 
     const hideHomeHeader = () => {
         const pathDashboard = pathname.includes("/dashboard");
