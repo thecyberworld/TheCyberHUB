@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { InputEditorContainer, InputEditorTheInput, InputEditorLabel, InputEditorPreview } from "./InputEditorElements";
+import { InputEditorContainer, InputEditorTheInput, InputEditorLabel } from "./InputEditorElements";
 
 const InputEditor = ({ content, label, onCopyChanges }) => {
     const [value, setValue] = useState("");
@@ -16,7 +16,6 @@ const InputEditor = ({ content, label, onCopyChanges }) => {
     return (
         <InputEditorContainer>
             <InputEditorLabel>{label}</InputEditorLabel>
-            <InputEditorPreview>{value}</InputEditorPreview>
             <InputEditorTheInput type="text" onChange={handleChange} value={value} />
         </InputEditorContainer>
     );

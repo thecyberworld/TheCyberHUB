@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
     DescriptionContent,
     DescriptionDisplayTitle,
@@ -39,7 +39,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         onCloseAddMode(false);
         setShowNote({});
     };
-    const handleCopyNoteData = (label, content) => {
+    const handleCopyNoteData = useCallback((label, content) => {
         setShowNote((prevCopyNote) => {
             if (label === "description") label = "content";
             return {
@@ -47,7 +47,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                 [label]: content,
             };
         });
-    };
+    });
     const handleSaveNote = (newNote) => {
         if (!newNote.title && !newNote.content) {
             dispatch(deleteNote(newNote._id));
@@ -102,7 +102,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                         />
                     ) : (
                         <DescriptionDisplayTitle>
-                            {showNote.title || (showNote._id ? `UntitledNote #${showNote._id.substr(-10)}` : "")}
+                            {showNote.title || (showNote._id ? `Untitled Note` : "")}
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
@@ -112,12 +112,10 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
                             content={needToEdit && showNote.content ? showNote.content : ""}
                             label="description"
                             onCopyChanges={handleCopyNoteData}
+                            pageName="notes"
                         />
                     ) : (
-                        <MarkdownEditor
-                            content={showNote.content || (showNote._id ? `undescribedNote` : "")}
-                            previewModeOnly
-                        />
+                        <MarkdownEditor content={showNote.content || ""} previewModeOnly pageName="notes" />
                     )}
                 </DescriptionContent>
             </NotesDescription>

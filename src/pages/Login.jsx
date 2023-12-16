@@ -91,7 +91,7 @@ const Login = () => {
                                 placeholder="Username"
                                 onChange={onChange}
                                 aria-label="Username"
-                                autoComplete={false}
+                                autoComplete="off"
                             />
                         </CustomInputGroup>
                         <CustomInputGroup>
@@ -106,7 +106,7 @@ const Login = () => {
                                 placeholder="Password"
                                 onChange={onChange}
                                 aria-label="Password"
-                                autoComplete={false}
+                                autoComplete="off"
                             />
                         </CustomInputGroup>
                     </div>

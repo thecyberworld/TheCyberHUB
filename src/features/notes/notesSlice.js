@@ -7,6 +7,7 @@ const initialState = {
     isNoteSuccess: false,
     isNoteLoading: false,
     noteMessage: "",
+    countUntitled: 0,
 };
 
 // Create new note
@@ -84,7 +85,11 @@ export const noteSlice = createSlice({
                 state.isNoteSuccess = true;
                 state.isNoteLoading = false;
                 state.isNoteError = false;
-                state.notes.push(action.payload);
+                state.notes.push(
+                    action.payload.title
+                        ? action.payload
+                        : { ...action.payload, title: `UntitledNote #${++state.countUntitled}` },
+                );
             })
             .addCase(createNote.rejected, (state, action) => {
                 state.isNoteLoading = false;
@@ -99,7 +104,15 @@ export const noteSlice = createSlice({
                 state.isNoteLoading = false;
                 state.isNoteSuccess = true;
                 state.notes = state.notes.map((note) =>
-                    note._id === action.payload._id ? { ...note, ...action.payload } : note,
+                    note._id === action.payload._id
+                        ? {
+                              ...note,
+                              ...action.payload,
+                              title: action.payload.title
+                                  ? action.payload.title
+                                  : `UntitledNote #${++state.countUntitled}`,
+                          }
+                        : note,
                 );
             })
             .addCase(updateNote.rejected, (state, action) => {
@@ -134,7 +147,10 @@ export const noteSlice = createSlice({
             .addCase(getNotes.fulfilled, (state, action) => {
                 state.isNoteLoading = false;
                 state.isNoteSuccess = true;
-                state.notes = action.payload;
+                state.notes = action.payload.map((item) => {
+                    if (!item.title) return { ...item, title: `UntitledNote #${++state.countUntitled}` };
+                    return item;
+                });
             })
             .addCase(getNotes.rejected, (state, action) => {
                 state.isNoteLoading = false;

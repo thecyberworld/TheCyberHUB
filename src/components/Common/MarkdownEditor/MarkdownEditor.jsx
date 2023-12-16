@@ -8,17 +8,19 @@ import {
 } from "./MarkdownEditorElements";
 import rehypeSanitize from "rehype-sanitize";
 import "./MarkdownEditor.css";
+import CheckBoxClickable from "./CheckBoxClickable";
+import useImageUploadEvents from "./useImageUploadEvents";
 
-const compareStrings = (str1, str2) => {
-    for (let i = 0, j = 0; i < str1.length || j < str2.length; i++, j++) {
-        if (i >= str1.length) return false;
-        if (j >= str2.length) return false;
-        if (str1[i] !== str2[j]) return false;
-    }
-    return true;
-};
-const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
+const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges, pageName }) => {
     const [value, setValue] = useState("");
+
+    const handleChange = (value) => {
+        setValue(value);
+        onCopyChanges(label, value);
+    };
+
+    const { onPasteImage, onDragOverImage, onDropImage } = useImageUploadEvents(value, handleChange, pageName);
+
     useEffect(() => {
         setValue(content);
     }, [content, label]);
@@ -30,29 +32,16 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
                 style={{ whiteSpace: "normal", backgroundColor: "#000" }}
                 components={{
                     input: (props) => {
-                        return <input {...props} disabled={true} />;
+                        return <CheckBoxClickable disabled={true} {...props} />;
+                    },
+                    img: (props) => {
+                        return <img {...props} className="image" />;
                     },
                 }}
             />
         );
     }
-    const handleChange = (value) => {
-        setValue(value);
-        onCopyChanges(label, value);
-    };
 
-    const handleCheckBoxChange = (e) => {
-        const textOfCheckBox = e.target.parentNode.textContent;
-        const valueListOfLines = value.split("\n");
-        const findCheckedBoxLineIndex = valueListOfLines.findIndex((item) =>
-            compareStrings(item?.replace(/- \[ \]|- \[[^]]+/, ""), textOfCheckBox.split("\n")[0]),
-        );
-        valueListOfLines[findCheckedBoxLineIndex] = valueListOfLines[findCheckedBoxLineIndex].replace(
-            /- \[ \]|- \[[^]]+/,
-            (match) => (match === "- [ ]" ? "- [X]" : "- [ ]"),
-        );
-        handleChange(valueListOfLines.join("\n"));
-    };
     return (
         <MarkdownContainer>
             <MarkdownLabel>{label}</MarkdownLabel>
@@ -64,25 +53,20 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
                         paddingLeft: "5px",
                         paddingRight: "5px",
                     }}
+                    className="preview"
                     components={{
                         input: (props) => {
                             return (
-                                <input
+                                <CheckBoxClickable
                                     {...props}
                                     disabled={false}
-                                    onChange={(e) => {
-                                        if (props.type === "checkbox") {
-                                            const isChecked = e.target.hasAttribute("checked");
-                                            handleCheckBoxChange(e);
-                                            if (isChecked) {
-                                                e.target.removeAttribute("checked");
-                                            } else {
-                                                e.target.setAttribute("checked", "checked");
-                                            }
-                                        }
-                                    }}
+                                    value={value}
+                                    onChangeValue={handleChange}
                                 />
                             );
+                        },
+                        img: (props) => {
+                            return <img {...props} className="image" />;
                         },
                     }}
                 />
@@ -96,6 +80,9 @@ const MarkdownEditor = ({ content, label, previewModeOnly, onCopyChanges }) => {
                     }}
                     preview="edit"
                     visibleDragbar={false}
+                    onDrop={onDropImage}
+                    onDragOver={onDragOverImage}
+                    onPaste={onPasteImage}
                 />
             </MarkdownEditorContainer>
         </MarkdownContainer>
