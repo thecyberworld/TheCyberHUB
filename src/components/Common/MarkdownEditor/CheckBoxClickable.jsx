@@ -1,21 +1,13 @@
 import React from "react";
 
-const compareStrings = (str1, str2) => {
-    for (let i = 0, j = 0; i < str1.length || j < str2.length; i++, j++) {
-        if (i >= str1.length) return false;
-        if (j >= str2.length) return false;
-        if (str1[i] !== str2[j]) return false;
-    }
-    return true;
-};
 const CheckBoxClickable = ({ value, onChangeValue, disabled, ...props }) => {
     if (disabled) return <input {...props} disabled={true} />;
 
     const handleCheckBoxChange = (e) => {
         const textOfCheckBox = e.target.parentNode.textContent;
         const valueListOfLines = value.split("\n");
-        const findCheckedBoxLineIndex = valueListOfLines.findIndex((item) =>
-            compareStrings(item?.replace(/- \[ \]|- \[[^]]+/, ""), textOfCheckBox.split("\n")[0]),
+        const findCheckedBoxLineIndex = valueListOfLines.findIndex(
+            (item) => item?.replace(/- \[ \]|- \[[^]]+/, "") === textOfCheckBox.split("\n")[0],
         );
         valueListOfLines[findCheckedBoxLineIndex] = valueListOfLines[findCheckedBoxLineIndex].replace(
             /- \[ \]|- \[[^]]+/,
