@@ -43,6 +43,7 @@ export const SearchContainer = styled.div`
     background-color: #111111;
     border-top: 0px;
     height: 3rem;
+    padding: 0 0 0 10px;
 `;
 
 export const NotesListContainer = styled.ul`
