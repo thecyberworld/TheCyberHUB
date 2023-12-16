@@ -69,13 +69,15 @@ export const NoteItemElementContainer = styled.div`
 `;
 export const NoteItemElement = styled.li`
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    width: 100%;
+    width: ${(props) => (props.isPicked ? "95%" : "100%")};
     padding: 10px;
     gap: 5px;
     background-color: ${(props) => (props.isPinned ? "#2a2a2a" : "#090909")};
+    left: ${(props) => (props.isPicked ? "17px" : "0")};
     color: #f5f5f5;
     &:hover {
         background-color: #383838;

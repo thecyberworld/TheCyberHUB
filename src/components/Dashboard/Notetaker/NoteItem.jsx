@@ -15,7 +15,7 @@ const shortText = (text, letters) => {
     return text?.length > letters ? `${text.slice(0, letters)}...` : text;
 };
 
-const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
+const NoteItem = ({ _id, title, content, pinned, onPick, onPin, isPicked }) => {
     const [shortTitle, setShortTitle] = useState("");
     const [shortDescr, setShortDescr] = useState("");
 
@@ -30,7 +30,7 @@ const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
 
     return (
         <NoteItemElementContainer>
-            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)}>
+            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)} isPicked={isPicked}>
                 <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
                 <NoteItemShortDescription empty={shortDescr === "(Empty)"}>{shortDescr}</NoteItemShortDescription>
             </NoteItemElement>
