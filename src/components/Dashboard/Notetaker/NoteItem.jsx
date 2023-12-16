@@ -20,7 +20,7 @@ const NoteItem = ({ _id, title, content, pinned, onPick, onPin, isPicked }) => {
     const [shortDescr, setShortDescr] = useState("");
 
     useEffect(() => {
-        setShortTitle(() => title && shortText(title, 30));
+        setShortTitle(() => title && shortText(title, 25));
         setShortDescr(() => {
             if (!content) return "(Empty)";
             const cleanContent = cleanFromTags(content);
