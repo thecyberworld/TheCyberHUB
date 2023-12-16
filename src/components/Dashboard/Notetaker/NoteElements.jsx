@@ -74,11 +74,11 @@ export const NoteItemElement = styled.li`
     flex-direction: column;
     justify-content: start;
     align-items: start;
-    width: ${(props) => (props.isPicked ? "95%" : "100%")};
+    width: 100%;
     padding: 10px;
     gap: 5px;
-    background-color: ${(props) => (props.isPinned ? "#2a2a2a" : "#090909")};
-    left: ${(props) => (props.isPicked ? "17px" : "0")};
+    background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
+    border: ${(props) => (props.isPinned ? "1px solid #2a2a2a" : "none")};
     color: #f5f5f5;
     &:hover {
         background-color: #383838;
