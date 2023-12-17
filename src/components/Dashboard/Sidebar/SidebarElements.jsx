@@ -17,7 +17,6 @@ export const DashboardSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 24px;
     background: #090909;
     height: 100vh;
     border-radius: 10px;
@@ -27,8 +26,7 @@ export const DashboardSidebarContainer = styled.div`
 
     // stick to the top
     position: sticky;
-    top: 0;
-    min-width: ${(props) => (props.isOpen ? "250px" : "75px")};
+    min-width: ${(props) => (props?.isOpen ? "200px" : "50px")};
     transition: width 0.3s ease-in-out;
 
     .heading {
@@ -41,59 +39,74 @@ export const RouteLink = styled(Link)`
     text-decoration: none;
     color: #f5f5f5;
 `;
+export const SideBarLinkContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    gap: 5px;
+`;
+
 export const SideBarLink = styled(({ isOpen, ...props }) => <NavLink {...props} />)`
     text-decoration: none;
     color: #f5f5f5;
+    font-size: 16px;
     display: flex;
     align-items: center;
     border-radius: 8px;
-    height: 50px;
-    gap: 16px;
-    padding-left: ${(props) => (props.isOpen ? "24px" : "0")};
+    padding: 7px 0;
+    gap: 15px;
+    padding-left: ${(props) => (props.isOpen ? "10px" : "0")};
     transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
     width: 100%;
     justify-content: ${(props) => (props.isOpen ? "unset" : "center")};
 
     &:hover,
     &.active {
-        background: ${(props) => (props.isOpen ? "#009dec" : "")};
-        color: ${(props) => (props.isOpen ? "" : "#009dff")};
+        background: #ff6b08;
+        color: #111;
+        //background: ${(props) => (props.isOpen ? "#ff6b08" : "")};
+        // color: ${(props) => (props.isOpen ? "#111" : "#ff6b08")};
     }
 `;
 
-export const SidebarTitle = styled.h2`
-    color: #f5f5f5;
-    font-size: 1.2rem;
+export const SidebarTitle = styled.p`
+    //font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
     opacity: ${(props) => (props.isOpen ? "1" : "0")};
     transition: opacity 0.6s ease-in-out 0.2s;
     margin-bottom: 0;
+    display: ${(props) => (props.isOpen ? "block" : "none")};
 `;
 
 export const ToggleButton = styled.div`
+    //top: 100px;
     cursor: pointer;
-    position: absolute;
-    top: 100px;
-    right: ${(props) => (props.isOpen ? "-32px" : "")};
-    padding: ${(props) => (props.isOpen ? "10px" : "17px")};
     border-radius: 12px;
+    border: 1px solid #2a2a2a;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
 `;
 
 export const UserProfile = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    position: relative;
-    height: 120px;
-    margin-left: ${(props) => (props.isOpen ? "0" : "8px")};
+    min-height: 150px;
+    padding: 10px;
+    // margin-left: ${(props) => (props.isOpen ? "0" : "8px")};
 
     .user-profile-image {
         position: relative;
 
         img {
-            width: 80px;
-            height: 80px;
+            width: ${(props) => (props.isOpen ? "50px" : "40px")};
+            height: ${(props) => (props.isOpen ? "50px" : "40px")};
             border-radius: 100%;
             object-fit: cover;
         }
@@ -122,8 +135,8 @@ const createStyledIcon = (IconComponent) => {
 };
 
 export const BiSolidCircleIcon = styled(BiSolidCircle)`
-    width: 20px;
-    height: 20px;
+    width: ${(props) => (props?.isOpen ? "20px" : "10px")};
+    height: ${(props) => (props.isOpen ? "20px" : "10px")};
     color: #b9f62e;
     position: absolute;
     bottom: 4px;
