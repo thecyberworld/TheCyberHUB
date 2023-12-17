@@ -12,7 +12,6 @@ const DashboardRoute = () => {
     return (
         <DashboardRoutesContainer>
             <Sidebar />
-
             <div
                 style={{
                     display: "flex",

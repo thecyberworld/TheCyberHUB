@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
     DashboardSidebarContainer,
     SidebarTitle,
-    ToggleButton,
+    // ToggleButton,
     BiHomeCircleIcon,
     BiBookmarksIcon,
     BiLogoBloggericon,
@@ -16,6 +16,7 @@ import {
     SideBarLink,
     // RouteLink,
     BiChatIcon,
+    SideBarLinkContainer,
 } from "./SidebarElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
@@ -56,33 +57,47 @@ const Sidebar = () => {
                     <BiSolidCircleIcon />
                 </div>
                 <UserProfileDescription isOpen={isOpen}>
-                    <h3>{userDetail?.name}</h3>
+                    <h4>{userDetail?.name}</h4>
                     <span>@{userDetail?.username}</span>
                 </UserProfileDescription>
-
-                <ToggleButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <BiSolidChevronLeftIcon /> : <BiSolidChevronRighIcon />}
-                </ToggleButton>
             </UserProfile>
 
-            <section className={"heading"}>{isOpen && <p> Dashboard </p>}</section>
+            {/* <section className={"heading"}>{isOpen ? <p> Dashboard </p> : ""}</section> */}
 
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    width: "100%",
-                }}
-            >
+            <SideBarLinkContainer isOpen={isOpen}>
                 {sidebarItems.map((item) => (
                     <SideBarLink key={item.to} to={item.to} isOpen={isOpen}>
                         {item.icon}
                         {isOpen && <SidebarTitle isOpen={isOpen}> {item.label} </SidebarTitle>}
                     </SideBarLink>
                 ))}
-            </div>
+            </SideBarLinkContainer>
+
+            <SideBarLink
+                style={{
+                    height: "50px",
+                    position: "absolute",
+                    bottom: "0",
+                    left: "0",
+                    width: "100%",
+                    backgroundColor: "#2a2a2a",
+                    display: "flex",
+                    borderRadius: "0",
+                    color: "#f5f5f5",
+                }}
+                isOpen={isOpen}
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                {isOpen ? (
+                    <>
+                        {" "}
+                        <BiSolidChevronLeftIcon />
+                        <SidebarTitle isOpen={isOpen}> Collapse </SidebarTitle>{" "}
+                    </>
+                ) : (
+                    <BiSolidChevronRighIcon />
+                )}
+            </SideBarLink>
         </DashboardSidebarContainer>
     );
 };
