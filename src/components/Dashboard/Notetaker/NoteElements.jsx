@@ -43,6 +43,7 @@ export const SearchContainer = styled.div`
     background-color: #111111;
     border-top: 0px;
     height: 3rem;
+    padding: 0 0 0 10px;
 `;
 
 export const NotesListContainer = styled.ul`
@@ -69,13 +70,15 @@ export const NoteItemElementContainer = styled.div`
 `;
 export const NoteItemElement = styled.li`
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: start;
     align-items: start;
     width: 100%;
     padding: 10px;
     gap: 5px;
-    background-color: ${(props) => (props.isPinned ? "#2a2a2a" : "#090909")};
+    background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
+    border: ${(props) => (props.isPinned ? "1px solid #2a2a2a" : "none")};
     color: #f5f5f5;
     &:hover {
         background-color: #383838;

@@ -17,7 +17,7 @@ const useImageUploadEvents = (prevContent, setContent, pageName) => {
             const API_URL = getApiUrl("api/upload");
             await axios.post(API_URL, formData);
             const newImageUrl = cdnContentImagesUrl(`/${pageName}/${fileName.split("-")[1]}`);
-            setContent(prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})`);
+            setContent(prevContent + `\n![PLEASE_ADD_A_NAME_FOR_THIS_IMAGE_HERE](${newImageUrl})\n\n`);
         };
         reader.readAsArrayBuffer(file);
     };

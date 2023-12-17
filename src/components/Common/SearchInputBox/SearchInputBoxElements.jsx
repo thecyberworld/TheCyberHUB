@@ -9,6 +9,7 @@ export const SearchInput = styled.input`
     font-size: 16px;
     width: 300px;
     border-radius: 0 4px 4px 0;
+    outline: none;
     @media screen and (max-width: 380px) {
         width: 100%;
     }
@@ -16,21 +17,17 @@ export const SearchInput = styled.input`
     @media screen and (max-width: 800px) {
         width: 100%;
     }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 1px #1a1c1d;
-    }
 `;
 export const SearchBox = styled.div`
     display: flex;
+    position: relative;
+    left: 0;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
-    gap: 10px;
-    background: #131313;
-    border-radius: 5px;
-    padding: 0 0 0 10px;
+    background: #252525;
+    border-radius: 10px;
+    padding: 0 5px;
     @media screen and (max-width: 380px) {
         width: 100%;
     }

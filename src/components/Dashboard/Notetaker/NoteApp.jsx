@@ -87,7 +87,7 @@ const NoteApp = () => {
                 {isNoteLoading ? (
                     <LoadingSpinner />
                 ) : (
-                    <NoteList onPin={handlePinNote} onPick={handlePickNote}>
+                    <NoteList onPin={handlePinNote} onPick={handlePickNote} pickedNoteId={pickedNote._id}>
                         {filteredNotes}
                     </NoteList>
                 )}

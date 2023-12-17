@@ -15,12 +15,12 @@ const shortText = (text, letters) => {
     return text?.length > letters ? `${text.slice(0, letters)}...` : text;
 };
 
-const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
+const NoteItem = ({ _id, title, content, pinned, onPick, onPin, isPicked }) => {
     const [shortTitle, setShortTitle] = useState("");
     const [shortDescr, setShortDescr] = useState("");
 
     useEffect(() => {
-        setShortTitle(() => title && shortText(title, 30));
+        setShortTitle(() => title && shortText(title, 25));
         setShortDescr(() => {
             if (!content) return "(Empty)";
             const cleanContent = cleanFromTags(content);
@@ -30,7 +30,7 @@ const NoteItem = ({ _id, title, content, pinned, onPick, onPin }) => {
 
     return (
         <NoteItemElementContainer>
-            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)}>
+            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)} isPicked={isPicked}>
                 <NoteItemShortTitle>{shortTitle}</NoteItemShortTitle>
                 <NoteItemShortDescription empty={shortDescr === "(Empty)"}>{shortDescr}</NoteItemShortDescription>
             </NoteItemElement>

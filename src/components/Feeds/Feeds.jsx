@@ -11,7 +11,7 @@ import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../features/apiStatus";
 import FeedTags from "./FeedTags/FeedTags";
 import { LeftContainer, SearchContainer } from "../Explore/ExploreElements";
-import { SearchBox, SearchIcon, SearchInput } from "../Common/SearchInputBox/SearchInputBoxElements";
+import SearchInputBox from "../Common/SearchInputBox";
 
 const Feeds = () => {
     const dispatch = useDispatch();
@@ -61,15 +61,11 @@ const Feeds = () => {
                 </MiddleSection>
                 <LeftContainer style={{ padding: "25px 0" }}>
                     <SearchContainer>
-                        <SearchBox>
-                            <SearchIcon />
-                            <SearchInput
-                                type="text"
-                                placeholder="Search by name"
-                                value={searchTerm}
-                                onChange={handleSearchTermChange}
-                            />
-                        </SearchBox>
+                        <SearchInputBox
+                            placeholder="Search by name"
+                            value={searchTerm}
+                            onChange={handleSearchTermChange}
+                        />
                     </SearchContainer>
                     <FeedTags tags={feedTags} />
                 </LeftContainer>
