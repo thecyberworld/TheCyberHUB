@@ -11,7 +11,8 @@ import {
     BiSolidCircle,
     BiChat,
 } from "react-icons/bi";
-import { PiReadCvLogo } from "react-icons/pi";
+import { PiNotebookDuotone, PiReadCvLogo } from "react-icons/pi";
+import { CgOpenCollective } from "react-icons/cg";
 
 export const DashboardSidebarContainer = styled.div`
     display: flex;
@@ -51,12 +52,12 @@ export const SideBarLinkContainer = styled.div`
 export const SideBarLink = styled(({ isOpen, ...props }) => <NavLink {...props} />)`
     text-decoration: none;
     color: #f5f5f5;
-    font-size: 16px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     border-radius: 8px;
     padding: 7px 0;
-    gap: 15px;
+    gap: 10px;
     padding-left: ${(props) => (props.isOpen ? "10px" : "0")};
     transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
     width: 100%;
@@ -97,7 +98,7 @@ export const UserProfile = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    min-height: 150px;
+    min-height: 100px;
     padding: 10px;
     // margin-left: ${(props) => (props.isOpen ? "0" : "8px")};
 
@@ -129,8 +130,7 @@ export const UserProfileDescription = styled.div`
 
 const createStyledIcon = (IconComponent) => {
     return styled(IconComponent)`
-        width: 28px;
-        height: 28px;
+        font-size: 20px;
     `;
 };
 
@@ -145,6 +145,8 @@ export const BiSolidCircleIcon = styled(BiSolidCircle)`
 
 export const BiHomeCircleIcon = createStyledIcon(BiHomeCircle);
 export const BiBookmarksIcon = createStyledIcon(BiBookmarks);
+export const CgOpenCollectiveIcon = createStyledIcon(CgOpenCollective);
+export const PiNotebookDuotoneIcon = createStyledIcon(PiNotebookDuotone);
 export const BiLogoBloggericon = createStyledIcon(PiReadCvLogo);
 export const BiLogoAlgoliaIcon = createStyledIcon(BiLogoAlgolia);
 export const CiSettingsIcon = createStyledIcon(BiCog);

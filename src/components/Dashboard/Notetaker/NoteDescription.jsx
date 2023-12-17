@@ -8,14 +8,16 @@ import {
     NotesDescriptionHeader,
     NotesDescriptionIconsContainer,
 } from "./NoteElements";
-import { MdDeleteForever, MdCancel } from "react-icons/md";
-import { BiSolidEdit, BiSolidSave } from "react-icons/bi";
+import { MdOutlineCancel } from "react-icons/md";
 import NotePinning from "./NotePinning";
-import { RiMore2Fill } from "react-icons/ri";
 import MarkdownEditor from "../../Common/MarkdownEditor";
 import InputEditor from "../../Common/InputEditor";
 import { useDispatch } from "react-redux";
 import { createNote, updateNote, deleteNote } from "../../../features/notes/notesSlice";
+import { FaSave } from "react-icons/fa";
+import { TbEditCircle } from "react-icons/tb";
+import { AiTwotoneDelete } from "react-icons/ai";
+import { RiMore2Fill } from "react-icons/ri";
 
 const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
     const dispatch = useDispatch();
@@ -39,6 +41,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         onCloseAddMode(false);
         setShowNote({});
     };
+
     const handleCopyNoteData = useCallback((label, content) => {
         setShowNote((prevCopyNote) => {
             if (label === "description") label = "content";
@@ -48,6 +51,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
             };
         });
     });
+
     const handleSaveNote = (newNote) => {
         if (!newNote.title && !newNote.content) {
             dispatch(deleteNote(newNote._id));
@@ -55,6 +59,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
             handleClose();
             return;
         }
+        console.log(newNote);
         if (needToEdit) {
             dispatch(updateNote({ id: children._id, noteData: newNote }));
         } else if (needToAdd) {
@@ -63,42 +68,49 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
         onChangePickedNote(newNote);
         handleClose();
     };
+
     return (
         <NotesDescriptionContainer>
             <NotesDescriptionHeader>
                 {!needToAdd && !needToEdit && (showNote.title || showNote.content) && (
                     <NotesDescriptionIconsContainer icons={3}>
-                        <BiSolidEdit className="icon" size="24px" title="Edit" onClick={setNeedToEdit} />
+                        <TbEditCircle className="icon icon-edit" size="18px" title="Edit" onClick={setNeedToEdit} />
                         <NotePinning isPinned={showNote.pinned} onPin={onPin} noteId={showNote._id} />
-                        <MdDeleteForever
+                        <AiTwotoneDelete
                             className="icon icon-delete"
-                            size="24px"
+                            size="18px"
                             title="Delete"
                             onClick={handleDeleteNote}
                         />
-                        <RiMore2Fill className="icon" size="24px" title="More" />
+                        <RiMore2Fill className="icon icon-options" size="18px" title="More" />
                     </NotesDescriptionIconsContainer>
                 )}
                 {(needToAdd || needToEdit) && (
                     <NotesDescriptionIconsContainer icons={2}>
-                        <BiSolidSave
+                        <FaSave
                             className="icon icon-save"
-                            size="24px"
+                            size="18px"
                             title="Save"
                             onClick={() => handleSaveNote(showNote)}
                         />
-                        <MdCancel className="icon icon-cancel" size="24px" title="Cancel" onClick={handleClose} />
-                        <RiMore2Fill className="icon" size="24px" title="More" />
+                        <MdOutlineCancel
+                            className="icon icon-cancel"
+                            size="19px"
+                            title="Cancel"
+                            onClick={handleClose}
+                        />
+                        <RiMore2Fill className="icon" size="18px" title="More" />
                     </NotesDescriptionIconsContainer>
                 )}
             </NotesDescriptionHeader>
+
             <NotesDescription>
                 <DescriptionTitle>
                     {needToAdd || needToEdit ? (
                         <InputEditor
-                            label="title"
                             content={needToEdit && showNote.title ? showNote.title : ""}
                             onCopyChanges={handleCopyNoteData}
+                            label="title"
                         />
                     ) : (
                         <DescriptionDisplayTitle>

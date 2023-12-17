@@ -74,9 +74,10 @@ const NoteApp = () => {
             <NotesSidebarContainer>
                 <NotesSidebarHeader>
                     <RxHamburgerMenu className="icon" size="24px" title="Menu" />
-                    <NotesSidebarHeaderTitle>All Notes</NotesSidebarHeaderTitle>
-                    <MdNoteAdd className="icon" size="24px" title="New" onClick={handleOpenAddNewNoteMode} />
+                    <NotesSidebarHeaderTitle> Notes </NotesSidebarHeaderTitle>
+                    <MdNoteAdd className="icon icon-add" size="20px" title="New" onClick={handleOpenAddNewNoteMode} />
                 </NotesSidebarHeader>
+
                 <SearchContainer>
                     <SearchInputBox
                         placeholder="Search all notes and tags"
@@ -84,6 +85,7 @@ const NoteApp = () => {
                         onChange={handleSearchTermChange}
                     />
                 </SearchContainer>
+
                 {isNoteLoading ? (
                     <LoadingSpinner />
                 ) : (
@@ -92,6 +94,7 @@ const NoteApp = () => {
                     </NoteList>
                 )}
             </NotesSidebarContainer>
+
             <NoteDescription
                 onPin={handlePinNote}
                 needToAdd={needToAdd}

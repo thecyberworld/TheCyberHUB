@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { ChatHome, Dashboard, EditBlog, GoalSetter, NotFound, UserBlogs } from "../index";
+import { Dashboard, EditBlog, GoalSetter, NotFound, UserBlogs } from "../index";
 import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import Sidebar from "./Sidebar/Sidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import NoteApp from "./Notetaker/NoteApp";
 import Tools from "../Tools/Tools";
+import ChatRoute from "../Chat/ChatRoute";
 
 const DashboardRoute = () => {
     return (
@@ -26,15 +27,16 @@ const DashboardRoute = () => {
                     <Route index element={<Dashboard />} />
                     <Route path={"goals"} element={<GoalSetter />} />
                     <Route path={"bookmarks"} element={<Bookmarks />} />
-                    <Route path={"chat"} element={<ChatHome />} />
                     <Route path={"notes"} element={<NoteApp />} />
                     <Route path={"tools"} element={<Tools />} />
+                    <Route path={"chat/*"} element={<ChatRoute />} />
                     <Route path={"blogs"}>
                         <Route index element={<UserBlogs />} />
                         <Route exact path={"create"} element={<CreateBlogV2 />} />
                         <Route exact path={"edit/:blogTitle"} element={<EditBlog />} />
                         <Route path={"*"} element={<NotFound />} />
                     </Route>
+
                     <Route path={"*"} element={<NotFound />} />
                 </Routes>
             </div>

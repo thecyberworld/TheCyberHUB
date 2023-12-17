@@ -9,8 +9,8 @@ export const NotesContainer = styled.div`
 export const NotesSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 370px;
     height: 100vh;
+    max-width: 300px;
     @media screen and (max-width: 800px) {
         width: 35%;
     }
@@ -43,27 +43,27 @@ export const SearchContainer = styled.div`
     background-color: #111111;
     border-top: 0px;
     height: 3rem;
-    padding: 0 0 0 10px;
 `;
 
 export const NotesListContainer = styled.ul`
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
     border: 2px solid #111111;
     border-top: 0px;
-    padding: 20px 15px;
+    padding: 5px;
     overflow-y: auto;
 `;
 export const NoteItemPinningContainer = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
-    display: ${(props) => (props.isPinned ? "block" : "none")};
+    display: ${(props) => (props?.isPinned ? "block" : "none")};
 `;
 export const NoteItemElementContainer = styled.div`
     position: relative;
+
     &:hover ${NoteItemPinningContainer} {
         display: block;
     }
@@ -79,20 +79,27 @@ export const NoteItemElement = styled.li`
     gap: 5px;
     background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
     border: ${(props) => (props.isPinned ? "1px solid #2a2a2a" : "none")};
+
+    border: 1px solid #111111;
+    border-radius: 5px;
+
     color: #f5f5f5;
+
     &:hover {
         background-color: #383838;
         cursor: pointer;
     }
+
     @media screen and (max-width: 500px) {
         font-size: 1.5rem;
         padding: 25px;
     }
 `;
 
-export const NoteItemShortTitle = styled.h4`
+export const NoteItemShortTitle = styled.p`
     text-transform: capitalize;
-    font-weight: 900;
+    font: 15px "Roboto Mono", monospace;
+    font-weight: 600;
 `;
 
 export const NoteItemShortDescription = styled.p`
@@ -100,7 +107,7 @@ export const NoteItemShortDescription = styled.p`
     font-weight: 100;
     width: 100%;
     overflow-wrap: break-word;
-    font-style: ${(props) => (props.empty ? "italic" : "")};
+    font-style: ${(props) => (props?.empty ? "italic" : "")};
     opacity: ${(props) => (props.empty ? "0.7" : "")};
 `;
 
@@ -135,20 +142,25 @@ export const NotesDescription = styled.div`
     max-height: calc(100vh - 3rem);
     display: flex;
     flex-direction: column;
-    padding: 0 10px;
     color: #f5f5f5;
-    padding: 20px;
+    padding: 10px;
     overflow-y: auto;
+    gap: 10px;
 `;
 
 export const DescriptionTitle = styled.div`
     width: 100%;
     overflow-wrap: break-word;
+    background: #252525;
 `;
 
 export const DescriptionContent = styled.div``;
 
-export const DescriptionDisplayTitle = styled.h1`
+export const DescriptionDisplayTitle = styled.p`
     text-transform: capitalize;
     width: 100%;
+    font-size: 18px;
+    font-weight: 550;
+    padding: 5px 10px;
+    //font-family: "Roboto Mono", monospace;
 `;
