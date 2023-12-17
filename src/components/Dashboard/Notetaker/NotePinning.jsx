@@ -1,11 +1,11 @@
 import React from "react";
-import { BsPinAngle, BsPinAngleFill } from "react-icons/bs";
+import { AiOutlinePushpin, AiTwotonePushpin } from "react-icons/ai";
 
 const NotePinning = ({ isPinned, onPin, noteId }) => {
     const pinDisplay = isPinned ? (
-        <BsPinAngleFill className="icon icon-pin" size="24px" title="Unpin" onClick={() => onPin(noteId)} />
+        <AiTwotonePushpin className="icon icon-pin" size="18px" title="Unpin" onClick={() => onPin(noteId)} />
     ) : (
-        <BsPinAngle className="icon icon-pin" size="24px" title="Pin" onClick={() => onPin(noteId)} />
+        <AiOutlinePushpin className="icon icon-pin" size="18px" title="Pin" onClick={() => onPin(noteId)} />
     );
     return <>{pinDisplay}</>;
 };

@@ -4,17 +4,45 @@ export const MarkdownContainer = styled.div`
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin: 10px 0 30px 0;
-    padding: 10px;
-    border: 2px solid #4f4f4f;
-    border-radius: 8px;
-    box-shadow: 2px 2px #4f4f4f;
 `;
 
-export const MarkdownEditorPreviewContainer = styled.div`
-    margin-bottom: 30px;
+export const MarkdownEditorPreviewContainer = styled.div``;
+export const MarkdownEditorContainer = styled.div`
+    border: 1px solid #4f4f4f;
+    border-radius: 5px;
+    background-color: #090909;
+    color: #f5f5f5;
+    font-size: 14px;
+    overflow: auto;
+    height: 100%;
+    min-height: 500px;
+    max-height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &:focus {
+        outline: none;
+    }
+
+    .md-editor {
+        width: 100%;
+        min-height: 80vh;
+        overflow: auto;
+        font-size: 14px;
+        background-color: #090909;
+        color: #f5f5f5;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: #f5f5f5;
+        }
+    }
 `;
-export const MarkdownEditorContainer = styled.div``;
 
 export const MarkdownLabel = styled.h2`
     text-transform: capitalize;

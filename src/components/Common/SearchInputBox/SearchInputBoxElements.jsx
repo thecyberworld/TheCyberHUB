@@ -7,7 +7,7 @@ export const SearchInput = styled.input`
     color: #d7d7d7;
     padding: 8px;
     font-size: 16px;
-    width: 300px;
+    width: 100%;
     border-radius: 0 4px 4px 0;
     outline: none;
     @media screen and (max-width: 380px) {
@@ -26,7 +26,6 @@ export const SearchBox = styled.div`
     justify-content: start;
     align-items: center;
     background: #252525;
-    border-radius: 10px;
     padding: 0 5px;
     @media screen and (max-width: 380px) {
         width: 100%;

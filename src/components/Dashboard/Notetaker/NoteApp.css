@@ -1,15 +1,28 @@
 .icon {
     color: #646464;
+    transition: all 0.3s ease;
+}
+.icon-add {
+    color: #ff6b08;
+}
+.icon-edit {
+    color: #00a8ff;
 }
 .icon-delete,
 .icon-cancel {
-    color: #bc0101;
+    color: #f14844;
 }
 .icon-pin {
-    color: rgb(47, 108, 129);
+    color: #ff6b08;
 }
 .icon-save {
-    color: rgb(47, 129, 50);
+    color: #00a8ff;
+}
+.icon-options {
+    color: #646464;
+}
+.icon-options:hover {
+    color: #00a8ff;
 }
 .icon:hover {
     opacity: 0.7;

@@ -11,7 +11,7 @@ import SendMessage from "./SendMessage";
 const Chat = () => {
     const { user } = useSelector((state) => state.auth);
     const location = useLocation();
-    const channelId = location.pathname.replace("/chat/", "");
+    const channelId = location.pathname.replace("/dashboard/chat/", "");
     const [channel, setChannel] = useState(null);
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import {
     SidebarTitle,
     // ToggleButton,
     BiHomeCircleIcon,
-    BiBookmarksIcon,
+    // BiBookmarksIcon,
     BiLogoBloggericon,
     BiLogoAlgoliaIcon,
     CiSettingsIcon,
@@ -14,15 +14,14 @@ import {
     UserProfileDescription,
     BiSolidCircleIcon,
     SideBarLink,
-    // RouteLink,
     BiChatIcon,
     SideBarLinkContainer,
+    CgOpenCollectiveIcon,
+    PiNotebookDuotoneIcon,
 } from "./SidebarElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
-import { CgOpenCollective } from "react-icons/cg";
-import { PiNotebookDuotone } from "react-icons/pi";
 
 const Sidebar = () => {
     const dispatch = useDispatch();
@@ -40,12 +39,12 @@ const Sidebar = () => {
 
     const sidebarItems = [
         { to: "/", icon: <BiHomeCircleIcon />, label: "Home" },
-        { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Community" },
-        { to: "/dashboard/tools", icon: <CgOpenCollective style={{ fontSize: "1.6rem" }} />, label: "Tools" },
-        { to: "/dashboard/notes", icon: <PiNotebookDuotone style={{ fontSize: "1.6rem" }} />, label: "Notes" },
-        { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
-        { to: "/dashboard/bookmarks", icon: <BiBookmarksIcon />, label: "Bookmarks" },
+        { to: "/dashboard/notes", icon: <PiNotebookDuotoneIcon />, label: "Notes" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
+        { to: "/dashboard/tools", icon: <CgOpenCollectiveIcon />, label: "Tools" },
+        { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
+        // {to: "/dashboard/bookmarks", icon: <BiBookmarksIcon/>, label: "Bookmarks"},
+        { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Community" },
         { to: "/dashboard/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
     ];
 
@@ -90,7 +89,6 @@ const Sidebar = () => {
             >
                 {isOpen ? (
                     <>
-                        {" "}
                         <BiSolidChevronLeftIcon />
                         <SidebarTitle isOpen={isOpen}> Collapse </SidebarTitle>{" "}
                     </>
