@@ -9,7 +9,7 @@ import chatData from "./DummyChat/ChatData";
 import SendMessage from "./SendMessage";
 import { BiSend } from "react-icons/bi";
 
-const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMessageText }) => {
+const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMessageText, divUnderMessage }) => {
     const { user } = useSelector((state) => state.auth);
     const location = useLocation();
     const channelId = location.pathname.replace("/dashboard/chat/", "");
@@ -25,6 +25,9 @@ const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMe
     if (!channel) {
         return (
             <ChatItemsContainer>
+                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <h1 style={{ margin: "5px", padding: "5px" }}>Welcome to Chat</h1>
+                </div>
                 <MessageInputContainer>
                     {messages.map((message, index) =>
                         message.sender === user?._id ? (
@@ -47,17 +50,20 @@ const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMe
                             />
                         ),
                     )}
-                    <Message>
-                        <Input
-                            value={newMessageText}
-                            onChange={(ev) => setNewMessageText(ev.target.value)}
-                            placeholder="Type your message here"
-                        />
-                        <InputGroup>
-                            <BiSend onClick={sendMessage} />
-                        </InputGroup>
-                    </Message>
+
+                    <div ref={divUnderMessage} />
                 </MessageInputContainer>
+                <Message>
+                    <Input
+                        value={newMessageText}
+                        onChange={(ev) => setNewMessageText(ev.target.value)}
+                        placeholder="Type your message here"
+                    />
+
+                    <InputGroup>
+                        <BiSend onClick={sendMessage} />
+                    </InputGroup>
+                </Message>
             </ChatItemsContainer>
         );
     }

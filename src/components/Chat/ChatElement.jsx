@@ -25,16 +25,29 @@ export const ChatItemsContainer = styled.div`
     width: 100%;
     height: 100vh;
     border: 1px solid gray;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-radius: 10px;
     color: #f5f5f5;
+    overflow: hidden; /* Hide the overflowing content */
+`;
 
-    //@media screen and (max-width: 768px) {
-    //    flex-wrap: wrap;
-    //}
+export const MessageInputContainer = styled.div`
+    border-top: 1px solid gray;
+    width: 100%;
+    position: relative;
+    overflow: auto; /* Enable vertical scrolling if content overflows */
+`;
+
+export const Message = styled.div`
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    outline: none !important;
+    background-color: #282828;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
 `;
 
 export const LeftNav = styled.div`
@@ -56,22 +69,6 @@ export const Chatbox = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-`;
-
-export const MessageInputContainer = styled.div`
-    border-top: 1px solid gray;
-    width: 100%;
-    position: relative;
-`;
-
-export const Message = styled.div`
-    width: 100%;
-    border-radius: 0 0 10px 10px;
-    outline: none !important;
-    background-color: #282828;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
 `;
 
 export const Input = styled.input`

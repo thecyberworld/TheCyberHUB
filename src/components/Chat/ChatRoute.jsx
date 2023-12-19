@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ChatRoutesContainer } from "./ChatElement";
 import Sidebar from "./Sidebar/Sidebar";
@@ -12,6 +12,7 @@ const ChatRoute = () => {
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [newMessageText, setNewMessageText] = useState("");
     const [messages, setMessages] = useState([]);
+    const divUnderMessage = useRef();
 
     useEffect(() => {
         document.cookie = "Bearer " + user?.token + "; path=/";
@@ -76,6 +77,13 @@ const ChatRoute = () => {
         ]);
     };
 
+    useEffect(() => {
+        const div = divUnderMessage.current;
+        if (div) {
+            div.scrollIntoView({ behavior: "smooth", block: "end" });
+        }
+    }, [messages]);
+
     const onlinePeopleExclOurUser = { ...onlinePeople };
     delete onlinePeopleExclOurUser[user._id];
 
@@ -83,7 +91,6 @@ const ChatRoute = () => {
         <ChatRoutesContainer>
             <Sidebar
                 onlinePeople={onlinePeopleExclOurUser}
-                // offlinePeople={offlinePeople}
                 selectedUserId={selectedUserId}
                 setSelectedUserId={setSelectedUserId}
             />
@@ -108,6 +115,7 @@ const ChatRoute = () => {
                                 setMessages={setMessages}
                                 newMessageText={newMessageText}
                                 sendMessage={sendMessage}
+                                divUnderMessage={divUnderMessage}
                             />
                         }
                     />
