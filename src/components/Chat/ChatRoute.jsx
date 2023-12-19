@@ -44,7 +44,15 @@ const ChatRoute = () => {
             showOnlinePeople(messageData.online);
         } else {
             console.log("handleMessage", messageData);
-            setMessages((prev) => [...prev, { text: messageData.text, isOur: true }]);
+            setMessages((prev) => [
+                ...prev,
+                {
+                    text: messageData.text,
+                    sender: messageData.sender,
+                    recipient: messageData.recipient,
+                    isOur: true,
+                },
+            ]);
         }
     };
 

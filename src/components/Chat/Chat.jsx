@@ -25,12 +25,28 @@ const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMe
     if (!channel) {
         return (
             <ChatItemsContainer>
-                {channelId}
-
                 <MessageInputContainer>
-                    {messages.map((message, index) => (
-                        <ChatMessageSelf key={index} message={message.text} isOur={message.isOur} />
-                    ))}
+                    {messages.map((message, index) =>
+                        message.sender === user?._id ? (
+                            <ChatMessageSelf
+                                user={user?._id}
+                                key={index}
+                                sender={message.sender}
+                                recipient={message.recipient}
+                                message={message.text}
+                                isOur={message.isOur}
+                            />
+                        ) : (
+                            <ChatMessage
+                                user={user?._id}
+                                key={index}
+                                sender={message.sender}
+                                recipient={message.recipient}
+                                message={message.text}
+                                isOur={message.isOur}
+                            />
+                        ),
+                    )}
                     <Message>
                         <Input
                             value={newMessageText}

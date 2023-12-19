@@ -1,20 +1,23 @@
 import React from "react";
 import { MessageContainer, MessageContent, Timestamp } from "./ChatMessageElement";
 
-const ChatMessage = ({ username, message, image, time, sender }) => {
-    console.log("user 2", message);
+const ChatMessage = ({ username, message, sender, recipient, image, user }) => {
+    console.log(user === sender);
+    console.log(sender, recipient, message);
     return (
         <MessageContainer>
-            {/* <SenderImage src={image} alt="Sender's Image" /> */}
+            {/* <SenderImage src={image} alt="" /> */}
             <MessageContent>
                 {/* <h4>{username}</h4> */}
-
-                {/* <p>{message}</p> */}
+                <p>{message}</p>
                 <Timestamp
                     style={{
-                        color: "#b1b3b5",
+                        color: "#dcdcdc",
                         fontSize: "10px",
                         fontWeight: "bold",
+                        textAlign: "right",
+                        marginRight: "10px",
+                        marginTop: "5px",
                     }}
                 >
                     {/* {time} */}
