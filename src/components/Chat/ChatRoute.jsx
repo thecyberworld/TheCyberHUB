@@ -1,15 +1,84 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { ChatRoutesContainer } from "./ChatElement";
 import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
-import chatData from "./DummyChat/ChatData";
-
+import { useSelector } from "react-redux";
 const ChatRoute = () => {
+    const { user } = useSelector((state) => state.auth);
+    const [ws, setWs] = useState(null);
+    const [onlinePeople, setOnlinePeople] = useState({});
+    // const [offlinePeople, setOfflinePeople] = useState({});
+    const [selectedUserId, setSelectedUserId] = useState(null);
+    const [newMessageText, setNewMessageText] = useState("");
+    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        document.cookie = "Bearer " + user?.token + "; path=/";
+
+        const newWs = new WebSocket("ws://localhost:5000/");
+        setWs(newWs);
+
+        newWs.addEventListener("open", () => {
+            console.log("WebSocket connection opened");
+        });
+
+        newWs.addEventListener("message", handleMessages);
+
+        return () => {
+            newWs.close();
+        };
+    }, []);
+
+    const showOnlinePeople = (peopleArray) => {
+        const people = {};
+
+        peopleArray.forEach(({ userId, username }) => {
+            people[userId] = username;
+        });
+        setOnlinePeople(people);
+    };
+    const handleMessages = (ev) => {
+        const messageData = JSON.parse(ev.data);
+        if ("online" in messageData) {
+            showOnlinePeople(messageData.online);
+        } else {
+            console.log("handleMessage", messageData);
+            setMessages((prev) => [...prev, { text: messageData.text, isOur: true }]);
+        }
+    };
+
+    const sendMessage = (ev) => {
+        ev.preventDefault();
+        const message = {
+            recipient: selectedUserId,
+            text: newMessageText,
+        };
+        console.log(message);
+        ws.send(JSON.stringify(message));
+        // setNewMessageText('');
+        setMessages((prev) => [
+            ...prev,
+            {
+                text: newMessageText,
+                recipient: selectedUserId,
+                sender: user._id,
+                isOur: true,
+            },
+        ]);
+    };
+
+    const onlinePeopleExclOurUser = { ...onlinePeople };
+    delete onlinePeopleExclOurUser[user._id];
+
     return (
         <ChatRoutesContainer>
-            <Sidebar />
-
+            <Sidebar
+                onlinePeople={onlinePeopleExclOurUser}
+                // offlinePeople={offlinePeople}
+                selectedUserId={selectedUserId}
+                setSelectedUserId={setSelectedUserId}
+            />
             <div
                 style={{
                     display: "flex",
@@ -20,10 +89,21 @@ const ChatRoute = () => {
                 }}
             >
                 <Routes>
-                    {/* <Route index element={<Chat />} /> */}
-                    {chatData.channels.map((channel) => (
-                        <Route key={channel.id} path={channel.id} element={<Chat channelId={channel.id} />} />
-                    ))}
+                    <Route
+                        path={":id"}
+                        element={
+                            <Chat
+                                ws={ws}
+                                selectedUserId={selectedUserId}
+                                setNewMessageText={setNewMessageText}
+                                messages={messages}
+                                setMessages={setMessages}
+                                newMessageText={newMessageText}
+                                sendMessage={sendMessage}
+                            />
+                        }
+                    />
+                    <Route path="*" element={<h1>Not found</h1>} />
                 </Routes>
             </div>
         </ChatRoutesContainer>

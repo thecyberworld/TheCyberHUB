@@ -1,12 +1,12 @@
 import React from "react";
-import { MessageContainerSelf, MessageContentSelf, Timestamp, SenderImage } from "./ChatMessageElement";
+import { MessageContainerSelf, MessageContentSelf, Timestamp } from "./ChatMessageElement";
 
 const ChatMessageSelf = ({ username, message, image, time, sender }) => {
     return (
         <MessageContainerSelf>
-            <SenderImage src={image} alt="" />
+            {/* <SenderImage src={image} alt="" /> */}
             <MessageContentSelf>
-                <h4>{username}</h4>
+                {/* <h4>{username}</h4> */}
                 <p>{message}</p>
                 <Timestamp
                     style={{
@@ -18,7 +18,7 @@ const ChatMessageSelf = ({ username, message, image, time, sender }) => {
                         marginTop: "5px",
                     }}
                 >
-                    {time}
+                    {/* {time} */}
                 </Timestamp>
             </MessageContentSelf>
         </MessageContainerSelf>

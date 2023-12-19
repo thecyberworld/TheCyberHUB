@@ -32,9 +32,9 @@ export const ChatItemsContainer = styled.div`
     border-radius: 10px;
     color: #f5f5f5;
 
-    @media screen and (max-width: 768px) {
-        flex-wrap: wrap;
-    }
+    //@media screen and (max-width: 768px) {
+    //    flex-wrap: wrap;
+    //}
 `;
 
 export const LeftNav = styled.div`
