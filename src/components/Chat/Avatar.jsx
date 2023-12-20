@@ -18,10 +18,10 @@ const Avatar = ({ userId, username, online }) => {
     const color = colors[colorIndex];
 
     return (
-        <div className={`w-10 h-10 relative rounded-full overflow-hidden flex items-center ${color}`}>
+        <div className={`w-8 h-8 relative rounded-full overflow-hidden flex items-center ${color}`}>
             <div className="text-center w-full text-white">{username[0]}</div>
             {online && (
-                <div className="absolute w-3 h-3 bg-green-400 bottom-0 right-0 rounded-full border border-white"></div>
+                <div className="absolute w-3 h-3 bg-orange-500 bottom-0 right-0 rounded-full border border-white"></div>
             )}
             {!online && (
                 <div className="absolute w-3 h-3 bg-gray-400 bottom-0 right-0 rounded-full border border-white"></div>

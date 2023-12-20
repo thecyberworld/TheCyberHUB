@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { ChatRoutesContainer } from "./ChatElement";
+import { ChatRoutesContainer } from "./Chat/ChatElement";
 import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-const ChatRoute = () => {
+const CommunityChat = () => {
     const { user } = useSelector((state) => state.auth);
     const [ws, setWs] = useState(null);
     const [onlinePeople, setOnlinePeople] = useState({});
@@ -14,6 +14,7 @@ const ChatRoute = () => {
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [newMessageText, setNewMessageText] = useState("");
     const [messages, setMessages] = useState([]);
+    const [hideSidebar, setHideSidebar] = useState(false);
     const divUnderMessage = useRef();
 
     useEffect(() => {
@@ -102,11 +103,14 @@ const ChatRoute = () => {
 
     return (
         <ChatRoutesContainer>
-            <Sidebar
-                onlinePeople={onlinePeopleExclOurUser}
-                selectedUserId={selectedUserId}
-                setSelectedUserId={setSelectedUserId}
-            />
+            {hideSidebar ? null : (
+                <Sidebar
+                    hideSidebar={hideSidebar}
+                    onlinePeople={onlinePeopleExclOurUser}
+                    selectedUserId={selectedUserId}
+                    setSelectedUserId={setSelectedUserId}
+                />
+            )}
             <div
                 style={{
                     display: "flex",
@@ -121,6 +125,8 @@ const ChatRoute = () => {
                         path={":id"}
                         element={
                             <Chat
+                                setHideSidebar={setHideSidebar}
+                                hideSidebar={hideSidebar}
                                 ws={ws}
                                 selectedUserId={selectedUserId}
                                 setNewMessageText={setNewMessageText}
@@ -139,4 +145,4 @@ const ChatRoute = () => {
     );
 };
 
-export default ChatRoute;
+export default CommunityChat;

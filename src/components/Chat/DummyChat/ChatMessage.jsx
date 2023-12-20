@@ -1,16 +1,16 @@
 import React from "react";
 import { MessageContainer, MessageContent, SenderImage, Timestamp } from "./ChatMessageElement";
 
-const ChatMessage = ({ username, message, sender, recipient, image, user }) => {
+const ChatMessage = ({ username, message, sender, recipient, image, user, isOur }) => {
     return (
-        <MessageContainer>
+        <MessageContainer isOur={isOur}>
             <SenderImage
                 src={
                     "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/user/1692524710620.jpeg"
                 }
                 alt=""
             />
-            <MessageContent>
+            <MessageContent isOur={isOur}>
                 {message || ""}
                 <Timestamp
                     style={{
@@ -22,7 +22,7 @@ const ChatMessage = ({ username, message, sender, recipient, image, user }) => {
                         marginTop: "5px",
                     }}
                 >
-                    {/* {time} */}
+                    {"time"}
                 </Timestamp>
             </MessageContent>
         </MessageContainer>

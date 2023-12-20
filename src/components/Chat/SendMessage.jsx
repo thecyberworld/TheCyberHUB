@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageInputContainer, Message, Input, InputGroup } from "./ChatElement";
+import { MessageInputContainer, Message, Input, InputGroup } from "./Chat/ChatElement";
 import { BiSend } from "react-icons/bi";
 
 const SendMessage = ({ ws, selectedUserId, setMessages, newMessageText, setNewMessageText, sendMessage }) => {

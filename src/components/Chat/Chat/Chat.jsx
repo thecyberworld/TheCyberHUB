@@ -2,14 +2,25 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ChatItemsContainer, Input, InputGroup, Message, MessageInputContainer } from "./ChatElement";
-import ChatArea from "./ChatArea/ChatArea";
-import ChatMessage from "./DummyChat/ChatMessage";
-import ChatMessageSelf from "./DummyChat/ChatMessageSelf";
-import chatData from "./DummyChat/ChatData";
-import SendMessage from "./SendMessage";
+import ChatArea from "../ChatArea/ChatArea";
+import ChatMessage from "../DummyChat/ChatMessage";
+import ChatMessageSelf from "../DummyChat/ChatMessageSelf";
+import chatData from "../DummyChat/ChatData";
+import SendMessage from "../SendMessage";
 import { BiSend } from "react-icons/bi";
+import ChatHeader from "./ChatHeader";
 
-const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMessageText, divUnderMessage }) => {
+const Chat = ({
+    ws,
+    setNewMessageText,
+    messages,
+    sendMessage,
+    setMessages,
+    newMessageText,
+    divUnderMessage,
+    setHideSidebar,
+    hideSidebar,
+}) => {
     const { user } = useSelector((state) => state.auth);
     const location = useLocation();
     const channelId = location.pathname.replace("/dashboard/chat/", "");
@@ -20,36 +31,21 @@ const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMe
         setChannel(foundChannel);
     }, [channelId]);
 
-    console.log(messages);
-
     if (!channel) {
         return (
             <ChatItemsContainer>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <h1 style={{ margin: "5px", padding: "5px" }}>Welcome to Chat</h1>
-                </div>
+                <ChatHeader hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
                 <MessageInputContainer>
-                    {messages?.map((message, index) =>
-                        message?.sender === user?._id ? (
-                            <ChatMessageSelf
-                                user={user?._id}
-                                key={index}
-                                sender={message.sender}
-                                recipient={message.recipient}
-                                message={message.text}
-                                isOur={message.isOur}
-                            />
-                        ) : (
-                            <ChatMessage
-                                user={user?._id}
-                                key={index}
-                                sender={message.sender}
-                                recipient={message.recipient}
-                                message={message.text}
-                                isOur={message.isOur}
-                            />
-                        ),
-                    )}
+                    {messages?.map((message, index) => (
+                        <ChatMessage
+                            user={user?._id}
+                            key={index}
+                            sender={message.sender}
+                            recipient={message.recipient}
+                            message={message.text}
+                            isOur={message.sender === user?._id}
+                        />
+                    ))}
 
                     <div ref={divUnderMessage} />
                 </MessageInputContainer>
@@ -61,7 +57,7 @@ const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMe
                     />
 
                     <InputGroup>
-                        <BiSend onClick={sendMessage} />
+                        <BiSend onClick={sendMessage} color={"#ff6b08"} />
                     </InputGroup>
                 </Message>
             </ChatItemsContainer>

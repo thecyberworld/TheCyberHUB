@@ -7,13 +7,13 @@ export default function Contact({ id, username, onClick, selected, online }) {
             key={id}
             onClick={() => onClick(id)}
             className={`border-b border-gray-800 flex items-center gap-2 cursor-pointer ${
-                selected ? "bg-gray-700 text-white" : ""
+                selected ? "bg-neutral-800 text-white" : ""
             }`}
         >
-            {selected && <div className="w-1 bg-blue-500 h-12 rounded-r-md"></div>}
+            {selected && <div className="w-1 bg-orange-500 h-12 rounded-r-md"></div>}
             <div className="flex gap-2 py-2 pl-4 items-center">
                 <Avatar online={online} username={username} userId={id} />
-                <span className={`text-${selected ? "white" : "gray-"}`}>{username}</span>
+                <span className={`text-${selected ? "white" : "gray"}`}>{username}</span>
             </div>
         </div>
     );
