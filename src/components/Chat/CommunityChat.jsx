@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
 
 const CommunityChat = () => {
     const { user } = useSelector((state) => state.auth);
@@ -20,7 +21,7 @@ const CommunityChat = () => {
     useEffect(() => {
         document.cookie = "Bearer " + user?.token + "; path=/";
 
-        const newWs = new WebSocket("ws://localhost:5000/");
+        const newWs = new WebSocket(getApiUrlWs());
         setWs(newWs);
 
         newWs.addEventListener("open", () => {
@@ -89,7 +90,7 @@ const CommunityChat = () => {
         console.log("chatRoutes.jsx:89 | selectedUserId", selectedUserId);
         if (selectedUserId) {
             axios
-                .get(`http://localhost:5000/api/chat/user/messages/${selectedUserId}`, {
+                .get(getApiUrl(`chat/user/messages/${selectedUserId}`), {
                     headers: { Authorization: `Bearer ${user.token}` },
                 })
                 .then((res) => {
