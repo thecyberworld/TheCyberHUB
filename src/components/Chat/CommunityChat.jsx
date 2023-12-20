@@ -5,10 +5,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import {
-    getApiUrl,
-    // getApiUrlWs
-} from "../../features/apiUrl";
+import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
 
 const CommunityChat = () => {
     const { user } = useSelector((state) => state.auth);
@@ -22,10 +19,12 @@ const CommunityChat = () => {
     const divUnderMessage = useRef();
 
     useEffect(() => {
-        // Set the secure and samesite attributes separately
-        document.cookie = `Bearer=${user?.token}; path=/; Secure; SameSite=None`;
+        document.cookie = `Bearer ${user?.token}; path=/; Secure; SameSite=None`;
+        console.log(document.cookie);
 
-        const newWs = new WebSocket("wss://dev.api.thecyberhub.org");
+        const newWs = new WebSocket(getApiUrlWs());
+        console.log("chatRoutes.jsx:28 | getApiUrlWs()", getApiUrlWs());
+        console.log("chatRoutes.jsx:29 | newWs", newWs);
         setWs(newWs);
 
         newWs.addEventListener("open", () => {

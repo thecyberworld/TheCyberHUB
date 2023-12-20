@@ -36,16 +36,17 @@ const Chat = ({
             <ChatItemsContainer>
                 <ChatHeader hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
                 <MessageInputContainer>
-                    {messages?.map((message, index) => (
-                        <ChatMessage
-                            user={user?._id}
-                            key={index}
-                            sender={message.sender}
-                            recipient={message.recipient}
-                            message={message.text}
-                            isOur={message.sender === user?._id}
-                        />
-                    ))}
+                    {messages &&
+                        messages?.map((message, index) => (
+                            <ChatMessage
+                                user={user?._id}
+                                key={index}
+                                sender={message.sender}
+                                recipient={message.recipient}
+                                message={message.text}
+                                isOur={message.sender === user?._id}
+                            />
+                        ))}
 
                     <div ref={divUnderMessage} />
                 </MessageInputContainer>
