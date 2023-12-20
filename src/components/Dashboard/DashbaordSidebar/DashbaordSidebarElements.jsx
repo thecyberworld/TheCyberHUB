@@ -13,6 +13,7 @@ import {
 } from "react-icons/bi";
 import { PiNotebookDuotone, PiReadCvLogo } from "react-icons/pi";
 import { CgOpenCollective } from "react-icons/cg";
+import { GoTasklist } from "react-icons/go";
 
 export const DashboardSidebarContainer = styled.div`
     display: flex;
@@ -20,9 +21,9 @@ export const DashboardSidebarContainer = styled.div`
     align-items: flex-start;
     background: #090909;
     height: 100vh;
-    border-radius: 10px;
+    //border-radius: 10px;
     color: #f5f5f5;
-    border-right: #2a2a2a 1px solid;
+    border-right: 1px solid #2d2d2d;
     gap: 15px;
 
     // stick to the top
@@ -147,6 +148,7 @@ export const BiHomeCircleIcon = createStyledIcon(BiHomeCircle);
 export const BiBookmarksIcon = createStyledIcon(BiBookmarks);
 export const CgOpenCollectiveIcon = createStyledIcon(CgOpenCollective);
 export const PiNotebookDuotoneIcon = createStyledIcon(PiNotebookDuotone);
+export const BsClipboardCheckIcon = createStyledIcon(GoTasklist);
 export const BiLogoBloggericon = createStyledIcon(PiReadCvLogo);
 export const BiLogoAlgoliaIcon = createStyledIcon(BiLogoAlgolia);
 export const CiSettingsIcon = createStyledIcon(BiCog);

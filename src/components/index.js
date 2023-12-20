@@ -55,4 +55,4 @@ export { default as NotFound } from "../NotFound";
 export { default as CertificateCard } from "./Other/Certificate/CertificateCard";
 
 export { default as ChatHome } from "./Dashboard/Chat/ChatHome";
-export { default as Chat } from "./Chat/Chat";
+export { default as Chat } from "./Chat/Chat/Chat";

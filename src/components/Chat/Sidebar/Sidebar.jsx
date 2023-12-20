@@ -1,28 +1,55 @@
-import React from "react";
-import { SidebarContainer, RouteLink, SidebarTitle } from "./SidebarElement";
-import chatData from "../DummyChat/ChatData";
+import React, { useState } from "react";
+import { SidebarContainer, SidebarSection, RouteLink, SidebarTitle, UserList, SidebarHeader } from "./SidebarElements";
+import Contact from "../Contact";
 
-const Sidebar = () => {
+const Sidebar = ({ hideSidebar, onlinePeople, selectedUserId, setSelectedUserId }) => {
+    const [showUsers, setShowUsers] = useState(true);
+
+    const toggleUsers = () => {
+        setShowUsers(!showUsers);
+    };
+
     return (
-        <SidebarContainer>
-            <h2>Community Chat</h2>
+        <SidebarContainer hideSidebar={hideSidebar}>
+            <SidebarHeader>
+                <h2>Community Chat</h2>
+            </SidebarHeader>
+            <SidebarSection>
+                <SidebarTitle onClick={toggleUsers}>
+                    Users
+                    {/* <ExpandIcon>{showUsers ? <FaSortUp /> : <FaSortDown />}</ExpandIcon> */}
+                </SidebarTitle>
+                {/* {showUsers && ( */}
+                <UserList>
+                    {onlinePeople &&
+                        Object.keys(onlinePeople).map((userId) => (
+                            <RouteLink to={`/dashboard/chat/${userId}`} key={userId}>
+                                <Contact
+                                    key={userId}
+                                    id={userId}
+                                    online={true}
+                                    username={onlinePeople[userId]}
+                                    onClick={() => {
+                                        setSelectedUserId(userId);
+                                    }}
+                                    selected={userId === selectedUserId}
+                                />
+                            </RouteLink>
+                        ))}
+                </UserList>
+                {/* )} */}
+            </SidebarSection>
 
-            <h4>Channels</h4>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "flex-start",
-                    alignItems: "flex-start",
-                    gap: "0.5rem",
-                }}
-            >
-                {chatData.channels.map((channel) => (
-                    <RouteLink key={channel.id} to={`${channel.id}`}>
-                        <SidebarTitle> {channel.channelname} </SidebarTitle>
-                    </RouteLink>
-                ))}
-            </div>
+            {/* <SidebarSection> */}
+            {/*    <SidebarTitle>Channels</SidebarTitle> */}
+            {/*    <ChannelList> */}
+            {/*        {chatData.channels.map((channel) => ( */}
+            {/*            <ChannelItem key={channel.id}> */}
+            {/*                <RouteLink to={`${channel.id}`}>{channel.channelname}</RouteLink> */}
+            {/*            </ChannelItem> */}
+            {/*        ))} */}
+            {/*    </ChannelList> */}
+            {/* </SidebarSection> */}
         </SidebarContainer>
     );
 };
