@@ -25,6 +25,7 @@ import {
 } from "./FooterElements";
 
 import { FaDiscord, FaGithub, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { animateScroll as scroll } from "react-scroll";
 
 const SocialLinks = {
@@ -122,7 +123,7 @@ const Footer = () => {
                         <WebsiteRights> © {new Date().getFullYear()} All rights reserved.</WebsiteRights>
                         <SocialIcons>
                             <SocialIconLinkTwitter href={SocialLinks.twitter} target="_blank" aria-label="Twitter">
-                                <FaTwitter />
+                                <FaXTwitter />
                             </SocialIconLinkTwitter>
                             <SocialIconLinkGithub href={SocialLinks.github} target="_blank" aria-label="Github">
                                 <FaGithub />
