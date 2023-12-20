@@ -11,7 +11,7 @@ const ChatMessageSelf = ({ username, message, sender, recipient, image, user }) 
                 alt=""
             />
             <MessageContentSelf>
-                {message}
+                {message || ""}
 
                 <Timestamp
                     style={{

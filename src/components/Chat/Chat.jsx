@@ -29,8 +29,8 @@ const Chat = ({ ws, setNewMessageText, messages, sendMessage, setMessages, newMe
                     <h1 style={{ margin: "5px", padding: "5px" }}>Welcome to Chat</h1>
                 </div>
                 <MessageInputContainer>
-                    {messages.map((message, index) =>
-                        message.sender === user?._id ? (
+                    {messages?.map((message, index) =>
+                        message?.sender === user?._id ? (
                             <ChatMessageSelf
                                 user={user?._id}
                                 key={index}

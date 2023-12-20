@@ -88,11 +88,11 @@ const ChatRoute = () => {
         console.log("chatRoutes.jsx:89 | selectedUserId", selectedUserId);
         if (selectedUserId) {
             axios
-                .get(`http://localhost:5000/api/chat/messages/${selectedUserId}`, {
+                .get(`http://localhost:5000/api/chat/user/messages/${selectedUserId}`, {
                     headers: { Authorization: `Bearer ${user.token}` },
                 })
                 .then((res) => {
-                    setMessages(res.data);
+                    setMessages(res.data || []);
                 });
         }
     }, [selectedUserId]);

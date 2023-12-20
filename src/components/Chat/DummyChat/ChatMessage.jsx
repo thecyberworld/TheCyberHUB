@@ -11,7 +11,7 @@ const ChatMessage = ({ username, message, sender, recipient, image, user }) => {
                 alt=""
             />
             <MessageContent>
-                {message}
+                {message || ""}
                 <Timestamp
                     style={{
                         color: "#dcdcdc",
