@@ -59,15 +59,15 @@ const UserProfile = () => {
         userDetail?.length === 0 ||
         userDetail === "Request failed with status code 404" ||
         message === "Request failed with status code 500"
-    )
+    ) {
         return (
             <Wrapper>
                 <NotFound />
             </Wrapper>
         );
+    }
 
     const { aboutMe, skills, achievements, projects } = userDetail || {};
-
     return (
         <Wrapper>
             <ProfileContainer>

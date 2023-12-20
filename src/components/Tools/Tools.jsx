@@ -29,11 +29,18 @@ const Tools = () => {
                 {/*        </CardToolHeading> */}
                 {/*    </CardTools> */}
                 {/* </RouterLink> */}
+                <RouterLink to={"revershell"}>
+                    <CardTools>
+                        <CardToolHeading>ReverseShell</CardToolHeading>
+                    </CardTools>
+
+                </RouterLink>
                 <RouterLink to={"./"}>
                     <CardTools>
                         <CardToolHeading>Coming Soon</CardToolHeading>
                     </CardTools>
                 </RouterLink>
+               
             </ContainerTools>
         </Wrapper>
     );

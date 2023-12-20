@@ -29,11 +29,11 @@ const EditPublicProfile = () => {
         }
 
         if (user !== null && user.username !== userDetail.username) {
-            navigate(`/@${username}`);
+            navigate(`/user/${username}`);
         }
 
         if (isSuccess) {
-            navigate(`/@${user.username}`);
+            navigate(`/user/${user.username}`);
         }
 
         dispatch(getUserDetail(user.username));
@@ -59,7 +59,7 @@ const EditPublicProfile = () => {
     useEffect(() => {
         setUserDetailData(getInitialUserDetailData());
         // if (isSuccess) {
-        //     navigate(`/@${user.username}`);
+        //     navigate(`/user/${user.username}`);
         // }
     }, [userDetail, isSuccess, navigate, user.username]);
 
@@ -68,7 +68,7 @@ const EditPublicProfile = () => {
 
         if (user && userDetail && user?.username === userDetail?.username) {
             await dispatch(updateUserDetail({ id: userDetail?.user, userData: userDetailData }));
-            navigate(`/@${user.username}`);
+            navigate(`/user/${user.username}`);
             setIsSuccess(true);
 
             setUserDetailData(getInitialUserDetailData());

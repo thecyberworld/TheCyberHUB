@@ -5,10 +5,9 @@ export const FeedsContainer = styled.div`
     width: 100%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
 `;
 
 export const MiddleSection = styled.div`
@@ -18,7 +17,6 @@ export const MiddleSection = styled.div`
     flex-direction: column;
     justify-content: center;
     gap: 15px;
-
     border-left: 1px solid #1a1a1a;
     border-right: 1px solid #1a1a1a;
 `;

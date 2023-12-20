@@ -12,7 +12,7 @@ import {
     UserPicture,
     UsersContainer,
 } from "./UsersElements";
-import { RouteLink } from "../../Dashboard/Sidebar/SidebarElements";
+import { RouteLink } from "../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
 import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "../../../NotFound";
@@ -49,7 +49,7 @@ const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
     return filteredUsers.length > 0 ? (
         <UsersContainer>
             {displayedUsers?.map((user, id) => (
-                <RouteLink to={`/@${user.username}`} key={user.username}>
+                <RouteLink to={`/user/${user.username}`} key={user.username}>
                     <UserContainer>
                         <UserPicture src={avatar(user)} />
                         <UserDetail>

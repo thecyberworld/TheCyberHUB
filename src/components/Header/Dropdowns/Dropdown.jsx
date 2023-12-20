@@ -34,30 +34,31 @@ export default function Dropdown({
             desc: "Open Source Projects for Cybersecurity Enthusiasts.",
         },
         {
-            title: "TheCyberXcel",
-            to: "/thecyberxcel",
-            desc: "Learn with community, Project and Resume Reviews, Mock Interviews, and more.",
-        },
-        {
-            title: "TheCyberSpeak",
-            to: "/thecyberspeak",
-            desc: "Engage, Learn, Inspire. Speak or Attend and Be part of our Weekly Cyber Community Event.",
-        },
-        {
             title: "TheCyberEvents",
             to: "/timeline-events",
             desc: "Checkout our Weekly Cyber Community Event and start booking on our calender",
         },
+        // {
+        //     title: "TheCyberXcel",
+        //     to: "/thecyberxcel",
+        //     desc: "Learn with community, Project and Resume Reviews, Mock Interviews, and more.",
+        // },
+        // {
+        //     title: "TheCyberSpeak",
+        //     to: "/thecyberspeak",
+        //     desc: "Engage, Learn, Inspire. Speak or Attend and Be part of our Weekly Cyber Community Event.",
+        // },
     ];
 
     const resources = [
         // { title: "Cyber Security Complete Course", to: "/learning-path", desc: "Learn everything about Cyber Security" },
         { title: "Roadmap", to: "/roadmaps", desc: "Guide to becoming a cybersecurity professional" },
         { title: "Interview Questions", to: "/interviewQuestions", desc: "Prepare for your interview" },
+        { title: "HackBook", to: "/hackbook", desc: "HackBook" },
         { title: "Quiz", to: "/quiz", desc: "Test your knowledge" },
         { title: "Community", to: "/community", desc: "Join our community" },
         // { title: "Events", to: "/events", desc: "Find Cybersecurity Events" },
-        { title: "Support", to: "/support", desc: "Support us" },
+        // { title: "Support", to: "/support", desc: "Support us" },
         // {title: "News", to: "/cyberNews", desc: "Stay up to date with the latest news"},
     ];
 

@@ -22,8 +22,8 @@ const OpenSecProjects = () => {
                 </InternshipHeader>
                 <div className={"cards"}>
                     {repositories
-                        .sort((a, b) => b?.stargazers_count - a?.stargazers_count)
-                        .map((repository) => (
+                        ?.sort((a, b) => b?.stargazers_count - a?.stargazers_count)
+                        ?.map((repository) => (
                             <Card key={repository.id} repository={repository} />
                         ))}
                 </div>

@@ -187,6 +187,7 @@ const RegisterEmail = ({
                 placeholder={"Email"}
                 onChange={onChange}
                 aria-label={"Email"}
+                autoComplete="off"
             />
         </CustomInputGroup>
         <div className="registration__ctas">
@@ -198,6 +199,7 @@ const RegisterEmail = ({
                     name={"termsAndConditions"}
                     onChange={(e) => setFormData({ ...formData, termsAndConditions: e.target.checked })}
                     value={termsAndConditions}
+                    autoComplete="off"
                 />
                 <div>
                     I agree to all statements included in
@@ -236,6 +238,7 @@ const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
                     placeholder={"Code"}
                     onChange={onChange}
                     aria-label={"Code"}
+                    autoComplete="off"
                 />
             </CustomInputGroup>
             {!isUserLoading ? (
@@ -265,6 +268,7 @@ const AddUserData = ({ name, username, password, password2, onChange, onSubmitUs
                 placeholder="Full Name"
                 onChange={onChange}
                 aria-label="name"
+                autoComplete="off"
             />
         </CustomInputGroup>
         <CustomInputGroup>
@@ -279,6 +283,7 @@ const AddUserData = ({ name, username, password, password2, onChange, onSubmitUs
                 placeholder="Username"
                 onChange={onChange}
                 aria-label="Username"
+                autoComplete="off"
             />
         </CustomInputGroup>
         <CustomInputGroup>
@@ -293,6 +298,7 @@ const AddUserData = ({ name, username, password, password2, onChange, onSubmitUs
                 placeholder={"Password"}
                 onChange={onChange}
                 aria-label={"Password"}
+                autoComplete="off"
             />
         </CustomInputGroup>
         <CustomInputGroup>
@@ -307,6 +313,7 @@ const AddUserData = ({ name, username, password, password2, onChange, onSubmitUs
                 placeholder={"Confirm Password"}
                 onChange={onChange}
                 aria-label={"Confirm Password"}
+                autoComplete="off"
             />
         </CustomInputGroup>
 

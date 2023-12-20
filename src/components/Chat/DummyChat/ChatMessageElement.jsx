@@ -3,11 +3,13 @@ import styled from "styled-components";
 export const MessageContainer = styled.div`
     display: flex;
     align-items: flex-start;
+    justify-content: ${({ isOur }) => (isOur ? "flex-end" : "flex-start")};
+
     margin: 10px;
 `;
 export const MessageContainerSelf = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: ${({ isOur }) => (isOur ? "flex-end" : "flex-start")};
     margin: 10px;
 `;
 
@@ -19,7 +21,9 @@ export const SenderImage = styled.img`
 `;
 
 export const MessageContent = styled.div`
-    background-color: #1d232b;
+    background-color: ${(isOur) => (isOur ? "#4284db" : "#1d232b")};
+    background-color: ${({ isOur }) => (isOur ? "#4284db" : "#1d232b")};
+
     padding: 10px;
     border-radius: 10px;
     max-width: 300px;

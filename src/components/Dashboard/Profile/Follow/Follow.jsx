@@ -18,7 +18,7 @@ const Follow = ({ userDetail, userDetails }) => {
     const [followers, setFollowers] = useState();
     const [following, setFollowing] = useState();
 
-    const username = userDetail?.username;
+    // const username = userDetail?.username;
     const followUserId = userDetail?.user;
     const userId = followUserId;
     const unfollowId = followUserId;
@@ -63,7 +63,7 @@ const Follow = ({ userDetail, userDetails }) => {
             <>
                 {user && followUserId && user?._id === followUserId ? (
                     <FollowButton>
-                        <RouterLink to={`/edit/@${username}`}> Edit Profile </RouterLink>
+                        <RouterLink to={`/user/edit/kabir0x23`}> Edit Profile </RouterLink>
                     </FollowButton>
                 ) : (
                     <div style={{ display: "flex", gap: "15px" }}>

@@ -22,7 +22,7 @@ const Streak = () => {
         return (
             <StreakContainer>
                 <Streaks>
-                    <CircleSpinner size={20} color={"#1fc10d"} /> <StreakIcon />
+                    <CircleSpinner size={20} color={"#ff6b08"} /> <StreakIcon />
                 </Streaks>
             </StreakContainer>
         );
