@@ -4,9 +4,15 @@
 // const apiUrl = "https://dev.api.thecyberhub.org";
 // const apiUrl = "https://api-thecyberhub-org.azurewebsites.net";
 // const cdnAssets = "https://thecyberhub.nyc3.cdn.digitaloceanspaces.com";
-const apiUrl = import.meta.env.VITE_API_URL || "https://api.thecyberhub.org";
 const localUrl = "http://localhost:5000";
+const apiUrl = import.meta.env.VITE_API_URL || "https://api.thecyberhub.org";
 const devUrl = "https://dev.api.thecyberhub.org";
+const securityUrl = "https://security.api.thecyberhub.org";
+
+const localUrlWs = "ws://localhost:5000";
+const apiUrlWs = import.meta.env.VITE_API_URL || "wss://api.thecyberhub.org";
+const devUrlWs = "wss://dev.api.thecyberhub.org";
+const securityUrlWs = "wss://security.api.thecyberhub.org";
 
 export const webEnv = import.meta.env.VITE_WEB_ENV || "production";
 
@@ -24,12 +30,26 @@ export const cdnContentImagesUrl = (props) => {
 };
 
 export const getApiUrl = (props) => {
-    if (webEnv === "production" || webEnv === "security") {
+    if (webEnv === "production") {
         return `${apiUrl}/${props}`;
+    } else if (webEnv === "security") {
+        return `${securityUrl}/${props}`;
     } else if (webEnv === "development") {
         return `${devUrl}/${props}`;
     } else {
         return `${localUrl}/${props}`;
+    }
+};
+
+export const getApiUrlWs = () => {
+    if (webEnv === "production") {
+        return `${apiUrlWs}`;
+    } else if (webEnv === "security") {
+        return `${securityUrlWs}`;
+    } else if (webEnv === "development") {
+        return `${devUrlWs}`;
+    } else {
+        return `${localUrlWs}`;
     }
 };
 
