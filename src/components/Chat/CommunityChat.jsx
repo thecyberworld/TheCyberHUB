@@ -20,7 +20,6 @@ const CommunityChat = () => {
 
     useEffect(() => {
         document.cookie = `Bearer ${user?.token}; path=/; Secure; SameSite=None; domain=.thecyberhub.org`;
-        console.log(document.cookie);
 
         const newWs = new WebSocket(getApiUrlWs());
         setWs(newWs);
@@ -68,7 +67,7 @@ const CommunityChat = () => {
             text: newMessageText,
         };
         ws.send(JSON.stringify(message));
-        // setNewMessageText('');
+        setNewMessageText("");
         setMessages((prev) => [
             ...prev,
             {
@@ -88,10 +87,9 @@ const CommunityChat = () => {
     }, [messages]);
 
     useEffect(() => {
-        console.log("chatRoutes.jsx:89 | selectedUserId", selectedUserId);
         if (selectedUserId) {
             axios
-                .get(getApiUrl(`chat/user/messages/${selectedUserId}`), {
+                .get(getApiUrl(`api/chat/user/messages/${selectedUserId}`), {
                     headers: { Authorization: `Bearer ${user.token}` },
                 })
                 .then((res) => {
