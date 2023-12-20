@@ -4,6 +4,8 @@ import { ChatRoutesContainer } from "./ChatElement";
 import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
 import { useSelector } from "react-redux";
+import axios from "axios";
+
 const ChatRoute = () => {
     const { user } = useSelector((state) => state.auth);
     const [ws, setWs] = useState(null);
@@ -44,7 +46,6 @@ const ChatRoute = () => {
         if ("online" in messageData) {
             showOnlinePeople(messageData.online);
         } else {
-            console.log("handleMessage", messageData);
             setMessages((prev) => [
                 ...prev,
                 {
@@ -63,7 +64,6 @@ const ChatRoute = () => {
             recipient: selectedUserId,
             text: newMessageText,
         };
-        console.log(message);
         ws.send(JSON.stringify(message));
         // setNewMessageText('');
         setMessages((prev) => [
@@ -83,6 +83,19 @@ const ChatRoute = () => {
             div.scrollIntoView({ behavior: "smooth", block: "end" });
         }
     }, [messages]);
+
+    useEffect(() => {
+        console.log("chatRoutes.jsx:89 | selectedUserId", selectedUserId);
+        if (selectedUserId) {
+            axios
+                .get(`http://localhost:5000/api/chat/messages/${selectedUserId}`, {
+                    headers: { Authorization: `Bearer ${user.token}` },
+                })
+                .then((res) => {
+                    setMessages(res.data);
+                });
+        }
+    }, [selectedUserId]);
 
     const onlinePeopleExclOurUser = { ...onlinePeople };
     delete onlinePeopleExclOurUser[user._id];

@@ -2,8 +2,6 @@ import React from "react";
 import { MessageContainer, MessageContent, SenderImage, Timestamp } from "./ChatMessageElement";
 
 const ChatMessage = ({ username, message, sender, recipient, image, user }) => {
-    console.log(user === sender);
-    console.log(sender, recipient, message);
     return (
         <MessageContainer>
             <SenderImage

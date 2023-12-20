@@ -42,7 +42,6 @@ const Sidebar = ({ onlinePeople, offlinePeople, selectedUserId, setSelectedUserI
                                         username={onlinePeople[userId]}
                                         onClick={() => {
                                             setSelectedUserId(userId);
-                                            console.log({ userId });
                                         }}
                                         selected={userId === selectedUserId}
                                     />
