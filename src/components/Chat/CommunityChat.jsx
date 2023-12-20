@@ -5,7 +5,10 @@ import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
+import {
+    getApiUrl,
+    // getApiUrlWs
+} from "../../features/apiUrl";
 
 const CommunityChat = () => {
     const { user } = useSelector((state) => state.auth);
@@ -19,9 +22,10 @@ const CommunityChat = () => {
     const divUnderMessage = useRef();
 
     useEffect(() => {
-        document.cookie = "Bearer " + user?.token + "; path=/";
+        // Set the secure and samesite attributes separately
+        document.cookie = `Bearer=${user?.token}; path=/; Secure; SameSite=None`;
 
-        const newWs = new WebSocket(getApiUrlWs());
+        const newWs = new WebSocket("wss://dev.api.thecyberhub.org");
         setWs(newWs);
 
         newWs.addEventListener("open", () => {
