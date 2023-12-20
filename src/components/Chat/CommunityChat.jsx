@@ -19,7 +19,9 @@ const CommunityChat = () => {
     const divUnderMessage = useRef();
 
     useEffect(() => {
-        document.cookie = `Bearer ${user?.token}; path=/; Secure; SameSite=None; domain=dev.api.thecyberhub.org`;
+        document.cookie = `Bearer ${user?.token}; path=/; Secure; SameSite=None; domain=.thecyberhub.org`;
+        console.log(document.cookie);
+
         const newWs = new WebSocket(getApiUrlWs());
         setWs(newWs);
 
