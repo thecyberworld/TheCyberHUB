@@ -1,39 +1,109 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MdNoteAdd } from "react-icons/md";
+import {
+    NotesContainer,
+    NotesSidebarContainer,
+    NotesSidebarHeader,
+    NotesSidebarHeaderTitle,
+    SearchContainer,
+} from "./NoteElements";
+import SearchInputBox from "../../Common/SearchInputBox";
+import "./NoteApp.css";
 import NoteList from "./NoteList";
-import { nanoid } from "nanoid";
+import NoteDescription from "./NoteDescription";
+import { useDispatch, useSelector } from "react-redux";
+import { getNotes, noteReset, pinNote } from "../../../features/notes/notesSlice";
+import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 
 const NoteApp = () => {
-    const [notes, setNotes] = useState([]);
+    const dispatch = useDispatch();
+    const { notes, isNoteLoading, isNoteError, noteMessage } = useSelector((state) => state.notes);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filteredNotes, setFilteredNotes] = useState([]);
+    const [pickedNote, setPickedNote] = useState({});
+    const [needToAdd, setNeedToAdd] = useState(false);
 
     useEffect(() => {
-        const savedNotes = JSON.parse(localStorage.getItem("react-notes-app-data"));
-        if (savedNotes !== "") {
-            setNotes(savedNotes);
+        if (isNoteError) {
+            console.log(noteMessage);
         }
-    }, []);
+        dispatch(getNotes());
+        return () => dispatch(noteReset());
+    }, [dispatch, isNoteError, noteMessage]);
 
     useEffect(() => {
-        localStorage.setItem("react-notes-app-data", JSON.stringify(notes));
-    }, [notes]);
+        const newFilteredNotes = notes?.filter((note) => {
+            return (
+                note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
+                note?.content?.toLowerCase().includes(searchTerm?.toLowerCase())
+            );
+        });
+        setFilteredNotes(newFilteredNotes);
+    }, [searchTerm, notes]);
 
-    const addNote = (text) => {
-        const newNote = {
-            text,
-            id: nanoid(),
-        };
-        const newNotes = [...notes, newNote];
-        setNotes(newNotes);
+    const handleSearchTermChange = (e) => {
+        setSearchTerm(e.target.value);
     };
-
-    const deleteNote = (id) => {
-        const newNotes = notes?.filter((note) => note.id !== id);
-        setNotes(newNotes);
+    const handlePickNote = (noteId) => {
+        const pickedNote = notes.find((note) => note._id === noteId);
+        setNeedToAdd(false);
+        setPickedNote(
+            pickedNote === -1
+                ? {}
+                : pickedNote.title.includes("UntitledNote")
+                ? { ...pickedNote, title: "" }
+                : pickedNote,
+        );
     };
-
+    const handlePinNote = (noteId) => {
+        const pinnedNote = notes.find((note) => note._id === noteId);
+        const noteData = { ...pinnedNote, pinned: !pinnedNote.pinned };
+        dispatch(pinNote({ id: noteId, noteData }));
+    };
+    const handleOpenAddNewNoteMode = () => {
+        setNeedToAdd(true);
+        setPickedNote({});
+    };
+    const handleCloseMDEditorMode = () => {
+        setNeedToAdd(false);
+        setPickedNote({});
+    };
     return (
-        <div className="wrapper">
-            <NoteList notes={notes} handleAddNote={addNote} handleDeleteNote={deleteNote} />
-        </div>
+        <NotesContainer>
+            <NotesSidebarContainer>
+                <NotesSidebarHeader>
+                    <RxHamburgerMenu className="icon" size="24px" title="Menu" />
+                    <NotesSidebarHeaderTitle> Notes </NotesSidebarHeaderTitle>
+                    <MdNoteAdd className="icon icon-add" size="20px" title="New" onClick={handleOpenAddNewNoteMode} />
+                </NotesSidebarHeader>
+
+                <SearchContainer>
+                    <SearchInputBox
+                        placeholder="Search all notes and tags"
+                        value={searchTerm}
+                        onChange={handleSearchTermChange}
+                    />
+                </SearchContainer>
+
+                {isNoteLoading ? (
+                    <LoadingSpinner />
+                ) : (
+                    <NoteList onPin={handlePinNote} onPick={handlePickNote} pickedNoteId={pickedNote._id}>
+                        {filteredNotes}
+                    </NoteList>
+                )}
+            </NotesSidebarContainer>
+
+            <NoteDescription
+                onPin={handlePinNote}
+                needToAdd={needToAdd}
+                onCloseAddMode={handleCloseMDEditorMode}
+                onChangePickedNote={setPickedNote}
+            >
+                {pickedNote}
+            </NoteDescription>
+        </NotesContainer>
     );
 };
 

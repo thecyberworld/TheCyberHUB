@@ -24,13 +24,13 @@ import {
 } from "./components";
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
 import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import ContactForm from "./components/Homepage/ContactForm/ContactForm";
 import TermsAndCondition from "./components/Resources/TermsAndCondition";
 import PrivacyPolicy from "./components/Resources/PrivacyPolicy";
 import FormData from "./components/Dashboard/FormData/FormData";
 import UserProfile from "./components/Dashboard/Profile/UserProfile";
-import UserTimestamps from "./features/UserTimestamps";
+// import UserTimestamps from "./features/UserTimestamps";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
@@ -51,14 +51,15 @@ import AuthRoute from "./pages/AuthRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
-import ChatRoute from "./components/Chat/ChatRoute";
 import SettingsRoute from "./components/Dashboard/Settings";
+import HackBook from "./components/HackBook/HackBook";
+// import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const { pathname } = useLocation();
 
+    const { pathname } = useLocation();
     const hostname = window.location.hostname;
 
     useEffect(() => {
@@ -73,14 +74,15 @@ const App = () => {
         }
     }, []);
 
+    // isAuthenticated();
+
     const hideHomeHeader = () => {
         const pathDashboard = pathname.includes("/dashboard");
-        const chat = pathname.includes("/chat");
         const pathLogin = pathname.includes("/login");
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
-        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword || chat;
+        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword;
     };
 
     const [isOpen, setIsOpen] = useState(false);
@@ -90,14 +92,13 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    const { user } = useSelector((state) => state.auth);
+    // const { user } = useSelector((state) => state.auth);
 
     if (isLoading) return <Spinner />;
 
     return (
         <>
-            {" "}
-            {user && <UserTimestamps user={user} />}
+            {/* {user && <UserTimestamps user={user} />} */}
             <Container>
                 {!hideHomeHeader() && (
                     <>
@@ -132,13 +133,13 @@ const App = () => {
                         <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
-                        <Route path={"/chat/*"} element={<ChatRoute />} />
 
                         <Route exact path={"/contact"} element={<ContactForm />} />
+                        <Route exact path={"/hackbook"} element={<HackBook />} />
 
                         <Route>
-                            <Route exact path={"/@:username"} element={<UserProfile />} />
-                            <Route exact path={"/edit/@:username"} element={<EditPublicProfile />} />
+                            <Route exact path={"/user/:username"} element={<UserProfile />} />
+                            <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 
                         <Route exact path={"/community"} element={<Community />} />

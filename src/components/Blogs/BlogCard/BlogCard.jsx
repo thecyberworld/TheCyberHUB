@@ -64,14 +64,14 @@ const BlogCard = ({ blog }) => {
                                 </ButtonDelete>
                             ) : null}
                         </EditBlogSection>
-                        <RouterLink to={{ pathname: `/blogs/@${blog?.username}/${encodeURL(blog?.title)}` }}>
+                        <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
                             <BlogCardImage src={coverImageUrl || image} alt={""} />
                         </RouterLink>
                     </BlogImageSection>
                 </DetailsSection>
                 <MainSection>
                     <SubSection>
-                        <RouterLink to={{ pathname: `/blogs/@${blog?.username}/${encodeURL(blog?.title)}` }}>
+                        <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
                             <Title> {blog?.title} </Title>
                             {/* <Description> {blog?.content.slice(0, 125)} </Description> */}
                         </RouterLink>

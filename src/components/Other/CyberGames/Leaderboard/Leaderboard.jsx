@@ -86,33 +86,38 @@ const Leaderboard = () => {
                                                 <LeaderboardTextIconData>
                                                     {index === 0 ? (
                                                         <LeaderboardFirstRow>
-                                                            <RankTrophy style={{ color: '#FFD700' }} />
-                                                            {index+1}
+                                                            <RankTrophy style={{ color: "#FFD700" }} />
+                                                            {index + 1}
                                                         </LeaderboardFirstRow>
-                                                    ) : <> <RankTrophy /> {index + 1}</>
-                                                }
+                                                    ) : (
+                                                        <>
+                                                            {" "}
+                                                            <RankTrophy /> {index + 1}
+                                                        </>
+                                                    )}
                                                 </LeaderboardTextIconData>
                                             </LeaderboardTableData>
                                             <LeaderboardTableData>
                                                 <TopPlayerSection>
-                                                    <RouterLink to={`/@${user?.username}`}>
+                                                    <RouterLink to={`/user/${user?.username}`}>
                                                         {index === 0 ? (
                                                             <Username>
-                                                                    <LeaderboardFirstRow>
+                                                                <LeaderboardFirstRow>
                                                                     {user?.username}
-                                                                    </LeaderboardFirstRow>
-                                                                </Username>
-                                                        ):<Username>{user?.username}</Username>
-                                                        }
+                                                                </LeaderboardFirstRow>
+                                                            </Username>
+                                                        ) : (
+                                                            <Username>{user?.username}</Username>
+                                                        )}
                                                     </RouterLink>
                                                 </TopPlayerSection>
                                             </LeaderboardTableData>
                                             <LeaderboardTablePoints>
                                                 {index === 0 ? (
-                                                    <LeaderboardFirstRow>
-                                                    {user?.exp || 0}
-                                                    </LeaderboardFirstRow>
-                                                ) :<>{user?.exp || 0}</>}
+                                                    <LeaderboardFirstRow>{user?.exp || 0}</LeaderboardFirstRow>
+                                                ) : (
+                                                    <>{user?.exp || 0}</>
+                                                )}
                                             </LeaderboardTablePoints>
                                         </LeaderboardTableRow>
                                     ))}

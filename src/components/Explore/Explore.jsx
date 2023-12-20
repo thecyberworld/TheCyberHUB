@@ -11,7 +11,6 @@ import {
 
 import { useDispatch, useSelector } from "react-redux";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { SearchBox, SearchIcon, SearchInput } from "../CaptureTheFlag/CTFElements";
 import { getAllCTFs } from "../../features/ctf/ctfSlice";
 import { blogReset, getAllBlogs } from "../../features/blogs/blogSlice";
 import { getAllUserDetails, userDetailReset } from "../../features/userDetail/userDetailSlice";
@@ -24,6 +23,7 @@ import CtfChallenges from "../CaptureTheFlag/CTFCards/CtfChallenges";
 import apiStatus from "../../features/apiStatus";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
+import SearchInputBox from "../Common/SearchInputBox";
 
 const Explore = () => {
     const dispatch = useDispatch();
@@ -138,15 +138,11 @@ const Explore = () => {
             <ExploreContainer>
                 <LeftContainer>
                     <SearchContainer>
-                        <SearchBox>
-                            <SearchIcon />
-                            <SearchInput
-                                type="text"
-                                placeholder="Search by name"
-                                value={searchTerm}
-                                onChange={handleSearchTermChange}
-                            />
-                        </SearchBox>
+                        <SearchInputBox
+                            placeholder="Search by name"
+                            value={searchTerm}
+                            onChange={handleSearchTermChange}
+                        />
                         <SearchTypeContainer>
                             {types.map((type) => (
                                 <SearchTypeButton

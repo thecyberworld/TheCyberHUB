@@ -152,6 +152,7 @@ const SendEmail = ({ email, onChange, onSubmitSendEmail, isLoading }) => (
                     placeholder="email"
                     onChange={onChange}
                     aria-label="email"
+                    autoComplete="off"
                 />
             </CustomInputGroup>
         </div>
@@ -183,6 +184,7 @@ const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
                         placeholder={"Code"}
                         onChange={onChange}
                         aria-label={"Code"}
+                        autoComplete="off"
                     />
                 </CustomInputGroup>
                 {/* <ButtonGreen width={"100%"} onClick={onSubmitVerifyCode}> Resend </ButtonGreen> */}
@@ -216,7 +218,7 @@ const ResetPassword = ({ password, confirmPassword, onChange, onSubmitPassword, 
                     placeholder="Password"
                     onChange={onChange}
                     aria-label="Password"
-                    autoComplete={null}
+                    autoComplete="off"
                 />
             </CustomInputGroup>
             <CustomInputGroup>
@@ -231,7 +233,7 @@ const ResetPassword = ({ password, confirmPassword, onChange, onSubmitPassword, 
                     placeholder="Confirm Password"
                     onChange={onChange}
                     aria-label="Password"
-                    autoComplete={null}
+                    autoComplete="off"
                 />
             </CustomInputGroup>
             {/* <ButtonGreen width={"100%"} onClick={onSubmitVerifyCode}> Resend </ButtonGreen> */}
