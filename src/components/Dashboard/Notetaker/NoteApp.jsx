@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { MdNoteAdd } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
     NotesContainer,
     NotesSidebarContainer,
@@ -12,15 +13,16 @@ import SearchInputBox from "../../Common/SearchInputBox";
 import "./NoteApp.css";
 import NoteList from "./NoteList";
 import NoteDescription from "./NoteDescription";
-import { useDispatch, useSelector } from "react-redux";
 import { getNotes, noteReset, pinNote } from "../../../features/notes/notesSlice";
 import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
+import { CategorySidebar } from "./Category";
 
 const NoteApp = () => {
     const dispatch = useDispatch();
     const { notes, isNoteLoading, isNoteError, noteMessage } = useSelector((state) => state.notes);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredNotes, setFilteredNotes] = useState([]);
+    const [pickedCategory, setPickedCategory] = useState("");
     const [pickedNote, setPickedNote] = useState({});
     const [needToAdd, setNeedToAdd] = useState(false);
 
@@ -30,8 +32,24 @@ const NoteApp = () => {
         }
         dispatch(getNotes()).then(({ payload }) => {
             if (payload.length > 0) {
-                const pickedNote = payload[0];
-                setPickedNote(pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote);
+                let pickedNote = payload.find((note) => note.pinned);
+                console.log(pickedNote);
+                if (pickedNote) {
+                    console.log(1);
+                    setPickedCategory("Pinned Notes");
+                    setPickedNote(
+                        pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
+                    );
+                } else {
+                    console.log(2);
+                    pickedNote = payload.find((note) => !note.pinned);
+                    setPickedCategory("Other Notes");
+                    setPickedNote(
+                        pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
+                    );
+                }
+            } else {
+                setPickedCategory("Pinned Notes");
             }
         });
         return () => dispatch(noteReset());
@@ -39,13 +57,20 @@ const NoteApp = () => {
 
     useEffect(() => {
         const newFilteredNotes = notes?.filter((note) => {
-            return (
+            const searchedNote =
                 note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
-                note?.content?.toLowerCase().includes(searchTerm?.toLowerCase())
-            );
+                note?.content?.toLowerCase().includes(searchTerm?.toLowerCase());
+            if (!searchedNote) return false;
+            if (pickedCategory === "Other Notes") {
+                return !note.pinned;
+            }
+            if (pickedCategory === "Pinned Notes") {
+                return note.pinned;
+            }
+            return note.category.toLowerCase() === pickedCategory.toLowerCase();
         });
         setFilteredNotes(newFilteredNotes);
-    }, [searchTerm, notes]);
+    }, [searchTerm, notes, pickedCategory]);
 
     const handleSearchTermChange = (e) => {
         setSearchTerm(e.target.value);
@@ -63,7 +88,10 @@ const NoteApp = () => {
     };
     const handlePinNote = (noteId) => {
         const pinnedNote = notes.find((note) => note._id === noteId);
-        const noteData = { ...pinnedNote, pinned: !pinnedNote.pinned };
+        const noteData = {
+            ...pinnedNote,
+            pinned: !pinnedNote.pinned,
+        };
         dispatch(pinNote({ id: noteId, noteData }));
     };
     const handleOpenAddNewNoteMode = () => {
@@ -74,20 +102,22 @@ const NoteApp = () => {
         setNeedToAdd(false);
         setPickedNote({});
     };
+
     return (
         <NotesContainer>
+            <CategorySidebar pickedCategory={pickedCategory} onPick={setPickedCategory} />
             <NotesSidebarContainer>
                 <NotesSidebarHeader>
-                    <RxHamburgerMenu className="icon" size="24px" title="Menu" />
-                    <NotesSidebarHeaderTitle> Notes </NotesSidebarHeaderTitle>
-                    <MdNoteAdd className="icon icon-add" size="20px" title="New" onClick={handleOpenAddNewNoteMode} />
+                    <NotesSidebarHeaderTitle>{pickedCategory}</NotesSidebarHeaderTitle>
                 </NotesSidebarHeader>
-
                 <SearchContainer>
-                    <SearchInputBox
-                        placeholder="Search all notes and tags"
-                        value={searchTerm}
-                        onChange={handleSearchTermChange}
+                    <SearchInputBox placeholder="Search Note" value={searchTerm} onChange={handleSearchTermChange} />
+                    <MdNoteAdd
+                        className="icon icon-add"
+                        style={{ marginLeft: "5px", marginRight: "5px" }}
+                        size="24px"
+                        title="New Note"
+                        onClick={handleOpenAddNewNoteMode}
                     />
                 </SearchContainer>
 
@@ -99,12 +129,12 @@ const NoteApp = () => {
                     </NoteList>
                 )}
             </NotesSidebarContainer>
-
             <NoteDescription
                 onPin={handlePinNote}
                 needToAdd={needToAdd}
                 onCloseAddMode={handleCloseMDEditorMode}
                 onChangePickedNote={setPickedNote}
+                pickedCategory={pickedCategory}
             >
                 {pickedNote}
             </NoteDescription>

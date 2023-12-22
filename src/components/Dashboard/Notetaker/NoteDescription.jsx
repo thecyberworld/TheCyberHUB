@@ -19,7 +19,7 @@ import { TbEditCircle } from "react-icons/tb";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { RiMore2Fill } from "react-icons/ri";
 
-const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
+const NoteDescription = ({ children, pickedCategory, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
     const dispatch = useDispatch();
     const [showNote, setShowNote] = useState(children || {});
     const [needToEdit, setNeedToEdit] = useState(false);
@@ -59,11 +59,18 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
             handleClose();
             return;
         }
-        console.log(newNote);
+
         if (needToEdit) {
-            dispatch(updateNote({ id: children._id, noteData: newNote }));
+            dispatch(
+                updateNote({
+                    id: children._id,
+                    category: pickedCategory,
+                    pinned: pickedCategory === "Pinned Notes",
+                    noteData: newNote,
+                }),
+            );
         } else if (needToAdd) {
-            dispatch(createNote(newNote));
+            dispatch(createNote({ category: pickedCategory, pinned: pickedCategory === "Pinned Notes", ...newNote }));
         }
         onChangePickedNote(newNote);
         handleClose();
