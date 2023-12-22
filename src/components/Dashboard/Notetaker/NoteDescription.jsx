@@ -105,7 +105,7 @@ const NoteDescription = ({ children, onPin, needToAdd, onCloseAddMode, onChangeP
             </NotesDescriptionHeader>
 
             <NotesDescription>
-                <DescriptionTitle>
+                <DescriptionTitle title={showNote.title}>
                     {needToAdd || needToEdit ? (
                         <InputEditor
                             content={needToEdit && showNote.title ? showNote.title : ""}
