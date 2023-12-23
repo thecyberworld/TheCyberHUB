@@ -50,8 +50,6 @@ const NoteApp = () => {
                 }
             } else {
                 setPickedCategory("Pinned Notes");
-                const pickedNote = payload[0];
-                setPickedNote(pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote);
             }
         });
         return () => dispatch(noteReset());
