@@ -21,12 +21,13 @@ import { useParams } from "react-router-dom";
 import html2canvas from "html2canvas";
 import JsPDF from "jspdf";
 import { AiFillFileImage } from "react-icons/ai";
-import { VscFilePdf, VscTwitter } from "react-icons/vsc";
+import { VscFilePdf } from "react-icons/vsc";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import Logo from "../../../assets/images/Thecyberworld_logo_outlined.png";
 import { CircleSpinner } from "react-spinners-kit";
 import { getApiUrl } from "../../../features/apiUrl";
 import { FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 // import {getCDNUrl} from "../../../features/apiUrl";
 // const TCWlogo = `${getCDNUrl}/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png`;
 
@@ -172,7 +173,7 @@ const CertificateCard = () => {
                             <p>Share your certificate with your friends</p>
                             <ShareCertificateSocials>
                                 <Twitter href="#" onClick={shareOnTwitter}>
-                                    <VscTwitter size={40} />
+                                    <FaXTwitter size={40} />
                                 </Twitter>
                                 <Linkedin href="#" onClick={shareOnLinkedIn}>
                                     <FaLinkedin size={40} />

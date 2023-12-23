@@ -1,22 +1,28 @@
 import React from "react";
-import { MessageContainer, MessageContent, Timestamp, SenderImage } from "./ChatMessageElement";
+import { MessageContainer, MessageContent, SenderImage, Timestamp } from "./ChatMessageElement";
 
-const ChatMessage = ({ username, message, image, time, sender }) => {
+const ChatMessage = ({ username, message, sender, recipient, image, user, isOur }) => {
     return (
-        <MessageContainer>
-            <SenderImage src={image} alt="Sender's Image" />
-            <MessageContent>
-                <h4>{username}</h4>
-
-                <p>{message}</p>
+        <MessageContainer isOur={isOur}>
+            <SenderImage
+                src={
+                    "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/user/1692524710620.jpeg"
+                }
+                alt=""
+            />
+            <MessageContent isOur={isOur}>
+                {message || ""}
                 <Timestamp
                     style={{
-                        color: "#b1b3b5",
+                        color: "#dcdcdc",
                         fontSize: "10px",
                         fontWeight: "bold",
+                        textAlign: "right",
+                        marginRight: "10px",
+                        marginTop: "5px",
                     }}
                 >
-                    {time}
+                    {"time"}
                 </Timestamp>
             </MessageContent>
         </MessageContainer>

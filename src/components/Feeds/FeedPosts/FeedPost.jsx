@@ -12,7 +12,7 @@ import {
     RightSection,
 } from "./FeedPostsElements";
 import PostActionsAndStats from "./PostActionsAndStats";
-import { RouteLink } from "../../Dashboard/Sidebar/SidebarElements";
+import { RouteLink } from "../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
 import { dateFormatter } from "../../Common/dateFormatter";
 import { ImageContainer, ImagesContainer, FeedImage } from "../PostForm/AddPostElements";
 import { IconVerified } from "../../Explore/Users/UsersElements";

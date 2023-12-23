@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
     DashboardSidebarContainer,
     SidebarTitle,
-    // ToggleButton,
     BiHomeCircleIcon,
-    // BiBookmarksIcon,
-    BiLogoBloggericon,
     BiLogoAlgoliaIcon,
     CiSettingsIcon,
     BiSolidChevronLeftIcon,
@@ -18,12 +15,13 @@ import {
     SideBarLinkContainer,
     CgOpenCollectiveIcon,
     PiNotebookDuotoneIcon,
-} from "./SidebarElements";
+    // BsClipboardCheckIcon,
+} from "./DashbaordSidebarElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
 
-const Sidebar = () => {
+const DashboardSidebar = () => {
     const dispatch = useDispatch();
     const { userDetails } = useSelector((state) => state.userDetail);
     const { user } = useSelector((state) => state.auth);
@@ -39,12 +37,13 @@ const Sidebar = () => {
 
     const sidebarItems = [
         { to: "/", icon: <BiHomeCircleIcon />, label: "Home" },
+        { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Chat" },
+        // { to: "/dashboard/tasks", icon: <BsClipboardCheckIcon  />, label: "Tasks" },
         { to: "/dashboard/notes", icon: <PiNotebookDuotoneIcon />, label: "Notes" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
         { to: "/dashboard/tools", icon: <CgOpenCollectiveIcon />, label: "Tools" },
-        { to: "/dashboard/blogs", icon: <BiLogoBloggericon />, label: "User Blogs" },
+        // { to: "/dashboard/blogs", icon: <BiLogoBloggerIcon />, label: "User Blogs" },
         // {to: "/dashboard/bookmarks", icon: <BiBookmarksIcon/>, label: "Bookmarks"},
-        { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Community" },
         { to: "/dashboard/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
     ];
 
@@ -60,8 +59,6 @@ const Sidebar = () => {
                     <span>@{userDetail?.username}</span>
                 </UserProfileDescription>
             </UserProfile>
-
-            {/* <section className={"heading"}>{isOpen ? <p> Dashboard </p> : ""}</section> */}
 
             <SideBarLinkContainer isOpen={isOpen}>
                 {sidebarItems.map((item) => (
@@ -100,4 +97,4 @@ const Sidebar = () => {
     );
 };
 
-export default Sidebar;
+export default DashboardSidebar;

@@ -2,17 +2,17 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dashboard, EditBlog, GoalSetter, NotFound, UserBlogs } from "../index";
 import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
-import Sidebar from "./Sidebar/Sidebar";
+import DashboardSidebar from "./DashbaordSidebar/DashboardSidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import NoteApp from "./Notetaker/NoteApp";
 import Tools from "../Tools/Tools";
-import ChatRoute from "../Chat/ChatRoute";
+import CommunityChat from "../Chat/CommunityChat";
 
 const DashboardRoute = () => {
     return (
         <DashboardRoutesContainer>
-            <Sidebar />
+            <DashboardSidebar />
             <div
                 style={{
                     display: "flex",
@@ -29,7 +29,7 @@ const DashboardRoute = () => {
                     <Route path={"bookmarks"} element={<Bookmarks />} />
                     <Route path={"notes"} element={<NoteApp />} />
                     <Route path={"tools"} element={<Tools />} />
-                    <Route path={"chat/*"} element={<ChatRoute />} />
+                    <Route path={"chat/*"} element={<CommunityChat />} />
                     <Route path={"blogs"}>
                         <Route index element={<UserBlogs />} />
                         <Route exact path={"create"} element={<CreateBlogV2 />} />

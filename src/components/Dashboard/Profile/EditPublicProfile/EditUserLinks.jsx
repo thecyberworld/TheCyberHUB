@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { EditUserBioTextarea, UserBio, UserInfo, UserLinksContainer } from "../UserLinks/UserLinksElements";
 import { EditSocialUsername, SocialLink, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
-import { FaGithub, FaInstagram, FaLinkedin, FaMedium, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaMedium } from "react-icons/fa";
 import { IoMdSave } from "react-icons/io";
 import { FollowButton } from "../Follow/FollowElements";
 import { CgWebsite } from "react-icons/cg";
@@ -16,6 +16,7 @@ import {
     ImageUploadLabel,
 } from "../../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
+import { FaXTwitter } from "react-icons/fa6";
 
 const UserLinks = ({ userDetail, userDetailData, setUserDetailData, onSubmit }) => {
     const [file, setFile] = useState("");
@@ -159,7 +160,7 @@ const getIconComponent = (iconName) => {
             );
         case "FaTwitter":
             return (
-                <FaTwitter
+                <FaXTwitter
                     style={{
                         // color: "#1DA1F2",
                         fontSize: "1.5rem",
