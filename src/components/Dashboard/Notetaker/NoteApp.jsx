@@ -33,15 +33,12 @@ const NoteApp = () => {
         dispatch(getNotes()).then(({ payload }) => {
             if (payload.length > 0) {
                 let pickedNote = payload.find((note) => note.pinned);
-                console.log(pickedNote);
                 if (pickedNote) {
-                    console.log(1);
                     setPickedCategory("Pinned Notes");
                     setPickedNote(
                         pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
                     );
                 } else {
-                    console.log(2);
                     pickedNote = payload.find((note) => !note.pinned);
                     setPickedCategory("Other Notes");
                     setPickedNote(
@@ -115,7 +112,7 @@ const NoteApp = () => {
                     <MdNoteAdd
                         className="icon icon-add"
                         style={{ marginLeft: "5px", marginRight: "5px" }}
-                        size="24px"
+                        size="20px"
                         title="New Note"
                         onClick={handleOpenAddNewNoteMode}
                     />

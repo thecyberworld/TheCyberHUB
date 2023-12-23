@@ -41,10 +41,10 @@ const CategorySidebar = ({ pickedCategory, onPick }) => {
         <CategoriesSidebarContainer>
             <CategoriesSidebarHeader>
                 <RxHamburgerMenu className="icon" size="24px" title="Menu" />
-                <CategoriesSidebarHeaderTitle>Categories</CategoriesSidebarHeaderTitle>
+                <CategoriesSidebarHeaderTitle>Notes</CategoriesSidebarHeaderTitle>
                 <MdCreateNewFolder
                     className="icon icon-add"
-                    size="24px"
+                    size="20px"
                     title="New Category"
                     // onClick={handleOpenAddNewCategoryMode}
                 />

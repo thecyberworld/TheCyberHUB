@@ -9,12 +9,17 @@
     color: #00a8ff;
 }
 .icon-delete,
-.icon-cancel {
+.icon-cancel,
+.icon-delete > path {
     color: #f14844;
+    fill: #f14844;
 }
-.icon-pin {
+.icon-pin,
+.icon-pin > path {
     color: #ff6b08;
+    fill: #ff6b08;
 }
+
 .icon-save {
     color: #00a8ff;
 }
