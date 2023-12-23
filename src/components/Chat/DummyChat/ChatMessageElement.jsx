@@ -7,6 +7,7 @@ export const MessageContainer = styled.div`
 
     margin: 10px;
 `;
+
 export const MessageContainerSelf = styled.div`
     display: flex;
     justify-content: ${({ isOur }) => (isOur ? "flex-end" : "flex-start")};
@@ -14,20 +15,26 @@ export const MessageContainerSelf = styled.div`
 `;
 
 export const SenderImage = styled.img`
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     margin-right: 10px;
+    margin-top: 5px;
 `;
 
 export const MessageContent = styled.div`
-    background-color: ${(isOur) => (isOur ? "#4284db" : "#1d232b")};
-    background-color: ${({ isOur }) => (isOur ? "#4284db" : "#1d232b")};
+    background-color: ${({ isOur }) => (isOur ? "#2c2a2a" : "#1c1c1c")};
+    border: 1px solid #28292a;
 
     padding: 10px;
     border-radius: 10px;
+    min-width: 200px;
     max-width: 300px;
     font-size: 14px;
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+    }
 `;
 
 export const MessageContentSelf = styled.div`

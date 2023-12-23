@@ -23,14 +23,14 @@
     margin-left: 0.5em;
     margin-top: 1em;
     display: flex;
-    align-items: start;
-    justify-content: start;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 2em;
 }
 
 .settings-sidebar-wrapper {
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     width: 100%;

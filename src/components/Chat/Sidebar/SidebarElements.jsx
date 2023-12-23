@@ -6,17 +6,21 @@ export const SidebarContainer = styled.div`
     background-color: #0e0e0e;
     border-right: 1px solid #282828;
     color: #ecf0f1;
-    padding: 15px;
-    min-width: 250px;
+
     height: 100vh;
     display: flex;
     flex-direction: column;
+
+    width: 100%;
+    min-width: 200px;
+    max-width: 225px;
 
     transition: all 0.3s ease-in-out;
 `;
 
 export const SidebarHeader = styled.div`
     width: 100%;
+    padding: 10px 15px 0px 15px;
     position: relative;
     display: flex;
     align-items: center;
@@ -35,7 +39,6 @@ export const SidebarSection = styled.div`
 export const RouteLink = styled(Link)`
     text-decoration: none;
     color: #ecf0f1;
-    margin-bottom: 10px;
 `;
 
 export const SidebarTitle = styled.h3`
@@ -43,7 +46,9 @@ export const SidebarTitle = styled.h3`
     align-items: center;
     cursor: pointer;
     margin: 5px 0;
-    padding: 10px 0;
+    padding: 10px 15px;
+    justify-content: space-between;
+    background: #1c1c1c;
 `;
 
 export const ChannelList = styled.div`
@@ -63,6 +68,7 @@ export const UserList = styled.div`
 export const UserItem = styled.div`
     padding: 12px 0;
     cursor: pointer;
+
     &:hover {
         background-color: #34495e;
     }

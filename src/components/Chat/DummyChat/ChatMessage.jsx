@@ -1,17 +1,23 @@
 import React from "react";
 import { MessageContainer, MessageContent, SenderImage, Timestamp } from "./ChatMessageElement";
+import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import dateFormat from "../../Common/dateFormat";
 
-const ChatMessage = ({ username, message, sender, recipient, image, user, isOur }) => {
+const ChatMessage = ({ userDetails, message, sender, recipient, image, user, isOur, createdAt }) => {
+    const userDetail = userDetails?.find((userDetail) => userDetail?.user === sender);
+
+    if (!userDetail) {
+        return null;
+    }
+
+    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
+
     return (
         <MessageContainer isOur={isOur}>
-            <SenderImage
-                src={
-                    "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/user/1692524710620.jpeg"
-                }
-                alt=""
-            />
+            <SenderImage src={avatar} alt={userDetail?.username} />
             <MessageContent isOur={isOur}>
-                {message || ""}
+                <h4>{userDetail?.username}</h4>
+                <p>{message}</p>
                 <Timestamp
                     style={{
                         color: "#dcdcdc",
@@ -22,7 +28,7 @@ const ChatMessage = ({ username, message, sender, recipient, image, user, isOur 
                         marginTop: "5px",
                     }}
                 >
-                    {"time"}
+                    {createdAt ? dateFormat(createdAt) : "Just now"}
                 </Timestamp>
             </MessageContent>
         </MessageContainer>

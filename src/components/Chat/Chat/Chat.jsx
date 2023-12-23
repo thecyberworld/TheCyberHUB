@@ -12,6 +12,7 @@ import ChatHeader from "./ChatHeader";
 
 const Chat = ({
     ws,
+    userDetails,
     setNewMessageText,
     messages,
     sendMessage,
@@ -31,7 +32,7 @@ const Chat = ({
         setChannel(foundChannel);
     }, [channelId]);
 
-    if (!channel) {
+    if (!channel && userDetails) {
         return (
             <ChatItemsContainer>
                 <ChatHeader hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
@@ -39,26 +40,32 @@ const Chat = ({
                     {messages &&
                         messages?.map((message, index) => (
                             <ChatMessage
+                                userDetails={userDetails}
                                 user={user?._id}
                                 key={index}
                                 sender={message.sender}
                                 recipient={message.recipient}
                                 message={message.text}
                                 isOur={message.sender === user?._id}
+                                createdAt={message.createdAt}
                             />
                         ))}
-
                     <div ref={divUnderMessage} />
                 </MessageInputContainer>
                 <Message>
                     <Input
                         value={newMessageText}
                         onChange={(ev) => setNewMessageText(ev.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                sendMessage(e);
+                            }
+                        }}
                         placeholder="Type your message here"
                     />
 
-                    <InputGroup>
-                        <BiSend onClick={sendMessage} color={"#ff6b08"} />
+                    <InputGroup onClick={sendMessage}>
+                        <BiSend color={"#ff6b08"} />
                     </InputGroup>
                 </Message>
             </ChatItemsContainer>
@@ -67,7 +74,7 @@ const Chat = ({
 
     return (
         <ChatItemsContainer>
-            <ChatArea name={channel.channelname} />
+            <ChatArea name={channel?.channelname} />
             <div
                 style={{
                     height: "100%",
@@ -77,8 +84,8 @@ const Chat = ({
                     padding: "0 10px",
                 }}
             >
-                {channel.messages.map((message, index) =>
-                    message.username === user.username ? (
+                {channel?.messages.map((message, index) =>
+                    message?.username === user?.username ? (
                         <ChatMessageSelf key={index} {...message} />
                     ) : (
                         <ChatMessage key={index} {...message} />

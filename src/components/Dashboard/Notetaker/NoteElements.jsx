@@ -10,7 +10,9 @@ export const NotesSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    max-width: 300px;
+    width: 100%;
+    min-width: 200px;
+    max-width: 250px;
     @media screen and (max-width: 800px) {
         width: 35%;
     }

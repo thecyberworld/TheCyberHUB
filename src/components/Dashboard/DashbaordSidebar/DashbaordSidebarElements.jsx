@@ -46,7 +46,7 @@ export const SideBarLinkContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     gap: 5px;
 `;
 
