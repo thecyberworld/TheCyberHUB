@@ -28,7 +28,12 @@ const NoteApp = () => {
         if (isNoteError) {
             console.log(noteMessage);
         }
-        dispatch(getNotes());
+        dispatch(getNotes()).then(({ payload }) => {
+            if (payload.length > 0) {
+                const pickedNote = payload[0];
+                setPickedNote(pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote);
+            }
+        });
         return () => dispatch(noteReset());
     }, [dispatch, isNoteError, noteMessage]);
 

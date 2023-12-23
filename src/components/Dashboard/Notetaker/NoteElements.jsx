@@ -151,7 +151,7 @@ export const NotesDescription = styled.div`
 export const DescriptionTitle = styled.div`
     width: 100%;
     overflow-wrap: break-word;
-    background: #252525;
+    background: ${(props) => props.title && "#252525"};
 `;
 
 export const DescriptionContent = styled.div``;
