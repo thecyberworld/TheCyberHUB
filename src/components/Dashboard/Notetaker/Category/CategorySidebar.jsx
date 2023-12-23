@@ -5,38 +5,37 @@ import { MdCreateNewFolder } from "react-icons/md";
 import { CategoriesSidebarContainer, CategoriesSidebarHeader, CategoriesSidebarHeaderTitle } from "./CategoryElements";
 import CategoryList from "./CategoryList";
 import LoadingSpinner from "../../../Other/MixComponents/Spinner/LoadingSpinner";
-
-const DUMMYDATA = [
-    {
-        name: "Pinned Notes",
-        required: true,
-    },
-    {
-        name: "Other Notes",
-        required: true,
-    },
-    {
-        name: "Category 1",
-    },
-    {
-        name: "Category 2",
-    },
-
-    {
-        name: "Category 3",
-    },
-];
+import { useDispatch, useSelector } from "react-redux";
+import ModifyCategory from "./ModifyCategory";
+import { createCategory, editCategory } from "../../../../features/notes/category/categorySlice";
 
 const CategorySidebar = ({ pickedCategory, onPick }) => {
+    const dispatch = useDispatch();
+    const { categories } = useSelector((state) => state.categories);
     const [nonRequiredCategories, setNonRequiredCategories] = useState([]);
     const [requiredCategories, setRequiredCategories] = useState([]);
+    const [modalOpenMode, setModalOpenMode] = useState("");
     const isCategoryLoading = false;
 
     useEffect(() => {
-        setNonRequiredCategories(DUMMYDATA.filter((item) => !item.required));
-        setRequiredCategories(DUMMYDATA.filter((item) => item.required));
-    }, []);
+        setNonRequiredCategories(categories.filter((item) => !item.required));
+        setRequiredCategories(categories.filter((item) => item.required));
+    }, [categories]);
 
+    const handleCreateCategory = () => {
+        setModalOpenMode("Create");
+    };
+    const handleCloseModal = () => {
+        setModalOpenMode("");
+    };
+    const handleSave = (categoryName) => {
+        if (modalOpenMode === "Create") {
+            dispatch(createCategory(categoryName));
+        } else {
+            dispatch(editCategory(categoryName));
+        }
+        handleCloseModal();
+    };
     return (
         <CategoriesSidebarContainer>
             <CategoriesSidebarHeader>
@@ -46,10 +45,12 @@ const CategorySidebar = ({ pickedCategory, onPick }) => {
                     className="icon icon-add"
                     size="20px"
                     title="New Category"
-                    // onClick={handleOpenAddNewCategoryMode}
+                    onClick={handleCreateCategory}
                 />
             </CategoriesSidebarHeader>
-            {isCategoryLoading ? (
+            {modalOpenMode ? (
+                <ModifyCategory onSave={handleSave} onCancel={handleCloseModal} />
+            ) : isCategoryLoading ? (
                 <LoadingSpinner />
             ) : (
                 <>

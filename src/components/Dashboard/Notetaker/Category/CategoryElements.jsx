@@ -76,3 +76,37 @@ export const CategoryItemShortTitle = styled.p`
     font: 15px "Roboto Mono", monospace;
     font-weight: 600;
 `;
+
+export const ModifyCategoryModalContainer = styled.div`
+    border: 1px solid #111111;
+    background-color: #111111;
+    padding: 2px;
+`;
+export const ModifyCategoryModalInput = styled.input`
+    padding: 7px 12px;
+    color: white;
+    width: 100%;
+    border-radius: 3px;
+    outline: none;
+    line-height: 1;
+    text-transform: capitalize;
+    background-color: #090909;
+    font: 16px "Poppins", sans-serif;
+`;
+export const ModifyCategoryModalButtons = styled.div`
+    display: flex;
+    justify-content: space-around;
+    background-color: #090909;
+`;
+export const ModifyCategoryModalSubmit = styled.button`
+    color: #00a8ff;
+    &:hover {
+        opacity: 0.7;
+    }
+`;
+export const ModifyCategoryModalCancel = styled.button`
+    color: #f14844;
+    &:hover {
+        opacity: 0.7;
+    }
+`;
