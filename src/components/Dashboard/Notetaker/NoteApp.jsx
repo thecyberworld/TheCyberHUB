@@ -20,9 +20,10 @@ import { CategorySidebar } from "./Category";
 const NoteApp = () => {
     const dispatch = useDispatch();
     const { notes, isNoteLoading, isNoteError, noteMessage } = useSelector((state) => state.notes);
+    const { categories } = useSelector((state) => state.categories);
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredNotes, setFilteredNotes] = useState([]);
-    const [pickedCategory, setPickedCategory] = useState("");
+    const [pickedCategory, setPickedCategory] = useState({});
     const [pickedNote, setPickedNote] = useState({});
     const [needToAdd, setNeedToAdd] = useState(false);
 
@@ -34,19 +35,25 @@ const NoteApp = () => {
             if (payload.length > 0) {
                 let pickedNote = payload.find((note) => note.pinned);
                 if (pickedNote) {
-                    setPickedCategory("Pinned Notes");
+                    setPickedCategory(() => {
+                        return categories.find((category) => category.name === "Pinned Notes");
+                    });
                     setPickedNote(
                         pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
                     );
                 } else {
                     pickedNote = payload.find((note) => !note.pinned);
-                    setPickedCategory("Other Notes");
+                    setPickedCategory(() => {
+                        return categories.find((category) => category.name === "Other Notes");
+                    });
                     setPickedNote(
                         pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
                     );
                 }
             } else {
-                setPickedCategory("Pinned Notes");
+                setPickedCategory(() => {
+                    return categories.find((category) => category.name === "Pinned Notes");
+                });
             }
         });
         return () => dispatch(noteReset());
@@ -58,15 +65,17 @@ const NoteApp = () => {
                 note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
                 note?.content?.toLowerCase().includes(searchTerm?.toLowerCase());
             if (!searchedNote) return false;
-            if (pickedCategory === "Other Notes") {
+            if (Object.keys(pickedCategory).length === 0) return false;
+            if (pickedCategory.name === "Other Notes") {
                 return !note.pinned;
             }
-            if (pickedCategory === "Pinned Notes") {
+            if (pickedCategory.name === "Pinned Notes") {
                 return note.pinned;
             }
-            return note.category.toLowerCase() === pickedCategory.toLowerCase();
+            return note.category.toLowerCase() === pickedCategory.name.toLowerCase();
         });
         setFilteredNotes(newFilteredNotes);
+        setPickedNote({});
     }, [searchTerm, notes, pickedCategory]);
 
     const handleSearchTermChange = (e) => {
@@ -102,10 +111,17 @@ const NoteApp = () => {
 
     return (
         <NotesContainer>
-            <CategorySidebar pickedCategory={pickedCategory} onPick={setPickedCategory} />
+            <CategorySidebar
+                pickedCategory={pickedCategory}
+                onPick={setPickedCategory}
+                onUnpickNote={handleCloseMDEditorMode}
+                pickedNote={pickedNote}
+            />
             <NotesSidebarContainer>
                 <NotesSidebarHeader>
-                    <NotesSidebarHeaderTitle>{pickedCategory}</NotesSidebarHeaderTitle>
+                    <NotesSidebarHeaderTitle>
+                        {(pickedCategory && pickedCategory.name) || "Please, Pick Category"}
+                    </NotesSidebarHeaderTitle>
                 </NotesSidebarHeader>
                 <SearchContainer>
                     <SearchInputBox placeholder="Search Note" value={searchTerm} onChange={handleSearchTermChange} />

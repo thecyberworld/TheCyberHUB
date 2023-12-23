@@ -9,9 +9,9 @@ const CategoryList = ({ required, children, onPick, pickedCategory }) => {
             {children.map((Category) => (
                 <CategoryItem
                     key={Category.name}
-                    {...Category}
+                    category={Category}
                     onPick={onPick}
-                    isPicked={Category.name === pickedCategory}
+                    isPicked={Category.name === pickedCategory.name}
                 />
             ))}
         </CategoriesListContainer>

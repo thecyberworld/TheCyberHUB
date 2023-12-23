@@ -1,11 +1,11 @@
 import React from "react";
 import { CategoryItemElement, CategoryItemElementContainer, CategoryItemShortTitle } from "./CategoryElements";
 
-const CategoryItem = ({ name, onPick, isPicked }) => {
+const CategoryItem = ({ category, onPick, isPicked }) => {
     return (
         <CategoryItemElementContainer>
-            <CategoryItemElement onClick={() => onPick(name)} isPicked={isPicked}>
-                <CategoryItemShortTitle>{name.slice(0, 23)}</CategoryItemShortTitle>
+            <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
+                <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
             </CategoryItemElement>
         </CategoryItemElementContainer>
     );

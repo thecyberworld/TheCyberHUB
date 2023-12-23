@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     ModifyCategoryModalButtons,
     ModifyCategoryModalCancel,
@@ -7,11 +7,17 @@ import {
     ModifyCategoryModalSubmit,
 } from "./CategoryElements";
 
-const ModifyCategory = ({ onSave, onCancel }) => {
+const ModifyCategory = ({ onSave, onCancel, editCategoryName = "" }) => {
     const [value, setValue] = useState("");
+
+    useEffect(() => {
+        setValue(editCategoryName);
+    }, [editCategoryName]);
+
     const handleChange = (e) => {
         setValue(e.target.value);
     };
+
     return (
         <ModifyCategoryModalContainer>
             <ModifyCategoryModalInput type="text" onChange={handleChange} value={value} placeholder={"Category Name"} />

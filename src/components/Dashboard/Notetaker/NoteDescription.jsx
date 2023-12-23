@@ -64,13 +64,19 @@ const NoteDescription = ({ children, pickedCategory, onPin, needToAdd, onCloseAd
             dispatch(
                 updateNote({
                     id: children._id,
-                    category: pickedCategory,
-                    pinned: pickedCategory === "Pinned Notes",
+                    category: pickedCategory.name,
+                    pinned: pickedCategory.name === "Pinned Notes",
                     noteData: newNote,
                 }),
             );
         } else if (needToAdd) {
-            dispatch(createNote({ category: pickedCategory, pinned: pickedCategory === "Pinned Notes", ...newNote }));
+            dispatch(
+                createNote({
+                    category: pickedCategory.name,
+                    pinned: pickedCategory.name === "Pinned Notes",
+                    ...newNote,
+                }),
+            );
         }
         onChangePickedNote(newNote);
         handleClose();

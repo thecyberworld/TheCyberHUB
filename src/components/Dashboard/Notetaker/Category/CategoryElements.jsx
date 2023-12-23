@@ -110,3 +110,12 @@ export const ModifyCategoryModalCancel = styled.button`
         opacity: 0.7;
     }
 `;
+export const CategoriesOptionsModeTitle = styled.div`
+    font-size: 14px;
+`;
+export const CategoriesOptionsModeButtons = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
+`;

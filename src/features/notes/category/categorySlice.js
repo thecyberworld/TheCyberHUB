@@ -32,7 +32,7 @@ export const categorySlice = createSlice({
             },
             prepare: (categoryName) => {
                 const id = nanoid();
-                return { payload: { name: categoryName, id } };
+                return { payload: { name: categoryName, _id: id } };
             },
         },
         removeCategory: (state, action) => {
@@ -40,20 +40,22 @@ export const categorySlice = createSlice({
                 toast.error("It is not possible to remove required category.");
                 return;
             }
-            state.categories = state.categories.filter((category) => category.id !== action.payload);
+            state.categories = state.categories.filter((category) => category._id !== action.payload);
         },
         editCategory: (state, action) => {
             const editedCategory = action.payload;
+            console.log(editedCategory);
             if (editedCategory.required) {
                 toast.error("It is not possible to edit required category.");
                 return;
             }
             const categoryNameExists = state.categories.find((category) => category.name === action.payload.name);
-            if (categoryNameExists !== editedCategory.name) {
+            const prevCategory = state.categories.find((category) => category._id === action.payload._id);
+            if (categoryNameExists && prevCategory.name !== editedCategory.name) {
                 toast.error("This Category Name Already Exists, Change the Name And Try Again.");
                 return;
             }
-            const indexOfEditedCategory = state.categories.findIndex((category) => category.id === editedCategory.id);
+            const indexOfEditedCategory = state.categories.findIndex((category) => category._id === editedCategory._id);
             if (indexOfEditedCategory < 0) state.categories = [...state.categories, editedCategory];
             state.categories[indexOfEditedCategory] = { ...state.categories[indexOfEditedCategory], ...editedCategory };
         },
