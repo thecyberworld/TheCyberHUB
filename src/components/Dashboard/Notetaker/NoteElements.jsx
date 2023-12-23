@@ -8,20 +8,21 @@ export const NotesContainer = styled.div`
 
 export const NotesSidebarContainer = styled.div`
     display: flex;
+    margin-left: -2px;
     flex-direction: column;
     height: 100vh;
-    max-width: 300px;
+    width: 250px;
     @media screen and (max-width: 800px) {
         width: 35%;
     }
 `;
-
 export const NotesSidebarHeader = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 10px;
     border: 2px solid #111111;
+    border-left: none;
     height: 3rem;
 `;
 
@@ -39,9 +40,11 @@ export const NotesListNoFound = styled.h4`
 `;
 export const SearchContainer = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     border: 2px solid #111111;
     background-color: #111111;
-    border-top: 0px;
+    border-top: none;
     height: 3rem;
 `;
 
