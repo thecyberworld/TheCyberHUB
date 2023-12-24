@@ -5,13 +5,13 @@ import CategoryItem from "./CategoryItem";
 const CategoryList = ({ required, children, onPick, pickedCategory }) => {
     return (
         <CategoriesListContainer required={required}>
-            {!children.length && <CategoriesListNoFound>There Are No Categories</CategoriesListNoFound>}
+            {!children.length && <CategoriesListNoFound>There Are No {<br />} Unique Categories</CategoriesListNoFound>}
             {children.map((Category) => (
                 <CategoryItem
                     key={Category.name}
-                    {...Category}
+                    category={Category}
                     onPick={onPick}
-                    isPicked={Category.name === pickedCategory}
+                    isPicked={Category.name === pickedCategory.name}
                 />
             ))}
         </CategoriesListContainer>

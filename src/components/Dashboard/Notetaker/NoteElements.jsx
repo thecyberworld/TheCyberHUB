@@ -31,6 +31,7 @@ export const NotesSidebarHeaderTitle = styled.h3`
     text-align: center;
     margin-bottom: 0;
     font-family: "Roboto Mono", monospace;
+    text-transform: capitalize;
 `;
 export const NotesListNoFound = styled.h4`
     color: #787878;
