@@ -3,13 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import { ChatRoutesContainer } from "./Chat/ChatElement";
 import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllUserDetails, userDetailReset } from "../../features/userDetail/userDetailSlice";
+import { useSelector } from "react-redux";
 import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
 import axios from "axios";
 
-const CommunityChat = () => {
-    const dispatch = useDispatch();
+const CommunityChat = ({ userDetails }) => {
     const { user } = useSelector((state) => state.auth);
     const [ws, setWs] = useState(null);
     const [onlinePeople, setOnlinePeople] = useState([]);
@@ -18,16 +16,6 @@ const CommunityChat = () => {
     const [messages, setMessages] = useState([]);
     const [hideSidebar, setHideSidebar] = useState(false);
     const divUnderMessage = useRef();
-    const { userDetails, isUserDetailError, userDetailMessage } = useSelector((state) => state.userDetail);
-
-    useEffect(() => {
-        if (isUserDetailError) console.log(userDetailMessage);
-        dispatch(getAllUserDetails());
-
-        return () => {
-            dispatch(userDetailReset());
-        };
-    }, [dispatch, isUserDetailError, userDetailMessage]);
 
     useEffect(() => {
         if (userDetails.length > 0) {

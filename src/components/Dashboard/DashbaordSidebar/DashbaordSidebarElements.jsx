@@ -99,8 +99,8 @@ export const UserProfile = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    min-height: 100px;
     padding: 10px;
+    background: #1c1c1c;
     // margin-left: ${(props) => (props.isOpen ? "0" : "8px")};
 
     .user-profile-image {
@@ -115,7 +115,6 @@ export const UserProfile = styled.div`
     }
 
     h3 {
-        margin-bottom: 2px;
         font-weight: 800;
     }
 `;
@@ -127,6 +126,16 @@ export const UserProfileDescription = styled.div`
     transition: opacity 0.3s ease, transform 0.3s ease;
     visibility: ${(props) => (props.isOpen ? "visible" : "hidden")};
     width: ${(props) => (props.isOpen ? "unset" : "0")};
+
+    h4 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    span {
+        font-size: 12px;
+        color: #f5f5f5;
+    }
 `;
 
 const createStyledIcon = (IconComponent) => {

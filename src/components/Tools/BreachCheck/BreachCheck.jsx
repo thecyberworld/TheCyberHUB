@@ -19,7 +19,7 @@ const BreachCheck = () => {
 
     const validateEmail = (e) => {
         e.preventDefault();
-        // Validate the email somehow, for example by checking if it's in a list of known emails
+        // Validate the email somehow, for example, by checking if it's in a list of known emails
         const emailExists = Emails.includes(email);
         if (!emailExists) {
             setError(<GreenMessage>Email does not exist in the breached database</GreenMessage>);

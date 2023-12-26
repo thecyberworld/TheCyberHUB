@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
     DashboardSidebarContainer,
     SidebarTitle,
@@ -15,22 +15,10 @@ import {
     SideBarLinkContainer,
     CgOpenCollectiveIcon,
     PiNotebookDuotoneIcon,
-    // BsClipboardCheckIcon,
 } from "./DashbaordSidebarElements";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
 
-const DashboardSidebar = () => {
-    const dispatch = useDispatch();
-    const { userDetails } = useSelector((state) => state.userDetail);
-    const { user } = useSelector((state) => state.auth);
-
-    useEffect(() => {
-        if (user) dispatch(getAllUserDetails());
-    }, [dispatch, user]);
-
-    const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
+const DashboardSidebar = ({ userDetail }) => {
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
 
     const [isOpen, setIsOpen] = useState(true);
@@ -51,7 +39,14 @@ const DashboardSidebar = () => {
         <DashboardSidebarContainer isOpen={isOpen}>
             <UserProfile isOpen={isOpen}>
                 <div className="user-profile-image">
-                    <img src={avatar} alt={userDetail?.username + " Profile Picture"} />
+                    <img
+                        style={{
+                            width: "40px",
+                            height: "40px",
+                        }}
+                        src={avatar}
+                        alt={userDetail?.username + " Profile Picture"}
+                    />
                     <BiSolidCircleIcon />
                 </div>
                 <UserProfileDescription isOpen={isOpen}>

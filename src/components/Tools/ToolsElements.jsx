@@ -7,7 +7,6 @@ export const ContainerTools = styled.div`
     align-items: center;
     justify-content: center;
     gap: 50px;
-    margin: 100px 0 150px;
 `;
 export const Tools = styled.div``;
 
@@ -16,13 +15,14 @@ export const CardTools = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px;
+    padding: 25px 25px;
     text-align: center;
     transition: transform 0.3s;
-    //font-family: "Fira Code", monospace;
-
+    font-family: "Fira Code", monospace;
+    font-size: 20px;
     cursor: pointer;
-    //font-style: italic;
+    min-width: 300px;
+    width: 300px;
 
     position: relative;
     background: transparent;
