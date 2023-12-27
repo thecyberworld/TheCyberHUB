@@ -15,7 +15,7 @@
     "@radix-ui/react-slot": "^1.0.1",
     "@reduxjs/toolkit": "^1.9.1",
     "@uiw/react-md-editor": "^4.0.1",
-    "axios": "^1.2.1",
+    "axios": "^1.6.3",
     "date-fns": "^2.30.0",
     "dompurify": "^3.0.5",
     "dotenv": "^16.0.3",
