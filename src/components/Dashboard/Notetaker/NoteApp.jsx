@@ -1,33 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { MdNoteAdd } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-    NotesContainer,
-    NotesSidebarContainer,
-    NotesSidebarHeader,
-    NotesSidebarHeaderTitle,
-    SearchContainer,
-} from "./NoteElements";
-import SearchInputBox from "../../Common/SearchInputBox";
+import { NotesContainer } from "./NoteElements";
 import "./NoteApp.css";
-import NoteList from "./NoteList";
 import NoteDescription from "./NoteDescription";
 import { getNotes, noteReset, pinNote } from "../../../features/notes/notesSlice";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 import { CategorySidebar } from "./Category";
+import NoteSidebar from "./NoteSidebar";
+import { toast } from "react-toastify";
+import { categoryReset, getCategories } from "../../../features/notes/category/categorySlice";
+
+const requiredCategories = [
+    {
+        name: "Pinned Notes",
+        type: "pinned",
+    },
+    {
+        name: "Other Notes",
+        type: "other",
+    },
+];
 
 const NoteApp = () => {
     const dispatch = useDispatch();
     const { notes, isNoteLoading, isNoteError, noteMessage } = useSelector((state) => state.notes);
-    const { categories } = useSelector((state) => state.categories);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filteredNotes, setFilteredNotes] = useState([]);
+    const { categories, isCategoryLoading, isCategoryError, categoryMessage } = useSelector(
+        (state) => state.categories,
+    );
     const [pickedCategory, setPickedCategory] = useState({});
     const [pickedNote, setPickedNote] = useState({});
+    const [categoryOptionMode, setCategoryOptionMode] = useState(false);
     const [needToAdd, setNeedToAdd] = useState(false);
 
     useEffect(() => {
+        if (isCategoryError) {
+            toast.error(categoryMessage);
+            console.log(categoryMessage);
+        }
+        dispatch(getCategories());
+        return () => dispatch(categoryReset());
+    }, [dispatch, isCategoryError, categoryMessage]);
+
+    useEffect(() => {
+        if (categoryOptionMode || isCategoryLoading) return;
         if (isNoteError) {
             console.log(noteMessage);
         }
@@ -35,63 +50,29 @@ const NoteApp = () => {
             if (payload.length > 0) {
                 let pickedNote = payload.find((note) => note.pinned);
                 if (pickedNote) {
-                    setPickedCategory(() => {
-                        return categories.find((category) => category.name === "Pinned Notes");
-                    });
+                    setPickedCategory(requiredCategories[0]);
                     setPickedNote(
                         pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
                     );
                 } else {
                     pickedNote = payload.find((note) => !note.pinned);
-                    setPickedCategory(() => {
-                        return categories.find((category) => category.name === "Other Notes");
-                    });
+                    setPickedCategory(requiredCategories[1]);
                     setPickedNote(
                         pickedNote.title.includes("UntitledNote") ? { ...pickedNote, title: "" } : pickedNote,
                     );
                 }
             } else {
-                setPickedCategory(() => {
-                    return categories.find((category) => category.name === "Pinned Notes");
-                });
+                setPickedCategory(requiredCategories[0]);
             }
         });
         return () => dispatch(noteReset());
-    }, [dispatch, isNoteError, noteMessage]);
+    }, [dispatch, isNoteError, noteMessage, categoryOptionMode, isCategoryLoading]);
 
-    useEffect(() => {
-        const newFilteredNotes = notes?.filter((note) => {
-            const searchedNote =
-                note?.title?.toLowerCase().includes(searchTerm?.toLowerCase()) ||
-                note?.content?.toLowerCase().includes(searchTerm?.toLowerCase());
-            if (!searchedNote) return false;
-            if (Object.keys(pickedCategory).length === 0) return false;
-            if (pickedCategory.name === "Other Notes") {
-                return !note.pinned;
-            }
-            if (pickedCategory.name === "Pinned Notes") {
-                return note.pinned;
-            }
-            return note.category.toLowerCase() === pickedCategory.name.toLowerCase();
-        });
-        setFilteredNotes(newFilteredNotes);
-        setPickedNote({});
-    }, [searchTerm, notes, pickedCategory]);
-
-    const handleSearchTermChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
-    const handlePickNote = (noteId) => {
-        const pickedNote = notes.find((note) => note._id === noteId);
+    const handleCloseMDEditorMode = () => {
         setNeedToAdd(false);
-        setPickedNote(
-            pickedNote === -1
-                ? {}
-                : pickedNote.title.includes("UntitledNote")
-                ? { ...pickedNote, title: "" }
-                : pickedNote,
-        );
+        setPickedNote({});
     };
+
     const handlePinNote = (noteId) => {
         const pinnedNote = notes.find((note) => note._id === noteId);
         const noteData = {
@@ -100,14 +81,6 @@ const NoteApp = () => {
         };
         dispatch(pinNote({ id: noteId, noteData }));
     };
-    const handleOpenAddNewNoteMode = () => {
-        setNeedToAdd(true);
-        setPickedNote({});
-    };
-    const handleCloseMDEditorMode = () => {
-        setNeedToAdd(false);
-        setPickedNote({});
-    };
 
     return (
         <NotesContainer>
@@ -115,39 +88,31 @@ const NoteApp = () => {
                 pickedCategory={pickedCategory}
                 onPick={setPickedCategory}
                 onUnpickNote={handleCloseMDEditorMode}
-                pickedNote={pickedNote}
+                requiredCategories={requiredCategories}
+                setCopyCategoryOptionMode={setCategoryOptionMode}
+                categories={categories}
+                isCategoryLoading={isCategoryLoading}
+                setPickedCategory={setPickedCategory}
             />
-            <NotesSidebarContainer>
-                <NotesSidebarHeader>
-                    <NotesSidebarHeaderTitle>
-                        {(pickedCategory && pickedCategory.name) || "Please, Pick Category"}
-                    </NotesSidebarHeaderTitle>
-                </NotesSidebarHeader>
-                <SearchContainer>
-                    <SearchInputBox placeholder="Search Note" value={searchTerm} onChange={handleSearchTermChange} />
-                    <MdNoteAdd
-                        className="icon icon-add"
-                        style={{ marginLeft: "5px", marginRight: "5px" }}
-                        size="20px"
-                        title="New Note"
-                        onClick={handleOpenAddNewNoteMode}
-                    />
-                </SearchContainer>
+            <NoteSidebar
+                categoryOptionMode={categoryOptionMode}
+                pickedCategory={pickedCategory}
+                pickedNote={pickedNote}
+                onPickNote={setPickedNote}
+                onNeedToAddNote={setNeedToAdd}
+                onPinNote={handlePinNote}
+                notes={notes}
+                isNoteLoading={isNoteLoading}
+                isCategoryLoading={isCategoryLoading}
+            />
 
-                {isNoteLoading ? (
-                    <LoadingSpinner />
-                ) : (
-                    <NoteList onPin={handlePinNote} onPick={handlePickNote} pickedNoteId={pickedNote._id}>
-                        {filteredNotes}
-                    </NoteList>
-                )}
-            </NotesSidebarContainer>
             <NoteDescription
                 onPin={handlePinNote}
                 needToAdd={needToAdd}
                 onCloseAddMode={handleCloseMDEditorMode}
                 onChangePickedNote={setPickedNote}
                 pickedCategory={pickedCategory}
+                requiredCategories={requiredCategories}
             >
                 {pickedNote}
             </NoteDescription>

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdCreateNewFolder, MdOutlineCancel } from "react-icons/md";
 import { LuFolderCog } from "react-icons/lu";
-import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { TbEditCircle } from "react-icons/tb";
 import { AiTwotoneDelete } from "react-icons/ai";
@@ -16,55 +15,49 @@ import {
 import CategoryList from "./CategoryList";
 import LoadingSpinner from "../../../Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyCategory from "./ModifyCategory";
-import { createCategory, editCategory, removeCategory } from "../../../../features/notes/category/categorySlice";
+import { updateCategory, deleteCategory, createCategory } from "../../../../features/notes/category/categorySlice";
+import { useDispatch } from "react-redux";
 
-const CategorySidebar = ({ pickedCategory, onPick, onUnpickNote, pickedNote }) => {
+const CategorySidebar = ({
+    pickedCategory,
+    onPick,
+    onUnpickNote,
+    requiredCategories,
+    setCopyCategoryOptionMode,
+    categories,
+    isCategoryLoading,
+    setPickedCategory,
+}) => {
     const dispatch = useDispatch();
-    const { categories } = useSelector((state) => state.categories);
-    const [nonRequiredCategories, setNonRequiredCategories] = useState([]);
-    const [requiredCategories, setRequiredCategories] = useState([]);
     const [modalOpenMode, setModalOpenMode] = useState("");
     const [categoryOptionMode, setCategoryOptionMode] = useState(false);
-    const isCategoryLoading = false;
 
     useEffect(() => {
-        const findNonRequiredCategories = categories.filter((item) => !item.required);
-        if (!findNonRequiredCategories.length && categoryOptionMode) handleCloseOptionsMode();
-        setNonRequiredCategories(() => {
-            return findNonRequiredCategories;
-        });
-        setRequiredCategories(categories.filter((item) => item.required));
+        if (!categories.length && categoryOptionMode) handleCloseOptionsMode();
     }, [categories]);
 
     useEffect(() => {
-        if (Object.keys(pickedNote).length !== 0) setCategoryOptionMode(false);
-    }, [pickedNote]);
-
+        setCopyCategoryOptionMode(categoryOptionMode);
+    }, [categoryOptionMode]);
     const handleCreateCategory = () => {
         setModalOpenMode("Create");
         onUnpickNote();
     };
-    const handleEditCategory = () => {
-        if (Object.keys(pickedCategory).length === 0) {
-            toast.error("Need to pick a category to edit it");
-            return;
-        }
-        setModalOpenMode("Edit");
-    };
+
     const handleCloseModal = () => {
         setModalOpenMode("");
     };
     const handleSave = (categoryName) => {
         if (modalOpenMode === "Create") {
-            dispatch(createCategory(categoryName));
+            dispatch(createCategory({ name: categoryName }));
         } else {
-            dispatch(editCategory({ ...pickedCategory, name: categoryName }));
+            dispatch(updateCategory({ id: pickedCategory._id, categoryData: { name: categoryName } }));
             onPick({});
         }
         handleCloseModal();
     };
     const handleOpenOptionsMode = () => {
-        if (nonRequiredCategories.length === 0) {
+        if (categories.length === 0) {
             toast.error(
                 `Options Mode Is Only For Unique Categories Modification. 
                 First Add At Least One Unique Category And Click Again`,
@@ -73,19 +66,29 @@ const CategorySidebar = ({ pickedCategory, onPick, onUnpickNote, pickedNote }) =
         }
         setCategoryOptionMode(true);
         onUnpickNote();
-        onPick(nonRequiredCategories[0]);
+        onPick(categories[0]);
     };
     const handleCloseOptionsMode = () => {
         setCategoryOptionMode(false);
         handleCloseModal();
         onPick(requiredCategories[0]);
     };
+    const handleEditCategory = () => {
+        if (Object.keys(pickedCategory).length === 0) {
+            toast.error("Need to pick a category to edit it");
+            return;
+        }
+        setModalOpenMode("Edit");
+    };
+
     const handleDeleteCategory = () => {
         if (Object.keys(pickedCategory).length === 0) {
             toast.error("Need to pick a category to delete it");
             return;
         }
-        dispatch(removeCategory(pickedCategory._id));
+        dispatch(deleteCategory(pickedCategory._id)).then(() => {
+            setPickedCategory({});
+        });
     };
     return (
         <CategoriesSidebarContainer>
@@ -143,7 +146,7 @@ const CategorySidebar = ({ pickedCategory, onPick, onUnpickNote, pickedNote }) =
                         </CategoryList>
                     )}
                     <CategoryList onPick={onPick} pickedCategory={pickedCategory}>
-                        {nonRequiredCategories}
+                        {categories}
                     </CategoryList>
                 </>
             )}
