@@ -19,14 +19,40 @@ import { TbEditCircle } from "react-icons/tb";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { RiMore2Fill } from "react-icons/ri";
 
-const NoteDescription = ({ children, pickedCategory, onPin, needToAdd, onCloseAddMode, onChangePickedNote }) => {
+const NoteDescription = ({
+    children,
+    pickedCategory,
+    onPin,
+    needToAdd,
+    onCloseAddMode,
+    onChangePickedNote,
+    requiredCategories,
+}) => {
     const dispatch = useDispatch();
     const [showNote, setShowNote] = useState(children || {});
     const [needToEdit, setNeedToEdit] = useState(false);
+    const [categoryName, setCategoryName] = useState("");
+    const [isPinnedCategory, setIsPinnedCategory] = useState(false);
+
     useEffect(() => {
         setShowNote(children);
         setNeedToEdit(false);
     }, [children]);
+
+    useEffect(() => {
+        setIsPinnedCategory(() => {
+            const pinnedCategory = requiredCategories.find((requiredCategory) => requiredCategory.type === "pinned");
+            return pinnedCategory.name === pickedCategory.name;
+        });
+
+        setCategoryName(() => {
+            const matchedCategory = requiredCategories.find(
+                (requiredCategory) => requiredCategory.name === pickedCategory.name,
+            );
+            if (matchedCategory) return "notes";
+            return pickedCategory.name;
+        });
+    }, [pickedCategory, requiredCategories]);
 
     const handleDeleteNote = () => {
         dispatch(deleteNote(children._id));
@@ -59,21 +85,20 @@ const NoteDescription = ({ children, pickedCategory, onPin, needToAdd, onCloseAd
             handleClose();
             return;
         }
-
         if (needToEdit) {
             dispatch(
                 updateNote({
                     id: children._id,
-                    category: pickedCategory.name,
-                    pinned: pickedCategory.name === "Pinned Notes",
+                    category: categoryName,
+                    pinned: isPinnedCategory,
                     noteData: newNote,
                 }),
             );
         } else if (needToAdd) {
             dispatch(
                 createNote({
-                    category: pickedCategory.name,
-                    pinned: pickedCategory.name === "Pinned Notes",
+                    category: categoryName,
+                    pinned: isPinnedCategory,
                     ...newNote,
                 }),
             );
@@ -81,7 +106,6 @@ const NoteDescription = ({ children, pickedCategory, onPin, needToAdd, onCloseAd
         onChangePickedNote(newNote);
         handleClose();
     };
-
     return (
         <NotesDescriptionContainer>
             <NotesDescriptionHeader>
@@ -116,7 +140,6 @@ const NoteDescription = ({ children, pickedCategory, onPin, needToAdd, onCloseAd
                     </NotesDescriptionIconsContainer>
                 )}
             </NotesDescriptionHeader>
-
             <NotesDescription>
                 <DescriptionTitle title={showNote.title}>
                     {needToAdd || needToEdit ? (
