@@ -1,58 +1,41 @@
 import React from "react";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { CardToolHeading, CardTools, ContainerTools, RouterLink } from "./ToolsElements";
+import { CardTool, CardToolHeading, CardTools, ContainerTools, RouterLink, ToolIcon } from "./ToolsElements";
 
 import { RiEarthFill } from "react-icons/ri";
 import { GiNautilusShell } from "react-icons/gi";
+import { MdPassword } from "react-icons/md";
+import { TbHash } from "react-icons/tb";
+import HeadingBanner from "../Common/HeadingBanner/HeadingBanner";
 
 const Tools = () => {
+    const tools = [
+        { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
+        { name: "Sub Finder", link: "/tools/subfinder", icon: <RiEarthFill /> },
+        { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
+        { name: "Encoder", link: "/tools/encode", icon: <TbHash /> },
+        // {name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill/>,},
+        // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
+        // {name: "jwt Decoder", link: "/tools/jwtdecoder", icon: <RiEarthFill/>,},
+        // {name: "Hash Cracker", link: "/tools/hashcracker", icon: <RiEarthFill/>,},
+        // {name: "Port Scanner", link: "/tools/portScanner", icon: <RiEarthFill/>,},
+    ];
     return (
         <Wrapper>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                    fontSize: "30px",
-                    color: "#f5f5f5",
-                    fontFamily: "'Fira Code', monospace",
-                    fontWeight: "bold",
-                    margin: "50px 0 50px",
-                }}
-            >
-                Sec Tools
-            </div>
             <ContainerTools>
-                <RouterLink to={"/tools/subfinder"}>
-                    <CardTools>
-                        <CardToolHeading>
-                            <RiEarthFill /> Sub Finder
-                        </CardToolHeading>
-                    </CardTools>
-                </RouterLink>
-                <RouterLink to={"/tools/breachcheck"}>
-                    <CardTools>
-                        <CardToolHeading>
-                            <RiEarthFill /> Breach Check
-                        </CardToolHeading>
-                    </CardTools>
-                </RouterLink>
-                {/* <RouterLink to={"portScanner"}> */}
-                {/*    <CardTools> */}
-                {/*        <CardToolHeading> */}
-                {/*            <CgOpenCollective/> Port Scanner */}
-                {/*        </CardToolHeading> */}
-                {/*    </CardTools> */}
-                {/* </RouterLink> */}
-                <RouterLink to={"/tools/revshell"}>
-                    <CardTools>
-                        <CardToolHeading>
-                            <GiNautilusShell /> Rev Shell
-                        </CardToolHeading>
-                    </CardTools>
-                </RouterLink>
+                <HeadingBanner heading={"Hacking Tools"} />
+                <CardTools>
+                    {tools.map((tool, index) => {
+                        return (
+                            <RouterLink to={tool.link} key={index}>
+                                <CardTool>
+                                    <ToolIcon>{tool.icon}</ToolIcon>
+                                    <CardToolHeading>{tool.name}</CardToolHeading>
+                                </CardTool>
+                            </RouterLink>
+                        );
+                    })}
+                </CardTools>
             </ContainerTools>
         </Wrapper>
     );

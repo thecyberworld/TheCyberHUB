@@ -35,7 +35,7 @@ export const ReverseShellContainer = styled.div`
     justify-content: center;
     background: #1a1a1a;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1500px;
     border-radius: 5px;
 `;
 
@@ -282,8 +282,8 @@ export const ShellDisplayContainer = styled.div`
     overflow-y: auto;
     background-color: #090909;
     width: 100%;
-    min-width: 150px;
-    max-width: 200px;
+    min-width: 200px;
+    max-width: 250px;
     border-radius: 10px;
 `;
 
@@ -294,6 +294,10 @@ export const ShellList = styled.div`
     width: 100%;
     gap: 5px;
     padding: 5px;
+
+    overflow-y: auto;
+    max-height: 650px;
+    min-height: 200px;
 `;
 
 export const KeyContainer = styled.div`
@@ -323,7 +327,7 @@ export const CommandDisplayContainer = styled.div`
     max-width: 800px;
     width: 100%;
     border-radius: 10px;
-    padding: 5px 10px;
+    padding: 5px;
 `;
 
 export const CommandContentContainer = styled.div`
@@ -333,7 +337,7 @@ export const CommandContentContainer = styled.div`
 `;
 
 export const CommandTitle = styled.h3`
-    padding: 0 10px;
+    padding: 10px;
     font-family: "Fira Code", monospace;
     color: #f5f5f5;
 `;

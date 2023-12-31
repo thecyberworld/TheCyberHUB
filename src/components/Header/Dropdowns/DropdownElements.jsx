@@ -71,6 +71,8 @@ export const DropdownItemContainer = styled.div`
 export const DropdownItem = styled.h2`
     text-align: start;
 
+    font-size: 1.5rem;
+
     &:hover {
         transition: all 0.2s ease-in-out;
         transform: scale(1.05);

@@ -23,7 +23,7 @@ export const SenderImage = styled.img`
 `;
 
 export const MessageContent = styled.div`
-    background-color: ${({ isOur }) => (isOur ? "#2c2a2a" : "#1c1c1c")};
+    background-color: ${({ isOur }) => (isOur ? "#1f96ec" : "#3d3d3d")};
     border: 1px solid #28292a;
 
     padding: 10px;

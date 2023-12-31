@@ -3,8 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Tools from "./Tools";
 import BreachCheck from "./BreachCheck/BreachCheck";
 import SubdomainFinder from "./SubdomainFinder/SubdomainFinder";
-import ReverseShellGenrator from "./ReverseShell/ShellGenerator";
+import ReverseShellGenerator from "./ReverseShell/ShellGenerator";
 import { NotFound } from "../index";
+import PassGen from "./PassGen/PassGen";
 
 const ToolsRoutes = () => {
     return (
@@ -12,7 +13,8 @@ const ToolsRoutes = () => {
             <Route index element={<Tools />} />
             <Route path={"/breachcheck"} element={<BreachCheck />} />
             <Route path={"/subfinder"} element={<SubdomainFinder />} />
-            <Route path={"/revshell"} element={<ReverseShellGenrator />} />
+            <Route path={"/revshell"} element={<ReverseShellGenerator />} />
+            <Route path={"passgen"} element={<PassGen />} />
             {/* <Route path={"portScanner"} element={<PortScanner/>}/> */}
             <Route path={"*"} element={<NotFound />} />
             <Route element={<NotFound />} />

@@ -32,7 +32,7 @@ const Login = () => {
         }
         if (isUserError) {
             if (userMessage === "Request failed with status code 429") {
-                toast.error("Please try again in 1 minute");
+                toast.error("Please try again in 30 minute");
                 // } else if (userMessage === "AxiosError: Request failed with status code 401") {
                 //     toast.error("Invalid Credentials");
             } else {
