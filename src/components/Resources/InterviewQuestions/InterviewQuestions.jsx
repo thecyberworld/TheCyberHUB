@@ -13,6 +13,7 @@ import {
 import InterviewsQuestionsData from "./InterviewQuestionsData";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { BackArrow } from "../Jobs/JobsElements";
+import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
 
 const InterviewQuestions = () => {
     const firstQuestion = InterviewsQuestionsData[0].details[0].question;
@@ -42,72 +43,84 @@ const InterviewQuestions = () => {
     return (
         <Wrapper>
             <InterviewQuestionContainer>
-                {window.innerWidth < 800 ? (
-                    isShown ? (
-                        <InterviewQuestionSection>
-                            {InterviewsQuestionsData.map((Question, index) => {
-                                return (
-                                    <InterviewsQuestionsCard key={index}>
-                                        <InterviewsQuestionsHeading> {Question.title} </InterviewsQuestionsHeading>
-                                        {Question.details.map((resources, index) => {
-                                            return (
-                                                <InterviewsQuestionsTitle
-                                                    onClick={() => onQuestionClick(resources.question)}
-                                                    key={index}
-                                                >
-                                                    {/* {index + 1} */}
-                                                    <SingleQuestion> {">"} </SingleQuestion> {resources.question}
-                                                </InterviewsQuestionsTitle>
-                                            );
-                                        })}
-                                    </InterviewsQuestionsCard>
-                                );
-                            })}
-                        </InterviewQuestionSection>
+                <HeadingBanner heading={"Interview Questions"} />
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "start",
+                        justifyContent: "space-between",
+                        gap: "25px",
+                        width: "100%",
+                    }}
+                >
+                    {window.innerWidth < 800 ? (
+                        isShown ? (
+                            <InterviewQuestionSection>
+                                {InterviewsQuestionsData.map((Question, index) => {
+                                    return (
+                                        <InterviewsQuestionsCard key={index}>
+                                            <InterviewsQuestionsHeading> {Question.title} </InterviewsQuestionsHeading>
+                                            {Question.details.map((resources, index) => {
+                                                return (
+                                                    <InterviewsQuestionsTitle
+                                                        onClick={() => onQuestionClick(resources.question)}
+                                                        key={index}
+                                                    >
+                                                        {/* {index + 1} */}
+                                                        <SingleQuestion> {">"} </SingleQuestion> {resources.question}
+                                                    </InterviewsQuestionsTitle>
+                                                );
+                                            })}
+                                        </InterviewsQuestionsCard>
+                                    );
+                                })}
+                            </InterviewQuestionSection>
+                        ) : (
+                            <AnswerContainer>
+                                <BackArrowSection>
+                                    <BackArrow onClick={handleIsShown} />
+                                </BackArrowSection>
+                                <InterviewsAnswerQuestionsHeading>
+                                    {selectedQuestion && <p>{selectedQuestion}</p>}
+                                </InterviewsAnswerQuestionsHeading>
+                                {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
+                            </AnswerContainer>
+                        )
                     ) : (
-                        <AnswerContainer>
-                            <BackArrowSection>
-                                <BackArrow onClick={handleIsShown} />
-                            </BackArrowSection>
-                            <InterviewsAnswerQuestionsHeading>
-                                {selectedQuestion && <p>{selectedQuestion}</p>}
-                            </InterviewsAnswerQuestionsHeading>
-                            {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
-                        </AnswerContainer>
-                    )
-                ) : (
-                    <>
-                        <InterviewQuestionSection>
-                            {InterviewsQuestionsData.map((Question, index) => {
-                                return (
-                                    <InterviewsQuestionsCard key={index}>
-                                        <InterviewsQuestionsHeading> {Question.title} </InterviewsQuestionsHeading>
-                                        {Question.details.map((resources, index) => {
-                                            return (
-                                                <InterviewsQuestionsTitle
-                                                    onClick={() => onQuestionClick(resources.question)}
-                                                    key={index}
-                                                >
-                                                    {/* {index + 1} */}
-                                                    <SingleQuestion> {">"} </SingleQuestion> {resources.question}
-                                                </InterviewsQuestionsTitle>
-                                            );
-                                        })}
-                                    </InterviewsQuestionsCard>
-                                );
-                            })}
-                        </InterviewQuestionSection>
-                        <AnswerContainer>
-                            <BackArrowSection>
-                                <BackArrow onClick={handleIsShown} />
-                            </BackArrowSection>
-                            <InterviewsAnswerQuestionsHeading>
-                                {selectedQuestion && <h4>{selectedQuestion}</h4>}
-                            </InterviewsAnswerQuestionsHeading>
-                            {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
-                        </AnswerContainer>
-                    </>
-                )}
+                        <>
+                            <InterviewQuestionSection>
+                                {InterviewsQuestionsData.map((Question, index) => {
+                                    return (
+                                        <InterviewsQuestionsCard key={index}>
+                                            <InterviewsQuestionsHeading> {Question.title} </InterviewsQuestionsHeading>
+                                            {Question.details.map((resources, index) => {
+                                                return (
+                                                    <InterviewsQuestionsTitle
+                                                        onClick={() => onQuestionClick(resources.question)}
+                                                        key={index}
+                                                    >
+                                                        {/* {index + 1} */}
+                                                        <SingleQuestion> {">"} </SingleQuestion> {resources.question}
+                                                    </InterviewsQuestionsTitle>
+                                                );
+                                            })}
+                                        </InterviewsQuestionsCard>
+                                    );
+                                })}
+                            </InterviewQuestionSection>
+                            <AnswerContainer>
+                                <BackArrowSection>
+                                    <BackArrow onClick={handleIsShown} />
+                                </BackArrowSection>
+                                <InterviewsAnswerQuestionsHeading>
+                                    {selectedQuestion && <h4>{selectedQuestion}</h4>}
+                                </InterviewsAnswerQuestionsHeading>
+                                {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
+                            </AnswerContainer>
+                        </>
+                    )}
+                </div>
             </InterviewQuestionContainer>
         </Wrapper>
     );

@@ -2,33 +2,50 @@ import React, { useState } from "react";
 import {
     CopyToClipboardButton,
     GenerateButton,
+    IsStrongText,
+    PassGenCard,
     PassGenContainer,
+    PassGenForm,
     PassGenHeading,
+    PassGenOptionsContainer,
+    PassGenPasswordContainer,
     PasswordDisplay,
     PasswordDisplayContainer,
 } from "./PassGenElements";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { toast } from "react-toastify";
+import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
 
 const PassGen = () => {
-    const [password, setPassword] = useState("");
-    const generatePassword = () => {
-        const numbers = "0123456789";
-        const symbols = "!@#$%^&*()_-+=<>?";
-        const lowercase = "abcdefghijklmnopqrstuvwxyz";
-        const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const [password, setPassword] = useState("7h3cyb3rw04ld (0mmun17y");
+    const [options, setOptions] = useState({
+        length: 16,
+        includeNumbers: true,
+        includeSymbols: true,
+        includeUppercase: true,
+        includeLowercase: true,
+    });
+
+    const generatePassword = (e) => {
+        e.preventDefault();
+        const { length, includeNumbers, includeSymbols, includeUppercase, includeLowercase } = options;
+
+        const numbers = includeNumbers ? "0123456789" : "";
+        const symbols = includeSymbols ? "!@#$%^&*()_-+=<>?" : "";
+        const lowercase = includeLowercase ? "abcdefghijklmnopqrstuvwxyz" : "";
+        const uppercase = includeUppercase ? "ABCDEFGHIJKLMNOPQRSTUVWXYZ" : "";
 
         const requiredSymbolCount = 8;
-        const length = 16; // Adjust the total length of the password as needed
+        const totalLength = length;
         const symbolIndices = new Set();
 
         // Ensure at least 6 symbols in the password
         while (symbolIndices.size < requiredSymbolCount) {
-            const randomIndex = Math.floor(Math.random() * length);
+            const randomIndex = Math.floor(Math.random() * totalLength);
             symbolIndices.add(randomIndex);
         }
 
-        const passwordArray = Array.from({ length }, (_, index) => {
+        const passwordArray = Array.from({ length: totalLength }, (_, index) => {
             if (symbolIndices.has(index)) {
                 // Use a symbol if the index is in symbolIndices
                 return symbols[Math.floor(Math.random() * symbols.length)];
@@ -64,31 +81,93 @@ const PassGen = () => {
         return strongRegex.test(password);
     };
 
+    const handleOptionsChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        setOptions((prevOptions) => ({
+            ...prevOptions,
+            [name]: type === "checkbox" ? checked : value,
+        }));
+    };
+
     return (
         <Wrapper>
             <PassGenContainer>
-                <PassGenHeading>PassGen</PassGenHeading>
+                <HeadingBanner heading={"Password Generator"} />
+                <PassGenCard>
+                    <PassGenOptionsContainer>
+                        <PassGenHeading>Options</PassGenHeading>
+                        <div>
+                            <span> Length </span>
+                            <input
+                                className={"range"}
+                                type="range"
+                                name="length"
+                                min="6"
+                                max="30"
+                                value={options.length}
+                                onChange={handleOptionsChange}
+                            />
+                            <span>{options.length}</span>
+                        </div>
+                        <div>
+                            <label>
+                                Numbers
+                                <input
+                                    type="checkbox"
+                                    name="includeNumbers"
+                                    checked={options.includeNumbers}
+                                    onChange={handleOptionsChange}
+                                />
+                            </label>
+                            <label>
+                                Symbols
+                                <input
+                                    type="checkbox"
+                                    name="includeSymbols"
+                                    checked={options.includeSymbols}
+                                    onChange={handleOptionsChange}
+                                />
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                Uppercase
+                                <input
+                                    className={".checkbox"}
+                                    type="checkbox"
+                                    name="includeUppercase"
+                                    checked={options.includeUppercase}
+                                    onChange={handleOptionsChange}
+                                />
+                            </label>
+                            <label>
+                                Lowercase
+                                <input
+                                    type="checkbox"
+                                    name="includeLowercase"
+                                    checked={options.includeLowercase}
+                                    onChange={handleOptionsChange}
+                                />
+                            </label>
+                        </div>
+                    </PassGenOptionsContainer>
 
-                <span
-                    style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        width: "100%",
-                        gap: "5px",
-                    }}
-                >
-                    <PasswordDisplayContainer>
-                        <PasswordDisplay> {password} </PasswordDisplay>
-                        <CopyToClipboardButton onClick={copyPassword} />
-                    </PasswordDisplayContainer>
-                    <PasswordDisplay isStrong={isPasswordStrong()}>
-                        {isPasswordStrong() ? "Strong" : "Weak"}
-                    </PasswordDisplay>
-                </span>
+                    <PassGenPasswordContainer>
+                        <PassGenHeading>Password</PassGenHeading>
 
-                <GenerateButton onClick={generatePassword}>Generate</GenerateButton>
+                        <PassGenForm>
+                            <PasswordDisplayContainer>
+                                <PasswordDisplay> {password} </PasswordDisplay>
+                                <CopyToClipboardButton onClick={copyPassword} />
+                            </PasswordDisplayContainer>
+
+                            <IsStrongText isStrong={isPasswordStrong()}>
+                                {isPasswordStrong() ? "Strong" : "Weak"}
+                            </IsStrongText>
+                            <GenerateButton onClick={generatePassword}>Generate</GenerateButton>
+                        </PassGenForm>
+                    </PassGenPasswordContainer>
+                </PassGenCard>
             </PassGenContainer>
         </Wrapper>
     );
