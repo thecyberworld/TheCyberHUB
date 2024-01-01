@@ -28,7 +28,6 @@ export const ChatItemsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    //border-radius: 10px;
     color: #f5f5f5;
     overflow: hidden; /* Hide the overflowing content */
     background: #121212;
@@ -85,7 +84,7 @@ export const Input = styled.input`
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     position: relative;
     flex: 1 1 auto;
-    width: auto;
+    width: 100%;
     border: 1px solid #000000;
 
     &:focus {

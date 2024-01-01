@@ -65,7 +65,7 @@ export const InfoWrapper = styled.div`
     z-index: 1;
     height: 700px;
     width: 100%;
-    max-width: 1300px;
+    max-width: 1400px;
     margin-right: auto;
     margin-left: auto;
     padding: 0 24px;
@@ -96,6 +96,8 @@ export const Column1 = styled.div`
     grid-area: col1;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
 `;
 
 export const Column2 = styled.div`
@@ -104,7 +106,7 @@ export const Column2 = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-    max-width: 600px;
+    max-width: 800px;
     width: 100%;
 `;
 
@@ -131,7 +133,7 @@ export const Heading = styled.h1`
 `;
 
 export const Subtitle = styled.div`
-    //max-width: 440px;
+    max-width: 600px;
     margin-bottom: 35px;
     font-size: 18px;
     line-height: 24px;

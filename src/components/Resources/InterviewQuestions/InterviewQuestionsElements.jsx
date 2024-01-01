@@ -4,7 +4,7 @@ export const InterviewQuestionContainer = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     max-width: 1500px;
     gap: 25px;

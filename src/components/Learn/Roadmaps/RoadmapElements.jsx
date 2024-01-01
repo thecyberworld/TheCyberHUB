@@ -43,8 +43,8 @@ export const RoadmapHeading = styled.h1`
     align-items: center;
     color: #d9d9d9;
     background: #090909;
-    font-size: 40px;
-    padding: 25px 0;
+    font-size: 50px;
+    padding: 50px 0;
     //background: #090909;
     width: 100%;
     border-radius: 5px;

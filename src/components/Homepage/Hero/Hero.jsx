@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import {
     ArrowForward,
     ArrowRight,
@@ -11,7 +10,6 @@ import {
     HeroP,
     VideoBg,
 } from "./HeroElements";
-
 import { ScrollButton } from "../../Other/MixComponents/Buttons/ButtonElements";
 import { getCdnAssets } from "../../../features/apiUrl";
 
@@ -33,8 +31,8 @@ const Hero = () => {
                 </VideoBg>
             </HeroBg>
             <HeroContent>
-                <HeroH1> Unlock the Power of Cybersecurity </HeroH1>
-                <HeroP> Join a thriving community and explore the limitless possibilities. </HeroP>
+                <HeroH1>Empowering Cybersecurity Enthusiasts</HeroH1>
+                <HeroP>Join a thriving community and unlock the limitless potential of cybersecurity.</HeroP>
 
                 <HeroBtnWrapper>
                     <ScrollButton

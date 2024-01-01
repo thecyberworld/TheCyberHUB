@@ -5,6 +5,7 @@ import RoadmapsData from "./RoadmapsData";
 import { encodeURL } from "../../Blogs/util";
 import { RouterLink } from "./RoadmapElements";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
 
 const Colors = [
     "darkorange",
@@ -24,6 +25,7 @@ const Roadmaps = () => {
     return (
         <Wrapper>
             <RoadmapsContainer>
+                <HeadingBanner heading={"Roadmaps"} />
                 <RoadmapCardsContainer>
                     {RoadmapsData?.map((roadmap, id) => {
                         return (

@@ -7,24 +7,31 @@ export const ContainerTools = styled.div`
     align-items: center;
     justify-content: center;
     gap: 50px;
-    margin: 100px 0 150px;
+
+    width: 100%;
+    max-width: 1500px;
 `;
 export const Tools = styled.div``;
-
 export const CardTools = styled.div`
-    border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
-    padding: 50px;
-    text-align: center;
-    transition: transform 0.3s;
-    //font-family: "Fira Code", monospace;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    max-width: 1500px;
+`;
 
-    cursor: pointer;
-    //font-style: italic;
+export const CardTool = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
 
-    position: relative;
     background: transparent;
     box-shadow: 0 0 150px 0 rgba(241, 115, 12, 0.25);
     backdrop-filter: blur(25px);
@@ -45,6 +52,11 @@ export const CardToolHeading = styled.p`
     font-size: 23px;
     color: #f5f5f5;
     gap: 10px;
+`;
+
+export const ToolIcon = styled.p`
+    font-size: 25px;
+    margin: 0 15px;
 `;
 
 export const RouterLink = styled(LinkRouter)`

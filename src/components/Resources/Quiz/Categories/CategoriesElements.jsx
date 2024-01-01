@@ -126,7 +126,6 @@ export const QuestionButton = styled.button`
     transition: 0.1s ease;
 
     &:hover {
-
         background-color: #ff6b07;
 
         color: #000000;
@@ -139,7 +138,7 @@ export const QuestionButton = styled.button`
 `;
 
 export const CategoriesSection = styled.section`
-    margin: 125px auto 0;
+    margin: 50px auto 0;
     color: #cecac3;
     width: auto;
     max-width: 70rem;
@@ -193,7 +192,6 @@ export const CategoriesButton = styled.button`
     transition: 0.3s ease;
 
     &:hover {
- 
         background-color: #ff6b07;
 
         color: #000000;

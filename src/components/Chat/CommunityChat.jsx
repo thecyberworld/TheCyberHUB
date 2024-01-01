@@ -4,14 +4,13 @@ import { ChatRoutesContainer } from "./Chat/ChatElement";
 import Sidebar from "./Sidebar/Sidebar";
 import { Chat } from "../index";
 import { useSelector } from "react-redux";
-import axios from "axios";
 import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
+import axios from "axios";
 
-const CommunityChat = () => {
+const CommunityChat = ({ userDetails }) => {
     const { user } = useSelector((state) => state.auth);
     const [ws, setWs] = useState(null);
-    const [onlinePeople, setOnlinePeople] = useState({});
-    // const [offlinePeople, setOfflinePeople] = useState({});
+    const [onlinePeople, setOnlinePeople] = useState([]);
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [newMessageText, setNewMessageText] = useState("");
     const [messages, setMessages] = useState([]);
@@ -19,7 +18,14 @@ const CommunityChat = () => {
     const divUnderMessage = useRef();
 
     useEffect(() => {
-        document.cookie = `Bearer ${user?.token}; path=/; Secure; SameSite=None; domain=.thecyberhub.org`;
+        if (userDetails.length > 0) {
+            connectToWs();
+        }
+    }, [userDetails]);
+
+    const connectToWs = () => {
+        const domain = process.env.NODE_ENV === "production" ? ".thecyberhub.org" : "localhost";
+        document.cookie = `Bearer ${user?.token}; path=/; Secure; SameSite=None; domain=${domain}`;
 
         const newWs = new WebSocket(getApiUrlWs());
         setWs(newWs);
@@ -29,20 +35,40 @@ const CommunityChat = () => {
         });
 
         newWs.addEventListener("message", handleMessages);
+        newWs.addEventListener("close", () => {
+            setTimeout(() => {
+                console.log("WebSocket connection closed. Reconnecting...");
+                connectToWs();
+            }, 1000);
+        });
 
         return () => {
             newWs.close();
         };
-    }, []);
+    };
 
     const showOnlinePeople = (peopleArray) => {
-        const people = {};
-
-        peopleArray.forEach(({ userId, username }) => {
-            people[userId] = username;
+        const uniqueUserIds = new Set();
+        const uniquePeopleArray = peopleArray.filter((person) => {
+            if (!uniqueUserIds.has(person.userId)) {
+                uniqueUserIds.add(person.userId);
+                return true;
+            }
+            return false;
         });
-        setOnlinePeople(people);
+
+        const onlinePeople = [];
+
+        uniquePeopleArray.forEach((person) => {
+            userDetails.forEach((userDetail) => {
+                if (userDetail.user === person.userId) {
+                    onlinePeople.push(userDetail);
+                }
+            });
+        });
+        setOnlinePeople(onlinePeople);
     };
+
     const handleMessages = (ev) => {
         const messageData = JSON.parse(ev.data);
         if ("online" in messageData) {
@@ -98,8 +124,12 @@ const CommunityChat = () => {
         }
     }, [selectedUserId]);
 
-    const onlinePeopleExclOurUser = { ...onlinePeople };
-    delete onlinePeopleExclOurUser[user._id];
+    const onlinePeopleExclOurUser = onlinePeople.filter((person) => person.user !== user?._id);
+
+    const offlinePeopleData = userDetails.filter((person) => {
+        const foundOnlinePerson = onlinePeople.find((onlinePerson) => onlinePerson.user === person.user);
+        return !foundOnlinePerson;
+    });
 
     return (
         <ChatRoutesContainer>
@@ -107,6 +137,7 @@ const CommunityChat = () => {
                 <Sidebar
                     hideSidebar={hideSidebar}
                     onlinePeople={onlinePeopleExclOurUser}
+                    offlinePeople={offlinePeopleData}
                     selectedUserId={selectedUserId}
                     setSelectedUserId={setSelectedUserId}
                 />
@@ -125,6 +156,7 @@ const CommunityChat = () => {
                         path={":id"}
                         element={
                             <Chat
+                                userDetails={userDetails}
                                 setHideSidebar={setHideSidebar}
                                 hideSidebar={hideSidebar}
                                 ws={ws}
@@ -144,5 +176,4 @@ const CommunityChat = () => {
         </ChatRoutesContainer>
     );
 };
-
 export default CommunityChat;

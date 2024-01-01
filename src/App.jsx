@@ -52,7 +52,7 @@ import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
-import HackBook from "./components/HackBook/HackBook";
+import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
@@ -123,9 +123,9 @@ const App = () => {
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
 
-                        <Route path={"/tools/*"} element={<ToolsRoutes />} />
-
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
+                        <Route path={"/tools/*"} element={<ToolsRoutes />} />
+                        <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
@@ -135,7 +135,6 @@ const App = () => {
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
 
                         <Route exact path={"/contact"} element={<ContactForm />} />
-                        <Route exact path={"/hackbook"} element={<HackBook />} />
 
                         <Route>
                             <Route exact path={"/user/:username"} element={<UserProfile />} />

@@ -39,7 +39,7 @@ export const RoadmapsContainer = styled.div`
     align-items: center;
     max-width: 1350px;
     width: 100%;
-    margin: 100px 0 0 0;
+    gap: 25px;
 `;
 
 export const RoadmapCardsContainer = styled.div`

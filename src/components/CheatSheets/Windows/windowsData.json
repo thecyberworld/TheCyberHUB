@@ -1,0 +1,34 @@
+{
+  "Windows_Cheat_Sheet": [
+    {
+      "Command_Prompt_Basics.md": "# Command Prompt Basics\n\n## Navigation\n```\n# Change directory\ncd directory_name\n\n# List files and directories\ndir\n\n# Change drive\nD:\n```"
+    },
+    {
+      "User_Accounts.md": "# User Accounts\n\n## User Management\n```\n# Create a new user\nnet user username password /add\n\n# Change user password\nnet user username new_password\n\n# Delete a user\nnet user username /delete\n```"
+    },
+    {
+      "Task_Manager.md": "# Task Manager\n\n## Managing Processes\n```\n# Open Task Manager\nCtrl + Shift + Esc\n\n# End a process\nRight-click on the process > End Task\n\n# View system performance\nPerformance tab\n```"
+    },
+    {
+      "File_Explorer_Tips.md": "# File Explorer Tips\n\n## Quick Actions\n```\n# Rename a file\nF2\n\n# Copy selected items\nCtrl + C\n\n# Paste copied items\nCtrl + V\n```"
+    },
+    {
+      "Networking_Commands.md": "# Networking Commands\n\n## IP Configuration\n```\n# Display IP configuration\nipconfig\n\n# Release and renew IP\nipconfig /release\nipconfig /renew\n```"
+    },
+    {
+      "System_Info.md": "# System Information\n\n## Display System Information\n```\n# System information\nsysteminfo\n\n# Show currently logged-in users\nquery user\n```"
+    },
+    {
+      "PowerShell_Basics.md": "# PowerShell Basics\n\n## Running Scripts\n```\n# Allow script execution\nSet-ExecutionPolicy RemoteSigned\n\n# Run a PowerShell script\n./script.ps1\n```"
+    },
+    {
+      "Security_Tips.md": "# Security Tips\n\n## Windows Defender\n```\n# Update virus definitions\nUpdate-MpSignature\n\n# Run a quick scan\nStart-MpScan -ScanType QuickScan\n\n# Check for threats\nGet-MpThreat\n```"
+    },
+    {
+      "Remote_Desktop.md": "# Remote Desktop\n\n## Connect to Remote PC\n```\n# Open Remote Desktop Connection\nmstsc\n\n# Connect to a remote PC\nEnter PC's IP or hostname\n```"
+    },
+    {
+      "Windows_Update.md": "# Windows Update\n\n## Manual Update\n```\n# Check for updates\nSettings > Update & Security > Windows Update > Check for updates\n\n# Install updates\nSettings > Update & Security > Windows Update > Install updates\n```"
+    }
+  ]
+}

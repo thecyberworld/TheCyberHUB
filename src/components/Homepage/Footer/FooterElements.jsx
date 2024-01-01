@@ -85,7 +85,7 @@ export const FooterScrollLink = styled(ScrollLink)`
 
     &:hover {
         color: #ff6b08;
-        scale: 1.1;
+        //scale: 1.1;
         transition: 0.3s ease-out;
     }
 `;
@@ -220,6 +220,17 @@ export const SocialIconLinkGithub = styled.a`
 
     &:hover {
         color: #f0f6fc;
+        transition: 0.3s ease-out;
+        scale: 1.2;
+    }
+`;
+
+export const SocialIconLinkYoutube = styled.a`
+    color: #f5f5f5;
+    font-size: 24px;
+
+    &:hover {
+        color: #ff0000;
         transition: 0.3s ease-out;
         scale: 1.2;
     }
