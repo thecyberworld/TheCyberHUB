@@ -4,6 +4,7 @@ import userDetailReducer from "../features/userDetail/userDetailSlice";
 import goalReducer from "../features/goals/goalSlice";
 import blogReducer from "../features/blogs/blogSlice";
 import notesReducer from "../features/notes/notesSlice";
+import categoriesReducer from "../features/notes/category/categorySlice";
 import forumReducer from "../features/forum/forumSlice";
 import viewReducer from "../features/feeds/views/viewSlice";
 import feedReducer from "../features/feeds/feedsSlice";
@@ -28,6 +29,7 @@ export default configureStore({
         blogComments: blogCommentsReducer,
 
         notes: notesReducer,
+        categories: categoriesReducer,
 
         forums: forumReducer,
 

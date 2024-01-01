@@ -8,6 +8,7 @@ export const NotesContainer = styled.div`
 
 export const NotesSidebarContainer = styled.div`
     display: flex;
+    margin-left: -2px;
     flex-direction: column;
     height: 100vh;
     width: 100%;
@@ -17,13 +18,13 @@ export const NotesSidebarContainer = styled.div`
         width: 35%;
     }
 `;
-
 export const NotesSidebarHeader = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 0 10px;
     border: 2px solid #111111;
+    border-left: none;
     height: 3rem;
 `;
 
@@ -32,6 +33,7 @@ export const NotesSidebarHeaderTitle = styled.h3`
     text-align: center;
     margin-bottom: 0;
     font-family: "Roboto Mono", monospace;
+    text-transform: capitalize;
 `;
 export const NotesListNoFound = styled.h4`
     color: #787878;
@@ -41,9 +43,11 @@ export const NotesListNoFound = styled.h4`
 `;
 export const SearchContainer = styled.div`
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     border: 2px solid #111111;
     background-color: #111111;
-    border-top: 0px;
+    border-top: none;
     height: 3rem;
 `;
 
@@ -153,7 +157,7 @@ export const NotesDescription = styled.div`
 export const DescriptionTitle = styled.div`
     width: 100%;
     overflow-wrap: break-word;
-    background: #252525;
+    background: ${(props) => props.title && "#252525"};
 `;
 
 export const DescriptionContent = styled.div``;
