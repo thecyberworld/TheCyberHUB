@@ -15,7 +15,7 @@ const RecentChats = ({ chats, setSelectedChatId, onNewChat }) => {
                 </div>
             </RecentChatsHeader>
 
-            {chats.length > 0 ? (
+            {chats && chats.length > 0 ? (
                 <RecentChatsList>
                     {[...chats].reverse().map((chat) => (
                         <li className="chat-title" key={chat._id} onClick={() => setSelectedChatId(chat._id)}>

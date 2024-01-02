@@ -1,4 +1,3 @@
-// AiChat.js (Client-side)
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
@@ -10,7 +9,7 @@ import { BiSend } from "react-icons/bi";
 import { CircleSpinner } from "react-spinners-kit";
 import { getApiUrl } from "../../features/apiUrl";
 
-const API_BASE_URL = getApiUrl("/api/aiChat");
+const API_BASE_URL = getApiUrl("api/aiChat");
 
 const AiChat = () => {
     const { user } = useSelector((state) => state.auth);
