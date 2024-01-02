@@ -10,7 +10,7 @@ import { BiSend } from "react-icons/bi";
 import { CircleSpinner } from "react-spinners-kit";
 import { getApiUrl } from "../../features/apiUrl";
 
-const API_BASE_URL = getApiUrl("/api/aiChat");
+const API_BASE_URL = getApiUrl("api/aiChat");
 
 const AiChat = () => {
     const { user } = useSelector((state) => state.auth);

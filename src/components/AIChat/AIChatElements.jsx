@@ -11,7 +11,7 @@ export const AIChatContainer = styled.div`
     width: 100%;
     margin: 0 auto;
 
-    height: 100%;
+    height: 80vh;
 
     //padding: 20px;
 
