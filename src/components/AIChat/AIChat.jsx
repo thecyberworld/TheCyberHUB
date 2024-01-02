@@ -1,4 +1,3 @@
-// AiChat.js (Client-side)
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
