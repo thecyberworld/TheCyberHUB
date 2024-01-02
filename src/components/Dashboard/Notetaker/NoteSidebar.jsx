@@ -17,6 +17,7 @@ const NoteSidebar = ({
     notes,
     isNoteLoading,
     isCategoryLoading,
+    defaultCategory,
 }) => {
     const [filteredNotes, setFilteredNotes] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
@@ -28,11 +29,8 @@ const NoteSidebar = ({
                 note?.content?.toLowerCase().includes(searchTerm?.toLowerCase());
             if (!searchedNote) return false;
             if (Object.keys(pickedCategory).length === 0) return false;
-            if (pickedCategory.name === "Other Notes") {
-                return !note.pinned;
-            }
-            if (pickedCategory.name === "Pinned Notes") {
-                return note.pinned;
+            if (pickedCategory.name === defaultCategory.name) {
+                return true;
             }
             return note.category.toLowerCase() === pickedCategory.name.toLowerCase();
         });
@@ -72,7 +70,7 @@ const NoteSidebar = ({
                 <MdNoteAdd
                     className="icon icon-add"
                     style={{ marginLeft: "5px", marginRight: "5px" }}
-                    size="20px"
+                    size="24px"
                     title="New Note"
                     onClick={handleOpenAddNewNoteMode}
                 />

