@@ -8,8 +8,9 @@ import RecentChats from "./RecentChats";
 import { useSelector } from "react-redux";
 import { BiSend } from "react-icons/bi";
 import { CircleSpinner } from "react-spinners-kit";
+import { getApiUrl } from "../../features/apiUrl";
 
-const API_BASE_URL = "http://localhost:5000/api/aiChat";
+const API_BASE_URL = getApiUrl("/api/aiChat");
 
 const AiChat = () => {
     const { user } = useSelector((state) => state.auth);
