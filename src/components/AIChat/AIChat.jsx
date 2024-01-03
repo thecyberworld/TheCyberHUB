@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { AIChatContainer, ChatHeader, ChatInput, ErrorMessage, ChatBox, ChatTitle } from "./AIChatElements";
+import { AIChatContainer, ChatHeader, ChatInput, ChatBox, ChatTitle, ToggleSection } from "./AIChatElements";
 import ChatMessages from "./ChatMessages";
 import RecentChats from "./RecentChats";
 import { useSelector } from "react-redux";
 import { BiSend } from "react-icons/bi";
 import { CircleSpinner } from "react-spinners-kit";
 import { getApiUrl } from "../../features/apiUrl";
+import { toast } from "react-toastify";
+import { SlOptionsVertical } from "react-icons/sl";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
@@ -17,19 +20,18 @@ const AiChat = () => {
 
     const [userInput, setUserInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
 
-    const [selectedChat, setSelectedChat] = useState(null);
     const [selectedChatId, setSelectedChatId] = useState(null);
+
+    const [toggle, setToggle] = useState(false);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        setError(null);
 
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/ask/${selectedChat._id}`,
+                `${API_BASE_URL}/ask/${selectedChatId}`,
                 { prompt: userInput },
                 {
                     headers: {
@@ -43,7 +45,7 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            setError("Failed to fetch AI response. Please try again.");
+            toast(error.response.data);
             console.error(error);
         } finally {
             setIsLoading(false);
@@ -60,6 +62,7 @@ const AiChat = () => {
             });
             const { chats } = response.data;
             setChats(chats);
+            setSelectedChatId(chats.length > 0 ? chats.reverse()[0]?._id : null);
         } catch (error) {
             console.error(error);
         }
@@ -67,7 +70,12 @@ const AiChat = () => {
 
     const handleNewChat = async () => {
         setIsLoading(true);
-        setError(null);
+
+        if (chats[chats.length - 1]?.title === "New Chat") {
+            setSelectedChatId(chats[chats.length - 1]?._id);
+            setIsLoading(false);
+            return;
+        }
 
         try {
             const response = await axios.post(
@@ -83,9 +91,32 @@ const AiChat = () => {
 
             const newChat = response.data;
             setChats([...chats, newChat]);
-            setSelectedChat(newChat);
+            setSelectedChatId(newChat._id);
         } catch (error) {
-            setError("Failed to create a new chat. Please try again.");
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleDeleteChat = async (chatId) => {
+        setIsLoading(true);
+
+        console.log("chatId", chatId);
+        console.log("userId", user._id);
+        try {
+            await axios.delete(`${API_BASE_URL}/delete/${chatId}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${user.token}`,
+                },
+            });
+
+            const newChats = chats.filter((chat) => chat._id !== chatId);
+            setChats(newChats);
+            setSelectedChatId(chats.length > 0 ? chats.reverse()[0]?._id : null);
+        } catch (error) {
+            toast(error.response.data);
             console.error(error);
         } finally {
             setIsLoading(false);
@@ -96,42 +127,61 @@ const AiChat = () => {
         getMessages();
     }, []);
 
+    useEffect(() => {
+        if (chats.length === 0) {
+            setTimeout(() => {
+                // handleNewChat();
+            }, 1000);
+        }
+    }, []);
+
     return (
         <Wrapper>
             <AIChatContainer>
-                <RecentChats chats={chats} setSelectedChatId={setSelectedChatId} onNewChat={handleNewChat} />
-                <ChatBox>
-                    {selectedChatId &&
-                        chats.map(
-                            (chat) =>
-                                chat._id === selectedChatId && (
-                                    <>
-                                        <ChatHeader>
-                                            <ChatTitle>{chat?.title}</ChatTitle>
-                                        </ChatHeader>
+                {!toggle && (
+                    <RecentChats
+                        chats={chats}
+                        setSelectedChatId={setSelectedChatId}
+                        onNewChat={handleNewChat}
+                        selectedChatId={selectedChatId}
+                        onDeleteChat={handleDeleteChat}
+                    />
+                )}
 
-                                        <ChatMessages messages={chat.messages} />
-                                        {error && <ErrorMessage>{error}</ErrorMessage>}
-                                        <ChatInput onSubmit={handleSendMessage}>
-                                            <input
-                                                type="text"
-                                                value={userInput}
-                                                onChange={(e) => setUserInput(e.target.value)}
-                                            />
-                                            {isLoading ? (
-                                                <button>
-                                                    <CircleSpinner size={20} color={"#131313"} />
-                                                </button>
-                                            ) : (
-                                                <button type="submit">
-                                                    <BiSend size={25} />
-                                                </button>
-                                            )}
-                                        </ChatInput>
-                                    </>
-                                ),
-                        )}
-                </ChatBox>
+                {selectedChatId &&
+                    chats.map(
+                        (chat) =>
+                            chat._id === selectedChatId && (
+                                <ChatBox key={chat?._id}>
+                                    <ChatHeader>
+                                        <ToggleSection onClick={() => setToggle(!toggle)}>
+                                            {toggle ? <FaAngleRight /> : <FaAngleLeft />}
+                                        </ToggleSection>
+                                        <ChatTitle>{chat?.title}</ChatTitle>
+                                        <SlOptionsVertical />
+                                    </ChatHeader>
+
+                                    <ChatMessages messages={chat.messages} />
+
+                                    <ChatInput onSubmit={handleSendMessage}>
+                                        <input
+                                            type="text"
+                                            value={userInput}
+                                            onChange={(e) => setUserInput(e.target.value)}
+                                        />
+                                        {isLoading ? (
+                                            <button>
+                                                <CircleSpinner size={20} color={"#131313"} />
+                                            </button>
+                                        ) : (
+                                            <button type="submit">
+                                                <BiSend size={25} />
+                                            </button>
+                                        )}
+                                    </ChatInput>
+                                </ChatBox>
+                            ),
+                    )}
             </AIChatContainer>
         </Wrapper>
     );
