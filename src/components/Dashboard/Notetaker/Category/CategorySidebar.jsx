@@ -1,36 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { MdCreateNewFolder, MdOutlineCancel } from "react-icons/md";
-import { LuFolderCog } from "react-icons/lu";
-import { toast } from "react-toastify";
-import { TbEditCircle } from "react-icons/tb";
-import { AiTwotoneDelete } from "react-icons/ai";
+import { MdCreateNewFolder } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import {
-    CategoriesOptionsModeButtons,
-    CategoriesOptionsModeTitle,
     CategoriesSidebarContainer,
     CategoriesSidebarHeader,
     CategoriesSidebarHeaderTitle,
+    CategoryCreateContainer,
 } from "./CategoryElements";
 import CategoryList from "./CategoryList";
 import LoadingSpinner from "../../../Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyCategory from "./ModifyCategory";
-import { updateCategory, deleteCategory, createCategory } from "../../../../features/notes/category/categorySlice";
+import { createCategory } from "../../../../features/notes/category/categorySlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const CategorySidebar = ({
     pickedCategory,
     onPick,
     onUnpickNote,
-    requiredCategories,
     setCopyCategoryOptionMode,
     categories,
     isCategoryLoading,
-    setPickedCategory,
+    defaultCategory,
 }) => {
     const dispatch = useDispatch();
-    const [modalOpenMode, setModalOpenMode] = useState("");
+    const [modalOpenMode, setModalOpenMode] = useState(false);
     const [categoryOptionMode, setCategoryOptionMode] = useState(false);
+    const [editCategory, setEditCategory] = useState("");
 
     useEffect(() => {
         if (!categories.length && categoryOptionMode) handleCloseOptionsMode();
@@ -40,114 +37,75 @@ const CategorySidebar = ({
         setCopyCategoryOptionMode(categoryOptionMode);
     }, [categoryOptionMode]);
     const handleCreateCategory = () => {
-        setModalOpenMode("Create");
+        setModalOpenMode(true);
         onUnpickNote();
     };
 
     const handleCloseModal = () => {
-        setModalOpenMode("");
+        setModalOpenMode(false);
     };
+
     const handleSave = (categoryName) => {
-        if (modalOpenMode === "Create") {
-            dispatch(createCategory({ name: categoryName }));
-        } else {
-            dispatch(updateCategory({ id: pickedCategory._id, categoryData: { name: categoryName } }));
-            onPick({});
-        }
-        handleCloseModal();
-    };
-    const handleOpenOptionsMode = () => {
-        if (categories.length === 0) {
-            toast.error(
-                `Options Mode Is Only For Unique Categories Modification. 
-                First Add At Least One Unique Category And Click Again`,
-            );
+        if (categoryName === defaultCategory.name) {
+            toast.error(`You can't use ${defaultCategory.name} as category name`);
             return;
         }
-        setCategoryOptionMode(true);
-        onUnpickNote();
-        onPick(categories[0]);
+        dispatch(createCategory({ name: categoryName }));
+        handleCloseModal();
     };
+
     const handleCloseOptionsMode = () => {
         setCategoryOptionMode(false);
         handleCloseModal();
-        onPick(requiredCategories[0]);
-    };
-    const handleEditCategory = () => {
-        if (Object.keys(pickedCategory).length === 0) {
-            toast.error("Need to pick a category to edit it");
-            return;
-        }
-        setModalOpenMode("Edit");
+        onPick({});
     };
 
-    const handleDeleteCategory = () => {
-        if (Object.keys(pickedCategory).length === 0) {
-            toast.error("Need to pick a category to delete it");
-            return;
-        }
-        dispatch(deleteCategory(pickedCategory._id)).then(() => {
-            setPickedCategory({});
-        });
-    };
     return (
         <CategoriesSidebarContainer>
-            {categoryOptionMode ? (
-                <CategoriesSidebarHeader>
-                    <CategoriesOptionsModeTitle>
-                        <CategoriesSidebarHeaderTitle>First Pick Category</CategoriesSidebarHeaderTitle>
-                    </CategoriesOptionsModeTitle>
-                    <CategoriesOptionsModeButtons>
-                        <TbEditCircle
-                            className="icon icon-edit"
-                            size="18px"
-                            title="Edit"
-                            onClick={handleEditCategory}
-                        />
-                        <AiTwotoneDelete
-                            className="icon icon-delete"
-                            size="18px"
-                            title="Delete"
-                            onClick={handleDeleteCategory}
-                        />
-                        <MdOutlineCancel
-                            className="icon icon-cancel"
-                            size="19px"
-                            title="Cancel"
-                            onClick={handleCloseOptionsMode}
-                        />
-                    </CategoriesOptionsModeButtons>
-                </CategoriesSidebarHeader>
-            ) : (
-                <CategoriesSidebarHeader>
-                    <LuFolderCog className="icon" size="20px" title="Options" onClick={handleOpenOptionsMode} />
-                    <CategoriesSidebarHeaderTitle>Notes</CategoriesSidebarHeaderTitle>
-                    <MdCreateNewFolder
-                        className="icon icon-add"
-                        size="20px"
-                        title="New Category"
-                        onClick={handleCreateCategory}
-                    />
-                </CategoriesSidebarHeader>
-            )}
-            {modalOpenMode ? (
-                <ModifyCategory
-                    onSave={handleSave}
-                    onCancel={handleCloseModal}
-                    editCategoryName={modalOpenMode === "Edit" ? pickedCategory.name : ""}
+            <CategoriesSidebarHeader>
+                <RxHamburgerMenu className="icon" size="20px" title="Menu" />
+                <CategoriesSidebarHeaderTitle>Notes</CategoriesSidebarHeaderTitle>
+                <MdCreateNewFolder
+                    className="icon icon-add"
+                    size="20px"
+                    title="New Category"
+                    onClick={
+                        editCategory
+                            ? () => {
+                                  handleCreateCategory();
+                                  setEditCategory("");
+                              }
+                            : handleCreateCategory
+                    }
                 />
-            ) : isCategoryLoading ? (
+            </CategoriesSidebarHeader>
+            {isCategoryLoading ? (
                 <LoadingSpinner />
             ) : (
                 <>
-                    {!categoryOptionMode && (
-                        <CategoryList required onPick={onPick} pickedCategory={pickedCategory}>
-                            {requiredCategories}
-                        </CategoryList>
-                    )}
-                    <CategoryList onPick={onPick} pickedCategory={pickedCategory}>
+                    <CategoryList
+                        required
+                        onPick={onPick}
+                        pickedCategory={pickedCategory}
+                        defaultCategory={defaultCategory}
+                    >
+                        {[defaultCategory]}
+                    </CategoryList>
+                    <CategoryList
+                        addMode={modalOpenMode}
+                        onPick={onPick}
+                        pickedCategory={pickedCategory}
+                        defaultCategory={defaultCategory}
+                        onEditCategory={setEditCategory}
+                        editCategoryId={editCategory}
+                    >
                         {categories}
                     </CategoryList>
+                    {modalOpenMode && (
+                        <CategoryCreateContainer>
+                            <ModifyCategory onSave={handleSave} onCancel={handleCloseModal} editCategoryName="" />
+                        </CategoryCreateContainer>
+                    )}
                 </>
             )}
         </CategoriesSidebarContainer>

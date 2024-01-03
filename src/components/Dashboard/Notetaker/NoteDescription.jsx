@@ -26,13 +26,12 @@ const NoteDescription = ({
     needToAdd,
     onCloseAddMode,
     onChangePickedNote,
-    requiredCategories,
+    defaultCategory,
 }) => {
     const dispatch = useDispatch();
     const [showNote, setShowNote] = useState(children || {});
     const [needToEdit, setNeedToEdit] = useState(false);
     const [categoryName, setCategoryName] = useState("");
-    const [isPinnedCategory, setIsPinnedCategory] = useState(false);
 
     useEffect(() => {
         setShowNote(children);
@@ -40,19 +39,11 @@ const NoteDescription = ({
     }, [children]);
 
     useEffect(() => {
-        setIsPinnedCategory(() => {
-            const pinnedCategory = requiredCategories.find((requiredCategory) => requiredCategory.type === "pinned");
-            return pinnedCategory.name === pickedCategory.name;
-        });
-
         setCategoryName(() => {
-            const matchedCategory = requiredCategories.find(
-                (requiredCategory) => requiredCategory.name === pickedCategory.name,
-            );
-            if (matchedCategory) return "notes";
+            if (pickedCategory.name === defaultCategory.name) return "notes";
             return pickedCategory.name;
         });
-    }, [pickedCategory, requiredCategories]);
+    }, [pickedCategory]);
 
     const handleDeleteNote = () => {
         dispatch(deleteNote(children._id));
@@ -90,7 +81,6 @@ const NoteDescription = ({
                 updateNote({
                     id: children._id,
                     category: categoryName,
-                    pinned: isPinnedCategory,
                     noteData: newNote,
                 }),
             );
@@ -98,7 +88,6 @@ const NoteDescription = ({
             dispatch(
                 createNote({
                     category: categoryName,
-                    pinned: isPinnedCategory,
                     ...newNote,
                 }),
             );
