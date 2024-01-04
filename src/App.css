@@ -31,6 +31,11 @@ html {
     width: 8px;
     height: 3px;
 }
+
+::-webkit-scrollbar-button {
+    display: none; /* This will hide the scrollbar buttons */
+}
+
 ::-webkit-scrollbar-button {
     background-color: #666;
 }
