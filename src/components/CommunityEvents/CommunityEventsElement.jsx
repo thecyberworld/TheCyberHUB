@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { AiFillClockCircle, AiOutlineCloseCircle, AiFillExclamationCircle } from "react-icons/ai";
+import { AiFillClockCircle, AiFillExclamationCircle } from "react-icons/ai";
+import { BiSolidChevronDown, BiSolidChevronUp } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
-import { BiSolidChevronDown, BiSend, BiUserPlus, BiSolidChevronUp } from "react-icons/bi";
 
 export const ParentContainer = styled.div`
-    margin: 6.25rem auto;
+    margin: ${(props) => (props.pageHeader ? "6.25rem auto;" : "0 auto;")}
     width: 100%;
     color: #f5f5f5;
-    padding: 0 1.563rem;
+    padding: ${(props) => (props.pageHeader ? "0 1.563rem" : "0")}
 `;
 
 export const Container = styled.div`
@@ -31,7 +31,7 @@ export const Tabs = styled.div`
     display: flex;
     gap: 1rem;
     margin-bottom: 2.5rem;
-    background-color: #ffffff;
+    background-color: #383838;
     width: fit-content;
     border-radius: 8px;
     padding: 0.5rem;
@@ -47,11 +47,11 @@ export const Tabs = styled.div`
         text-transform: capitalize;
 
         &:hover {
-            background-color: #ddd;
+            background-color: #2a2a2a;
         }
 
         &.active {
-            background-color: #ddd;
+            background-color: #2a2a2a;
         }
     }
 `;
@@ -70,6 +70,8 @@ export const NoDataComponent = styled.div`
     }
 `;
 
+export const EventList = styled.div``;
+
 const createStyledIcon = (IconComponent) => {
     return styled(IconComponent)`
         width: 20px;
@@ -77,11 +79,8 @@ const createStyledIcon = (IconComponent) => {
     `;
 };
 
-export const AiFillClockCircleIcon = createStyledIcon(AiFillClockCircle);
-export const MdLocationOnIcon = createStyledIcon(MdLocationOn);
 export const BiChevronDownIcon = createStyledIcon(BiSolidChevronDown);
 export const BiSolidChevronUpIcon = createStyledIcon(BiSolidChevronUp);
-export const BiSendIcon = createStyledIcon(BiSend);
-export const BiUserPlusIcon = createStyledIcon(BiUserPlus);
-export const AiOutlineCloseCircleIcon = createStyledIcon(AiOutlineCloseCircle);
 export const AiFillExclamationCircleIcon = createStyledIcon(AiFillExclamationCircle);
+export const AiFillClockCircleIcon = createStyledIcon(AiFillClockCircle);
+export const MdLocationOnIcon = createStyledIcon(MdLocationOn);

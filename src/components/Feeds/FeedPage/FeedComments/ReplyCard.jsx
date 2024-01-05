@@ -9,7 +9,7 @@ import {
     PostTimestamp,
     RightSection,
 } from "../../FeedPosts/FeedPostsElements";
-import { RouteLink } from "../../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
+import { RouteLink } from "../../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 import { dateFormatter } from "../../../Common/dateFormatter";
 import PostActionsAndStats from "../../FeedPosts/PostActionsAndStats";
 import { cdnContentImagesUrl } from "../../../../features/apiUrl";

@@ -11,7 +11,7 @@ import {
     PostTimestamp,
     RightSection,
 } from "../FeedPosts/FeedPostsElements";
-import { RouteLink } from "../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
+import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 import PostActionsAndStats from "../FeedPosts/PostActionsAndStats";
 import { dateFormatter } from "../../Common/dateFormatter";
 import PopUpWindow from "../../Common/PopUpWindow";

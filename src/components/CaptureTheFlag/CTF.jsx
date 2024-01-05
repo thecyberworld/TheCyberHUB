@@ -10,7 +10,7 @@ import apiStatus from "../../features/apiStatus";
 // import CtfCard from "./CtfCard";
 import CtfChallenges from "./CTFCards/CtfChallenges";
 import { RankTrophy } from "../Header/Navbar/NavbarElements";
-import { RouteLink } from "../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
+import { RouteLink } from "../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 import SearchInputBox from "../Common/SearchInputBox";
 
