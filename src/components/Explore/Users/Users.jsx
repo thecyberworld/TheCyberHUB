@@ -12,7 +12,7 @@ import {
     UserPicture,
     UsersContainer,
 } from "./UsersElements";
-import { RouteLink } from "../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
+import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
 import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "../../../NotFound";
