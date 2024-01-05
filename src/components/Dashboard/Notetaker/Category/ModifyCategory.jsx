@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {
-    ModifyCategoryModalButtons,
-    ModifyCategoryModalCancel,
-    ModifyCategoryModalContainer,
-    ModifyCategoryModalInput,
-    ModifyCategoryModalSubmit,
-} from "./CategoryElements";
+import { MdOutlineCancel } from "react-icons/md";
+import { FaSave } from "react-icons/fa";
+
+import { ModifyCategoryModalButtons, ModifyCategoryModalContainer, ModifyCategoryModalInput } from "./CategoryElements";
 
 const ModifyCategory = ({ onSave, onCancel, editCategoryName = "" }) => {
     const [value, setValue] = useState("");
@@ -22,8 +19,8 @@ const ModifyCategory = ({ onSave, onCancel, editCategoryName = "" }) => {
         <ModifyCategoryModalContainer>
             <ModifyCategoryModalInput type="text" onChange={handleChange} value={value} placeholder={"Category Name"} />
             <ModifyCategoryModalButtons>
-                <ModifyCategoryModalSubmit onClick={() => onSave(value)}>Save</ModifyCategoryModalSubmit>
-                <ModifyCategoryModalCancel onClick={onCancel}>Cancel</ModifyCategoryModalCancel>
+                <FaSave className="icon icon-save" size="18px" title="Save" onClick={() => onSave(value)} />
+                <MdOutlineCancel className="icon icon-cancel" size="18px" title="Cancel" onClick={onCancel} />
             </ModifyCategoryModalButtons>
         </ModifyCategoryModalContainer>
     );

@@ -54,6 +54,8 @@ import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
 import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
+import AiChat from "./components/AIChat/AIChat";
+
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
@@ -162,6 +164,7 @@ const App = () => {
                         <Route exact path={"/CyberGames"} element={<CyberGames />} />
                         <Route exact path={"/OSINT"} element={<OSINTGame />} />
                         <Route exact path={"/course"} element={<LearningPath />} />
+                        <Route exact path={"/aichat"} element={<AiChat />} />
 
                         <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} />
 

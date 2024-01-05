@@ -26,15 +26,17 @@ export const CategoriesSidebarHeaderTitle = styled.h3`
     font-family: "Roboto Mono", monospace;
 `;
 export const CategoriesListContainer = styled.ul`
-    flex: ${(props) => (props.required ? "" : 1)};
+    flex: ${(props) => (props.required || props.addMode ? "" : 1)};
     margin-bottom: ${(props) => (props.required ? "5px" : "0")};
     display: flex;
     flex-direction: column;
     gap: 5px;
     border: 2px solid #111111;
     border-top: 0px;
+    border-bottom: ${(props) => (props.addMode ? "0px" : "2px solid #111111")};
     padding: 5px;
     overflow-y: auto;
+    z-index: ${(props) => (props.addMode ? "-100" : 0)};
 `;
 export const CategoriesListNoFound = styled.h4`
     color: #787878;
@@ -42,23 +44,30 @@ export const CategoriesListNoFound = styled.h4`
     margin-bottom: 0;
     font-family: "Roboto Mono", monospace;
 `;
+export const CategoryOptionsMenuContainer = styled.div`
+    display: none;
+    padding: 1px;
+    position: absolute;
+    right: 5px;
+`;
 export const CategoryItemElementContainer = styled.div`
     position: relative;
-`;
-export const CategoryItemElement = styled.li`
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:hover ${CategoryOptionsMenuContainer} {
+        display: block;
+    }
+`;
+
+export const CategoryItemElement = styled.li`
     position: relative;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
     width: 100%;
     padding: 10px;
     gap: 5px;
     background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
-
     border: 1px solid #111111;
     border-radius: 5px;
-
     color: #f5f5f5;
 
     &:hover {
@@ -78,6 +87,9 @@ export const CategoryItemShortTitle = styled.p`
 `;
 
 export const ModifyCategoryModalContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: 1px solid #111111;
     background-color: #111111;
     padding: 2px;
@@ -95,20 +107,9 @@ export const ModifyCategoryModalInput = styled.input`
 `;
 export const ModifyCategoryModalButtons = styled.div`
     display: flex;
-    justify-content: space-around;
-    background-color: #090909;
-`;
-export const ModifyCategoryModalSubmit = styled.button`
-    color: #00a8ff;
-    &:hover {
-        opacity: 0.7;
-    }
-`;
-export const ModifyCategoryModalCancel = styled.button`
-    color: #f14844;
-    &:hover {
-        opacity: 0.7;
-    }
+    padding: 7px;
+    justify-content: space-between;
+    width: 70px;
 `;
 export const CategoriesOptionsModeTitle = styled.div`
     font-size: 14px;
@@ -118,4 +119,39 @@ export const CategoriesOptionsModeButtons = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 70px;
+`;
+export const CategoryMenuButtons = styled.div`
+    padding: 20px 10px 5px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    width: 100px;
+    right: 0px;
+    z-index: 5;
+    border: #383838 1px solid;
+    background-color: #090909;
+    border-radius: 8px;
+    box-shadow: 2px 2px #383838;
+`;
+export const CategoryMenuButton = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    cursor: pointer;
+    margin-bottom: 15px;
+    &:hover {
+        opacity: 0.7;
+    }
+`;
+export const CategoryMenuButtonLabel = styled.label`
+    color: #fff;
+    cursor: pointer;
+    text-align: start;
+    margin-left: 10px;
+`;
+export const CategoryCreateContainer = styled.div`
+    padding: 7px;
 `;
