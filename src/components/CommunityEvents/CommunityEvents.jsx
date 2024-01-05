@@ -5,20 +5,15 @@ import {
     Header,
     SubHeader,
     Tabs,
-    AiFillClockCircleIcon,
-    MdLocationOnIcon,
-    BiSendIcon,
-    BiUserPlusIcon,
-    AiOutlineCloseCircleIcon,
     NoDataComponent,
-} from "./TimeLineEventsElement";
+    EventList,
+} from "./CommunityEventsElement";
 import eventsData from "./events.json";
-import NoDataFound from "../../../assets/images/no_data_found.svg";
-import { BookingItemList } from "./BookingListItem";
+import NoDataFound from "../../assets/images/no_data_found.svg";
+import { EventItemList } from "./EventItemList";
 
-const TimeLineEvent = () => {
+const CommunityEvents = ({ pageHeader, title, subtitle, modify, actionsIcon = [] }) => {
     const events = eventsData.events;
-    const [openBookingIndex, setOpenBookingIndex] = useState(null);
     const [isActiveTab, setActiveTab] = useState(0);
     const today = new Date();
     const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
@@ -27,29 +22,19 @@ const TimeLineEvent = () => {
 
     const tabNames = [
         { id: 0, status: "upcoming" },
-        { id: 1, status: "pending" },
-        { id: 2, status: "recurring" },
-        { id: 3, status: "past" },
-        { id: 4, status: "cancelled" },
+        { id: 1, status: "past" },
+        { id: 2, status: "cancelled" },
     ];
 
     const daysOfWeek = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
 
-    const actionsIcon = [
-        { icon: AiFillClockCircleIcon, text: "Reschedule booking" },
-        { icon: BiSendIcon, text: "Request reschedule" },
-        { icon: MdLocationOnIcon, text: "Edit location" },
-        { icon: BiUserPlusIcon, text: "Invite people" },
-        { icon: AiOutlineCloseCircleIcon, text: "Cancel event" },
-    ];
-
     const filteredEvents = events.filter((event) => event.status === tabNames[isActiveTab].status);
 
     return (
-        <ParentContainer>
+        <ParentContainer pageHeader={pageHeader}>
             <Container>
-                <Header>Bookings</Header>
-                <SubHeader>See your scheduled events from your calendar events links.</SubHeader>
+                <Header>{title}</Header>
+                <SubHeader>{subtitle}</SubHeader>
                 <Tabs>
                     {tabNames.map((tab, index) => (
                         <button
@@ -61,35 +46,34 @@ const TimeLineEvent = () => {
                         </button>
                     ))}
                 </Tabs>
-                <div className="booking-list">
+                <EventList>
                     {filteredEvents.length !== 0 ? (
                         filteredEvents.map((data, index) => {
                             const dateObject = new Date(data.date);
                             const dayName = daysOfWeek[dateObject.getDay()];
 
                             return (
-                                <BookingItemList
+                                <EventItemList
                                     data={data}
                                     todayString={todayString}
                                     dayName={dayName}
                                     actions={actionsIcon}
-                                    openBookingIndex={openBookingIndex}
-                                    setOpenBookingIndex={setOpenBookingIndex}
                                     key={index}
                                     index={index}
+                                    modify={modify}
                                 />
                             );
                         })
                     ) : (
                         <NoDataComponent>
                             <h2>There is no {tabNames[isActiveTab].status} event right now.</h2>
-                            <img src={NoDataFound} alt="Np data found" />
+                            <img src={NoDataFound} alt="No data found" />
                         </NoDataComponent>
                     )}
-                </div>
+                </EventList>
             </Container>
         </ParentContainer>
     );
 };
 
-export default TimeLineEvent;
+export default CommunityEvents;
