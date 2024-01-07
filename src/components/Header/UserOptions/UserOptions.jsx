@@ -57,7 +57,6 @@ const DropdownMenu = () => {
             </RouterLink>
         );
     };
-
     return (
         <UserOptionsDropdownContainer className={"dropdown"}>
             <div className={"menu"}>
@@ -72,7 +71,7 @@ const DropdownMenu = () => {
                     </>
                 ) : (
                     <>
-                        {true && ( // user.type === "admin"
+                        {(user.userType === "admin" || user.userType === "team") && (
                             <DropdownItem to={"/admin-dashboard"} leftIcon={<RiAdminFill />}>
                                 Admin Dashboard
                             </DropdownItem>
