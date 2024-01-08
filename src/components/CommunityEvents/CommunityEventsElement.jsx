@@ -69,6 +69,11 @@ export const NoDataComponent = styled.div`
         height: 300px;
     }
 `;
+export const EventNote = styled.p`
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    color: gray;
+`;
 
 export const EventList = styled.div``;
 
