@@ -17,14 +17,34 @@ import { CircleSpinner } from "react-spinners-kit";
 
 const Submission = ({ ctfId, flags, user, userDetail, userDetailIsLoading, setIsCompleted, setIsCertExisted }) => {
     const dispatch = useDispatch();
-    const [buttonColor, setButtonColor] = useState("#131313");
+    // const [buttonColor, setButtonColor] = useState("#131313");
+    const buttonColor = "#131313";
+    const [submitFlagId, setSubmitFlagId] = useState(null);
+    const [isLoading, setIsLoading] = useState({});
+    // const handleSubmit = (flagId) => {
+    //     setSubmitFlagId(flagId);
+    //     setTimeout(() => {
+    //         setSubmitFlagId(null);
+    //     }, 1000);
+    // };
 
-    const handleButtonClick = () => {
-        setButtonColor("#f77000");
+    const handleSubmit = (flagId) => {
+        setIsLoading((prev) => ({ ...prev, [flagId]: true }));
+        setSubmitFlagId(flagId);
+
+        // submit logic
         setTimeout(() => {
-            setButtonColor("#131313");
-        }, 1000); // change back to blue after 1 second
+            setSubmitFlagId(null);
+            setIsLoading((prev) => ({ ...prev, [flagId]: false }));
+        }, 1000);
     };
+
+    // const handleButtonClick = () => {
+    //     setButtonColor("#f77000");
+    //     setTimeout(() => {
+    //         setButtonColor("#131313");
+    //     }, 1000); // change back to blue after 1 second
+    // };
 
     const getSolvedFlags = () => {
         const solved = userDetail?.solved || [];
@@ -69,7 +89,8 @@ const Submission = ({ ctfId, flags, user, userDetail, userDetailIsLoading, setIs
     }, [userDetail, ctfId]);
 
     const handleFlagSubmit = (flagId) => {
-        handleButtonClick();
+        handleSubmit(flagId);
+        // handleButtonClick();
         const flag = flags?.find((flag) => flag?._id === flagId);
         if (
             flag &&
@@ -140,10 +161,10 @@ const Submission = ({ ctfId, flags, user, userDetail, userDetailIsLoading, setIs
                                 onClick={() => handleFlagSubmit(flag._id)}
                                 style={{ color: buttonColor === "#f77000" && "#f77000" }}
                             >
-                                {userDetailIsLoading ? (
+                                {userDetailIsLoading && isLoading[flag._id] ? (
                                     <CircleSpinner size={20} color="#ff6b08" />
-                                ) : buttonColor === "#f77000" ? (
-                                    "Wrong Answer"
+                                ) : flag._id === submitFlagId ? (
+                                    <span style={{ color: "#f77000" }}>Wrong Answer</span>
                                 ) : (
                                     "Submit"
                                 )}
