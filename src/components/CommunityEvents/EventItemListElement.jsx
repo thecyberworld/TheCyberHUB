@@ -125,9 +125,13 @@ export const EventItem = styled.div`
         p {
             margin-right: 0.75rem;
         }
-        .without-dropdown p {
-            margin-right: 0;
+        .without-dropdown {
+            width: 100px;
+            p {
+                margin-right: 0;
+            }
         }
+
         .action-dropdown {
             width: 260px;
             border: 1px solid #ccc;
@@ -162,6 +166,26 @@ export const EventItem = styled.div`
                     font-weight: 600;
                     color: #000000;
                 }
+            }
+        }
+        .enable-button {
+            background-color: #10f010;
+            p {
+                color: white;
+            }
+        }
+        .disable-button {
+            background-color: green;
+
+            p {
+                color: white;
+            }
+        }
+        .uniqe-state-button {
+            background-color: #002300;
+
+            p {
+                color: white;
             }
         }
     }

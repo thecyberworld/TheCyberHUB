@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { EventItem } from "./EventItemListElement";
 import {
@@ -8,9 +8,43 @@ import {
     BiSolidChevronUpIcon,
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
+import { toast } from "react-toastify";
 
-export const EventItemList = ({ data, todayString, dayName, actions, index, modify }) => {
+export const EventItemList = ({
+    data,
+    todayString,
+    dayName,
+    actions,
+    index,
+    modify,
+    eventsJoinedId,
+    user,
+    onActionChange,
+}) => {
     const [openEventIndex, setOpenEventIndex] = useState(null);
+    const [actionDisplay, setActionDisplay] = useState("");
+    const [leftPlacesToJoin, setLeftPlacesToJoin] = useState(100);
+
+    useEffect(() => {
+        if (!user) return setActionDisplay("Join*");
+        if (eventsJoinedId.includes(data._id)) {
+            setActionDisplay("Joined");
+        } else {
+            setActionDisplay("Join");
+        }
+        setLeftPlacesToJoin(data.maxParticipantNumber - data.participants.length);
+    }, [eventsJoinedId, data, user]);
+
+    const handleDisplayActionClick = () => {
+        if (!user) toast.info("To Join An Event You First Need To Login/Register To The Website");
+        if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(data._id)) return;
+        if (actionDisplay === "Join") {
+            data.participants.push(user._id);
+        } else {
+            data.participants = data.participants.filter((userId) => userId !== user._id);
+        }
+        onActionChange(actionDisplay, data._id);
+    };
 
     return (
         <EventItem isRequestedEvent={data.reschedule} key={index}>
@@ -76,8 +110,17 @@ export const EventItemList = ({ data, todayString, dayName, actions, index, modi
                 data.status === "upcoming" && (
                     <div className="container-action">
                         <div className="action">
-                            <div className="action-edit without-dropdown">
-                                <p>Join</p>
+                            <div
+                                className={`action-edit without-dropdown ${
+                                    leftPlacesToJoin === 0
+                                        ? " uniqe-state-button"
+                                        : actionDisplay === "Join"
+                                        ? " enable-button"
+                                        : " disable-button"
+                                }`}
+                                onClick={handleDisplayActionClick}
+                            >
+                                <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
                             </div>
                         </div>
                         <div className="details">

@@ -7,12 +7,22 @@ import {
     Tabs,
     NoDataComponent,
     EventList,
+    EventNote,
 } from "./CommunityEventsElement";
 import eventsData from "./events.json";
 import NoDataFound from "../../assets/images/no_data_found.svg";
 import { EventItemList } from "./EventItemList";
 
-const CommunityEvents = ({ pageHeader, title, subtitle, modify, actionsIcon = [] }) => {
+const CommunityEvents = ({
+    pageHeader,
+    title,
+    subtitle,
+    modify,
+    actionsIcon = [],
+    eventsJoinedId = [],
+    user,
+    onActionChange = () => {},
+}) => {
     const events = eventsData.events;
     const [isActiveTab, setActiveTab] = useState(0);
     const today = new Date();
@@ -29,7 +39,6 @@ const CommunityEvents = ({ pageHeader, title, subtitle, modify, actionsIcon = []
     const daysOfWeek = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
 
     const filteredEvents = events.filter((event) => event.status === tabNames[isActiveTab].status);
-
     return (
         <ParentContainer pageHeader={pageHeader}>
             <Container>
@@ -61,6 +70,9 @@ const CommunityEvents = ({ pageHeader, title, subtitle, modify, actionsIcon = []
                                     key={index}
                                     index={index}
                                     modify={modify}
+                                    eventsJoinedId={eventsJoinedId}
+                                    user={user}
+                                    onActionChange={onActionChange}
                                 />
                             );
                         })
@@ -71,6 +83,9 @@ const CommunityEvents = ({ pageHeader, title, subtitle, modify, actionsIcon = []
                         </NoDataComponent>
                     )}
                 </EventList>
+                {!modify && !user && (
+                    <EventNote>* To Join An Event You First Need To Login/Register To The Website</EventNote>
+                )}
             </Container>
         </ParentContainer>
     );
