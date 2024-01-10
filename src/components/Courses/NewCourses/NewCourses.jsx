@@ -1,7 +1,6 @@
 import CoursesData from "./CoursesData";
 import React, { useState } from "react";
 import {
-    Cards,
     Card,
     CardBody,
     //   CardFooter,
@@ -36,6 +35,7 @@ import {
 // } from "../LearningPath/LearningPathElements";
 import { RouterLink } from "../../Tools/ToolsElements";
 import { encodeURL } from "../../Blogs/util";
+import { Cards } from "../../Forum/ForumPosts/ForumPostsElements";
 // import { Cards } from "../../Forum/ForumPosts/ForumPostsElements";
 
 const NewCourses = () => {
