@@ -10,6 +10,7 @@ import { getApiUrl } from "../../../features/apiUrl";
 
 const FormData = () => {
     const { user } = useSelector((state) => state.auth);
+
     if (!user) {
         return <NotFound />;
     }
