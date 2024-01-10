@@ -25,6 +25,8 @@ import RenderProgressIndicator from "../../../../utils/components/RenderProgress
 // import QuizStartSection from "../QuizStartSection";
 import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
 import { useNavigate } from "react-router-dom";
+import HeadingBanner from "../../../Common/HeadingBanner/HeadingBanner";
+import { CategoriesButtonData } from "./CategoriesButtonData";
 
 export default function QuizPage() {
     const [questions, setQuestions] = useState(CBQQuestions);
@@ -76,8 +78,11 @@ export default function QuizPage() {
         setShowScore(false);
     };
 
+    const category = CategoriesButtonData.find((category) => category.type === type);
+
     return (
         <Wrapper>
+            <HeadingBanner heading={category.value} />
             <QuizSection>
                 {showScore ? (
                     <ScoreSection>
