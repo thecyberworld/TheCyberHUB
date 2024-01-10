@@ -40,6 +40,8 @@ import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecP
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
 import CreateForumPost from "./components/Forum/CreateForumPost/CreateForumPost";
 import FeedsRoute from "./components/Feeds/FeedsRoute";
+import Course from "./components/Courses/NewCourses/Course";
+import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
 import ToolsRoutes from "./components/Tools/ToolsRoute";
 import CtfRoute from "./components/CaptureTheFlag/CTFRoute";
 import BlogsRoute from "./components/Blogs/BlogsRoute";
@@ -128,6 +130,7 @@ const App = () => {
 
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
+                        <Route exact path={"courses/:title"} element={<Course />} />
 
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
