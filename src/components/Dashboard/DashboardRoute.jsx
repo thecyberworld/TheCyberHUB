@@ -5,7 +5,7 @@ import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import DashboardSidebar from "./DashbaordSidebar/DashboardSidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
-import NoteApp from "./Notetaker/NoteApp";
+import NotesApp from "./NotesApp/NotesApp";
 import Tools from "../Tools/Tools";
 import CommunityChat from "../Chat/CommunityChat";
 import { useDispatch, useSelector } from "react-redux";
@@ -49,7 +49,7 @@ const DashboardRoute = () => {
                     <Route index element={<Dashboard />} />
                     <Route path={"goals"} element={<GoalSetter />} />
                     <Route path={"bookmarks"} element={<Bookmarks />} />
-                    <Route path={"notes"} element={<NoteApp />} />
+                    <Route path={"notes"} element={<NotesApp />} />
                     <Route path={"tools"} element={<Tools />} />
                     <Route path={"chat/*"} element={<CommunityChat userDetails={userDetails} />} />
                     <Route path={"blogs"}>

@@ -32,6 +32,7 @@ const FreeCourse = () => {
     const [selectedHeading, setSelectedHeading] = useState(null);
     const [selectedContent, setSelectedContent] = useState(null);
     const [showNavigation, setShowNavigation] = useState(true);
+    // const [filterContent, setFilterContent] = useState(null)
 
     useEffect(() => {
         if (!user) {
@@ -39,6 +40,14 @@ const FreeCourse = () => {
         }
         setSelectedHeading(selectFirstHeading);
     }, [user, navigate]);
+    // const selectFilterDay = (filter) => {
+    //     if(filterContent === filter){
+    //         setFilterContent(null)
+    //     }
+    //     else{
+    //         setFilterContent(filter)
+    //     }
+    // }
 
     const handleHeadingClick = (heading) => {
         setSelectedHeading(heading);
