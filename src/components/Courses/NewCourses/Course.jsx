@@ -1,8 +1,7 @@
 import CoursesData from "./CoursesData";
 import React from "react";
 import {
-    Button,
-    //   Card,
+    Button, //   Card,
     //   CardBody,
     //   CardFooter,
     //   ChannelImg,
@@ -17,21 +16,15 @@ import {
 import {
     //   BackArrow,
     Checkbox,
-    CheckboxContainer,
-    //   Content,
-    ContentHeading,
-    //   ContentList,
+    CheckboxContainer, //   Content,
+    ContentHeading, //   ContentList,
     //   ContentNavigation,
-    Days,
-    //   ForwardArrow,
+    Days, //   ForwardArrow,
     //   LearningPathContainer,
     //   LearningPathWrapper,
-    LeftContainer,
-    //   NavigationButtonSection,
-    RightContainer,
-    // SectionHeading,
-    TopicBox,
-    //   VLine,
+    // LeftContainer, //   NavigationButtonSection,
+    RightContainer, // SectionHeading,
+    TopicBox, //   VLine,
     Weeks,
 } from "../LearningPath/LearningPathElements";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
@@ -63,36 +56,71 @@ const Course = () => {
     const course = Object.values(CoursesData)?.find(
         (course) => `${encodeURL(course?.courseName)}`.toLowerCase() === title.toLowerCase(),
     );
+
     return (
         <Wrapper>
-            <div>
-                <Button href="/Courses">Go Back</Button>
-                {course.sections.map((section, index) => (
-                    <LeftContainer key={index}>
-                        <Weeks key={index}>
-                            <h3>{section.sectionName}</h3>
-                        </Weeks>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                    width: "100%",
+                    height: "100%",
+                    padding: "20px",
+                    gap: "20px",
+                }}
+            >
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        width: "400px",
+                        height: "100%",
+                        // padding: "20px",
+                        gap: "20px",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            width: "100%",
+                            height: "100%",
+                            // padding: "20px 0",
+                        }}
+                    >
+                        <Button to="/Courses">Go Back</Button>
+                    </div>
 
-                        <Days key={index}>
-                            <ul>
-                                {section.videos.map((video, videoIndex) => (
-                                    <>
-                                        <TopicBox onClick={() => changeImgSrc(video.imageUrl)} key={index}>
-                                            <ContentHeading>{video.title}</ContentHeading>
-                                            <CheckboxContainer>
-                                                <Checkbox type="checkbox" />
-                                            </CheckboxContainer>
-                                        </TopicBox>
-                                    </>
-                                ))}
-                            </ul>
-                        </Days>
-                    </LeftContainer>
-                ))}
+                    {course.sections.map((section, index) => (
+                        <div key={index}>
+                            <Weeks key={index}>
+                                <h3>{section.sectionName}</h3>
+                            </Weeks>
+
+                            <Days key={index}>
+                                <ul>
+                                    {section.videos.map((video, videoIndex) => (
+                                        <>
+                                            <TopicBox onClick={() => changeImgSrc(video.imageUrl)} key={index}>
+                                                <ContentHeading>{video.title}</ContentHeading>
+                                                <CheckboxContainer>
+                                                    <Checkbox type="checkbox" />
+                                                </CheckboxContainer>
+                                            </TopicBox>
+                                        </>
+                                    ))}
+                                </ul>
+                            </Days>
+                        </div>
+                    ))}
+                </div>
+                <RightContainer>
+                    <img src="" id="image" alt={""} />
+                </RightContainer>
             </div>
-            <RightContainer>
-                <img src="" id="image" />
-            </RightContainer>
         </Wrapper>
     );
 };
