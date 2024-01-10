@@ -123,10 +123,12 @@ const ContactForm = () => {
             setError("Please add your email");
         } else if (reason.length === 0) {
             setError("Please select a reason");
-        } else if (!resume.startsWith("http")) {
-            setError("please submit the correct link to your resume");
-        } else if ((reason === "internship" || reason === "volunteer") && resume.length === 0) {
-            setError("Please include the resume link");
+        } else if (reason === "internship" || reason === "volunteer") {
+            if (reasonType.length === 0) {
+                setError("Please include the resume link");
+            } else if (!resume.startsWith("http")) {
+                setError("please submit the correct link to your resume");
+            }
         } else {
             setIsLoading(true);
             axios
