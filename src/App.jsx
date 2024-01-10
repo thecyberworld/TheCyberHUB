@@ -170,6 +170,7 @@ const App = () => {
 
                         <Route path={"/internship"} element={<Jobs />} />
                         <Route path={"/quiz"} element={<Quiz />} />
+                        <Route path={"/quiz/:type"} element={<Quiz />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route exact path={"/contactFormResponses"} element={<FormData />} />
                         <Route
