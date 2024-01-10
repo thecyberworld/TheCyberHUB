@@ -11,11 +11,20 @@ import { getApiUrl } from "../../features/apiUrl";
 import { toast } from "react-toastify";
 import { SlOptionsVertical } from "react-icons/sl";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+// import LoginBox from "../Common/LoginBox";
+// import {useNavigate} from "react-router-dom";
+import AuthPopup from "../../pages/AuthPopup/AuthPopup";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
 const AiChat = () => {
+    // const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
+
+    // if (!user) {
+    //     navigate("/login");
+    // }
+
     const [chats, setChats] = useState([]);
 
     const [userInput, setUserInput] = useState("");
@@ -24,10 +33,17 @@ const AiChat = () => {
     const [selectedChatId, setSelectedChatId] = useState(null);
 
     const [toggle, setToggle] = useState(false);
+    const [showAuthPopup, setShowAuthPopup] = useState(false);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
         setIsLoading(true);
+
+        if (!user) {
+            setShowAuthPopup(true);
+            setIsLoading(false);
+            return;
+        }
 
         try {
             const response = await axios.post(
@@ -70,6 +86,12 @@ const AiChat = () => {
 
     const handleNewChat = async () => {
         setIsLoading(true);
+
+        if (!user) {
+            setShowAuthPopup(true);
+            setIsLoading(false);
+            return;
+        }
 
         if (chats[chats.length - 1]?.title === "New Chat") {
             setSelectedChatId(chats[chats.length - 1]?._id);
@@ -124,6 +146,7 @@ const AiChat = () => {
     };
 
     useEffect(() => {
+        if (!user) return;
         getMessages();
     }, []);
 
@@ -135,8 +158,16 @@ const AiChat = () => {
         }
     }, []);
 
+    const handleCloseAuthPopup = () => {
+        setShowAuthPopup(false);
+    };
+
+    console.log("showAuthPopup", showAuthPopup);
+    console.log(selectedChatId);
+
     return (
         <Wrapper>
+            {showAuthPopup && <AuthPopup onClose={() => handleCloseAuthPopup()} />}
             <AIChatContainer>
                 {!toggle && (
                     <RecentChats
@@ -148,7 +179,7 @@ const AiChat = () => {
                     />
                 )}
 
-                {selectedChatId &&
+                {selectedChatId ? (
                     chats.map(
                         (chat) =>
                             chat._id === selectedChatId && (
@@ -181,7 +212,31 @@ const AiChat = () => {
                                     </ChatInput>
                                 </ChatBox>
                             ),
-                    )}
+                    )
+                ) : (
+                    <ChatBox key={selectedChatId}>
+                        <ChatHeader>
+                            <ToggleSection onClick={() => setToggle(!toggle)}>
+                                {toggle ? <FaAngleRight /> : <FaAngleLeft />}
+                            </ToggleSection>
+                            <ChatTitle>{"New Chat"}</ChatTitle>
+                            <SlOptionsVertical />
+                        </ChatHeader>
+
+                        <ChatInput onSubmit={handleSendMessage}>
+                            <input type="text" value={userInput} onChange={(e) => setUserInput(e.target.value)} />
+                            {isLoading ? (
+                                <button>
+                                    <CircleSpinner size={20} color={"#131313"} />
+                                </button>
+                            ) : (
+                                <button type="submit">
+                                    <BiSend size={25} />
+                                </button>
+                            )}
+                        </ChatInput>
+                    </ChatBox>
+                )}
             </AIChatContainer>
         </Wrapper>
     );

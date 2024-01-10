@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AIChatContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    gap: 5px;
+    gap: 10px;
 
     flex-direction: row;
 

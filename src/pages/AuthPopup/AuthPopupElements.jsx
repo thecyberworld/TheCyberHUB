@@ -30,6 +30,13 @@ export const PopupContainer = styled.div`
         height: 100%;
         background-color: rgba(0, 0, 0, 0.59);
     }
+
+    @media screen and (max-width: 768px) {
+        .popup-inner {
+            margin-top: 0;
+            width: 90%;
+        }
+    }
 `;
 
 export const CloseButton = styled(ImCross)`
