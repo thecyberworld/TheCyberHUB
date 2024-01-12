@@ -87,7 +87,7 @@ export const EventItemList = ({
                         onClick={() => setOpenEventIndex(openEventIndex === index ? null : index)}
                         className="action-edit"
                     >
-                        <p>Edit</p>
+                        <p>Options</p>
                         {openEventIndex === index ? <BiSolidChevronUpIcon /> : <BiChevronDownIcon />}
                     </div>
 
