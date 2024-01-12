@@ -8,10 +8,13 @@ import {
     NoDataComponent,
     EventList,
     EventNote,
+    CommunityEventHeaderContainer,
 } from "./CommunityEventsElement";
 import eventsData from "./events.json";
 import NoDataFound from "../../assets/images/no_data_found.svg";
 import { EventItemList } from "./EventItemList";
+import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
+import CreateCommunityEvent from "./CreateCommunityEvent";
 
 const CommunityEvents = ({
     pageHeader,
@@ -25,6 +28,7 @@ const CommunityEvents = ({
 }) => {
     const events = eventsData.events;
     const [isActiveTab, setActiveTab] = useState(0);
+    const [openCreatingNewEvent, setOpenCreatingNewEvent] = useState(false);
     const today = new Date();
     const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
         today.getDate(),
@@ -44,18 +48,29 @@ const CommunityEvents = ({
             <Container>
                 <Header>{title}</Header>
                 <SubHeader>{subtitle}</SubHeader>
-                <Tabs>
-                    {tabNames.map((tab, index) => (
-                        <button
-                            onClick={() => setActiveTab(index)}
-                            key={tab.id}
-                            className={isActiveTab === index ? "active" : ""}
-                        >
-                            {tab.status}
-                        </button>
-                    ))}
-                </Tabs>
+                <CommunityEventHeaderContainer>
+                    <Tabs>
+                        {tabNames.map((tab, index) => (
+                            <button
+                                onClick={() => setActiveTab(index)}
+                                key={tab.id}
+                                className={isActiveTab === index ? "active" : ""}
+                            >
+                                {tab.status}
+                            </button>
+                        ))}
+                    </Tabs>
+                    {modify && (
+                        <RouterNavCreateButton noCenter onClick={() => setOpenCreatingNewEvent(true)}>
+                            Create Event
+                        </RouterNavCreateButton>
+                    )}
+                </CommunityEventHeaderContainer>
+
                 <EventList>
+                    {modify && openCreatingNewEvent && (
+                        <CreateCommunityEvent setOpenCreatingNewEvent={setOpenCreatingNewEvent} />
+                    )}
                     {filteredEvents.length !== 0 ? (
                         filteredEvents.map((data, index) => {
                             const dateObject = new Date(data.date);

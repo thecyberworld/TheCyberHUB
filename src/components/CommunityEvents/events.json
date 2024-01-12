@@ -3,12 +3,12 @@
         {
             "_id": "1",
             "status": "upcoming",
-            "date": "2023-10-15",
+            "date": "2024-01-12",
             "startTime": "09:00",
             "endTime": "10:00",
             "location": "Online",
             "eventName": "30 min Team Meeting by John Cena",
-            "reschedule": false,
+            "reschedule": true,
             "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
             "eventLink": "https://discord.thecyberhub.org",
             "participants": [
@@ -31,7 +31,7 @@
             "endTime": "15:30",
             "location": "Conference Room A",
             "eventName": "Project Kickoff with The Rock",
-            "reschedule": true,
+            "reschedule": false,
             "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
             "eventLink": "https://discord.thecyberhub.org",
             "participants": [
@@ -74,7 +74,7 @@
             "endTime": "10:00",
             "location": "Online",
             "eventName": "Team Meeting",
-            "reschedule": true,
+            "reschedule": false,
             "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
             "eventLink": "https://discord.thecyberhub.org",
             "participants": [
@@ -120,7 +120,7 @@
             "endTime": "12:00",
             "location": "Online",
             "eventName": "Marketing Strategy Meeting",
-            "reschedule": true,
+            "reschedule": false,
             "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
             "eventLink": "https://discord.thecyberhub.org",
             "participants": [
@@ -174,7 +174,7 @@
             "endTime": "11:00",
             "location": "Online",
             "eventName": "Product Launch Discussion",
-            "reschedule": true,
+            "reschedule": false,
             "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
             "eventLink": "https://discord.thecyberhub.org",
             "participants": [

@@ -2,19 +2,15 @@ import React from "react";
 
 import CommunityEvents from "../../CommunityEvents";
 import {
-    AiFillClockCircleIcon,
     AiOutlineCloseCircleIcon,
     BiUserPlusIcon,
     CommunityEventsContainer,
-    GoProjectSymlinkIcon,
-    MdLocationOnIcon,
+    TbEditCircleIcon,
 } from "./ManageCommunityEventsElements";
 
 const ManageCommunityEvents = () => {
     const actionsIcon = [
-        { icon: AiFillClockCircleIcon, text: "Reschedule Event" },
-        { icon: MdLocationOnIcon, text: "Edit location" },
-        { icon: GoProjectSymlinkIcon, text: "Change Event Link" },
+        { icon: TbEditCircleIcon, text: "Edit Details" },
         { icon: BiUserPlusIcon, text: "Invite people" },
         { icon: AiOutlineCloseCircleIcon, text: "Cancel event" },
     ];
@@ -26,7 +22,6 @@ const ManageCommunityEvents = () => {
                 modify
                 actionsIcon={actionsIcon}
             />
-            ;
         </CommunityEventsContainer>
     );
 };
