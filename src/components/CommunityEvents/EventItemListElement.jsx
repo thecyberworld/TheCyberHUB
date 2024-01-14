@@ -33,6 +33,10 @@ export const EventItem = styled.div`
             font-size: 2rem;
             font-weight: 800;
         }
+        .date-year {
+            font-size: 1rem;
+            font-weight: 500;
+        }
     }
 
     .time-line {

@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import CommunityEvents from "../../CommunityEvents/CommunityEvents";
 import { userAddEventId, userRemoveEventId } from "../../../features/userDetail/userDetailSlice";
+import eventsData from "../../CommunityEvents/events.json";
 
 const DisplayCommunityEvents = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { userEventsId } = useSelector((state) => state.userDetail);
+    const events = eventsData.events;
 
     const handleActionChange = (actionDisplay, eventId) => {
         if (actionDisplay === "Join") {
@@ -24,6 +26,7 @@ const DisplayCommunityEvents = () => {
             eventsJoinedId={userEventsId}
             user={user}
             onActionChange={handleActionChange}
+            events={events}
         />
     );
 };
