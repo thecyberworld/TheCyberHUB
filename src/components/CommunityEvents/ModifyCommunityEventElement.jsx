@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CreateEventItem = styled.div`
+export const ModifyEventItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +47,7 @@ export const TimePickerContainer = styled.div`
 export const TimeInputLabel = styled.p`
     margin: 0 10px;
 `;
-export const CreateEventSaveActionButton = styled.div`
+export const ModifyEventSaveActionButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,7 +61,7 @@ export const CreateEventSaveActionButton = styled.div`
         cursor: pointer;
     }
 `;
-export const CreateEventCancelActionButton = styled.div`
+export const ModifyEventCancelActionButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +75,7 @@ export const CreateEventCancelActionButton = styled.div`
         cursor: pointer;
     }
 `;
-export const CreateEventActionsContainer = styled.div`
+export const ModifyEventActionsContainer = styled.div`
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -85,8 +85,8 @@ export const CreateEventActionsContainer = styled.div`
     height: 150px;
 `;
 
-export const CreateEventSaveActionText = styled.p``;
-export const CreateEventCancelActionText = styled.p``;
+export const ModifyEventSaveActionText = styled.p``;
+export const ModifyEventCancelActionText = styled.p``;
 export const LocationPicking = styled.div`
     display: flex;
     justify-content: space-between;
@@ -94,7 +94,7 @@ export const LocationPicking = styled.div`
 `;
 export const EventLink = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 `;
 export const EventMaxParticipants = styled.div`
@@ -102,4 +102,10 @@ export const EventMaxParticipants = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 40%;
+`;
+export const EventLinkEditor = styled.div`
+    width: 100%;
+    input {
+        text-transform: lowercase;
+    }
 `;

@@ -10,23 +10,22 @@ import {
     EventNote,
     CommunityEventHeaderContainer,
 } from "./CommunityEventsElement";
-import eventsData from "./events.json";
 import NoDataFound from "../../assets/images/no_data_found.svg";
 import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
-import CreateCommunityEvent from "./CreateCommunityEvent";
+import ModifyCommunityEvent from "./ModifyCommunityEvent";
 
 const CommunityEvents = ({
+    events,
     pageHeader,
     title,
     subtitle,
     modify,
-    actionsIcon = [],
+    actions = [],
     eventsJoinedId = [],
     user,
     onActionChange = () => {},
 }) => {
-    const events = eventsData.events;
     const [isActiveTab, setActiveTab] = useState(0);
     const [openCreatingNewEvent, setOpenCreatingNewEvent] = useState(false);
     const today = new Date();
@@ -40,9 +39,12 @@ const CommunityEvents = ({
         { id: 2, status: "cancelled" },
     ];
 
-    const daysOfWeek = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
 
     const filteredEvents = events.filter((event) => event.status === tabNames[isActiveTab].status);
+    const handleAddEvent = (newEvent) => {
+        events.push(newEvent);
+    };
     return (
         <ParentContainer pageHeader={pageHeader}>
             <Container>
@@ -69,7 +71,10 @@ const CommunityEvents = ({
 
                 <EventList>
                     {modify && openCreatingNewEvent && (
-                        <CreateCommunityEvent setOpenCreatingNewEvent={setOpenCreatingNewEvent} />
+                        <ModifyCommunityEvent
+                            setOpenCreatingNewEvent={setOpenCreatingNewEvent}
+                            onAdd={handleAddEvent}
+                        />
                     )}
                     {filteredEvents.length !== 0 ? (
                         filteredEvents.map((data, index) => {
@@ -81,7 +86,7 @@ const CommunityEvents = ({
                                     data={data}
                                     todayString={todayString}
                                     dayName={dayName}
-                                    actions={actionsIcon}
+                                    actions={actions}
                                     key={index}
                                     index={index}
                                     modify={modify}
