@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { AiFillClockCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { BiUserPlus } from "react-icons/bi";
-import { TbEditCircle } from "react-icons/tb";
+import { TbEditCircle, TbRestore } from "react-icons/tb";
 
 export const CommunityEventsContainer = styled.div`
     width: 100%;
@@ -17,5 +17,6 @@ const createStyledIcon = (IconComponent) => {
 
 export const AiFillClockCircleIcon = createStyledIcon(AiFillClockCircle);
 export const TbEditCircleIcon = createStyledIcon(TbEditCircle);
+export const TbRestoreIcon = createStyledIcon(TbRestore);
 export const BiUserPlusIcon = createStyledIcon(BiUserPlus);
 export const AiOutlineCloseCircleIcon = createStyledIcon(AiOutlineCloseCircle);
