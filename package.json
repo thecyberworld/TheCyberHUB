@@ -7,7 +7,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "vite build",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" vite build",
     "preview": "vite preview",
     "prepare": "husky install"
   },
