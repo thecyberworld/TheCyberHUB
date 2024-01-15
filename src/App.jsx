@@ -57,6 +57,7 @@ import SettingsRoute from "./components/Dashboard/Settings";
 import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
+import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -147,6 +148,7 @@ const App = () => {
 
                         <Route>
                             <Route exact path={"/user/:username"} element={<UserProfile />} />
+                            <Route exact path={"/connections"} element={<Connections />} />
                             <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 
