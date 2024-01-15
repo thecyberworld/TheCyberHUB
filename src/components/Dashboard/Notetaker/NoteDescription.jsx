@@ -135,7 +135,9 @@ const NoteDescription = ({
                         <InputEditor
                             content={needToEdit && showNote.title ? showNote.title : ""}
                             onCopyChanges={handleCopyNoteData}
+                            placeholder={"Note Heading"}
                             label="title"
+                            inputType="text"
                         />
                     ) : (
                         <DescriptionDisplayTitle>

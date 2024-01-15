@@ -40,6 +40,8 @@ import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecP
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
 import CreateForumPost from "./components/Forum/CreateForumPost/CreateForumPost";
 import FeedsRoute from "./components/Feeds/FeedsRoute";
+import Course from "./components/Courses/NewCourses/Course";
+import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
 import ToolsRoutes from "./components/Tools/ToolsRoute";
 import CtfRoute from "./components/CaptureTheFlag/CTFRoute";
 import BlogsRoute from "./components/Blogs/BlogsRoute";
@@ -55,6 +57,7 @@ import SettingsRoute from "./components/Dashboard/Settings";
 import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
+import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -128,6 +131,7 @@ const App = () => {
 
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
+                        <Route exact path={"courses/:title"} element={<Course />} />
 
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
@@ -144,6 +148,7 @@ const App = () => {
 
                         <Route>
                             <Route exact path={"/user/:username"} element={<UserProfile />} />
+                            <Route exact path={"/connections"} element={<Connections />} />
                             <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 
@@ -170,6 +175,7 @@ const App = () => {
 
                         <Route path={"/internship"} element={<Jobs />} />
                         <Route path={"/quiz"} element={<Quiz />} />
+                        <Route path={"/quiz/:type"} element={<QuizPage />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route exact path={"/contactFormResponses"} element={<FormData />} />
                         <Route

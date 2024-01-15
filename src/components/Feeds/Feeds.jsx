@@ -57,7 +57,7 @@ const Feeds = () => {
             <FeedsContainer>
                 <MiddleSection>
                     <AddFeed showPostTags={true} userDetails={userDetails} />
-                    <FeedPosts feeds={combinedData} isFeedLoading={isFeedLoading} />
+                    <FeedPosts searchTerm={searchTerm} feeds={combinedData} isFeedLoading={isFeedLoading} />
                 </MiddleSection>
                 <LeftContainer style={{ padding: "25px 0" }}>
                     <SearchContainer>

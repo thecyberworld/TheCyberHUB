@@ -45,8 +45,9 @@ const FeedPosts = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displa
             !searchTerm || feed?.content?.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
         const tagsIncludeSearchTerm =
             !searchTerm || feed?.tags?.join(" ").toLowerCase().includes(searchTerm?.toLowerCase()) || false;
-
-        return !searchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm;
+        const usernameIncludeSearchTerm =
+            !searchTerm || feed?.username.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+        return !searchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm;
     });
 
     const feedLikesData = ({ feedId }) => {

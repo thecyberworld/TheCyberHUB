@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link as RouterLink } from "react-router-dom";
 
 export const Link = styled.a`
     text-decoration: none;
@@ -127,4 +128,21 @@ export const ChannelImg = styled.img`
 
 export const UserInfo = styled.div`
     color: #666;
+`;
+
+export const Button = styled(RouterLink)`
+    background: #1a1c1d;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border: 1px solid #1a1c1d;
+    &:hover {
+        background: #fff;
+        color: #1a1c1d;
+        border: 1px solid #fff;
+    }
 `;
