@@ -17,6 +17,7 @@ import ctfReducer from "../features/ctf/ctfSlice";
 import bookmarkReduces from "../features/bookmarks/bookmarkSlice";
 import resetPasswordReducer from "../features/resetPassword/resetPasswordSlice";
 import followReducer from "../features/follow/followSlice";
+import connectionReducer from "../features/connections/connectionSlice";
 
 // import { cyberNewsApi } from "../services/cyberNewsApi";
 
@@ -44,6 +45,8 @@ export default configureStore({
         ctf: ctfReducer,
         resetPassword: resetPasswordReducer,
         followData: followReducer,
+        connectionData: connectionReducer,
+
         // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },
 });
