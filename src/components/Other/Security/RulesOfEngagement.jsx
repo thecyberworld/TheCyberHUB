@@ -16,20 +16,18 @@ const RulesOfEngagement = () => {
             title: `Scope of Testing`,
             description: (
                 <>
-                    Security testing should only be conducted on <br />
-                    <DotSymbol />
+                    Security testing should only be conducted on <br /> <DotSymbol />{" "}
                     <a
-                        style={{ color: "#00b2ff" }}
+                        style={{ color: "#ed652f" }}
                         href="https://security.thecyberhub.org"
                         target="_blank"
                         rel="noreferrer"
                     >
                         security.thecyberhub.org
                     </a>
-                    <br />
-                    <DotSymbol />
+                    <br /> <DotSymbol />{" "}
                     <a
-                        style={{ color: "#00b2ff" }}
+                        style={{ color: "#ed652f" }}
                         href="https://security.api.thecyberhub.org"
                         target="_blank"
                         rel="noreferrer"
@@ -48,37 +46,29 @@ const RulesOfEngagement = () => {
             title: `Out of Scope Domains`,
             description: (
                 <>
-                    The following domains are out of scope for security testing: <br />
-                    <DotSymbol />
-                    <a style={{ color: "#00b2ff" }} href="https://thecyberhub.org" target="_blank" rel="noreferrer">
+                    The following domains are out of scope for security testing and should not be tested under any
+                    circumstances:
+                    <br /> <DotSymbol />{" "}
+                    <a style={{ color: "#ed652f" }} href="https://thecyberhub.org" target="_blank" rel="noreferrer">
                         thecyberhub.org
                     </a>
-                    <br />
-                    <DotSymbol />
-                    <a style={{ color: "#00b2ff" }} href="https://api.thecyberhub.org" target="_blank" rel="noreferrer">
+                    <br /> <DotSymbol />{" "}
+                    <a style={{ color: "#ed652f" }} href="https://api.thecyberhub.org" target="_blank" rel="noreferrer">
                         api.thecyberhub.org
                     </a>
-                    <br />
-                    <DotSymbol />
-                    <a style={{ color: "#00b2ff" }} href="https://dev.thecyberhub.org" target="_blank" rel="noreferrer">
+                    <br /> <DotSymbol />{" "}
+                    <a style={{ color: "#ed652f" }} href="https://dev.thecyberhub.org" target="_blank" rel="noreferrer">
                         dev.thecyberhub.org
                     </a>
-                    <br />
-                    <DotSymbol />
+                    <br /> <DotSymbol />{" "}
                     <a
-                        style={{ color: "#00b2ff" }}
+                        style={{ color: "#ed652f" }}
                         href="https://dev.api.thecyberhub.org"
                         target="_blank"
                         rel="noreferrer"
                     >
                         dev.api.thecyberhub.org
                     </a>
-                    <br />
-                    <DotSymbol />
-                    <a style={{ color: "#00b2ff" }} href="https://thecyber-sec.com" target="_blank" rel="noreferrer">
-                        thecyber-sec.com
-                    </a>
-                    <br />
                 </>
             ),
         },
@@ -87,15 +77,18 @@ const RulesOfEngagement = () => {
             description: (
                 <>
                     If you discover a vulnerability during your testing, please report it immediately to
-                    <span style={{ color: "#00b2ff", margin: "0px 5px" }}> security@thecyber-sec.com. </span> Please do
-                    not disclose any information about the vulnerability to others until it has been remediated.
+                    <a style={{ color: "#ed652f", marginRight: "-3px" }} href="mailto:info@thecyberhub.org">
+                        {" "}
+                        info@thecyberhub.org{" "}
+                    </a>
+                    . Please do not disclose any information about the vulnerability to others until it has been
+                    remediated.
                 </>
             ),
         },
         {
             title: `Permitted Testing`,
-            description: `The following types of testing are permitted:\n\n1. Automated vulnerability scanning with commercial or open source tools.\n2. Manual testing using commercial or open source tools.\n3. Network analysis and reconnaissance.\n4. Social engineering and phishing tests with prior written consent from TheCyberHUB.\n
-                `,
+            description: `The following types of testing are permitted:\n\n1. Automated vulnerability scanning with commercial or open source tools.\n2. Manual testing using commercial or open source tools.\n3. Network analysis and reconnaissance.`,
         },
         {
             title: `Prohibited Testing`,
@@ -111,7 +104,7 @@ const RulesOfEngagement = () => {
             <RulesOfEngagementContainer>
                 <SecurityNavigation heading={"Rules Of Engagement"} />
                 <RulesOfEngagementContentSection>
-                    {rulesOfEngagement.map((rule, index) => (
+                    {rulesOfEngagement?.map((rule, index) => (
                         <RulesOfEngagementContentList key={index}>
                             <ROEHeading>{rule.title}</ROEHeading>
                             <ROEDescription>{rule.description}</ROEDescription>

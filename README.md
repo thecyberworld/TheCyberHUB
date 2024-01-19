@@ -50,7 +50,7 @@ Before installation, please make sure you have already installed the following t
 8. Run `npm run dev` to start the server
 9. Open the browser to visit the website at http://localhost:3000/
 
-> If you are new to Git and GitHub then must check out **[start-opensource](https://github.com/thecyberworld/start-opensource)** repository **first** and contribute to it before you contributing to other open-source projects.
+> If you are new to Git and GitHub, then must check out **[start-opensource](https://github.com/thecyberworld/start-opensource)** repository **first** and contribute to it before you contributing to other open-source projects.
 
 ---
 
