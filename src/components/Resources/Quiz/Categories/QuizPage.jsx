@@ -33,6 +33,8 @@ export default function QuizPage() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
+    const [showAnswer, setshowAnswer] = useState(false);
+    const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -58,12 +60,19 @@ export default function QuizPage() {
         }
     }, [type]);
 
-    const handleAnswerButtonClick = (isCorrect, length) => {
+    const handleAnswerButtonClick = (isCorrect, length, i) => {
+        let nextQuestion = currentQuestion;
+
         if (isCorrect === true) {
+            nextQuestion = currentQuestion + 1;
             setScore(score + 1);
+            setshowAnswer(false);
+        } else {
+            setScore(score - 1);
+            setshowAnswer(true);
+            setClickedAnswerIndex(i);
         }
 
-        const nextQuestion = currentQuestion + 1;
         if (nextQuestion < length) {
             setCurrentQuestion(nextQuestion);
         } else {
@@ -115,7 +124,15 @@ export default function QuizPage() {
                             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
                                 <QuestionButton
                                     key={i}
-                                    onClick={() => handleAnswerButtonClick(answerOption.isCorrect, questions.length)}
+                                    onClick={() => handleAnswerButtonClick(answerOption.isCorrect, questions.length, i)}
+                                    style={{
+                                        backgroundColor:
+                                            showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex
+                                                ? "red"
+                                                : showAnswer && answerOption.isCorrect
+                                                ? "green"
+                                                : "initial",
+                                    }}
                                 >
                                     {answerOption.answerText}
                                 </QuestionButton>
