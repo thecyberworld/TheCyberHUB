@@ -61,7 +61,8 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            toast(error.response.data);
+            toast("Please enter your API Key");
+            // toast(error.response.data);
             console.error(error);
         } finally {
             setIsLoading(false);

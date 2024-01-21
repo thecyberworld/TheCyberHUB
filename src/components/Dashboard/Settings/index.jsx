@@ -8,6 +8,7 @@ import Appearance from "./Appearance";
 import Notifications from "./Notifications";
 import Display from "./Display";
 import NotFound from "../../../NotFound";
+import Api from "./Api";
 
 export default function SettingsRoute() {
     return (
@@ -25,6 +26,7 @@ export default function SettingsRoute() {
                         <Route path={"appearance"} element={<Appearance />} />
                         <Route path={"notifications"} element={<Notifications />} />
                         <Route path={"display"} element={<Display />} />
+                        <Route path={"api"} element={<Api />} />
                         <Route path={"*"} element={<NotFound />} />
                     </Routes>
                 </div>
