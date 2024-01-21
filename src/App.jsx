@@ -57,6 +57,9 @@ import SettingsRoute from "./components/Dashboard/Settings";
 import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
+import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
+import Labs from "./components/Labs/Main";
+import Room from "./components/Labs/LabsRoom/LabsRoom";
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 
 // import isAuthenticated from "./features/isAuthenticated";
@@ -132,6 +135,8 @@ const App = () => {
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
                         <Route exact path={"courses/:title"} element={<Course />} />
+                        <Route path={"/labs"} element={<Labs />} />
+                        <Route path={"/labs/:id"} element={<Room />} />
 
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
@@ -175,6 +180,7 @@ const App = () => {
 
                         <Route path={"/internship"} element={<Jobs />} />
                         <Route path={"/quiz"} element={<Quiz />} />
+                        <Route path={"/createquiz"} element={<MakeQuiz />} />
                         <Route path={"/quiz/:type"} element={<QuizPage />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route exact path={"/contactFormResponses"} element={<FormData />} />
