@@ -40,17 +40,17 @@ Before installation, please make sure you have already installed the following t
 
 ### 🛠 Installation Steps
 
-1. Fork the project (click on fork, uncheck **_copy the only `main` branch_**, and create fork)
-   ![image](https://github.com/thecyberworld/TheCyberHUB/assets/44284877/0233f1e8-e05a-473b-b1b9-8dc52a6338bd)
-2. Clone the forked project
+1. `Fork` the repository
+2. `Clone` the forked project
 3. Navigate to the cloned project directory
 4. Move to the dev branch: `git checkout dev`
-5. Install the dependencies with `npm ci` (ci: clean install)
-6. Copy `example.env` to `.env` (_do not remove example.env_)
-7. Run `npm run dev` to start the server
-8. Open the browser to visit the website at http://localhost:3000/
+5. Install the dependencies with `npm i`
+6. Create a `.env` file in the root directory of the project
+7. Copy the contents of `.env.example` to `.env` file
+8. Run `npm run dev` to start the server
+9. Open the browser to visit the website at http://localhost:3000/
 
-> If you are new to Git and GitHub then must check out **[start-opensource](https://github.com/thecyberworld/start-opensource)** repository **first** and contribute to it before you contributing to other open-source projects.
+> If you are new to Git and GitHub, then must check out **[start-opensource](https://github.com/thecyberworld/start-opensource)** repository **first** and contribute to it before you contributing to other open-source projects.
 
 ---
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { DotIcon, FollowButton, FollowContainer, FollowCount } from "./FollowElements";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser, getFollowData, reset, unfollowUser } from "../../../../features/follow/followSlice";
+import { followUser, getFollowData, reset, unfollowUser } from "../../../../../features/follow/followSlice";
 // import Followers from "../Followers/Followers";
-import { RouterLink } from "../../../Tools/ToolsElements";
+import { RouterLink } from "../../../../Tools/ToolsElements";
 import { CircleSpinner } from "react-spinners-kit";
 // import { CircleSpinner } from "react-spinners-kit";
 
@@ -13,25 +13,23 @@ const Follow = ({ userDetail, userDetails }) => {
     const { followData, isLoading } = useSelector((state) => state.followData);
 
     const [isFollowed, setIsFollowed] = useState(false);
-    // const [isConnection, setIsConnection] = useState(false);
 
     const [followers, setFollowers] = useState();
     const [following, setFollowing] = useState();
 
-    // const username = userDetail?.username;
     const followUserId = userDetail?.user;
-    const userId = followUserId;
     const unfollowId = followUserId;
+    const userId = user?._id;
 
     useEffect(() => {
         if (followUserId) {
-            dispatch(getFollowData(userId));
+            dispatch(getFollowData(followUserId));
         }
 
         return () => {
             dispatch(reset());
         };
-    }, [dispatch, followUserId, userId]);
+    }, [dispatch, followUserId]);
 
     useEffect(() => {
         if (followData) {
@@ -69,7 +67,6 @@ const Follow = ({ userDetail, userDetails }) => {
                     <div style={{ display: "flex", gap: "15px" }}>
                         {isLoading ? (
                             <FollowButton>
-                                {" "}
                                 <CircleSpinner size={16} isLoading={isLoading} />{" "}
                             </FollowButton>
                         ) : (
@@ -79,8 +76,11 @@ const Follow = ({ userDetail, userDetails }) => {
                 )}
             </>
             <FollowCount>
-                {followersCount} Followers <DotIcon /> {followingCount} Following
+                {followersCount} Followers
+                <DotIcon />
+                {followingCount} Following
             </FollowCount>
+            <FollowCount>{followersCount} Connections</FollowCount>
         </FollowContainer>
     );
 };
