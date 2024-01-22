@@ -1,12 +1,8 @@
-import { useNavigate } from "react-router";
 import { RoomCardContainer, RoomTags } from "./RoomCardElement";
 import React from "react";
+import { RouterLink } from "../../Tools/ToolsElements";
 
 export default function RoomCard(props) {
-    const navigate = useNavigate();
-    function handleClick() {
-        navigate(props.link);
-    }
     return (
         <RoomCardContainer>
             <div
@@ -17,30 +13,30 @@ export default function RoomCard(props) {
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
+                    padding: "5px",
                 }}
             >
-                <div
-                    style={{
-                        padding: "10px",
-                    }}
-                >
+                <div style={{ padding: "10px" }}>
                     <h1>{props.title}</h1>
                     <h2 style={{ opacity: "80%", fontSize: "14px" }}>{props.subtitle}</h2>
                 </div>
-                <button
-                    onClick={handleClick}
+                <RouterLink
+                    to={`/websecurity/labs/${props.link}`}
                     style={{
                         background: "transparent",
                         height: "100%",
                         width: "130px",
-                        fontSize: "24px",
+                        fontSize: "20px",
                         color: "#FF6B08",
                         fontWeight: "bold",
-                        marginRight: "20px",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        textDecoration: "none",
                     }}
                 >
-                    Start Labs
-                </button>
+                    View Lab
+                </RouterLink>
             </div>
             <div
                 style={{
