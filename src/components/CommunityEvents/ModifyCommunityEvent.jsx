@@ -44,7 +44,7 @@ const dateFormat = (dateObj) => {
 };
 const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onAdd }) => {
     const [eventObj, setEventObj] = useState({
-        status: "upcoming",
+        status: "approved",
         date: "",
         startTime: "",
         endTime: "",

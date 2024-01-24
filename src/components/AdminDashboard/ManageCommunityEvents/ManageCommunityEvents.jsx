@@ -45,7 +45,7 @@ const ManageCommunityEvents = () => {
                 text: "Restore event",
                 onClick: (eventId) => {
                     setEvents((prevEvents) => {
-                        return changeEventStatus(prevEvents, "upcoming", eventId);
+                        return changeEventStatus(prevEvents, "approved", eventId);
                     });
                 },
             },

@@ -2,7 +2,7 @@
     "events": [
         {
             "_id": "1",
-            "status": "upcoming",
+            "status": "approved",
             "date": "2024-01-12",
             "startTime": "09:00",
             "endTime": "10:00",
@@ -25,8 +25,8 @@
         },
         {
             "_id": "2",
-            "status": "past",
-            "date": "2023-10-10",
+            "status": "cancelled",
+            "date": "2024-01-25",
             "startTime": "14:00",
             "endTime": "15:30",
             "location": "Conference Room A",
@@ -91,10 +91,10 @@
         },
         {
             "_id": "4",
-            "status": "past",
-            "date": "2023-10-13",
+            "status": "approved",
+            "date": "2024-01-24",
             "startTime": "14:00",
-            "endTime": "15:30",
+            "endTime": "22:30",
             "location": "Conference Room A",
             "name": "Project Kickoff",
             "reschedule": false,
@@ -114,8 +114,8 @@
         },
         {
             "_id": "5",
-            "status": "upcoming",
-            "date": "2023-10-11",
+            "status": "approved",
+            "date": "2024-01-24",
             "startTime": "11:00",
             "endTime": "12:00",
             "location": "Online",
@@ -145,7 +145,7 @@
         },
         {
             "_id": "6",
-            "status": "upcoming",
+            "status": "approved",
             "date": "2023-11-20",
             "startTime": "15:00",
             "endTime": "16:00",
@@ -168,7 +168,7 @@
         },
         {
             "_id": "7",
-            "status": "upcoming",
+            "status": "approved",
             "date": "2024-01-15",
             "startTime": "10:00",
             "endTime": "11:00",

@@ -32,16 +32,43 @@ const CommunityEvents = ({
     const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
         today.getDate(),
     ).padStart(2, "0")}`;
-
+    const currentTime = `${today.getHours()}:${today.getMinutes()}`;
     const tabNames = [
         { id: 0, status: "upcoming" },
         { id: 1, status: "past" },
         { id: 2, status: "cancelled" },
     ];
-
     const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    const filteredEvents = events
+        .filter((event) => {
+            let eventFit = false;
+            switch (tabNames[isActiveTab].status) {
+                case "cancelled":
+                    if (event.status === tabNames[isActiveTab].status) eventFit = true;
+                    break;
+                case "past":
+                    if (
+                        event.status === "approved" &&
+                        (event.date < todayString || (event.date === todayString && event.endTime < currentTime))
+                    )
+                        eventFit = true;
+                    break;
+                case "upcoming":
+                    if (
+                        event.status === "approved" &&
+                        (event.date > todayString || (event.date === todayString && event.endTime >= currentTime))
+                    )
+                        eventFit = true;
+                    break;
+                default:
+                    eventFit = false;
+            }
+            return eventFit;
+        })
+        .sort((a, b) => {
+            return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
+        });
 
-    const filteredEvents = events.filter((event) => event.status === tabNames[isActiveTab].status);
     const handleAddEvent = (newEvent) => {
         events.push(newEvent);
     };
@@ -80,11 +107,11 @@ const CommunityEvents = ({
                         filteredEvents.map((data, index) => {
                             const dateObject = new Date(data.date);
                             const dayName = daysOfWeek[dateObject.getDay()];
-
                             return (
                                 <EventItemList
                                     data={data}
                                     todayString={todayString}
+                                    currentTime={currentTime}
                                     dayName={dayName}
                                     actions={actions}
                                     key={index}
@@ -93,6 +120,7 @@ const CommunityEvents = ({
                                     eventsJoinedId={eventsJoinedId}
                                     user={user}
                                     onActionChange={onActionChange}
+                                    tabStatus={tabNames[isActiveTab].status}
                                 />
                             );
                         })
