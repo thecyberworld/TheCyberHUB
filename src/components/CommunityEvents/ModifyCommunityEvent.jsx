@@ -42,21 +42,22 @@ const validURL = (str) => {
 const dateFormat = (dateObj) => {
     return `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
 };
-const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onAdd }) => {
-    const [eventObj, setEventObj] = useState({
-        status: "approved",
-        date: "",
-        startTime: "",
-        endTime: "",
-        location: "Online",
-        name: "",
-        reschedule: false,
-        description: "",
-        link: "",
-        participants: [],
-        maxParticipantNumber: 0,
-    });
-
+const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
+    const [eventObj, setEventObj] = useState(
+        modifyEvent || {
+            status: "approved",
+            date: "",
+            startTime: "",
+            endTime: "",
+            location: "Online",
+            name: "",
+            reschedule: false,
+            description: "",
+            link: "",
+            participants: [],
+            maxParticipantNumber: 0,
+        },
+    );
     const handleUpdateEventPropertyValue = (properyName, value) => {
         setEventObj((prevEventObj) => {
             return {
@@ -67,10 +68,12 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onAdd }) => {
     };
 
     let footer = <p style={{ textAlign: "center" }}>Please pick a day.</p>;
-    if (eventObj.date) footer = <p style={{ textAlign: "center" }}>You Picked {format(eventObj.date, "PP")}.</p>;
+    if (eventObj.date)
+        footer = <p style={{ textAlign: "center" }}>You Picked {format(new Date(eventObj.date), "PP")}.</p>;
 
     const handleCloseChangeMode = () => {
         setOpenCreatingNewEvent(false);
+        setModifyEventId("");
     };
 
     const handleSaveChanges = () => {
@@ -88,7 +91,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onAdd }) => {
             eventObj.maxParticipantNumber > 0
         ) {
             eventObj.date = dateFormat(eventObj.date);
-            onAdd(eventObj);
+            onModify(eventObj, modifyEventId);
             handleCloseChangeMode();
         } else {
             toast.error(
@@ -102,7 +105,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onAdd }) => {
             <DayPickerContainer>
                 <DayPicker
                     mode="single"
-                    selected={eventObj.date}
+                    selected={new Date(eventObj.date)}
                     onSelect={(selectedDateValue) => handleUpdateEventPropertyValue("date", selectedDateValue)}
                     footer={footer}
                     showOutsideDays

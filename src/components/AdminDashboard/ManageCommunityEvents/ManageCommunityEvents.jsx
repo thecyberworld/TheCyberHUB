@@ -17,12 +17,13 @@ const changeEventStatus = (events, newStatus, eventId) => {
 };
 const ManageCommunityEvents = () => {
     const [events, setEvents] = useState(eventsData.events);
+    const [modifyEventId, setModifyEventId] = useState("");
     const actions = {
         upcoming: [
             {
                 icon: TbEditCircleIcon,
                 text: "Edit Details",
-                onClick: (eventId) => {},
+                onClick: (eventId) => setModifyEventId(eventId),
             },
             {
                 icon: BiUserPlusIcon,
@@ -54,7 +55,7 @@ const ManageCommunityEvents = () => {
             {
                 icon: TbEditCircleIcon,
                 text: "Edit Details",
-                onClick: (eventId) => {},
+                onClick: (eventId) => setModifyEventId(eventId),
             },
         ],
     };
@@ -67,6 +68,8 @@ const ManageCommunityEvents = () => {
                 modify
                 actions={actions}
                 events={events}
+                modifyEventId={modifyEventId}
+                setModifyEventId={setModifyEventId}
             />
         </CommunityEventsContainer>
     );

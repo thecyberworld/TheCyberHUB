@@ -192,6 +192,83 @@
                 }
             ],
             "maxParticipantNumber": 4
+        },
+        {
+            "_id": "8",
+            "status": "approved",
+            "date": "2024-01-24",
+            "startTime": "14:00",
+            "endTime": "22:55",
+            "location": "Conference Room A",
+            "name": "Project Kickoff",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
+            "participants": [
+                {
+                    "name": "Alice Johnson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Bob Brown",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ],
+            "maxParticipantNumber": 5
+        },
+        {
+            "_id": "9",
+            "status": "approved",
+            "date": "2024-01-24",
+            "startTime": "11:00",
+            "endTime": "22:00",
+            "location": "Online",
+            "name": "Marketing Strategy Meeting",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
+            "participants": [
+                {
+                    "name": "Chris Evans",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Emma Watson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Chris Evans",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Emma Watson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ],
+            "maxParticipantNumber": 4
+        },
+        {
+            "_id": "10",
+            "status": "approved",
+            "date": "2023-11-20",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "location": "Conference Room B",
+            "name": "Year-end Review",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
+            "participants": [
+                {
+                    "name": "Robert Downey Jr.",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Scarlett Johansson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ],
+            "maxParticipantNumber": 10
         }
     ]
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     ParentContainer,
     Container,
@@ -15,6 +15,19 @@ import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 
+const getTimeRelatedData = () => {
+    const today = new Date();
+    const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
+        today.getDate(),
+    ).padStart(2, "0")}`;
+
+    const currentTime = `${today.getHours()}:${today.getMinutes()}`;
+
+    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+    return [todayString, currentTime, daysOfWeek];
+};
+
 const CommunityEvents = ({
     events,
     pageHeader,
@@ -25,20 +38,19 @@ const CommunityEvents = ({
     eventsJoinedId = [],
     user,
     onActionChange = () => {},
+    modifyEventId,
+    setModifyEventId,
 }) => {
     const [isActiveTab, setActiveTab] = useState(0);
     const [openCreatingNewEvent, setOpenCreatingNewEvent] = useState(false);
-    const today = new Date();
-    const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
-        today.getDate(),
-    ).padStart(2, "0")}`;
-    const currentTime = `${today.getHours()}:${today.getMinutes()}`;
+
     const tabNames = [
         { id: 0, status: "upcoming" },
         { id: 1, status: "past" },
         { id: 2, status: "cancelled" },
     ];
-    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+    const [todayString, currentTime, daysOfWeek] = getTimeRelatedData();
+
     const filteredEvents = events
         .filter((event) => {
             let eventFit = false;
@@ -69,9 +81,23 @@ const CommunityEvents = ({
             return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
         });
 
-    const handleAddEvent = (newEvent) => {
-        events.push(newEvent);
+    const handleModifyEvent = (newEvent, eventId = "") => {
+        if (!eventId) return events.push(newEvent);
+        const modifiedEventIndex = events.findIndex((event) => event._id === eventId);
+        events[modifiedEventIndex] = { ...events[modifiedEventIndex], ...newEvent };
+        setModifyEventId("");
     };
+    useEffect(() => {
+        setOpenCreatingNewEvent(modifyEventId);
+        if (modifyEventId) {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            });
+        }
+    }, [modifyEventId]);
+
     return (
         <ParentContainer pageHeader={pageHeader}>
             <Container>
@@ -100,7 +126,10 @@ const CommunityEvents = ({
                     {modify && openCreatingNewEvent && (
                         <ModifyCommunityEvent
                             setOpenCreatingNewEvent={setOpenCreatingNewEvent}
-                            onAdd={handleAddEvent}
+                            onModify={handleModifyEvent}
+                            modifyEvent={events.find((event) => event._id === modifyEventId)}
+                            setModifyEventId={setModifyEventId}
+                            modifyEventId={modifyEventId}
                         />
                     )}
                     {filteredEvents.length !== 0 ? (
