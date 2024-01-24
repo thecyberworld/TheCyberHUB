@@ -126,7 +126,7 @@ export const EventItemList = ({
                     )}
                 </div>
             ) : (
-                data.status === "upcoming" && (
+                tabStatus === "upcoming" && (
                     <div className="container-action">
                         <div className="action">
                             <div

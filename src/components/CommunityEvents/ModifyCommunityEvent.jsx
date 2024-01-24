@@ -113,7 +113,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             <DayPickerContainer>
                 <DayPicker
                     mode="single"
-                    selected={eventObj.date}
+                    selected={new Date(eventObj.date)}
                     onSelect={(selectedDateValue) => handleUpdateEventPropertyValue("date", selectedDateValue)}
                     footer={footer}
                     showOutsideDays
