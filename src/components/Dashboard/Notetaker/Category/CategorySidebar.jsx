@@ -11,7 +11,7 @@ import {
 import CategoryList from "./CategoryList";
 import LoadingSpinner from "../../../Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyCategory from "./ModifyCategory";
-import { createCategory } from "../../../../features/notes/category/categorySlice";
+import { createNotesCategory } from "../../../../features/notes/notesCategory/notesCategorySlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -50,7 +50,7 @@ const CategorySidebar = ({
             toast.error(`You can't use ${defaultCategory.name} as category name`);
             return;
         }
-        dispatch(createCategory({ name: categoryName }));
+        dispatch(createNotesCategory({ name: categoryName }));
         handleCloseModal();
     };
 

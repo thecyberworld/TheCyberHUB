@@ -8,7 +8,7 @@ import { getNotes, noteReset, pinNote } from "../../../features/notes/notesSlice
 import { CategorySidebar } from "./Category";
 import NoteSidebar from "./NoteSidebar";
 import { toast } from "react-toastify";
-import { categoryReset, getCategories } from "../../../features/notes/category/categorySlice";
+import { notesCategoryReset, getNotesCategories } from "../../../features/notes/notesCategory/notesCategorySlice";
 
 const defaultCategory = {
     name: "All Notes",
@@ -17,8 +17,8 @@ const defaultCategory = {
 const NoteApp = () => {
     const dispatch = useDispatch();
     const { notes, isNoteLoading, isNoteError, noteMessage } = useSelector((state) => state.notes);
-    const { categories, isCategoryLoading, isCategoryError, categoryMessage } = useSelector(
-        (state) => state.categories,
+    const { notesCategories, isNotesCategoryLoading, isNotesCategoryError, notesCategoryMessage } = useSelector(
+        (state) => state.notesCategories,
     );
     const [pickedCategory, setPickedCategory] = useState(defaultCategory);
     const [pickedNote, setPickedNote] = useState({});
@@ -26,22 +26,22 @@ const NoteApp = () => {
     const [needToAdd, setNeedToAdd] = useState(false);
 
     useEffect(() => {
-        if (isCategoryError) {
-            toast.error(categoryMessage);
-            console.log(categoryMessage);
+        if (isNotesCategoryError) {
+            toast.error(notesCategoryMessage);
+            console.log(notesCategoryMessage);
         }
-        dispatch(getCategories());
-        return () => dispatch(categoryReset());
-    }, [dispatch, isCategoryError, categoryMessage]);
+        dispatch(getNotesCategories());
+        return () => dispatch(notesCategoryReset());
+    }, [dispatch, isNotesCategoryError, notesCategoryMessage]);
 
     useEffect(() => {
-        if (categoryOptionMode || isCategoryLoading) return;
+        if (categoryOptionMode || isNotesCategoryLoading) return;
         if (isNoteError) {
             console.log(noteMessage);
         }
         dispatch(getNotes());
         return () => dispatch(noteReset());
-    }, [dispatch, isNoteError, noteMessage, categoryOptionMode, isCategoryLoading]);
+    }, [dispatch, isNoteError, noteMessage, categoryOptionMode, isNotesCategoryLoading]);
 
     const handleCloseMDEditorMode = () => {
         setNeedToAdd(false);
@@ -64,8 +64,8 @@ const NoteApp = () => {
                 onPick={setPickedCategory}
                 onUnpickNote={handleCloseMDEditorMode}
                 setCopyCategoryOptionMode={setCategoryOptionMode}
-                categories={categories}
-                isCategoryLoading={isCategoryLoading}
+                categories={notesCategories}
+                isCategoryLoading={isNotesCategoryLoading}
                 defaultCategory={defaultCategory}
             />
             <NoteSidebar
@@ -77,7 +77,7 @@ const NoteApp = () => {
                 onPinNote={handlePinNote}
                 notes={notes}
                 isNoteLoading={isNoteLoading}
-                isCategoryLoading={isCategoryLoading}
+                isCategoryLoading={isNotesCategoryLoading}
                 defaultCategory={defaultCategory}
             />
 

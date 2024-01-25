@@ -48,7 +48,10 @@ export const HallOfFameYear = styled.h1`
 export const HallOfFameMonth = styled.h3``;
 
 export const HallOfFameName = styled.li`
-    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
     @media screen and (max-width: 768px) {
         padding: 0 5px;
     }

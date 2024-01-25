@@ -49,8 +49,7 @@ export const SponsorsDescription = styled.div`
 
 export const DotSymbol = styled(BsSquareFill)`
     color: #ff6b08;
-    margin: 23px 10px 0;
-    font-size: 0.5rem;
+    font-size: 5px;
     display: inline;
     justify-content: center;
     text-align: center;

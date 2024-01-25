@@ -55,6 +55,7 @@ export const SaveButton = styled.button`
 
 export const Wrapper = styled.div`
     margin: 100px auto;
+    overflow-x: clip;
     width: 100%;
     color: #f5f5f5;
     display: flex;
