@@ -232,39 +232,6 @@ const AiChat = () => {
                                     </ChatHeader>
 
                                     <ChatMessages messages={chat.messages} />
-                                    {/* <DummyChatMessages /> */}
-
-                                    <div>
-                                        {/* {prompts.map((prompt) => (
-                                            <button
-                                            onClick={() => {
-                                                handleSendDummyMessage(
-                                                    {prompt},
-                                                );
-                                            }}
-                                            className="border-solid p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
-                                        >
-                                            <p>
-                                                {prompt.split(",")[0]} <br />
-                                                <span className="opacity-50">{prompt.split(",")[1]}</span>
-                                            </p>
-                                        </button>
-                                        ))} */}
-
-                                        {/* <button
-                                            onClick={() => {
-                                                handleSendDummyMessage(
-                                                    "What is Cyber Security, Explain in detail about it.",
-                                                );
-                                            }}
-                                            className="border-solid p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
-                                        >
-                                            <p>
-                                                What is Cyber Security <br />
-                                                <span className="opacity-50">Explain in detail about it.</span>
-                                            </p>
-                                        </button> */}
-                                    </div>
 
                                     <div>
                                         {chat.title !== "New Chat" ? null : (
