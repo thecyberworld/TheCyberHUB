@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -40,32 +40,23 @@ const validURL = (str) => {
     return !!pattern.test(str);
 };
 const dateFormat = (dateObj) => {
-    const month = dateObj.getMonth() + 1;
-    let monthString = `${month}`;
-    if (month < 10) monthString = `0${month}`;
-    return `${dateObj.getFullYear()}-${monthString}-${dateObj.getDate()}`;
+    return `${dateObj.getFullYear()}-${dateObj.getMonth() + 1}-${dateObj.getDate()}`;
 };
-const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
-    const [eventObj, setEventObj] = useState(
-        modifyEvent || {
-            status: "approved",
-            date: "",
-            startTime: "",
-            endTime: "",
-            location: "Online",
-            name: "",
-            reschedule: false,
-            description: "",
-            link: "",
-            participants: [],
-            maxParticipantNumber: 0,
-        },
-    );
-    useEffect(() => {
-        if (modifyEventId) {
-            setEventObj({ ...modifyEvent, date: new Date(modifyEvent.date) });
-        }
-    }, []);
+const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onAdd }) => {
+    const [eventObj, setEventObj] = useState({
+        status: "upcoming",
+        date: "",
+        startTime: "",
+        endTime: "",
+        location: "Online",
+        name: "",
+        reschedule: false,
+        description: "",
+        link: "",
+        participants: [],
+        maxParticipantNumber: 0,
+    });
+
     const handleUpdateEventPropertyValue = (properyName, value) => {
         setEventObj((prevEventObj) => {
             return {
@@ -76,12 +67,10 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
     };
 
     let footer = <p style={{ textAlign: "center" }}>Please pick a day.</p>;
-    if (eventObj.date && eventObj.date instanceof Date)
-        footer = <p style={{ textAlign: "center" }}>You Picked {format(eventObj.date, "PP")}.</p>;
+    if (eventObj.date) footer = <p style={{ textAlign: "center" }}>You Picked {format(eventObj.date, "PP")}.</p>;
 
     const handleCloseChangeMode = () => {
         setOpenCreatingNewEvent(false);
-        setModifyEventId("");
     };
 
     const handleSaveChanges = () => {
@@ -99,7 +88,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             eventObj.maxParticipantNumber > 0
         ) {
             eventObj.date = dateFormat(eventObj.date);
-            onModify(eventObj, modifyEventId);
+            onAdd(eventObj);
             handleCloseChangeMode();
         } else {
             toast.error(
@@ -113,7 +102,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             <DayPickerContainer>
                 <DayPicker
                     mode="single"
-                    selected={new Date(eventObj.date)}
+                    selected={eventObj.date}
                     onSelect={(selectedDateValue) => handleUpdateEventPropertyValue("date", selectedDateValue)}
                     footer={footer}
                     showOutsideDays

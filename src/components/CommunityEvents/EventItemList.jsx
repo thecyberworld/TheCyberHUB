@@ -18,7 +18,6 @@ const getMonthName = (dateString) => {
 export const EventItemList = ({
     data,
     todayString,
-    currentTime,
     dayName,
     actions,
     index,
@@ -26,7 +25,6 @@ export const EventItemList = ({
     eventsJoinedId,
     user,
     onActionChange,
-    tabStatus,
 }) => {
     const [openEventIndex, setOpenEventIndex] = useState(null);
     const [actionDisplay, setActionDisplay] = useState("");
@@ -55,13 +53,7 @@ export const EventItemList = ({
 
     return (
         <EventItem isRequestedEvent={data.reschedule} key={index}>
-            <div
-                className={
-                    data.date === todayString && data.endTime > currentTime && data.status === "approved"
-                        ? "date today-date"
-                        : "date"
-                }
-            >
+            <div className={data.date === todayString ? "date today-date" : "date"}>
                 <p>{dayName}</p>
                 <p className="date-digit">{`${getMonthName(data.date.split("-")).slice(0, 3)} ${
                     data.date.split("-")[2]
@@ -97,7 +89,7 @@ export const EventItemList = ({
                 </div>
                 {data.reschedule && <div className="details-request">15:30 - 16:00 requested</div>}
             </div>
-            {modify && actions[tabStatus] && actions[tabStatus].length > 0 ? (
+            {modify && actions[data.status] && actions[data.status].length > 0 ? (
                 <div className="action" onMouseLeave={() => setOpenEventIndex(null)}>
                     <div
                         onClick={() => setOpenEventIndex(openEventIndex === index ? null : index)}
@@ -109,7 +101,7 @@ export const EventItemList = ({
 
                     {openEventIndex === index && (
                         <div className="action-dropdown">
-                            {actions[tabStatus].map(({ icon: Icon, text, onClick }) => (
+                            {actions[data.status].map(({ icon: Icon, text, onClick }) => (
                                 <div
                                     onClick={() => {
                                         onClick(data._id);
@@ -126,7 +118,7 @@ export const EventItemList = ({
                     )}
                 </div>
             ) : (
-                tabStatus === "upcoming" && (
+                data.status === "upcoming" && (
                     <div className="container-action">
                         <div className="action">
                             <div

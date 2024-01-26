@@ -2,7 +2,7 @@
     "events": [
         {
             "_id": "1",
-            "status": "approved",
+            "status": "upcoming",
             "date": "2024-01-12",
             "startTime": "09:00",
             "endTime": "10:00",
@@ -25,8 +25,8 @@
         },
         {
             "_id": "2",
-            "status": "cancelled",
-            "date": "2024-01-25",
+            "status": "past",
+            "date": "2023-10-10",
             "startTime": "14:00",
             "endTime": "15:30",
             "location": "Conference Room A",
@@ -91,10 +91,10 @@
         },
         {
             "_id": "4",
-            "status": "approved",
-            "date": "2024-01-24",
+            "status": "past",
+            "date": "2023-10-13",
             "startTime": "14:00",
-            "endTime": "23:59",
+            "endTime": "15:30",
             "location": "Conference Room A",
             "name": "Project Kickoff",
             "reschedule": false,
@@ -114,8 +114,8 @@
         },
         {
             "_id": "5",
-            "status": "approved",
-            "date": "2024-01-25",
+            "status": "upcoming",
+            "date": "2023-10-11",
             "startTime": "11:00",
             "endTime": "12:00",
             "location": "Online",
@@ -145,7 +145,7 @@
         },
         {
             "_id": "6",
-            "status": "approved",
+            "status": "upcoming",
             "date": "2023-11-20",
             "startTime": "15:00",
             "endTime": "16:00",
@@ -168,7 +168,7 @@
         },
         {
             "_id": "7",
-            "status": "approved",
+            "status": "upcoming",
             "date": "2024-01-15",
             "startTime": "10:00",
             "endTime": "11:00",
@@ -192,83 +192,6 @@
                 }
             ],
             "maxParticipantNumber": 4
-        },
-        {
-            "_id": "8",
-            "status": "approved",
-            "date": "2024-01-24",
-            "startTime": "14:00",
-            "endTime": "22:55",
-            "location": "Conference Room A",
-            "name": "Project Kickoff",
-            "reschedule": false,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "link": "https://discord.thecyberhub.org",
-            "participants": [
-                {
-                    "name": "Alice Johnson",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                },
-                {
-                    "name": "Bob Brown",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                }
-            ],
-            "maxParticipantNumber": 5
-        },
-        {
-            "_id": "9",
-            "status": "approved",
-            "date": "2024-01-24",
-            "startTime": "11:00",
-            "endTime": "22:00",
-            "location": "Online",
-            "name": "Marketing Strategy Meeting",
-            "reschedule": false,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "link": "https://discord.thecyberhub.org",
-            "participants": [
-                {
-                    "name": "Chris Evans",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                },
-                {
-                    "name": "Emma Watson",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                },
-                {
-                    "name": "Chris Evans",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                },
-                {
-                    "name": "Emma Watson",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                }
-            ],
-            "maxParticipantNumber": 4
-        },
-        {
-            "_id": "10",
-            "status": "approved",
-            "date": "2023-11-20",
-            "startTime": "15:00",
-            "endTime": "16:00",
-            "location": "Conference Room B",
-            "name": "Year-end Review",
-            "reschedule": false,
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "link": "https://discord.thecyberhub.org",
-            "participants": [
-                {
-                    "name": "Robert Downey Jr.",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                },
-                {
-                    "name": "Scarlett Johansson",
-                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
-                }
-            ],
-            "maxParticipantNumber": 10
         }
     ]
 }

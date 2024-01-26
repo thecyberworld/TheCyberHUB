@@ -6,7 +6,7 @@ import { Chat } from "../index";
 import { useSelector } from "react-redux";
 import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
 import axios from "axios";
-import { encryptData, decryptData } from "./encryptData";
+import { encryptData , decryptData } from "./encryptData";
 // import cryptoJS from "crypto-js";
 const CommunityChat = ({ userDetails }) => {
     const { user } = useSelector((state) => state.auth);

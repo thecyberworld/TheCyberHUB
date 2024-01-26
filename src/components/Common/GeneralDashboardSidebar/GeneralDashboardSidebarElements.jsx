@@ -16,7 +16,6 @@ export const DashboardSidebarContainer = styled.div`
 
     // stick to the top
     position: sticky;
-    top: 0;
     min-width: ${(props) => (props?.isOpen ? "200px" : "50px")};
     transition: width 0.3s ease-in-out;
 

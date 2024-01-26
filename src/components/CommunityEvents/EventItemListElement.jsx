@@ -159,9 +159,7 @@ export const EventItem = styled.div`
                     margin-bottom: 0;
                     border-top: 1px solid lightgray;
                 }
-                &:first-child {
-                    border-top: none;
-                }
+
                 p {
                     margin-left: 0.75rem;
                 }

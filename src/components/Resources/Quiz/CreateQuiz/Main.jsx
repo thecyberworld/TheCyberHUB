@@ -55,6 +55,7 @@ const QuizAdder = () => {
 
             if (!selectedOption) {
                 alert("Please select a correct option");
+                
             }
         }
     };
