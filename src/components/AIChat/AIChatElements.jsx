@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const AIChatContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    gap: 20px;
+    gap: 10px;
 
     flex-direction: row;
 
@@ -19,32 +19,71 @@ export const AIChatContainer = styled.div`
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 `;
 
+export const Divider = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1px;
+    height: 100%;
+    background: rgba(42, 42, 42, 0.35);
+    padding: 5px;
+    border-radius: 10px;
+    border: rgba(42, 42, 42, 0.78) 1px solid;
+`;
+
+export const ToggleSection = styled.p`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff6b08;
+    cursor: pointer;
+    background: #252525;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 30px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: #464646;
+        scale: 1.1;
+    }
+`;
+
 export const ChatBox = styled.div`
     display: flex;
     background: #111111;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid #464646;
-    border-radius: 10px;
+    border: 1px solid rgba(70, 70, 70, 0.55);
+    //border-radius: 10px;
+    border-radius: 0 10px 10px 0px;
     font-size: 18px;
     width: 100%;
-    max-width: 1100px;
+    //max-width: 1100px;
     gap: 25px;
     padding: 25px;
 `;
 
 export const ChatHeader = styled.div`
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 `;
 
-export const ChatTitle = styled.h1`
+export const ChatTitle = styled.p`
     background: #252525;
     color: #fff;
     border-radius: 10px;
     transition: background 0.3s ease;
     padding: 10px 15px;
     font-size: 25px;
+    font-weight: bold;
     text-align: center;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 80%;
 `;
 
 export const ChatInput = styled.form`
@@ -106,21 +145,26 @@ export const BotMessage = styled.div`
 `;
 
 export const UserMessage = styled.div`
-    border-radius: 5px;
+    //background: #3d3d3d; // vote pankaj
+    background: #1e1e1e; // vote kabir
     align-self: flex-end;
+    border: 1px solid #333;
 
+    margin-top: 10px;
+    border-radius: 10px 1px 0 0;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 20px;
+
+    color: #afafaf; /* Light gray or white */
     font-family: "Roboto", sans-serif;
-    font-size: 16px;
-    padding: 15px;
-
-    background: #252525;
-    color: #fff;
+    line-height: 1.5;
 
     width: 100%;
 
     .message-content {
-        word-wrap: break-word; /* Ensure long words break and don't overflow */
-        overflow-wrap: break-word; /* Ensure word breaks for non-breaking spaces */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 `;
 
@@ -143,7 +187,7 @@ export const Messages = styled.div`
     font-size: 18px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     overflow-y: auto;
     height: 100%;
     max-height: 60vh;

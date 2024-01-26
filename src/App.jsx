@@ -34,12 +34,14 @@ import UserProfile from "./components/Dashboard/Profile/UserProfile";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
-import TimeLineEvent from "./components/Opportunities/TimeLineEvent/TimeLineEvent";
+import DisplayCommunityEvents from "./components/Opportunities/DisplayCommunityEvents";
 import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
 import CreateForumPost from "./components/Forum/CreateForumPost/CreateForumPost";
 import FeedsRoute from "./components/Feeds/FeedsRoute";
+import Course from "./components/Courses/NewCourses/Course";
+import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
 import ToolsRoutes from "./components/Tools/ToolsRoute";
 import CtfRoute from "./components/CaptureTheFlag/CTFRoute";
 import BlogsRoute from "./components/Blogs/BlogsRoute";
@@ -53,7 +55,13 @@ import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
 import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
+import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
+import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
+import Labs from "./components/Labs/Main";
+import Room from "./components/Labs/LabsRoom/LabsRoom";
+import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
+
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
@@ -79,11 +87,14 @@ const App = () => {
 
     const hideHomeHeader = () => {
         const pathDashboard = pathname.includes("/dashboard");
+        const pathAdminDashboard = pathname.includes("/admin-dashboard");
         const pathLogin = pathname.includes("/login");
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
-        return pathDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword;
+        return (
+            pathDashboard || pathAdminDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword
+        );
     };
 
     const [isOpen, setIsOpen] = useState(false);
@@ -123,6 +134,9 @@ const App = () => {
 
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
+                        <Route exact path={"courses/:title"} element={<Course />} />
+                        <Route path={"/labs"} element={<Labs />} />
+                        <Route path={"/labs/:id"} element={<Room />} />
 
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
@@ -134,11 +148,12 @@ const App = () => {
                         <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
-
+                        <Route path={"/admin-dashboard/*"} element={<AdminDashboardRoute />} />
                         <Route exact path={"/contact"} element={<ContactForm />} />
 
                         <Route>
                             <Route exact path={"/user/:username"} element={<UserProfile />} />
+                            <Route exact path={"/connections"} element={<Connections />} />
                             <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 
@@ -152,7 +167,7 @@ const App = () => {
 
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
-                        <Route exact path={"/timeline-events"} element={<TimeLineEvent />} />
+                        <Route exact path={"/community-events"} element={<DisplayCommunityEvents />} />
                         <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
                         <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} />
 
@@ -165,6 +180,8 @@ const App = () => {
 
                         <Route path={"/internship"} element={<Jobs />} />
                         <Route path={"/quiz"} element={<Quiz />} />
+                        <Route path={"/createquiz"} element={<MakeQuiz />} />
+                        <Route path={"/quiz/:type"} element={<QuizPage />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route exact path={"/contactFormResponses"} element={<FormData />} />
                         <Route

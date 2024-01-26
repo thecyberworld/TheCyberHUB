@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { InputEditorContainer, InputEditorTheInput } from "./InputEditorElements";
 
-const InputEditor = ({ content, label, onCopyChanges }) => {
+const InputEditor = ({ content, label, onCopyChanges, placeholder, inputType }) => {
     const [value, setValue] = useState("");
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const InputEditor = ({ content, label, onCopyChanges }) => {
 
     return (
         <InputEditorContainer>
-            <InputEditorTheInput type="text" onChange={handleChange} value={value} placeholder={"Note Heading"} />
+            <InputEditorTheInput type={inputType} onChange={handleChange} value={value} placeholder={placeholder} />
         </InputEditorContainer>
     );
 };

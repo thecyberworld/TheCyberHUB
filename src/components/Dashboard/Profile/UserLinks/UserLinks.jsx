@@ -2,10 +2,10 @@ import React from "react";
 import { UserBio, UserInfo, UserLinksContainer } from "./UserLinksElements";
 import { SocialLink, SocialUsername, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium, FaTwitter } from "react-icons/fa";
-import Follow from "../Follow/Follow";
 import { UserPicture } from "../../../Explore/Users/UsersElements";
 import { CgWebsite } from "react-icons/cg";
 import { cdnContentImagesUrl } from "../../../../features/apiUrl";
+import ConnectionsAndFollows from "../ConnectionsAndFollows/ConnectionsAndFollows";
 
 const UserLinks = ({ userDetail, userDetails }) => {
     const socialUsernames = userDetail?.socialLinks?.map(
@@ -23,7 +23,8 @@ const UserLinks = ({ userDetail, userDetails }) => {
                 <span className={"name"}>{userDetail?.name}</span>
                 <span className={"username"}>@{userDetail?.username}</span>
             </UserInfo>
-            {userDetail?.user && <Follow userDetail={userDetail} userDetails={userDetails} />}
+
+            {userDetail?.user && <ConnectionsAndFollows userDetail={userDetail} userDetails={userDetails} />}
 
             {userDetail?.bio?.length === 0 || !userDetail?.bio ? null : (
                 <UserBio>

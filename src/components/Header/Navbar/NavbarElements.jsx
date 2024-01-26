@@ -196,7 +196,34 @@ export const RankTrophy = styled(BsTrophyFill)`
 `;
 
 export const RouterNavCreateButtonLink = styled(Link)`
-    margin: 0 auto;
+    margin: ${(props) => (props.noCenter ? 0 : "0 auto")};
+    margin-bottom: 2rem;
+    display: initial;
+    height: fit-content;
+    background: #111111;
+    border-radius: 5px;
+    color: #ff6b08;
+    padding: 5px 15px;
+    transition: 0.2s ease-in-out;
+
+    @media screen and (max-width: 600px) {
+        font-size: 12px;
+    }
+
+    //@media screen and (max-width: 1150px) {
+    //  display: none;
+    //}
+    //@media screen and (max-width: 900px) {
+    //  display: initial;
+    //}
+
+    &:hover {
+        transition: 0.2s ease-in-out;
+        scale: 1.1;
+    }
+`;
+export const RouterNavCreateButton = styled.button`
+    margin: ${(props) => (props.noCenter ? 0 : "0 auto")};
     margin-bottom: 2rem;
     display: initial;
     height: fit-content;

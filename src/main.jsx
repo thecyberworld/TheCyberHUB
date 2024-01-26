@@ -10,10 +10,11 @@ import store from "./app/store";
 const rootElement = document.getElementById("root");
 export const webEnv = import.meta.env.VITE_WEB_ENV || "production";
 const hostname = window.location.hostname;
+const isElectron = navigator.userAgent.toLowerCase().indexOf(" electron/") > -1;
 
 ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-        {webEnv === "security" || (webEnv === "development" && hostname !== "localhost") ? (
+        {isElectron || isElectron || webEnv === "security" || (webEnv === "development" && hostname !== "localhost") ? (
             <HashRouter>
                 <Provider store={store}>
                     <App />

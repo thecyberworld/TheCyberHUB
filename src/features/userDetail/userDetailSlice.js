@@ -4,6 +4,7 @@ import userDetailService from "./userDetailService";
 const initialState = {
     userDetail: [],
     userDetails: [],
+    userEventsId: [],
     isUserDetailError: false,
     isUserDetailSuccess: false,
     isUserDetailLoading: false,
@@ -71,6 +72,12 @@ export const userDetailSlice = createSlice({
     initialState,
     reducers: {
         userDetailReset: (state) => initialState,
+        userAddEventId: (state, action) => {
+            state.userEventsId.push(action.payload);
+        },
+        userRemoveEventId: (state, action) => {
+            state.userEventsId = state.userEventsId.filter((userEventId) => userEventId !== action.payload);
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -154,5 +161,5 @@ export const userDetailSlice = createSlice({
     },
 });
 
-export const { userDetailReset } = userDetailSlice.actions;
+export const { userDetailReset, userAddEventId, userRemoveEventId } = userDetailSlice.actions;
 export default userDetailSlice.reducer;

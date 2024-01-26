@@ -3,9 +3,10 @@ import { Link as ScrollLink } from "react-scroll";
 import { Link as RouterLink } from "react-router-dom";
 
 export const IconsSpacing = styled.span`
-    margin: 5px 5px 0 0;
-    display: inline;
-    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
 `;
 export const IconsSpacing2 = styled.span`
     margin: 7px 0 0 3px;

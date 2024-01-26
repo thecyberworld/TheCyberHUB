@@ -30,8 +30,8 @@ export default function Dropdown({
         },
         {
             title: "TheCyberEvents",
-            to: "/timeline-events",
-            desc: "Checkout our Weekly Cyber Community Event and start booking on our calender",
+            to: "/community-events",
+            desc: "Checkout and Join to our Weekly Cyber Community Events",
         },
         // {
         //     title: "Volunteer",

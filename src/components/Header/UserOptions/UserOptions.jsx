@@ -5,6 +5,7 @@ import { FaUserAstronaut, FaUserCircle } from "react-icons/fa";
 import { BiLogOut } from "react-icons/bi";
 import { IoMdLogIn } from "react-icons/io";
 import { MdDashboard } from "react-icons/md";
+import { RiAdminFill } from "react-icons/ri";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RouterLink, UserOptionsContainer, UserOptionsDropdownContainer } from "./UserOptionsElements";
@@ -70,6 +71,11 @@ const DropdownMenu = () => {
                     </>
                 ) : (
                     <>
+                        {(user.userType === "admin" || user.userType === "team") && (
+                            <DropdownItem to={"/admin-dashboard"} leftIcon={<RiAdminFill />}>
+                                Admin Dashboard
+                            </DropdownItem>
+                        )}
                         <DropdownItem to={"/dashboard"} leftIcon={<MdDashboard />}>
                             Dashboard
                         </DropdownItem>
@@ -77,7 +83,6 @@ const DropdownMenu = () => {
                             Public Profile
                         </DropdownItem>
                         {/* {!inDevelopment ? ( */}
-
                         {/* ) : null} */}
                         {/* <DropdownItem to={"/settings"} leftIcon={<FcSettings />}> */}
                         {/*    Settings */}

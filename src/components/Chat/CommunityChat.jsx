@@ -6,7 +6,8 @@ import { Chat } from "../index";
 import { useSelector } from "react-redux";
 import { getApiUrl, getApiUrlWs } from "../../features/apiUrl";
 import axios from "axios";
-
+import { encryptData, decryptData } from "./encryptData";
+// import cryptoJS from "crypto-js";
 const CommunityChat = ({ userDetails }) => {
     const { user } = useSelector((state) => state.auth);
     const [ws, setWs] = useState(null);
@@ -92,7 +93,8 @@ const CommunityChat = ({ userDetails }) => {
             recipient: selectedUserId,
             text: newMessageText,
         };
-        ws.send(JSON.stringify(message));
+        const encryptedMessage = encryptData(message);
+        ws.send(JSON.stringify(encryptedMessage));
         setNewMessageText("");
         setMessages((prev) => [
             ...prev,
@@ -119,7 +121,12 @@ const CommunityChat = ({ userDetails }) => {
                     headers: { Authorization: `Bearer ${user.token}` },
                 })
                 .then((res) => {
-                    setMessages(res.data || []);
+                    const encryptedMessages = res.data;
+                    const decryptedMessages = encryptedMessages.map((encryptedMessage) => {
+                        const decryptedMessage = decryptData(encryptedMessage);
+                        return decryptedMessage;
+                    });
+                    setMessages(decryptedMessages || []);
                 });
         }
     }, [selectedUserId]);

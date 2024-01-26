@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Messages, MessagesContainer, UserMessage } from "./AIChatElements";
-import MDEditor from "@uiw/react-md-editor";
+import MarkdownPreview from "./MarkdownPreview";
 
 const ChatMessages = ({ messages }) => {
     const messagesContainerRef = useRef(null);
@@ -22,20 +22,9 @@ const ChatMessages = ({ messages }) => {
             <Messages ref={messagesContainerRef}>
                 {messages.map((message, index) =>
                     message.type === "bot" ? (
-                        <MDEditor.Markdown
-                            key={message._id}
-                            style={{
-                                background: "#171717",
-                                textAlign: "left",
-                                width: "100%",
-                                padding: "20px",
-                                borderRadius: "5px",
-                                fontSize: "18px",
-                            }}
-                            source={message.content || ""}
-                        />
+                        <MarkdownPreview key={index} source={message.content} />
                     ) : (
-                        <UserMessage> {message.content} </UserMessage>
+                        <UserMessage key={index}> {message.content} </UserMessage>
                     ),
                 )}
             </Messages>
