@@ -69,7 +69,6 @@ export default function EncoderMain() {
                     <CodeContainer>
                         {activeButton === "Encode" ? <EncoderCode Input={Input || ""} /> : <Decode Input={Input} />}
                     </CodeContainer>
-                    `
                 </MenuContainer>
             </Container>
         </Wrapper>
