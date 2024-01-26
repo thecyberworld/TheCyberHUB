@@ -14,6 +14,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // import LoginBox from "../Common/LoginBox";
 // import {useNavigate} from "react-router-dom";
 import AuthPopup from "../../pages/AuthPopup/AuthPopup";
+import prompts from "./prompts.json";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
@@ -37,6 +38,7 @@ const AiChat = () => {
 
     const handleSendDummyMessage = async (dummyMessage) => {
         console.log("handleSendDummyMessage is working");
+        console.log(dummyMessage);
         setUserInput(dummyMessage);
         setIsLoading(true);
         console.log("dummyMessage", dummyMessage);
@@ -233,76 +235,57 @@ const AiChat = () => {
                                     {/* <DummyChatMessages /> */}
 
                                     <div>
+                                        {/* {prompts.map((prompt) => (
+                                            <button
+                                            onClick={() => {
+                                                handleSendDummyMessage(
+                                                    {prompt},
+                                                );
+                                            }}
+                                            className="border-solid p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
+                                        >
+                                            <p>
+                                                {prompt.split(",")[0]} <br />
+                                                <span className="opacity-50">{prompt.split(",")[1]}</span>
+                                            </p>
+                                        </button>
+                                        ))} */}
+
+                                        {/* <button
+                                            onClick={() => {
+                                                handleSendDummyMessage(
+                                                    "What is Cyber Security, Explain in detail about it.",
+                                                );
+                                            }}
+                                            className="border-solid p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
+                                        >
+                                            <p>
+                                                What is Cyber Security <br />
+                                                <span className="opacity-50">Explain in detail about it.</span>
+                                            </p>
+                                        </button> */}
+                                    </div>
+
+                                    <div>
                                         {chat.title !== "New Chat" ? null : (
                                             <div>
-                                                <div className="w-full h-full">
-                                                    <div className="flex flex-col gap-2 w-full h-full mb-8">
-                                                        <div className="flex flex-col lg:flex-row md:flex-row sm:flex-col gap-2">
-                                                            <button
-                                                                onClick={() => {
-                                                                    handleSendDummyMessage(
-                                                                        "What is Cyber Security, Explain in detail about it.",
-                                                                    );
-                                                                }}
-                                                                className="border-solid p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
-                                                            >
-                                                                <p>
-                                                                    What is Cyber Security <br />
-                                                                    <span className="opacity-50">
-                                                                        Explain in detail about it.
-                                                                    </span>
-                                                                </p>
-                                                            </button>
-                                                            <button
-                                                                onClick={() => {
-                                                                    handleSendDummyMessage(
-                                                                        "How to make website more secure, by adding extra layer of security in it.",
-                                                                    );
-                                                                }}
-                                                                className="border-solid border-4 p-2.5 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
-                                                            >
-                                                                <p>
-                                                                    How to make website more secure <br />
-                                                                    <span className="opacity-50">
-                                                                        by adding extra layer of security in it.
-                                                                    </span>
-                                                                </p>
-                                                            </button>
-                                                        </div>
-
-                                                        <div className="flex flex-col lg:flex-row md:flex-row sm:flex-col gap-2">
-                                                            <button
-                                                                onClick={() => {
-                                                                    handleSendDummyMessage(
-                                                                        "What is Data Breach, How to prevent it.",
-                                                                    );
-                                                                }}
-                                                                className="border-solid border-4 p-2.5 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
-                                                            >
-                                                                <p>
-                                                                    What is Data Breach <br />
-                                                                    <span className="opacity-50">
-                                                                        How to prevent it.
-                                                                    </span>
-                                                                </p>
-                                                            </button>
-                                                            <button
-                                                                onClick={() => {
-                                                                    handleSendDummyMessage(
-                                                                        "What is Deep Web, How to access it.",
-                                                                    );
-                                                                }}
-                                                                className="border-solid border-4 p-2.5 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 lg:w-1/2 md:w-full sm:w-full"
-                                                            >
-                                                                <p>
-                                                                    What is Deep Web <br />
-                                                                    <span className="opacity-50">
-                                                                        How to access it.
-                                                                    </span>
-                                                                </p>
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 w-full h-full mb-8 lg:flex-row md:flex-row sm:flex-col gap-2">
+                                                    {prompts.map((prompt, index) => (
+                                                        <button
+                                                            key={index}
+                                                            onClick={() => {
+                                                                handleSendDummyMessage({ prompt }.prompt);
+                                                            }}
+                                                            className="border-solid w-full p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 "
+                                                        >
+                                                            <p>
+                                                                {prompt.split(",")[0]} <br />
+                                                                <span className="opacity-50">
+                                                                    {prompt.split(",")[1]}
+                                                                </span>
+                                                            </p>
+                                                        </button>
+                                                    ))}
                                                 </div>
                                             </div>
                                         )}
