@@ -89,3 +89,8 @@ export const BiSolidChevronUpIcon = createStyledIcon(BiSolidChevronUp);
 export const AiFillExclamationCircleIcon = createStyledIcon(AiFillExclamationCircle);
 export const AiFillClockCircleIcon = createStyledIcon(AiFillClockCircle);
 export const MdLocationOnIcon = createStyledIcon(MdLocationOn);
+
+export const CommunityEventHeaderContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;

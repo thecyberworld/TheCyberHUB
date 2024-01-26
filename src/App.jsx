@@ -61,6 +61,7 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 import Labs from "./components/Labs/Main";
 import Room from "./components/Labs/LabsRoom/LabsRoom";
 import EncoderMain from "./components/EncoderDecoder.jsx/EncoderMain";
+import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -137,9 +138,7 @@ const App = () => {
                         <Route exact path={"courses/:title"} element={<Course />} />
                         <Route path={"/labs"} element={<Labs />} />
                         <Route path={"/labs/:id"} element={<Room />} />
-
                         <Route path={"/tools/encoder"} element={<EncoderMain />} />
-
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
                         <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />
@@ -155,6 +154,7 @@ const App = () => {
 
                         <Route>
                             <Route exact path={"/user/:username"} element={<UserProfile />} />
+                            <Route exact path={"/connections"} element={<Connections />} />
                             <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 

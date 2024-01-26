@@ -3,7 +3,7 @@ import { EditUserBioTextarea, UserBio, UserInfo, UserLinksContainer } from "../U
 import { EditSocialUsername, SocialLink, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium } from "react-icons/fa";
 import { IoMdSave } from "react-icons/io";
-import { FollowButton } from "../Follow/FollowElements";
+import { FollowButton } from "../ConnectionsAndFollows/Follow/FollowElements";
 import { CgWebsite } from "react-icons/cg";
 import { UserPicture } from "../../../Explore/Users/UsersElements";
 import { EditButton } from "../SkillSet/SkillSetElements";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
     ParentContainer,
     Container,
@@ -8,71 +8,148 @@ import {
     NoDataComponent,
     EventList,
     EventNote,
+    CommunityEventHeaderContainer,
 } from "./CommunityEventsElement";
-import eventsData from "./events.json";
 import NoDataFound from "../../assets/images/no_data_found.svg";
 import { EventItemList } from "./EventItemList";
+import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
+import ModifyCommunityEvent from "./ModifyCommunityEvent";
 
-const CommunityEvents = ({
-    pageHeader,
-    title,
-    subtitle,
-    modify,
-    actionsIcon = [],
-    eventsJoinedId = [],
-    user,
-    onActionChange = () => {},
-}) => {
-    const events = eventsData.events;
-    const [isActiveTab, setActiveTab] = useState(0);
+const getTimeRelatedData = () => {
     const today = new Date();
     const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
         today.getDate(),
     ).padStart(2, "0")}`;
+
+    const currentTime = `${today.getHours()}:${today.getMinutes()}`;
+
+    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+    return [todayString, currentTime, daysOfWeek];
+};
+
+const CommunityEvents = ({
+    events,
+    pageHeader,
+    title,
+    subtitle,
+    modify,
+    actions = [],
+    eventsJoinedId = [],
+    user,
+    onActionChange = () => {},
+    modifyEventId,
+    setModifyEventId,
+}) => {
+    const [isActiveTab, setActiveTab] = useState(0);
+    const [openCreatingNewEvent, setOpenCreatingNewEvent] = useState(false);
 
     const tabNames = [
         { id: 0, status: "upcoming" },
         { id: 1, status: "past" },
         { id: 2, status: "cancelled" },
     ];
+    const [todayString, currentTime, daysOfWeek] = getTimeRelatedData();
 
-    const daysOfWeek = ["Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"];
+    const filteredEvents = events
+        .filter((event) => {
+            let eventFit = false;
+            switch (tabNames[isActiveTab].status) {
+                case "cancelled":
+                    if (event.status === tabNames[isActiveTab].status) eventFit = true;
+                    break;
+                case "past":
+                    if (
+                        event.status === "approved" &&
+                        (event.date < todayString || (event.date === todayString && event.endTime < currentTime))
+                    )
+                        eventFit = true;
+                    break;
+                case "upcoming":
+                    if (
+                        event.status === "approved" &&
+                        (event.date > todayString || (event.date === todayString && event.endTime >= currentTime))
+                    )
+                        eventFit = true;
+                    break;
+                default:
+                    eventFit = false;
+            }
+            return eventFit;
+        })
+        .sort((a, b) => {
+            return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
+        });
 
-    const filteredEvents = events.filter((event) => event.status === tabNames[isActiveTab].status);
+    const handleModifyEvent = (newEvent, eventId = "") => {
+        if (!eventId) return events.push(newEvent);
+        const modifiedEventIndex = events.findIndex((event) => event._id === eventId);
+        events[modifiedEventIndex] = { ...events[modifiedEventIndex], ...newEvent };
+        setModifyEventId("");
+    };
+    useEffect(() => {
+        setOpenCreatingNewEvent(modifyEventId);
+        if (modifyEventId) {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+            });
+        }
+    }, [modifyEventId]);
+
     return (
         <ParentContainer pageHeader={pageHeader}>
             <Container>
                 <Header>{title}</Header>
                 <SubHeader>{subtitle}</SubHeader>
-                <Tabs>
-                    {tabNames.map((tab, index) => (
-                        <button
-                            onClick={() => setActiveTab(index)}
-                            key={tab.id}
-                            className={isActiveTab === index ? "active" : ""}
-                        >
-                            {tab.status}
-                        </button>
-                    ))}
-                </Tabs>
+                <CommunityEventHeaderContainer>
+                    <Tabs>
+                        {tabNames.map((tab, index) => (
+                            <button
+                                onClick={() => setActiveTab(index)}
+                                key={tab.id}
+                                className={isActiveTab === index ? "active" : ""}
+                            >
+                                {tab.status}
+                            </button>
+                        ))}
+                    </Tabs>
+                    {modify && (
+                        <RouterNavCreateButton noCenter onClick={() => setOpenCreatingNewEvent(true)}>
+                            Create Event
+                        </RouterNavCreateButton>
+                    )}
+                </CommunityEventHeaderContainer>
+
                 <EventList>
+                    {modify && openCreatingNewEvent && (
+                        <ModifyCommunityEvent
+                            setOpenCreatingNewEvent={setOpenCreatingNewEvent}
+                            onModify={handleModifyEvent}
+                            modifyEvent={events.find((event) => event._id === modifyEventId)}
+                            setModifyEventId={setModifyEventId}
+                            modifyEventId={modifyEventId}
+                        />
+                    )}
                     {filteredEvents.length !== 0 ? (
                         filteredEvents.map((data, index) => {
                             const dateObject = new Date(data.date);
                             const dayName = daysOfWeek[dateObject.getDay()];
-
                             return (
                                 <EventItemList
                                     data={data}
                                     todayString={todayString}
+                                    currentTime={currentTime}
                                     dayName={dayName}
-                                    actions={actionsIcon}
+                                    actions={actions}
                                     key={index}
                                     index={index}
                                     modify={modify}
                                     eventsJoinedId={eventsJoinedId}
                                     user={user}
                                     onActionChange={onActionChange}
+                                    tabStatus={tabNames[isActiveTab].status}
                                 />
                             );
                         })

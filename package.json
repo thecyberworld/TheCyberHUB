@@ -7,7 +7,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "vite build",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" vite build",
     "preview": "vite preview",
     "prepare": "husky install"
   },
@@ -16,6 +16,7 @@
     "@reduxjs/toolkit": "^1.9.1",
     "@uiw/react-md-editor": "^4.0.1",
     "axios": "^1.2.1",
+    "crypto-js": "^4.2.0",
     "date-fns": "^2.30.0",
     "dompurify": "^3.0.5",
     "dotenv": "^16.0.3",

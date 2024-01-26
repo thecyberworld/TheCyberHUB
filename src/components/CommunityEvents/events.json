@@ -2,15 +2,15 @@
     "events": [
         {
             "_id": "1",
-            "status": "upcoming",
-            "date": "2023-10-15",
+            "status": "approved",
+            "date": "2024-01-12",
             "startTime": "09:00",
             "endTime": "10:00",
             "location": "Online",
-            "eventName": "30 min Team Meeting by John Cena",
-            "reschedule": false,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "name": "30 min Team Meeting by John Cena",
+            "reschedule": true,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "John Doe",
@@ -25,15 +25,15 @@
         },
         {
             "_id": "2",
-            "status": "past",
-            "date": "2023-10-10",
+            "status": "cancelled",
+            "date": "2024-01-25",
             "startTime": "14:00",
             "endTime": "15:30",
             "location": "Conference Room A",
-            "eventName": "Project Kickoff with The Rock",
-            "reschedule": true,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "name": "Project Kickoff with The Rock",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "Alice Johnson",
@@ -73,10 +73,10 @@
             "startTime": "09:00",
             "endTime": "10:00",
             "location": "Online",
-            "eventName": "Team Meeting",
-            "reschedule": true,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "name": "Team Meeting",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "John Doe",
@@ -91,15 +91,15 @@
         },
         {
             "_id": "4",
-            "status": "past",
-            "date": "2023-10-13",
+            "status": "approved",
+            "date": "2024-01-24",
             "startTime": "14:00",
-            "endTime": "15:30",
+            "endTime": "23:59",
             "location": "Conference Room A",
-            "eventName": "Project Kickoff",
+            "name": "Project Kickoff",
             "reschedule": false,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "Alice Johnson",
@@ -114,15 +114,15 @@
         },
         {
             "_id": "5",
-            "status": "upcoming",
-            "date": "2023-10-11",
+            "status": "approved",
+            "date": "2024-01-25",
             "startTime": "11:00",
             "endTime": "12:00",
             "location": "Online",
-            "eventName": "Marketing Strategy Meeting",
-            "reschedule": true,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "name": "Marketing Strategy Meeting",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "Chris Evans",
@@ -145,15 +145,15 @@
         },
         {
             "_id": "6",
-            "status": "upcoming",
+            "status": "approved",
             "date": "2023-11-20",
             "startTime": "15:00",
             "endTime": "16:00",
             "location": "Conference Room B",
-            "eventName": "Year-end Review",
+            "name": "Year-end Review",
             "reschedule": false,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "Robert Downey Jr.",
@@ -168,15 +168,15 @@
         },
         {
             "_id": "7",
-            "status": "upcoming",
+            "status": "approved",
             "date": "2024-01-15",
             "startTime": "10:00",
             "endTime": "11:00",
             "location": "Online",
-            "eventName": "Product Launch Discussion",
-            "reschedule": true,
-            "eventDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
-            "eventLink": "https://discord.thecyberhub.org",
+            "name": "Product Launch Discussion",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
             "participants": [
                 {
                     "name": "Chris Hemsworth",
@@ -192,6 +192,83 @@
                 }
             ],
             "maxParticipantNumber": 4
+        },
+        {
+            "_id": "8",
+            "status": "approved",
+            "date": "2024-01-24",
+            "startTime": "14:00",
+            "endTime": "22:55",
+            "location": "Conference Room A",
+            "name": "Project Kickoff",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
+            "participants": [
+                {
+                    "name": "Alice Johnson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Bob Brown",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ],
+            "maxParticipantNumber": 5
+        },
+        {
+            "_id": "9",
+            "status": "approved",
+            "date": "2024-01-24",
+            "startTime": "11:00",
+            "endTime": "22:00",
+            "location": "Online",
+            "name": "Marketing Strategy Meeting",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
+            "participants": [
+                {
+                    "name": "Chris Evans",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Emma Watson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Chris Evans",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Emma Watson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ],
+            "maxParticipantNumber": 4
+        },
+        {
+            "_id": "10",
+            "status": "approved",
+            "date": "2023-11-20",
+            "startTime": "15:00",
+            "endTime": "16:00",
+            "location": "Conference Room B",
+            "name": "Year-end Review",
+            "reschedule": false,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl. Donec euismod, nisl eget ultricies ultrices, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.",
+            "link": "https://discord.thecyberhub.org",
+            "participants": [
+                {
+                    "name": "Robert Downey Jr.",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                },
+                {
+                    "name": "Scarlett Johansson",
+                    "profileURL": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80"
+                }
+            ],
+            "maxParticipantNumber": 10
         }
     ]
 }

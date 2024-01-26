@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { ProfileContainer, ProfileDetailsSection, Wrapper } from "./ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails, userDetailReset } from "../../../features/userDetail/userDetailSlice";
@@ -28,7 +28,7 @@ const UserProfile = () => {
     const { blogs, isBlogLoading } = useSelector((state) => state.blogs);
     const { username } = useParams();
 
-    const userDetail = userDetails?.find((user) => user?.username === username);
+    const [userDetail, setUserDetail] = useState({});
 
     useEffect(() => {
         if (isError) {
@@ -40,6 +40,12 @@ const UserProfile = () => {
 
         return () => dispatch(userDetailReset());
     }, [isError, message, dispatch, username]);
+
+    useEffect(() => {
+        if (userDetails) {
+            setUserDetail(userDetails.find((user) => user.username === username));
+        }
+    }, [userDetails, username]);
 
     if (isUserDetailLoading || isBlogLoading || isApiLoading) {
         return (
