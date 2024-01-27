@@ -14,6 +14,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // import LoginBox from "../Common/LoginBox";
 // import {useNavigate} from "react-router-dom";
 import AuthPopup from "../../pages/AuthPopup/AuthPopup";
+import prompts from "./prompts.json";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
@@ -34,6 +35,43 @@ const AiChat = () => {
 
     const [toggle, setToggle] = useState(false);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
+
+    const handleSendDummyMessage = async (dummyMessage) => {
+        console.log("handleSendDummyMessage is working");
+        console.log(dummyMessage);
+        setUserInput(dummyMessage);
+        setIsLoading(true);
+        console.log("dummyMessage", dummyMessage);
+
+        if (!user) {
+            setShowAuthPopup(true);
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                `${API_BASE_URL}/ask/${selectedChatId}`,
+                { prompt: dummyMessage },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                },
+            );
+
+            const { chats } = response.data;
+            setChats(chats);
+            setUserInput("");
+        } catch (error) {
+            toast("Please enter your API Key");
+            // toast(error.response.data);
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -61,7 +99,8 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            toast(error.response.data);
+            toast("Please enter your API Key");
+            // toast(error.response.data);
             console.error(error);
         } finally {
             setIsLoading(false);
@@ -194,22 +233,47 @@ const AiChat = () => {
 
                                     <ChatMessages messages={chat.messages} />
 
-                                    <ChatInput onSubmit={handleSendMessage}>
-                                        <input
-                                            type="text"
-                                            value={userInput}
-                                            onChange={(e) => setUserInput(e.target.value)}
-                                        />
-                                        {isLoading ? (
-                                            <button>
-                                                <CircleSpinner size={20} color={"#131313"} />
-                                            </button>
-                                        ) : (
-                                            <button type="submit">
-                                                <BiSend size={25} />
-                                            </button>
+                                    <div>
+                                        {chat.title !== "New Chat" ? null : (
+                                            <div>
+                                                <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 w-full h-full mb-8 lg:flex-row md:flex-row sm:flex-col gap-2">
+                                                    {prompts.map((prompt, index) => (
+                                                        <button
+                                                            key={index}
+                                                            onClick={() => {
+                                                                handleSendDummyMessage({ prompt }.prompt);
+                                                            }}
+                                                            className="border-solid w-full p-2.5 border-4 border-[#252525] rounded-lg hover:outline-red-500 hover:bg-neutral-500 "
+                                                        >
+                                                            <p>
+                                                                {prompt.split(",")[0]} <br />
+                                                                <span className="opacity-50">
+                                                                    {prompt.split(",")[1]}
+                                                                </span>
+                                                            </p>
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         )}
-                                    </ChatInput>
+
+                                        <ChatInput onSubmit={handleSendMessage}>
+                                            <input
+                                                type="text"
+                                                value={userInput}
+                                                onChange={(e) => setUserInput(e.target.value)}
+                                            />
+                                            {isLoading ? (
+                                                <button>
+                                                    <CircleSpinner size={20} color={"#131313"} />
+                                                </button>
+                                            ) : (
+                                                <button type="submit">
+                                                    <BiSend size={25} />
+                                                </button>
+                                            )}
+                                        </ChatInput>
+                                    </div>
                                 </ChatBox>
                             ),
                     )
