@@ -39,7 +39,7 @@ export const EventItemList = ({
         } else {
             setActionDisplay("Join");
         }
-        setLeftPlacesToJoin(data.maxParticipantNumber - data.participants.length);
+        setLeftPlacesToJoin(data.maxParticipantsNumber - data.participants.length);
     }, [eventsJoinedId, data, user]);
 
     const handleDisplayActionClick = () => {
@@ -112,7 +112,7 @@ export const EventItemList = ({
                             {actions[tabStatus].map(({ icon: Icon, text, onClick }) => (
                                 <div
                                     onClick={() => {
-                                        onClick(data._id);
+                                        onClick(data);
                                         setOpenEventIndex(openEventIndex === index ? null : index);
                                     }}
                                     className="action-dropdown-list"
@@ -144,7 +144,7 @@ export const EventItemList = ({
                         </div>
                         <div className="details">
                             <p>
-                                {data.participants.length} / {data.maxParticipantNumber}
+                                {data.participants.length} / {data.maxParticipantsNumber}
                             </p>
                         </div>
                     </div>

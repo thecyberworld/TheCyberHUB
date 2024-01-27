@@ -19,6 +19,8 @@ import resetPasswordReducer from "../features/resetPassword/resetPasswordSlice";
 import followReducer from "../features/follow/followSlice";
 import connectionReducer from "../features/connections/connectionSlice";
 
+import eventsReducer from "../features/events/eventsSlice";
+
 // import { cyberNewsApi } from "../services/cyberNewsApi";
 
 export default configureStore({
@@ -46,6 +48,8 @@ export default configureStore({
         resetPassword: resetPasswordReducer,
         followData: followReducer,
         connectionData: connectionReducer,
+
+        events: eventsReducer,
 
         // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },

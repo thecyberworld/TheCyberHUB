@@ -58,7 +58,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             description: "",
             link: "",
             participants: [],
-            maxParticipantNumber: 0,
+            maxParticipantsNumber: 0,
         },
     );
     useEffect(() => {
@@ -96,7 +96,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             eventObj.description.length > 10 &&
             eventObj.link &&
             validURL(eventObj.link) &&
-            eventObj.maxParticipantNumber > 0
+            eventObj.maxParticipantsNumber > 0
         ) {
             eventObj.date = dateFormat(eventObj.date);
             onModify(eventObj, modifyEventId);
@@ -167,8 +167,8 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                     </InputEditorIconContainer>
                     <InputEditor
                         inputType="number"
-                        content={eventObj.maxParticipantNumber}
-                        label="maxParticipantNumber"
+                        content={eventObj.maxParticipantsNumber}
+                        label="maxParticipantsNumber"
                         placeholder="Max Participants"
                         onCopyChanges={handleUpdateEventPropertyValue}
                     />
