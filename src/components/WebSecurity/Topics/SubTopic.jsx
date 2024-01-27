@@ -69,9 +69,10 @@ const LabSolved = styled.p`
     border-radius: 0 20px 20px 0;
 `;
 
-const SubTopic = ({ subtopic, subtopicRef, key }) => {
+const SubTopic = ({ subtopic }) => {
     return (
-        <SubTopicContainer ref={subtopicRef} key={key}>
+        <SubTopicContainer id={subtopic.id} key={subtopic.id}>
+            {/* // move to here */}
             <SubTopicTitle>{subtopic.title}</SubTopicTitle>
             <SubTopicContent>{subtopic.content}</SubTopicContent>
             {/* <p>Labs</p> */}
@@ -80,7 +81,7 @@ const SubTopic = ({ subtopic, subtopicRef, key }) => {
                     <LabContainer key={index}>
                         <LabText>Lab</LabText>
                         <LabTitle>
-                            <LabLink href={lab?.link}>{lab?.title}</LabLink>
+                            <LabLink to={lab?.link}>{lab?.title}</LabLink>
                             {/* <LabLevel>{lab.level}</LabLevel> */}
                         </LabTitle>
                         <LabSolved>{lab?.title ? "Solved" : "Not Solved"}</LabSolved>

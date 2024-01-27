@@ -22,6 +22,7 @@ export const DropdownContainer = styled.div`
     position: absolute;
     top: 80px;
     left: 0;
+    z-index: 999;
 
     background: #030303;
 
@@ -43,6 +44,7 @@ export const DropdownItemsContainer = styled.div`
     height: auto;
     margin: 0 auto;
     margin-bottom: 1rem;
+    z-index: 999;
 
     @media screen and (max-width: 768px) {
         height: max-content;
@@ -58,6 +60,7 @@ export const DropdownItemContainer = styled.div`
     position: relative;
     margin: 1rem;
     width: 270px;
+    z-index: 999;
 
     &:hover {
         cursor: pointer;

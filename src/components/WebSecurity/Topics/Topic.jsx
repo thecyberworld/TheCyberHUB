@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import topics from "./topicsData";
 import { useParams } from "react-router-dom";
 import { Container } from "./TopicElements";
@@ -8,18 +8,12 @@ import SubTopic from "./SubTopic";
 const Topic = () => {
     const { id } = useParams();
     const topic = topics.find((topic) => topic.id === parseInt(id));
-    const subtopicRef = useRef(null);
 
     const [subtopic, setSubtopic] = useState(null);
 
     const handleSelectSubtopic = (subtopicId) => {
         setSubtopic(subtopicId);
         console.log(subtopic);
-
-        // subtopicRef.current.scrollIntoView({
-        //     behavior: 'smooth',
-        //     block: 'start',
-        // });
     };
 
     return (
@@ -69,7 +63,7 @@ const Topic = () => {
                     }}
                 >
                     {topic?.desc?.map((desc, index) => (
-                        <SubTopic subtopic={desc} subtopicRef={subtopicRef} key={index} />
+                        <SubTopic id={desc.title} subtopic={desc} key={index} />
                     ))}
                 </div>
 

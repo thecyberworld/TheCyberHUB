@@ -29,26 +29,32 @@ const SubHeader = (props) => {
                 </Li>{" "}
             </Ul>
             <Ul>
-                {subHeaderData.map((item) => (
-                    <Li key={item.id}>
-                        {item.isDropdown ? (
-                            <DropdownContainer>
-                                <DropdownTitle>{item.title}</DropdownTitle>
-                                <DropdownUl>
-                                    {item.dropdownOptions.map((subItem) => (
-                                        <DropdownLi key={subItem.id}>
-                                            <DropdownLink to={subItem.link}>{subItem.title}</DropdownLink>
-                                        </DropdownLi>
-                                    ))}
-                                </DropdownUl>
-                            </DropdownContainer>
-                        ) : (
-                            <NavLink to={item.link}>{item.title}</NavLink>
-                        )}
-                    </Li>
-                ))}
-            </Ul>{" "}
-            <span></span>{" "}
+                {!props?.onlyCat
+                    ? subHeaderData.map((item) => (
+                          <Li key={item.id}>
+                              {item.isDropdown ? (
+                                  <DropdownContainer>
+                                      <DropdownTitle>{item.title}</DropdownTitle>
+                                      <DropdownUl>
+                                          {item.dropdownOptions.map((subItem) => (
+                                              <DropdownLi key={subItem.id}>
+                                                  <DropdownLink to={`#${subItem.link}`}>{subItem.title}</DropdownLink>
+                                              </DropdownLi>
+                                          ))}
+                                      </DropdownUl>
+                                  </DropdownContainer>
+                              ) : (
+                                  <NavLink to={item.link}>{item.title}</NavLink>
+                              )}
+                          </Li>
+                      ))
+                    : subHeaderData.map((item, index) => (
+                          <NavLink to={item.category} key={index}>
+                              {item.category}
+                          </NavLink>
+                      ))}
+            </Ul>
+            <span></span>
         </Nav>
     );
 };

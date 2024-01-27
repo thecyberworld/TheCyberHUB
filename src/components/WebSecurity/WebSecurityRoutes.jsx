@@ -24,25 +24,34 @@ const WebSecurityRoutes = () => {
 
     return (
         <Wrapper style={{ marginTop: "90px" }}>
-            <SubHeader heading={"Web Security"} subHeaderData={subHeaderData} />
             <div
                 style={{
-                    width: "100%",
-                    maxWidth: "1200px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: "20px",
                 }}
             >
-                <Routes>
-                    <Route index element={<WebSecurity />} />
+                <SubHeader heading={"Web Security"} subHeaderData={subHeaderData} />
+                <div
+                    style={{
+                        width: "100%",
+                        maxWidth: "1200px",
+                    }}
+                >
+                    <Routes>
+                        <Route index element={<WebSecurity />} />
 
-                    <Route path={"topics"} element={<Topics />} />
-                    <Route path={"topic/:id"} element={<Topic />} />
+                        <Route path={"topics"} element={<Topics />} />
+                        <Route path={"topic/:id"} element={<Topic />} />
 
-                    <Route path={"labs"} element={<Labs />} />
-                    <Route path={"labs/:id"} element={<Room />} />
+                        <Route path={"labs"} element={<Labs />} />
+                        <Route path={"labs/:id"} element={<Room />} />
 
-                    <Route path={"*"} element={<NotFound />} />
-                    <Route element={<NotFound />} />
-                </Routes>
+                        <Route path={"*"} element={<NotFound />} />
+                        <Route element={<NotFound />} />
+                    </Routes>
+                </div>
             </div>
         </Wrapper>
     );

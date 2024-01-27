@@ -2,18 +2,16 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Nav = styled.nav`
-    background-color: #111111;
-    height: 60px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    background-color: #1a1a1a;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 0 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 1200px;
-
-    border: 2px solid #282828;
-    border-radius: 10px;
+    align-items: center;
+    z-index: 99;
 `;
 
 export const Ul = styled.ul`
