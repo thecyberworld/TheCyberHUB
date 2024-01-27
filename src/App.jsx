@@ -45,7 +45,6 @@ import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
 import ToolsRoutes from "./components/Tools/ToolsRoute";
 import CtfRoute from "./components/CaptureTheFlag/CTFRoute";
 import BlogsRoute from "./components/Blogs/BlogsRoute";
-import EventsRoute from "./components/Events/EventsRoute";
 import RoadmapsRoute from "./components/Learn/Roadmaps/RoadmapsRoute";
 import CoursesRoute from "./components/Learn/Courses/CoursesRoute";
 import ForumRoute from "./components/Forum/ForumRoute";
@@ -131,7 +130,6 @@ const App = () => {
                         <Route exact path={"/blogs/create-blog"} element={<CreateBlog />} />
 
                         <Route path={"/forum/*"} element={<ForumRoute />} />
-                        <Route path={"/events/*"} element={<EventsRoute />} />
 
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
