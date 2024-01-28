@@ -67,14 +67,26 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             maxParticipantsNumber: 0,
         },
     );
-    const [rangeDate, setRangeDate] = useState({ from: eventObj.startTime, to: eventObj.endTime });
-    const [time, setTime] = useState({
-        startTime: eventObj.startTime ? `${eventObj.startTime.getHours()}:${eventObj.startTime.getMinutes()}` : "",
-        endTime: eventObj.endTime ? `${eventObj.endTime?.getHours()}:${eventObj.endTime?.getMinutes()}` : "",
-    });
+
+    const [rangeDate, setRangeDate] = useState({ from: "", to: "" });
+    const [time, setTime] = useState({ startTime: "", endTime: "" });
     useEffect(() => {
         if (modifyEventId) {
-            setEventObj(modifyEvent);
+            const startTimeDate = new Date(modifyEvent.startTime);
+            const endTimeDate = new Date(modifyEvent.endTime);
+            setEventObj({
+                ...modifyEvent,
+                startTime: startTimeDate,
+                endTime: endTimeDate,
+            });
+            setRangeDate({
+                from: new Date(modifyEvent.startTime).setHours(0, 0, 0),
+                to: new Date(modifyEvent.endTime).setHours(0, 0, 0),
+            });
+            setTime({
+                startTime: `${startTimeDate.getHours()}:${startTimeDate.getMinutes()}`,
+                endTime: `${endTimeDate.getHours()}:${endTimeDate.getMinutes()}`,
+            });
         }
     }, []);
     const handleUpdateEventPropertyValue = (properyName, value) => {
@@ -132,7 +144,6 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
     };
 
     const handleSaveChanges = () => {
-        console.log(eventObj);
         if (
             eventObj.startTime &&
             eventObj.endTime &&
@@ -198,7 +209,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                         <TimeInputEditorContainer>
                             <InputEditor
                                 inputType="time"
-                                content={time.startTime}
+                                content={time?.startTime}
                                 label="startTime"
                                 onCopyChanges={handleUpdateEventPropertyValue}
                             />
@@ -210,7 +221,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                         <TimeInputEditorContainer>
                             <InputEditor
                                 inputType="time"
-                                content={time.endTime}
+                                content={time?.endTime}
                                 label="endTime"
                                 onCopyChanges={handleUpdateEventPropertyValue}
                             />

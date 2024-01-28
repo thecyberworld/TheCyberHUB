@@ -14,33 +14,32 @@ import { updateEvent } from "../../../features/events/eventsSlice";
 const ManageCommunityEvents = () => {
     const dispatch = useDispatch();
     const [modifyEventId, setModifyEventId] = useState("");
+    const activeEvents = [
+        {
+            icon: TbEditCircleIcon,
+            text: "Edit Details",
+            onClick: (modifiedEvent) => setModifyEventId(modifiedEvent._id),
+        },
+        {
+            icon: BiUserPlusIcon,
+            text: "Invite people",
+            onClick: (modifiedEvent) => {},
+        },
+        {
+            icon: AiOutlineCloseCircleIcon,
+            text: "Cancel event",
+            onClick: (modifiedEvent) =>
+                dispatch(updateEvent({ id: modifiedEvent._id, eventData: { ...modifiedEvent, status: "cancelled" } })),
+        },
+    ];
     const actions = {
-        upcoming: [
-            {
-                icon: TbEditCircleIcon,
-                text: "Edit Details",
-                onClick: (modifiedEvent) => setModifyEventId(modifiedEvent._id),
-            },
-            {
-                icon: BiUserPlusIcon,
-                text: "Invite people",
-                onClick: (modifiedEvent) => {},
-            },
-            {
-                icon: AiOutlineCloseCircleIcon,
-                text: "Cancel event",
-                onClick: (modifiedEvent) =>
-                    dispatch(
-                        updateEvent({ id: modifiedEvent._id, eventData: { ...modifiedEvent, status: "cancelled" } }),
-                    ),
-            },
-        ],
+        upcoming: activeEvents,
+        ongoing: activeEvents,
         cancelled: [
             {
                 icon: TbRestoreIcon,
                 text: "Restore event",
                 onClick: (modifiedEvent) => {
-                    console.log(modifiedEvent);
                     dispatch(
                         updateEvent({ id: modifiedEvent._id, eventData: { ...modifiedEvent, status: "approved" } }),
                     );

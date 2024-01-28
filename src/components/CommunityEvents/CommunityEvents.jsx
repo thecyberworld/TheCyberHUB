@@ -61,8 +61,9 @@ const CommunityEvents = ({
     const filteredEvents = events
         .filter((event) => {
             let eventFit = false;
-            if (tabNames[isActiveTab].status === "cancelled") return event.status === tabNames[isActiveTab].status;
-            console.log(new Date().getTime(), new Date(event.endTime).getTime());
+            if (tabNames[isActiveTab].status === "cancelled" || event.status === "cancelled")
+                return event.status === tabNames[isActiveTab].status;
+
             switch (tabNames[isActiveTab].status) {
                 case "past":
                     if (new Date().getTime() >= new Date(event.endTime).getTime()) eventFit = true;
