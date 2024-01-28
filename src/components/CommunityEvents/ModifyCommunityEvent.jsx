@@ -52,6 +52,9 @@ const setDateAndTime = (date, time) => {
         newTime?.getMinutes(),
     );
 };
+const AddZeroToDateString = (dateValue) => {
+    return +dateValue < 10 ? `0${dateValue}` : dateValue;
+};
 const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
     const [eventObj, setEventObj] = useState(
         modifyEvent || {
@@ -84,8 +87,12 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                 to: new Date(modifyEvent.endTime).setHours(0, 0, 0),
             });
             setTime({
-                startTime: `${startTimeDate.getHours()}:${startTimeDate.getMinutes()}`,
-                endTime: `${endTimeDate.getHours()}:${endTimeDate.getMinutes()}`,
+                startTime: `${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
+                    startTimeDate.getMinutes(),
+                )}`,
+                endTime: `${AddZeroToDateString(endTimeDate.getHours())}:${AddZeroToDateString(
+                    endTimeDate.getMinutes(),
+                )}`,
             });
         }
     }, []);
