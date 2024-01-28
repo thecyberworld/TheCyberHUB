@@ -57,16 +57,16 @@ export const EventItemList = ({
         <EventItem isRequestedEvent={data.reschedule} key={index}>
             <div
                 className={
-                    data.date === todayString && data.endTime > currentTime && data.status === "approved"
+                    data.startTime === todayString && data.endTime > currentTime && data.status === "approved"
                         ? "date today-date"
                         : "date"
                 }
             >
                 <p>{dayName}</p>
-                <p className="date-digit">{`${getMonthName(data.date.split("-")).slice(0, 3)} ${
-                    data.date.split("-")[2]
+                <p className="date-digit">{`${getMonthName(data.startTime.split("-")).slice(0, 3)} ${
+                    data.startTime.split("-")[2]
                 }`}</p>
-                <p className="date-digit date-year">{`${data.date.split("-")[0]}`}</p>
+                <p className="date-digit date-year">{`${data.startTime.split("-")[0]}`}</p>
             </div>
             <div className="time-line">
                 <div className="time-line-detail">

@@ -61,30 +61,19 @@ const CommunityEvents = ({
     const filteredEvents = events
         .filter((event) => {
             let eventFit = false;
+            if (tabNames[isActiveTab].status === "cancelled") return event.status === tabNames[isActiveTab].status;
+            console.log(new Date().getTime(), new Date(event.endTime).getTime());
             switch (tabNames[isActiveTab].status) {
-                case "cancelled":
-                    if (event.status === tabNames[isActiveTab].status) eventFit = true;
-                    break;
                 case "past":
-                    if (
-                        event.status === "approved" &&
-                        (event.date < todayString || (event.date === todayString && event.endTime < currentTime))
-                    )
-                        eventFit = true;
+                    if (new Date().getTime() >= new Date(event.endTime).getTime()) eventFit = true;
                     break;
                 case "upcoming":
-                    if (
-                        event.status === "approved" &&
-                        (event.date > todayString || (event.date === todayString && event.startTime >= currentTime))
-                    )
-                        eventFit = true;
+                    if (new Date().getTime() < new Date(event.startTime).getTime()) eventFit = true;
                     break;
                 case "ongoing":
                     if (
-                        event.status === "approved" &&
-                        event.date === todayString &&
-                        event.startTime <= currentTime &&
-                        event.endTime > currentTime
+                        new Date().getTime() >= new Date(event.startTime).getTime() &&
+                        new Date().getTime() < new Date(event.endTime).getTime()
                     )
                         eventFit = true;
                     break;
@@ -96,7 +85,6 @@ const CommunityEvents = ({
         .sort((a, b) => {
             return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
         });
-
     const handleModifyEvent = (newEvent, eventId = "") => {
         if (!eventId) return dispatch(createEvent(newEvent));
         dispatch(updateEvent({ id: newEvent._id, eventData: newEvent }));
@@ -161,7 +149,7 @@ const CommunityEvents = ({
                             )}
                             {filteredEvents.length !== 0 ? (
                                 filteredEvents.map((data, index) => {
-                                    const dateObject = new Date(data.date);
+                                    const dateObject = new Date(data.startTime);
                                     const dayName = daysOfWeek[dateObject.getDay()];
                                     return (
                                         <EventItemList
