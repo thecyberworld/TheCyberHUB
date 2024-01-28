@@ -17,8 +17,8 @@ import {
     HackBookTitleContainer,
 } from "./CheatSheetElements";
 
-import { LuPanelBottomOpen, LuPanelBottomClose, LuPanelTopOpen, LuPanelTopClose } from "react-icons/lu";
-
+import { LuPanelTopOpen, LuPanelTopClose } from "react-icons/lu";
+import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 const CheatSheet = ({ data, heading }) => {
     const hackBookData = data;
     const [selectedFile, setSelectedFile] = useState(() => {
@@ -128,7 +128,7 @@ const CheatSheet = ({ data, heading }) => {
 
                 <ContentData>
                     <ToggleButton onClick={handleToggle} size={20}>
-                        {toggle ? <LuPanelBottomOpen fontSize={"20px"} /> : <LuPanelBottomClose fontSize={"20px"} />}
+                        {toggle ? <MdFullscreen fontSize={"20px"} /> : <MdFullscreenExit fontSize={"20px"} />}
                     </ToggleButton>
                     {selectedFile && (
                         <MarkdownContainer>
