@@ -49,7 +49,6 @@ const Course = () => {
     // }
 
     const changeImgSrc = (src) => {
-        console.log(src, "1");
         document.getElementById("image").src = src;
     };
 

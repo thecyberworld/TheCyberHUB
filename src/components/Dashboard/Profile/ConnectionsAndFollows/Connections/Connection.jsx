@@ -11,8 +11,6 @@ import {
 import Connections from "./Connections";
 
 const Connection = ({ userDetail, userDetails }) => {
-    console.log("userDetail", userDetail);
-
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { connections: connectionData } = useSelector((state) => state.connectionData);
