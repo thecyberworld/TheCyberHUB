@@ -14,7 +14,7 @@ import { RouterLink } from "../../../Tools/ToolsElements";
 import { CircleSpinner } from "react-spinners-kit";
 import { ConnectionButton } from "./Connections/ConnectionElements";
 
-const ConnectionsAndFollows = ({ userDetail }) => {
+const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
 
@@ -58,6 +58,9 @@ const ConnectionsAndFollows = ({ userDetail }) => {
     }, [followData, followers, user?._id]);
 
     const handleFollow = async () => {
+        if (!user) {
+            return setShowAuthPopup(true);
+        }
         if (!isFollowed && followUserId) {
             await dispatch(followUser(followUserId));
         }
@@ -98,6 +101,9 @@ const ConnectionsAndFollows = ({ userDetail }) => {
 
     const handleSendConnectionRequest = useCallback(
         async (connectionUserId) => {
+            if (!user) {
+                return setShowAuthPopup(true);
+            }
             if (connectionUserId) {
                 await dispatch(sendConnectionRequest(connectionUserId));
             }
@@ -143,15 +149,7 @@ const ConnectionsAndFollows = ({ userDetail }) => {
 
     return (
         <FollowContainer>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "start",
-                    alignItems: "center",
-                    width: "100%",
-                    gap: "10px",
-                }}
-            >
+            <div>
                 {/* follow */}
                 {user && followUserId && user?._id === followUserId ? (
                     <FollowButton>
@@ -185,14 +183,14 @@ const ConnectionsAndFollows = ({ userDetail }) => {
                                         Cancel Request
                                     </ConnectionButton>
                                 ) : (
-                                    <>
+                                    <div style={{ display: "flex" }}>
                                         <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
                                             Reject Request
                                         </ConnectionButton>
                                         <ConnectionButton onClick={() => handleAcceptConnectionRequest(followUserId)}>
                                             Accept Request
                                         </ConnectionButton>
-                                    </>
+                                    </div>
                                 )}
                             </>
                         )
