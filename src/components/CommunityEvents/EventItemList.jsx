@@ -44,7 +44,8 @@ export const EventItemList = ({
         if (!user) toast.info("To Join An Event You First Need To Login/Register To The Website");
         if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(data._id)) return;
         if (actionDisplay === "Join") {
-            data.participants.push(user._id);
+            console.log("join");
+            // data.participants.push(user._id);
         } else {
             data.participants = data.participants.filter((userId) => userId !== user._id);
         }
