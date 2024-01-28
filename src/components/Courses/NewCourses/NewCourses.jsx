@@ -47,7 +47,6 @@ const NewCourses = () => {
         } else {
             setFilterContent(null);
         }
-        console.log(filterContent);
     };
 
     return (

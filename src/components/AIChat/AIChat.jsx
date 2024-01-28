@@ -14,6 +14,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // import LoginBox from "../Common/LoginBox";
 // import {useNavigate} from "react-router-dom";
 import AuthPopup from "../../pages/AuthPopup/AuthPopup";
+import Prompts from "./Prompts/Prompts";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
@@ -34,6 +35,40 @@ const AiChat = () => {
 
     const [toggle, setToggle] = useState(false);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
+
+    const handleSendDummyMessage = async (dummyMessage) => {
+        setUserInput(dummyMessage);
+        setIsLoading(true);
+
+        if (!user) {
+            setShowAuthPopup(true);
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                `${API_BASE_URL}/ask/${selectedChatId}`,
+                { prompt: dummyMessage },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                },
+            );
+
+            const { chats } = response.data;
+            setChats(chats);
+            setUserInput("");
+        } catch (error) {
+            toast("Please enter your API Key");
+            // toast(error.response.data);
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -61,7 +96,8 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            toast(error.response.data);
+            toast("Please enter your API Key");
+            // toast(error.response.data);
             console.error(error);
         } finally {
             setIsLoading(false);
@@ -124,8 +160,6 @@ const AiChat = () => {
     const handleDeleteChat = async (chatId) => {
         setIsLoading(true);
 
-        console.log("chatId", chatId);
-        console.log("userId", user._id);
         try {
             await axios.delete(`${API_BASE_URL}/delete/${chatId}`, {
                 headers: {
@@ -162,9 +196,6 @@ const AiChat = () => {
         setShowAuthPopup(false);
     };
 
-    console.log("showAuthPopup", showAuthPopup);
-    console.log(selectedChatId);
-
     return (
         <Wrapper>
             {showAuthPopup && <AuthPopup onClose={() => handleCloseAuthPopup()} />}
@@ -194,22 +225,28 @@ const AiChat = () => {
 
                                     <ChatMessages messages={chat.messages} />
 
-                                    <ChatInput onSubmit={handleSendMessage}>
-                                        <input
-                                            type="text"
-                                            value={userInput}
-                                            onChange={(e) => setUserInput(e.target.value)}
-                                        />
-                                        {isLoading ? (
-                                            <button>
-                                                <CircleSpinner size={20} color={"#131313"} />
-                                            </button>
-                                        ) : (
-                                            <button type="submit">
-                                                <BiSend size={25} />
-                                            </button>
+                                    <div>
+                                        {chat.title !== "New Chat" ? null : (
+                                            <Prompts handleSendDummyMessage={handleSendDummyMessage} />
                                         )}
-                                    </ChatInput>
+
+                                        <ChatInput onSubmit={handleSendMessage}>
+                                            <input
+                                                type="text"
+                                                value={userInput}
+                                                onChange={(e) => setUserInput(e.target.value)}
+                                            />
+                                            {isLoading ? (
+                                                <button>
+                                                    <CircleSpinner size={20} color={"#131313"} />
+                                                </button>
+                                            ) : (
+                                                <button type="submit">
+                                                    <BiSend size={25} />
+                                                </button>
+                                            )}
+                                        </ChatInput>
+                                    </div>
                                 </ChatBox>
                             ),
                     )
@@ -224,16 +261,21 @@ const AiChat = () => {
                         </ChatHeader>
 
                         <ChatInput onSubmit={handleSendMessage}>
-                            <input type="text" value={userInput} onChange={(e) => setUserInput(e.target.value)} />
-                            {isLoading ? (
-                                <button>
-                                    <CircleSpinner size={20} color={"#131313"} />
-                                </button>
-                            ) : (
-                                <button type="submit">
-                                    <BiSend size={25} />
-                                </button>
-                            )}
+                            <input
+                                type="text"
+                                value={"Start A New Chat "}
+                                onChange={(e) => setUserInput(e.target.value)}
+                            />
+
+                            {/* {isLoading ? ( */}
+                            {/*    <button> */}
+                            {/*        <CircleSpinner size={20} color={"#131313"}/> */}
+                            {/*    </button> */}
+                            {/* ) : ( */}
+                            {/*    <button type="submit"> */}
+                            {/*        <BiSend size={25}/> */}
+                            {/*    </button> */}
+                            {/* )} */}
                         </ChatInput>
                     </ChatBox>
                 )}
