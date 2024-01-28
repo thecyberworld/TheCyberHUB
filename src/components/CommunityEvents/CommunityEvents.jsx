@@ -52,8 +52,9 @@ const CommunityEvents = ({
 
     const tabNames = [
         { id: 0, status: "upcoming" },
-        { id: 1, status: "past" },
-        { id: 2, status: "cancelled" },
+        { id: 1, status: "ongoing" },
+        { id: 2, status: "past" },
+        { id: 3, status: "cancelled" },
     ];
     const [todayString, currentTime, daysOfWeek] = getTimeRelatedData();
 
@@ -74,7 +75,16 @@ const CommunityEvents = ({
                 case "upcoming":
                     if (
                         event.status === "approved" &&
-                        (event.date > todayString || (event.date === todayString && event.endTime >= currentTime))
+                        (event.date > todayString || (event.date === todayString && event.startTime >= currentTime))
+                    )
+                        eventFit = true;
+                    break;
+                case "ongoing":
+                    if (
+                        event.status === "approved" &&
+                        event.date === todayString &&
+                        event.startTime <= currentTime &&
+                        event.endTime > currentTime
                     )
                         eventFit = true;
                     break;

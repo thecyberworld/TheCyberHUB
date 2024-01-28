@@ -24,6 +24,8 @@ import {
     TimeInputLabel,
     TimePickerContainer,
     TimePicking,
+    DisplayDate,
+    TimeInputEditorContainer,
 } from "./ModifyCommunityEventElement";
 import { toast } from "react-toastify";
 
@@ -39,17 +41,21 @@ const validURL = (str) => {
     ); // fragment locator
     return !!pattern.test(str);
 };
-const dateFormat = (dateObj) => {
-    const month = dateObj.getMonth() + 1;
-    let monthString = `${month}`;
-    if (month < 10) monthString = `0${month}`;
-    return `${dateObj.getFullYear()}-${monthString}-${dateObj.getDate()}`;
+const setDateAndTime = (date, time) => {
+    const newDate = date || new Date();
+    const newTime = time ? new Date(time) : newDate;
+    return new Date(
+        newDate?.getFullYear(),
+        newDate?.getMonth(),
+        newDate?.getDate(),
+        newTime?.getHours(),
+        newTime?.getMinutes(),
+    );
 };
 const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
     const [eventObj, setEventObj] = useState(
         modifyEvent || {
             status: "approved",
-            date: "",
             startTime: "",
             endTime: "",
             location: "Online",
@@ -61,13 +67,37 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             maxParticipantsNumber: 0,
         },
     );
+    const [rangeDate, setRangeDate] = useState({ from: eventObj.startTime, to: eventObj.endTime });
+    const [time, setTime] = useState({
+        startTime: eventObj.startTime ? `${eventObj.startTime.getHours()}:${eventObj.startTime.getMinutes()}` : "",
+        endTime: eventObj.endTime ? `${eventObj.endTime?.getHours()}:${eventObj.endTime?.getMinutes()}` : "",
+    });
     useEffect(() => {
         if (modifyEventId) {
-            setEventObj({ ...modifyEvent, date: new Date(modifyEvent.date) });
+            setEventObj(modifyEvent);
         }
     }, []);
     const handleUpdateEventPropertyValue = (properyName, value) => {
         setEventObj((prevEventObj) => {
+            if (properyName === "rangeDate") {
+                if (value && !value.to) value.to = value.from;
+                if (value && !value.from) value.from = value.to;
+                setRangeDate(value);
+                return {
+                    ...prevEventObj,
+                    startTime: value ? setDateAndTime(value.from, prevEventObj.startTime) : prevEventObj.startTime,
+                    endTime: value ? setDateAndTime(value.to, prevEventObj.endTime) : prevEventObj.endTime,
+                };
+            }
+            if (properyName.includes("Time")) {
+                const houres = value.split(":")[0];
+                const minutes = value.split(":")[1];
+                return {
+                    ...prevEventObj,
+                    [properyName]: setDateAndTime(prevEventObj[properyName], new Date().setHours(houres, minutes)),
+                };
+            }
+
             return {
                 ...prevEventObj,
                 [properyName]: value,
@@ -75,21 +105,38 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
         });
     };
 
-    let footer = <p style={{ textAlign: "center" }}>Please pick a day.</p>;
-    if (eventObj.date && eventObj.date instanceof Date)
-        footer = <p style={{ textAlign: "center" }}>You Picked {format(eventObj.date, "PP")}.</p>;
-
+    let footer = (
+        <div style={{ height: "50px" }}>
+            <p style={{ textAlign: "center" }}>Please pick the first day.</p>
+        </div>
+    );
+    if (rangeDate?.from) {
+        if (rangeDate?.to === rangeDate?.from) {
+            footer = (
+                <div style={{ height: "50px" }}>
+                    <p style={{ textAlign: "center" }}>{format(rangeDate?.from, "PPP")}</p>
+                </div>
+            );
+        } else if (rangeDate?.to) {
+            footer = (
+                <div style={{ height: "50px", marginLeft: "10%" }}>
+                    <p>From: {format(rangeDate?.from, "PPP")}</p>
+                    <p>To: {format(rangeDate?.to, "PPP")}</p>
+                </div>
+            );
+        }
+    }
     const handleCloseChangeMode = () => {
         setOpenCreatingNewEvent(false);
         setModifyEventId("");
     };
 
     const handleSaveChanges = () => {
+        console.log(eventObj);
         if (
-            eventObj.date &&
-            eventObj.date instanceof Date &&
             eventObj.startTime &&
             eventObj.endTime &&
+            eventObj.startTime < eventObj.endTime &&
             eventObj.name &&
             eventObj.name.length > 4 &&
             eventObj.description &&
@@ -98,29 +145,30 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             validURL(eventObj.link) &&
             eventObj.maxParticipantsNumber > 0
         ) {
-            eventObj.date = dateFormat(eventObj.date);
             onModify(eventObj, modifyEventId);
+            setTime({ startTime: "", endTime: "" });
             handleCloseChangeMode();
         } else {
             toast.error(
-                "There is a validation error, make sure you set all the values properly. Note: The Event Name needs to be more than 4 characters and The Event Description more than 10 characters ",
+                "There is a validation error, make sure you set all the values properly. Note: The Event Name needs to be more than 4 characters, The Event Description more than 10 characters, The end time can't be before start time ",
             );
         }
     };
-
     return (
         <ModifyEventItem>
             <DayPickerContainer>
                 <DayPicker
-                    mode="single"
-                    selected={new Date(eventObj.date)}
-                    onSelect={(selectedDateValue) => handleUpdateEventPropertyValue("date", selectedDateValue)}
+                    mode="range"
+                    defaultMonth={rangeDate?.from || new Date()}
+                    selected={rangeDate}
+                    onSelect={(selectedDateValue) => handleUpdateEventPropertyValue("rangeDate", selectedDateValue)}
                     footer={footer}
                     showOutsideDays
                     modifiersClassNames={{
                         selected: "selected-date",
                         today: "today-date",
                     }}
+                    max={2}
                 />
             </DayPickerContainer>
             <DetailsInputContainer>
@@ -144,21 +192,29 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                     </InputEditorIconContainer>
                     <TimePickerContainer>
                         <TimeInputLabel>From:</TimeInputLabel>
-                        <InputEditor
-                            inputType="time"
-                            content={eventObj.startTime}
-                            label="startTime"
-                            onCopyChanges={handleUpdateEventPropertyValue}
-                        />
+                        <DisplayDate>
+                            {rangeDate?.from ? format(rangeDate?.from, "yyyy-MM-dd") : "yyyy-MM-dd"}
+                        </DisplayDate>
+                        <TimeInputEditorContainer>
+                            <InputEditor
+                                inputType="time"
+                                content={time.startTime}
+                                label="startTime"
+                                onCopyChanges={handleUpdateEventPropertyValue}
+                            />
+                        </TimeInputEditorContainer>
                     </TimePickerContainer>
                     <TimePickerContainer>
                         <TimeInputLabel>To:</TimeInputLabel>
-                        <InputEditor
-                            inputType="time"
-                            content={eventObj.endTime}
-                            label="endTime"
-                            onCopyChanges={handleUpdateEventPropertyValue}
-                        />
+                        <DisplayDate>{rangeDate?.to ? format(rangeDate?.to, "yyyy-MM-dd") : "yyyy-MM-dd"}</DisplayDate>
+                        <TimeInputEditorContainer>
+                            <InputEditor
+                                inputType="time"
+                                content={time.endTime}
+                                label="endTime"
+                                onCopyChanges={handleUpdateEventPropertyValue}
+                            />
+                        </TimeInputEditorContainer>
                     </TimePickerContainer>
                 </TimePicking>
                 <EventMaxParticipants>
