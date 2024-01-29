@@ -42,7 +42,7 @@ const validURL = (str) => {
     return !!pattern.test(str);
 };
 const setDateAndTime = (date, time) => {
-    const newDate = date || new Date();
+    const newDate = new Date(date) || new Date();
     const newTime = time ? new Date(time) : newDate;
     return new Date(
         newDate?.getFullYear(),
