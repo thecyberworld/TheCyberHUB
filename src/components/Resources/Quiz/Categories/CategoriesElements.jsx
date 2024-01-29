@@ -37,6 +37,34 @@ export const ScoreInfo = styled.div`
     margin: 0 0 30px 0;
 `;
 
+export const SkipButton = styled.button`
+    margin: 3%;
+    align-self: end;
+    text-decoration: none;
+    border-radius: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #343434;
+    background: transparent;
+    white-space: nowrap;
+    padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
+    font-size: ${({ fontBig }) => (fontBig ? "20px" : "16px")};
+    outline: none;
+    cursor: pointer;
+    display: flex;
+
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    color: #ff6b08;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        background: transparent;
+        border-color: #343434;
+        font-size: 18px;
+    }
+`;
+
 export const ResetButton = styled.button`
     width: 100%;
     display: flex;
@@ -62,7 +90,8 @@ export const QuizBody = styled.div`
 
 export const QuestionSection = styled.div`
     width: 100%;
-    position: relative;
+    display: flex;
+    flex-direction: column;
 `;
 
 export const QuizProgressIndicator = styled.div`

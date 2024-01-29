@@ -10,6 +10,7 @@ import {
     QuizSection,
     ResetButton,
     ScoreInfo,
+    SkipButton,
     ScoreSection,
 } from "./CategoriesElements";
 import {
@@ -35,6 +36,7 @@ export default function QuizPage() {
     const [showScore, setShowScore] = useState(false);
     const [showAnswer, setshowAnswer] = useState(false);
     const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -67,12 +69,27 @@ export default function QuizPage() {
             nextQuestion = currentQuestion + 1;
             setScore(score + 1);
             setshowAnswer(false);
-        } else {
+            setButtonClicked(false);
+        } else if (isCorrect === false) {
             setScore(score - 1);
             setshowAnswer(true);
             setClickedAnswerIndex(i);
+            setButtonClicked(true);
         }
 
+        if (nextQuestion < length) {
+            setCurrentQuestion(nextQuestion);
+        } else {
+            setShowScore(true);
+        }
+    };
+
+    const handleSkipButton = (length) => {
+        const nextQuestion = currentQuestion + 1;
+        setScore(score + 1);
+        setCurrentQuestion(nextQuestion);
+        setshowAnswer(false);
+        setButtonClicked(false);
         if (nextQuestion < length) {
             setCurrentQuestion(nextQuestion);
         } else {
@@ -119,6 +136,13 @@ export default function QuizPage() {
                                 <span>Question {currentQuestion + 1}</span>
                             </QuestionCount>
                             <QuestionText>{questions[currentQuestion].questionText}</QuestionText>
+                            {showAnswer ? (
+                                <SkipButton onClick={() => handleSkipButton(questions.length)}>
+                                    nextQuestion {`>>>`}
+                                </SkipButton>
+                            ) : (
+                                ""
+                            )}
                         </QuestionSection>
                         <AnswerSection>
                             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
@@ -133,6 +157,7 @@ export default function QuizPage() {
                                                 ? "green"
                                                 : "initial",
                                     }}
+                                    disabled={buttonClicked}
                                 >
                                     {answerOption.answerText}
                                 </QuestionButton>
