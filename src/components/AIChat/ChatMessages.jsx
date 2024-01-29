@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Messages, MessagesContainer, UserMessage } from "./AIChatElements";
 import MarkdownPreview from "./MarkdownPreview";
 
-const ChatMessages = ({ messages }) => {
+const ChatMessages = ({ messages, isTrailEnded, trailMessage }) => {
     const messagesContainerRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -15,7 +15,7 @@ const ChatMessages = ({ messages }) => {
         setTimeout(() => {
             scrollToBottom();
         }, 0);
-    }, [messages]);
+    }, [messages, isTrailEnded]);
 
     return (
         <MessagesContainer>
@@ -27,6 +27,15 @@ const ChatMessages = ({ messages }) => {
                         <UserMessage key={index}> {message.content} </UserMessage>
                     ),
                 )}
+
+                {isTrailEnded &&
+                    trailMessage.map((message, index) =>
+                        message.type === "bot" ? (
+                            <MarkdownPreview key={index} source={message.content} />
+                        ) : (
+                            <UserMessage key={index}> {message.content} </UserMessage>
+                        ),
+                    )}
             </Messages>
         </MessagesContainer>
     );

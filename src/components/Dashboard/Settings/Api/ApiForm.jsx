@@ -8,7 +8,7 @@ export default function SettingsForm() {
     const { user } = useSelector((state) => state.auth);
     const API_BASE_URL = getApiUrl("api/aiChat");
 
-    const [apiKey, setApiKey] = useState({
+    const [geminiProApiKey, setApiKey] = useState({
         value: "",
         error: "",
     });
@@ -37,7 +37,7 @@ export default function SettingsForm() {
     async function handleSubmit(e) {
         e.preventDefault();
 
-        if (!apiKey.value) {
+        if (!geminiProApiKey.value) {
             return setApiKey((curr) => ({
                 ...curr,
                 error: "Api Key required!",
@@ -47,7 +47,7 @@ export default function SettingsForm() {
         const response = await axios.post(
             `${API_BASE_URL}/createApiKey`,
             {
-                apiKey: apiKey.value,
+                geminiProApiKey: geminiProApiKey.value,
             },
             {
                 headers: {
@@ -57,8 +57,8 @@ export default function SettingsForm() {
             },
         );
 
-        if (response.data.apiKey) {
-            toast("Sucessfully updated API Key");
+        if (response.data.geminiProApiKey) {
+            toast("Successfully updated API Key");
         }
     }
 
@@ -68,17 +68,18 @@ export default function SettingsForm() {
             error: "",
         }));
     }
+    console.log(geminiProApiKey);
 
     return (
         <form onSubmit={handleSubmit} className="settings-profile-form">
             <div className="settings-profile-input-wrapper">
-                <label htmlFor="apiKey">Api Key</label>
+                <label htmlFor="geminiProApiKey">Api Key</label>
                 <br />
                 <input
                     type="text"
-                    value={apiKey.value}
-                    id="apiKey"
-                    name="apiKey"
+                    value={geminiProApiKey.value || ""}
+                    id="geminiProApiKey"
+                    name="geminiProApiKey"
                     placeholder="Your API key"
                     onChange={(e) => handleChange(e, setApiKey)}
                 />

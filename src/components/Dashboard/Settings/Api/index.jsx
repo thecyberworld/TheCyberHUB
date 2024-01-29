@@ -13,8 +13,13 @@ export default function Api() {
 
                 <div className="flex flex-row mt-2">
                     <p>Get your API Key:</p>
-                    <a className="text-white" href="https://makersuite.google.com/app/apikey" target="_blank" rel="noreferrer">
-                        <button className="newApibtn ml-2">Click here</button>
+                    <a
+                        className="text-white"
+                        href="https://makersuite.google.com/app/apikey"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <button className="newApibtn ml-2 pl-4 pr-4">Click here</button>
                     </a>
                 </div>
 

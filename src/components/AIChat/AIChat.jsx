@@ -26,10 +26,25 @@ const AiChat = () => {
     // }
 
     const [chats, setChats] = useState([]);
+    const [isTrailEnded, setIsTrailEnded] = useState(false);
+
+    const trailMessage = [
+        {
+            type: "user",
+            content: "Your trial period has ended",
+            timestamp: "2024-01-29T07:15:09.752Z",
+            _id: "65b7507df24f3468473bb982",
+        },
+        {
+            type: "bot",
+            content: `Navigate to the Dashboard > Settings > API Key, claim your free api key and paste it in the input box to continue using this feature.`,
+            timestamp: "2024-01-29T07:15:09.752Z",
+            _id: "65b7507df24f3468473bb983",
+        },
+    ];
 
     const [userInput, setUserInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
     const [selectedChatId, setSelectedChatId] = useState(null);
 
     const [toggle, setToggle] = useState(false);
@@ -61,7 +76,13 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            toast("Please enter your API Key");
+            if (error.response.data.message === "Your trial period has ended") {
+                setIsTrailEnded(true);
+                toast("Your trial period has ended");
+                return;
+            }
+            // toast("Please enter your API Key");
+
             // toast(error.response.data);
             console.error(error);
         } finally {
@@ -193,7 +214,11 @@ const AiChat = () => {
                                         <SlOptionsVertical />
                                     </ChatHeader>
 
-                                    <ChatMessages messages={chat.messages} />
+                                    <ChatMessages
+                                        messages={chat.messages}
+                                        isTrailEnded={isTrailEnded}
+                                        trailMessage={trailMessage}
+                                    />
 
                                     <ChatInput onSubmit={handleSendMessage}>
                                         <input
