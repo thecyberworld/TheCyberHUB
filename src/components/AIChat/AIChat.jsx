@@ -77,8 +77,11 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            toast("Please enter your API Key");
-            // toast(error.response.data);
+            if (error.response.data.message === "Your trial period has ended") {
+                setIsTrailEnded(true);
+                toast("Your trial period has ended");
+                return;
+            }
             console.error(error);
         } finally {
             setIsLoading(false);
@@ -117,7 +120,6 @@ const AiChat = () => {
                 return;
             }
             // toast("Please enter your API Key");
-
 
             // toast(error.response.data);
             console.error(error);
