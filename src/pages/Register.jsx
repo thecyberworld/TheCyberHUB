@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { registerUser, userReset, sendEmailCode, verifyEmailCode } from "../features/auth/authSlice";
 import { CircleSpinner } from "react-spinners-kit";
-import { RouterLink } from "../components/Events/EventsElement";
+import { RouterLink } from "../components/Tools/ToolsElements";
 
 const Register = ({ authPopup }) => {
     const navigate = useNavigate();

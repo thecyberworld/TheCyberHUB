@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import CommunityEvents from "../../CommunityEvents";
 import {
@@ -8,46 +9,40 @@ import {
     TbEditCircleIcon,
     TbRestoreIcon,
 } from "./ManageCommunityEventsElements";
-import eventsData from "../../CommunityEvents/events.json";
+import { updateEvent } from "../../../features/events/eventsSlice";
 
-const changeEventStatus = (events, newStatus, eventId) => {
-    const modifyEventIndex = events.findIndex((event) => event._id === eventId);
-    events[modifyEventIndex].status = newStatus;
-    return [...events];
-};
 const ManageCommunityEvents = () => {
-    const [events, setEvents] = useState(eventsData.events);
+    const dispatch = useDispatch();
     const [modifyEventId, setModifyEventId] = useState("");
+    const activeEvents = [
+        {
+            icon: TbEditCircleIcon,
+            text: "Edit Details",
+            onClick: (modifiedEvent) => setModifyEventId(modifiedEvent._id),
+        },
+        {
+            icon: BiUserPlusIcon,
+            text: "Invite people",
+            onClick: (modifiedEvent) => {},
+        },
+        {
+            icon: AiOutlineCloseCircleIcon,
+            text: "Cancel event",
+            onClick: (modifiedEvent) =>
+                dispatch(updateEvent({ id: modifiedEvent._id, eventData: { ...modifiedEvent, status: "cancelled" } })),
+        },
+    ];
     const actions = {
-        upcoming: [
-            {
-                icon: TbEditCircleIcon,
-                text: "Edit Details",
-                onClick: (eventId) => setModifyEventId(eventId),
-            },
-            {
-                icon: BiUserPlusIcon,
-                text: "Invite people",
-                onClick: (eventId) => {},
-            },
-            {
-                icon: AiOutlineCloseCircleIcon,
-                text: "Cancel event",
-                onClick: (eventId) => {
-                    setEvents((prevEvents) => {
-                        return changeEventStatus(prevEvents, "cancelled", eventId);
-                    });
-                },
-            },
-        ],
+        upcoming: activeEvents,
+        ongoing: activeEvents,
         cancelled: [
             {
                 icon: TbRestoreIcon,
                 text: "Restore event",
-                onClick: (eventId) => {
-                    setEvents((prevEvents) => {
-                        return changeEventStatus(prevEvents, "approved", eventId);
-                    });
+                onClick: (modifiedEvent) => {
+                    dispatch(
+                        updateEvent({ id: modifiedEvent._id, eventData: { ...modifiedEvent, status: "approved" } }),
+                    );
                 },
             },
         ],
@@ -55,7 +50,7 @@ const ManageCommunityEvents = () => {
             {
                 icon: TbEditCircleIcon,
                 text: "Edit Details",
-                onClick: (eventId) => setModifyEventId(eventId),
+                onClick: (modifiedEvent) => setModifyEventId(modifiedEvent._id),
             },
         ],
     };
@@ -67,7 +62,6 @@ const ManageCommunityEvents = () => {
                 subtitle="Here you can manage the community events"
                 modify
                 actions={actions}
-                events={events}
                 modifyEventId={modifyEventId}
                 setModifyEventId={setModifyEventId}
             />

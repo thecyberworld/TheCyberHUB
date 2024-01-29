@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
+import { toast } from "react-toastify";
 
 import { EventItem } from "./EventItemListElement";
 import {
@@ -8,17 +10,13 @@ import {
     BiSolidChevronUpIcon,
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
-import { toast } from "react-toastify";
 
-const getMonthName = (dateString) => {
-    const date = new Date(dateString);
-    const month = date.toLocaleString("default", { month: "long" });
-    return month;
+const AddZeroToDateString = (dateValue) => {
+    return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };
 export const EventItemList = ({
     data,
     todayString,
-    currentTime,
     dayName,
     actions,
     index,
@@ -39,41 +37,73 @@ export const EventItemList = ({
         } else {
             setActionDisplay("Join");
         }
-        setLeftPlacesToJoin(data.maxParticipantNumber - data.participants.length);
+        setLeftPlacesToJoin(data.maxParticipantsNumber - data.participants.length);
     }, [eventsJoinedId, data, user]);
 
     const handleDisplayActionClick = () => {
         if (!user) toast.info("To Join An Event You First Need To Login/Register To The Website");
         if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(data._id)) return;
         if (actionDisplay === "Join") {
-            data.participants.push(user._id);
+            console.log("join");
+            // data.participants.push(user._id);
         } else {
             data.participants = data.participants.filter((userId) => userId !== user._id);
         }
         onActionChange(actionDisplay, data._id);
     };
-
+    const startTimeDate = new Date(data.startTime);
+    const endTimeDate = new Date(data.endTime);
     return (
         <EventItem isRequestedEvent={data.reschedule} key={index}>
             <div
                 className={
-                    data.date === todayString && data.endTime > currentTime && data.status === "approved"
+                    data.startTime.split("T")[0] === todayString && data.status === "approved" && tabStatus !== "past"
                         ? "date today-date"
                         : "date"
                 }
             >
                 <p>{dayName}</p>
-                <p className="date-digit">{`${getMonthName(data.date.split("-")).slice(0, 3)} ${
-                    data.date.split("-")[2]
-                }`}</p>
-                <p className="date-digit date-year">{`${data.date.split("-")[0]}`}</p>
+                <p className="date-digit">
+                    {`${startTimeDate.toLocaleString("default", {
+                        month: "short",
+                    })} ${AddZeroToDateString(startTimeDate.getDate())}`}
+                </p>
+                <p className="date-digit date-year">{`${data.startTime.split("-")[0]}`}</p>
             </div>
             <div className="time-line">
                 <div className="time-line-detail">
                     <AiFillClockCircleIcon />
-                    <p>
-                        {data.startTime} - {data.endTime}
-                    </p>
+                    {data.startTime.split("T")[0] === data.endTime.split("T")[0] ? (
+                        <p>
+                            {`${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
+                                startTimeDate.getMinutes(),
+                            )}`}
+                            {" - "}
+                            {`${AddZeroToDateString(endTimeDate.getHours())}:${AddZeroToDateString(
+                                endTimeDate.getMinutes(),
+                            )}`}
+                        </p>
+                    ) : (
+                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                            <div>
+                                <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
+                                    {format(startTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
+                                </p>
+                                <p style={{ textAlign: "center" }}>{`${AddZeroToDateString(
+                                    startTimeDate.getHours(),
+                                )}:${AddZeroToDateString(startTimeDate.getMinutes())}`}</p>
+                            </div>
+                            -
+                            <div>
+                                <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
+                                    {format(endTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
+                                </p>
+                                <p style={{ textAlign: "center" }}>{`${AddZeroToDateString(
+                                    endTimeDate.getHours(),
+                                )}:${AddZeroToDateString(endTimeDate.getMinutes())}`}</p>
+                            </div>
+                        </div>
+                    )}
                     {data.reschedule && (
                         <div className="time-line-request">
                             <AiFillExclamationCircleIcon />
@@ -112,7 +142,7 @@ export const EventItemList = ({
                             {actions[tabStatus].map(({ icon: Icon, text, onClick }) => (
                                 <div
                                     onClick={() => {
-                                        onClick(data._id);
+                                        onClick(data);
                                         setOpenEventIndex(openEventIndex === index ? null : index);
                                     }}
                                     className="action-dropdown-list"
@@ -144,7 +174,7 @@ export const EventItemList = ({
                         </div>
                         <div className="details">
                             <p>
-                                {data.participants.length} / {data.maxParticipantNumber}
+                                {data.participants.length} / {data.maxParticipantsNumber}
                             </p>
                         </div>
                     </div>
