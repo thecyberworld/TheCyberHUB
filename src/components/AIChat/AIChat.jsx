@@ -14,6 +14,7 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 // import LoginBox from "../Common/LoginBox";
 // import {useNavigate} from "react-router-dom";
 import AuthPopup from "../../pages/AuthPopup/AuthPopup";
+import Prompts from "./Prompts/Prompts";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
@@ -26,14 +27,66 @@ const AiChat = () => {
     // }
 
     const [chats, setChats] = useState([]);
+    const [isTrailEnded, setIsTrailEnded] = useState(false);
+
+    const trailMessage = [
+        {
+            type: "user",
+            content: "Your trial period has ended",
+            timestamp: "2024-01-29T07:15:09.752Z",
+            _id: "65b7507df24f3468473bb982",
+        },
+        {
+            type: "bot",
+            content: `Navigate to the Dashboard > Settings > API Key, claim your free api key and paste it in the input box to continue using this feature.`,
+            timestamp: "2024-01-29T07:15:09.752Z",
+            _id: "65b7507df24f3468473bb983",
+        },
+    ];
 
     const [userInput, setUserInput] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
     const [selectedChatId, setSelectedChatId] = useState(null);
 
     const [toggle, setToggle] = useState(false);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
+
+    const handleSendDummyMessage = async (dummyMessage) => {
+        setUserInput(dummyMessage);
+        setIsLoading(true);
+
+        if (!user) {
+            setShowAuthPopup(true);
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const response = await axios.post(
+                `${API_BASE_URL}/ask/${selectedChatId}`,
+                { prompt: dummyMessage },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                },
+            );
+
+            const { chats } = response.data;
+            setChats(chats);
+            setUserInput("");
+        } catch (error) {
+            if (error.response.data.message === "Your trial period has ended") {
+                setIsTrailEnded(true);
+                toast("Your trial period has ended");
+                return;
+            }
+            console.error(error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -61,7 +114,14 @@ const AiChat = () => {
             setChats(chats);
             setUserInput("");
         } catch (error) {
-            toast(error.response.data);
+            if (error.response.data.message === "Your trial period has ended") {
+                setIsTrailEnded(true);
+                toast("Your trial period has ended");
+                return;
+            }
+            // toast("Please enter your API Key");
+
+            // toast(error.response.data);
             console.error(error);
         } finally {
             setIsLoading(false);
@@ -124,8 +184,6 @@ const AiChat = () => {
     const handleDeleteChat = async (chatId) => {
         setIsLoading(true);
 
-        console.log("chatId", chatId);
-        console.log("userId", user._id);
         try {
             await axios.delete(`${API_BASE_URL}/delete/${chatId}`, {
                 headers: {
@@ -162,9 +220,6 @@ const AiChat = () => {
         setShowAuthPopup(false);
     };
 
-    console.log("showAuthPopup", showAuthPopup);
-    console.log(selectedChatId);
-
     return (
         <Wrapper>
             {showAuthPopup && <AuthPopup onClose={() => handleCloseAuthPopup()} />}
@@ -192,24 +247,34 @@ const AiChat = () => {
                                         <SlOptionsVertical />
                                     </ChatHeader>
 
-                                    <ChatMessages messages={chat.messages} />
+                                    <ChatMessages
+                                        messages={chat.messages}
+                                        isTrailEnded={isTrailEnded}
+                                        trailMessage={trailMessage}
+                                    />
 
-                                    <ChatInput onSubmit={handleSendMessage}>
-                                        <input
-                                            type="text"
-                                            value={userInput}
-                                            onChange={(e) => setUserInput(e.target.value)}
-                                        />
-                                        {isLoading ? (
-                                            <button>
-                                                <CircleSpinner size={20} color={"#131313"} />
-                                            </button>
-                                        ) : (
-                                            <button type="submit">
-                                                <BiSend size={25} />
-                                            </button>
+                                    <div>
+                                        {chat.title !== "New Chat" ? null : (
+                                            <Prompts handleSendDummyMessage={handleSendDummyMessage} />
                                         )}
-                                    </ChatInput>
+
+                                        <ChatInput onSubmit={handleSendMessage}>
+                                            <input
+                                                type="text"
+                                                value={userInput}
+                                                onChange={(e) => setUserInput(e.target.value)}
+                                            />
+                                            {isLoading ? (
+                                                <button>
+                                                    <CircleSpinner size={20} color={"#131313"} />
+                                                </button>
+                                            ) : (
+                                                <button type="submit">
+                                                    <BiSend size={25} />
+                                                </button>
+                                            )}
+                                        </ChatInput>
+                                    </div>
                                 </ChatBox>
                             ),
                     )
@@ -224,16 +289,21 @@ const AiChat = () => {
                         </ChatHeader>
 
                         <ChatInput onSubmit={handleSendMessage}>
-                            <input type="text" value={userInput} onChange={(e) => setUserInput(e.target.value)} />
-                            {isLoading ? (
-                                <button>
-                                    <CircleSpinner size={20} color={"#131313"} />
-                                </button>
-                            ) : (
-                                <button type="submit">
-                                    <BiSend size={25} />
-                                </button>
-                            )}
+                            <input
+                                type="text"
+                                value={"Start A New Chat "}
+                                onChange={(e) => setUserInput(e.target.value)}
+                            />
+
+                            {/* {isLoading ? ( */}
+                            {/*    <button> */}
+                            {/*        <CircleSpinner size={20} color={"#131313"}/> */}
+                            {/*    </button> */}
+                            {/* ) : ( */}
+                            {/*    <button type="submit"> */}
+                            {/*        <BiSend size={25}/> */}
+                            {/*    </button> */}
+                            {/* )} */}
                         </ChatInput>
                     </ChatBox>
                 )}

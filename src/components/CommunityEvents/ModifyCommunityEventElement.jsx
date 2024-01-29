@@ -47,6 +47,13 @@ export const TimePickerContainer = styled.div`
 export const TimeInputLabel = styled.p`
     margin: 0 10px;
 `;
+export const DisplayDate = styled.p`
+    width: 50%;
+    margin-right: 10px;
+`;
+export const TimeInputEditorContainer = styled.div`
+    width: 45%;
+`;
 export const ModifyEventSaveActionButton = styled.div`
     display: flex;
     justify-content: center;
