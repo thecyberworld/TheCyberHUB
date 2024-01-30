@@ -23,8 +23,8 @@ export const DotIcon = styled(BsDot)`
     color: #d9d9d9;
 `;
 export const ConnectionButton = styled.button`
-    padding: 5px 15px;
-    margin: 15px 0;
+    padding: 5px 34px;
+    margin: 15px 4px;
     border-radius: 50px;
     background: #0e0e0e;
     align-items: center;

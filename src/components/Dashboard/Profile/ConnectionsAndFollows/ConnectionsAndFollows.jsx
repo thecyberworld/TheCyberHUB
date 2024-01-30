@@ -183,12 +183,12 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
                                         Cancel Request
                                     </ConnectionButton>
                                 ) : (
-                                    <div style={{ display: "flex" }}>
+                                    <div style={{ display: "flex", justifyContent: "space-" }}>
                                         <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
-                                            Reject Request
+                                            Reject
                                         </ConnectionButton>
                                         <ConnectionButton onClick={() => handleAcceptConnectionRequest(followUserId)}>
-                                            Accept Request
+                                            Accept
                                         </ConnectionButton>
                                     </div>
                                 )}
@@ -202,7 +202,10 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
                             <CircleSpinner size={16} isLoading={isLoading} />
                         </ConnectionButton>
                     ) : (
-                        <ConnectionButton onClick={() => handleSendConnectionRequest(followUserId)}>
+                        <ConnectionButton
+                            style={{ width: "245px", margin: "15px 0px" }}
+                            onClick={() => handleSendConnectionRequest(followUserId)}
+                        >
                             Send Request
                         </ConnectionButton>
                     )
