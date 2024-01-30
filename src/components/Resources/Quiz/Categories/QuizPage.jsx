@@ -66,10 +66,21 @@ export default function QuizPage() {
         let nextQuestion = currentQuestion;
 
         if (isCorrect === true) {
-            nextQuestion = currentQuestion + 1;
-            setScore(score + 1);
-            setshowAnswer(false);
-            setButtonClicked(false);
+            setshowAnswer(true);
+            setClickedAnswerIndex(null);
+
+            setTimeout(() => {
+                nextQuestion = currentQuestion + 1;
+                setScore(score + 1);
+                setCurrentQuestion(nextQuestion);
+                setshowAnswer(false);
+
+                if (nextQuestion < length) {
+                    setCurrentQuestion(nextQuestion);
+                } else {
+                    setShowScore(true);
+                }
+            }, 2000);
         } else if (isCorrect === false) {
             setScore(score - 1);
             setshowAnswer(true);
