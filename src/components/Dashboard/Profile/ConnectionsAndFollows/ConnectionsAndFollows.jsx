@@ -183,7 +183,7 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
                                         Cancel Request
                                     </ConnectionButton>
                                 ) : (
-                                    <div style={{ display: "flex", justifyContent: "space-" }}>
+                                    <div style={{ display: "flex"}}>
                                         <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
                                             Reject
                                         </ConnectionButton>
