@@ -155,7 +155,7 @@ export default function QuizPage() {
                                                 ? "red"
                                                 : showAnswer && answerOption.isCorrect
                                                 ? "green"
-                                                : "initial",
+                                                : "",
                                     }}
                                     disabled={buttonClicked}
                                 >
