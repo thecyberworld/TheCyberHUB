@@ -14,26 +14,31 @@ const SIDEBAR_LINKS = [
     },
     {
         id: 3,
+        label: "Api",
+        href: "/dashboard/settings/api",
+    },
+    {
+        id: 4,
         label: "Appearance",
         href: "/dashboard/settings/appearance",
     },
     {
-        id: 4,
+        id: 5,
         label: "Notifications",
         href: "/dashboard/settings/notifications",
     },
     {
-        id: 5,
+        id: 6,
         label: "Display",
         href: "/dashboard/settings/display",
     },
     {
-        id: 6,
+        id: 7,
         label: "Dashboard",
         href: "/dashboard",
     },
     {
-        id: 7,
+        id: 8,
         label: "Home",
         href: "/",
     },

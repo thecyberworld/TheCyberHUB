@@ -86,10 +86,6 @@ const InternshipResponse = () => {
         ? filteredData.filter((data) => data.reasonType === selectedReasonType)
         : filteredData;
 
-    console.log("isAuthorised:", isAuthorised);
-    console.log("isLoading:", isLoading);
-    console.log("formData:", formData);
-
     if (!isAuthorised || isLoading || formData === null) {
         return <NotFound />;
     }
