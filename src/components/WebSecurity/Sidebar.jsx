@@ -85,6 +85,10 @@ const Sidebar = ({ topics, onSelectSubtopic, onlyCat }) => {
         setOpenDropdown((prev) => (prev === index ? null : index));
     };
 
+    // get unique and sorted categories
+
+    const categories = [...new Set(topics.map((topic) => topic.category))].sort();
+
     return (
         <SidebarContainer>
             <div
@@ -94,6 +98,12 @@ const Sidebar = ({ topics, onSelectSubtopic, onlyCat }) => {
                     gap: "20px",
                 }}
             >
+                {onlyCat &&
+                    categories.map((category, index) => (
+                        <MainTitle key={index} onClick={() => toggleDropdown(index)}>
+                            {category}
+                        </MainTitle>
+                    ))}
                 {/* {!onlyCat &&  <h1 style={{ */}
                 {/*    color: "#ecf0f1", fontSize: "2em", textAlign: "center", */}
                 {/* }}> */}
@@ -103,7 +113,6 @@ const Sidebar = ({ topics, onSelectSubtopic, onlyCat }) => {
                     !onlyCat ? (
                         <div key={topic.id}>
                             <MainTitle to={`/websecurity/topic/${topic.id}`} onClick={() => toggleDropdown(index)}>
-                                {" "}
                                 {topic.title}
                                 <span>{openDropdown === index ? <FaAngleUp /> : <FaAngleDown />}</span>
                             </MainTitle>
@@ -130,12 +139,7 @@ const Sidebar = ({ topics, onSelectSubtopic, onlyCat }) => {
                                 </DropdownList>
                             </DropdownContainer>
                         </div>
-                    ) : (
-                        <MainTitle onClick={() => toggleDropdown(index)}>
-                            {topic.category}
-                            <span>{openDropdown === index ? "▲" : "▼"}</span>
-                        </MainTitle>
-                    ),
+                    ) : null,
                 )}
             </div>
         </SidebarContainer>

@@ -6,7 +6,36 @@ import { WebSecurityContainer } from "./WebSecurityElements";
 const WebSecurity = () => {
     return (
         <Wrapper style={{ marginTop: "90px" }}>
-            <WebSecurityContainer></WebSecurityContainer>
+            <WebSecurityContainer>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "20px",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                            padding: "50px",
+                            border: "1px solid grey",
+                            borderRadius: "10px",
+                        }}
+                    >
+                        Topics
+                    </div>
+                    <div
+                        style={{
+                            display: "flex",
+                            padding: "50px",
+                            border: "1px solid grey",
+                            borderRadius: "10px",
+                        }}
+                    >
+                        Labs
+                    </div>
+                </div>
+            </WebSecurityContainer>
         </Wrapper>
     );
 };
