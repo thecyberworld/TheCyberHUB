@@ -13,7 +13,7 @@ import {
     CategoryMenuButtons,
     CategoryOptionsMenuContainer,
 } from "./CategoryElements";
-import { deleteCategory, updateCategory } from "../../../../features/notes/category/categorySlice";
+import { deleteNotesCategory, updateNotesCategory } from "../../../../features/notes/notesCategory/notesCategorySlice";
 import "../NoteApp.css";
 import ModifyCategory from "./ModifyCategory";
 import { toast } from "react-toastify";
@@ -48,7 +48,7 @@ const CategoryItem = ({
         onEditCategory("");
     };
     const handleDeleteCategory = () => {
-        dispatch(deleteCategory(id)).then(() => {
+        dispatch(deleteNotesCategory(id)).then(() => {
             onPick({});
         });
     };
@@ -58,7 +58,7 @@ const CategoryItem = ({
             toast.error(`You can't use ${defaultCategory.name} as category name`);
             return;
         }
-        dispatch(updateCategory({ id, categoryData: { name: categoryName } }));
+        dispatch(updateNotesCategory({ id, categoryData: { name: categoryName } }));
         onPick({});
         handleCloseEdit();
     };

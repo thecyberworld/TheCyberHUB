@@ -13,7 +13,6 @@ const useImageUploadEvents = (prevContent, setContent, pageName) => {
             const newFile = new File([reader.result], fileName, { type: file && file.type });
             const formData = new FormData();
             formData.append("image", newFile);
-            console.log(newFile);
             const API_URL = getApiUrl("api/upload");
             await axios.post(API_URL, formData);
             const newImageUrl = cdnContentImagesUrl(`/${pageName}/${fileName.split("-")[1]}`);

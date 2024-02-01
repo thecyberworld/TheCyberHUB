@@ -4,7 +4,7 @@ import userDetailReducer from "../features/userDetail/userDetailSlice";
 import goalReducer from "../features/goals/goalSlice";
 import blogReducer from "../features/blogs/blogSlice";
 import notesReducer from "../features/notes/notesSlice";
-import categoriesReducer from "../features/notes/category/categorySlice";
+import notesCategoriesReducer from "../features/notes/notesCategory/notesCategorySlice";
 import forumReducer from "../features/forum/forumSlice";
 import viewReducer from "../features/feeds/views/viewSlice";
 import feedReducer from "../features/feeds/feedsSlice";
@@ -19,6 +19,8 @@ import resetPasswordReducer from "../features/resetPassword/resetPasswordSlice";
 import followReducer from "../features/follow/followSlice";
 import connectionReducer from "../features/connections/connectionSlice";
 
+import eventsReducer from "../features/events/eventsSlice";
+
 // import { cyberNewsApi } from "../services/cyberNewsApi";
 
 export default configureStore({
@@ -30,7 +32,7 @@ export default configureStore({
         blogComments: blogCommentsReducer,
 
         notes: notesReducer,
-        categories: categoriesReducer,
+        notesCategories: notesCategoriesReducer,
 
         forums: forumReducer,
 
@@ -46,6 +48,8 @@ export default configureStore({
         resetPassword: resetPasswordReducer,
         followData: followReducer,
         connectionData: connectionReducer,
+
+        events: eventsReducer,
 
         // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },
