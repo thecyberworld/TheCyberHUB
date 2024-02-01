@@ -37,6 +37,7 @@ export default function QuizPage() {
     const [showAnswer, setshowAnswer] = useState(false);
     const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
     const [buttonClicked, setButtonClicked] = useState(false);
+    const [disableSkipButton, setDisableSkipButton] = useState(true);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -68,12 +69,15 @@ export default function QuizPage() {
         if (isCorrect === true) {
             setshowAnswer(true);
             setClickedAnswerIndex(null);
-
+            setButtonClicked(true);
+            setDisableSkipButton(false);
             setTimeout(() => {
                 nextQuestion = currentQuestion + 1;
                 setScore(score + 1);
                 setCurrentQuestion(nextQuestion);
                 setshowAnswer(false);
+                setButtonClicked(false);
+                setDisableSkipButton(true);
 
                 if (nextQuestion < length) {
                     setCurrentQuestion(nextQuestion);
@@ -147,7 +151,7 @@ export default function QuizPage() {
                                 <span>Question {currentQuestion + 1}</span>
                             </QuestionCount>
                             <QuestionText>{questions[currentQuestion].questionText}</QuestionText>
-                            {showAnswer ? (
+                            {showAnswer && disableSkipButton ? (
                                 <SkipButton onClick={() => handleSkipButton(questions.length)}>
                                     nextQuestion {`>>>`}
                                 </SkipButton>
