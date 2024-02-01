@@ -16,4 +16,6 @@ export const RoomTags = styled.label`
 export const LevelButton = styled.button`
     height: 100%;
     width: 100%;
+    gap: 10px;
+    padding: 10px;
 `;

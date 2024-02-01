@@ -85,6 +85,7 @@ const Navbar = ({ isOpen, toggle }) => {
                         // { to: "forum", title: "Forum", dropdown: "forum" },
                         // { to: "courses", title: "Courses", dropdown: "courses" },
                         { to: "ctf", title: "CTF", dropdown: "ctf" },
+                        { to: "websecurity", title: "Web Security", dropdown: "websecurity" },
                         {
                             title: (
                                 <>
