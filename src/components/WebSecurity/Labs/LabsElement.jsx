@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const LabContainer = styled.div`
-    width: 81%;
-    height: 700px;
+    width: 100%;
+    //height: 700px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    gap: 20px;
 `;
 export const LabCategory = styled.div`
     background-color: rgb(19, 19, 19);
@@ -16,6 +17,15 @@ export const LabCategory = styled.div`
 export const RoomContainer = styled.div`
     width: 100%;
     height: 100%;
+
+    .room-cards-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+        gap: 20px;
+    }
 `;
 export const LevelContainer = styled.div`
     background: #131313;

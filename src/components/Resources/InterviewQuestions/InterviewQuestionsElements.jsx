@@ -17,9 +17,6 @@ export const InterviewQuestionSection = styled.div`
     text-align: center;
     color: #cecac3;
     background: #090909;
-    @media screen and (min-width: 800px) {
-        width: 70%;
-    }
 `;
 
 export const InterviewsQuestionsCard = styled.div`

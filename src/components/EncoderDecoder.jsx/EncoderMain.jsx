@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { Search } from "../Labs/MainElement";
+import { Search } from "../WebSecurity/Labs/LabsElement";
 import { Button, CodeContainer, Container, MenuButton, MenuButtonContainer, MenuContainer } from "./EncoderElement";
 import Decode from "./DecoderCode";
 import EncoderCode from "./EncoderCode";
