@@ -37,6 +37,8 @@ export const FollowButton = styled.button`
     color: #e0e0e0;
     border: 1px solid #3a3a3a;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
     transition: all 0.3s ease-in-out;
 
     &:hover {

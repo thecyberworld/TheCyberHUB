@@ -24,16 +24,18 @@ export const DotIcon = styled(BsDot)`
 `;
 export const ConnectionButton = styled.button`
     padding: 5px 34px;
-    margin: 15px 4px;
+    margin: 15px 0px;
     border-radius: 50px;
     background: #0e0e0e;
     align-items: center;
-    width: auto;
+    width: 245px;
     color: #e0e0e0;
     border: 1px solid #3a3a3a;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
 
     &:hover {
         background: #3a3a3a;

@@ -179,15 +179,27 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
                         myConnection.isAccepted === false && (
                             <>
                                 {myConnection.sender === userId ? (
-                                    <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
-                                        Cancel Request
-                                    </ConnectionButton>
-                                ) : (
-                                    <div style={{ display: "flex"}}>
+                                    isConnectionLoading ? (
+                                        <ConnectionButton>
+                                            <CircleSpinner size={16} isLoading={isLoading} />
+                                        </ConnectionButton>
+                                    ) : (
                                         <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
+                                            Cancel Request
+                                        </ConnectionButton>
+                                    )
+                                ) : (
+                                    <div style={{ display: "flex" }}>
+                                        <ConnectionButton
+                                            style={{ width: "auto", margin: "15px 4px" }}
+                                            onClick={() => handleRemoveConnectionRequest(followUserId)}
+                                        >
                                             Reject
                                         </ConnectionButton>
-                                        <ConnectionButton onClick={() => handleAcceptConnectionRequest(followUserId)}>
+                                        <ConnectionButton
+                                            style={{ width: "auto", margin: "15px 4px" }}
+                                            onClick={() => handleAcceptConnectionRequest(followUserId)}
+                                        >
                                             Accept
                                         </ConnectionButton>
                                     </div>
@@ -202,10 +214,7 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
                             <CircleSpinner size={16} isLoading={isLoading} />
                         </ConnectionButton>
                     ) : (
-                        <ConnectionButton
-                            style={{ width: "245px", margin: "15px 0px" }}
-                            onClick={() => handleSendConnectionRequest(followUserId)}
-                        >
+                        <ConnectionButton onClick={() => handleSendConnectionRequest(followUserId)}>
                             Send Request
                         </ConnectionButton>
                     )
