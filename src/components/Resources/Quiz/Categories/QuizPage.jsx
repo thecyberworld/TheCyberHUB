@@ -34,7 +34,7 @@ export default function QuizPage() {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const [showAnswer, setshowAnswer] = useState(false);
+    const [showAnswer, setShowAnswer] = useState(false);
     const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
     const [buttonClicked, setButtonClicked] = useState(false);
     const [disableSkipButton, setDisableSkipButton] = useState(true);
@@ -67,7 +67,7 @@ export default function QuizPage() {
         let nextQuestion = currentQuestion;
 
         if (isCorrect === true) {
-            setshowAnswer(true);
+            setShowAnswer(true);
             setClickedAnswerIndex(null);
             setButtonClicked(true);
             setDisableSkipButton(false);
@@ -75,7 +75,7 @@ export default function QuizPage() {
                 nextQuestion = currentQuestion + 1;
                 setScore(score + 1);
                 setCurrentQuestion(nextQuestion);
-                setshowAnswer(false);
+                setShowAnswer(false);
                 setButtonClicked(false);
                 setDisableSkipButton(true);
 
@@ -87,7 +87,7 @@ export default function QuizPage() {
             }, 2000);
         } else if (isCorrect === false) {
             setScore(score - 1);
-            setshowAnswer(true);
+            setShowAnswer(true);
             setClickedAnswerIndex(i);
             setButtonClicked(true);
         }
@@ -103,7 +103,7 @@ export default function QuizPage() {
         const nextQuestion = currentQuestion + 1;
         setScore(score + 1);
         setCurrentQuestion(nextQuestion);
-        setshowAnswer(false);
+        setShowAnswer(false);
         setButtonClicked(false);
         if (nextQuestion < length) {
             setCurrentQuestion(nextQuestion);
