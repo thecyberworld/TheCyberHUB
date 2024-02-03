@@ -149,12 +149,12 @@ const CommunityEvents = ({
                                 />
                             )}
                             {filteredEvents.length !== 0 ? (
-                                filteredEvents.map((data, index) => {
-                                    const dateObject = new Date(data.startTime);
+                                filteredEvents.map((event, index) => {
+                                    const dateObject = new Date(event.startTime);
                                     const dayName = daysOfWeek[dateObject.getDay()];
                                     return (
                                         <EventItemList
-                                            data={data}
+                                            event={event}
                                             todayString={todayString}
                                             currentTime={currentTime}
                                             dayName={dayName}

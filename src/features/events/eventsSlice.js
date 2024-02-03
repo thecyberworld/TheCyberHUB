@@ -31,8 +31,27 @@ export const getEvents = createAsyncThunk("events/getEvents", async (_, thunkAPI
 export const updateEvent = createAsyncThunk("events/update", async ({ id, eventData }, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        console.log(id, eventData);
         return await eventsService.updateEvent(id, eventData, token);
+    } catch (err) {
+        const message =
+            (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+export const addParticipant = createAsyncThunk("events/addParticipant", async ({ eventId, userId }, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await eventsService.addParticipant(eventId, userId, token);
+    } catch (err) {
+        const message =
+            (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+export const removeParticipant = createAsyncThunk("events/removeParticipant", async ({ eventId, userId }, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await eventsService.removeParticipant(eventId, userId, token);
     } catch (err) {
         const message =
             (err.response && err.response.data && err.response.data.message) || err.message || err.toString();
@@ -85,12 +104,43 @@ export const eventSlice = createSlice({
                 state.isEventError = false;
                 state.isEventLoading = false;
                 state.isEventSuccess = true;
-                console.log(action.payload);
                 state.events = state.events.map((event) =>
                     event._id === action.payload._id ? { ...event, ...action.payload } : event,
                 );
             })
             .addCase(updateEvent.rejected, (state, action) => {
+                state.isEventLoading = false;
+                state.isEventSuccess = false;
+                state.isEventError = true;
+                state.eventMessage = action.payload;
+            })
+            .addCase(addParticipant.pending, (state) => {
+                state.isEventLoading = true;
+            })
+            .addCase(addParticipant.fulfilled, (state, action) => {
+                state.isEventLoading = false;
+                state.isEventError = false;
+                state.isEventSuccess = true;
+                const eventIndex = state.events.findIndex((event) => event._id === action.payload.event._id);
+                state.events[eventIndex] = { ...state.events[eventIndex], ...action.payload.event };
+            })
+            .addCase(addParticipant.rejected, (state, action) => {
+                state.isEventLoading = false;
+                state.isEventSuccess = false;
+                state.isEventError = true;
+                state.eventMessage = action.payload;
+            })
+            .addCase(removeParticipant.pending, (state) => {
+                state.isEventLoading = true;
+            })
+            .addCase(removeParticipant.fulfilled, (state, action) => {
+                state.isEventLoading = false;
+                state.isEventError = false;
+                state.isEventSuccess = true;
+                const eventIndex = state.events.findIndex((event) => event._id === action.payload.event._id);
+                state.events[eventIndex] = { ...state.events[eventIndex], ...action.payload.event };
+            })
+            .addCase(removeParticipant.rejected, (state, action) => {
                 state.isEventLoading = false;
                 state.isEventSuccess = false;
                 state.isEventError = true;

@@ -35,10 +35,33 @@ const updateEvent = async (id, eventData, token) => {
     return response.data;
 };
 
+// Add Participant
+const addParticipant = async (eventId, userId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    const response = await axios.post(`${API_URL}${eventId}/participant/${userId}`, {}, config);
+    return response.data;
+};
+// Remove Participant
+const removeParticipant = async (eventId, userId, token) => {
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    };
+    const response = await axios.delete(`${API_URL}${eventId}/participant/${userId}`, config);
+    return response.data;
+};
+
 const eventsService = {
     createEvent,
     getEvents,
     updateEvent,
+    addParticipant,
+    removeParticipant,
 };
 
 export default eventsService;

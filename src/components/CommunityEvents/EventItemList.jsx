@@ -10,12 +10,13 @@ import {
     BiSolidChevronUpIcon,
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
+import { cdnContentImagesUrl } from "../../features/apiUrl";
 
 const AddZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };
 export const EventItemList = ({
-    data,
+    event,
     todayString,
     dayName,
     actions,
@@ -31,33 +32,32 @@ export const EventItemList = ({
     const [leftPlacesToJoin, setLeftPlacesToJoin] = useState(100);
 
     useEffect(() => {
-        if (!user) return setActionDisplay("Join*");
-        if (eventsJoinedId.includes(data._id)) {
+        if (!user) {
+            setActionDisplay("Join*");
+            setLeftPlacesToJoin(100);
+            return;
+        }
+        if (eventsJoinedId.includes(event._id)) {
             setActionDisplay("Joined");
         } else {
             setActionDisplay("Join");
         }
-        setLeftPlacesToJoin(data.maxParticipantsNumber - data.participants.length);
-    }, [eventsJoinedId, data, user]);
+        setLeftPlacesToJoin(event.maxParticipantsNumber - event.participants.length);
+    }, [eventsJoinedId, event, user]);
 
     const handleDisplayActionClick = () => {
-        if (!user) toast.info("To Join An Event You First Need To Login/Register To The Website");
-        if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(data._id)) return;
-        if (actionDisplay === "Join") {
-            console.log("join");
-            // data.participants.push(user._id);
-        } else {
-            data.participants = data.participants.filter((userId) => userId !== user._id);
-        }
-        onActionChange(actionDisplay, data._id);
+        if (!user) return toast.info("To Join An Event You First Need To Login/Register To The Website");
+        if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(event._id))
+            return toast.info("This event is full , keep in touch for future events");
+        onActionChange(actionDisplay, event._id);
     };
-    const startTimeDate = new Date(data.startTime);
-    const endTimeDate = new Date(data.endTime);
+    const startTimeDate = new Date(event.startTime);
+    const endTimeDate = new Date(event.endTime);
     return (
-        <EventItem isRequestedEvent={data.reschedule} key={index}>
+        <EventItem isRequestedEvent={event.reschedule} key={index}>
             <div
                 className={
-                    data.startTime.split("T")[0] === todayString && data.status === "approved" && tabStatus !== "past"
+                    event.startTime.split("T")[0] === todayString && event.status === "approved" && tabStatus !== "past"
                         ? "date today-date"
                         : "date"
                 }
@@ -68,12 +68,12 @@ export const EventItemList = ({
                         month: "short",
                     })} ${AddZeroToDateString(startTimeDate.getDate())}`}
                 </p>
-                <p className="date-digit date-year">{`${data.startTime.split("-")[0]}`}</p>
+                <p className="date-digit date-year">{`${event.startTime.split("-")[0]}`}</p>
             </div>
             <div className="time-line">
                 <div className="time-line-detail">
                     <AiFillClockCircleIcon />
-                    {data.startTime.split("T")[0] === data.endTime.split("T")[0] ? (
+                    {event.startTime.split("T")[0] === event.endTime.split("T")[0] ? (
                         <p>
                             {`${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
                                 startTimeDate.getMinutes(),
@@ -104,7 +104,7 @@ export const EventItemList = ({
                             </div>
                         </div>
                     )}
-                    {data.reschedule && (
+                    {event.reschedule && (
                         <div className="time-line-request">
                             <AiFillExclamationCircleIcon />
                         </div>
@@ -113,19 +113,23 @@ export const EventItemList = ({
 
                 <div className="time-line-detail">
                     <MdLocationOnIcon />
-                    <p className="text-over-flow">{data.location}</p>
+                    <p className="text-over-flow">{event.location}</p>
                 </div>
             </div>
             <div className="details">
                 <div>
-                    <p>{data.name.toUpperCase()}</p>
+                    <p>{event.name.toUpperCase()}</p>
                     <div className="details-profile">
-                        {data.participants.map((participant, pIndex) => (
-                            <img src={participant.profileURL} alt={participant.name} key={pIndex} />
+                        {event.participants.map((participant, pIndex) => (
+                            <img
+                                src={cdnContentImagesUrl("/user/" + (participant?.avatar || "avatarDummy.png"))}
+                                alt={participant.name}
+                                key={pIndex}
+                            />
                         ))}
                     </div>
                 </div>
-                {data.reschedule && <div className="details-request">15:30 - 16:00 requested</div>}
+                {event.reschedule && <div className="details-request">15:30 - 16:00 requested</div>}
             </div>
             {modify && actions[tabStatus] && actions[tabStatus].length > 0 ? (
                 <div className="action" onMouseLeave={() => setOpenEventIndex(null)}>
@@ -142,7 +146,7 @@ export const EventItemList = ({
                             {actions[tabStatus].map(({ icon: Icon, text, onClick }) => (
                                 <div
                                     onClick={() => {
-                                        onClick(data);
+                                        onClick(event);
                                         setOpenEventIndex(openEventIndex === index ? null : index);
                                     }}
                                     className="action-dropdown-list"
@@ -156,7 +160,7 @@ export const EventItemList = ({
                     )}
                 </div>
             ) : (
-                tabStatus === "upcoming" && (
+                (tabStatus === "upcoming" || tabStatus === "ongoing") && (
                     <div className="container-action">
                         <div className="action">
                             <div
@@ -171,11 +175,6 @@ export const EventItemList = ({
                             >
                                 <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
                             </div>
-                        </div>
-                        <div className="details">
-                            <p>
-                                {data.participants.length} / {data.maxParticipantsNumber}
-                            </p>
                         </div>
                     </div>
                 )
