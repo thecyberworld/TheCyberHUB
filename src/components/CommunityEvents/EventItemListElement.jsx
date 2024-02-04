@@ -13,7 +13,7 @@ export const EventItem = styled.div`
             : "transparent"};
     background-size: 60px 60px;
     margin-bottom: 1rem;
-
+    position: relative;
     .date {
         font-weight: 600;
         font-size: 1.125rem;
@@ -68,7 +68,12 @@ export const EventItem = styled.div`
             color: #e24612;
         }
     }
-
+    .more-details {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+    }
     .details {
         flex-basis: 55%;
         display: flex;

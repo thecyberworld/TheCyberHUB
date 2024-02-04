@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
+import { MdOpenInNew } from "react-icons/md";
 
 import { EventItem } from "./EventItemListElement";
 import {
@@ -11,6 +12,7 @@ import {
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
 import { cdnContentImagesUrl } from "../../features/apiUrl";
+import { useNavigate } from "react-router";
 
 const AddZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
@@ -30,7 +32,7 @@ export const EventItemList = ({
     const [openEventIndex, setOpenEventIndex] = useState(null);
     const [actionDisplay, setActionDisplay] = useState("");
     const [leftPlacesToJoin, setLeftPlacesToJoin] = useState(100);
-
+    const nativage = useNavigate();
     useEffect(() => {
         if (!user) {
             setActionDisplay("Join*");
@@ -53,6 +55,7 @@ export const EventItemList = ({
     };
     const startTimeDate = new Date(event.startTime);
     const endTimeDate = new Date(event.endTime);
+
     return (
         <EventItem isRequestedEvent={event.reschedule} key={index}>
             <div
@@ -161,22 +164,35 @@ export const EventItemList = ({
                 </div>
             ) : (
                 (tabStatus === "upcoming" || tabStatus === "ongoing") && (
-                    <div className="container-action">
-                        <div className="action">
-                            <div
-                                className={`action-edit without-dropdown ${
-                                    leftPlacesToJoin === 0
-                                        ? " uniqe-state-button"
-                                        : actionDisplay === "Join"
-                                        ? " enable-button"
-                                        : " disable-button"
-                                }`}
-                                onClick={handleDisplayActionClick}
-                            >
-                                <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                    <>
+                        <div className="container-action">
+                            <div className="action">
+                                <div
+                                    className={`action-edit without-dropdown ${
+                                        leftPlacesToJoin === 0
+                                            ? " uniqe-state-button"
+                                            : actionDisplay === "Join"
+                                            ? " enable-button"
+                                            : " disable-button"
+                                    }`}
+                                    onClick={handleDisplayActionClick}
+                                >
+                                    <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div className="more-details">
+                            <MdOpenInNew
+                                size={16}
+                                title="More Details"
+                                onClick={() =>
+                                    nativage(`/community-events/${event._id.slice(0, 10)}`, {
+                                        state: { actionDisplay, event },
+                                    })
+                                }
+                            />
+                        </div>
+                    </>
                 )
             )}
         </EventItem>
