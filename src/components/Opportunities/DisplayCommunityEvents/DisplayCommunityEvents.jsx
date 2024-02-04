@@ -1,21 +1,41 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import CommunityEvents from "../../CommunityEvents/CommunityEvents";
-// import { userAddEventId, userRemoveEventId } from "../../../features/userDetail/userDetailSlice";
+import { addParticipant, removeParticipant } from "../../../features/events/eventsSlice";
+import { getUserDetail } from "../../../features/userDetail/userDetailSlice";
+import { toast } from "react-toastify";
 
 const DisplayCommunityEvents = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const { userEventsId } = useSelector((state) => state.userDetail);
+    const { userDetail, isUserDetailError, userDetailMessage } = useSelector((state) => state.userDetail);
+    const countLeaveEvent = useRef(0);
+    useEffect(() => {
+        countLeaveEvent.current = 0;
+        if (isUserDetailError) {
+            toast.error(userDetailMessage);
+            console.log(userDetailMessage);
+            return;
+        }
+        if (user) {
+            dispatch(getUserDetail(user.username));
+        }
+    }, [dispatch, isUserDetailError, userDetailMessage]);
 
     const handleActionChange = (actionDisplay, eventId) => {
+        if (!user) return;
         if (actionDisplay === "Join") {
-            console.log(actionDisplay, eventId);
-            // dispatch(userAddEventId(eventId));
+            dispatch(addParticipant({ eventId, userId: user._id }));
         } else {
-            console.log(actionDisplay, eventId);
-            // dispatch(userRemoveEventId(eventId));
+            if (countLeaveEvent.current === 0) {
+                toast.info(
+                    "If you will leave this event and it becomes full you couldn't join again. To leave click the 'Joined/Full' button again.",
+                );
+                return (countLeaveEvent.current = 1);
+            }
+            dispatch(removeParticipant({ eventId, userId: user._id }));
+            countLeaveEvent.current = 0;
         }
     };
     return (
@@ -23,7 +43,7 @@ const DisplayCommunityEvents = () => {
             pageHeader
             title="Community Events"
             subtitle="Join to any of the Community Events to develop your skill set."
-            eventsJoinedId={userEventsId}
+            eventsJoinedId={userDetail.events}
             user={user}
             onActionChange={handleActionChange}
         />
