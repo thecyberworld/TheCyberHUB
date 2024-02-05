@@ -60,7 +60,8 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 import EncoderMain from "./components/EncoderDecoder.jsx/EncoderMain";
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
-
+import GtfoBin from "./components/GTFOBins/GtfoMain";
+import DataPage from "./components/GTFOBins/DataPages";
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
@@ -176,6 +177,8 @@ const App = () => {
                         <Route exact path={"/aichat"} element={<AiChat />} />
 
                         <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} />
+                        <Route path={"/tools/binexploits"} element={<GtfoBin />} />
+                        <Route path={"/tools/binexploits/:id"} element={<DataPage />} />
 
                         <Route path={"/internship"} element={<Jobs />} />
                         <Route path={"/quiz"} element={<Quiz />} />
