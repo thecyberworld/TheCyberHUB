@@ -42,3 +42,31 @@ export const AllBlogs = styled(ExploreContentContainer)`
         padding: 15px;
     }
 `;
+
+export const Select = styled.select`
+    border: 1px solid #000000;
+    padding: 8px;
+    font-size: 16px;
+    width: 200px;
+    border-radius: 4px;
+    background: #252525;
+    color: #d7d7d7;
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px #1a1c1d;
+    }
+
+    @media screen and (max-width: 380px) {
+        width: 100%;
+    }
+`;
+
+export const Option = styled.option`
+    border: 1px solid #000000;
+    font-size: 16px;
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px #1a1c1d;
+    }
+`;
