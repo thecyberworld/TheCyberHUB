@@ -20,7 +20,6 @@ const Blogs = () => {
     const { user } = useSelector((state) => state.auth);
 
     const handleSelectedBlogs = (e) => {
-        console.log(e.target.value);
         setSelectedBlogs(e.target.value);
     };
 
@@ -62,7 +61,6 @@ const Blogs = () => {
     });
 
     const followingBlogData = blogs?.map((blog) => {
-        console.log("following", followData.following);
         if (!followData?.following?.includes(blog.user)) {
             return null;
         }
@@ -76,9 +74,7 @@ const Blogs = () => {
             verified,
         };
     });
-    console.log("following blog data", followingBlogData);
     const filteredBlogs = followingBlogData?.filter((blog) => blog !== null);
-    console.log("following blog data 2", filteredBlogs);
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {
         return (
