@@ -7,7 +7,7 @@ export const LeftSection = styled.div`
     width: 100%;
     flex: 1;
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         max-width: 100%;
     }
 `;
@@ -22,7 +22,7 @@ export const HackBookContainer = styled.div`
     height: 100%;
     max-width: 1500px;
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         /* Adjust styles for smaller screens */
         flex-direction: column;
         max-width: 100%;
@@ -30,13 +30,18 @@ export const HackBookContainer = styled.div`
 `;
 
 export const HackBookTitle = styled.h1`
+    display: flex;
+    width: 100%;
     font-size: 24px;
-    padding: 15px 25px;
     text-align: center;
+    margin-top: 7.5px;
+
     align-content: center;
     justify-content: center;
-    background: #2f2f2f;
     font-family: "Poppins", sans-serif;
+    @media (max-width: 800px) {
+        width: 95%;
+    }
 `;
 
 export const HackBookHeading = styled.p`
@@ -120,14 +125,15 @@ export const ContentData = styled.div`
     flex-direction: column;
     align-content: center;
     width: 100%;
+    min-width: 200px;
     max-width: 1200px;
     border: #2f2f2f 1px solid;
     border-radius: 0 10px 10px 0;
     margin: 0 auto;
     height: 100%;
 
-    @media (max-width: 600px) {
-        max-width: 100%;
+    @media (max-width: 800px) {
+        max-width: 98%;
         border-radius: 0;
     }
 `;
@@ -187,6 +193,28 @@ export const ToggleButton = styled.button`
     display: none;
 
     @media (max-width: 800px) {
-        display: block;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
+`;
+export const ResponsiveToggleButton = styled.button`
+    display: none;
+    width: 10%;
+    @media (max-width: 800px) {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        cursor: pointer;
+        color: #f5f5f5;
+        z-index: 1;
+        text-align: center;
+        padding-right: 10px;
+    }
+`;
+
+export const HackBookTitleContainer = styled.div`
+    display: flex;
+    background: #2f2f2f;
+    height: 50px;
 `;
