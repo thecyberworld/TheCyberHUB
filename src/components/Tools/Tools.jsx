@@ -13,7 +13,9 @@ const Tools = () => {
         { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
         { name: "Sub Finder", link: "/tools/subfinder", icon: <RiEarthFill /> },
         { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
-        { name: "Encoder", link: "/tools/encode", icon: <TbHash /> },
+        { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },
+        { name: "BinExploit", link: "/tools/binexploits", icon: null },
+
         // {name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill/>,},
         // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
         // {name: "jwt Decoder", link: "/tools/jwtdecoder", icon: <RiEarthFill/>,},

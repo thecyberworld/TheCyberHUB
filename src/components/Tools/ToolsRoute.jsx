@@ -6,6 +6,9 @@ import SubdomainFinder from "./SubdomainFinder/SubdomainFinder";
 import ReverseShellGenerator from "./ReverseShell/ShellGenerator";
 import { NotFound } from "../index";
 import PassGen from "./PassGen/PassGen";
+import EncoderMain from "../EncoderDecoder.jsx/EncoderMain";
+import GtfoBin from "../GTFOBins/GtfoMain";
+import DataPage from "../GTFOBins/DataPages";
 
 const ToolsRoutes = () => {
     return (
@@ -15,6 +18,10 @@ const ToolsRoutes = () => {
             <Route path={"/subfinder"} element={<SubdomainFinder />} />
             <Route path={"/revshell"} element={<ReverseShellGenerator />} />
             <Route path={"passgen"} element={<PassGen />} />
+            <Route path={"encoder"} element={<EncoderMain />} />
+            <Route path={"binexploits"} element={<GtfoBin />} />
+            <Route path={"binexploits/:id"} element={<DataPage />} />
+
             {/* <Route path={"portScanner"} element={<PortScanner/>}/> */}
             <Route path={"*"} element={<NotFound />} />
             <Route element={<NotFound />} />
