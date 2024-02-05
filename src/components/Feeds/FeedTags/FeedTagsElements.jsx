@@ -45,7 +45,7 @@ export const Tag = styled.p`
     word-break: break-word;
     overflow-wrap: break-word;
     text-transform: capitalize;
-    user-select: none; /*Disable text selection when double clicking on the tag*/
+    user-select: none;
     &:hover {
         transform: scale(1.03);
     }
