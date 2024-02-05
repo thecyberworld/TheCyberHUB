@@ -17,8 +17,9 @@ import {
     HackBookTitleContainer,
 } from "./CheatSheetElements";
 
-import { LuPanelTopOpen, LuPanelTopClose } from "react-icons/lu";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
+import { LuPanelTopOpen, LuPanelTopClose } from "react-icons/lu";
+
 const CheatSheet = ({ data, heading }) => {
     const hackBookData = data;
     const [selectedFile, setSelectedFile] = useState(() => {
@@ -42,9 +43,11 @@ const CheatSheet = ({ data, heading }) => {
     const [isContentNavVisible, setIsContentNavVisible] = useState(true);
     useEffect(() => {
         const handleResize = () => {
-            // Set isContentNavVisible to true when window width is greater than or equal to 600px
-            setIsContentNavVisible(window.innerWidth >= 800);
-            setToggle(true);
+            // Set isContentNavVisible to true when window width is greater than or equal to 800px
+            if (window.innerWidth >= 800) {
+                setIsContentNavVisible(true);
+                setToggle(true);
+            }
         };
 
         // Attach the event listener

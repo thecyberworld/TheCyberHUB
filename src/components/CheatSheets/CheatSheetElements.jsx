@@ -193,7 +193,9 @@ export const ToggleButton = styled.button`
     display: none;
 
     @media (max-width: 800px) {
-        display: block;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 `;
 export const ResponsiveToggleButton = styled.button`
@@ -205,7 +207,6 @@ export const ResponsiveToggleButton = styled.button`
         align-items: center;
         cursor: pointer;
         color: #f5f5f5;
-        cursor: pointer;
         z-index: 1;
         text-align: center;
         padding-right: 10px;
