@@ -14,30 +14,6 @@ export const EventItem = styled.div`
     background-size: 60px 60px;
     margin-bottom: 1rem;
     position: relative;
-    .date {
-        font-weight: 600;
-        font-size: 1.125rem;
-        flex-basis: 10%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        border-right: 1px solid #f0f0f0;
-        padding-right: 0.75rem;
-
-        &.today-date {
-            color: #e45221;
-        }
-
-        .date-digit {
-            font-size: 2rem;
-            font-weight: 800;
-        }
-        .date-year {
-            font-size: 1rem;
-            font-weight: 500;
-        }
-    }
 
     .time-line {
         flex-basis: 25%;
@@ -80,23 +56,8 @@ export const EventItem = styled.div`
         justify-content: space-between;
         align-items: center;
         font-weight: 600;
-
-        .details-profile {
-            display: flex;
-            margin-top: 0.5rem;
-
-            img {
-                width: 40px;
-                height: 40px;
-                object-fit: cover;
-                border-radius: 100%;
-
-                :not(:first-child) {
-                    margin-left: -0.8rem;
-                }
-            }
-        }
-
+        position: relative;
+        width: 50%;
         .details-request {
             margin-right: 1rem;
             background-color: #fae4de;

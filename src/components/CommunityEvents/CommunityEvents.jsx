@@ -20,19 +20,6 @@ import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 
-const getTimeRelatedData = () => {
-    const today = new Date();
-    const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
-        today.getDate(),
-    ).padStart(2, "0")}`;
-
-    const currentTime = `${today.getHours()}:${today.getMinutes()}`;
-
-    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-
-    return [todayString, currentTime, daysOfWeek];
-};
-
 const CommunityEvents = ({
     pageHeader,
     title,
@@ -56,7 +43,6 @@ const CommunityEvents = ({
         { id: 2, status: "past" },
         { id: 3, status: "cancelled" },
     ];
-    const [todayString, currentTime, daysOfWeek] = getTimeRelatedData();
 
     const filteredEvents = events
         .filter((event) => {
@@ -150,14 +136,9 @@ const CommunityEvents = ({
                             )}
                             {filteredEvents.length !== 0 ? (
                                 filteredEvents.map((event, index) => {
-                                    const dateObject = new Date(event.startTime);
-                                    const dayName = daysOfWeek[dateObject.getDay()];
                                     return (
                                         <EventItemList
                                             event={event}
-                                            todayString={todayString}
-                                            currentTime={currentTime}
-                                            dayName={dayName}
                                             actions={actions}
                                             key={index}
                                             index={index}
