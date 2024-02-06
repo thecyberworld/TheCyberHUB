@@ -26,7 +26,7 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
     const [following, setFollowing] = useState();
 
     const followUserId = userDetail?.user;
-    const unfollowId = followUserId;
+
     const userId = user?._id;
 
     const { connections: connectionData, isLoading: isConnectionLoading } = useSelector(
@@ -61,13 +61,9 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
         if (!user) {
             return setShowAuthPopup(true);
         }
-        if (!isFollowed && followUserId) {
-            await dispatch(followUser(followUserId));
-        }
-        if (isFollowed && followUserId) {
-            await dispatch(unfollowUser(unfollowId));
-        }
-        await dispatch(getFollowData(userId));
+        if (!followUserId) return;
+        const functionToDispatch = isFollowed ? unfollowUser : followUser;
+        dispatch(functionToDispatch(followUserId)).then(() => dispatch(getFollowData(followUserId)));
     };
 
     useEffect(() => {
