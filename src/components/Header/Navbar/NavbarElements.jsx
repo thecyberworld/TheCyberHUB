@@ -92,7 +92,7 @@ export const NavMenu = styled.div`
     list-style: none;
     text-align: center;
     gap: 5px;
-
+    z-index: 0;
     @media screen and (max-width: 870px) {
         gap: 0;
     }
