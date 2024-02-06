@@ -14,7 +14,7 @@ import { RouterLink } from "../../../Tools/ToolsElements";
 import { CircleSpinner } from "react-spinners-kit";
 import { ConnectionButton } from "./Connections/ConnectionElements";
 
-const ConnectionsAndFollows = ({ userDetail }) => {
+const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
 
@@ -58,6 +58,9 @@ const ConnectionsAndFollows = ({ userDetail }) => {
     }, [followData, followers, user?._id]);
 
     const handleFollow = async () => {
+        if (!user) {
+            return setShowAuthPopup(true);
+        }
         if (!isFollowed && followUserId) {
             await dispatch(followUser(followUserId));
         }
@@ -98,6 +101,9 @@ const ConnectionsAndFollows = ({ userDetail }) => {
 
     const handleSendConnectionRequest = useCallback(
         async (connectionUserId) => {
+            if (!user) {
+                return setShowAuthPopup(true);
+            }
             if (connectionUserId) {
                 await dispatch(sendConnectionRequest(connectionUserId));
             }
@@ -143,15 +149,7 @@ const ConnectionsAndFollows = ({ userDetail }) => {
 
     return (
         <FollowContainer>
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "start",
-                    alignItems: "center",
-                    width: "100%",
-                    gap: "10px",
-                }}
-            >
+            <div>
                 {/* follow */}
                 {user && followUserId && user?._id === followUserId ? (
                     <FollowButton>
@@ -181,18 +179,30 @@ const ConnectionsAndFollows = ({ userDetail }) => {
                         myConnection.isAccepted === false && (
                             <>
                                 {myConnection.sender === userId ? (
-                                    <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
-                                        Cancel Request
-                                    </ConnectionButton>
-                                ) : (
-                                    <>
+                                    isConnectionLoading ? (
+                                        <ConnectionButton>
+                                            <CircleSpinner size={16} isLoading={isLoading} />
+                                        </ConnectionButton>
+                                    ) : (
                                         <ConnectionButton onClick={() => handleRemoveConnectionRequest(followUserId)}>
-                                            Reject Request
+                                            Cancel Request
                                         </ConnectionButton>
-                                        <ConnectionButton onClick={() => handleAcceptConnectionRequest(followUserId)}>
-                                            Accept Request
+                                    )
+                                ) : (
+                                    <div style={{ display: "flex" }}>
+                                        <ConnectionButton
+                                            style={{ width: "auto", margin: "15px 4px" }}
+                                            onClick={() => handleRemoveConnectionRequest(followUserId)}
+                                        >
+                                            Reject
                                         </ConnectionButton>
-                                    </>
+                                        <ConnectionButton
+                                            style={{ width: "auto", margin: "15px 4px" }}
+                                            onClick={() => handleAcceptConnectionRequest(followUserId)}
+                                        >
+                                            Accept
+                                        </ConnectionButton>
+                                    </div>
                                 )}
                             </>
                         )
