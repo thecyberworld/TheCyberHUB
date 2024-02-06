@@ -29,6 +29,8 @@ const Register = ({ authPopup }) => {
         password: "",
         password2: "",
         termsAndConditions: "",
+        // if we are to implement the onchange function then we can include this too
+        // notifications: "",
         code: "",
     });
 
@@ -207,6 +209,22 @@ const RegisterEmail = ({
                         <span style={{ color: "#f67c07" }}> Terms of Use </span>
                     </RouterLink>
                 </div>
+
+                <span> </span>
+
+                <input
+                    role={"checkbox"}
+                    type={"checkbox"}
+                    // Ive named and id-ed it notificationCheckbox to make future use easier
+                    id={"notificationCheckbox"}
+                    name={"notificationCheckbox"}
+                    // I haven't implemented the onChange function yet
+                    // onChange={(e) => setFormData({ ...formData, notifications: e.target.checked })}
+                    // value={notifications}
+                    autoComplete="off"
+                />
+
+                <div>I want to receive updates about products and promotions</div>
             </div>
 
             {isUserLoading ? (
