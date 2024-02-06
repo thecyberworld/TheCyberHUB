@@ -38,35 +38,16 @@ const Feeds = () => {
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     };
-    //
+
     const filterByTag = (tag) => {
         const currentSearchTerm = searchTerm;
         if (currentSearchTerm === tag) {
-            setSearchTerm(""); // If the clicked tag is already the current search term, removes it.
+            setSearchTerm("");
         } else {
-            setSearchTerm(tag); // If the clicked tag is not the current search term, sets it.
+            setSearchTerm(tag);
         }
     };
 
-    /**
- * Handles the onClick event for tags, enabling the addition or removal of tags in the SearchTerm.
- * Tags are crucial for content filtering, and this function allows the manipulation of multiple tags.
- * However, be aware that the current implementation may encounter issues with tags containing spaces.
- * It is recommended to avoid spaces in tag names to ensure proper functionality.
- 
-
-const filterByTag = (tag) => {
-    const updatedSearchTerm = searchTerm ? searchTerm.split(" ") : [];
-    const index = updatedSearchTerm.indexOf(tag);
-    if (index !== -1) {
-        updatedSearchTerm.splice(index, 1);
-    } else {
-        updatedSearchTerm.push(tag);
-    }
-    setSearchTerm(updatedSearchTerm.join(" "));
-};
-*/
-    //
     const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
 
     const combinedData = feeds?.map((feed) => {
