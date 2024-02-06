@@ -44,12 +44,6 @@ export const EventItem = styled.div`
             color: #e24612;
         }
     }
-    .more-details {
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        cursor: pointer;
-    }
     .details {
         flex-basis: 55%;
         display: flex;
@@ -70,9 +64,10 @@ export const EventItem = styled.div`
     }
     .container-action {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        width: 250px;
     }
     .action {
         flex-basis: 10%;
@@ -80,7 +75,7 @@ export const EventItem = styled.div`
         justify-content: end;
         cursor: pointer;
         position: relative;
-
+        width: 100px;
         .action-edit {
             background-color: #f8f8f8;
             display: flex;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
-import { MdOpenInNew } from "react-icons/md";
 import { useNavigate } from "react-router";
 
 import { EventItem } from "./EventItemListElement";
@@ -152,17 +151,18 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
                                     <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
                                 </div>
                             </div>
-                        </div>
-                        <div className="more-details">
-                            <MdOpenInNew
-                                size={16}
-                                title="More Details"
-                                onClick={() =>
-                                    nativage(`/community-events/${event._id.slice(0, 10)}`, {
-                                        state: { actionDisplay, event },
-                                    })
-                                }
-                            />
+                            <div className="action">
+                                <div
+                                    className={`action-edit without-dropdown `}
+                                    onClick={() =>
+                                        nativage(`/community-events/${event._id.slice(0, 10)}`, {
+                                            state: { actionDisplay, event },
+                                        })
+                                    }
+                                >
+                                    <p>View</p>
+                                </div>
+                            </div>
                         </div>
                     </>
                 )
