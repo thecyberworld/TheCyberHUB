@@ -231,8 +231,6 @@ const RegisterEmail = ({
                 <div>I want to receive updates about upcoming Internships, Events and Newsletter</div>
             </div>
 
-            <button onClick={console.log(formData)}>click</button>
-
             {isUserLoading ? (
                 <LoadingButton width={"100%"}>
                     <CircleSpinner size={20} color={"#131313"} />
