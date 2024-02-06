@@ -56,6 +56,7 @@ export const RegistrationFormContainer = styled.form`
 
         & .registration__tandc {
             display: flex;
+            flex-direction: column,
             font-size: 12px;
             color: #f5f5f5;
 

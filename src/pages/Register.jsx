@@ -29,8 +29,8 @@ const Register = ({ authPopup }) => {
         password: "",
         password2: "",
         termsAndConditions: "",
-        // if we are to implement the onchange function then we can include this too
-        // notifications: "",
+        // this is intialized with 'true' as the checkbox is checked upon page render
+        notifications: "true",
         code: "",
     });
 
@@ -175,6 +175,8 @@ const RegisterEmail = ({
     setFormData,
     formData,
     termsAndConditions,
+    // included 'notifications' here to be used as value
+    notifications,
 }) => (
     <>
         <CustomInputGroup>
@@ -209,23 +211,27 @@ const RegisterEmail = ({
                         <span style={{ color: "#f67c07" }}> Terms of Use </span>
                     </RouterLink>
                 </div>
+            </div>
 
-                <span> </span>
-
+            <div className="registration__tandc">
                 <input
                     role={"checkbox"}
                     type={"checkbox"}
-                    // Ive named and id-ed it notificationCheckbox to make future use easier
-                    id={"notificationCheckbox"}
-                    name={"notificationCheckbox"}
-                    // I haven't implemented the onChange function yet
-                    // onChange={(e) => setFormData({ ...formData, notifications: e.target.checked })}
-                    // value={notifications}
+                    // set the default value as checked
+                    defaultChecked={"checked"}
+                    // Ive named and id-ed it notifications to make future use easier
+                    id={"notifications"}
+                    name={"notifications"}
+                    // I have implemented the onChange function
+                    onChange={(e) => setFormData({ ...formData, notifications: e.target.checked })}
+                    value={notifications}
                     autoComplete="off"
                 />
 
-                <div>I want to receive updates about products and promotions</div>
+                <div>I want to receive updates about upcoming Internships, Events and Newsletter</div>
             </div>
+
+            <button onClick={console.log(formData)}>click</button>
 
             {isUserLoading ? (
                 <LoadingButton width={"100%"}>
