@@ -63,7 +63,6 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     padding: 0 25px;
-
     @media screen and (max-width: 760px) {
     }
 `;
