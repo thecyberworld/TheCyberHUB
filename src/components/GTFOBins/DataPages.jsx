@@ -2,13 +2,13 @@ import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import { useParams, useNavigate } from "react-router";
 import React from "react";
 import { Data } from "./Data";
-import { FunctionData } from "./_gtfoJson";
+import { FunctionData } from "./Function";
 import { IoArrowBack } from "react-icons/io5";
 
 export default function DataPage() {
     const Navigator = useNavigate();
     const { id } = useParams();
-    const DataFunction = Object.keys(Data[0][id].functions);
+    const DataFunction = Object.keys(Data[id].functions);
 
     return (
         <Wrapper style={{ width: "80%" }}>
@@ -34,11 +34,19 @@ export default function DataPage() {
                     <div key={data}>
                         <h1>{FunctionData[data].label}</h1>
                         <p>{FunctionData[data].description}</p>
+                        <p>{Data[id].description}</p>
+                        <p></p>
+
                         <pre
                             className="codeSection"
                             style={{ margin: "10px", padding: "20px", backgroundColor: "rgb(26, 28, 29)" }}
                         >
-                            <code>{Data[0][id].functions[data][0].code}</code>
+                            {Data[id].functions[data].map((data) => (
+                                <div key={data}>
+                                    <p>{data.description}</p>
+                                    <code>{data.code}</code>{" "}
+                                </div>
+                            ))}
                         </pre>
                     </div>
                 ))}

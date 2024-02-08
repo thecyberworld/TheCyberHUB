@@ -1,13 +1,10 @@
+import React, { useState } from "react";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import React, { useState, useEffect } from "react";
 import { Data } from "./Data";
-// import { Search } from "../Labs/MainElement";
-import { FunctionData } from "./_gtfoJson";
+import { FunctionData } from "./Function";
 
 export default function GtfoBin() {
     const [activeFunction, setActiveFunction] = useState("All");
-
-    useEffect(() => {}, [activeFunction]);
 
     function handleActiveFunction(data) {
         setActiveFunction(data);
@@ -19,7 +16,12 @@ export default function GtfoBin() {
 
             <div style={{ display: "block", width: "100%", textAlign: "center", margin: "30px" }}>
                 <button
-                    style={{ padding: "10px", border: "solid 1px", margin: "10px" }}
+                    style={{
+                        padding: "10px",
+                        border: "solid 1px",
+                        margin: "10px",
+                        backgroundColor: activeFunction === "All" ? "#ff6b08" : "black",
+                    }}
                     onClick={() => {
                         handleActiveFunction("All");
                     }}
@@ -29,8 +31,13 @@ export default function GtfoBin() {
 
                 {Object.keys(FunctionData).map((data) => (
                     <button
-                        style={{ padding: "10px", border: "solid 1px", margin: "10px" }}
                         key={data}
+                        style={{
+                            padding: "10px",
+                            border: "solid 1px",
+                            margin: "10px",
+                            backgroundColor: activeFunction === data ? "#ff6b08" : "black",
+                        }}
                         onClick={() => {
                             handleActiveFunction(data);
                         }}
@@ -39,6 +46,7 @@ export default function GtfoBin() {
                     </button>
                 ))}
             </div>
+
             <div
                 style={{
                     display: "flex",
@@ -48,78 +56,44 @@ export default function GtfoBin() {
                     padding: "30px",
                 }}
             >
-                {/* <Search
-                    id="Search"
-                    placeholder={"Search among " + Object.keys(Data[0]).length + " Binaries"}
-                    style={{ marginBottom: "20px", marginLeft: "0" }}
-                /> */}
-                {Data.map((data, index) =>
-                    Object.keys(data).map((keys) => {
-                        if (activeFunction === "All") {
-                            return (
-                                <div style={{ display: "flex" }} key={keys}>
-                                    <a
-                                        style={{
-                                            width: "180px",
-                                            color: "white",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            textDecorationLine: "underline",
-                                        }}
-                                        href={"/tools/binexploits/" + keys}
-                                    >
-                                        {keys}
-                                    </a>
-                                    <div style={{ display: "grid-row", width: "550px" }}>
-                                        {Object.keys(data[keys].functions).map((function_) => (
-                                            <button
-                                                onClick={() => {
-                                                    handleActiveFunction(function_);
-                                                }}
-                                                style={{ padding: "10px", border: "solid 1px", margin: "10px" }}
-                                                key={function_}
-                                            >
-                                                {function_}
-                                            </button>
-                                        ))}
-                                    </div>
-                                </div>
-                            );
-                        } else {
-                            if (Object.keys(data[keys].functions).find((func) => func === activeFunction)) {
-                                return (
-                                    <div style={{ display: "flex" }} key={keys}>
-                                        <a
-                                            style={{
-                                                width: "180px",
-                                                color: "white",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                textDecorationLine: "underline",
+                {Object.keys(Data).map(
+                    (key) =>
+                        (activeFunction === "All" || Object.keys(Data[key].functions).includes(activeFunction)) && (
+                            <div key={key} style={{ display: "flex", margin: "10px" }}>
+                                <a
+                                    style={{
+                                        width: "180px",
+                                        color: "white",
+                                        display: "flex",
+                                        alignItems: "flex-start",
+                                        marginTop: "15px",
+                                        textDecorationLine: "underline",
+                                    }}
+                                    href={"/tools/binexploits/" + key}
+                                >
+                                    {key}
+                                </a>
+                                <div style={{ display: "grid-row", width: "550px" }}>
+                                    {Object.keys(Data[key].functions).map((binaryFunction) => (
+                                        <button
+                                            key={binaryFunction}
+                                            onClick={() => {
+                                                handleActiveFunction(binaryFunction);
                                             }}
-                                            href={"/tools/binexploits/" + keys}
+                                            style={{
+                                                padding: "10px",
+                                                border: "solid 1px",
+                                                margin: "10px",
+                                                backgroundColor:
+                                                    activeFunction === binaryFunction ? "#ff6b08" : "black",
+                                            }}
                                         >
-                                            {keys}
-                                        </a>
-                                        <div style={{ display: "grid-row", width: "550px" }}>
-                                            {Object.keys(data[keys].functions).map((function_) => (
-                                                <button
-                                                    onClick={() => {
-                                                        handleActiveFunction(function_);
-                                                    }}
-                                                    style={{ padding: "10px", border: "solid 1px", margin: "10px" }}
-                                                    key={function_}
-                                                >
-                                                    {function_}
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
-                                );
-                            }
-                        }
-                        return null;
-                    }),
+                                            {binaryFunction}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        ),
                 )}
             </div>
         </Wrapper>
