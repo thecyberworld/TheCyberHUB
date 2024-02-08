@@ -36,7 +36,8 @@ const Register = ({ authPopup }) => {
 
     const [emailSent, setEmailSent] = useState(false);
     const [emailRegistered, setEmailRegistered] = useState(false);
-    const { name, username, email, password, password2, termsAndConditions, code } = formData;
+    // Added notifications here to include in this object to be used later
+    const { name, username, email, password, password2, termsAndConditions, notifications, code } = formData;
     const { user, isUserLoading, isUserError, userMessage } = useSelector((state) => state.auth);
 
     useEffect(() => {
@@ -86,7 +87,8 @@ const Register = ({ authPopup }) => {
         } else if (!termsAndConditions) {
             toast.error("You must agree to the terms and conditions");
         } else {
-            const userData = { email, termsAndConditions };
+            // appended notifications to userData obj
+            const userData = { email, termsAndConditions, notifications };
             dispatch(sendEmailCode(userData));
         }
     };
