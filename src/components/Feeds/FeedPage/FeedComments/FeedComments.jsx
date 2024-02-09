@@ -10,10 +10,10 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
         return views?.filter((view) => view.itemId === feedId);
     };
     const feedUserBookmarksData = ({ feedId }) => {
-        return (
-            bookmarks?.length > 0 ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
-                bookmarks?.filter((bookmark) => bookmark.user === user._id) : []
-        );
+        return bookmarks?.length > 0
+            ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
+                  bookmarks?.filter((bookmark) => bookmark.user === user._id)
+            : [];
     };
 
     if (replies.length === 0) {

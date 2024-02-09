@@ -19,9 +19,10 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
 
     useEffect(() => {
         if (isBookmarkError) console.log(bookmarkMessage);
-
         dispatch(getFeedLikes());
-        dispatch(getBookmarks());
+        if (user) {
+            dispatch(getBookmarks());
+        }
         dispatch(getViews());
         dispatch(getFeedComments());
     }, [dispatch, isBookmarkError, bookmarkMessage]);
@@ -44,10 +45,10 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     };
 
     const feedUserBookmarksData = ({ feedId }) => {
-        return (
-            bookmarks?.length > 0 ? bookmarks?.filter((bookmark) => bookmark.itemId === feedId) &&
-                bookmarks?.filter((bookmark) => bookmark.user === user._id) : []
-        );
+        return bookmarks?.length > 0
+            ? bookmarks?.filter((bookmark) => bookmark.itemId === feedId) &&
+                  bookmarks?.filter((bookmark) => bookmark.user === user._id)
+            : [];
     };
 
     const feedViewsData = ({ feedId }) => {
