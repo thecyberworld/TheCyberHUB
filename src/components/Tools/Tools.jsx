@@ -4,7 +4,10 @@ import { CardTool, CardToolHeading, CardTools, ContainerTools, RouterLink, ToolI
 import { GoFileBinary } from "react-icons/go";
 import { RiEarthFill } from "react-icons/ri";
 import { GiNautilusShell } from "react-icons/gi";
-import { MdPassword } from "react-icons/md";
+import {
+    MdPassword,
+    // MdScreenSearchDesktop
+} from "react-icons/md";
 import { TbHash } from "react-icons/tb";
 import HeadingBanner from "../Common/HeadingBanner/HeadingBanner";
 
@@ -15,6 +18,7 @@ const Tools = () => {
         { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
         { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },
         { name: "BinExploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
+        // { name: "Dorking", link: "/tools/dorking", icon: <MdScreenSearchDesktop  /> },
 
         // {name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill/>,},
         // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
