@@ -30,7 +30,7 @@ const Register = ({ authPopup }) => {
         password2: "",
         termsAndConditions: "",
         // this is intialized with 'true' as the checkbox is checked upon page render
-        notifications: "true",
+        notifications: true,
         code: "",
     });
 
