@@ -59,15 +59,18 @@ import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
 import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
-import EncoderMain from "./components/EncoderDecoder.jsx/EncoderMain";
+
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
+import SessionExpireLogout from "./components/Other/SessionExpireLogout";
+import { useSelector } from "react-redux";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const { user } = useSelector((state) => state.auth);
 
     const { pathname } = useLocation();
     const hostname = window.location.hostname;
@@ -105,12 +108,11 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    // const { user } = useSelector((state) => state.auth);
-
     if (isLoading) return <Spinner />;
 
     return (
         <>
+            {user ? <SessionExpireLogout /> : null}
             {/* {user && <UserTimestamps user={user} />} */}
             <Container>
                 {!hideHomeHeader() && (
@@ -138,7 +140,6 @@ const App = () => {
 
                         <Route path={"/websecurity/*"} element={<WebSecurityRoutes />} />
 
-                        <Route path={"/tools/encoder"} element={<EncoderMain />} />
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
                         <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />

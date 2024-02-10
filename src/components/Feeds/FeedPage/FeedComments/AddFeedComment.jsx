@@ -10,7 +10,7 @@ import { cdnContentImagesUrl } from "../../../../features/apiUrl";
 const AddFeedComment = ({ feedId, userDetails }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const userDetail = userDetails?.find((userDetail) => userDetail?.user === user._id);
+    const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
 
     const [addReply, setAddReply] = useState({ reply: "" });
     const { reply } = addReply;
