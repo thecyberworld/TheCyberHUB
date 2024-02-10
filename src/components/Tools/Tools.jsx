@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import { CardTool, CardToolHeading, CardTools, ContainerTools, RouterLink, ToolIcon } from "./ToolsElements";
-
+import { GoFileBinary } from "react-icons/go";
 import { RiEarthFill } from "react-icons/ri";
 import { GiNautilusShell } from "react-icons/gi";
 import { MdPassword } from "react-icons/md";
@@ -13,7 +13,9 @@ const Tools = () => {
         { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
         { name: "Sub Finder", link: "/tools/subfinder", icon: <RiEarthFill /> },
         { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
-        { name: "Encoder", link: "/tools/encode", icon: <TbHash /> },
+        { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },
+        { name: "BinExploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
+
         // {name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill/>,},
         // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
         // {name: "jwt Decoder", link: "/tools/jwtdecoder", icon: <RiEarthFill/>,},
