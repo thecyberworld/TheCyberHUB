@@ -62,12 +62,15 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
+import SessionExpireLogout from "./components/Other/SessionExpireLogout";
+import { useSelector } from "react-redux";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const { user } = useSelector((state) => state.auth);
 
     const { pathname } = useLocation();
     const hostname = window.location.hostname;
@@ -105,12 +108,11 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    // const { user } = useSelector((state) => state.auth);
-
     if (isLoading) return <Spinner />;
 
     return (
         <>
+            {user ? <SessionExpireLogout /> : null}
             {/* {user && <UserTimestamps user={user} />} */}
             <Container>
                 {!hideHomeHeader() && (
