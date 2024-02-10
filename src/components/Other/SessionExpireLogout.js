@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import { logout, userReset } from "../../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // Function to extract expiration time from JWT
 const getTokenExpirationTime = (token) => {
@@ -25,33 +25,28 @@ const getTokenExpirationTime = (token) => {
 const SessionExpireLogout = () => {
     const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const [isTokenExpired, setIsTokenExpired] = useState(false);
-
-    console.log("User Found:", user.username);
 
     const onLogout = () => {
         dispatch(logout());
         dispatch(userReset());
-        navigate("/login");
+        toast.warn("session expired");
     };
 
     useEffect(() => {
         const token = user.token;
         if (token) {
-            const tokenExpTime = getTokenExpirationTime(token); // Get token expiration time
-            if (tokenExpTime && Date.now() >= tokenExpTime * 1000) {
-                console.log("Token Expired");
-                setIsTokenExpired(true);
-            } else {
-                console.log("Token Not Expired");
-                setIsTokenExpired(false);
+            const tokenExpTime = getTokenExpirationTime(token);
+            if (tokenExpTime) {
+                // log out user when session expires
+                setTimeout(() => {
+                    setIsTokenExpired(true);
+                }, [tokenExpTime * 1000 - Date.now()]);
             }
         }
     }, [user]);
 
     useEffect(() => {
-        console.log("Token Expired:", isTokenExpired);
         if (isTokenExpired) {
             onLogout();
         }
