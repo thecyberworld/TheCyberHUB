@@ -24,7 +24,8 @@ const GoalForm = () => {
                         id="text"
                         value={text}
                         onChange={(e) => setText(e.target.value)}
-                        placeholder="Enter your goal"
+                        placeholder="What's your goal?"
+                        style={{ color: "#000" }}
                     />
                     <div className="form-group"></div>
                 </div>
