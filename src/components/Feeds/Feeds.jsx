@@ -38,6 +38,16 @@ const Feeds = () => {
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     };
+
+    const filterByTag = (tag) => {
+        const currentSearchTerm = searchTerm;
+        if (currentSearchTerm === tag) {
+            setSearchTerm("");
+        } else {
+            setSearchTerm(tag);
+        }
+    };
+
     const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
 
     const combinedData = feeds?.map((feed) => {
@@ -67,7 +77,7 @@ const Feeds = () => {
                             onChange={handleSearchTermChange}
                         />
                     </SearchContainer>
-                    <FeedTags tags={feedTags} />
+                    <FeedTags tags={feedTags} handleClick={filterByTag} />
                 </LeftContainer>
             </FeedsContainer>
         </Wrapper>
