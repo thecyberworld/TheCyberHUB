@@ -70,6 +70,10 @@ const Explore = () => {
         };
     }, [dispatch]);
 
+    useEffect(() => {
+        setSelectedFilter(allUsers);
+    }, [user]);
+
     const blogTags = blogs?.map((blog) => blog && blog?.tags).flat() || [];
     const ctfTags = ctf?.map((ctf) => ctf && ctf?.tags).flat() || [];
     const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
