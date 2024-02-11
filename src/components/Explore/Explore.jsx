@@ -128,7 +128,7 @@ const Explore = () => {
             return { ...feed, username, avatar, verified };
         });
 
-    const filteredFeeds = feedData.filter((feed) => feed !== null);
+    const filteredFeeds = feedData?.filter((feed) => feed !== null);
 
     const blogsData = blogs
         ?.slice()
@@ -145,7 +145,7 @@ const Explore = () => {
             return { ...blog, username, avatar, verified };
         });
 
-    const filteredBlogs = blogsData.filter((blog) => blog !== null);
+    const filteredBlogs = blogsData?.filter((blog) => blog !== null);
 
     const ctfData = ctf
         ?.slice()
@@ -162,7 +162,7 @@ const Explore = () => {
             return { ...ctf, username, avatar, verified };
         });
 
-    const filteredCtf = ctfData.filter((ctf) => ctf !== null);
+    const filteredCtf = ctfData?.filter((ctf) => ctf !== null);
 
     const filteredUsers = userDetailsLocal.map((user) => {
         if (!selectedFilter?.includes(user.user)) {
