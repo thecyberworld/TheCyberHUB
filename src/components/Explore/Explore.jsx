@@ -159,12 +159,13 @@ const Explore = () => {
 
     const filteredCtf = ctfData?.filter((ctf) => ctf !== null);
 
-    const filteredUsers = userDetailsLocal.map((user) => {
+    const usersData = userDetailsLocal.map((user) => {
         if (!selectedFilter?.includes(user.user)) {
             return null;
         }
         return user;
     });
+    const filteredUsers = usersData?.filter((user) => user !== null);
 
     const handleTypeFilter = (filter) => {
         setSelectedFilter(filter.value);
