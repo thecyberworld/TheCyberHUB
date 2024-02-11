@@ -33,7 +33,7 @@ export const FooterLinksContainer = styled.div`
     }
 `;
 
-export const FooterLinksWrapper = styled.div`
+export const FooterLinksWrapper = styled.ul`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: 1fr;

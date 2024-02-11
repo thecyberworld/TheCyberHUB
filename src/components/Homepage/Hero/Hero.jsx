@@ -36,7 +36,8 @@ const Hero = () => {
 
                 <HeroBtnWrapper>
                     <ScrollButton
-                        to={"about"}
+                        href="/about"
+                        to="about"
                         onMouseEnter={onHover}
                         onMouseLeave={onHover}
                         primary={"true"}

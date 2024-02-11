@@ -227,7 +227,13 @@ const ContactForm = () => {
                         <ContactFormLabel htmlFor="reason">
                             <ReasonIcon />
                         </ContactFormLabel>
-                        <ContactFormSelect name="reason" id="reason" value={formData.reason} onChange={handleChange}>
+                        <ContactFormSelect
+                            aria-label="reason"
+                            name="reason"
+                            id="reason"
+                            value={formData.reason}
+                            onChange={handleChange}
+                        >
                             <ContactFormSelectOption value="">Select a reason</ContactFormSelectOption>
                             <ContactFormSelectOption value="internship">
                                 Internship {isOpened ? "(Applications are Now Open!)" : null}
