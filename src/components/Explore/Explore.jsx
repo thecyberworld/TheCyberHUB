@@ -153,13 +153,8 @@ const Explore = () => {
         ?.slice(0, 10)
         .reverse()
         .map((ctf) => {
-            const userDetail = userDetailsLocal?.find((user) => user.user === ctf.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
-
-            return { ...ctf, username, avatar, verified };
+            const registeredUser = ctf.registeredUsers.find(({ user }) => selectedFilter.includes(user));
+            return registeredUser ? { ...ctf } : null;
         });
 
     const filteredCtf = ctfData?.filter((ctf) => ctf !== null);
