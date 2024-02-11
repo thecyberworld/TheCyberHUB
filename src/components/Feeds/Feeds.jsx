@@ -39,14 +39,6 @@ const Feeds = () => {
         setSearchTerm(event.target.value);
     };
 
-    /* const filterByTag = (tag) => {
-        const currentSearchTerm = searchTerm;
-        if (currentSearchTerm === tag) {
-            setSearchTerm("");
-        } else {
-            setSearchTerm(tag);
-        }
-    }; */
     const customSplit = (str, invisibleChar) => {
         const result = [];
         let temp = "";
