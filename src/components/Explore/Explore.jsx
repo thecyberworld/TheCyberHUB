@@ -147,25 +147,14 @@ const Explore = () => {
 
     const filteredBlogs = blogsData?.filter((blog) => blog !== null);
 
-    const ctfData = ctf
+    const filteredCtf = ctf
         ?.slice()
         .reverse()
         ?.slice(0, 10)
         .reverse()
-        .map((ctf) => {
-            const registeredUser = ctf.registeredUsers.find(({ user }) => selectedFilter.includes(user));
-            return registeredUser ? { ...ctf } : null;
-        });
+        .filter((ctf) => ctf.registeredUsers.find(({ user }) => selectedFilter.includes(user)));
 
-    const filteredCtf = ctfData?.filter((ctf) => ctf !== null);
-
-    const usersData = userDetailsLocal.map((user) => {
-        if (!selectedFilter?.includes(user.user)) {
-            return null;
-        }
-        return user;
-    });
-    const filteredUsers = usersData?.filter((user) => user !== null);
+    const filteredUsers = userDetailsLocal.filter((user) => selectedFilter?.includes(user.user));
 
     const handleTypeFilter = (filter) => {
         setSelectedFilter(filter.value);
