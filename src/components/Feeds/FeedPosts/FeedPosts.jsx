@@ -40,14 +40,20 @@ const FeedPosts = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displa
         setNumPostsToShow(numPostsToShow + 5);
     };
 
+    const removeInvisibleChars = (str) => {
+        return str.replace(/\u200b/g, "");
+    };
+
     const filteredData = feeds?.filter((feed) => {
+        const cleanSearchTerm = removeInvisibleChars(searchTerm);
+
         const contentIncludesSearchTerm =
-            !searchTerm || feed?.content?.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
         const tagsIncludeSearchTerm =
-            !searchTerm || feed?.tags?.join(" ").toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || feed?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
         const usernameIncludeSearchTerm =
-            !searchTerm || feed?.username.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
-        return !searchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm;
+            !cleanSearchTerm || feed?.username.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+        return !cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm;
     });
 
     const feedLikesData = ({ feedId }) => {
