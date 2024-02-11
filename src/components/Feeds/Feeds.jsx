@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FeedsContainer, MiddleSection } from "./FeedsElements";
+import { FeedsContainer, FilterButton, FilterContainer, MiddleSection } from "./FeedsElements";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import AddFeed from "./PostForm/AddFeed";
 import FeedPosts from "./FeedPosts/FeedPosts";
@@ -12,6 +12,7 @@ import apiStatus from "../../features/apiStatus";
 import FeedTags from "./FeedTags/FeedTags";
 import { LeftContainer, SearchContainer } from "../Explore/ExploreElements";
 import SearchInputBox from "../Common/SearchInputBox";
+import { getFollowData, reset } from "../../features/follow/followSlice";
 
 const Feeds = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const Feeds = () => {
     const { userDetails, isUserDetailLoading, isUserDetailError, userDetailMessage } = useSelector(
         (state) => state.userDetail,
     );
+    const { user } = useSelector((state) => state.auth);
 
     useEffect(() => {
         if (isFeedError) console.log(feedMessage);
@@ -27,12 +29,38 @@ const Feeds = () => {
 
         dispatch(getAllFeeds());
         dispatch(getAllUserDetails());
-
+        dispatch(getFollowData(user._id));
         return () => {
             dispatch(feedReset());
             dispatch(userDetailReset());
+            dispatch(reset());
         };
     }, [dispatch]);
+    const [showOnlyFollowingposts, setShowOnlyFollowingPosts] = useState(false);
+
+    const renderFollowingFilterButtons = () => (
+        <>
+            <FilterButton
+                style={{
+                    background: showOnlyFollowingposts === false ? "#FF6B08" : "",
+                    color: showOnlyFollowingposts === false ? "#0A0A0A" : "",
+                }}
+                onClick={() => setShowOnlyFollowingPosts(false)}
+            >
+                All
+            </FilterButton>
+            <FilterButton
+                style={{
+                    background: showOnlyFollowingposts === true ? "#FF6B08" : "",
+                    color: showOnlyFollowingposts === true ? "#0A0A0A" : "",
+                }}
+                onClick={() => setShowOnlyFollowingPosts(true)}
+            >
+                Following
+            </FilterButton>
+        </>
+    );
+
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSearchTermChange = (event) => {
@@ -57,10 +85,17 @@ const Feeds = () => {
             <FeedsContainer>
                 <MiddleSection>
                     <AddFeed showPostTags={true} userDetails={userDetails} />
-                    <FeedPosts searchTerm={searchTerm} feeds={combinedData} isFeedLoading={isFeedLoading} />
+                    <FeedPosts
+                        searchTerm={searchTerm}
+                        feeds={combinedData}
+                        isFeedLoading={isFeedLoading}
+                        showOnlyFollowingposts={showOnlyFollowingposts}
+                    />
                 </MiddleSection>
                 <LeftContainer style={{ padding: "25px 0" }}>
                     <SearchContainer>
+                        <FilterContainer>{renderFollowingFilterButtons()}</FilterContainer>
+
                         <SearchInputBox
                             placeholder="Search by name"
                             value={searchTerm}
