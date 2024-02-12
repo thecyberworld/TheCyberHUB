@@ -31,13 +31,13 @@ const Blogs = () => {
         (state) => state.userDetail,
     );
 
-    const UserId = user?._id;
+    const userId = user?._id;
 
     const { followData } = useSelector((state) => state.followData);
     useEffect(() => {
         if (isBlogError) console.log(blogMessage);
         if (isUserDetailError) console.log(userDetailMessage);
-        if (UserId) dispatch(getFollowData(UserId));
+        if (userId) dispatch(getFollowData(userId));
         dispatch(getAllBlogs());
         dispatch(getAllUserDetails());
 
@@ -46,7 +46,7 @@ const Blogs = () => {
             dispatch(blogReset());
             dispatch(userDetailReset());
         };
-    }, [dispatch, isBlogError, blogMessage, isUserDetailError, userDetailMessage, UserId]);
+    }, [dispatch, isBlogError, blogMessage, isUserDetailError, userDetailMessage, userId]);
 
     const blogsData = blogs?.map((blog) => {
         const userDetail = userDetails?.find((user) => user.user === blog.user);
