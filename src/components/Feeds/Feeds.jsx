@@ -101,6 +101,7 @@ const Feeds = () => {
                             placeholder="Search by name"
                             value={searchTerm}
                             onChange={handleSearchTermChange}
+                            setValue={setSearchTerm}
                         />
                     </SearchContainer>
                     <FeedTags tags={feedTags} handleClick={filterByTag} />
