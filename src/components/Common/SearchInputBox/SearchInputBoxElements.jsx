@@ -1,6 +1,6 @@
 import { FcSearch } from "react-icons/fc";
 import styled from "styled-components";
-import { GoXCircleFill } from "react-icons/go";
+import { VscClose } from "react-icons/vsc";
 
 export const SearchInput = styled.input`
     border: none;
@@ -40,7 +40,7 @@ export const SearchIcon = styled(FcSearch)`
     transition: 0.2s ease-in-out;
 `;
 
-export const CancelIcon = styled(GoXCircleFill)`
+export const CancelIcon = styled(VscClose)`
     font-size: 1.7rem;
     color: rgb(238, 238, 238);
     cursor: pointer;
