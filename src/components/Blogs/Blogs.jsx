@@ -48,7 +48,7 @@ const Blogs = () => {
         };
     }, [dispatch, isBlogError, blogMessage, isUserDetailError, userDetailMessage, userId]);
 
-    const blogsData = blogs?.map((blog) => {
+    const userDetailsfunction = (blog) => {
         const userDetail = userDetails?.find((user) => user.user === blog.user);
         const { username, avatar, verified } = userDetail || {};
 
@@ -58,21 +58,17 @@ const Blogs = () => {
             avatar,
             verified,
         };
+    };
+
+    const blogsData = blogs?.map((blog) => {
+        return userDetailsfunction(blog);
     });
 
     const followingBlogData = blogs?.map((blog) => {
         if (!followData?.following?.includes(blog.user)) {
             return null;
         }
-        const userDetail = userDetails?.find((user) => user.user === blog.user);
-        const { username, avatar, verified } = userDetail || {};
-
-        return {
-            ...blog,
-            username,
-            avatar,
-            verified,
-        };
+        return userDetailsfunction(blog);
     });
     const filteredBlogs = followingBlogData?.filter((blog) => blog !== null);
 
