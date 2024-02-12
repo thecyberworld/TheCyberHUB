@@ -31,13 +31,13 @@ const Blogs = () => {
         (state) => state.userDetail,
     );
 
-    const followUserId = user?._id;
+    const UserId = user?._id;
 
     const { followData } = useSelector((state) => state.followData);
     useEffect(() => {
         if (isBlogError) console.log(blogMessage);
         if (isUserDetailError) console.log(userDetailMessage);
-        if (followUserId) dispatch(getFollowData(followUserId));
+        if (UserId) dispatch(getFollowData(UserId));
         dispatch(getAllBlogs());
         dispatch(getAllUserDetails());
 
@@ -46,7 +46,7 @@ const Blogs = () => {
             dispatch(blogReset());
             dispatch(userDetailReset());
         };
-    }, [dispatch, isBlogError, blogMessage, isUserDetailError, userDetailMessage, followUserId]);
+    }, [dispatch, isBlogError, blogMessage, isUserDetailError, userDetailMessage, UserId]);
 
     const blogsData = blogs?.map((blog) => {
         const userDetail = userDetails?.find((user) => user.user === blog.user);
@@ -105,7 +105,7 @@ const Blogs = () => {
             <BlogsContainer>
                 <BlogsSection>
                     <RouterNavCreateButtonLink to={"/dashboard/blogs/create"}>Create Blog</RouterNavCreateButtonLink>
-                    <BlogFilter selectedBlogs={selectedBlogs} handleSelectedBlogs={handleSelectedBlogs} />
+                    {user && <BlogFilter selectedBlogs={selectedBlogs} handleSelectedBlogs={handleSelectedBlogs} />}
 
                     <MiddleContainer>
                         {/* <div> */}
