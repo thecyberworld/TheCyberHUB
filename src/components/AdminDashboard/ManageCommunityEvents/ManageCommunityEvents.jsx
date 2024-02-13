@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import CommunityEvents from "../../CommunityEvents";
+import { updateEvent } from "../../../features/events/eventsSlice";
 import {
     AiOutlineCloseCircleIcon,
+    AiOutlineFieldTimeIcon,
     BiUserPlusIcon,
     CommunityEventsContainer,
     TbEditCircleIcon,
     TbRestoreIcon,
 } from "./ManageCommunityEventsElements";
-import { updateEvent } from "../../../features/events/eventsSlice";
 
 const ManageCommunityEvents = () => {
     const dispatch = useDispatch();
     const [modifyEventId, setModifyEventId] = useState("");
+    const [eventManageTimelineId, setEventManageTimelineId] = useState("");
     const activeEvents = [
         {
             icon: TbEditCircleIcon,
@@ -24,6 +26,13 @@ const ManageCommunityEvents = () => {
             icon: BiUserPlusIcon,
             text: "Invite people",
             onClick: (modifiedEvent) => {},
+        },
+        {
+            icon: AiOutlineFieldTimeIcon,
+            text: "Manage Timeline",
+            onClick: (modifiedEvent) => {
+                setEventManageTimelineId(modifiedEvent._id);
+            },
         },
         {
             icon: AiOutlineCloseCircleIcon,
@@ -64,6 +73,8 @@ const ManageCommunityEvents = () => {
                 actions={actions}
                 modifyEventId={modifyEventId}
                 setModifyEventId={setModifyEventId}
+                eventManageTimelineId={eventManageTimelineId}
+                setEventManageTimelineId={setEventManageTimelineId}
             />
         </CommunityEventsContainer>
     );

@@ -31,6 +31,8 @@ const CommunityEvents = ({
     onActionChange = () => {},
     modifyEventId,
     setModifyEventId,
+    eventManageTimelineId,
+    setEventManageTimelineId,
 }) => {
     const dispatch = useDispatch();
     const { events, isEventLoading, isEventError, eventMessage } = useSelector((state) => state.events);
