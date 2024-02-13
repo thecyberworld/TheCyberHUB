@@ -38,6 +38,40 @@ const Feeds = () => {
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     };
+
+    const customSplit = (str, invisibleChar) => {
+        const result = [];
+        let temp = "";
+        for (let i = 0; i < str.length; i++) {
+            if (str[i] === invisibleChar) {
+                temp += `${invisibleChar} ${invisibleChar}`;
+                i += 2;
+            } else if (str[i] === " ") {
+                result.push(temp);
+                temp = "";
+            } else {
+                temp += str[i];
+            }
+        }
+        if (temp) result.push(temp);        
+        return result;
+    };
+
+    const filterByTag = (tag) => {
+        const invisibleChar = "\u200b";  //Zero width space character
+        const updatedSearchTerm = searchTerm ? customSplit(searchTerm, invisibleChar) : [];
+        if (tag.includes(" ")) {
+            tag = tag.replace(/ /g, `${invisibleChar} ${invisibleChar}`);
+        }
+        const index = updatedSearchTerm.indexOf(tag);
+        if (index !== -1) {
+            updatedSearchTerm.splice(index, 1);
+        } else {
+            updatedSearchTerm.push(tag);
+        }
+        setSearchTerm(updatedSearchTerm.join(" "));
+    };
+
     const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
 
     const combinedData = feeds?.map((feed) => {
@@ -65,9 +99,10 @@ const Feeds = () => {
                             placeholder="Search by name"
                             value={searchTerm}
                             onChange={handleSearchTermChange}
+                            setValue={setSearchTerm}
                         />
                     </SearchContainer>
-                    <FeedTags tags={feedTags} />
+                    <FeedTags tags={feedTags} handleClick={filterByTag} />
                 </LeftContainer>
             </FeedsContainer>
         </Wrapper>

@@ -18,6 +18,7 @@ import UserPoints from "./UserPoints/UserPoints";
 import MyCtfCertificates from "./MyCtfCertificates";
 import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../../features/apiStatus";
+import AuthPopup from "../../../pages/AuthPopup/AuthPopup";
 
 const UserProfile = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -29,7 +30,7 @@ const UserProfile = () => {
     const { username } = useParams();
 
     const [userDetail, setUserDetail] = useState({});
-
+    const [showAuthPopup, setShowAuthPopup] = useState(false);
     useEffect(() => {
         if (isError) {
             console.log(message);
@@ -76,10 +77,17 @@ const UserProfile = () => {
     const { aboutMe, skills, achievements, projects } = userDetail || {};
     return (
         <Wrapper>
+            {showAuthPopup && (
+                <AuthPopup
+                    onClose={() => {
+                        setShowAuthPopup(false);
+                    }}
+                />
+            )}
             <ProfileContainer>
                 <ProfileHeader userDetail={userDetail} />
                 <ProfileDetailsSection>
-                    <UserLinks userDetail={userDetail} userDetails={userDetails} />
+                    <UserLinks userDetail={userDetail} userDetails={userDetails} setShowAuthPopup={setShowAuthPopup} />
                     <UserDetailsContainer>
                         <UserPoints userDetail={userDetail} allUserDetail={userDetails} blogs={blogs} />
                         {(aboutMe && aboutMe?.length === 0) || aboutMe === undefined ? null : (

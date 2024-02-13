@@ -29,12 +29,15 @@ const Register = ({ authPopup }) => {
         password: "",
         password2: "",
         termsAndConditions: "",
+        // this is intialized with 'true' as the checkbox is checked upon page render
+        notifications: true,
         code: "",
     });
 
     const [emailSent, setEmailSent] = useState(false);
     const [emailRegistered, setEmailRegistered] = useState(false);
-    const { name, username, email, password, password2, termsAndConditions, code } = formData;
+    // Added notifications here to include in this object to be used later
+    const { name, username, email, password, password2, termsAndConditions, notifications, code } = formData;
     const { user, isUserLoading, isUserError, userMessage } = useSelector((state) => state.auth);
 
     useEffect(() => {
@@ -84,7 +87,8 @@ const Register = ({ authPopup }) => {
         } else if (!termsAndConditions) {
             toast.error("You must agree to the terms and conditions");
         } else {
-            const userData = { email, termsAndConditions };
+            // appended notifications to userData obj
+            const userData = { email, termsAndConditions, notifications };
             dispatch(sendEmailCode(userData));
         }
     };
@@ -173,6 +177,8 @@ const RegisterEmail = ({
     setFormData,
     formData,
     termsAndConditions,
+    // included 'notifications' here to be used as value
+    notifications,
 }) => (
     <>
         <CustomInputGroup>
@@ -207,6 +213,24 @@ const RegisterEmail = ({
                         <span style={{ color: "#f67c07" }}> Terms of Use </span>
                     </RouterLink>
                 </div>
+            </div>
+
+            <div className="registration__tandc">
+                <input
+                    role={"checkbox"}
+                    type={"checkbox"}
+                    // set the default value as checked
+                    defaultChecked={"checked"}
+                    // Ive named and id-ed it notifications to make future use easier
+                    id={"notifications"}
+                    name={"notifications"}
+                    // I have implemented the onChange function
+                    onChange={(e) => setFormData({ ...formData, notifications: e.target.checked })}
+                    value={notifications}
+                    autoComplete="off"
+                />
+
+                <div>I want to receive updates about upcoming Internships, Events and Newsletter</div>
             </div>
 
             {isUserLoading ? (

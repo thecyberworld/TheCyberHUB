@@ -20,19 +20,6 @@ import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 
-const getTimeRelatedData = () => {
-    const today = new Date();
-    const todayString = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(
-        today.getDate(),
-    ).padStart(2, "0")}`;
-
-    const currentTime = `${today.getHours()}:${today.getMinutes()}`;
-
-    const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-
-    return [todayString, currentTime, daysOfWeek];
-};
-
 const CommunityEvents = ({
     pageHeader,
     title,
@@ -56,36 +43,37 @@ const CommunityEvents = ({
         { id: 2, status: "past" },
         { id: 3, status: "cancelled" },
     ];
-    const [todayString, currentTime, daysOfWeek] = getTimeRelatedData();
 
     const filteredEvents = events
-        .filter((event) => {
-            let eventFit = false;
-            if (tabNames[isActiveTab].status === "cancelled" || event.status === "cancelled")
-                return event.status === tabNames[isActiveTab].status;
+        ? events
+              .filter((event) => {
+                  let eventFit = false;
+                  if (tabNames[isActiveTab].status === "cancelled" || event.status === "cancelled")
+                      return event.status === tabNames[isActiveTab].status;
 
-            switch (tabNames[isActiveTab].status) {
-                case "past":
-                    if (new Date().getTime() >= new Date(event.endTime).getTime()) eventFit = true;
-                    break;
-                case "upcoming":
-                    if (new Date().getTime() < new Date(event.startTime).getTime()) eventFit = true;
-                    break;
-                case "ongoing":
-                    if (
-                        new Date().getTime() >= new Date(event.startTime).getTime() &&
-                        new Date().getTime() < new Date(event.endTime).getTime()
-                    )
-                        eventFit = true;
-                    break;
-                default:
-                    eventFit = false;
-            }
-            return eventFit;
-        })
-        .sort((a, b) => {
-            return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
-        });
+                  switch (tabNames[isActiveTab].status) {
+                      case "past":
+                          if (new Date().getTime() >= new Date(event.endTime).getTime()) eventFit = true;
+                          break;
+                      case "upcoming":
+                          if (new Date().getTime() < new Date(event.startTime).getTime()) eventFit = true;
+                          break;
+                      case "ongoing":
+                          if (
+                              new Date().getTime() >= new Date(event.startTime).getTime() &&
+                              new Date().getTime() < new Date(event.endTime).getTime()
+                          )
+                              eventFit = true;
+                          break;
+                      default:
+                          eventFit = false;
+                  }
+                  return eventFit;
+              })
+              .sort((a, b) => {
+                  return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
+              })
+        : [];
     const handleModifyEvent = (newEvent, eventId = "") => {
         if (!eventId) return dispatch(createEvent(newEvent));
         dispatch(updateEvent({ id: newEvent._id, eventData: newEvent }));
@@ -150,14 +138,9 @@ const CommunityEvents = ({
                             )}
                             {filteredEvents.length !== 0 ? (
                                 filteredEvents.map((event, index) => {
-                                    const dateObject = new Date(event.startTime);
-                                    const dayName = daysOfWeek[dateObject.getDay()];
                                     return (
                                         <EventItemList
                                             event={event}
-                                            todayString={todayString}
-                                            currentTime={currentTime}
-                                            dayName={dayName}
                                             actions={actions}
                                             key={index}
                                             index={index}
