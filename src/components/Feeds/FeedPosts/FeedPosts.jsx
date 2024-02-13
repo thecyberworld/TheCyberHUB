@@ -40,13 +40,13 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingposts, isFeedLoading, d
     const fetchData = () => {
         setNumPostsToShow(numPostsToShow + 5);
     };
-  
+
     const removeInvisibleChars = (str) => {
         return str.replace(/\u200b/g, "");
     };
 
     const filteredData = feeds?.filter((feed) => {
-        // when showOnlyFollowingposts isnt false ,  all posts are considered postedByfollowingUser
+        // when showOnlyFollowingposts is  false ,  all posts are considered postedByfollowingUser  / no filter
         const postedByfollowingUser = !showOnlyFollowingposts || followData?.following?.includes(feed.user);
         const cleanSearchTerm = removeInvisibleChars(searchTerm);
         const contentIncludesSearchTerm =
@@ -59,7 +59,6 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingposts, isFeedLoading, d
             postedByfollowingUser &&
             (!cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm)
         );
-
     });
 
     const feedLikesData = ({ feedId }) => {
