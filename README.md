@@ -10,7 +10,7 @@
 </p>
 <p align="center">
     :octocat: Development Website link:
-    <a href="https://www.dev.thecyberhub.org/"> TheCyberHUB Dev Website </a>
+    <a href="https://dev.thecyberhub.org/"> TheCyberHUB Dev </a>
 </p>
 <div align="center">
 
