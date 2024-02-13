@@ -58,7 +58,7 @@ const Feeds = () => {
     };
 
     const filterByTag = (tag) => {
-        const invisibleChar = "\u200b";
+        const invisibleChar = "\u200b";  //Zero width space character
         const updatedSearchTerm = searchTerm ? customSplit(searchTerm, invisibleChar) : [];
         if (tag.includes(" ")) {
             tag = tag.replace(/ /g, `${invisibleChar} ${invisibleChar}`);
