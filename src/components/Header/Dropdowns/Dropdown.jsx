@@ -58,6 +58,7 @@ export default function Dropdown({
         { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
         { title: "Tools", to: "tools", desc: "Tools for your hacking needs" },
         { title: "Community", to: "/community", desc: "Join our community" },
+        { title: "Methodology", to: "/resources/methodology", desc: "Test your knowledge" },
 
         // { title: "Events", to: "/events", desc: "Find Cybersecurity Events" },
         // { title: "Support", to: "/support", desc: "Support us" },

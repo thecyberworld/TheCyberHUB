@@ -60,6 +60,7 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 import EncoderMain from "./components/EncoderDecoder.jsx/EncoderMain";
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
+import Methodology from "./components/Resources/Methodology/MethodologyMain";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -143,6 +144,7 @@ const App = () => {
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
+                        <Route path={"/resources/methodology"} element={<Methodology />} />
 
                         <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
 
