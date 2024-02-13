@@ -21,13 +21,10 @@ import {
     EventLinkEditor,
     EventMaxParticipants,
     InputEditorIconContainer,
-    TimeInputLabel,
-    TimePickerContainer,
     TimePicking,
-    DisplayDate,
-    TimeInputEditorContainer,
 } from "./ModifyCommunityEventElement";
 import { toast } from "react-toastify";
+import TimePickerDisplay from "./TimePickerDisplay";
 
 const validURL = (str) => {
     const pattern = new RegExp(
@@ -208,32 +205,22 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                     <InputEditorIconContainer inputType="time">
                         <AiFillClockCircleIcon />
                     </InputEditorIconContainer>
-                    <TimePickerContainer>
-                        <TimeInputLabel>From:</TimeInputLabel>
-                        <DisplayDate>
-                            {rangeDate?.from ? format(rangeDate?.from, "yyyy-MM-dd") : "yyyy-MM-dd"}
-                        </DisplayDate>
-                        <TimeInputEditorContainer>
-                            <InputEditor
-                                inputType="time"
-                                content={time?.startTime}
-                                label="startTime"
-                                onCopyChanges={handleUpdateEventPropertyValue}
-                            />
-                        </TimeInputEditorContainer>
-                    </TimePickerContainer>
-                    <TimePickerContainer>
-                        <TimeInputLabel>To:</TimeInputLabel>
-                        <DisplayDate>{rangeDate?.to ? format(rangeDate?.to, "yyyy-MM-dd") : "yyyy-MM-dd"}</DisplayDate>
-                        <TimeInputEditorContainer>
-                            <InputEditor
-                                inputType="time"
-                                content={time?.endTime}
-                                label="endTime"
-                                onCopyChanges={handleUpdateEventPropertyValue}
-                            />
-                        </TimeInputEditorContainer>
-                    </TimePickerContainer>
+                    <TimePickerDisplay
+                        rangeDate={rangeDate}
+                        time={time}
+                        handleUpdatePropertyValue={handleUpdateEventPropertyValue}
+                        showDate
+                    >
+                        From:
+                    </TimePickerDisplay>
+                    <TimePickerDisplay
+                        rangeDate={rangeDate}
+                        time={time}
+                        handleUpdatePropertyValue={handleUpdateEventPropertyValue}
+                        showDate
+                    >
+                        To:
+                    </TimePickerDisplay>
                 </TimePicking>
                 <EventMaxParticipants>
                     <InputEditorIconContainer>

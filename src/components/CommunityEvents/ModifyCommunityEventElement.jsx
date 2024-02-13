@@ -52,7 +52,7 @@ export const DisplayDate = styled.p`
     margin-right: 10px;
 `;
 export const TimeInputEditorContainer = styled.div`
-    width: 45%;
+    width: ${({ showDate }) => (showDate ? "45%" : "100%")};
 `;
 export const ModifyEventSaveActionButton = styled.div`
     display: flex;
