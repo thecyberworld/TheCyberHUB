@@ -29,7 +29,7 @@ const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
                 onChange={onChange}
                 ref={inputRef}
             />
-            {value !== "" && <CancelIcon aria-label="toggle password visibility" onClick={clearValue}></CancelIcon>}
+            {value && <CancelIcon aria-label="toggle password visibility" onClick={clearValue}/>}
         </SearchBox>
     );
 };
