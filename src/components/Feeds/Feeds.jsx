@@ -53,9 +53,7 @@ const Feeds = () => {
                 temp += str[i];
             }
         }
-        if (temp !== "") {
-            result.push(temp);
-        }
+        if (temp) result.push(temp);        
         return result;
     };
 
