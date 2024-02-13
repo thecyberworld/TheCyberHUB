@@ -61,7 +61,7 @@ const Feeds = () => {
 
     const filterByTag = (tag) => {
         const invisibleChar = "\u200b";
-        const updatedSearchTerm = searchTerm !== "" ? customSplit(searchTerm, invisibleChar) : [];
+        const updatedSearchTerm = searchTerm ? customSplit(searchTerm, invisibleChar) : [];
         if (tag.includes(" ")) {
             tag = tag.replace(/ /g, `${invisibleChar} ${invisibleChar}`);
         }
