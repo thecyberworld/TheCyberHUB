@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userDetailService from "./userDetailService";
+import { addParticipant, removeParticipant } from "../events/eventsSlice";
 
 const initialState = {
     userDetail: [],
     userDetails: [],
-    userEventsId: [],
     isUserDetailError: false,
     isUserDetailSuccess: false,
     isUserDetailLoading: false,
@@ -72,12 +72,6 @@ export const userDetailSlice = createSlice({
     initialState,
     reducers: {
         userDetailReset: (state) => initialState,
-        userAddEventId: (state, action) => {
-            state.userEventsId.push(action.payload);
-        },
-        userRemoveEventId: (state, action) => {
-            state.userEventsId = state.userEventsId.filter((userEventId) => userEventId !== action.payload);
-        },
     },
     extraReducers: (builder) => {
         builder
@@ -157,9 +151,44 @@ export const userDetailSlice = createSlice({
                 state.isUserDetailLoading = false;
                 state.isUserDetailError = true;
                 state.userDetailMessage = action.payload;
+            })
+            // listen to reducers from events that related to userDetail
+            .addCase(addParticipant.pending, (state) => {
+                state.isUserDetailLoading = true;
+            })
+            .addCase(addParticipant.fulfilled, (state, action) => {
+                state.isUserDetailLoading = false;
+                state.isUserDetailError = false;
+                state.isUserDetailSuccess = true;
+                if (state.userDetail._id === action.payload.userDetail._id) {
+                    state.userDetail = action.payload.userDetail;
+                }
+            })
+            .addCase(addParticipant.rejected, (state, action) => {
+                state.isUserDetailLoading = false;
+                state.isUserDetailSuccess = false;
+                state.isUserDetailError = true;
+                state.userDetailMessage = action.payload;
+            })
+            .addCase(removeParticipant.pending, (state) => {
+                state.isUserDetailLoading = true;
+            })
+            .addCase(removeParticipant.fulfilled, (state, action) => {
+                state.isUserDetailLoading = false;
+                state.isUserDetailError = false;
+                state.isUserDetailSuccess = true;
+                if (state.userDetail._id === action.payload.userDetail._id) {
+                    state.userDetail = action.payload.userDetail;
+                }
+            })
+            .addCase(removeParticipant.rejected, (state, action) => {
+                state.isUserDetailLoading = false;
+                state.isUserDetailSuccess = false;
+                state.isUserDetailError = true;
+                state.userDetailMessage = action.payload;
             });
     },
 });
 
-export const { userDetailReset, userAddEventId, userRemoveEventId } = userDetailSlice.actions;
+export const { userDetailReset } = userDetailSlice.actions;
 export default userDetailSlice.reducer;

@@ -11,7 +11,7 @@ import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
 import { getAllFeeds } from "../../../features/feeds/feedsSlice";
 import { HiRefresh } from "react-icons/hi";
 
-const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingposts, feedBookmarksData, isFeedLoading, displayAt }) => {
+const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingposts, isFeedLoading, displayAt }) => {
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.auth);
@@ -40,19 +40,26 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingposts, feedBookmarksDat
     const fetchData = () => {
         setNumPostsToShow(numPostsToShow + 5);
     };
+  
+    const removeInvisibleChars = (str) => {
+        return str.replace(/\u200b/g, "");
+    };
+
     const filteredData = feeds?.filter((feed) => {
         // when showOnlyFollowingposts isnt false ,  all posts are considered postedByfollowingUser
         const postedByfollowingUser = !showOnlyFollowingposts || followData?.following?.includes(feed.user);
+        const cleanSearchTerm = removeInvisibleChars(searchTerm);
         const contentIncludesSearchTerm =
-            !searchTerm || feed?.content?.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
         const tagsIncludeSearchTerm =
-            !searchTerm || feed?.tags?.join(" ").toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || feed?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
         const usernameIncludeSearchTerm =
-            !searchTerm || feed?.username.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || feed?.username.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
         return (
             postedByfollowingUser &&
-            (!searchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm)
+            (!cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm)
         );
+
     });
 
     const feedLikesData = ({ feedId }) => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 import { EventItem } from "./EventItemListElement";
 import {
@@ -10,76 +11,57 @@ import {
     BiSolidChevronUpIcon,
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
+import DateDisplay from "../Common/DateDisplay";
+import ParticipantsDisplay from "./ParticipantsDisplay";
 
-const AddZeroToDateString = (dateValue) => {
+const addZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };
-export const EventItemList = ({
-    data,
-    todayString,
-    dayName,
-    actions,
-    index,
-    modify,
-    eventsJoinedId,
-    user,
-    onActionChange,
-    tabStatus,
-}) => {
+export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, user, onActionChange, tabStatus }) => {
     const [openEventIndex, setOpenEventIndex] = useState(null);
     const [actionDisplay, setActionDisplay] = useState("");
     const [leftPlacesToJoin, setLeftPlacesToJoin] = useState(100);
-
+    const nativage = useNavigate();
     useEffect(() => {
-        if (!user) return setActionDisplay("Join*");
-        if (eventsJoinedId.includes(data._id)) {
+        if (!user) {
+            setActionDisplay("Join*");
+            setLeftPlacesToJoin(100);
+            return;
+        }
+        if (eventsJoinedId.includes(event._id)) {
             setActionDisplay("Joined");
         } else {
             setActionDisplay("Join");
         }
-        setLeftPlacesToJoin(data.maxParticipantsNumber - data.participants.length);
-    }, [eventsJoinedId, data, user]);
+        setLeftPlacesToJoin(event.maxParticipantsNumber - event.participants.length);
+    }, [eventsJoinedId, event, user]);
 
     const handleDisplayActionClick = () => {
-        if (!user) toast.info("To Join An Event You First Need To Login/Register To The Website");
-        if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(data._id)) return;
-        if (actionDisplay === "Join") {
-            console.log("join");
-            // data.participants.push(user._id);
-        } else {
-            data.participants = data.participants.filter((userId) => userId !== user._id);
-        }
-        onActionChange(actionDisplay, data._id);
+        if (!user) return toast.info("To Join An Event You First Need To Login/Register To The Website");
+        if (leftPlacesToJoin === 0 && !eventsJoinedId.includes(event._id))
+            return toast.info("This event is full , keep in touch for future events");
+        onActionChange(actionDisplay, event._id);
     };
-    const startTimeDate = new Date(data.startTime);
-    const endTimeDate = new Date(data.endTime);
+    const startTimeDate = new Date(event.startTime);
+    const endTimeDate = new Date(event.endTime);
+
     return (
-        <EventItem isRequestedEvent={data.reschedule} key={index}>
-            <div
-                className={
-                    data.startTime.split("T")[0] === todayString && data.status === "approved" && tabStatus !== "past"
-                        ? "date today-date"
-                        : "date"
-                }
-            >
-                <p>{dayName}</p>
-                <p className="date-digit">
-                    {`${startTimeDate.toLocaleString("default", {
-                        month: "short",
-                    })} ${AddZeroToDateString(startTimeDate.getDate())}`}
-                </p>
-                <p className="date-digit date-year">{`${data.startTime.split("-")[0]}`}</p>
-            </div>
+        <EventItem isRequestedEvent={event.reschedule} key={index}>
+            <DateDisplay
+                rightBorder
+                time={event.startTime}
+                isCanBeToday={event.status === "approved" && tabStatus !== "past"}
+            />
             <div className="time-line">
                 <div className="time-line-detail">
                     <AiFillClockCircleIcon />
-                    {data.startTime.split("T")[0] === data.endTime.split("T")[0] ? (
+                    {event.startTime.split("T")[0] === event.endTime.split("T")[0] ? (
                         <p>
-                            {`${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
+                            {`${addZeroToDateString(startTimeDate.getHours())}:${addZeroToDateString(
                                 startTimeDate.getMinutes(),
                             )}`}
                             {" - "}
-                            {`${AddZeroToDateString(endTimeDate.getHours())}:${AddZeroToDateString(
+                            {`${addZeroToDateString(endTimeDate.getHours())}:${addZeroToDateString(
                                 endTimeDate.getMinutes(),
                             )}`}
                         </p>
@@ -89,22 +71,22 @@ export const EventItemList = ({
                                 <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
                                     {format(startTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
                                 </p>
-                                <p style={{ textAlign: "center" }}>{`${AddZeroToDateString(
+                                <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
                                     startTimeDate.getHours(),
-                                )}:${AddZeroToDateString(startTimeDate.getMinutes())}`}</p>
+                                )}:${addZeroToDateString(startTimeDate.getMinutes())}`}</p>
                             </div>
                             -
                             <div>
                                 <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
                                     {format(endTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
                                 </p>
-                                <p style={{ textAlign: "center" }}>{`${AddZeroToDateString(
+                                <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
                                     endTimeDate.getHours(),
-                                )}:${AddZeroToDateString(endTimeDate.getMinutes())}`}</p>
+                                )}:${addZeroToDateString(endTimeDate.getMinutes())}`}</p>
                             </div>
                         </div>
                     )}
-                    {data.reschedule && (
+                    {event.reschedule && (
                         <div className="time-line-request">
                             <AiFillExclamationCircleIcon />
                         </div>
@@ -113,19 +95,15 @@ export const EventItemList = ({
 
                 <div className="time-line-detail">
                     <MdLocationOnIcon />
-                    <p className="text-over-flow">{data.location}</p>
+                    <p className="text-over-flow">{event.location}</p>
                 </div>
             </div>
             <div className="details">
-                <div>
-                    <p>{data.name.toUpperCase()}</p>
-                    <div className="details-profile">
-                        {data.participants.map((participant, pIndex) => (
-                            <img src={participant.profileURL} alt={participant.name} key={pIndex} />
-                        ))}
-                    </div>
+                <div style={{ maxWidth: "90%" }}>
+                    <p style={{ overflowWrap: "break-word" }}>{event.name.toUpperCase()}</p>
+                    <ParticipantsDisplay participants={event.participants} />
                 </div>
-                {data.reschedule && <div className="details-request">15:30 - 16:00 requested</div>}
+                {event.reschedule && <div className="details-request">15:30 - 16:00 requested</div>}
             </div>
             {modify && actions[tabStatus] && actions[tabStatus].length > 0 ? (
                 <div className="action" onMouseLeave={() => setOpenEventIndex(null)}>
@@ -142,7 +120,7 @@ export const EventItemList = ({
                             {actions[tabStatus].map(({ icon: Icon, text, onClick }) => (
                                 <div
                                     onClick={() => {
-                                        onClick(data);
+                                        onClick(event);
                                         setOpenEventIndex(openEventIndex === index ? null : index);
                                     }}
                                     className="action-dropdown-list"
@@ -156,28 +134,37 @@ export const EventItemList = ({
                     )}
                 </div>
             ) : (
-                tabStatus === "upcoming" && (
-                    <div className="container-action">
-                        <div className="action">
-                            <div
-                                className={`action-edit without-dropdown ${
-                                    leftPlacesToJoin === 0
-                                        ? " uniqe-state-button"
-                                        : actionDisplay === "Join"
-                                        ? " enable-button"
-                                        : " disable-button"
-                                }`}
-                                onClick={handleDisplayActionClick}
-                            >
-                                <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                (tabStatus === "upcoming" || tabStatus === "ongoing") && (
+                    <>
+                        <div className="container-action">
+                            <div className="action">
+                                <div
+                                    className={`action-edit without-dropdown ${
+                                        leftPlacesToJoin === 0
+                                            ? " uniqe-state-button"
+                                            : actionDisplay === "Join"
+                                            ? " enable-button"
+                                            : " disable-button"
+                                    }`}
+                                    onClick={handleDisplayActionClick}
+                                >
+                                    <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                                </div>
+                            </div>
+                            <div className="action">
+                                <div
+                                    className={`action-edit without-dropdown `}
+                                    onClick={() =>
+                                        nativage(`/community-events/${event._id.slice(0, 10)}`, {
+                                            state: { actionDisplay, event },
+                                        })
+                                    }
+                                >
+                                    <p>View</p>
+                                </div>
                             </div>
                         </div>
-                        <div className="details">
-                            <p>
-                                {data.participants.length} / {data.maxParticipantsNumber}
-                            </p>
-                        </div>
-                    </div>
+                    </>
                 )
             )}
         </EventItem>

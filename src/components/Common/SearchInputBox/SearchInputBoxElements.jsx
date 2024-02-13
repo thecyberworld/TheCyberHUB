@@ -1,5 +1,6 @@
 import { FcSearch } from "react-icons/fc";
 import styled from "styled-components";
+import { VscClose } from "react-icons/vsc";
 
 export const SearchInput = styled.input`
     border: none;
@@ -35,6 +36,13 @@ export const SearchBox = styled.div`
 export const SearchIcon = styled(FcSearch)`
     font-size: 2rem;
     color: #d7d7d7;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+`;
+
+export const CancelIcon = styled(VscClose)`
+    font-size: 1.7rem;
+    color: rgb(238, 238, 238);
     cursor: pointer;
     transition: 0.2s ease-in-out;
 `;

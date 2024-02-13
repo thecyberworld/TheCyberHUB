@@ -7,7 +7,7 @@ import { CgWebsite } from "react-icons/cg";
 import { cdnContentImagesUrl } from "../../../../features/apiUrl";
 import ConnectionsAndFollows from "../ConnectionsAndFollows/ConnectionsAndFollows";
 
-const UserLinks = ({ userDetail, userDetails }) => {
+const UserLinks = ({ userDetail, userDetails, setShowAuthPopup }) => {
     const socialUsernames = userDetail?.socialLinks?.map(
         (item) => item?.profileUsername !== "" && item?.profileUsername,
     );
@@ -24,7 +24,13 @@ const UserLinks = ({ userDetail, userDetails }) => {
                 <span className={"username"}>@{userDetail?.username}</span>
             </UserInfo>
 
-            {userDetail?.user && <ConnectionsAndFollows userDetail={userDetail} userDetails={userDetails} />}
+            {userDetail?.user && (
+                <ConnectionsAndFollows
+                    userDetail={userDetail}
+                    userDetails={userDetails}
+                    setShowAuthPopup={setShowAuthPopup}
+                />
+            )}
 
             {userDetail?.bio?.length === 0 || !userDetail?.bio ? null : (
                 <UserBio>
