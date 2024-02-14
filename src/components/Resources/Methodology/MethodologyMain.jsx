@@ -41,7 +41,7 @@ const Methodology = () => {
                             {MethodologyData[data].Description}
                         </p>
 
-                        {Object.keys(MethodologyData[data].Topics).map((Topics) => (
+                        {Object.keys(MethodologyData[data].Topics).map((topic) => (
                             <div key={Topics} style={{ width: "100%", margin: "20px" }}>
                                 <h2 style={{ textAlign: "center", fontSize: "25px" }}>{Topics}</h2>
                                 {Object.keys(MethodologyData[data].Topics[Topics]).map((SubTopics) => (
