@@ -46,3 +46,10 @@ export const CancelIcon = styled(VscClose)`
     cursor: pointer;
     transition: 0.2s ease-in-out;
 `;
+
+export const CancelIconWrapper = styled.div`
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+`;

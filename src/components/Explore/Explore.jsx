@@ -185,6 +185,7 @@ const Explore = () => {
                             placeholder="Search by name"
                             value={searchTerm}
                             onChange={handleSearchTermChange}
+                            setValue={setSearchTerm}
                         />
                         <SearchTypeContainer>
                             {types.map((type) => (

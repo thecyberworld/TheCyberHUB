@@ -30,7 +30,12 @@ const Sidebar = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, set
             <SidebarHeader>
                 <h2>Community Chat</h2>
             </SidebarHeader>
-            <SearchInputBox placeholder={"Search users"} onChange={handleSearchChange} value={searchTerm} />
+            <SearchInputBox
+                placeholder={"Search users"}
+                onChange={handleSearchChange}
+                value={searchTerm}
+                setValue={setSearchTerm}
+            />
             <SidebarSection>
                 <SidebarTitle onClick={toggleUsers}>Users {showUsers ? <FaAngleUp /> : <FaAngleDown />}</SidebarTitle>
 
