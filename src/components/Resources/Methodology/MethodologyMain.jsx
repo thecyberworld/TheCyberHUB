@@ -14,7 +14,7 @@ const Methodology = () => {
         <Wrapper>
             <div></div>
             <div>
-                {Object.keys(MethodologyData).map((data) => (
+                {Object.keys(MethodologyData).map((mainTitle) => (
                     <div
                         key={data}
                         style={{
