@@ -10,6 +10,7 @@ import { addFeedLike, removeFeedLike } from "../../../features/feeds/feedLikes/f
 import { addBookmark, removeBookmark } from "../../../features/bookmarks/bookmarkSlice";
 import AuthPopup from "../../../pages/AuthPopup/AuthPopup";
 import { updateView } from "../../../features/feeds/views/viewSlice";
+import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 
 const PostActionsAndStats = ({
     feed,
@@ -114,7 +115,9 @@ const PostActionsAndStats = ({
             {/* </PostStat> */}
             <PostStat>
                 <PostStatLabel>
-                    <BiCommentDetail />
+                    <RouteLink to={`/feeds/${feed?._id}`}>
+                        <BiCommentDetail />
+                    </RouteLink>
                 </PostStatLabel>
                 <PostStatValue>{comments?.length}</PostStatValue>
             </PostStat>

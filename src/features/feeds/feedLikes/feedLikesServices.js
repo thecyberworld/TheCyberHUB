@@ -30,14 +30,8 @@ const removeFeedLike = async (likeData, token) => {
 };
 
 // Get user Likes
-const getFeedLikes = async (likesData, token) => {
-    const config = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    };
-
-    const response = await axios.get(API_URL + "get", likesData, config);
+const getFeedLikes = async (likesData) => {
+    const response = await axios.get(API_URL + "get", likesData);
 
     return response.data;
 };

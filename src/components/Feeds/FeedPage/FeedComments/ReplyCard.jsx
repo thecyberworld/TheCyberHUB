@@ -9,7 +9,7 @@ import {
     PostTimestamp,
     RightSection,
 } from "../../FeedPosts/FeedPostsElements";
-import { RouteLink } from "../../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
+// import { RouteLink } from "../../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 import { dateFormatter } from "../../../Common/dateFormatter";
 import PostActionsAndStats from "../../FeedPosts/PostActionsAndStats";
 import { cdnContentImagesUrl } from "../../../../features/apiUrl";
@@ -23,15 +23,15 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                 <PostHeaderImg src={avatar} alt={reply?.username + `avatar`} />
             </LeftSection>
             <RightSection>
-                <RouteLink to={`/feeds/${reply?._id}`}>
-                    <PostHeader>
-                        <LeftSection>
-                            <PostHeaderUsername>{reply?.username}</PostHeaderUsername>
-                        </LeftSection>
-                        • <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
-                    </PostHeader>
-                    <PostContent>{reply?.reply}</PostContent>
-                </RouteLink>
+                {/* <RouteLink to={`/feeds/${reply?._id}`}> */}
+                <PostHeader>
+                    <LeftSection>
+                        <PostHeaderUsername>{reply?.username}</PostHeaderUsername>
+                    </LeftSection>
+                    • <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
+                </PostHeader>
+                <PostContent>{reply?.reply}</PostContent>
+                {/* </RouteLink> */}
 
                 <PostActionsAndStats
                     feed={reply}

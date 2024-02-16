@@ -11,7 +11,7 @@ export const Nav = styled.nav`
     justify-content: space-between;
     padding: 0 50px;
     align-items: center;
-    z-index: 99;
+    // z-index: 99;
 `;
 
 export const Ul = styled.ul`
