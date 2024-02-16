@@ -9,8 +9,8 @@ import { getConnections } from "../../../features/connections/connectionSlice";
 const Sidebar = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, setSelectedUserId }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
-    const connections = useSelector((state) => state.connectionData);
-    const allConnections = connections?.connections?.connections?.map((connection) => connection.user);
+    const {connections, ...}= useSelector((state) => state.connectionData);
+    const allConnections = connections?.connections?.map((connection) => connection.user);
     const userId = user._id;
     useEffect(() => {
         if (userId) {
