@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { SearchBox, SearchIcon, SearchInput, CancelIcon } from "./SearchInputBoxElements";
+import { SearchBox, SearchIcon, SearchInput, CancelIcon, CancelIconWrapper } from "./SearchInputBoxElements";
 
 const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
     const inputRef = useRef(null);
@@ -29,7 +29,11 @@ const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
                 onChange={onChange}
                 ref={inputRef}
             />
-            {value && <CancelIcon aria-label="toggle password visibility" onClick={clearValue}/>}
+            {value && (
+                <CancelIconWrapper>
+                    <CancelIcon onClick={clearValue} />
+                </CancelIconWrapper>
+            )}
         </SearchBox>
     );
 };
