@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModifyEventItem = styled.div`
+export const ModifyItem = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,6 +9,15 @@ export const ModifyEventItem = styled.div`
     border-radius: 8px;
     background: transparent;
     margin-bottom: 1rem;
+`;
+export const ModifyTimeLineList = styled.ul`
+    background: transparent;
+`;
+export const ModifyTimeLineListContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 `;
 export const DayPickerContainer = styled.div`
     border-right: 1px solid #f0f0f0;
@@ -22,13 +31,33 @@ export const DayPickerContainer = styled.div`
         color: #111;
     }
 `;
-export const DetailsInputContainer = styled.div`
+export const DetailsInputEventContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 330px;
     width: 100%;
     padding: 0 50px;
     justify-content: space-between;
+`;
+export const TimeLineListItem = styled.li`
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 100%;
+    justify-content: space-around;
+    border: 3px inset #2e2e2e;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 5px;
+`;
+export const DetailsInputTimeLineContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+export const DetailsTextInputTimeLineContainer = styled.div`
+    input {
+        width: 90%;
+    }
 `;
 export const TimePicking = styled.div`
     display: flex;
@@ -54,35 +83,33 @@ export const DisplayDate = styled.p`
 export const TimeInputEditorContainer = styled.div`
     width: ${({ showDate }) => (showDate ? "45%" : "100%")};
 `;
-export const ModifyEventSaveActionButton = styled.div`
+export const ModifyActionButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100px;
     padding: 0.75rem 1.25rem;
     border-radius: 8px;
-    background: #00a8ff;
+    background: ${(props) => {
+        switch (props.type) {
+            case "add":
+                return "#021902";
+            case "save":
+                return "#00a8ff";
+            case "cancel":
+                return "#f14844";
+        }
+    }};
     color: #f8f8f8;
     &:hover {
         opacity: 0.7;
         cursor: pointer;
     }
 `;
-export const ModifyEventCancelActionButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px;
-    padding: 0.75rem 1.25rem;
-    border-radius: 8px;
+export const ModifyCancelActionButton = styled.div`
     background: #f14844;
-    color: #f8f8f8;
-    &:hover {
-        opacity: 0.7;
-        cursor: pointer;
-    }
 `;
-export const ModifyEventActionsContainer = styled.div`
+export const ModifyActionsContainer = styled.div`
     display: flex;
     flex-direction: column;
     cursor: pointer;
@@ -92,25 +119,24 @@ export const ModifyEventActionsContainer = styled.div`
     height: 150px;
 `;
 
-export const ModifyEventSaveActionText = styled.p``;
-export const ModifyEventCancelActionText = styled.p``;
+export const ModifyActionText = styled.p``;
 export const LocationPicking = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
-export const EventLink = styled.div`
+export const Link = styled.div`
     display: flex;
     justify-content: start;
     align-items: center;
 `;
-export const EventMaxParticipants = styled.div`
+export const MaxParticipants = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 40%;
 `;
-export const EventLinkEditor = styled.div`
+export const LinkEditor = styled.div`
     width: 100%;
     input {
         text-transform: lowercase;

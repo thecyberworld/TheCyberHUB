@@ -23,16 +23,16 @@ const ManageCommunityEvents = () => {
             onClick: (modifiedEvent) => setModifyEventId(modifiedEvent._id),
         },
         {
-            icon: BiUserPlusIcon,
-            text: "Invite people",
-            onClick: (modifiedEvent) => {},
-        },
-        {
             icon: AiOutlineFieldTimeIcon,
             text: "Manage Timeline",
             onClick: (modifiedEvent) => {
                 setEventManageTimelineId(modifiedEvent._id);
             },
+        },
+        {
+            icon: BiUserPlusIcon,
+            text: "Invite people",
+            onClick: (modifiedEvent) => {},
         },
         {
             icon: AiOutlineCloseCircleIcon,

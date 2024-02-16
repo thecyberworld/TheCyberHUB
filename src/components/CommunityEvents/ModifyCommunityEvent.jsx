@@ -9,20 +9,18 @@ import { GoProjectSymlink } from "react-icons/go";
 import { MdOutlineEventSeat } from "react-icons/md";
 
 import {
-    ModifyEventActionsContainer,
-    ModifyEventCancelActionButton,
-    ModifyEventCancelActionText,
-    ModifyEventItem,
-    ModifyEventSaveActionButton,
-    ModifyEventSaveActionText,
+    ModifyActionsContainer,
+    ModifyActionButton,
+    ModifyActionText,
     DayPickerContainer,
-    DetailsInputContainer,
-    EventLink,
-    EventLinkEditor,
-    EventMaxParticipants,
+    Link,
+    LinkEditor,
+    MaxParticipants,
     InputEditorIconContainer,
     TimePicking,
-} from "./ModifyCommunityEventElement";
+    ModifyItem,
+    DetailsInputEventContainer,
+} from "./ModifyElements";
 import { toast } from "react-toastify";
 import TimePickerDisplay from "./TimePickerDisplay";
 
@@ -52,7 +50,7 @@ const setDateAndTime = (date, time) => {
 const AddZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };
-const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
+const ModifyCommunityEvent = ({ handleCloseChangeMode, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
     const [eventObj, setEventObj] = useState(
         modifyEvent || {
             status: "approved",
@@ -142,10 +140,6 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
             );
         }
     }
-    const handleCloseChangeMode = () => {
-        setOpenCreatingNewEvent(false);
-        setModifyEventId("");
-    };
 
     const handleSaveChanges = () => {
         if (
@@ -170,7 +164,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
         }
     };
     return (
-        <ModifyEventItem>
+        <ModifyItem>
             <DayPickerContainer>
                 <DayPicker
                     mode="range"
@@ -186,7 +180,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                     max={2}
                 />
             </DayPickerContainer>
-            <DetailsInputContainer>
+            <DetailsInputEventContainer>
                 <InputEditor
                     inputType="text"
                     content={eventObj.name}
@@ -222,7 +216,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                         To:
                     </TimePickerDisplay>
                 </TimePicking>
-                <EventMaxParticipants>
+                <MaxParticipants>
                     <InputEditorIconContainer>
                         <MdOutlineEventSeat size="20px" />
                     </InputEditorIconContainer>
@@ -233,7 +227,7 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                         placeholder="Max Participants"
                         onCopyChanges={handleUpdateEventPropertyValue}
                     />
-                </EventMaxParticipants>
+                </MaxParticipants>
 
                 {/* we host locations only online so we don't need a location picker */
                 /* <LocationPicking>
@@ -248,11 +242,11 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                         onCopyChanges={handleUpdateEventPropertyValue}
                     />
                 </LocationPicking> */}
-                <EventLink>
+                <Link>
                     <InputEditorIconContainer>
                         <GoProjectSymlink size="20px" />
                     </InputEditorIconContainer>
-                    <EventLinkEditor>
+                    <LinkEditor>
                         <InputEditor
                             inputType="url"
                             content={eventObj.link}
@@ -260,19 +254,19 @@ const ModifyCommunityEvent = ({ setOpenCreatingNewEvent, onModify, modifyEvent, 
                             placeholder="https://www.eventlink.com"
                             onCopyChanges={handleUpdateEventPropertyValue}
                         />
-                    </EventLinkEditor>
-                </EventLink>
-            </DetailsInputContainer>
+                    </LinkEditor>
+                </Link>
+            </DetailsInputEventContainer>
 
-            <ModifyEventActionsContainer>
-                <ModifyEventSaveActionButton onClick={handleSaveChanges}>
-                    <ModifyEventSaveActionText>Save</ModifyEventSaveActionText>
-                </ModifyEventSaveActionButton>
-                <ModifyEventCancelActionButton onClick={handleCloseChangeMode}>
-                    <ModifyEventCancelActionText>Cancel</ModifyEventCancelActionText>
-                </ModifyEventCancelActionButton>
-            </ModifyEventActionsContainer>
-        </ModifyEventItem>
+            <ModifyActionsContainer>
+                <ModifyActionButton type="save" onClick={handleSaveChanges}>
+                    <ModifyActionText type="save">Save</ModifyActionText>
+                </ModifyActionButton>
+                <ModifyActionButton type="cancel" onClick={handleCloseChangeMode}>
+                    <ModifyActionText type="cancel">Cancel</ModifyActionText>
+                </ModifyActionButton>
+            </ModifyActionsContainer>
+        </ModifyItem>
     );
 };
 export default ModifyCommunityEvent;

@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 
-import {
-    DisplayDate,
-    TimeInputEditorContainer,
-    TimeInputLabel,
-    TimePickerContainer,
-} from "./ModifyCommunityEventElement";
+import { DisplayDate, TimeInputEditorContainer, TimeInputLabel, TimePickerContainer } from "./ModifyElements";
 import InputEditor from "../Common/InputEditor";
 
 const TimePickerDisplay = ({ children, rangeDate, time, handleUpdatePropertyValue, showDate }) => {
     const [isStartTime, setIsStartTime] = useState(true);
+
     useEffect(() => {
         setIsStartTime(children === "From:");
     }, [children]);
+
     return (
         <TimePickerContainer>
-            <TimeInputLabel>{isStartTime ? "From:" : "To:"}</TimeInputLabel>
+            <TimeInputLabel>{children}</TimeInputLabel>
             {showDate && (
                 <DisplayDate>
                     {isStartTime
