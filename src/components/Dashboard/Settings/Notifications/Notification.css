@@ -6,6 +6,15 @@
     grid-auto-flow: row;
 }
 
+#container h2 {
+    margin: 0px;
+    font-size: 20px;
+}
+
+#allNotif {
+    font-size: large;
+}
+
 #container h3 {
     margin: 10px 0px 3px 0px;
 }
@@ -22,6 +31,20 @@
     display: inline-block;
     width: 60px;
     height: 34px;
+}
+
+.allButton {
+    height: 40px;
+    width: 72px;
+}
+
+.allButton .slider:before {
+    height: 32px;
+    width: 31px;
+}
+
+.allButton input:checked + .slider:before {
+    transform: translateX(32px);
 }
 
 .switch input {
