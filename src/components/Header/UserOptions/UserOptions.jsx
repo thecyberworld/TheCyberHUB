@@ -13,6 +13,7 @@ import { logout, userReset } from "../../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
 import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import { CiSettingsIcon } from "../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
 // import Streak from "../../Dashboard/Streak/Streak";
 
 const NavItem = (props) => {
@@ -28,9 +29,10 @@ const NavItem = (props) => {
     window.addEventListener("click", handleClose);
     return (
         <p ref={userRef} className={"nav-item"}>
-            <span className={"icon-button"} onClick={() => setOpen(!open)}>
+            <span className={"icon-button"} onClick={() => setOpen(!open)} onMouseEnter={() => setOpen(true)}>
                 {props.text} {props.icon}
             </span>
+
             {open && props.children}
         </p>
     );
@@ -71,7 +73,10 @@ const DropdownMenu = () => {
                     </>
                 ) : (
                     <>
-                        {(user.userType === "admin" || user.userType === "team") && (
+                        <DropdownItem to={`/user/${user.username}`} leftIcon={<FaUserCircle />}>
+                            Public Profile
+                        </DropdownItem>
+                        {(user?.userType === "admin" || user?.userType === "team") && (
                             <DropdownItem to={"/admin-dashboard"} leftIcon={<RiAdminFill />}>
                                 Admin Dashboard
                             </DropdownItem>
@@ -79,8 +84,8 @@ const DropdownMenu = () => {
                         <DropdownItem to={"/dashboard"} leftIcon={<MdDashboard />}>
                             Dashboard
                         </DropdownItem>
-                        <DropdownItem to={`/user/${user.username}`} leftIcon={<FaUserCircle />}>
-                            Public Profile
+                        <DropdownItem to={`/settings`} leftIcon={<CiSettingsIcon />}>
+                            Settings
                         </DropdownItem>
                         {/* {!inDevelopment ? ( */}
                         {/* ) : null} */}

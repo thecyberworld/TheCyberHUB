@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AiFillClockCircle, AiOutlineCloseCircle } from "react-icons/ai";
+import { AiFillClockCircle, AiOutlineCloseCircle, AiOutlineFieldTime } from "react-icons/ai";
 import { BiUserPlus } from "react-icons/bi";
 import { TbEditCircle, TbRestore } from "react-icons/tb";
 
@@ -18,3 +18,4 @@ export const TbEditCircleIcon = createStyledIcon(TbEditCircle);
 export const TbRestoreIcon = createStyledIcon(TbRestore);
 export const BiUserPlusIcon = createStyledIcon(BiUserPlus);
 export const AiOutlineCloseCircleIcon = createStyledIcon(AiOutlineCloseCircle);
+export const AiOutlineFieldTimeIcon = createStyledIcon(AiOutlineFieldTime);

@@ -5,32 +5,32 @@ const SIDEBAR_LINKS = [
     {
         id: 1,
         label: "Profile",
-        href: "/dashboard/settings/profile",
+        href: "/settings/profile",
     },
     {
         id: 2,
         label: "Account",
-        href: "/dashboard/settings/account",
+        href: "/settings/account",
     },
     {
         id: 3,
         label: "Api",
-        href: "/dashboard/settings/api",
+        href: "/settings/api",
     },
     {
         id: 4,
         label: "Appearance",
-        href: "/dashboard/settings/appearance",
+        href: "/settings/appearance",
     },
     {
         id: 5,
         label: "Notifications",
-        href: "/dashboard/settings/notifications",
+        href: "/settings/notifications",
     },
     {
         id: 6,
         label: "Display",
-        href: "/dashboard/settings/display",
+        href: "/settings/display",
     },
     {
         id: 7,

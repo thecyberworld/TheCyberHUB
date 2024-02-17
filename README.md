@@ -8,6 +8,10 @@
     👨‍💻 Website link:
     <a href="https://www.thecyberhub.org/"> TheCyberHUB </a>
 </p>
+<p align="center">
+    :octocat: Development Website link:
+    <a href="https://dev.thecyberhub.org/"> TheCyberHUB Dev </a>
+</p>
 <div align="center">
 
 ![image](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -50,7 +54,7 @@ Before installation, please make sure you have already installed the following t
 8. Run `npm run dev` to start the server
 9. Open the browser to visit the website at http://localhost:3000/
 
-> If you are new to Git and GitHub, then must check out **[start-opensource](https://github.com/thecyberworld/start-opensource)** repository **first** and contribute to it before you contributing to other open-source projects.
+> If you are new to Git and GitHub, then must check out **[first-contribution](https://github.com/thecyberworld/first-contribution)** repository **first** and contribute to it before you contributing to other open-source projects.
 
 ---
 

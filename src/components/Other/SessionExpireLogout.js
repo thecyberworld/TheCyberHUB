@@ -8,10 +8,6 @@ import { toast } from "react-toastify";
 const getTokenExpirationTime = (token) => {
     try {
         const decoded = jwtDecode(token);
-        console.log("Token Expiration Time:", decoded.exp);
-        // show according date and month
-        const date = new Date(decoded.exp * 1000);
-        console.log("Token Expiration Time:", date);
 
         if (decoded.exp) {
             return decoded.exp;
@@ -30,7 +26,15 @@ const SessionExpireLogout = () => {
     const onLogout = () => {
         dispatch(logout());
         dispatch(userReset());
-        toast.warn("session expired");
+        toast.warn("Your session has expired. Please login again to continue.", {
+            position: "top-center",
+            autoClose: false,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
 
     useEffect(() => {
@@ -38,7 +42,6 @@ const SessionExpireLogout = () => {
         if (token) {
             const tokenExpTime = getTokenExpirationTime(token);
             if (tokenExpTime) {
-                // log out user when session expires
                 setTimeout(() => {
                     setIsTokenExpired(true);
                 }, [tokenExpTime * 1000 - Date.now()]);

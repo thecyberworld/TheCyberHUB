@@ -62,6 +62,7 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
+import Methodology from "./components/Resources/Methodology/MethodologyMain";
 import SessionExpireLogout from "./components/Other/SessionExpireLogout";
 import { useSelector } from "react-redux";
 
@@ -96,8 +97,15 @@ const App = () => {
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
+        const pathSettings = pathname.includes("/settings");
         return (
-            pathDashboard || pathAdminDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword
+            pathDashboard ||
+            pathAdminDashboard ||
+            pathLogin ||
+            pathRegister ||
+            pathForgetPassword ||
+            pathResetPassword ||
+            pathSettings
         );
     };
 
@@ -146,8 +154,9 @@ const App = () => {
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
+                        <Route path={"/resources/methodology"} element={<Methodology />} />
 
-                        <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
+                        <Route path={"/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
                         <Route path={"/admin-dashboard/*"} element={<AdminDashboardRoute />} />
