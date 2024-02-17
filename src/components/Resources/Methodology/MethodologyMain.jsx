@@ -1,12 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { MethodologyData } from "./MethodlogyData";
-import { DataConatiner, HideDataContainer, MainTitleContainer, MethodologyHeading } from "./MethodologyElement";
+import { DataContainer, HideDataContainer, MainTitleContainer, MethodologyHeading } from "./MethodologyElement";
+import { HintIcon } from "../../WebSecurity/Common/HintElements";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Methodology = () => {
     const subtopicRefs = useRef({});
 
+    const [active, setActive] = useState(false);
+
     function handleClick(subtopic) {
+        setActive(!active);
+
         const element = subtopicRefs.current[subtopic];
         if (element.style.display === "block") {
             element.style.display = "none";
@@ -41,16 +47,16 @@ const Methodology = () => {
                             <div key={topic} style={{ width: "100%", margin: "20px" }}>
                                 <h2 style={{ textAlign: "center", fontSize: "25px" }}>{topic}</h2>
                                 {Object.keys(MethodologyData[mainTitle].Topics[topic]).map((subTopic) => (
-                                    <DataConatiner key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
+                                    <DataContainer key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
                                         <MethodologyHeading onClick={() => handleClick(subTopic)}>
                                             {subTopic}
+                                            <HintIcon>{active ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
                                         </MethodologyHeading>
                                         <HideDataContainer
                                             ref={(el) => (subtopicRefs.current[subTopic] = el)}
                                             id={subTopic}
                                         >
                                             <p>
-                                                {" "}
                                                 <span style={{ fontWeight: "bold" }}>Summary </span>-
                                                 {MethodologyData[mainTitle].Topics[topic][subTopic].Summary}
                                             </p>
@@ -63,7 +69,7 @@ const Methodology = () => {
                                                 )}
                                             </ul>
                                         </HideDataContainer>
-                                    </DataConatiner>
+                                    </DataContainer>
                                 ))}
                             </div>
                         ))}

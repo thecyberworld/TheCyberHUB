@@ -172,7 +172,6 @@ const Sidebar = ({ heading, topics, onSelectSubtopic, setCategoryActive, onlyCat
                                     border: openDropdown === index ? `0px` : "1px solid #3a3a3a",
                                 }}
                             >
-                                {openDropdown === index ? "ture" : "false"}
                                 {topic.title}
                                 <span>{openDropdown === index ? <FaAngleUp /> : <FaAngleDown />}</span>
                             </MainTitle>

@@ -110,7 +110,8 @@ const Navbar = ({ isOpen, toggle }) => {
                             onMouseLeave={() => dropHandler(dropdown)}
                             key={dropdown}
                         >
-                            <NavLink to={to} className={location.pathname === `/${to}` ? "active" : ""}>
+                            <NavLink to={to} className={pathName === `${to}` ? "active" : ""}>
+                                {/* {location.pathname} */}
                                 {title}
                             </NavLink>
                             {dropdown === "resources" && resourcesClick && drop && (

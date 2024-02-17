@@ -5,7 +5,7 @@ export const HintContainer = styled.div`
     justify-content: space-between;
     text-decoration: none;
     padding: 10px 10px 10px 15px;
-    background-color: #343434;
+    background-color: #151515;
     border: 1px solid #343434;
     color: #eaeaea;
     border-radius: 5px;
@@ -18,7 +18,7 @@ export const SolutionContainer = styled.div`
     justify-content: space-between;
     text-decoration: none;
     padding: 10px 10px 10px 15px;
-    background-color: #343434;
+    background-color: #151515;
     border: 1px solid #343434;
     color: #eaeaea;
     border-radius: 5px;

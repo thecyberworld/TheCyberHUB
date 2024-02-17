@@ -23,7 +23,7 @@ const Analytics = () => {
     return (
         <AnalyticsContainer>
             <Header>
-                <h1>Analytics Dashboard</h1>
+                <h1>Analytics</h1>
             </Header>
             <Container>
                 <LeftSection>
