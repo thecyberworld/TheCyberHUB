@@ -27,14 +27,15 @@ const NavItem = (props) => {
 
     window.addEventListener("scroll", () => setOpen(false));
     window.addEventListener("click", handleClose);
+
     return (
-        <p ref={userRef} className={"nav-item"}>
+        <div ref={userRef} className={"nav-item"}>
             <span className={"icon-button"} onClick={() => setOpen(!open)} onMouseEnter={() => setOpen(true)}>
                 {props.text} {props.icon}
             </span>
 
             {open && props.children}
-        </p>
+        </div>
     );
 };
 
