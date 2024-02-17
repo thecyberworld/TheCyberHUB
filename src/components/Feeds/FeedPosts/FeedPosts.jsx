@@ -57,7 +57,8 @@ const FeedPosts = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displa
     const feedUserBookmarksData = ({ feedId }) => {
         return (
             bookmarks?.filter((bookmark) => bookmark.itemId === feedId) &&
-            bookmarks?.filter((bookmark) => bookmark.user === user._id)
+            user &&
+            bookmarks?.filter((bookmark) => bookmark.user === user?._id)
         );
     };
 

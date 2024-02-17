@@ -18,13 +18,27 @@ export const RoomContainer = styled.div`
     width: 100%;
     height: 100%;
 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+    }
+
     .room-cards-container {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
-        margin-top: 20px;
         gap: 20px;
+        padding: 0;
+        margin: 0;
     }
 `;
 export const LevelContainer = styled.div`
@@ -35,32 +49,4 @@ export const LevelContainer = styled.div`
     flex-direction: row;
     border-radius: 7px;
     overflow: clip;
-`;
-export const Search = styled.input`
-    padding: 10px 15px;
-
-    flex: 1;
-    background: #1a1c1d;
-    color: #fff;
-    border: 1px solid #464646;
-    border-radius: 5px;
-    font-size: 18px;
-    outline: none;
-    margin-left: 20px;
-
-    &::placeholder {
-        color: #464646;
-    }
-
-    &:focus {
-        border: 1px solid #ff6b08;
-    }
-
-    &:hover {
-        border: 1px solid #ff6b08;
-    }
-
-    &:active {
-        border: 1px solid #ff6b08;
-    }
 `;

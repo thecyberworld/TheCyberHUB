@@ -45,9 +45,9 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     };
 
     const feedUserBookmarksData = ({ feedId }) => {
-        return bookmarks?.length > 0
+        return user && bookmarks?.length > 0
             ? bookmarks?.filter((bookmark) => bookmark.itemId === feedId) &&
-                  bookmarks?.filter((bookmark) => bookmark.user === user._id)
+                  bookmarks?.filter((bookmark) => bookmark.user === user?._id)
             : [];
     };
 

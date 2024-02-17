@@ -1,8 +1,11 @@
 import { RoomCardContainer, RoomTags } from "./RoomCardElement";
 import React from "react";
-import { RouterLink } from "../../Tools/ToolsElements";
+import { RouterLink } from "../../../Tools/ToolsElements";
+import { useParams } from "react-router-dom";
 
-export default function RoomCard(props) {
+const RoomCard = (props) => {
+    const { "*": path } = useParams();
+
     return (
         <RoomCardContainer>
             <div
@@ -17,11 +20,11 @@ export default function RoomCard(props) {
                 }}
             >
                 <div style={{ padding: "10px" }}>
-                    <h1>{props.title}</h1>
-                    <h2 style={{ opacity: "80%", fontSize: "14px" }}>{props.subtitle}</h2>
+                    <h1>{props?.title}</h1>
+                    <h2 style={{ opacity: "80%", fontSize: "14px" }}>{props?.subtitle.slice(0, 100) + "..."}</h2>
                 </div>
                 <RouterLink
-                    to={`/websecurity/labs/${props.link}`}
+                    to={`/websecurity/${path}/${props?.link}`}
                     style={{
                         background: "transparent",
                         height: "100%",
@@ -59,7 +62,7 @@ export default function RoomCard(props) {
                         background: "#131313",
                     }}
                 >
-                    {props.tags.map((data) => {
+                    {props?.tags.map((data) => {
                         return <RoomTags key={data}>{data}</RoomTags>;
                     })}
                 </div>
@@ -72,9 +75,11 @@ export default function RoomCard(props) {
                         borderRadius: "5px",
                     }}
                 >
-                    <label style={{}}>{props.level}</label>
+                    <label style={{}}>{props?.level}</label>
                 </div>
             </div>
         </RoomCardContainer>
     );
-}
+};
+
+export default RoomCard;

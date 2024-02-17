@@ -37,3 +37,16 @@ export const Button = styled.button`
     background: #ff6b08;
     padding: 10px;
 `;
+
+export const Input = styled.input`
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1a1c1d;
+    color: white;
+    :focus {
+        outline: none;
+    }
+`;
