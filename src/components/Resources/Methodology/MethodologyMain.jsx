@@ -41,7 +41,7 @@ const Methodology = () => {
                             <div key={topic} style={{ width: "100%", margin: "20px" }}>
                                 <h2 style={{ textAlign: "center", fontSize: "25px" }}>{topic}</h2>
                                 {Object.keys(MethodologyData[mainTitle].Topics[topic]).map((subTopic) => (
-                                    <DataConatiner key={subTopic} style={{ width: "100%" }}>
+                                    <DataConatiner key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
                                         <MethodologyHeading onClick={() => handleClick(subTopic)}>
                                             {subTopic}
                                         </MethodologyHeading>
