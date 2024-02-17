@@ -35,31 +35,25 @@ const PassGen = () => {
         const lowercase = includeLowercase ? "abcdefghijklmnopqrstuvwxyz" : "";
         const uppercase = includeUppercase ? "ABCDEFGHIJKLMNOPQRSTUVWXYZ" : "";
 
-        const requiredSymbolCount = 8;
-        const totalLength = length;
-        const symbolIndices = new Set();
+        const allChars = numbers + symbols + lowercase + uppercase;
 
-        // Ensure at least 6 symbols in the password
-        while (symbolIndices.size < requiredSymbolCount) {
-            const randomIndex = Math.floor(Math.random() * totalLength);
-            symbolIndices.add(randomIndex);
+        if (!allChars.length) {
+            toast("Please select at least one character type", {
+                type: "error",
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+            });
+            return;
         }
 
-        const passwordArray = Array.from({ length: totalLength }, (_, index) => {
-            if (symbolIndices.has(index)) {
-                // Use a symbol if the index is in symbolIndices
-                return symbols[Math.floor(Math.random() * symbols.length)];
-            } else {
-                // Use a random character from numbers + lowercase + uppercase
-                const charset = numbers + lowercase + uppercase;
-                return charset[Math.floor(Math.random() * charset.length)];
-            }
-        });
+        let newPassword = "";
+        for (let i = 0; i < length; i++) {
+            newPassword += allChars.charAt(Math.floor(Math.random() * allChars.length));
+        }
 
-        // Shuffle the passwordArray to randomize the positions of the symbols
-        passwordArray.sort(() => Math.random() - 0.5);
-
-        const newPassword = passwordArray.join("");
         setPassword(newPassword);
     };
 

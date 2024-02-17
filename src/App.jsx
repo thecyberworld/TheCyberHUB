@@ -34,7 +34,9 @@ import UserProfile from "./components/Dashboard/Profile/UserProfile";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
-import DisplayCommunityEvents from "./components/Opportunities/DisplayCommunityEvents";
+import DisplayCommunityEvents, {
+    DisplayCommunityEventDetails,
+} from "./components/Opportunities/DisplayCommunityEvents";
 import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
@@ -57,15 +59,19 @@ import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
 import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
-import EncoderMain from "./components/EncoderDecoder.jsx/EncoderMain";
+
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
+import Methodology from "./components/Resources/Methodology/MethodologyMain";
+import SessionExpireLogout from "./components/Other/SessionExpireLogout";
+import { useSelector } from "react-redux";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const { user } = useSelector((state) => state.auth);
 
     const { pathname } = useLocation();
     const hostname = window.location.hostname;
@@ -91,8 +97,15 @@ const App = () => {
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
+        const pathSettings = pathname.includes("/settings");
         return (
-            pathDashboard || pathAdminDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword
+            pathDashboard ||
+            pathAdminDashboard ||
+            pathLogin ||
+            pathRegister ||
+            pathForgetPassword ||
+            pathResetPassword ||
+            pathSettings
         );
     };
 
@@ -103,12 +116,11 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    // const { user } = useSelector((state) => state.auth);
-
     if (isLoading) return <Spinner />;
 
     return (
         <>
+            {user ? <SessionExpireLogout /> : null}
             {/* {user && <UserTimestamps user={user} />} */}
             <Container>
                 {!hideHomeHeader() && (
@@ -136,15 +148,15 @@ const App = () => {
 
                         <Route path={"/websecurity/*"} element={<WebSecurityRoutes />} />
 
-                        <Route path={"/tools/encoder"} element={<EncoderMain />} />
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
                         <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
+                        <Route path={"/resources/methodology"} element={<Methodology />} />
 
-                        <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
+                        <Route path={"/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
                         <Route path={"/admin-dashboard/*"} element={<AdminDashboardRoute />} />
@@ -167,6 +179,7 @@ const App = () => {
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
                         <Route exact path={"/community-events"} element={<DisplayCommunityEvents />} />
+                        <Route exact path={"/community-events/:eventId"} element={<DisplayCommunityEventDetails />} />
                         <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
                         <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} />
 

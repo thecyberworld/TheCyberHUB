@@ -6,12 +6,14 @@ import {
     BiChatIcon,
     CgOpenCollectiveIcon,
     PiNotebookDuotoneIcon,
+    MdAnalyticsIcon,
 } from "./DashbaordSidebarElements";
 import GeneralDashboardSidebar from "../../Common/GeneralDashboardSidebar";
 
 const DashboardSidebar = ({ userDetail }) => {
     const sidebarItems = [
         { to: "/", icon: <BiHomeCircleIcon />, label: "Home" },
+        { to: "/dashboard/analytics", icon: <MdAnalyticsIcon />, label: "Analytics" },
         { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Chat" },
         // { to: "/dashboard/tasks", icon: <BsClipboardCheckIcon  />, label: "Tasks" },
         { to: "/dashboard/notes", icon: <PiNotebookDuotoneIcon />, label: "Notes" },

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 
 import { EventItem } from "./EventItemListElement";
 import {
@@ -10,27 +11,17 @@ import {
     BiSolidChevronUpIcon,
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
-import { cdnContentImagesUrl } from "../../features/apiUrl";
+import DateDisplay from "../Common/DateDisplay";
+import ParticipantsDisplay from "./ParticipantsDisplay";
 
-const AddZeroToDateString = (dateValue) => {
+const addZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };
-export const EventItemList = ({
-    event,
-    todayString,
-    dayName,
-    actions,
-    index,
-    modify,
-    eventsJoinedId,
-    user,
-    onActionChange,
-    tabStatus,
-}) => {
+export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, user, onActionChange, tabStatus }) => {
     const [openEventIndex, setOpenEventIndex] = useState(null);
     const [actionDisplay, setActionDisplay] = useState("");
     const [leftPlacesToJoin, setLeftPlacesToJoin] = useState(100);
-
+    const nativage = useNavigate();
     useEffect(() => {
         if (!user) {
             setActionDisplay("Join*");
@@ -53,33 +44,24 @@ export const EventItemList = ({
     };
     const startTimeDate = new Date(event.startTime);
     const endTimeDate = new Date(event.endTime);
+
     return (
         <EventItem isRequestedEvent={event.reschedule} key={index}>
-            <div
-                className={
-                    event.startTime.split("T")[0] === todayString && event.status === "approved" && tabStatus !== "past"
-                        ? "date today-date"
-                        : "date"
-                }
-            >
-                <p>{dayName}</p>
-                <p className="date-digit">
-                    {`${startTimeDate.toLocaleString("default", {
-                        month: "short",
-                    })} ${AddZeroToDateString(startTimeDate.getDate())}`}
-                </p>
-                <p className="date-digit date-year">{`${event.startTime.split("-")[0]}`}</p>
-            </div>
+            <DateDisplay
+                rightBorder
+                time={event.startTime}
+                isCanBeToday={event.status === "approved" && tabStatus !== "past"}
+            />
             <div className="time-line">
                 <div className="time-line-detail">
                     <AiFillClockCircleIcon />
                     {event.startTime.split("T")[0] === event.endTime.split("T")[0] ? (
                         <p>
-                            {`${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
+                            {`${addZeroToDateString(startTimeDate.getHours())}:${addZeroToDateString(
                                 startTimeDate.getMinutes(),
                             )}`}
                             {" - "}
-                            {`${AddZeroToDateString(endTimeDate.getHours())}:${AddZeroToDateString(
+                            {`${addZeroToDateString(endTimeDate.getHours())}:${addZeroToDateString(
                                 endTimeDate.getMinutes(),
                             )}`}
                         </p>
@@ -89,18 +71,18 @@ export const EventItemList = ({
                                 <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
                                     {format(startTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
                                 </p>
-                                <p style={{ textAlign: "center" }}>{`${AddZeroToDateString(
+                                <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
                                     startTimeDate.getHours(),
-                                )}:${AddZeroToDateString(startTimeDate.getMinutes())}`}</p>
+                                )}:${addZeroToDateString(startTimeDate.getMinutes())}`}</p>
                             </div>
                             -
                             <div>
                                 <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
                                     {format(endTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
                                 </p>
-                                <p style={{ textAlign: "center" }}>{`${AddZeroToDateString(
+                                <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
                                     endTimeDate.getHours(),
-                                )}:${AddZeroToDateString(endTimeDate.getMinutes())}`}</p>
+                                )}:${addZeroToDateString(endTimeDate.getMinutes())}`}</p>
                             </div>
                         </div>
                     )}
@@ -117,17 +99,9 @@ export const EventItemList = ({
                 </div>
             </div>
             <div className="details">
-                <div>
-                    <p>{event.name.toUpperCase()}</p>
-                    <div className="details-profile">
-                        {event.participants.map((participant, pIndex) => (
-                            <img
-                                src={cdnContentImagesUrl("/user/" + (participant?.avatar || "avatarDummy.png"))}
-                                alt={participant.name}
-                                key={pIndex}
-                            />
-                        ))}
-                    </div>
+                <div style={{ maxWidth: "90%" }}>
+                    <p style={{ overflowWrap: "break-word" }}>{event.name.toUpperCase()}</p>
+                    <ParticipantsDisplay participants={event.participants} />
                 </div>
                 {event.reschedule && <div className="details-request">15:30 - 16:00 requested</div>}
             </div>
@@ -161,22 +135,36 @@ export const EventItemList = ({
                 </div>
             ) : (
                 (tabStatus === "upcoming" || tabStatus === "ongoing") && (
-                    <div className="container-action">
-                        <div className="action">
-                            <div
-                                className={`action-edit without-dropdown ${
-                                    leftPlacesToJoin === 0
-                                        ? " uniqe-state-button"
-                                        : actionDisplay === "Join"
-                                        ? " enable-button"
-                                        : " disable-button"
-                                }`}
-                                onClick={handleDisplayActionClick}
-                            >
-                                <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                    <>
+                        <div className="container-action">
+                            <div className="action">
+                                <div
+                                    className={`action-edit without-dropdown ${
+                                        leftPlacesToJoin === 0
+                                            ? " uniqe-state-button"
+                                            : actionDisplay === "Join"
+                                            ? " enable-button"
+                                            : " disable-button"
+                                    }`}
+                                    onClick={handleDisplayActionClick}
+                                >
+                                    <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                                </div>
+                            </div>
+                            <div className="action">
+                                <div
+                                    className={`action-edit without-dropdown `}
+                                    onClick={() =>
+                                        nativage(`/community-events/${event._id.slice(0, 10)}`, {
+                                            state: { actionDisplay, event },
+                                        })
+                                    }
+                                >
+                                    <p>View</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </>
                 )
             )}
         </EventItem>

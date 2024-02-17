@@ -1,7 +1,7 @@
 import React from "react";
 import { AllTags, Tag, TagsContainer } from "./FeedTagsElements";
 
-const FeedTags = ({ tags }) => {
+const FeedTags = ({ tags, handleClick }) => {
     return (
         <TagsContainer>
             <h4
@@ -19,7 +19,7 @@ const FeedTags = ({ tags }) => {
                 {tags.slice(0, 10).map(
                     (tag, key) =>
                         tag.length !== 0 && (
-                            <Tag key={key}>
+                            <Tag key={key} onClick={() => handleClick(tag)}>
                                 {/* <RouterLink to={`tags/${tag.split(" ").join("-")}`}> */}
                                 {tag}
                                 {/* </RouterLink> */}

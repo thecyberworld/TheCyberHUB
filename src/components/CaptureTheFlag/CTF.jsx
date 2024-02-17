@@ -73,7 +73,12 @@ const CTF = () => {
                 {/* </Link> */}
 
                 <SearchContainer>
-                    <SearchInputBox placeholder="Search by name" value={searchTerm} onChange={handleSearchTermChange} />
+                    <SearchInputBox
+                        placeholder="Search by name"
+                        value={searchTerm}
+                        onChange={handleSearchTermChange}
+                        setValue={setSearchTerm}
+                    />
                     <SearchDifficulty>
                         Type
                         <Select value={selectedType} onChange={handleTypeSelect}>

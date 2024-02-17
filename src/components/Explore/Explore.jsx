@@ -24,24 +24,44 @@ import apiStatus from "../../features/apiStatus";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 import SearchInputBox from "../Common/SearchInputBox";
+import { getFollowData } from "../../features/follow/followSlice";
+import { getConnections } from "../../features/connections/connectionSlice";
 
 const Explore = () => {
     const dispatch = useDispatch();
 
-    // const {user} = useSelector(state => state.auth);
+    const { user } = useSelector((state) => state.auth);
     const { isApiLoading, isApiWorking } = apiStatus();
-    const { userDetails, isUserDetailLoading } = useSelector((state) => state.userDetail);
+    const { isUserDetailLoading } = useSelector((state) => state.userDetail);
     const { feeds, isFeedLoading } = useSelector((state) => state.feeds);
     const { blogs, isBlogLoading } = useSelector((state) => state.blogs);
     const { ctf, isCtfLoading } = useSelector((state) => state.ctf);
     // const {forums} = useSelector((state) => state.forums);
+    const { connections } = useSelector((state) => state.connectionData);
+    const [userDetailsLocal, setUserDetailsLocal] = useState([]);
+    const followUserId = user?._id;
+    const { followData } = useSelector((state) => state.followData);
+    const allUsers = userDetailsLocal.map((user) => user.user);
+    const followers = followData?.followers;
+    const following = followData?.following;
+    const allConnections = connections?.connections?.map((connection) => connection.user);
+
+    const [filterLabel, setFilterLabel] = useState("ALL");
+    const [selectedFilter, setSelectedFilter] = useState(allUsers);
 
     useEffect(() => {
-        dispatch(getAllUserDetails());
+        dispatch(getAllUserDetails()).then(({ payload }) => {
+            setSelectedFilter(payload.map((user) => user.user));
+            setUserDetailsLocal(payload);
+        });
         dispatch(getAllFeeds());
         dispatch(getAllBlogs());
         // dispatch(getForums());
         dispatch(getAllCTFs());
+        if (followUserId) {
+            dispatch(getFollowData(followUserId));
+            dispatch(getConnections(followUserId));
+        }
 
         return () => {
             dispatch(blogReset());
@@ -49,6 +69,10 @@ const Explore = () => {
             dispatch(feedReset());
         };
     }, [dispatch]);
+
+    useEffect(() => {
+        setSelectedFilter(allUsers);
+    }, [user]);
 
     const blogTags = blogs?.map((blog) => blog && blog?.tags).flat() || [];
     const ctfTags = ctf?.map((ctf) => ctf && ctf?.tags).flat() || [];
@@ -99,11 +123,16 @@ const Explore = () => {
         ?.slice(0, 10)
         .reverse()
         .map((feed) => {
-            const userDetail = userDetails?.find((user) => user.user === feed.user);
+            const userDetail = userDetailsLocal?.find((user) => user.user === feed.user);
+            if (!selectedFilter?.includes(userDetail?.user)) {
+                return null;
+            }
             const { username, avatar, verified } = userDetail || {};
 
             return { ...feed, username, avatar, verified };
         });
+
+    const filteredFeeds = feedData?.filter((feed) => feed !== null);
 
     const blogsData = blogs
         ?.slice()
@@ -111,23 +140,37 @@ const Explore = () => {
         ?.slice(0, 10)
         .reverse()
         .map((blog) => {
-            const userDetail = userDetails?.find((user) => user.user === blog.user);
+            const userDetail = userDetailsLocal?.find((user) => user.user === blog.user);
+            if (!selectedFilter?.includes(userDetail?.user)) {
+                return null;
+            }
             const { username, avatar, verified } = userDetail || {};
 
             return { ...blog, username, avatar, verified };
         });
 
-    const ctfData = ctf
+    const filteredBlogs = blogsData?.filter((blog) => blog !== null);
+
+    const filteredCtf = ctf
         ?.slice()
         .reverse()
         ?.slice(0, 10)
         .reverse()
-        .map((ctf) => {
-            const userDetail = userDetails?.find((user) => user.user === ctf.user);
-            const { username, avatar, verified } = userDetail || {};
+        .filter((ctf) => ctf.registeredUsers.find(({ user }) => selectedFilter.includes(user)));
 
-            return { ...ctf, username, avatar, verified };
-        });
+    const filteredUsers = userDetailsLocal.filter((user) => selectedFilter?.includes(user.user));
+
+    const handleTypeFilter = (filter) => {
+        setSelectedFilter(filter.value);
+        setFilterLabel(filter.label);
+    };
+
+    const filters = [
+        { value: allUsers, label: "ALL" },
+        { value: allConnections, label: "Connections" },
+        { value: following, label: "Following" },
+        { value: followers, label: "Followers" },
+    ];
 
     if (isApiLoading) return <LoadingSpinner />;
 
@@ -142,6 +185,7 @@ const Explore = () => {
                             placeholder="Search by name"
                             value={searchTerm}
                             onChange={handleSearchTermChange}
+                            setValue={setSearchTerm}
                         />
                         <SearchTypeContainer>
                             {types.map((type) => (
@@ -154,6 +198,24 @@ const Explore = () => {
                                 </SearchTypeButton>
                             ))}
                         </SearchTypeContainer>
+                        {user && (
+                            <>
+                                <p className="text-xl ">Filter</p>
+                                <div className="flex flex-wrap gap-2.5 p-1 w-full">
+                                    {filters.map((filter) => (
+                                        <SearchTypeButton
+                                            key={filter.label}
+                                            selected={filterLabel === filter.label}
+                                            onClick={() => {
+                                                handleTypeFilter(filter);
+                                            }}
+                                        >
+                                            {filter.label}
+                                        </SearchTypeButton>
+                                    ))}
+                                </div>
+                            </>
+                        )}
                     </SearchContainer>
 
                     <Tags tags={tags} />
@@ -162,7 +224,7 @@ const Explore = () => {
                 <RightContainer>
                     {selectedType === "all" || selectedType === "users" ? (
                         <Users
-                            userDetails={userDetails}
+                            userDetails={filteredUsers}
                             isUserDetailLoading={isUserDetailLoading}
                             searchTerm={searchTerm}
                             displayAt={"explore"}
@@ -171,7 +233,7 @@ const Explore = () => {
 
                     {selectedType === "all" || selectedType === "feeds" ? (
                         <FeedsExplore
-                            feeds={feedData}
+                            feeds={filteredFeeds}
                             isFeedLoading={isFeedLoading}
                             searchTerm={searchTerm}
                             displayAt={"explore"}
@@ -180,7 +242,7 @@ const Explore = () => {
 
                     {selectedType === "all" || selectedType === "blogs" ? (
                         <BlogCards
-                            blogs={blogsData}
+                            blogs={filteredBlogs}
                             isBlogLoading={isBlogLoading}
                             searchTerm={searchTerm}
                             displayAt={"explore"}
@@ -193,7 +255,7 @@ const Explore = () => {
 
                     {selectedType === "all" || selectedType === "ctf" ? (
                         <CtfChallenges
-                            ctf={ctfData}
+                            ctf={filteredCtf}
                             isCtfLoading={isCtfLoading}
                             searchTerm={searchTerm}
                             displayAt={"explore"}
