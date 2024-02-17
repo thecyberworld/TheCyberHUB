@@ -74,7 +74,7 @@ const Navbar = ({ isOpen, toggle }) => {
         <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav} showBottomBorder={showBottomBorder}>
             <NavbarContainer>
                 <NavLogoRouter to={"/"} onClick={toggleHome}>
-                    <NavLogo src={logo} />
+                    <NavLogo src={logo} alt="logo" />
                 </NavLogoRouter>
                 <NavMenu>
                     {[

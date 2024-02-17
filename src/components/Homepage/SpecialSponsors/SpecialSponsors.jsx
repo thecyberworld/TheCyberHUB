@@ -6,7 +6,7 @@ import {
     SponsorsContainer,
     SponsorsLayout,
     SponsorsTopHeader,
-    SponsorsH4,
+    SponsorsH2,
     SponsorsGrid1,
     SponsorsGridColTop,
     SponsorsH1,
@@ -31,7 +31,7 @@ const SpecialSponsors = () => {
                             borderRadius: "1rem 1rem 0 0",
                         }}
                     >
-                        <SponsorsH4>Special Sponsors</SponsorsH4>
+                        <SponsorsH2>Special Sponsors</SponsorsH2>
                     </SponsorsTopHeader>
                     <SponsorsGrid1>
                         <SponsorsGridColTop>
@@ -40,7 +40,7 @@ const SpecialSponsors = () => {
                             </SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
-                            <SponsorsH1>Thecyberworld</SponsorsH1>
+                            <SponsorsH1 href="">Thecyberworld</SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
                             {/* <SponsorsH1>Thecyberworld</SponsorsH1> */}
@@ -48,65 +48,66 @@ const SpecialSponsors = () => {
                         </SponsorsGridColTop>
                     </SponsorsGrid1>
                     <SponsorsTopHeader>
-                        <SponsorsH4>Platinum Sponsors</SponsorsH4>
+                        <SponsorsH2>Platinum Sponsors</SponsorsH2>
                     </SponsorsTopHeader>
                     <SponsorsGrid2>
+                        {/* After adding text to links, ensure that you remove the Arial label or modify it accordingly as well as hrefs */}
                         <SponsorsGridColTop>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColTop>
                         <SponsorsGridColTop>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColTop>
                     </SponsorsGrid2>
                     <SponsorsTopHeader>
-                        <SponsorsH4>Gold Sponsors</SponsorsH4>
+                        <SponsorsH2>Gold Sponsors</SponsorsH2>
                     </SponsorsTopHeader>
                     <SponsorsGrid3>
                         <SponsorsGridColLast>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColLast>
                         <SponsorsGridColLast>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColLast>
                         <SponsorsGridColLast>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColLast>
                         <SponsorsGridColLast>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColLast>
                         <SponsorsGridColLast>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColLast>
                         <SponsorsGridColLast>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColLast>
                         <SponsorsGridColHiddenSm>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColHiddenSm>
                         <SponsorsGridColHiddenSm>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColHiddenSm>
                         <SponsorsGridColHidden>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColHidden>
                         <SponsorsGridColHidden>
-                            <SponsorsH1></SponsorsH1>
+                            <SponsorsH1 href="" aria-label="sponsors link"></SponsorsH1>
                         </SponsorsGridColHidden>
                     </SponsorsGrid3>
                     <SponsorsFooterBar>
-                        <SponsorsH4>{""}</SponsorsH4>
+                        <SponsorsH2>{""}</SponsorsH2>
                     </SponsorsFooterBar>
                 </SponsorsLayout>
                 <SponsorButton href={"https://github.com/sponsors/Thecyberworld"} target={"_blank"} rel={"noreferrer"}>

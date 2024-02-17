@@ -59,6 +59,7 @@ const Footer = () => {
                                 { to: "contribute", title: "Contribute" },
                             ].map(({ to, title }) => (
                                 <FooterScrollLink
+                                    href={`/${to}`}
                                     key={to}
                                     to={to}
                                     smooth={true}

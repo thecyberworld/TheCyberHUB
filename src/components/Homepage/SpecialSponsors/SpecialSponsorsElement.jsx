@@ -22,7 +22,7 @@ export const SponsorsH1 = styled.a`
     } ;
 `;
 
-export const SponsorsH4 = styled.h4`
+export const SponsorsH2 = styled.h2`
     color: #f5f5f5;
     font-size: 0.8rem;
     font-weight: 400;
