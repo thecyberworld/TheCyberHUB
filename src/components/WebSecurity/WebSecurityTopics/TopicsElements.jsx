@@ -7,8 +7,6 @@ export const StyledTopicsContainer = styled.div`
     background-color: #090909;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     gap: 20px;
 `;
 

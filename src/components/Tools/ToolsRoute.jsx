@@ -6,9 +6,9 @@ import SubdomainFinder from "./SubdomainFinder/SubdomainFinder";
 import ReverseShellGenerator from "./ReverseShell/ShellGenerator";
 import { NotFound } from "../index";
 import PassGen from "./PassGen/PassGen";
-import EncoderMain from "../EncoderDecoder.jsx/EncoderMain";
-import GtfoBin from "../GTFOBins/GtfoMain";
-import DataPage from "../GTFOBins/DataPages";
+import EncoderMain from "./EncoderDecoder.jsx/EncoderMain";
+import GtfoBin from "./BinaryExploits/BinaryExploits";
+import DataPage from "./BinaryExploits/DataPages";
 import Dorking from "./Dorking/Dorking";
 
 const ToolsRoutes = () => {
@@ -23,7 +23,7 @@ const ToolsRoutes = () => {
             <Route path={"/binexploits"} element={<GtfoBin />} />
             <Route path={"/binexploits/:id"} element={<DataPage />} />
             <Route path={"/dorking"} element={<Dorking />} />
-              
+
             {/* <Route path={"portScanner"} element={<PortScanner/>}/> */}
             <Route path={"*"} element={<NotFound />} />
             <Route element={<NotFound />} />

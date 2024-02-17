@@ -6,11 +6,13 @@ export const Nav = styled.nav`
     top: 0;
     width: 100%;
     height: 80px;
-    background-color: #1a1a1a;
+    background-color: #131313;
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
     align-items: center;
+    border: 1px solid #232222;
+    border-radius: 10px;
     // z-index: 99;
 `;
 
@@ -19,6 +21,7 @@ export const Ul = styled.ul`
     padding: 0;
     margin: 0;
     display: flex;
+    gap: 20px;
 `;
 
 export const Li = styled.li`
@@ -30,6 +33,7 @@ export const NavLink = styled(Link)`
     color: #b7b7b7;
     font-weight: bold;
 
+    transition: all 0.3s ease-in-out;
     &:hover {
         color: #ff6b08;
     }

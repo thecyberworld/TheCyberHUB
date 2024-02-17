@@ -96,8 +96,15 @@ const App = () => {
         const pathRegister = pathname.includes("/register");
         const pathForgetPassword = pathname.includes("/forgetPassword");
         const pathResetPassword = pathname.includes("/resetPassword");
+        const pathSettings = pathname.includes("/settings");
         return (
-            pathDashboard || pathAdminDashboard || pathLogin || pathRegister || pathForgetPassword || pathResetPassword
+            pathDashboard ||
+            pathAdminDashboard ||
+            pathLogin ||
+            pathRegister ||
+            pathForgetPassword ||
+            pathResetPassword ||
+            pathSettings
         );
     };
 
@@ -147,7 +154,7 @@ const App = () => {
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
 
-                        <Route path={"/dashboard/settings/*"} element={<SettingsRoute />} />
+                        <Route path={"/settings/*"} element={<SettingsRoute />} />
 
                         <Route path={"/dashboard/*"} element={<DashboardRoute />} />
                         <Route path={"/admin-dashboard/*"} element={<AdminDashboardRoute />} />

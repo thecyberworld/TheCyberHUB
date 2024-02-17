@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { Dashboard, EditBlog, GoalSetter, NotFound, UserBlogs } from "../index";
+import { EditBlog, GoalSetter, NotFound, UserBlogs } from "../index";
 import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import DashboardSidebar from "./DashbaordSidebar/DashboardSidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
@@ -10,6 +10,7 @@ import Tools from "../Tools/Tools";
 import CommunityChat from "../Chat/CommunityChat";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "../../features/userDetail/userDetailSlice";
+import Analytics from "./Analytics/Analytics";
 
 const DashboardRoute = () => {
     const dispatch = useDispatch();
@@ -46,7 +47,8 @@ const DashboardRoute = () => {
                 }}
             >
                 <Routes>
-                    <Route index element={<Dashboard />} />
+                    <Route index element={<Analytics />} />
+                    <Route path={"analytics"} element={<Analytics />} />
                     <Route path={"goals"} element={<GoalSetter />} />
                     <Route path={"bookmarks"} element={<Bookmarks />} />
                     <Route path={"notes"} element={<NoteApp />} />
