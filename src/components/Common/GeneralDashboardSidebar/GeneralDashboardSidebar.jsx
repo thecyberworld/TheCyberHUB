@@ -64,7 +64,7 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
                 {isOpen ? (
                     <>
                         <BiSolidChevronLeftIcon />
-                        <SidebarTitle isOpen={isOpen}> Collapse </SidebarTitle>{" "}
+                        <SidebarTitle isOpen={isOpen}> Collapse </SidebarTitle>
                     </>
                 ) : (
                     <BiSolidChevronRighIcon />

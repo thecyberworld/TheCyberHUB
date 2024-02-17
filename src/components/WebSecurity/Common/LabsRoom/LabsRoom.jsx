@@ -20,7 +20,7 @@ import SubmissionBox from "../SubmissionBox";
 import { ImLab } from "react-icons/im";
 import { LabIcon } from "../../WebSecurityTopics/SubTopic";
 import { HintContainer, HintIcon, SolutionContainer } from "../HintElements";
-import { RiLightbulbFlashFill } from "react-icons/ri";
+import { RiLightbulbFlashFill, RiLightbulbFlashLine } from "react-icons/ri";
 import SyntaxHighlight from "../SyntaxHighlight";
 
 const Room = ({ roomData }) => {
@@ -28,6 +28,8 @@ const Room = ({ roomData }) => {
     const roomType = path.split("/")[0];
     const data = roomData[id - 1];
     const [hidden, setHidden] = useState(0);
+
+    const [showHint, setShowHint] = useState(false);
 
     return (
         <LabRoomContainer>
@@ -49,13 +51,27 @@ const Room = ({ roomData }) => {
                     </StartLabButton>
                 )}
                 {roomType === "labs" && roomType === "crack-me" && <SubmissionBox submitType={"flag"} />}
-                <HintContainer>
+                <HintContainer onClick={() => setShowHint(!showHint)}>
                     Show Hint
-                    <HintIcon>
-                        {" "}
-                        <RiLightbulbFlashFill />{" "}
-                    </HintIcon>
+                    <HintIcon>{showHint ? <RiLightbulbFlashFill /> : <RiLightbulbFlashLine />}</HintIcon>
                 </HintContainer>
+                {showHint && (
+                    <div>
+                        {data?.hint && data?.hint.length > 0 ? (
+                            data?.hint?.map((data, index) => (
+                                <SolutionItem key={index}>
+                                    <SolutionIndex>{index + 1}.</SolutionIndex>
+                                    <SolutionText>{data}</SolutionText>
+                                </SolutionItem>
+                            ))
+                        ) : (
+                            <SolutionItem>
+                                <SolutionText>No hint available</SolutionText>
+                            </SolutionItem>
+                        )}
+                    </div>
+                )}
+
                 <SolutionContainer>
                     <SolutionHeader onClick={() => setHidden((prevHidden) => (prevHidden === 0 ? 1 : 0))}>
                         <SolutionTitle>Solution</SolutionTitle>
@@ -63,12 +79,18 @@ const Room = ({ roomData }) => {
                     </SolutionHeader>
                     {hidden === 1 && (
                         <SolutionHolder id="SolutionHolder">
-                            {data?.solution?.map((data, index) => (
-                                <SolutionItem key={index}>
-                                    <SolutionIndex>{id + 1}.</SolutionIndex>
-                                    <SolutionText>{data}</SolutionText>
+                            {data?.solution && data?.solution.length > 0 ? (
+                                data?.solution?.map((data, index) => (
+                                    <SolutionItem key={index}>
+                                        <SolutionIndex>{index + 1}.</SolutionIndex>
+                                        <SolutionText>{data}</SolutionText>
+                                    </SolutionItem>
+                                ))
+                            ) : (
+                                <SolutionItem>
+                                    <SolutionText>No solution available</SolutionText>
                                 </SolutionItem>
-                            ))}
+                            )}
                         </SolutionHolder>
                     )}
                 </SolutionContainer>

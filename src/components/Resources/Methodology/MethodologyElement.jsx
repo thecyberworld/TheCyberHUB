@@ -6,17 +6,20 @@ export const MainTitleContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const DataConatiner = styled.div``;
+export const DataContainer = styled.div``;
 export const MethodologyHeading = styled.h2`
-    background: rgb(19, 19, 19);
-    margin-bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    background: rgb(14, 14, 14);
     padding: 15px;
-    border-bottom: 1px solid white;
-    border-top: 0.5px solid white;
+    border: 1px solid #343434;
+    border-radius: 5px;
+    color: #eaeaea;
 `;
 
 export const HideDataContainer = styled.div`
     display: none;
     padding: 20px;
     background: rgb(26, 28, 29);
+    margin: 10px 0;
 `;

@@ -53,12 +53,11 @@ export const StartLabButton = styled.a`
 `;
 
 export const Description = styled.p`
-    background: #151515;
-    color: #9ca3af;
-    border-radius: 7px;
-    padding: 20px;
-    white-space: pre-wrap;
+    background: #151717;
+    padding: 15px;
     font-size: 16px;
+    opacity: 80%;
+    white-space: pre-wrap;
 `;
 
 export const SolutionHeader = styled.div`
@@ -84,7 +83,9 @@ export const SolutionToggleIcon = styled.span`
 export const SolutionHolder = styled.div`
     width: 100%;
     padding: 20px;
-    background-color: #131313;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+    border: 1px solid rgba(40, 40, 40, 0.63);
 `;
 
 export const SolutionItem = styled.div`
