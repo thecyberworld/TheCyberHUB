@@ -75,7 +75,7 @@ const PostActionsAndStats = ({
     }
 
     const isBookmarked = () => {
-        return bookmarks.some((bookmark) => bookmark.user === userId && bookmark.itemId === feed?._id);
+        return bookmarks?.some((bookmark) => bookmark.user === userId && bookmark.itemId === feed?._id);
     };
 
     const handleBookmark = (_id) => {

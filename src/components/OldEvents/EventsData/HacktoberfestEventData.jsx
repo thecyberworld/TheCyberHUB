@@ -28,7 +28,7 @@ const HacktoberfestEventData = [
         ),
         content: (
             <>
-                <p>
+                <div>
                     Go through the Hacktoberfest 2022 contributor section to know more about what you should do and the
                     rewards you will receive. We would be genuinely happy if you choose the “plant a tree” option as
                     your reward. <br />
@@ -143,7 +143,7 @@ const HacktoberfestEventData = [
                             </List>
                         </ListContent>
                     </div>
-                </p>
+                </div>
             </>
         ),
     },
