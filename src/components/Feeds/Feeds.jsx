@@ -53,12 +53,12 @@ const Feeds = () => {
                 temp += str[i];
             }
         }
-        if (temp) result.push(temp);        
+        if (temp) result.push(temp);
         return result;
     };
 
     const filterByTag = (tag) => {
-        const invisibleChar = "\u200b";  //Zero width space character
+        const invisibleChar = "\u200b"; // Zero width space character
         const updatedSearchTerm = searchTerm ? customSplit(searchTerm, invisibleChar) : [];
         if (tag.includes(" ")) {
             tag = tag.replace(/ /g, `${invisibleChar} ${invisibleChar}`);

@@ -62,6 +62,7 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
+import Methodology from "./components/Resources/Methodology/MethodologyMain";
 import SessionExpireLogout from "./components/Other/SessionExpireLogout";
 import { useSelector } from "react-redux";
 
@@ -153,6 +154,7 @@ const App = () => {
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
                         <Route path={"/security/*"} element={<SecurityRoutes />} />
+                        <Route path={"/resources/methodology"} element={<Methodology />} />
 
                         <Route path={"/settings/*"} element={<SettingsRoute />} />
 

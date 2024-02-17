@@ -29,6 +29,7 @@ const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
                 onChange={onChange}
                 ref={inputRef}
             />
+
             {value && (
                 <CancelIconWrapper>
                     <CancelIcon onClick={clearValue} />
