@@ -19,6 +19,7 @@ import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
+import ModifyTimeLine from "./ModifyTimeLine";
 
 const CommunityEvents = ({
     pageHeader,
@@ -31,6 +32,8 @@ const CommunityEvents = ({
     onActionChange = () => {},
     modifyEventId,
     setModifyEventId,
+    eventManageTimelineId,
+    setEventManageTimelineId,
 }) => {
     const dispatch = useDispatch();
     const { events, isEventLoading, isEventError, eventMessage } = useSelector((state) => state.events);
@@ -79,7 +82,11 @@ const CommunityEvents = ({
         dispatch(updateEvent({ id: newEvent._id, eventData: newEvent }));
         setModifyEventId("");
     };
-
+    const handleCloseChangeMode = () => {
+        setOpenCreatingNewEvent(false);
+        setModifyEventId("");
+        setEventManageTimelineId("");
+    };
     useEffect(() => {
         if (isEventError) {
             toast.error(eventMessage);
@@ -89,15 +96,15 @@ const CommunityEvents = ({
     }, [dispatch]);
 
     useEffect(() => {
-        setOpenCreatingNewEvent(modifyEventId);
-        if (modifyEventId) {
+        if (!eventManageTimelineId) setOpenCreatingNewEvent(modifyEventId);
+        if (modifyEventId || eventManageTimelineId) {
             window.scrollTo({
                 top: 0,
                 left: 0,
                 behavior: "smooth",
             });
         }
-    }, [modifyEventId]);
+    }, [modifyEventId, eventManageTimelineId]);
 
     return (
         <ParentContainer pageHeader={pageHeader}>
@@ -134,6 +141,15 @@ const CommunityEvents = ({
                                     modifyEvent={events.find((event) => event._id === modifyEventId)}
                                     setModifyEventId={setModifyEventId}
                                     modifyEventId={modifyEventId}
+                                    handleCloseChangeMode={handleCloseChangeMode}
+                                />
+                            )}
+                            {modify && !openCreatingNewEvent && eventManageTimelineId && (
+                                <ModifyTimeLine
+                                    eventManageTimelineId={eventManageTimelineId}
+                                    setEventManageTimelineId={setEventManageTimelineId}
+                                    modifyEventId={modifyEventId}
+                                    handleCloseChangeMode={handleCloseChangeMode}
                                 />
                             )}
                             {filteredEvents.length !== 0 ? (

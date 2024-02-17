@@ -66,7 +66,12 @@ const NoteSidebar = ({
                 </NotesSidebarHeaderTitle>
             </NotesSidebarHeader>
             <SearchContainer>
-                <SearchInputBox placeholder="Search Note" value={searchTerm} onChange={handleSearchTermChange} />
+                <SearchInputBox
+                    placeholder="Search Note"
+                    value={searchTerm}
+                    onChange={handleSearchTermChange}
+                    setValue={setSearchTerm}
+                />
                 <MdNoteAdd
                     className="icon icon-add"
                     style={{ marginLeft: "5px", marginRight: "5px" }}

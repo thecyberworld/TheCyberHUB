@@ -10,7 +10,7 @@ import {
     DropdownUl,
     DropdownLi,
     DropdownLink,
-} from "./SubHeaderElements"; // Make sure to provide the correct path
+} from "./Common/SubHeaderElements"; // Make sure to provide the correct path
 
 const SubHeader = (props) => {
     const { subHeaderData } = props;
@@ -18,15 +18,20 @@ const SubHeader = (props) => {
     return (
         <Nav>
             <Ul>
-                {" "}
                 <Li>
                     <NavLink
                         to={"./"}
-                        style={{ color: "#FF6B08", fontWeight: "bold", fontSize: "20px", marginRight: "20px" }}
+                        style={{
+                            color: "#FF6B08",
+                            fontWeight: "bold",
+                            fontSize: "20px",
+                            marginRight: "20px",
+                        }}
                     >
-                        {props.heading}
+                        {" "}
+                        {props.heading}{" "}
                     </NavLink>
-                </Li>{" "}
+                </Li>
             </Ul>
             <Ul>
                 {!props?.onlyCat
