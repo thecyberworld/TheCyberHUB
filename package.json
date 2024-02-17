@@ -84,5 +84,12 @@
             "git add"
         ],
         "*.{js,jsx,css,md}": "prettier --write"
+    },
+    "eslintConfig": {
+        "settings": {
+            "react": {
+                "version": "detect"
+            }
+        }
     }
 }
