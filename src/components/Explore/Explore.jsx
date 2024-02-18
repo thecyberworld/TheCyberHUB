@@ -99,7 +99,7 @@ const Explore = () => {
 
     const followers = followData?.followers;
     const following = followData?.following;
-    const allConnections = connections?.connections?.map((connection) => connection.user);
+    const allConnections = connections?.connections?.map((connection) => connection.user) || [];
 
     const [filterLabel, setFilterLabel] = useState("Connections");
     const [selectedFilter, setSelectedFilter] = useState("all");
