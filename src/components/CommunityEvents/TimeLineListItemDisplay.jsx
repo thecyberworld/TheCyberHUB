@@ -11,7 +11,13 @@ import InputEditor from "../Common/InputEditor";
 import TimePickerDisplay from "./TimePickerDisplay";
 import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 
-const TimeLineListItemDisplay = ({ timeLineListObj }) => {
+const TimeLineListItemDisplay = ({ timeLineListObj, setTimeLineListItems }) => {
+    const handleChangeInput = (label, content) => {
+        setTimeLineListItems((prevTimeLine) => {
+            const updateTimeLineItem = { ...prevTimeLine[timeLineListObj.id], [label]: content };
+            return { ...prevTimeLine, [updateTimeLineItem.id]: { ...updateTimeLineItem } };
+        });
+    };
     return (
         <TimeLineListItem>
             <DetailsInputTimeLineContainer>
@@ -20,8 +26,8 @@ const TimeLineListItemDisplay = ({ timeLineListObj }) => {
                         inputType="text"
                         label="name"
                         placeholder="Name / @Username"
-                        onCopyChanges={() => {}}
-                        content={""}
+                        onCopyChanges={handleChangeInput}
+                        content={timeLineListObj.name}
                     />
                 </DetailsTextInputTimeLineContainer>
                 <DetailsTextInputTimeLineContainer>
@@ -29,18 +35,18 @@ const TimeLineListItemDisplay = ({ timeLineListObj }) => {
                         inputType="text"
                         label="topic"
                         placeholder="Topic"
-                        onCopyChanges={() => {}}
-                        content={""}
+                        onCopyChanges={handleChangeInput}
+                        content={timeLineListObj.topic}
                     />
                 </DetailsTextInputTimeLineContainer>
                 <TimePicking>
                     <InputEditorIconContainer inputType="time">
                         <AiFillClockCircleIcon />
                     </InputEditorIconContainer>
-                    <TimePickerDisplay time={timeLineListObj.startTime} handleUpdatePropertyValue={() => {}}>
+                    <TimePickerDisplay time={timeLineListObj} handleUpdatePropertyValue={handleChangeInput}>
                         From:
                     </TimePickerDisplay>
-                    <TimePickerDisplay time={timeLineListObj.endTime} handleUpdatePropertyValue={() => {}}>
+                    <TimePickerDisplay time={timeLineListObj} handleUpdatePropertyValue={handleChangeInput}>
                         To:
                     </TimePickerDisplay>
                 </TimePicking>
@@ -48,9 +54,10 @@ const TimeLineListItemDisplay = ({ timeLineListObj }) => {
             <InputEditor
                 inputType="text"
                 label="description"
-                placeholder="Short Description"
-                onCopyChanges={() => {}}
-                content={""}
+                placeholder="Description"
+                onCopyChanges={handleChangeInput}
+                content={timeLineListObj.description}
+                isTextarea
             />
         </TimeLineListItem>
     );

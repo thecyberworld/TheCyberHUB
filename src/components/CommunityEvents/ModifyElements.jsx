@@ -17,7 +17,7 @@ export const ModifyTimeLineListContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 `;
 export const DayPickerContainer = styled.div`
     border-right: 1px solid #f0f0f0;
@@ -42,7 +42,7 @@ export const DetailsInputEventContainer = styled.div`
 export const TimeLineListItem = styled.li`
     display: flex;
     flex-direction: column;
-    height: 150px;
+    height: 200px;
     width: 100%;
     justify-content: space-around;
     border: 3px inset #2e2e2e;
@@ -100,14 +100,12 @@ export const ModifyActionButton = styled.div`
                 return "#f14844";
         }
     }};
+    margin-top: ${(props) => props.type === "add" && "10px"};
     color: #f8f8f8;
     &:hover {
         opacity: 0.7;
         cursor: pointer;
     }
-`;
-export const ModifyCancelActionButton = styled.div`
-    background: #f14844;
 `;
 export const ModifyActionsContainer = styled.div`
     display: flex;
