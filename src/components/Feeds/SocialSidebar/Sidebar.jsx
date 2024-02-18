@@ -65,8 +65,7 @@ const Sidebar = ({
                         }}
                         onClick={() => handleTypeFilter(userFilters[0])}
                     >
-                        {" "}
-                        Connections{" "}
+                        Connections
                     </FilterButton>
                     <FilterButton
                         style={{
@@ -75,8 +74,7 @@ const Sidebar = ({
                         }}
                         onClick={() => handleTypeFilter(userFilters[1])}
                     >
-                        {" "}
-                        Following{" "}
+                        Following
                     </FilterButton>
                     <FilterButton
                         style={{
@@ -85,8 +83,7 @@ const Sidebar = ({
                         }}
                         onClick={() => handleTypeFilter(userFilters[2])}
                     >
-                        {" "}
-                        Followers{" "}
+                        Followers
                     </FilterButton>
                 </div>
             ) : (
@@ -98,8 +95,7 @@ const Sidebar = ({
                         }}
                         onClick={() => setShowOnlyFollowing(false)}
                     >
-                        {" "}
-                        For You{" "}
+                        For You
                     </FilterButton>
                     <FilterButton
                         style={{
@@ -108,8 +104,7 @@ const Sidebar = ({
                         }}
                         onClick={() => setShowOnlyFollowing(true)}
                     >
-                        {" "}
-                        Following{" "}
+                        Following
                     </FilterButton>
                 </>
             )}

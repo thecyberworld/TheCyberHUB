@@ -45,8 +45,7 @@ const Room = ({ roomData }) => {
                     <StartLabButton href={data.labLink} target="_blank" rel="noreferrer">
                         Start Lab
                         <LabIcon style={{ border: "1px black solid" }}>
-                            {" "}
-                            <ImLab />{" "}
+                            <ImLab />
                         </LabIcon>
                     </StartLabButton>
                 )}

@@ -114,8 +114,7 @@ const SubTopic = ({ subtopic }) => {
                             <LabTitle key={index}>
                                 <LabLink to={lab?.link}>
                                     <LabIcon>
-                                        {" "}
-                                        <ImLab />{" "}
+                                        <ImLab />
                                     </LabIcon>
                                     {lab?.title}
                                 </LabLink>

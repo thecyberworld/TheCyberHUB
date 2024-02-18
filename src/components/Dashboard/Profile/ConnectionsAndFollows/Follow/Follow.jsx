@@ -67,7 +67,7 @@ const Follow = ({ userDetail, userDetails }) => {
                     <div style={{ display: "flex", gap: "15px" }}>
                         {isLoading ? (
                             <FollowButton>
-                                <CircleSpinner size={16} isLoading={isLoading} />{" "}
+                                <CircleSpinner size={16} isLoading={isLoading} />
                             </FollowButton>
                         ) : (
                             <FollowButton onClick={handleFollow}>{isFollowed ? "Unfollow" : "Follow"}</FollowButton>

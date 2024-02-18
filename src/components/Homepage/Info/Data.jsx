@@ -52,7 +52,7 @@ export const aboutData = {
                     </ListContent>
                 </List>
                 <List>
-                    <ListIcon />{" "}
+                    <ListIcon />
                     <ListContent style={{ fontSize: "initial" }}>Become a part of a Hub of Cyber Security.</ListContent>
                 </List>
             </ListContainer>

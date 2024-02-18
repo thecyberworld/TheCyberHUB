@@ -51,8 +51,7 @@ const Topic = () => {
                         margin: "0 auto",
                     }}
                 >
-                    {" "}
-                    {topic.level}{" "}
+                    {topic.level}
                 </p>
                 <div
                     style={{

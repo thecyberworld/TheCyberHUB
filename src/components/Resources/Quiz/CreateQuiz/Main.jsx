@@ -136,7 +136,7 @@ const QuizAdder = () => {
                     </SaveButton>
                 </div>
             </QuizContainer>
-            {/* <AddFeedTags tags={" "} setTags={"   */}
+            {/* <AddFeedTags tags= setTags={"   */}
         </Wrapper>
     );
 };

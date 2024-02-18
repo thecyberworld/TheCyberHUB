@@ -74,8 +74,7 @@ const FiltersComponent = ({ types, selectedType, handleTypeSelect }) => {
                     }}
                     onClick={() => handleTypeSelect(filter.value)}
                 >
-                    {" "}
-                    {filter.label}{" "}
+                    {filter.label}
                 </FilterButton>
             ))}
         </FilterSection>

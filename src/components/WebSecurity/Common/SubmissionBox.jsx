@@ -8,7 +8,7 @@ const SubmissionBox = ({ submitType }) => {
             <InputSection>
                 <Input placeholder={`Enter your ${submitType} here`} />
                 <SubmitButton>
-                    <PiUploadDuotone size={26} />{" "}
+                    <PiUploadDuotone size={26} />
                 </SubmitButton>
             </InputSection>
         </SubmissionBoxContainer>

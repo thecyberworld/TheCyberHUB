@@ -220,8 +220,7 @@ const AddPost = ({ showPostTags, userDetails }) => {
 
                     {isFeedLoading ? (
                         <PostFormButton>
-                            {" "}
-                            <CircleSpinner size={17} />{" "}
+                            <CircleSpinner size={17} />
                         </PostFormButton>
                     ) : (
                         <PostFormButton onClick={onSubmit}>Create</PostFormButton>

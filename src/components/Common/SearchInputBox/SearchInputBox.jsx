@@ -21,8 +21,7 @@ const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
     return (
         <SearchBox>
             <SearchIcon onClick={handleFocus}>
-                {" "}
-                <FcSearch />{" "}
+                <FcSearch />
             </SearchIcon>
             <SearchInput
                 onClick={handleFocus}

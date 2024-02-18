@@ -138,7 +138,6 @@ export default function QuizPage() {
                                 }}
                                 style={{ marginLeft: "10px" }}
                             >
-                                {" "}
                                 Quiz
                             </ResetButton>
                         </div>
