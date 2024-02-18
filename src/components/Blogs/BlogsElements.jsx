@@ -11,8 +11,15 @@ export const BlogsContainer = styled.div`
 export const BlogsSection = styled.div`
     width: 100%;
     display: flex;
-    flex-direction: column;
+    gap: 25px;
+    flex-direction: row;
     max-width: 1500px;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 15px;
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
 `;
 export const MiddleContainer = styled.div`
     width: 100%;

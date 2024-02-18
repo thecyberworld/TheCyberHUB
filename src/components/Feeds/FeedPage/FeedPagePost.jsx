@@ -38,7 +38,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
             </LeftSection>
             <RightSection>
                 <PostHeader>
-                    <RouteLink to={`/@${feed?.username}`}>
+                    <RouteLink to={`/user/${feed?.username}`}>
                         <LeftSection
                             style={{
                                 alignItems: "center",

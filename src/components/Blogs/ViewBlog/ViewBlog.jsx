@@ -155,7 +155,7 @@ const ViewBlog = () => {
                         <BlogTitle> {blog?.title} </BlogTitle>
                     </BlogImageContainer>
                     <UsernameAndDate>
-                        <RouterLink to={`/@${blog?.username}`}>@{blog?.username}</RouterLink> • {blogCreatedAt}
+                        <RouterLink to={`/user/${blog?.username}`}>@{blog?.username}</RouterLink> • {blogCreatedAt}
                     </UsernameAndDate>
                     <ContentSection>
                         <BlogSummary>{blog?.summary}</BlogSummary>

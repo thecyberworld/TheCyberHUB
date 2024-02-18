@@ -12,7 +12,7 @@
 }
 
 #allNotif {
-    font-size: large;
+    /*font-size: large;*/
 }
 
 #container h3 {
@@ -29,22 +29,22 @@
     align-self: center;
     justify-self: center;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 20px;
 }
 
 .allButton {
-    height: 40px;
-    width: 72px;
+    width: 40px;
+    height: 20px;
 }
 
 .allButton .slider:before {
-    height: 32px;
-    width: 31px;
+    height: 16px;
+    width: 16px;
 }
 
 .allButton input:checked + .slider:before {
-    transform: translateX(32px);
+    transform: translateX(18px);
 }
 
 .switch input {
@@ -63,15 +63,16 @@
     bottom: 0;
 
     background-color: aliceblue;
-    border-radius: 34px;
+    border-radius: 12px;
     transition: 0.4s;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 16px;
+    width: 16px;
+    top: 2px;
     left: 4px;
     bottom: 4px;
     background-color: black;
@@ -84,5 +85,5 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(16px);
 }

@@ -21,20 +21,21 @@ export const MiddleSection = styled.div`
     border-right: 1px solid #1a1a1a;
 `;
 export const FilterButton = styled.button`
+    font-size: 15px;
     height: 100%;
     width: 100%;
     gap: 10px;
     padding: 10px;
 `;
 export const FilterContainer = styled.div`
-    background: #131313;
-    width: 250px;
-    height: 42px;
-    margin: auto;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: #131313;
     border-radius: 7px;
     overflow: clip;
-    margin: 15px;
     align-self: center;
 `;

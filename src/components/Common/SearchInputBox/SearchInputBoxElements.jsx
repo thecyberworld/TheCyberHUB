@@ -1,12 +1,11 @@
-import { FcSearch } from "react-icons/fc";
 import styled from "styled-components";
 import { VscClose } from "react-icons/vsc";
 
 export const SearchInput = styled.input`
     border: none;
-    background: #252525;
+    background: #212121;
     color: #d7d7d7;
-    padding: 8px;
+    padding: 8px 12px;
     font-size: 16px;
     width: 100%;
     border-radius: 0 4px 4px 0;
@@ -21,23 +20,37 @@ export const SearchInput = styled.input`
 `;
 export const SearchBox = styled.div`
     display: flex;
+    //gap: 10px;
     position: relative;
-    left: 0;
     flex-direction: row;
-    justify-content: start;
+    justify-content: space-between;
     align-items: center;
     background: #252525;
-    padding: 0 5px;
+    border-radius: 5px;
     @media screen and (max-width: 380px) {
         width: 100%;
     }
 `;
 
-export const SearchIcon = styled(FcSearch)`
-    font-size: 2rem;
+export const SearchIcon = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #131313;
+
+    width: 50px;
+    height: 40px;
+
+    font-size: 20px;
+
     color: #d7d7d7;
+    border-radius: 4px 0 0 4px;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+
+    &:hover {
+        background: #131313;
+    }
 `;
 
 export const CancelIcon = styled(VscClose)`

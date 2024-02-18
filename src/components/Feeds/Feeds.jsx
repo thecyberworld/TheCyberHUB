@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FeedsContainer, FilterButton, FilterContainer, MiddleSection } from "./FeedsElements";
+import { FeedsContainer, MiddleSection } from "./FeedsElements";
 import { Wrapper } from "../Dashboard/Profile/ProfileElements";
 import AddFeed from "./PostForm/AddFeed";
 import FeedPosts from "./FeedPosts/FeedPosts";
@@ -9,10 +9,9 @@ import { getAllUserDetails, userDetailReset } from "../../features/userDetail/us
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "../../features/apiStatus";
-import FeedTags from "./FeedTags/FeedTags";
-import { LeftContainer, SearchContainer } from "../Explore/ExploreElements";
-import SearchInputBox from "../Common/SearchInputBox";
+import { LeftContainer } from "../Explore/ExploreElements";
 import { getFollowData, reset } from "../../features/follow/followSlice";
+import Sidebar from "./SocialSidebar/Sidebar";
 
 const Feeds = () => {
     const dispatch = useDispatch();
@@ -29,75 +28,19 @@ const Feeds = () => {
 
         dispatch(getAllFeeds());
         dispatch(getAllUserDetails());
-        user && dispatch(getFollowData(user._id));
+        user && dispatch(getFollowData(user?._id));
         return () => {
             dispatch(feedReset());
             dispatch(userDetailReset());
             dispatch(reset());
         };
     }, [dispatch]);
-    const [showOnlyFollowingposts, setShowOnlyFollowingPosts] = useState(false);
 
-    const renderFollowingFilterButtons = () => (
-        <>
-            <FilterButton
-                style={{
-                    background: showOnlyFollowingposts === false ? "#FF6B08" : "",
-                    color: showOnlyFollowingposts === false ? "#0A0A0A" : "",
-                }}
-                onClick={() => setShowOnlyFollowingPosts(false)}
-            >
-                All
-            </FilterButton>
-            <FilterButton
-                style={{
-                    background: showOnlyFollowingposts === true ? "#FF6B08" : "",
-                    color: showOnlyFollowingposts === true ? "#0A0A0A" : "",
-                }}
-                onClick={() => setShowOnlyFollowingPosts(true)}
-            >
-                Following
-            </FilterButton>
-        </>
-    );
-
+    const [showOnlyFollowingPosts, setShowOnlyFollowingPosts] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
-    };
-
-    const customSplit = (str, invisibleChar) => {
-        const result = [];
-        let temp = "";
-        for (let i = 0; i < str.length; i++) {
-            if (str[i] === invisibleChar) {
-                temp += `${invisibleChar} ${invisibleChar}`;
-                i += 2;
-            } else if (str[i] === " ") {
-                result.push(temp);
-                temp = "";
-            } else {
-                temp += str[i];
-            }
-        }
-        if (temp) result.push(temp);
-        return result;
-    };
-
-    const filterByTag = (tag) => {
-        const invisibleChar = "\u200b"; // Zero width space character
-        const updatedSearchTerm = searchTerm ? customSplit(searchTerm, invisibleChar) : [];
-        if (tag.includes(" ")) {
-            tag = tag.replace(/ /g, `${invisibleChar} ${invisibleChar}`);
-        }
-        const index = updatedSearchTerm.indexOf(tag);
-        if (index !== -1) {
-            updatedSearchTerm.splice(index, 1);
-        } else {
-            updatedSearchTerm.push(tag);
-        }
-        setSearchTerm(updatedSearchTerm.join(" "));
     };
 
     const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
@@ -123,20 +66,20 @@ const Feeds = () => {
                         searchTerm={searchTerm}
                         feeds={combinedData}
                         isFeedLoading={isFeedLoading}
-                        showOnlyFollowingposts={showOnlyFollowingposts}
+                        showOnlyFollowingPosts={showOnlyFollowingPosts}
                     />
                 </MiddleSection>
                 <LeftContainer style={{ padding: "25px 0" }}>
-                    <SearchContainer>
-                        {user && <FilterContainer>{renderFollowingFilterButtons()}</FilterContainer>}
-                        <SearchInputBox
-                            placeholder="Search by name"
-                            value={searchTerm}
-                            onChange={handleSearchTermChange}
-                            setValue={setSearchTerm}
-                        />
-                    </SearchContainer>
-                    <FeedTags tags={feedTags} handleClick={filterByTag} />
+                    <Sidebar
+                        user={user}
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
+                        handleSearchTermChange={handleSearchTermChange}
+                        tags={feedTags}
+                        showOnlyFollowing={showOnlyFollowingPosts}
+                        setShowOnlyFollowing={setShowOnlyFollowingPosts}
+                        sidebarType={"feeds"}
+                    />
                 </LeftContainer>
             </FeedsContainer>
         </Wrapper>

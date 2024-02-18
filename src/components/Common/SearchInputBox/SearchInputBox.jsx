@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { SearchBox, SearchIcon, SearchInput, CancelIcon, CancelIconWrapper } from "./SearchInputBoxElements";
+import { FcSearch } from "react-icons/fc";
 
 const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
     const inputRef = useRef(null);
@@ -19,7 +20,10 @@ const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
 
     return (
         <SearchBox>
-            <SearchIcon onClick={handleFocus} />
+            <SearchIcon onClick={handleFocus}>
+                {" "}
+                <FcSearch />{" "}
+            </SearchIcon>
             <SearchInput
                 onClick={handleFocus}
                 onBlur={handleFocusOut}

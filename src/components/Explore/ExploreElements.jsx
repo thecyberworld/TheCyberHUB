@@ -19,9 +19,11 @@ export const ExploreContainer = styled.div`
 
 export const SearchContainer = styled.div`
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     gap: 5px;
-    width: 100%;
+    border-radius: 5px;
 
     @media screen and (max-width: 800px) {
         padding: 15px;
@@ -100,3 +102,12 @@ export const EventsContainer = styled(ExploreContentContainer)``;
 export const QuizContainer = styled(ExploreContentContainer)``;
 
 export const InterviewQuesContainer = styled(ExploreContentContainer)``;
+
+export const RadioContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const RadioLabel = styled.label`
+    margin-bottom: 5px;
+`;
