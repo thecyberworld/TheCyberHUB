@@ -96,6 +96,7 @@ const Explore = () => {
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
     const userId = user?._id;
     const { followData } = useSelector((state) => state.followData);
+
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user) || [];
