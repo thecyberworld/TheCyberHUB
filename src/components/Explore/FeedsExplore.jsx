@@ -31,13 +31,18 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
 
     if (!feeds.length) return <NotFound title="Feeds Not Found" description="There are no feeds" />;
 
-    const filteredData = feeds?.filter((feed) => {
-        const contentIncludesSearchTerm =
-            !searchTerm || feed?.content?.toLowerCase().includes(searchTerm?.toLowerCase()) || false;
-        const tagsIncludeSearchTerm =
-            !searchTerm || feed?.tags?.join(" ").toLowerCase().includes(searchTerm?.toLowerCase()) || false;
+    const removeInvisibleChars = (str) => {
+        return str.replace(/\u200b/g, "");
+    };
 
-        return !searchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm;
+    const filteredData = feeds?.filter((feed) => {
+        const cleanSearchTerm = removeInvisibleChars(searchTerm);
+        const contentIncludesSearchTerm =
+            !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+        const tagsIncludeSearchTerm =
+            !cleanSearchTerm || feed?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+
+        return !cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm;
     });
 
     const feedLikesData = ({ feedId }) => {
