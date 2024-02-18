@@ -27,12 +27,16 @@ export const BlogImageSection = styled.div`
 `;
 
 export const ButtonEdit = styled.button`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     background: #1a1c1d;
+    justify-content: space-between;
+    gap: 10px;
     color: #adadad;
     border: none;
     font-size: 15px;
     cursor: pointer;
-    height: 20px;
     padding: 5px 10px;
 
     &:hover {
@@ -43,12 +47,16 @@ export const ButtonEdit = styled.button`
 `;
 
 export const ButtonDelete = styled.button`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
     background: #1a1c1d;
     color: #adadad;
     border: none;
     font-size: 15px;
     cursor: pointer;
-    height: 20px;
 
     &:hover {
         scale: 1.1;
@@ -59,12 +67,15 @@ export const ButtonDelete = styled.button`
 
 export const EditBlogSection = styled.div`
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    padding: 10px;
+    background: #1a1c1d;
 `;
 export const BlogCardImage = styled.img`
     width: 100%;
-    height: auto; /* Specify the desired fixed height for the image */
-    object-fit: contain; /* Adjust the value based on your requirement */
+    height: auto;
+    object-fit: cover;
+    max-height: 300px;
 
     display: block;
     margin: 0 auto;

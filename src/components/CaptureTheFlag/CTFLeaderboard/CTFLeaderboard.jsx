@@ -79,7 +79,7 @@ const CTFLeaderboard = ({ ctfId, registeredUsers, flags }) => {
                                                 {index + 1}
                                             </LeaderboardTableHeaderIndex>
                                             <LeaderboardTableHeader>
-                                                <RouterLink to={`/@${user?.username}`} style={{ color: "inherit" }}>
+                                                <RouterLink to={`/user/${user?.username}`} style={{ color: "inherit" }}>
                                                     {user?.username}
                                                 </RouterLink>
                                             </LeaderboardTableHeader>

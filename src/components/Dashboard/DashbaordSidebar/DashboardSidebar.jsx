@@ -6,6 +6,7 @@ import {
     CgOpenCollectiveIcon,
     PiNotebookDuotoneIcon,
     MdAnalyticsIcon,
+    BiLogoBloggerIcon,
 } from "./DashbaordSidebarElements";
 import GeneralDashboardSidebar from "../../Common/GeneralDashboardSidebar";
 
@@ -18,7 +19,7 @@ const DashboardSidebar = ({ userDetail }) => {
         { to: "/dashboard/notes", icon: <PiNotebookDuotoneIcon />, label: "Notes" },
         { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
         { to: "/dashboard/tools", icon: <CgOpenCollectiveIcon />, label: "Tools" },
-        // { to: "/dashboard/blogs", icon: <BiLogoBloggerIcon />, label: "User Blogs" },
+        { to: "/dashboard/blogs", icon: <BiLogoBloggerIcon />, label: "User Blogs" },
         // {to: "/dashboard/bookmarks", icon: <BiBookmarksIcon/>, label: "Bookmarks"},
         // { to: "/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
     ];

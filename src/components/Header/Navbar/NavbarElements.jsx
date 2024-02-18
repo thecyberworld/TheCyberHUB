@@ -196,14 +196,12 @@ export const RankTrophy = styled(BsTrophyFill)`
 `;
 
 export const RouterNavCreateButtonLink = styled(Link)`
-    margin: ${(props) => (props.noCenter ? 0 : "0 auto")};
-    margin-bottom: 2rem;
     display: initial;
     height: fit-content;
     background: #111111;
     border-radius: 5px;
     color: #ff6b08;
-    padding: 5px 15px;
+    padding: 10px 15px;
     transition: 0.2s ease-in-out;
 
     @media screen and (max-width: 600px) {

@@ -6,13 +6,17 @@ export const TagsContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     text-align: start;
-    padding: 25px;
+    padding: 20px;
     width: 100%;
     max-width: 500px;
-    background: #090909;
-    margin-bottom: 15px;
+    background: #131313;
     border-radius: 5px;
     @media screen and (max-width: 800px) {
+        padding: 15px;
+        display: none;
+    }
+
+    @media screen and (max-width: 600px) {
         padding: 15px;
         display: none;
     }
@@ -20,7 +24,7 @@ export const TagsContainer = styled.div`
 
 export const AllTags = styled.div`
     display: flex;
-    font-size: 150%;
+    //font-size: 150%;
     flex-wrap: wrap;
     word-wrap: break-word;
 
@@ -33,12 +37,12 @@ export const AllTags = styled.div`
 `;
 
 export const Tag = styled.p`
-    background: #1e1e1e;
+    background: #212121;
     padding: 0 10px;
     margin: 5px 10px 5px 0;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
     transition: transform 0.3s;
     flex-wrap: wrap;
     word-wrap: break-word;
@@ -46,6 +50,8 @@ export const Tag = styled.p`
     overflow-wrap: break-word;
     text-transform: capitalize;
     user-select: none;
+    color: #9ca3af;
+
     &:hover {
         transform: scale(1.03);
     }

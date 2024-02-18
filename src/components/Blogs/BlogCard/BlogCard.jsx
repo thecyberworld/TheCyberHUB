@@ -3,16 +3,13 @@ import {
     BlogCardImage,
     BlogImageSection,
     ButtonDelete,
-    ButtonEdit,
-    // ButtonDelete,
+    ButtonEdit, // ButtonDelete,
     // ButtonEdit,
     Categories,
     Category,
-    ContainerCard,
-    // Description,
+    ContainerCard, // Description,
     DetailsSection,
-    EditBlogSection,
-    // EditBlogSection,
+    EditBlogSection, // EditBlogSection,
     FooterDetailsSection,
     MainSection,
     SubSection,
@@ -37,6 +34,7 @@ const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f
 
 const BlogCard = ({ blog }) => {
     const pathname = window.location.pathname;
+    const isDashboard = pathname.split("/")[1] === "dashboard";
     const dispatch = useDispatch();
     const coverImage = blog?.coverImage;
     const coverImageUrl = cdnContentImagesUrl(`/blog/${coverImage}`) || image;
@@ -45,25 +43,20 @@ const BlogCard = ({ blog }) => {
     return (
         <ContainerCard>
             <span>
+                {isDashboard && user && user._id === blog?.user ? (
+                    <EditBlogSection>
+                        <ButtonDelete onClick={() => dispatch(deleteBlog(blog?._id))} style={{ padding: "2px 10px" }}>
+                            <AiFillDelete size={25} /> Delete
+                        </ButtonDelete>
+                        <Link key={blog?._id} to={{ pathname: `edit/${encodeURL(blog?.title)}` }}>
+                            <ButtonEdit style={{ padding: "2px 10px" }}>
+                                <BiEdit size={25} /> Edit
+                            </ButtonEdit>
+                        </Link>
+                    </EditBlogSection>
+                ) : null}
                 <DetailsSection>
                     <BlogImageSection>
-                        <EditBlogSection>
-                            {pathname === "/dashboard/blogs" && user && user._id === blog?.user ? (
-                                <Link key={blog?._id} to={{ pathname: `edit/${encodeURL(blog?.title)}` }}>
-                                    <ButtonEdit style={{ padding: "2px 10px" }}>
-                                        <BiEdit />
-                                    </ButtonEdit>
-                                </Link>
-                            ) : null}
-                            {pathname !== "/blogs" && user && user._id === blog?.user ? (
-                                <ButtonDelete
-                                    onClick={() => dispatch(deleteBlog(blog?._id))}
-                                    style={{ padding: "2px 10px" }}
-                                >
-                                    <AiFillDelete />
-                                </ButtonDelete>
-                            ) : null}
-                        </EditBlogSection>
                         <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
                             <BlogCardImage src={coverImageUrl || image} alt={""} />
                         </RouterLink>
