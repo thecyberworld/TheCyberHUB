@@ -95,7 +95,8 @@ const Explore = () => {
     const { connections } = useSelector((state) => state.connectionData);
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
     const userId = user?._id;
-    const { followData, isLoading: isFollowDataLoading } = useSelector((state) => state.followData);
+    const { followData } = useSelector((state) => state.followData);
+
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user);
@@ -188,14 +189,15 @@ const Explore = () => {
 
     const filteredBlogs = blogsData?.filter((blog) => blog !== null);
 
-    const filteredCtf = ctf
-        ?.slice()
-        .reverse()
-        ?.slice(0, 10)
-        .reverse()
-        .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter.includes(user)));
+    const filteredCtf =
+        ctf
+            ?.slice()
+            .reverse()
+            ?.slice(0, 10)
+            .reverse()
+            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter.includes(user))) || [];
 
-    const filteredUsers = userDetailsLocal.filter((user) => selectedFilter?.includes(user.user));
+    const filteredUsers = userDetailsLocal.filter((user) => selectedFilter.includes(user.user));
 
     const handleTypeFilter = (filter) => {
         setSelectedFilter(filter.value);
@@ -208,7 +210,7 @@ const Explore = () => {
         { value: followers, label: "Followers" },
     ];
 
-    if (isApiLoading || isFollowDataLoading) return <LoadingSpinner />;
+    if (isApiLoading || isCtfLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
