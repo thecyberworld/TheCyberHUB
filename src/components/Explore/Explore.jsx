@@ -188,12 +188,13 @@ const Explore = () => {
 
     const filteredBlogs = blogsData?.filter((blog) => blog !== null);
 
-    const filteredCtf = ctf
-        ?.slice()
-        .reverse()
-        ?.slice(0, 10)
-        .reverse()
-        .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter.includes(user)));
+    const filteredCtf =
+        ctf
+            ?.slice()
+            .reverse()
+            ?.slice(0, 10)
+            .reverse()
+            .filter((ctf) => ctf?.registeredUsers?.find(({ user }) => selectedFilter?.includes(user))) || [];
 
     const filteredUsers = userDetailsLocal.filter((user) => selectedFilter?.includes(user.user));
 
@@ -208,7 +209,8 @@ const Explore = () => {
         { value: followers, label: "Followers" },
     ];
 
-    if (isApiLoading || isFollowDataLoading) return <LoadingSpinner />;
+    if (isApiLoading || isFollowDataLoading || isCtfLoading || isUserDetailLoading || isFeedLoading || isBlogLoading)
+        return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
