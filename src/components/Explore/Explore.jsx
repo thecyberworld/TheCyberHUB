@@ -100,7 +100,7 @@ const Explore = () => {
     const allConnections = connections?.connections?.map((connection) => connection.user);
 
     const [filterLabel, setFilterLabel] = useState("Connections");
-    const [selectedFilter, setSelectedFilter] = useState("ALL");
+    const [selectedFilter, setSelectedFilter] = useState("all");
 
     useEffect(() => {
         dispatch(getAllUserDetails()).then(({ payload }) => {
