@@ -50,7 +50,7 @@ export const Tag = styled.p`
     overflow-wrap: break-word;
     text-transform: capitalize;
     user-select: none;
-    color: #9ca3af;
+    color: #e5e5e5;
 
     &:hover {
         transform: scale(1.03);
