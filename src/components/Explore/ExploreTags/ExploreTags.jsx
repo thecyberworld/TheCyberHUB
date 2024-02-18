@@ -1,7 +1,7 @@
 import React from "react";
-import { AllTags, Tag, TagsContainer } from "./TagsElements";
+import { AllTags, Tag, TagsContainer } from "./ExploreTagsElements";
 
-const Tags = ({ tags }) => {
+const ExploreTags = ({ tags, handleClick }) => {
     return (
         <TagsContainer>
             <h4
@@ -19,7 +19,7 @@ const Tags = ({ tags }) => {
                 {tags.slice(0, 10).map(
                     (tag, key) =>
                         tag.length !== 0 && (
-                            <Tag key={key}>
+                            <Tag key={key} onClick={() => handleClick(tag)}>
                                 {/* <RouterLink to={`tags/${tag.split(" ").join("-")}`}> */}
                                 {tag}
                                 {/* </RouterLink> */}
@@ -31,4 +31,4 @@ const Tags = ({ tags }) => {
     );
 };
 
-export default Tags;
+export default ExploreTags;

@@ -17,13 +17,14 @@ import { getAllUserDetails, userDetailReset } from "../../features/userDetail/us
 import { feedReset, getAllFeeds } from "../../features/feeds/feedsSlice";
 import Users from "./Users/Users";
 import FeedsExplore from "./FeedsExplore";
-import Tags from "./Tags/Tags";
+import ExploreTags from "./ExploreTags/ExploreTags";
 import BlogCards from "../Blogs/BlogCard/BlogCards";
 import CtfChallenges from "../CaptureTheFlag/CTFCards/CtfChallenges";
 import apiStatus from "../../features/apiStatus";
 import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
 import SearchInputBox from "../Common/SearchInputBox";
+import { filterByTags } from "../Common/Tags/filterByTags";
 import { getFollowData } from "../../features/follow/followSlice";
 import { getConnections } from "../../features/connections/connectionSlice";
 
@@ -92,6 +93,10 @@ const Explore = () => {
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
+    };
+
+    const handleFilterByTags = (tag) => {
+        filterByTags(tag, searchTerm, setSearchTerm);
     };
 
     const [selectedType, setSelectedType] = useState("all");
@@ -218,7 +223,7 @@ const Explore = () => {
                         )}
                     </SearchContainer>
 
-                    <Tags tags={tags} />
+                    <ExploreTags tags={tags} handleClick={handleFilterByTags} />
                 </LeftContainer>
 
                 <RightContainer>
