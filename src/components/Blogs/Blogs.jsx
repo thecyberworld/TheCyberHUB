@@ -73,8 +73,6 @@ const Blogs = () => {
         );
     });
 
-    console.log(filteredBlogs);
-
     const blogTags = blogs?.map((blog) => blog?.tags).flat() || [];
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {

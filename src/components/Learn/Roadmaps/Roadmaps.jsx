@@ -31,9 +31,7 @@ const Roadmaps = () => {
                         return (
                             <RouterLink key={id} to={{ pathname: `${encodeURL(roadmap?.title)}` }}>
                                 <RoadmapCard>
-                                    <RoadmapHeading style={{ color: `${Colors[id]}` }}>
-                                        {roadmap?.title}{" "}
-                                    </RoadmapHeading>
+                                    <RoadmapHeading style={{ color: `${Colors[id]}` }}>{roadmap?.title}</RoadmapHeading>
                                     <RoadmapDesc> {roadmap?.desc} </RoadmapDesc>
                                 </RoadmapCard>
                             </RouterLink>

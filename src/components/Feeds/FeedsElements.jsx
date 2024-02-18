@@ -25,7 +25,7 @@ export const FilterButton = styled.button`
     height: 100%;
     width: 100%;
     gap: 10px;
-    padding: 10px;
+    padding: 5px 10px;
 `;
 export const FilterContainer = styled.div`
     display: flex;

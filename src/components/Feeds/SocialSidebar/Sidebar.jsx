@@ -57,12 +57,7 @@ const Sidebar = ({
     const renderFollowingFilterButtons = () => (
         <>
             {sidebarType === "explore" ? (
-                <div
-                    style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                    }}
-                >
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <FilterButton
                         style={{
                             background: filterLabel === "Connections" ? "#FF6B08" : "",

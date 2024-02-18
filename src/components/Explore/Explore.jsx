@@ -44,8 +44,9 @@ const FilterContent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 `;
+
 const FilterSection = ({ title, children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -93,8 +94,8 @@ const Explore = () => {
     const { ctf, isCtfLoading } = useSelector((state) => state.ctf);
     const { connections } = useSelector((state) => state.connectionData);
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
-    const followUserId = user?._id;
-    const { followData } = useSelector((state) => state.followData);
+    const userId = user?._id;
+    const { followData, isLoading: isFollowDataLoading } = useSelector((state) => state.followData);
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user);
@@ -104,15 +105,16 @@ const Explore = () => {
 
     useEffect(() => {
         dispatch(getAllUserDetails()).then(({ payload }) => {
-            setSelectedFilter(payload.map((user) => user.user));
+            setSelectedFilter(payload?.map((user) => user?.user));
             setUserDetailsLocal(payload);
         });
         dispatch(getAllFeeds());
         dispatch(getAllBlogs());
         dispatch(getAllCTFs());
-        if (followUserId) {
-            dispatch(getFollowData(followUserId));
-            dispatch(getConnections(followUserId));
+
+        if (userId) {
+            dispatch(getFollowData(userId));
+            dispatch(getConnections(userId));
         }
 
         return () => {
@@ -158,7 +160,7 @@ const Explore = () => {
         ?.slice(0, 10)
         .reverse()
         .map((feed) => {
-            const userDetail = userDetailsLocal?.find((user) => user.user === feed.user);
+            const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
             if (!selectedFilter?.includes(userDetail?.user)) {
                 return null;
             }
@@ -175,7 +177,7 @@ const Explore = () => {
         ?.slice(0, 10)
         .reverse()
         .map((blog) => {
-            const userDetail = userDetailsLocal?.find((user) => user.user === blog.user);
+            const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
             if (!selectedFilter?.includes(userDetail?.user)) {
                 return null;
             }
@@ -191,7 +193,7 @@ const Explore = () => {
         .reverse()
         ?.slice(0, 10)
         .reverse()
-        .filter((ctf) => ctf.registeredUsers.find(({ user }) => selectedFilter.includes(user)));
+        .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter.includes(user)));
 
     const filteredUsers = userDetailsLocal.filter((user) => selectedFilter?.includes(user.user));
 
@@ -206,7 +208,7 @@ const Explore = () => {
         { value: followers, label: "Followers" },
     ];
 
-    if (isApiLoading) return <LoadingSpinner />;
+    if (isApiLoading || isFollowDataLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
@@ -225,11 +227,7 @@ const Explore = () => {
                         userFilters={userFilters}
                         filterLabel={filterLabel}
                         handleTypeFilter={handleTypeFilter}
-                        exploreFiltersComponent={FiltersComponent({
-                            types,
-                            selectedType,
-                            handleTypeSelect,
-                        })}
+                        exploreFiltersComponent={FiltersComponent({ types, selectedType, handleTypeSelect })}
                         sidebarType={"explore"}
                     />
                 </LeftContainer>

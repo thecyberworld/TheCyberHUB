@@ -95,8 +95,7 @@ function Job(props) {
                         },
                     }}
                 >
-                    {" "}
-                    Apply{" "}
+                    Apply
                 </RouterLink>
             </div>
         </JobContainer>

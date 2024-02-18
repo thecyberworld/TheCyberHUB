@@ -28,8 +28,7 @@ const SubHeader = (props) => {
                             marginRight: "20px",
                         }}
                     >
-                        {" "}
-                        {props.heading}{" "}
+                        {props.heading}
                     </NavLink>
                 </Li>
             </Ul>

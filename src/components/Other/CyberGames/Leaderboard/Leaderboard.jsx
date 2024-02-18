@@ -91,7 +91,6 @@ const Leaderboard = () => {
                                                         </LeaderboardFirstRow>
                                                     ) : (
                                                         <>
-                                                            {" "}
                                                             <RankTrophy /> {index + 1}
                                                         </>
                                                     )}
