@@ -210,8 +210,6 @@ const Explore = () => {
 
     if (!isApiWorking) return <UnderMaintenance />;
 
-    console.log("filteredLabel", filterLabel);
-
     return (
         <Wrapper>
             <ExploreContainer>
