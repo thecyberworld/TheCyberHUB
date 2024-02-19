@@ -8,10 +8,14 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 const Methodology = () => {
     const subtopicRefs = useRef({});
 
-    const [active, setActive] = useState(false);
-
+    const [active, setActive] = useState(null);
     function handleClick(subtopic) {
-        setActive(!active);
+        setActive(subtopic === active ? null : subtopic);
+
+        if (active !== null && active !== subtopic) {
+            const previousElement = subtopicRefs.current[active];
+            previousElement.style.display = "none";
+        }
 
         const element = subtopicRefs.current[subtopic];
         if (element.style.display === "block") {
@@ -50,7 +54,7 @@ const Methodology = () => {
                                     <DataContainer key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
                                         <MethodologyHeading onClick={() => handleClick(subTopic)}>
                                             {subTopic}
-                                            <HintIcon>{active ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
+                                            <HintIcon>{active === subTopic ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
                                         </MethodologyHeading>
                                         <HideDataContainer
                                             ref={(el) => (subtopicRefs.current[subTopic] = el)}
