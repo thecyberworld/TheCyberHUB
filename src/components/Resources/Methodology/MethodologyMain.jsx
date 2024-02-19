@@ -6,11 +6,9 @@ import { HintIcon } from "../../WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Methodology = () => {
-    // const subtopicRefs = useRef({});
     const subtopicRefs = useRef({});
 
     const [active, setActive] = useState(null);
-    let element;
     function handleClick(subtopic) {
         setActive(subtopic === active ? null : subtopic);
 
@@ -19,7 +17,7 @@ const Methodology = () => {
             previousElement.style.display = "none";
         }
 
-        element = subtopicRefs.current[subtopic];
+        const element = subtopicRefs.current[subtopic];
         if (element.style.display === "block") {
             element.style.display = "none";
         } else {
