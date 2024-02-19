@@ -59,6 +59,7 @@ import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
 import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
+import VictimHelp from "./components/Other/Victimhelp/Victimhelp";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
@@ -139,6 +140,7 @@ const App = () => {
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
                         <Route path={"/blogs/*"} element={<BlogsRoute />} />
                         <Route exact path={"/blogs/create-blog"} element={<CreateBlog />} />
+                        <Route exact path={"/victimhelp"} element={<VictimHelp />} />
 
                         <Route path={"/forum/*"} element={<ForumRoute />} />
 
