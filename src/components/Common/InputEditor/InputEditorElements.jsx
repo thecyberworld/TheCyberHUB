@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const InputEditorContainer = styled.div`
     width: 100%;
 `;
-export const InputEditorTheInput = styled.input`
+const InputEditorField = css`
     padding: 7px 12px;
     color: white;
     width: 100%;
@@ -16,6 +16,15 @@ export const InputEditorTheInput = styled.input`
     background-color: #090909;
     font: 16px "Poppins", sans-serif;
 `;
+export const InputEditorTheInput = styled.input`
+    ${InputEditorField}
+`;
+
+export const InputEditorTextarea = styled.textarea`
+    ${InputEditorField}
+    resize: none;
+`;
+
 export const InputEditorLabel = styled.h2`
     text-transform: capitalize;
     text-align: center;
