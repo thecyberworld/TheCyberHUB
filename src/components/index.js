@@ -19,6 +19,7 @@ export { default as CourseDetail } from "./Learn/Courses/YoutubeCourseDetail";
 export { default as Resources } from "./Resources/Resources";
 export { default as WriteUps } from "./Resources/WriteUps/WriteUps";
 export { default as CyberNews } from "./Resources/CyberNews/CyberNews";
+export { default as Victimhelp } from "./Other/Victimhelp/Victimhelp";
 
 // //
 export { default as CyberGames } from "./Other/CyberGames/CyberGames";
