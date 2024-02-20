@@ -13,11 +13,11 @@ import HeadingBanner from "../Common/HeadingBanner/HeadingBanner";
 
 const Tools = () => {
     const tools = [
-        { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
         { name: "Sub Finder", link: "/tools/subfinder", icon: <RiEarthFill /> },
-        { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
+        { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
+        { name: "Bin Exploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
         { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },
-        { name: "BinExploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
+        { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
         // { name: "Dorking", link: "/tools/dorking", icon: <MdScreenSearchDesktop  /> },
 
         // {name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill/>,},
