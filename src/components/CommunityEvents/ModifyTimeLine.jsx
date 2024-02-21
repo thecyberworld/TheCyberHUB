@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 import {
     ModifyActionsContainer,
@@ -10,16 +11,27 @@ import {
     ModifyTimeLineListContainer,
 } from "./ModifyElements";
 import TimeLineListItemDisplay from "./TimeLineListItemDisplay";
-import { toast } from "react-toastify";
 
-const ModifyTimeLine = ({ eventManageTimelineId, handleCloseChangeMode }) => {
+const convertFromObjToArray = (objData) => {
+    return Object.values(objData);
+};
+const convertFromArrayToObj = (arrayData) => {
+    const newObjData = {};
+    arrayData.forEach((item) => {
+        newObjData[item._id] = { ...item, id: item._id };
+    });
+    return newObjData;
+};
+
+const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageTimelineId }) => {
     const [timeLineListItems, setTimeLineListItems] = useState({});
     useEffect(() => {
         setTimeLineListItems(() => {
-            const newId = nanoid();
+            if (modifyEvent.timeline.length) return convertFromArrayToObj(modifyEvent.timeline);
+            const newTemporaryId = nanoid();
             return {
-                [newId]: {
-                    id: newId,
+                [newTemporaryId]: {
+                    id: newTemporaryId,
                     name: "",
                     description: "",
                     topic: "",
@@ -33,11 +45,11 @@ const ModifyTimeLine = ({ eventManageTimelineId, handleCloseChangeMode }) => {
 
     const handleAddListItem = () => {
         setTimeLineListItems((prevArray) => {
-            const newId = nanoid();
+            const newTemporaryId = nanoid();
             return {
                 ...prevArray,
-                [newId]: {
-                    id: newId,
+                [newTemporaryId]: {
+                    id: newTemporaryId,
                     name: "",
                     description: "",
                     topic: "",
@@ -48,13 +60,15 @@ const ModifyTimeLine = ({ eventManageTimelineId, handleCloseChangeMode }) => {
             };
         });
     };
-    const timeLineList = Object.values(timeLineListItems).map((timeLineListObj) => (
-        <TimeLineListItemDisplay
-            timeLineListObj={timeLineListObj}
-            setTimeLineListItems={setTimeLineListItems}
-            key={timeLineListObj.id}
-        />
-    ));
+    const timeLineList = Object.values(timeLineListItems).map((timeLineListObj) => {
+        return (
+            <TimeLineListItemDisplay
+                timeLineListObj={timeLineListObj}
+                setTimeLineListItems={setTimeLineListItems}
+                key={timeLineListObj.id}
+            />
+        );
+    });
     const handleSaveTimeline = () => {
         // validate the every field is not empty
         let validationError = false;
@@ -71,7 +85,9 @@ const ModifyTimeLine = ({ eventManageTimelineId, handleCloseChangeMode }) => {
             toast.error("Some of the input fields are empty, fill all the fields and try again");
             return;
         }
-        handleCloseChangeMode();
+        const timelineArray = convertFromObjToArray(timeLineListItems);
+        onModify({ ...modifyEvent, timeline: timelineArray }, eventManageTimelineId);
+        onCloseChangeMode();
     };
     return (
         <ModifyItem>
@@ -85,7 +101,7 @@ const ModifyTimeLine = ({ eventManageTimelineId, handleCloseChangeMode }) => {
                 <ModifyActionButton type="save" onClick={handleSaveTimeline}>
                     <ModifyActionText type="save">Save</ModifyActionText>
                 </ModifyActionButton>
-                <ModifyActionButton type="cancel" onClick={handleCloseChangeMode}>
+                <ModifyActionButton type="cancel" onClick={onCloseChangeMode}>
                     <ModifyActionText type="cancel">Cancel</ModifyActionText>
                 </ModifyActionButton>
             </ModifyActionsContainer>

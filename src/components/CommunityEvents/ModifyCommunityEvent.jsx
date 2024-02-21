@@ -50,7 +50,7 @@ const setDateAndTime = (date, time) => {
 const AddZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };
-const ModifyCommunityEvent = ({ handleCloseChangeMode, onModify, modifyEvent, setModifyEventId, modifyEventId }) => {
+const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modifyEventId }) => {
     const [eventObj, setEventObj] = useState(
         modifyEvent || {
             status: "approved",
@@ -156,7 +156,7 @@ const ModifyCommunityEvent = ({ handleCloseChangeMode, onModify, modifyEvent, se
         ) {
             onModify(eventObj, modifyEventId);
             setTime({ startTime: "", endTime: "" });
-            handleCloseChangeMode();
+            onCloseChangeMode();
         } else {
             toast.error(
                 "There is a validation error, make sure you set all the values properly. Note: The Event Name needs to be more than 4 characters, The Event Description more than 10 characters, The end time can't be before start time ",
@@ -262,7 +262,7 @@ const ModifyCommunityEvent = ({ handleCloseChangeMode, onModify, modifyEvent, se
                 <ModifyActionButton type="save" onClick={handleSaveChanges}>
                     <ModifyActionText type="save">Save</ModifyActionText>
                 </ModifyActionButton>
-                <ModifyActionButton type="cancel" onClick={handleCloseChangeMode}>
+                <ModifyActionButton type="cancel" onClick={onCloseChangeMode}>
                     <ModifyActionText type="cancel">Cancel</ModifyActionText>
                 </ModifyActionButton>
             </ModifyActionsContainer>
