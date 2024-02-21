@@ -9,6 +9,7 @@ import {
     ModifyItem,
     ModifyTimeLineList,
     ModifyTimeLineListContainer,
+    ModifyItemActionsContainer,
 } from "./ModifyElements";
 import TimeLineListItemDisplay from "./TimeLineListItemDisplay";
 
@@ -42,7 +43,14 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
             };
         });
     }, []);
-
+    const handleRemoveLastItem = () => {
+        setTimeLineListItems((prevTimeLineListItems) => {
+            const lastItemKey = Object.keys(prevTimeLineListItems)[Object.keys(prevTimeLineListItems).length - 1];
+            const newTimeLineListItems = { ...prevTimeLineListItems };
+            delete newTimeLineListItems[lastItemKey];
+            return newTimeLineListItems;
+        });
+    };
     const handleAddListItem = () => {
         setTimeLineListItems((prevArray) => {
             const newTemporaryId = nanoid();
@@ -93,9 +101,14 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
         <ModifyItem>
             <ModifyTimeLineListContainer>
                 <ModifyTimeLineList>{timeLineList}</ModifyTimeLineList>
-                <ModifyActionButton type="add" onClick={handleAddListItem}>
-                    <ModifyActionText type="add">Add</ModifyActionText>
-                </ModifyActionButton>
+                <ModifyItemActionsContainer>
+                    <ModifyActionButton type="add" onClick={handleAddListItem}>
+                        <ModifyActionText type="add">Add</ModifyActionText>
+                    </ModifyActionButton>
+                    <ModifyActionButton type="remove" onClick={handleRemoveLastItem}>
+                        <ModifyActionText type="remove">Remove</ModifyActionText>
+                    </ModifyActionButton>
+                </ModifyItemActionsContainer>
             </ModifyTimeLineListContainer>
             <ModifyActionsContainer>
                 <ModifyActionButton type="save" onClick={handleSaveTimeline}>

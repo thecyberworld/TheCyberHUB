@@ -98,9 +98,11 @@ export const ModifyActionButton = styled.div`
                 return "#00a8ff";
             case "cancel":
                 return "#f14844";
+            case "remove":
+                return "#441514";
         }
     }};
-    margin-top: ${(props) => props.type === "add" && "10px"};
+    margin-top: ${(props) => (props.type === "add" || props.type === "remove") && "10px"};
     color: #f8f8f8;
     &:hover {
         opacity: 0.7;
@@ -115,6 +117,12 @@ export const ModifyActionsContainer = styled.div`
     align-items: end;
     justify-content: space-between;
     height: 150px;
+`;
+export const ModifyItemActionsContainer = styled.div`
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    width: 250px;
 `;
 
 export const ModifyActionText = styled.p``;
