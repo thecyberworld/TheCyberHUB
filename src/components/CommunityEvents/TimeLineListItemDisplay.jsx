@@ -19,7 +19,6 @@ const TimeLineListItemDisplay = ({ timeLineListItemObj, setTimeLineListItems }) 
         });
     };
     // const pickDate = { status: true, startDay: 2, duration: 2 };
-    console.log(timeLineListItemObj, 1);
     return (
         <TimeLineListItem>
             <DetailsInputTimeLineContainer>

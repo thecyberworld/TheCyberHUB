@@ -24,23 +24,29 @@ const convertFromArrayToObj = (arrayData) => {
     return newObjData;
 };
 
+const generateNewItem = (prevObj) => {
+    const newTemporaryId = nanoid();
+    let objData = {};
+    if (prevObj) objData = { ...prevObj };
+    return {
+        ...objData,
+        [newTemporaryId]: {
+            id: newTemporaryId,
+            name: "",
+            description: "",
+            topic: "",
+            startTime: "",
+            endTime: "",
+            eventDay: 1,
+        },
+    };
+};
 const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageTimelineId }) => {
     const [timeLineListItems, setTimeLineListItems] = useState({});
     useEffect(() => {
         setTimeLineListItems(() => {
             if (modifyEvent.timeline.length) return convertFromArrayToObj(modifyEvent.timeline);
-            const newTemporaryId = nanoid();
-            return {
-                [newTemporaryId]: {
-                    id: newTemporaryId,
-                    name: "",
-                    description: "",
-                    topic: "",
-                    startTime: "",
-                    endTime: "",
-                    eventDay: 1,
-                },
-            };
+            return generateNewItem();
         });
     }, []);
     const handleRemoveLastItem = () => {
@@ -48,24 +54,13 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
             const lastItemKey = Object.keys(prevTimeLineListItems)[Object.keys(prevTimeLineListItems).length - 1];
             const newTimeLineListItems = { ...prevTimeLineListItems };
             delete newTimeLineListItems[lastItemKey];
+            if (Object.keys(newTimeLineListItems).length === 0) return generateNewItem(newTimeLineListItems);
             return newTimeLineListItems;
         });
     };
     const handleAddListItem = () => {
-        setTimeLineListItems((prevArray) => {
-            const newTemporaryId = nanoid();
-            return {
-                ...prevArray,
-                [newTemporaryId]: {
-                    id: newTemporaryId,
-                    name: "",
-                    description: "",
-                    topic: "",
-                    startTime: "",
-                    endTime: "",
-                    eventDay: 1,
-                },
-            };
+        setTimeLineListItems((prevObj) => {
+            return generateNewItem(prevObj);
         });
     };
     const timeLineList = Object.values(timeLineListItems).map((timeLineListItemObj) => {
