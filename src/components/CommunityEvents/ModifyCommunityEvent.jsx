@@ -173,7 +173,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                     </InputEditorIconContainer>
                     <TimePickerDisplay
                         rangeDate={rangeDate}
-                        showDate
+                        dateFieldType="show date"
                         modifyObj={modifyEvent}
                         setModifyObj={setEventObj}
                     >
@@ -181,7 +181,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                     </TimePickerDisplay>
                     <TimePickerDisplay
                         rangeDate={rangeDate}
-                        showDate
+                        dateFieldType="show date"
                         modifyObj={modifyEvent}
                         setModifyObj={setEventObj}
                     >

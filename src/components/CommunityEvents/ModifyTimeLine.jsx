@@ -43,10 +43,16 @@ const generateNewItem = (prevObj) => {
 };
 const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageTimelineId }) => {
     const [timeLineListItems, setTimeLineListItems] = useState({});
+    const [rangeDate, setRangeDate] = useState({ from: "", to: "" });
+
     useEffect(() => {
         setTimeLineListItems(() => {
             if (modifyEvent.timeline.length) return convertFromArrayToObj(modifyEvent.timeline);
             return generateNewItem();
+        });
+        setRangeDate({
+            from: new Date(modifyEvent.startTime).setHours(0, 0, 0),
+            to: new Date(modifyEvent.endTime).setHours(0, 0, 0),
         });
     }, []);
     const handleRemoveLastItem = () => {
@@ -69,6 +75,7 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
                 timeLineListItemObj={timeLineListItemObj}
                 setTimeLineListItems={setTimeLineListItems}
                 key={timeLineListItemObj.id}
+                rangeDate={rangeDate}
             />
         );
     });

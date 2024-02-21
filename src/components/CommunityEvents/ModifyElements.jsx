@@ -63,12 +63,13 @@ export const TimeLineListItem = styled.li`
     margin-bottom: 5px;
 `;
 export const DetailsInputTimeLineContainer = styled.div`
-    display: flex;
-    // justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 20px;
 `;
 export const DetailsTextInputTimeLineContainer = styled.div`
     input {
-        width: 90%;
+        width: 100%;
     }
 `;
 export const TimePicking = styled.div`
@@ -93,7 +94,7 @@ export const DisplayDate = styled.p`
     margin-right: 10px;
 `;
 export const TimeInputEditorContainer = styled.div`
-    width: ${({ showDate }) => (showDate ? "45%" : "100%")};
+    width: ${({ dateFieldType }) => (dateFieldType === "show date" || dateFieldType === "pick date" ? "45%" : "100%")};
 `;
 export const ModifyActionButton = styled.div`
     display: flex;

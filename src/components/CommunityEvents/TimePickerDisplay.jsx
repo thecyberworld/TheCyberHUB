@@ -5,7 +5,7 @@ import { DisplayDate, TimeInputEditorContainer, TimeInputLabel, TimePickerContai
 import InputEditor from "../Common/InputEditor";
 import { AddZeroToDateString, setDateAndTime } from "../../utils/dateTimeRelatedFunctions";
 
-const TimePickerDisplay = ({ children, rangeDate, showDate, setModifyObj, modifyObj, nestedObj = false }) => {
+const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyObj, modifyObj, nestedObj = false }) => {
     const [time, setTime] = useState({ startTime: "", endTime: "" });
     const [isStartTime, setIsStartTime] = useState(true);
 
@@ -51,7 +51,7 @@ const TimePickerDisplay = ({ children, rangeDate, showDate, setModifyObj, modify
     return (
         <TimePickerContainer>
             <TimeInputLabel>{children}</TimeInputLabel>
-            {showDate && (
+            {dateFieldType === "show date" && (
                 <DisplayDate>
                     {isStartTime
                         ? rangeDate?.from
@@ -62,7 +62,8 @@ const TimePickerDisplay = ({ children, rangeDate, showDate, setModifyObj, modify
                         : "yyyy-MM-dd"}
                 </DisplayDate>
             )}
-            <TimeInputEditorContainer showDate={showDate}>
+            {dateFieldType === "pick date" && <DisplayDate></DisplayDate>}
+            <TimeInputEditorContainer dateFieldType={dateFieldType}>
                 <InputEditor
                     inputType="time"
                     content={isStartTime ? time?.startTime : time?.endTime}
