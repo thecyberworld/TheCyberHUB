@@ -84,23 +84,23 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
         let validationError = false;
         let timeValidationError = false;
         Object.values(timeLineListItems).some((valueObj) => {
-            if (valueObj.startTime >= valueObj.endTime) {
-                timeValidationError = true;
-                return timeValidationError;
-            }
             Object.values(valueObj).some((value) => {
                 if (!value) {
                     validationError = true;
                 }
                 return validationError;
             });
+            if (valueObj.startTime >= valueObj.endTime) {
+                timeValidationError = true;
+                return timeValidationError;
+            }
             return validationError;
         });
 
         if (validationError || timeValidationError) {
-            if (timeValidationError) toast.error("The end time can't be before start time");
-            if (validationError) toast.error("Some of the input fields are empty, fill all the fields and try again");
-            return;
+            if (validationError)
+                return toast.error("Some of the input fields are empty, fill all the fields and try again");
+            if (timeValidationError) return toast.error("The end time can't be before start time");
         }
         const timelineArray = convertFromObjToArray(timeLineListItems);
         onModify({ ...modifyEvent, timeline: timelineArray }, eventManageTimelineId);
