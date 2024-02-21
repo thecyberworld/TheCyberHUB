@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
+import { GoProjectSymlink } from "react-icons/go";
+import { MdOutlineEventSeat } from "react-icons/md";
+import { toast } from "react-toastify";
 
 import InputEditor from "../Common/InputEditor";
 import { AiFillClockCircleIcon } from "./CommunityEventsElement";
-import { GoProjectSymlink } from "react-icons/go";
-import { MdOutlineEventSeat } from "react-icons/md";
-
 import {
     ModifyActionsContainer,
     ModifyActionButton,
@@ -21,8 +20,9 @@ import {
     ModifyItem,
     DetailsInputEventContainer,
 } from "./ModifyElements";
-import { toast } from "react-toastify";
 import TimePickerDisplay from "./TimePickerDisplay";
+import "react-day-picker/dist/style.css";
+import { setDateAndTime } from "../../utils/dateTimeRelatedFunctions";
 
 const validURL = (str) => {
     const pattern = new RegExp(
@@ -36,20 +36,7 @@ const validURL = (str) => {
     ); // fragment locator
     return !!pattern.test(str);
 };
-const setDateAndTime = (date, time) => {
-    const newDate = date ? new Date(date) : new Date();
-    const newTime = time ? new Date(time) : newDate;
-    return new Date(
-        newDate?.getFullYear(),
-        newDate?.getMonth(),
-        newDate?.getDate(),
-        newTime?.getHours(),
-        newTime?.getMinutes(),
-    );
-};
-const AddZeroToDateString = (dateValue) => {
-    return +dateValue < 10 ? `0${dateValue}` : dateValue;
-};
+
 const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modifyEventId }) => {
     const [eventObj, setEventObj] = useState(
         modifyEvent || {
@@ -67,7 +54,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
     );
 
     const [rangeDate, setRangeDate] = useState({ from: "", to: "" });
-    const [time, setTime] = useState({ startTime: "", endTime: "" });
+
     useEffect(() => {
         if (modifyEventId) {
             const startTimeDate = new Date(modifyEvent.startTime);
@@ -81,18 +68,11 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                 from: new Date(modifyEvent.startTime).setHours(0, 0, 0),
                 to: new Date(modifyEvent.endTime).setHours(0, 0, 0),
             });
-            setTime({
-                startTime: `${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
-                    startTimeDate.getMinutes(),
-                )}`,
-                endTime: `${AddZeroToDateString(endTimeDate.getHours())}:${AddZeroToDateString(
-                    endTimeDate.getMinutes(),
-                )}`,
-            });
         }
     }, []);
     const handleUpdateEventPropertyValue = (properyName, value) => {
         setEventObj((prevEventObj) => {
+            // related only to the DayPicker
             if (properyName === "rangeDate") {
                 if (value && !value.to) value.to = value.from;
                 if (value && !value.from) value.from = value.to;
@@ -103,14 +83,6 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                     endTime: value ? setDateAndTime(value.to, prevEventObj.endTime) : prevEventObj.endTime,
                 };
             }
-            if (properyName.includes("Time")) {
-                const houres = value.split(":")[0];
-                const minutes = value.split(":")[1];
-                return {
-                    ...prevEventObj,
-                    [properyName]: setDateAndTime(prevEventObj[properyName], new Date().setHours(houres, minutes)),
-                };
-            }
 
             return {
                 ...prevEventObj,
@@ -118,7 +90,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
             };
         });
     };
-
+    // related only to the DayPicker
     let footer = (
         <div style={{ height: "50px" }}>
             <p style={{ textAlign: "center" }}>Please pick the first day.</p>
@@ -155,7 +127,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
             eventObj.maxParticipantsNumber > 0
         ) {
             onModify(eventObj, modifyEventId);
-            setTime({ startTime: "", endTime: "" });
+            // setTime({ startTime: "", endTime: "" });
             onCloseChangeMode();
         } else {
             toast.error(
@@ -201,17 +173,17 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                     </InputEditorIconContainer>
                     <TimePickerDisplay
                         rangeDate={rangeDate}
-                        time={time}
-                        handleUpdatePropertyValue={handleUpdateEventPropertyValue}
                         showDate
+                        modifyObj={modifyEvent}
+                        setModifyObj={setEventObj}
                     >
                         From:
                     </TimePickerDisplay>
                     <TimePickerDisplay
                         rangeDate={rangeDate}
-                        time={time}
-                        handleUpdatePropertyValue={handleUpdateEventPropertyValue}
                         showDate
+                        modifyObj={modifyEvent}
+                        setModifyObj={setEventObj}
                     >
                         To:
                     </TimePickerDisplay>

@@ -12,12 +12,24 @@ export const ModifyItem = styled.div`
 `;
 export const ModifyTimeLineList = styled.ul`
     background: transparent;
+    width: 100%;
 `;
 export const ModifyTimeLineListContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
+    flex-grow: 3;
+`;
+export const ModifyActionsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    align-items: end;
+    justify-content: space-between;
+    height: 150px;
+    flex-grow: 1;
 `;
 export const DayPickerContainer = styled.div`
     border-right: 1px solid #f0f0f0;
@@ -42,7 +54,7 @@ export const DetailsInputEventContainer = styled.div`
 export const TimeLineListItem = styled.li`
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 250px;
     width: 100%;
     justify-content: space-around;
     border: 3px inset #2e2e2e;
@@ -52,7 +64,7 @@ export const TimeLineListItem = styled.li`
 `;
 export const DetailsInputTimeLineContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
 `;
 export const DetailsTextInputTimeLineContainer = styled.div`
     input {
@@ -109,15 +121,7 @@ export const ModifyActionButton = styled.div`
         cursor: pointer;
     }
 `;
-export const ModifyActionsContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    position: relative;
-    align-items: end;
-    justify-content: space-between;
-    height: 150px;
-`;
+
 export const ModifyItemActionsContainer = styled.div`
     display: flex;
     cursor: pointer;

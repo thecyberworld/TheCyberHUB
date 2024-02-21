@@ -68,19 +68,24 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
             };
         });
     };
-    const timeLineList = Object.values(timeLineListItems).map((timeLineListObj) => {
+    const timeLineList = Object.values(timeLineListItems).map((timeLineListItemObj) => {
         return (
             <TimeLineListItemDisplay
-                timeLineListObj={timeLineListObj}
+                timeLineListItemObj={timeLineListItemObj}
                 setTimeLineListItems={setTimeLineListItems}
-                key={timeLineListObj.id}
+                key={timeLineListItemObj.id}
             />
         );
     });
     const handleSaveTimeline = () => {
         // validate the every field is not empty
         let validationError = false;
+        let timeValidationError = false;
         Object.values(timeLineListItems).some((valueObj) => {
+            if (valueObj.startTime >= valueObj.endTime) {
+                timeValidationError = true;
+                return timeValidationError;
+            }
             Object.values(valueObj).some((value) => {
                 if (!value) {
                     validationError = true;
@@ -89,8 +94,10 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
             });
             return validationError;
         });
-        if (validationError) {
-            toast.error("Some of the input fields are empty, fill all the fields and try again");
+
+        if (validationError || timeValidationError) {
+            if (timeValidationError) toast.error("The end time can't be before start time");
+            if (validationError) toast.error("Some of the input fields are empty, fill all the fields and try again");
             return;
         }
         const timelineArray = convertFromObjToArray(timeLineListItems);
