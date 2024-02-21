@@ -9,10 +9,11 @@ export const ModifyItem = styled.div`
     border-radius: 8px;
     background: transparent;
     margin-bottom: 1rem;
+    gap: 30px;
 `;
 export const ModifyTimeLineList = styled.ul`
     background: transparent;
-    width: 100%;
+    width: 95%;
 `;
 export const ModifyTimeLineListContainer = styled.div`
     display: flex;
@@ -64,12 +65,13 @@ export const TimeLineListItem = styled.li`
 `;
 export const DetailsInputTimeLineContainer = styled.div`
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 3fr 1fr;
     column-gap: 20px;
 `;
 export const DetailsTextInputTimeLineContainer = styled.div`
     input {
         width: 100%;
+        height: 42px;
     }
 `;
 export const TimePicking = styled.div`
@@ -93,6 +95,11 @@ export const DisplayDate = styled.p`
     width: 50%;
     margin-right: 10px;
 `;
+export const DisplayDateContainer = styled.div`
+    width: 100%;
+    margin-right: 10px;
+`;
+
 export const TimeInputEditorContainer = styled.div`
     width: ${({ dateFieldType }) => (dateFieldType === "show date" || dateFieldType === "pick date" ? "45%" : "100%")};
 `;
