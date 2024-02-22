@@ -17,6 +17,7 @@ export const Select = styled.select`
     @media screen and (max-width: 380px) {
         width: 100%;
     }
+    text-transform: capitalize;
 `;
 
 // Option Component
@@ -27,6 +28,7 @@ export const Option = styled.option`
         outline: none;
         box-shadow: 0 0 0 1px #1a1c1d;
     }
+    text-transform: capitalize;
 `;
 export const Label = styled.label``;
 export const SelectContainer = styled.div`

@@ -20,7 +20,7 @@ import {
     ModifyItem,
     DetailsInputEventContainer,
 } from "./ModifyElements";
-import TimePickerDisplay from "./TimePickerDisplay";
+import TimePickerDisplay from "../Common/TimePickerDisplay";
 import "react-day-picker/dist/style.css";
 import { setDateAndTime } from "../../utils/dateTimeRelatedFunctions";
 
