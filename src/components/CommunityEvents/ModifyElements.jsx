@@ -9,15 +9,28 @@ export const ModifyItem = styled.div`
     border-radius: 8px;
     background: transparent;
     margin-bottom: 1rem;
+    gap: 30px;
 `;
 export const ModifyTimeLineList = styled.ul`
     background: transparent;
+    width: 95%;
 `;
 export const ModifyTimeLineListContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: start;
+    flex-grow: 3;
+`;
+export const ModifyActionsContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    align-items: end;
+    justify-content: space-between;
+    height: 150px;
+    flex-grow: 1;
 `;
 export const DayPickerContainer = styled.div`
     border-right: 1px solid #f0f0f0;
@@ -42,7 +55,7 @@ export const DetailsInputEventContainer = styled.div`
 export const TimeLineListItem = styled.li`
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 250px;
     width: 100%;
     justify-content: space-around;
     border: 3px inset #2e2e2e;
@@ -51,12 +64,14 @@ export const TimeLineListItem = styled.li`
     margin-bottom: 5px;
 `;
 export const DetailsInputTimeLineContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    column-gap: 20px;
 `;
 export const DetailsTextInputTimeLineContainer = styled.div`
     input {
-        width: 90%;
+        width: 100%;
+        height: 42px;
     }
 `;
 export const TimePicking = styled.div`
@@ -80,8 +95,13 @@ export const DisplayDate = styled.p`
     width: 50%;
     margin-right: 10px;
 `;
+export const DisplayDateContainer = styled.div`
+    width: 100%;
+    margin-right: 10px;
+`;
+
 export const TimeInputEditorContainer = styled.div`
-    width: ${({ showDate }) => (showDate ? "45%" : "100%")};
+    width: ${({ dateFieldType }) => (dateFieldType === "show date" || dateFieldType === "pick date" ? "45%" : "100%")};
 `;
 export const ModifyActionButton = styled.div`
     display: flex;
@@ -98,23 +118,23 @@ export const ModifyActionButton = styled.div`
                 return "#00a8ff";
             case "cancel":
                 return "#f14844";
+            case "remove":
+                return "#441514";
         }
     }};
-    margin-top: ${(props) => props.type === "add" && "10px"};
+    margin-top: ${(props) => (props.type === "add" || props.type === "remove") && "10px"};
     color: #f8f8f8;
     &:hover {
         opacity: 0.7;
         cursor: pointer;
     }
 `;
-export const ModifyActionsContainer = styled.div`
+
+export const ModifyItemActionsContainer = styled.div`
     display: flex;
-    flex-direction: column;
     cursor: pointer;
-    position: relative;
-    align-items: end;
     justify-content: space-between;
-    height: 150px;
+    width: 250px;
 `;
 
 export const ModifyActionText = styled.p``;

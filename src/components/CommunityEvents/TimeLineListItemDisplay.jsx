@@ -11,15 +11,42 @@ import InputEditor from "../Common/InputEditor";
 import TimePickerDisplay from "./TimePickerDisplay";
 import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 
-const TimeLineListItemDisplay = ({ timeLineListObj, setTimeLineListItems }) => {
+const TimeLineListItemDisplay = ({ timeLineListItemObj, setTimeLineListItems, rangeDate }) => {
     const handleChangeInput = (label, content) => {
         setTimeLineListItems((prevTimeLine) => {
-            const updateTimeLineItem = { ...prevTimeLine[timeLineListObj.id], [label]: content };
+            const updateTimeLineItem = { ...prevTimeLine[timeLineListItemObj.id], [label]: content };
             return { ...prevTimeLine, [updateTimeLineItem.id]: { ...updateTimeLineItem } };
         });
     };
+    const dateFieldType =
+        new Date(rangeDate.to).getDate() - new Date(rangeDate.from).getDate() > 0 ? "pick date" : "show date";
     return (
         <TimeLineListItem>
+            <DetailsInputTimeLineContainer>
+                <TimePicking>
+                    <InputEditorIconContainer inputType="time">
+                        <AiFillClockCircleIcon />
+                    </InputEditorIconContainer>
+                    <TimePickerDisplay
+                        rangeDate={rangeDate}
+                        nestedObj
+                        modifyObj={timeLineListItemObj}
+                        setModifyObj={setTimeLineListItems}
+                        dateFieldType={dateFieldType}
+                    >
+                        From:
+                    </TimePickerDisplay>
+                    <TimePickerDisplay
+                        rangeDate={rangeDate}
+                        nestedObj
+                        modifyObj={timeLineListItemObj}
+                        setModifyObj={setTimeLineListItems}
+                        dateFieldType={dateFieldType}
+                    >
+                        To:
+                    </TimePickerDisplay>
+                </TimePicking>
+            </DetailsInputTimeLineContainer>
             <DetailsInputTimeLineContainer>
                 <DetailsTextInputTimeLineContainer>
                     <InputEditor
@@ -27,7 +54,7 @@ const TimeLineListItemDisplay = ({ timeLineListObj, setTimeLineListItems }) => {
                         label="name"
                         placeholder="Name / @Username"
                         onCopyChanges={handleChangeInput}
-                        content={timeLineListObj.name}
+                        content={timeLineListItemObj.name}
                     />
                 </DetailsTextInputTimeLineContainer>
                 <DetailsTextInputTimeLineContainer>
@@ -36,27 +63,17 @@ const TimeLineListItemDisplay = ({ timeLineListObj, setTimeLineListItems }) => {
                         label="topic"
                         placeholder="Topic"
                         onCopyChanges={handleChangeInput}
-                        content={timeLineListObj.topic}
+                        content={timeLineListItemObj.topic}
                     />
                 </DetailsTextInputTimeLineContainer>
-                <TimePicking>
-                    <InputEditorIconContainer inputType="time">
-                        <AiFillClockCircleIcon />
-                    </InputEditorIconContainer>
-                    <TimePickerDisplay time={timeLineListObj} handleUpdatePropertyValue={handleChangeInput}>
-                        From:
-                    </TimePickerDisplay>
-                    <TimePickerDisplay time={timeLineListObj} handleUpdatePropertyValue={handleChangeInput}>
-                        To:
-                    </TimePickerDisplay>
-                </TimePicking>
             </DetailsInputTimeLineContainer>
+
             <InputEditor
                 inputType="text"
                 label="description"
                 placeholder="Description"
                 onCopyChanges={handleChangeInput}
-                content={timeLineListObj.description}
+                content={timeLineListItemObj.description}
                 isTextarea
             />
         </TimeLineListItem>
