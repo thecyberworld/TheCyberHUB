@@ -30,8 +30,10 @@ const Room = ({ roomData }) => {
     const data = roomData[id - 1];
     const [hidden, setHidden] = useState(0);
     const [userInput, setUserInput] = useState("");
-    const correctAnswer = useState(data.answer);
+    const correctAnswer = data?.answer;
     const [showHint, setShowHint] = useState(false);
+
+    console.log(correctAnswer);
 
     const handleSubmitAnswer = () => {
         if (userInput === correctAnswer) {
