@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { GoProjectSymlink } from "react-icons/go";
 
 import {
     EventDetails,
@@ -9,12 +10,12 @@ import {
     EventDetailsHeaderText,
     EventDetailsTitle,
     EventLink,
-} from "./DisplayCommunityEventDetailsElement";
+} from "./DisplayEventDetailsElement";
 import DateDisplay from "../../Common/DateDisplay";
 import ParticipantsDisplay from "../../CommunityEvents/ParticipantsDisplay";
-import { GoProjectSymlink } from "react-icons/go";
+import DisplayTimelineList from "./DisplayTimelineList";
 
-const DisplayCommunityEventDetails = () => {
+const DisplayEventDetails = () => {
     const [currentEvent, setCurrentEvent] = useState({});
     const { actionDisplay, event } = useLocation().state || {};
     useEffect(() => {
@@ -32,6 +33,7 @@ const DisplayCommunityEventDetails = () => {
                     <DateDisplay time={currentEvent.startTime} />
                 </EventDetailsDateContainer>
             </EventDetailsHeader>
+            <DisplayTimelineList>{currentEvent.timeline}</DisplayTimelineList>
             {actionDisplay === "Joined" && (
                 <EventLink
                     href={/(https):\/\//i.test(currentEvent.link) ? currentEvent.link : `https://${currentEvent.link}`}
@@ -46,4 +48,4 @@ const DisplayCommunityEventDetails = () => {
         </EventDetails>
     );
 };
-export default DisplayCommunityEventDetails;
+export default DisplayEventDetails;

@@ -11,7 +11,7 @@ export const EventDetailsHeader = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 `;
 export const EventDetailsDateContainer = styled.div`
     padding: 5px;
@@ -38,11 +38,13 @@ export const EventDetailsDescription = styled.p`
 export const EventLink = styled.a`
     font-size: 18px;
     margin-bottom: 20px;
-    display: flex;
-    justify-content: start;
-    align-items: center;
+    display: inline;
     color: white;
     :hover {
         color: #2c2cf0;
     }
+    svg {
+        float: left;
+    }
+    line-height: 20px;
 `;

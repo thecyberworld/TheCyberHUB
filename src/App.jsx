@@ -34,9 +34,7 @@ import UserProfile from "./components/Dashboard/Profile/UserProfile";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
-import DisplayCommunityEvents, {
-    DisplayCommunityEventDetails,
-} from "./components/Opportunities/DisplayCommunityEvents";
+import DisplayCommunityEvents, { DisplayEventDetails } from "./components/Opportunities/DisplayCommunityEvents";
 import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
@@ -181,7 +179,7 @@ const App = () => {
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
                         <Route exact path={"/community-events"} element={<DisplayCommunityEvents />} />
-                        <Route exact path={"/community-events/:eventId"} element={<DisplayCommunityEventDetails />} />
+                        <Route exact path={"/community-events/:eventId"} element={<DisplayEventDetails />} />
                         <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
                         <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} />
 
