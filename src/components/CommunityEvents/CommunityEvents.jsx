@@ -19,7 +19,7 @@ import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import ModifyTimeLine from "./ModifyTimeLine";
+import ModifyTimeline from "./ModifyTimeline";
 
 const CommunityEvents = ({
     pageHeader,
@@ -106,6 +106,7 @@ const CommunityEvents = ({
         }
     }, [modifyEventId, eventManageTimelineId]);
 
+    const modifyEvent = events.find((event) => event._id === modifyEventId || event._id === eventManageTimelineId);
     return (
         <ParentContainer pageHeader={pageHeader}>
             <Container>
@@ -136,20 +137,18 @@ const CommunityEvents = ({
                         <EventList>
                             {modify && openCreatingNewEvent && (
                                 <ModifyCommunityEvent
-                                    setOpenCreatingNewEvent={setOpenCreatingNewEvent}
                                     onModify={handleModifyEvent}
-                                    modifyEvent={events.find((event) => event._id === modifyEventId)}
-                                    setModifyEventId={setModifyEventId}
+                                    modifyEvent={modifyEvent}
                                     modifyEventId={modifyEventId}
-                                    handleCloseChangeMode={handleCloseChangeMode}
+                                    onCloseChangeMode={handleCloseChangeMode}
                                 />
                             )}
                             {modify && !openCreatingNewEvent && eventManageTimelineId && (
-                                <ModifyTimeLine
+                                <ModifyTimeline
                                     eventManageTimelineId={eventManageTimelineId}
-                                    setEventManageTimelineId={setEventManageTimelineId}
-                                    modifyEventId={modifyEventId}
-                                    handleCloseChangeMode={handleCloseChangeMode}
+                                    onCloseChangeMode={handleCloseChangeMode}
+                                    onModify={handleModifyEvent}
+                                    modifyEvent={modifyEvent}
                                 />
                             )}
                             {filteredEvents.length !== 0 ? (
