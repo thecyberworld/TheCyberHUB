@@ -112,7 +112,7 @@ const Sidebar = ({
 
             {sidebarType === "explore" && exploreFiltersComponent}
 
-            <SocialTags tags={tags} handleClick={filterByTag} />
+            <SocialTags tags={tags} handleClick={handleFilterByTags} />
 
             {(sidebarType === "blogs" || sidebarType === "feeds") && data && data.length > 0 && (
                 <div
