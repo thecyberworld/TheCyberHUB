@@ -33,7 +33,8 @@ const generateNewItem = (prevObj) => {
         ...objData,
         [newTemporaryId]: {
             id: newTemporaryId,
-            name: "",
+            title: "",
+            program: "",
             description: "",
             topic: "secure coding",
             startTime: "",
