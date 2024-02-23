@@ -21,11 +21,11 @@ export const UserInfoContainer = styled.div`
     flex-direction: column;
 
     .name {
-        font-size: 1.7rem;
+        font-size: ${({ fontSizeName }) => fontSizeName || "1.7rem"};
     }
 
     .username {
-        font-size: 1.3rem;
+        font-size: ${({ fontSizeUsername }) => fontSizeUsername || "1.3rem"};
         color: #777;
     }
 `;
