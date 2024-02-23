@@ -22,14 +22,28 @@ import { LabIcon } from "../../WebSecurityTopics/SubTopic";
 import { HintContainer, HintIcon, SolutionContainer } from "../HintElements";
 import { RiLightbulbFlashFill, RiLightbulbFlashLine } from "react-icons/ri";
 import SyntaxHighlight from "../SyntaxHighlight";
+import { toast } from "react-toastify";
 
 const Room = ({ roomData }) => {
     const { "*": path, id } = useParams();
     const roomType = path.split("/")[0];
     const data = roomData[id - 1];
     const [hidden, setHidden] = useState(0);
-
+    const [userInput, setUserInput] = useState("");
+    const correctAnswer = useState(data.answer);
     const [showHint, setShowHint] = useState(false);
+
+    const handleSubmitAnswer = () => {
+        if (userInput === correctAnswer) {
+            toast("Correct answer. Well done!", {
+                type: "success",
+                position: "top-right",
+                autoClose: 3000,
+            });
+        } else {
+            alert("Incorrect answer. Please try again.");
+        }
+    };
 
     return (
         <LabRoomContainer>
@@ -49,20 +63,26 @@ const Room = ({ roomData }) => {
                         </LabIcon>
                     </StartLabButton>
                 )}
-                {roomType === "labs" && roomType === "crack-me" && <SubmissionBox submitType={"flag"} />}
+
+                {roomType === "labs" && <SubmissionBox submitType={"flag"} />}
+
+                {roomType === "crack-me" && (
+                    <SubmissionBox submitType={"answer"} onSubmit={handleSubmitAnswer} setUserInput={setUserInput} />
+                )}
+
                 <HintContainer onClick={() => setShowHint(!showHint)}>
                     Show Hint
                     <HintIcon>{showHint ? <RiLightbulbFlashFill /> : <RiLightbulbFlashLine />}</HintIcon>
                 </HintContainer>
+
                 {showHint && (
                     <div>
                         {data?.hint && data?.hint.length > 0 ? (
-                            data?.hint?.map((data, index) => (
-                                <SolutionItem key={index}>
-                                    <SolutionIndex>{index + 1}.</SolutionIndex>
-                                    <SolutionText>{data}</SolutionText>
+                            <SolutionHolder>
+                                <SolutionItem>
+                                    <SolutionText> {data?.hint} </SolutionText>
                                 </SolutionItem>
-                            ))
+                            </SolutionHolder>
                         ) : (
                             <SolutionItem>
                                 <SolutionText>No hint available</SolutionText>

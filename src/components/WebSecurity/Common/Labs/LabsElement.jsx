@@ -6,7 +6,7 @@ export const LabContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 20px;
+    gap: 15px;
 `;
 export const LabCategory = styled.div`
     background-color: rgb(19, 19, 19);
