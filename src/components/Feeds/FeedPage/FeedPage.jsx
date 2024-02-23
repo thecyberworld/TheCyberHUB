@@ -57,7 +57,10 @@ const FeedPage = () => {
         };
     }, [dispatch]);
 
-    const feed = feeds?.find((feed) => feed?._id === feedId);
+    console.log(feedComments);
+
+    const feed = feeds?.find((feed) => feed?._id === feedId) || feedComments?.find((feed) => feed?._id === feedId);
+
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === feed?.user);
 
     // console.log(blogComments)
@@ -74,10 +77,10 @@ const FeedPage = () => {
     };
 
     const feedUserBookmarksData = ({ feedId }) => {
-        return (
-            bookmarks?.length > 0 ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
-                bookmarks?.filter((bookmark) => bookmark.user === user._id) : []
-        );
+        return bookmarks?.length > 0
+            ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
+                  bookmarks?.filter((bookmark) => bookmark.user === user._id)
+            : [];
     };
 
     const feedViewsData = ({ feedId }) => {
@@ -100,6 +103,7 @@ const FeedPage = () => {
 
     if (!isApiWorking) return <UnderMaintenance />;
 
+    console.log(feedId, feed);
     if (!feed) {
         return <p>Feed not found</p>;
     }

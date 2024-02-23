@@ -149,7 +149,7 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
                 {/* follow */}
                 {user && followUserId && user?._id === followUserId ? (
                     <FollowButton>
-                        <RouterLink to={`/user/edit/kabir0x23`}> Edit Profile </RouterLink>
+                        <RouterLink to={`/user/edit/${user?.username}`}> Edit Profile </RouterLink>
                     </FollowButton>
                 ) : (
                     <div style={{ display: "flex", gap: "15px" }}>

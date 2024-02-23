@@ -25,6 +25,7 @@ export const FilterButton = styled.button`
     height: 100%;
     width: 100%;
     gap: 10px;
+    font-weight: 600;
     padding: 5px 10px;
 `;
 export const FilterContainer = styled.div`

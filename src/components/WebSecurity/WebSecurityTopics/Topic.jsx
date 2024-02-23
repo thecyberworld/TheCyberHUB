@@ -22,7 +22,8 @@ const Topic = () => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                gap: "20px",
+                gap: "15px",
+                margin: "5px auto",
             }}
         >
             <Sidebar topics={topics} onSelectSubtopic={handleSelectSubtopic} />

@@ -198,7 +198,7 @@ export const RankTrophy = styled(BsTrophyFill)`
 export const RouterNavCreateButtonLink = styled(Link)`
     display: initial;
     height: fit-content;
-    background: #111111;
+    background: #181818;
     border-radius: 5px;
     color: #ff6b08;
     padding: 10px 15px;
