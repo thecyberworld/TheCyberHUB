@@ -16,7 +16,7 @@ export const UserLinksContainer = styled.div`
     }
 `;
 
-export const UserInfo = styled.div`
+export const UserInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
 

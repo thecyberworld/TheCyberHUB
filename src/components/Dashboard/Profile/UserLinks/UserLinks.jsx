@@ -1,11 +1,10 @@
 import React from "react";
-import { UserBio, UserInfo, UserLinksContainer } from "./UserLinksElements";
+import { UserBio, UserLinksContainer } from "./UserLinksElements";
 import { SocialLink, SocialUsername, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium, FaTwitter } from "react-icons/fa";
-import { UserPicture } from "../../../Explore/Users/UsersElements";
 import { CgWebsite } from "react-icons/cg";
-import { cdnContentImagesUrl } from "../../../../features/apiUrl";
 import ConnectionsAndFollows from "../ConnectionsAndFollows/ConnectionsAndFollows";
+import UserInfo from "./UserInfo";
 
 const UserLinks = ({ userDetail, userDetails, setShowAuthPopup }) => {
     const socialUsernames = userDetail?.socialLinks?.map(
@@ -14,15 +13,9 @@ const UserLinks = ({ userDetail, userDetails, setShowAuthPopup }) => {
 
     const showSocialContainer = socialUsernames?.includes(userDetail?.username);
 
-    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
-
     return (
         <UserLinksContainer>
-            <UserInfo>
-                <UserPicture style={{ height: "200px", width: "200px" }} src={avatar} />
-                <span className={"name"}>{userDetail?.name}</span>
-                <span className={"username"}>@{userDetail?.username}</span>
-            </UserInfo>
+            <UserInfo>{userDetail}</UserInfo>
 
             {userDetail?.user && (
                 <ConnectionsAndFollows

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { EditUserBioTextarea, UserBio, UserInfo, UserLinksContainer } from "../UserLinks/UserLinksElements";
+import { EditUserBioTextarea, UserBio, UserInfoContainer, UserLinksContainer } from "../UserLinks/UserLinksElements";
 import { EditSocialUsername, SocialLink, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium } from "react-icons/fa";
 import { IoMdSave } from "react-icons/io";
@@ -68,7 +68,7 @@ const UserLinks = ({ userDetail, userDetailData, setUserDetailData, onSubmit }) 
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
     return (
         <UserLinksContainer>
-            <UserInfo>
+            <UserInfoContainer>
                 <div style={{ position: "relative", display: "inline-block" }}>
                     <UserPicture
                         style={{ height: "200px", width: "200px" }}
@@ -94,7 +94,7 @@ const UserLinks = ({ userDetail, userDetailData, setUserDetailData, onSubmit }) 
                 </div>
                 <span className={"name"}>{userDetail?.name}</span>
                 <span className={"username"}>@{userDetail?.username}</span>
-            </UserInfo>
+            </UserInfoContainer>
 
             <FollowButton
                 onClick={handleSave}
