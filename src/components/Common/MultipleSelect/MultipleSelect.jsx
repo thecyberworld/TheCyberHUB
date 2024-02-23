@@ -9,7 +9,7 @@ optionsValuesWithLabels=[
     }
 ]
 */
-const MultipleSelect = ({ selectLabel, selectedValue, onValueSelect, optionsValuesWithLabels }) => {
+const MultipleSelect = ({ selectLabel, selectedValue, onValueSelect, optionsValuesWithLabels, defaultValue }) => {
     const optionsDisplay = optionsValuesWithLabels.map((option) => {
         return (
             <Option value={option.value} key={option.value}>
@@ -22,7 +22,7 @@ const MultipleSelect = ({ selectLabel, selectedValue, onValueSelect, optionsValu
             {selectLabel && <Label htmlFor="Select">{selectLabel}:</Label>}
             <Select
                 name={selectLabel.toLowerCase()}
-                value={selectedValue}
+                value={defaultValue || selectedValue}
                 onChange={(event) => onValueSelect(event.target.value)}
             >
                 {optionsDisplay}

@@ -7,11 +7,12 @@ import {
     ModifyActionButton,
     ModifyActionText,
     ModifyItem,
-    ModifyTimeLineList,
-    ModifyTimeLineListContainer,
+    ModifyTimelineList,
+    ModifyTimelineListContainer,
     ModifyItemActionsContainer,
 } from "./ModifyElements";
-import TimeLineListItemDisplay from "./TimeLineListItemDisplay";
+import TimelineListItemDisplay from "./TimelineListItemDisplay";
+import { format } from "date-fns";
 
 const convertFromObjToArray = (objData) => {
     return Object.values(objData);
@@ -34,19 +35,19 @@ const generateNewItem = (prevObj) => {
             id: newTemporaryId,
             name: "",
             description: "",
-            topic: "",
+            topic: "secure coding",
             startTime: "",
             endTime: "",
             eventDay: 1,
         },
     };
 };
-const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageTimelineId }) => {
-    const [timeLineListItems, setTimeLineListItems] = useState({});
+const ModifyTimeline = ({ onModify, onCloseChangeMode, modifyEvent, eventManageTimelineId }) => {
+    const [timeLineListItems, setTimelineListItems] = useState({});
     const [rangeDate, setRangeDate] = useState({ from: "", to: "" });
 
     useEffect(() => {
-        setTimeLineListItems(() => {
+        setTimelineListItems(() => {
             if (modifyEvent.timeline.length) return convertFromArrayToObj(modifyEvent.timeline);
             return generateNewItem();
         });
@@ -56,24 +57,24 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
         });
     }, []);
     const handleRemoveLastItem = () => {
-        setTimeLineListItems((prevTimeLineListItems) => {
-            const lastItemKey = Object.keys(prevTimeLineListItems)[Object.keys(prevTimeLineListItems).length - 1];
-            const newTimeLineListItems = { ...prevTimeLineListItems };
-            delete newTimeLineListItems[lastItemKey];
-            if (Object.keys(newTimeLineListItems).length === 0) return generateNewItem(newTimeLineListItems);
-            return newTimeLineListItems;
+        setTimelineListItems((prevTimelineListItems) => {
+            const lastItemKey = Object.keys(prevTimelineListItems)[Object.keys(prevTimelineListItems).length - 1];
+            const newTimelineListItems = { ...prevTimelineListItems };
+            delete newTimelineListItems[lastItemKey];
+            if (Object.keys(newTimelineListItems).length === 0) return generateNewItem(newTimelineListItems);
+            return newTimelineListItems;
         });
     };
     const handleAddListItem = () => {
-        setTimeLineListItems((prevObj) => {
+        setTimelineListItems((prevObj) => {
             return generateNewItem(prevObj);
         });
     };
     const timeLineList = Object.values(timeLineListItems).map((timeLineListItemObj) => {
         return (
-            <TimeLineListItemDisplay
+            <TimelineListItemDisplay
                 timeLineListItemObj={timeLineListItemObj}
-                setTimeLineListItems={setTimeLineListItems}
+                setTimelineListItems={setTimelineListItems}
                 key={timeLineListItemObj.id}
                 rangeDate={rangeDate}
             />
@@ -90,7 +91,11 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
                 }
                 return validationError;
             });
-            if (valueObj.startTime >= valueObj.endTime) {
+            if (
+                new Date(modifyEvent.startTime) > new Date(valueObj.startTime) ||
+                new Date(modifyEvent.endTime) < new Date(valueObj.endTime) ||
+                new Date(valueObj.startTime) >= new Date(valueObj.endTime)
+            ) {
                 timeValidationError = true;
                 return timeValidationError;
             }
@@ -100,7 +105,16 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
         if (validationError || timeValidationError) {
             if (validationError)
                 return toast.error("Some of the input fields are empty, fill all the fields and try again");
-            if (timeValidationError) return toast.error("The end time can't be before start time");
+            if (timeValidationError) {
+                toast.error(`The end time can't be before start time.`);
+                toast.error(
+                    `In addition, the sub-event needs to be during the event time. from: ${format(
+                        new Date(modifyEvent.startTime),
+                        "EEEE hh:m a",
+                    )}, to: ${format(new Date(modifyEvent.endTime), "EEEE hh:m a")}`,
+                );
+                return;
+            }
         }
         const timelineArray = convertFromObjToArray(timeLineListItems);
         onModify({ ...modifyEvent, timeline: timelineArray }, eventManageTimelineId);
@@ -108,8 +122,8 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
     };
     return (
         <ModifyItem>
-            <ModifyTimeLineListContainer>
-                <ModifyTimeLineList>{timeLineList}</ModifyTimeLineList>
+            <ModifyTimelineListContainer>
+                <ModifyTimelineList>{timeLineList}</ModifyTimelineList>
                 <ModifyItemActionsContainer>
                     <ModifyActionButton type="add" onClick={handleAddListItem}>
                         <ModifyActionText type="add">Add</ModifyActionText>
@@ -118,7 +132,7 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
                         <ModifyActionText type="remove">Remove</ModifyActionText>
                     </ModifyActionButton>
                 </ModifyItemActionsContainer>
-            </ModifyTimeLineListContainer>
+            </ModifyTimelineListContainer>
             <ModifyActionsContainer>
                 <ModifyActionButton type="save" onClick={handleSaveTimeline}>
                     <ModifyActionText type="save">Save</ModifyActionText>
@@ -130,4 +144,4 @@ const ModifyTimeLine = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
         </ModifyItem>
     );
 };
-export default ModifyTimeLine;
+export default ModifyTimeline;

@@ -11,11 +11,11 @@ export const ModifyItem = styled.div`
     margin-bottom: 1rem;
     gap: 30px;
 `;
-export const ModifyTimeLineList = styled.ul`
+export const ModifyTimelineList = styled.ul`
     background: transparent;
     width: 95%;
 `;
-export const ModifyTimeLineListContainer = styled.div`
+export const ModifyTimelineListContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -52,7 +52,7 @@ export const DetailsInputEventContainer = styled.div`
     padding: 0 50px;
     justify-content: space-between;
 `;
-export const TimeLineListItem = styled.li`
+export const TimelineListItem = styled.li`
     display: flex;
     flex-direction: column;
     height: 250px;
@@ -63,12 +63,12 @@ export const TimeLineListItem = styled.li`
     padding: 1rem 1.5rem;
     margin-bottom: 5px;
 `;
-export const DetailsInputTimeLineContainer = styled.div`
+export const DetailsInputTimelineContainer = styled.div`
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: ${({ childElements }) => (childElements === 2 ? "2fr 1fr" : "1fr")};
     column-gap: 20px;
 `;
-export const DetailsTextInputTimeLineContainer = styled.div`
+export const DetailsTextInputTimelineContainer = styled.div`
     input {
         width: 100%;
         height: 42px;
@@ -81,28 +81,9 @@ export const TimePicking = styled.div`
 `;
 
 export const InputEditorIconContainer = styled.div`
-    margin-right: ${(props) => (props.inputType === "time" ? "10px" : "20px")};
-`;
-export const TimePickerContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-export const TimeInputLabel = styled.p`
-    margin: 0 10px;
-`;
-export const DisplayDate = styled.p`
-    width: 50%;
-    margin-right: 10px;
-`;
-export const DisplayDateContainer = styled.div`
-    width: 100%;
-    margin-right: 10px;
+    margin-right: ${(props) => (props.inputType === "time" ? "0" : "20px")};
 `;
 
-export const TimeInputEditorContainer = styled.div`
-    width: ${({ dateFieldType }) => (dateFieldType === "show date" || dateFieldType === "pick date" ? "45%" : "100%")};
-`;
 export const ModifyActionButton = styled.div`
     display: flex;
     justify-content: center;

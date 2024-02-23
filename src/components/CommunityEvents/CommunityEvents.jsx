@@ -19,7 +19,7 @@ import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import ModifyTimeLine from "./ModifyTimeLine";
+import ModifyTimeline from "./ModifyTimeline";
 
 const CommunityEvents = ({
     pageHeader,
@@ -144,7 +144,7 @@ const CommunityEvents = ({
                                 />
                             )}
                             {modify && !openCreatingNewEvent && eventManageTimelineId && (
-                                <ModifyTimeLine
+                                <ModifyTimeline
                                     eventManageTimelineId={eventManageTimelineId}
                                     onCloseChangeMode={handleCloseChangeMode}
                                     onModify={handleModifyEvent}
