@@ -85,7 +85,7 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
                 </div>
             ) : (
                 (tabStatus === "upcoming" || tabStatus === "ongoing") && (
-                    <>
+                    <div className="container-action-and-text">
                         <div className="container-action">
                             <div className="action">
                                 <div
@@ -114,7 +114,10 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
                                 </div>
                             </div>
                         </div>
-                    </>
+                        <div className="details">
+                            <p>{event.participants.length ? `users joined: ${event.participants.length}` : ""}</p>
+                        </div>
+                    </div>
                 )
             )}
         </EventItem>

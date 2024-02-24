@@ -23,10 +23,7 @@ export const DisplayTimelineItemProgramContainer = styled.div`
 
 export const DisplayTimelineItemOtherInfoContainer = styled.div`
     width: 100%;
-    flex: 3;
-`;
-export const DisplayTimelineItemHeader = styled.div`
-    width: 100%;
+    flex: 6;
     display: flex;
     align-items: start;
     justify-content: space-between;

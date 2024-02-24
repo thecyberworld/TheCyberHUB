@@ -47,6 +47,23 @@ const CommunityEvents = ({
         { id: 3, status: "cancelled" },
     ];
 
+    useEffect(() => {
+        if (isEventError) {
+            toast.error(eventMessage);
+        }
+        dispatch(getEvents()).then((action) => {
+            const hasOngoingEvent = action.payload.findIndex((eventItem) => {
+                return (
+                    eventItem.status === "approved" &&
+                    new Date().getTime() >= new Date(eventItem.startTime).getTime() &&
+                    new Date().getTime() < new Date(eventItem.endTime).getTime()
+                );
+            });
+            if (hasOngoingEvent > -1) setActiveTab(1);
+        });
+        return () => dispatch(eventsReset());
+    }, [dispatch]);
+
     const filteredEvents = events
         ? events
               .filter((event) => {
@@ -87,13 +104,6 @@ const CommunityEvents = ({
         setModifyEventId("");
         setEventManageTimelineId("");
     };
-    useEffect(() => {
-        if (isEventError) {
-            toast.error(eventMessage);
-        }
-        dispatch(getEvents());
-        return () => dispatch(eventsReset());
-    }, [dispatch]);
 
     useEffect(() => {
         if (!eventManageTimelineId) setOpenCreatingNewEvent(modifyEventId);
