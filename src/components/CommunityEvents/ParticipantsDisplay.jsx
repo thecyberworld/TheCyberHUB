@@ -9,7 +9,7 @@ const ParticipantsDisplay = ({ participants = [] }) => {
                 {participants.map((participant, pIndex) => (
                     <img
                         src={cdnContentImagesUrl("/user/" + (participant?.avatar || "avatarDummy.png"))}
-                        alt={participant.name}
+                        alt={participant?.name}
                         key={pIndex}
                     />
                 ))}

@@ -62,12 +62,25 @@ export const EventItem = styled.div`
             font-weight: 600;
         }
     }
+    .container-action-and-text {
+        color: #5ca35c;
+        text-transform: capitalize;
+        position: relative;
+        .details {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            position: absolute;
+            align-items: center;
+        }
+    }
     .container-action {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         width: 250px;
+        margin-bottom: 10px;
     }
     .action {
         flex-basis: 10%;
