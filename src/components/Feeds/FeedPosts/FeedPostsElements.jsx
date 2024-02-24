@@ -46,6 +46,8 @@ export const LeftSection = styled.div`
     align-items: start;
     justify-content: flex-start;
     gap: 5px;
+    width: 60px;
+    margin-right: 20px;
 `;
 
 export const RightSection = styled.div`
@@ -85,7 +87,6 @@ export const PostHeaderImg = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    margin-right: 20px;
     font-size: 12px;
     color: #999;
     word-break: break-all;
