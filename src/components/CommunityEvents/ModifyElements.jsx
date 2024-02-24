@@ -65,7 +65,7 @@ export const TimelineListItem = styled.li`
 `;
 export const DetailsInputTimelineContainer = styled.div`
     display: grid;
-    grid-template-columns: ${({ childElements }) => (childElements === 2 ? "2fr 1fr" : "1fr")};
+    grid-template-columns: ${({ childElements }) => (childElements === 3 ? "1fr 1.2fr 1fr" : "1fr")};
     column-gap: 20px;
 `;
 export const DetailsTextInputTimelineContainer = styled.div`

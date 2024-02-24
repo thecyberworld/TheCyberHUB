@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { AiFillClockCircle, AiFillExclamationCircle } from "react-icons/ai";
+import { AiFillClockCircle } from "react-icons/ai";
 import { BiSolidChevronDown, BiSolidChevronUp } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
 
@@ -86,7 +86,6 @@ const createStyledIcon = (IconComponent) => {
 
 export const BiChevronDownIcon = createStyledIcon(BiSolidChevronDown);
 export const BiSolidChevronUpIcon = createStyledIcon(BiSolidChevronUp);
-export const AiFillExclamationCircleIcon = createStyledIcon(AiFillExclamationCircle);
 export const AiFillClockCircleIcon = createStyledIcon(AiFillClockCircle);
 export const MdLocationOnIcon = createStyledIcon(MdLocationOn);
 

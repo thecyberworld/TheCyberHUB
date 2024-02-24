@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ParticipantsContainer = styled.div`
     .details-profile {
         display: flex;
-        margin-top: 0.5rem;
+        margin-top: 2rem;
         flex-wrap: wrap;
         height: 40px;
         overflow: hidden;

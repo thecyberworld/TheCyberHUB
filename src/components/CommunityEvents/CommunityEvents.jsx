@@ -169,7 +169,7 @@ const CommunityEvents = ({
                                 })
                             ) : (
                                 <NoDataComponent>
-                                    <h2>There is no {tabNames[isActiveTab].status} event right now.</h2>
+                                    <h2>There are no {tabNames[isActiveTab].status} events right now.</h2>
                                     <img src={NoDataFound} alt="No data found" />
                                 </NoDataComponent>
                             )}

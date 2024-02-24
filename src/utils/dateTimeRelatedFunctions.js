@@ -9,6 +9,6 @@ export const setDateAndTime = (date, time) => {
         newTime?.getMinutes(),
     );
 };
-export const AddZeroToDateString = (dateValue) => {
+export const addZeroToDateString = (dateValue) => {
     return +dateValue < 10 ? `0${dateValue}` : dateValue;
 };

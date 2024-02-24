@@ -79,14 +79,23 @@ const TimelineListItemDisplay = ({ timeLineListItemObj, setTimelineListItems, ra
                     </TimePickerDisplay>
                 </TimePicking>
             </DetailsInputTimelineContainer>
-            <DetailsInputTimelineContainer childElements={2}>
+            <DetailsInputTimelineContainer childElements={3}>
                 <DetailsTextInputTimelineContainer>
                     <InputEditor
                         inputType="text"
-                        label="name"
-                        placeholder="Name / @Username"
+                        label="title"
+                        placeholder="Title"
                         onCopyChanges={handleChangeInput}
-                        content={timeLineListItemObj.name}
+                        content={timeLineListItemObj.title}
+                    />
+                </DetailsTextInputTimelineContainer>
+                <DetailsTextInputTimelineContainer>
+                    <InputEditor
+                        inputType="text"
+                        label="program"
+                        placeholder="Activity / Speaker (Full Name/@Username) "
+                        onCopyChanges={handleChangeInput}
+                        content={timeLineListItemObj.program}
                     />
                 </DetailsTextInputTimelineContainer>
                 <DetailsTextInputTimelineContainer>
