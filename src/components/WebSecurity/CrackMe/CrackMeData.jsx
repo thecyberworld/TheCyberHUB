@@ -11,6 +11,9 @@ if your_input == "Hello_World":
 else:
     print("Wrong Password")
     `,
+        answer: "Hello_World",
+        hint: "The password is a simple string.",
+        solution: ["The password is 'Hello_World'."],
         language: "python",
         category: "Python",
         tags: ["Crackme", "Python", "Password"],
@@ -39,6 +42,9 @@ if your_input == password:
 else:
     print("Wrong password")
     `,
+        answer: "SuperSecurePasswordWhichCantBeCrackedWithoutKey",
+        hint: "The password is a long string.",
+        solution: ["The password is 'SuperSecurePasswordWhichCantBeCrackedWithoutKey'."],
         language: "python",
         category: "Python",
         tags: ["Crackme", "Python", "Password"],
@@ -67,6 +73,9 @@ int main() {
     return 0;
 }
     `,
+        answer: "p@ssw0rd",
+        hint: "The password is a simple string.",
+        solution: ["The password is 'p@ssw0rd'."],
         language: "c",
         category: "C",
         tags: ["Crackme", "C", "Password"],
@@ -92,6 +101,9 @@ int main() {
     return 0;
 }
     `,
+        answer: "Hello, World! This is a secret message.",
+        hint: "The message is a simple string.",
+        solution: ["The message is 'Hello, World! This is a secret message.'"],
         language: "c",
         category: "C",
         tags: ["Crackme", "C", "Encryption"],
@@ -119,6 +131,9 @@ int main() {
     return 0;
 }
     `,
+        answer: "A" * 11,
+        hint: "The input is a string of length 11.",
+        solution: ["The input is 'A' * 11."],
         language: "c",
         category: "C",
         tags: ["Crackme", "C", "Buffer Overflow"],
@@ -152,10 +167,12 @@ def main():
 if __name__ == "__main__":
     main()
     `,
+        answer: "admin'--",
+        hint: "The username is a simple string.",
+        solution: ["The username is 'admin'."],
         language: "python",
         category: "Python",
         tags: ["Crackme", "Python", "SQL Injection"],
         level: "Intermediate",
     },
-    // Add more crackme labs as needed
 ];

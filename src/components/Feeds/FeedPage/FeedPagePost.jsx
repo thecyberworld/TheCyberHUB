@@ -50,7 +50,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                     </RouteLink>
                     • <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                 </PostHeader>
-                <PostContent>{feed?.content}</PostContent>
+                <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>
 
                 <ImagesContainer>
                     {feed?.images?.map((image, index) => (
