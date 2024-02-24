@@ -9,7 +9,7 @@ import {
     TimePickerContainer,
 } from "./TimePickerDisplayElements";
 import InputEditor from "../InputEditor";
-import { AddZeroToDateString, setDateAndTime } from "../../../utils/dateTimeRelatedFunctions";
+import { addZeroToDateString, setDateAndTime } from "../../../utils/dateTimeRelatedFunctions";
 import MultipleSelect from "../MultipleSelect";
 
 const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyObj, modifyObj, nestedObj = false }) => {
@@ -23,10 +23,10 @@ const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyO
             const startTimeDate = new Date(modifyObj.startTime);
             const endTimeDate = new Date(modifyObj.endTime);
             setTime({
-                startTime: `${AddZeroToDateString(startTimeDate.getHours())}:${AddZeroToDateString(
+                startTime: `${addZeroToDateString(startTimeDate.getHours())}:${addZeroToDateString(
                     startTimeDate.getMinutes(),
                 )}`,
-                endTime: `${AddZeroToDateString(endTimeDate.getHours())}:${AddZeroToDateString(
+                endTime: `${addZeroToDateString(endTimeDate.getHours())}:${addZeroToDateString(
                     endTimeDate.getMinutes(),
                 )}`,
             });
