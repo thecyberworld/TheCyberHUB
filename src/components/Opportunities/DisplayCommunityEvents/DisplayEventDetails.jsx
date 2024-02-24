@@ -7,6 +7,7 @@ import {
     EventDetailsDateContainer,
     EventDetailsDescription,
     EventDetailsHeader,
+    EventDetailsHeaderContainer,
     EventDetailsHeaderText,
     EventDetailsTitle,
     EventLink,
@@ -24,26 +25,30 @@ const DisplayEventDetails = () => {
     if (!currentEvent) return <></>;
     return (
         <EventDetails>
-            <EventDetailsHeader>
-                <EventDetailsHeaderText>
-                    <EventDetailsTitle>{currentEvent.name}</EventDetailsTitle>
-                    <EventDetailsDescription>{currentEvent.description}</EventDetailsDescription>
-                </EventDetailsHeaderText>
-                <EventDetailsDateContainer>
-                    <DateDisplay time={currentEvent.startTime} />
-                </EventDetailsDateContainer>
-            </EventDetailsHeader>
+            <EventDetailsHeaderContainer>
+                <EventDetailsHeader>
+                    <EventDetailsHeaderText>
+                        <EventDetailsTitle>{currentEvent.name}</EventDetailsTitle>
+                        <EventDetailsDescription>{currentEvent.description}</EventDetailsDescription>
+                    </EventDetailsHeaderText>
+                    <EventDetailsDateContainer>
+                        <DateDisplay time={currentEvent.startTime} />
+                    </EventDetailsDateContainer>
+                </EventDetailsHeader>
+                {actionDisplay === "Joined" && (
+                    <EventLink
+                        href={
+                            /(https):\/\//i.test(currentEvent.link) ? currentEvent.link : `https://${currentEvent.link}`
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <GoProjectSymlink size="24px" style={{ marginRight: "10px" }} />
+                        {currentEvent.link}
+                    </EventLink>
+                )}
+            </EventDetailsHeaderContainer>
             <DisplayTimelineList>{currentEvent.timeline}</DisplayTimelineList>
-            {actionDisplay === "Joined" && (
-                <EventLink
-                    href={/(https):\/\//i.test(currentEvent.link) ? currentEvent.link : `https://${currentEvent.link}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <GoProjectSymlink size="24px" style={{ marginRight: "10px" }} />
-                    {currentEvent.link}
-                </EventLink>
-            )}
             <ParticipantsDisplay participants={currentEvent.participants} />
         </EventDetails>
     );

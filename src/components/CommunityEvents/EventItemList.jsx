@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { format } from "date-fns";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
 import { EventItem } from "./EventItemListElement";
-import {
-    AiFillClockCircleIcon,
-    MdLocationOnIcon,
-    BiChevronDownIcon,
-    BiSolidChevronUpIcon,
-    AiFillExclamationCircleIcon,
-} from "./CommunityEventsElement";
+import { MdLocationOnIcon, BiChevronDownIcon, BiSolidChevronUpIcon } from "./CommunityEventsElement";
 import DateDisplay from "../Common/DateDisplay";
 import ParticipantsDisplay from "./ParticipantsDisplay";
+import DurationDisplay from "../Common/DurationDisplay/DurationDisplay";
 
-const addZeroToDateString = (dateValue) => {
-    return +dateValue < 10 ? `0${dateValue}` : dateValue;
-};
 export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, user, onActionChange, tabStatus }) => {
     const [openEventIndex, setOpenEventIndex] = useState(null);
     const [actionDisplay, setActionDisplay] = useState("");
@@ -42,8 +33,6 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
             return toast.info("This event is full , keep in touch for future events");
         onActionChange(actionDisplay, event._id);
     };
-    const startTimeDate = new Date(event.startTime);
-    const endTimeDate = new Date(event.endTime);
 
     return (
         <EventItem isRequestedEvent={event.reschedule} key={index}>
@@ -53,46 +42,7 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
                 isCanBeToday={event.status === "approved" && tabStatus !== "past"}
             />
             <div className="time-line">
-                <div className="time-line-detail">
-                    <AiFillClockCircleIcon />
-                    {event.startTime.split("T")[0] === event.endTime.split("T")[0] ? (
-                        <p>
-                            {`${addZeroToDateString(startTimeDate.getHours())}:${addZeroToDateString(
-                                startTimeDate.getMinutes(),
-                            )}`}
-                            {" - "}
-                            {`${addZeroToDateString(endTimeDate.getHours())}:${addZeroToDateString(
-                                endTimeDate.getMinutes(),
-                            )}`}
-                        </p>
-                    ) : (
-                        <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-                            <div>
-                                <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
-                                    {format(startTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
-                                </p>
-                                <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
-                                    startTimeDate.getHours(),
-                                )}:${addZeroToDateString(startTimeDate.getMinutes())}`}</p>
-                            </div>
-                            -
-                            <div>
-                                <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
-                                    {format(endTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
-                                </p>
-                                <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
-                                    endTimeDate.getHours(),
-                                )}:${addZeroToDateString(endTimeDate.getMinutes())}`}</p>
-                            </div>
-                        </div>
-                    )}
-                    {event.reschedule && (
-                        <div className="time-line-request">
-                            <AiFillExclamationCircleIcon />
-                        </div>
-                    )}
-                </div>
-
+                <DurationDisplay>{event}</DurationDisplay>
                 <div className="time-line-detail">
                     <MdLocationOnIcon />
                     <p className="text-over-flow">{event.location}</p>

@@ -55,11 +55,12 @@ const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyO
         setIsStartTime(children === "From:");
     }, [children]);
 
-    const handleUpdateTimeValue = (properyName, timeValue, dateValue = {}) => {
+    const handleUpdateTimeValue = (properyName, timeValue, dateValue) => {
         setModifyObj((prevEventObj) => {
             const houres = timeValue.split(":")[0];
             const minutes = timeValue.split(":")[1];
-            if (Object.keys(dateValue).length === 0) dateValue = isStartTime ? rangeSubDate.from : rangeSubDate.to;
+            if (!dateValue) dateValue = {};
+            if (Object.keys(dateValue).length === 0) dateValue = isStartTime ? rangeSubDate?.from : rangeSubDate?.to;
             if (nestedObj) {
                 const updateTimelineItem = {
                     ...prevEventObj[modifyObj.id],

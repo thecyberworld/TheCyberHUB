@@ -7,11 +7,14 @@ export const EventDetails = styled.div`
     color: #f5f5f5;
     padding: 0 1.563rem;
 `;
+export const EventDetailsHeaderContainer = styled.div`
+    margin-bottom: 50px;
+`;
 export const EventDetailsHeader = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 `;
 export const EventDetailsDateContainer = styled.div`
     padding: 5px;
@@ -27,7 +30,7 @@ export const EventDetailsTitle = styled.h1`
     font-size: 36px;
     text-shadow: 2px 2px #646464;
     overflow-wrap: break-word;
-    width: 50%;
+    text-transform: capitalize;
 `;
 export const EventDetailsDescription = styled.p`
     font-size: 24px;
