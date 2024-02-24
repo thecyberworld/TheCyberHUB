@@ -4,7 +4,6 @@ import {
     DisplayTimelineItemContainer,
     DisplayTimelineItemContextContainer,
     DisplayTimelineItemDescription,
-    DisplayTimelineItemHeader,
     DisplayTimelineItemOtherInfoContainer,
     DisplayTimelineItemProgramContainer,
     DisplayTimelineItemTitle,
@@ -32,14 +31,12 @@ const DisplayTimelineItem = ({ children }) => {
                 </UserInfo>
             </DisplayTimelineItemProgramContainer>
             <DisplayTimelineItemOtherInfoContainer>
-                <DisplayTimelineItemHeader>
-                    <DisplayTimelineItemContextContainer>
-                        <DisplayTimelineItemTitle>{children.title}</DisplayTimelineItemTitle>
-                        <DisplayTimelineItemTopic>{children.topic}</DisplayTimelineItemTopic>
-                    </DisplayTimelineItemContextContainer>
-                    <DurationDisplay showDate>{children}</DurationDisplay>
-                </DisplayTimelineItemHeader>
-                <DisplayTimelineItemDescription>{children.description}</DisplayTimelineItemDescription>
+                <DisplayTimelineItemContextContainer>
+                    <DisplayTimelineItemTitle>{children.title}</DisplayTimelineItemTitle>
+                    <DisplayTimelineItemTopic>{children.topic}</DisplayTimelineItemTopic>
+                    <DisplayTimelineItemDescription>{children.description}</DisplayTimelineItemDescription>
+                </DisplayTimelineItemContextContainer>
+                <DurationDisplay showDate>{children}</DurationDisplay>
             </DisplayTimelineItemOtherInfoContainer>
         </DisplayTimelineItemContainer>
     );

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const EventDetails = styled.div`
     position: relative;
     margin: 9.25rem auto;
-    width: 40%;
+    width: 80%;
     color: #f5f5f5;
     padding: 0 1.563rem;
 `;
