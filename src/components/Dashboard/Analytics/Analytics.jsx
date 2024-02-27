@@ -5,21 +5,37 @@ import {
     TopSection,
     BottomSection,
     BottomLeftSection,
+    BottomLeftSectionCaption,
+    BottomSectionCaptionTitle,
+    TimeCaptionBtn,
+    TimeCaptionBtnTwo,
     BottomRightSection,
     TopSectionCaption,
+    TopSectionInnerCardCaptionTitle,
+    TopSectionInnerCardMainSection,
+    TopSectionInnerCardCaption,
+    TopSectionInnerCardMainSectionSummary,
+    MainFigure,
+    FigureInPercent,
+    TopSectionInnerCardMainSectionChart,
     TopSectionCaptionTitle,
     TopSectionCaptionCTABtn,
+    LastThirtyDaysBtn,
     TopSectionCaptionCTABtnBig,
     TopSectionMainContent,
     TopSectionInnerCard,
     Post,
     Title,
     AnalyticsContainer,
+    LastUpdated,
 } from "./AnalyticsElements";
 import { getFeeds } from "../../../features/feeds/feedsSlice";
 import { getBlogs } from "../../../features/blogs/blogSlice";
 import { getViews } from "../../../features/feeds/views/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
+import BarChart from "./AnalyticsBarChart";
+import MainBarChart from "./AnalyticsMainBarChart";
+// import DoughnutChart from "./AnalyticsPieChart";
 
 const Analytics = () => {
     const dispatch = useDispatch();
@@ -75,49 +91,156 @@ const Analytics = () => {
 
                     <TopSectionMainContent>
                         <TopSectionInnerCard>
-                            <Title>Top left section</Title>
-                            {blogData.blogs?.map((post) => (
-                                <Post key={post?._id}>
-                                    <h3>{post?.summary}</h3>
-                                    <p>
-                                        Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                        {post?.updatedAt || post?.createdAt}
-                                    </p>
-                                </Post>
-                            ))}
-                            {feedData.feed?.map((post) => (
-                                <Post key={post?._id}>
-                                    <h3>{post?.content}</h3>
-                                    <p>
-                                        Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                        {post?.updatedAt || post?.createdAt}
-                                    </p>
-                                </Post>
-                            ))}
+                            <TopSectionInnerCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Top left section</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                            </TopSectionInnerCardCaption>
+                            <TopSectionInnerCardMainSection>
+                                <TopSectionInnerCardMainSectionSummary>
+                                    <MainFigure>1.234</MainFigure>
+
+                                    <FigureInPercent>
+                                        +89.67%
+                                    </FigureInPercent>  
+                                </TopSectionInnerCardMainSectionSummary>
+                                <TopSectionInnerCardMainSectionChart>
+                                    {/* <Title>Top left Bar chart section </Title> */}
+                                <BarChart />
+
+                                </TopSectionInnerCardMainSectionChart>         
+                            </TopSectionInnerCardMainSection>
                         </TopSectionInnerCard>
                         <TopSectionInnerCard>
-                            <Title>Top mid section</Title>
-                            {blogData.blogs?.map((post) => (
-                                <Post key={post?._id}>
-                                    <h3>{post?.summary}</h3>
-                                    <p>
-                                        Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                        {post?.updatedAt || post?.createdAt}
-                                    </p>
-                                </Post>
-                            ))}
-                            {feedData.feed?.map((post) => (
-                                <Post key={post?._id}>
-                                    <h3>{post?.content}</h3>
-                                    <p>
-                                        Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                        {post?.updatedAt || post?.createdAt}
-                                    </p>
-                                </Post>
-                            ))}
+                        <TopSectionInnerCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Top left section</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                            </TopSectionInnerCardCaption>
+                            <TopSectionInnerCardMainSection>
+                                <TopSectionInnerCardMainSectionSummary>
+                                    <MainFigure>1.004</MainFigure>
+
+                                    <FigureInPercent>
+                                        +71.80%
+                                    </FigureInPercent>  
+                                </TopSectionInnerCardMainSectionSummary>
+                                <TopSectionInnerCardMainSectionChart>
+                                    <Title>Top mid line chart section </Title>
+                                </TopSectionInnerCardMainSectionChart>         
+                            </TopSectionInnerCardMainSection>
                         </TopSectionInnerCard>
                         <TopSectionInnerCard>
-                            <Title>Top right section</Title>
+                        <TopSectionInnerCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Top right section</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                            </TopSectionInnerCardCaption>
+                            <TopSectionInnerCardMainSection>
+                                <TopSectionInnerCardMainSectionSummary>
+                                    <Title>Top right section Bar chart</Title>
+                                    <LastThirtyDaysBtn>
+                                        num
+                                    </LastThirtyDaysBtn>  
+                                </TopSectionInnerCardMainSectionSummary>
+                                <TopSectionInnerCardMainSectionChart>
+                                    <Title>Top right Bar chart section </Title>
+                                </TopSectionInnerCardMainSectionChart>         
+                            </TopSectionInnerCardMainSection>  
+                        </TopSectionInnerCard>
+                    </TopSectionMainContent>
+
+                </TopSection>
+                <BottomSection>
+                    <BottomLeftSection>
+                        <BottomLeftSectionCaption>     
+                            <BottomSectionCaptionTitle>
+                                <Title>Bottom left section</Title>
+                                <LastUpdated>Last updated 14 min ago</LastUpdated>
+                            </BottomSectionCaptionTitle>
+
+                            <TopSectionCaptionCTABtn>
+                                <TimeCaptionBtn>
+                                    Hours
+                                </TimeCaptionBtn>
+                                <TimeCaptionBtnTwo>
+                                    Days
+                                </TimeCaptionBtnTwo>
+                            </TopSectionCaptionCTABtn>
+                        </BottomLeftSectionCaption>
+                        <TopSectionMainContent>
+                            <TopSectionInnerCard>
+                                <Title>Bottom left section</Title>
+                                {/* {blogData.blogs?.map((post) => (
+                                    <Post key={post?._id}>
+                                        <h3>{post?.summary}</h3>
+                                        <p>
+                                            Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
+                                            {post?.updatedAt || post?.createdAt}
+                                        </p>
+                                    </Post>
+                                ))}
+                                {feedData.feed?.map((post) => (
+                                    <Post key={post?._id}>
+                                        <h3>{post?.content}</h3>
+                                        <p>
+                                            Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
+                                            {post?.updatedAt || post?.createdAt}
+                                        </p>
+                                    </Post>
+                                ))} */}
+                                {/* <BarChart /> */}
+                                <MainBarChart />
+                                {/* <DoughnutChart/> */}
+                            </TopSectionInnerCard>
+                        </TopSectionMainContent>
+                    </BottomLeftSection>
+                    <BottomRightSection>
+                        {/* {blogData.blogs?.map((post) => (
+                            <Post key={post?._id}>
+                                <h3>{post?.summary}</h3>
+                                <p>
+                                    Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
+                                    {post?.updatedAt || post?.createdAt}
+                                </p>
+                            </Post>
+                        ))}
+                        {feedData.feed?.map((post) => (
+                            <Post key={post?._id}>
+                                <h3>{post?.content}</h3>
+                                <p>
+                                    Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
+                                    {post?.updatedAt || post?.createdAt}
+                                </p>
+                            </Post>
+                        ))} */}
+                        <TopSectionCaption>
+                            <BottomSectionCaptionTitle>
+                                <Title>Bottom right </Title>
+                                <LastUpdated>Last updated 14 min ago</LastUpdated>
+                            </BottomSectionCaptionTitle>
+
+
+                            <TopSectionCaptionCTABtn>
+                                <LastThirtyDaysBtn>
+                                    Last 30 days
+                                </LastThirtyDaysBtn>
+
+                            </TopSectionCaptionCTABtn>
+                        </TopSectionCaption>
+
+                        <TopSectionMainContent>
+                            <TopSectionInnerCard>
+                                <Title>Top left section</Title>
                                 {blogData.blogs?.map((post) => (
                                     <Post key={post?._id}>
                                         <h3>{post?.summary}</h3>
@@ -135,74 +258,19 @@ const Analytics = () => {
                                             {post?.updatedAt || post?.createdAt}
                                         </p>
                                     </Post>
-                                ))}   
-                        </TopSectionInnerCard>
-                    </TopSectionMainContent>
-
-                </TopSection>
-                <BottomSection>
-                <BottomLeftSection>
-                    <Title>Bottom left section</Title>
-                    {blogData.blogs?.map((post) => (
-                        <Post key={post?._id}>
-                            <h3>{post?.summary}</h3>
-                            <p>
-                                Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                {post?.updatedAt || post?.createdAt}
-                            </p>
-                        </Post>
-                    ))}
-                    {feedData.feed?.map((post) => (
-                        <Post key={post?._id}>
-                            <h3>{post?.content}</h3>
-                            <p>
-                                Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                {post?.updatedAt || post?.createdAt}
-                            </p>
-                        </Post>
-                    ))}
-                    {/* {AnalyticsData.slice(0, 10).map((post) => (
-                        <Post key={post?.id}>
-                            <h3>{post?.title}</h3>
-                            <p>
-                                Type: {post?.category} | Views: {post?.views} | Time: {post?.datetime}
-                            </p>
-                        </Post>
-                    ))} */}
-                </BottomLeftSection>
-                <BottomRightSection>
-                    <Title>Bottom right section</Title>
-                    {blogData.blogs?.map((post) => (
-                        <Post key={post?._id}>
-                            <h3>{post?.summary}</h3>
-                            <p>
-                                Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                {post?.updatedAt || post?.createdAt}
-                            </p>
-                        </Post>
-                    ))}
-                    {feedData.feed?.map((post) => (
-                        <Post key={post?._id}>
-                            <h3>{post?.content}</h3>
-                            <p>
-                                Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                {post?.updatedAt || post?.createdAt}
-                            </p>
-                        </Post>
-                    ))}
-                    {/* {AnalyticsData.slice(0, 10).map((post) => (
-                        <Post key={post?.id}>
-                            <h3>{post?.title}</h3>
-                            <p>
-                                Type: {post?.category} | Views: {post?.views} | Time: {post?.datetime}
-                            </p>
-                        </Post>
-                    ))} */}
-                </BottomRightSection>
-                </BottomSection>
-
-              
-               
+                                ))}
+                            </TopSectionInnerCard>
+                        </TopSectionMainContent>
+                        {/* {AnalyticsData.slice(0, 10).map((post) => (
+                            <Post key={post?.id}>
+                                <h3>{post?.title}</h3>
+                                <p>
+                                    Type: {post?.category} | Views: {post?.views} | Time: {post?.datetime}
+                                </p>
+                            </Post>
+                        ))} */}
+                    </BottomRightSection>
+                </BottomSection>        
             </Container>
         </AnalyticsContainer>
     );

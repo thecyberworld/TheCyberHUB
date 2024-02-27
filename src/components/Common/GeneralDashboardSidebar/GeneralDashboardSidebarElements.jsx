@@ -12,12 +12,12 @@ export const DashboardSidebarContainer = styled.div`
     //border-radius: 10px;
     color: #f5f5f5;
     border-right: 1px solid #2d2d2d;
-    gap: 15px;
+    gap: 40px;
 
     // stick to the top
     position: sticky;
     top: 0;
-    min-width: ${(props) => (props?.isOpen ? "200px" : "50px")};
+    min-width: ${(props) => (props?.isOpen ? "250px" : "50px")};
     transition: width 0.3s ease-in-out;
 
     .heading {
@@ -36,7 +36,7 @@ export const SideBarLinkContainer = styled.div`
     align-items: flex-start;
     width: 100%;
     padding: 15px;
-    gap: 5px;
+    gap: 25px;
 `;
 
 export const SideBarLink = styled(({ isOpen, ...props }) => <NavLink {...props} />)`
