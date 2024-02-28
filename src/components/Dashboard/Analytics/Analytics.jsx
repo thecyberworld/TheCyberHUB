@@ -13,11 +13,18 @@ import {
     TopSectionCaption,
     TopSectionInnerCardCaptionTitle,
     TopSectionInnerCardMainSection,
+    HorizontalStackedBarSection,
+    HorizontalStackedBarLabel,
+    HorizontalStackedBarFirstLabel,
+    HorizontalStackedBarSecondLabel,
+    TopSectionInnerCardMainSectionDateRangeStart,
+    TopSectionInnerCardMainSectionDateRangeEnd,
     TopSectionInnerCardCaption,
     TopSectionInnerCardMainSectionSummary,
     MainFigure,
     FigureInPercent,
     TopSectionInnerCardMainSectionChart,
+    TopSectionInnerCardMainSectionDateRange,
     TopSectionCaptionTitle,
     TopSectionCaptionCTABtn,
     LastThirtyDaysBtn,
@@ -28,6 +35,9 @@ import {
     Title,
     AnalyticsContainer,
     LastUpdated,
+    BottomRightSectionMainCard,
+    BottomRightSectionInnerCard,
+    PopularPostCardCaption
 } from "./AnalyticsElements";
 import { getFeeds } from "../../../features/feeds/feedsSlice";
 import { getBlogs } from "../../../features/blogs/blogSlice";
@@ -35,7 +45,8 @@ import { getViews } from "../../../features/feeds/views/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
 import BarChart from "./AnalyticsBarChart";
 import MainBarChart from "./AnalyticsMainBarChart";
-// import DoughnutChart from "./AnalyticsPieChart";
+import { Doughnut } from "./AnalyticsDoughnutChart";
+import HorizontalStackedBar from "./AnalyticsStackedBar";
 
 const Analytics = () => {
     const dispatch = useDispatch();
@@ -71,103 +82,103 @@ const Analytics = () => {
             </AnalyticsHeader>
             <Container>
                 <TopSection>
-
                     <TopSectionCaption>
-        
                         <TopSectionCaptionTitle>
-                            <Title>Top section caption</Title>
+                            <Title>Audience</Title>
                         </TopSectionCaptionTitle>
-
                         <TopSectionCaptionCTABtn>
                             <TopSectionCaptionCTABtnBig>
-                                CTA Btn1
+                            Last 30 days
                             </TopSectionCaptionCTABtnBig>
                             <TopSectionCaptionCTABtnBig>
-                                CTA Btn2
+                                Downloaded
                             </TopSectionCaptionCTABtnBig>
                         </TopSectionCaptionCTABtn>
-
                     </TopSectionCaption>
-
                     <TopSectionMainContent>
                         <TopSectionInnerCard>
                             <TopSectionInnerCardCaption>
                                         <TopSectionInnerCardCaptionTitle>
-                                            <Title>Top left section</Title>
+                                            <Title>Most Active Times</Title>
                                         </TopSectionInnerCardCaptionTitle>
                                         <LastThirtyDaysBtn>
                                             Last 30 days
-                                        </LastThirtyDaysBtn>            
+                                        </LastThirtyDaysBtn>          
                             </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
                                 <TopSectionInnerCardMainSectionSummary>
                                     <MainFigure>1.234</MainFigure>
-
                                     <FigureInPercent>
                                         +89.67%
                                     </FigureInPercent>  
                                 </TopSectionInnerCardMainSectionSummary>
-                                <TopSectionInnerCardMainSectionChart>
-                                    {/* <Title>Top left Bar chart section </Title> */}
+                                <TopSectionInnerCardMainSectionChart>                         
                                 <BarChart />
-
-                                </TopSectionInnerCardMainSectionChart>         
-                            </TopSectionInnerCardMainSection>
+                                </TopSectionInnerCardMainSectionChart></TopSectionInnerCardMainSection>
                         </TopSectionInnerCard>
                         <TopSectionInnerCard>
                         <TopSectionInnerCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Top left section</Title>
-                                        </TopSectionInnerCardCaptionTitle>
+                            <TopSectionInnerCardCaptionTitle>
+                                <Title>Total Visitor</Title>
+                                </TopSectionInnerCardCaptionTitle>
                                         <LastThirtyDaysBtn>
                                             Last 30 days
                                         </LastThirtyDaysBtn>            
-                            </TopSectionInnerCardCaption>
+                        </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
                                 <TopSectionInnerCardMainSectionSummary>
                                     <MainFigure>1.004</MainFigure>
-
                                     <FigureInPercent>
                                         +71.80%
                                     </FigureInPercent>  
                                 </TopSectionInnerCardMainSectionSummary>
                                 <TopSectionInnerCardMainSectionChart>
-                                    <Title>Top mid line chart section </Title>
+                                    <HorizontalStackedBarSection>                     
+                                        <HorizontalStackedBarLabel>                          
+                                            <HorizontalStackedBarFirstLabel>
+                                                Mobile
+                                            </HorizontalStackedBarFirstLabel>
+                                            <HorizontalStackedBarSecondLabel>
+                                                Desktop
+                                            </HorizontalStackedBarSecondLabel>
+                                        </HorizontalStackedBarLabel>
+                                        <HorizontalStackedBar />
+                                        <TopSectionInnerCardMainSectionDateRange>
+                                            <TopSectionInnerCardMainSectionDateRangeStart>
+                                            11 Oct, 2021
+                                            </TopSectionInnerCardMainSectionDateRangeStart>
+                                            <TopSectionInnerCardMainSectionDateRangeEnd>
+                                            11 Nov, 2021
+                                            </TopSectionInnerCardMainSectionDateRangeEnd>            
+                                        </TopSectionInnerCardMainSectionDateRange>
+                                    </HorizontalStackedBarSection>
                                 </TopSectionInnerCardMainSectionChart>         
                             </TopSectionInnerCardMainSection>
                         </TopSectionInnerCard>
                         <TopSectionInnerCard>
                         <TopSectionInnerCardCaption>
                                         <TopSectionInnerCardCaptionTitle>
-                                            <Title>Top right section</Title>
+                                            <Title>Age Average</Title>
                                         </TopSectionInnerCardCaptionTitle>
                                         <LastThirtyDaysBtn>
                                             Last 30 days
                                         </LastThirtyDaysBtn>            
                             </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
-                                <TopSectionInnerCardMainSectionSummary>
-                                    <Title>Top right section Bar chart</Title>
-                                    <LastThirtyDaysBtn>
-                                        num
-                                    </LastThirtyDaysBtn>  
-                                </TopSectionInnerCardMainSectionSummary>
                                 <TopSectionInnerCardMainSectionChart>
-                                    <Title>Top right Bar chart section </Title>
+                                    <Doughnut />
                                 </TopSectionInnerCardMainSectionChart>         
                             </TopSectionInnerCardMainSection>  
                         </TopSectionInnerCard>
                     </TopSectionMainContent>
-
                 </TopSection>
                 <BottomSection>
                     <BottomLeftSection>
                         <BottomLeftSectionCaption>     
                             <BottomSectionCaptionTitle>
-                                <Title>Bottom left section</Title>
+                                <Title>Most Active Times</Title>
                                 <LastUpdated>Last updated 14 min ago</LastUpdated>
                             </BottomSectionCaptionTitle>
-
                             <TopSectionCaptionCTABtn>
                                 <TimeCaptionBtn>
                                     Hours
@@ -179,7 +190,6 @@ const Analytics = () => {
                         </BottomLeftSectionCaption>
                         <TopSectionMainContent>
                             <TopSectionInnerCard>
-                                <Title>Bottom left section</Title>
                                 {/* {blogData.blogs?.map((post) => (
                                     <Post key={post?._id}>
                                         <h3>{post?.summary}</h3>
@@ -225,22 +235,90 @@ const Analytics = () => {
                         ))} */}
                         <TopSectionCaption>
                             <BottomSectionCaptionTitle>
-                                <Title>Bottom right </Title>
+                                <Title>Popular Post </Title>
                                 <LastUpdated>Last updated 14 min ago</LastUpdated>
                             </BottomSectionCaptionTitle>
-
-
                             <TopSectionCaptionCTABtn>
                                 <LastThirtyDaysBtn>
                                     Last 30 days
                                 </LastThirtyDaysBtn>
-
                             </TopSectionCaptionCTABtn>
                         </TopSectionCaption>
 
-                        <TopSectionMainContent>
-                            <TopSectionInnerCard>
-                                <Title>Top left section</Title>
+                        <BottomRightSectionMainCard>
+                            <BottomRightSectionInnerCard>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
+                                <PopularPostCardCaption>
+                                        <TopSectionInnerCardCaptionTitle>
+                                            <Title>Post title</Title>
+                                        </TopSectionInnerCardCaptionTitle>
+                                        <LastThirtyDaysBtn>
+                                            Last 30 days
+                                        </LastThirtyDaysBtn>            
+                                </PopularPostCardCaption>
                                 {blogData.blogs?.map((post) => (
                                     <Post key={post?._id}>
                                         <h3>{post?.summary}</h3>
@@ -259,8 +337,8 @@ const Analytics = () => {
                                         </p>
                                     </Post>
                                 ))}
-                            </TopSectionInnerCard>
-                        </TopSectionMainContent>
+                            </BottomRightSectionInnerCard>
+                        </BottomRightSectionMainCard>
                         {/* {AnalyticsData.slice(0, 10).map((post) => (
                             <Post key={post?.id}>
                                 <h3>{post?.title}</h3>

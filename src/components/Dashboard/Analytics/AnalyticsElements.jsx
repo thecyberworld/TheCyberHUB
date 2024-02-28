@@ -82,7 +82,6 @@ export const LastThirtyDaysBtn = styled.div`
 
 export const TopSectionCaptionCTABtnBig = styled.div`
     flex: 3;
-    border: 2px solid white;
     background-color: black;
     border-radius: 12px;
     color: #E77B0F;
@@ -165,22 +164,70 @@ export const FigureInPercent = styled.div`
     margin-left: 1rem;
     padding: 3px;
 `;
+
+export const TopSectionInnerCardMainSection = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    background-color: #151414;
+    border-radius: 5px;
+    color: #fff;
+`;
+
 export const TopSectionInnerCardMainSectionChart = styled.div`
     display: flex;
-    // justify-content: flex-start;
     background-color: #151414;
     border-radius: 5px;
     color: #fff;
     font-size: 12px;
 `;
 
-export const TopSectionInnerCardMainSection = styled.div`
+export const TopSectionInnerCardMainSectionDateRange = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 35px;
+    font-size: 11px;
+`;
+
+export const TopSectionInnerCardMainSectionDateRangeStart = styled.div`
+    display: flex;
+    color: grey;
+`;
+
+export const TopSectionInnerCardMainSectionDateRangeEnd = styled.div`
+    display: flex;
+    color: grey;
+`;
+
+export const HorizontalStackedBarSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 5px;
     background-color: #151414;
     border-radius: 5px;
+    margin-top: 50px;
     color: #fff;
+`;
+
+export const HorizontalStackedBarLabel = styled.div`
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    align-items: baseline;
+    margin-bottom: 20px;
+`;
+
+export const HorizontalStackedBarFirstLabel = styled.div`
+    flex: 2; 
+    display: flex;
+    justify-content: flex-start;
+`;
+export const HorizontalStackedBarSecondLabel = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
 `;
 
 export const BottomSection = styled.div`
@@ -259,6 +306,7 @@ export const TimeCaptionBtnTwo = styled.div`
     text-align: center;
     border: 0.5px solid grey;
 `;
+
 export const BottomRightSection = styled.div`
     flex: 3;
     display: flex;
@@ -274,13 +322,30 @@ export const BottomRightSection = styled.div`
     text-align: center;
 `;
 
-export const LeftSection = styled.div`
-    flex: 1;
+export const BottomRightSectionMainCard = styled.div`
+    display: flex;
+    height: 100%;
+    border-radius: 5px;
 `;
 
-export const RightSection = styled.div`
-    flex: 1;
-    max-width: 300px;
+export const BottomRightSectionInnerCard = styled.div`
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #fff;
+    text-align: center;
+`;
+
+export const PopularPostCardCaption = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 15px;
+    border-radius: 5px;
+    margin: 4px 0 4px 0;
+    padding: 4px 0 4px 0;
+    border: 0.5px solid grey;
 `;
 
 export const Post = styled.div`

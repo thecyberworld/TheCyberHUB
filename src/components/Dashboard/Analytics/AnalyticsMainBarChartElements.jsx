@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 export const VerticalBarChartMainSection = styled.div`
     display: flex;
-    width: 100%;
+    width: 90%;
     height: 100%;
-    padding: 10px;
+    padding: 10px 0 10px 5px;
     border: 1px solid #151414;
-    // color: #E77B0F;
     text-align: center;
 `;
