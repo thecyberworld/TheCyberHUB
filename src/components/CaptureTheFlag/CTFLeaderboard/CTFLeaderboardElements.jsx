@@ -11,7 +11,7 @@ export const LeaderboardContainer = styled.div`
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background: #090909;
+    background: #131313;
 `;
 
 export const LeaderboardHeader = styled.div`
