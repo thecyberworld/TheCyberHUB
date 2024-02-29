@@ -64,6 +64,7 @@ import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
 import Methodology from "./components/Resources/Methodology/MethodologyMain";
 import SessionExpireLogout from "./components/Other/SessionExpireLogout";
 import { useSelector } from "react-redux";
+import MainPage from "./components/CaptureTheFlag/CtFPage/MainPage";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -143,6 +144,8 @@ const App = () => {
                         <Route path={"/forum/*"} element={<ForumRoute />} />
 
                         <Route path={"/ctf/*"} element={<CtfRoute />} />
+                        <Route path={"/ctf/mainpage"} element={<MainPage />} />
+
                         <Route exact path={"/leaderboard"} element={<Leaderboard />} />
                         <Route exact path={"courses/:title"} element={<Course />} />
 
