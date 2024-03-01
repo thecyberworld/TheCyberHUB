@@ -9,6 +9,7 @@ import forumReducer from "../features/forum/forumSlice";
 import viewReducer from "../features/feeds/views/viewSlice";
 import feedReducer from "../features/feeds/feedsSlice";
 import feedLikeReduces from "../features/feeds/feedLikes/feedLikesSlice";
+import blogLikeReduces from "../features/blogs/blogLikes/blogLikesSlice";
 
 import blogCommentsReducer from "../features/blogs/blogComments/blogCommentSlice";
 import feedCommentsReducer from "../features/feeds/feedComments/feedCommentsSlice";
@@ -42,6 +43,7 @@ export default configureStore({
         views: viewReducer,
         bookmarks: bookmarkReduces,
         feedLikes: feedLikeReduces,
+        blogLikes: blogLikeReduces,
 
         userDetail: userDetailReducer,
         ctf: ctfReducer,
