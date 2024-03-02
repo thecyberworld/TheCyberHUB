@@ -79,7 +79,7 @@ int main() {
         language: "c",
         category: "C",
         tags: ["Crackme", "C", "Password"],
-        level: "Intermediate",
+        level: "Beginner",
     },
     {
         id: 4,
