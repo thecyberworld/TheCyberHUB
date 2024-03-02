@@ -99,6 +99,13 @@ const ContactForm = () => {
         });
     };
 
+
+    // Email validation function
+    const isValidEmail = (email) => {
+        const regexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email pattern
+        return regexPattern.test(email);
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsLoading(false);
@@ -116,6 +123,13 @@ const ContactForm = () => {
             isExperienced,
             submissionFrom: "thecyberhub.org",
         };
+
+    // Validate email
+    if (!isValidEmail(email)) {
+        setError("Please enter a valid email address");
+        return; // Stop the form submission
+    }
+
 
         if (name.length === 0) {
             setError("Please add your name");
@@ -139,6 +153,7 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
+                        
                         setFormData({
                             name: "",
                             email: "",
