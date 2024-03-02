@@ -6,7 +6,7 @@ import { LevelButton } from "./RoomCardElement";
 import Sidebar from "../../Sidebar";
 import { Input } from "../SubmissionBoxElements";
 
-const Labs = ({ LabData }) => {
+const Labs = ({ LabData, heading }) => {
     const [levelActive, setLevelActive] = useState("All");
     const [categoryActive, setCategoryActive] = useState("All");
     const [searchInput, setSearchInput] = useState("");
@@ -54,7 +54,7 @@ const Labs = ({ LabData }) => {
         <>
             <div style={{ width: "100%", maxWidth: "1200px", margin: "5px auto" }}>
                 <LabContainer>
-                    <Sidebar heading={"Labs"} topics={LabData} onlyCat={true} setCategoryActive={setCategoryActive} />
+                    <Sidebar heading={heading} topics={LabData} onlyCat={true} setCategoryActive={setCategoryActive} />
 
                     <RoomContainer>
                         <div className="header">
