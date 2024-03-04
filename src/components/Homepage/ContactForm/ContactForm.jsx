@@ -35,7 +35,7 @@ import apiStatus from "../../../features/apiStatus";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
 import { volunteerPrograms } from "../../Opportunities/Volunteer/VolunteerData";
-import {validateEmail} from "../../../utils/validateEmail.js"
+import { validateEmail } from "../../../utils/validateEmail.js"
 
 const ContactForm = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -62,6 +62,25 @@ const ContactForm = () => {
 
     const [isOpened, setIsOpened] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
+
+    {/* <reset form> */ }
+
+    const resetForm = () => {
+        setFormData({
+            name: "",
+            email: "",
+            reason: "",
+            reasonType: "",
+            contextHeading: "",
+            resume: "",
+            message: "",
+            isExperienced: "",
+        });
+        setIsSuccess(false);
+        setIsLoading(false);
+        setError(false);
+        setError2(false);
+    };
 
     useEffect(() => {
         if (error || error2) {
@@ -119,11 +138,11 @@ const ContactForm = () => {
             submissionFrom: "thecyberhub.org",
         };
 
-    // Validate email
-    if (!validateEmail(email)) {
-        setError("Please enter a valid email address");
-        return; // Stop the form submission
-    }
+        // Validate email
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address");
+            return; // Stop the form submission
+        }
 
 
         if (name.length === 0) {
@@ -149,7 +168,7 @@ const ContactForm = () => {
                         setIsLoading(false);
                         setIsSuccess(true);
 
-                         setFormData({
+                        setFormData({
                             name: "",
                             email: "",
                             reason: "",
@@ -428,7 +447,7 @@ Including:
                             <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
                                 Submit
                             </ContactFormSubmit>
-  ) : (
+                        ) : (
                             <LoadingButton width={"10 0%"}>
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
@@ -439,8 +458,19 @@ Including:
                         <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>
                     )}
                 </ContactFormSection>
-                {isSuccess && !error ? <GlowingButton>Submit Successfully</GlowingButton>: null}
-                </ContactFormCard>
+                {isSuccess && !error ?
+
+
+                    <div>
+                        <GlowingButton>Submit Successfully</GlowingButton>
+                        {/* <reset button> */}
+                        <button onClick={resetForm}>Submit another response</button>
+                    </div>
+
+
+                    : null}
+
+            </ContactFormCard>
         </ContactFormContainer>
     );
 };
