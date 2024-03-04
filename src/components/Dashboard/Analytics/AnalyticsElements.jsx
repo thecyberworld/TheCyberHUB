@@ -10,7 +10,7 @@ export const AnalyticsContainer = styled.div`
 
 export const AnalyticsHeader = styled.header`
     display: flex;
-    justify-content: flex-start;    
+    justify-content: flex-start;
     background-color: #151414;
     border: 1px solid #151414;
     border-radius: 5px;
@@ -33,44 +33,59 @@ export const Title = styled.h1`
 export const TopSection = styled.div`
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 15px;
     background-color: #151414;
+    padding: 20px;
     border: 1px solid #151414;
     border-radius: 5px;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
 `;
 
-export const TopSectionCaption = styled.div`
+export const Caption = styled.div`
     display: flex;
-    flex-direction: row;
     gap: 15px;
-    background-color: #151414;
-    border-radius: 5px;
-    color: #fff;
 `;
 
 export const TopSectionCaptionTitle = styled.div`
     flex: 6;
     display: flex;
     justify-content: flex-start;
-    background-color: #151414;
-    border-radius: 5px;
     color: #fff;
     padding-top: 15px;
+    gap: 25px;
 `;
 
-export const TopSectionCaptionCTABtn = styled.div`
+export const CTABtn = styled.div`
     flex: 3;
     display: flex;
-    flex-direction: row;
     gap: 15px;
-    background-color: #151414;
-    border-radius: 5px;
-    color: #fff;
-    text-align: center;
+    font-size: 14px;
 `;
+
+export const TopSectionCaptionCTABtnBig = styled.div`
+    flex: 3;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: #e77b0f;
+    font-weight: 600;
+    margin: 5px;
+    padding: 8px 0;
+    border: 0.5px solid grey;
+    border-radius: 12px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+    }
+`;
+
+export const TopSectionCaptionCTABtnBigInnerSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 15px;
+`;
+
 export const LastThirtyDaysBtn = styled.div`
     flex: 5;
     display: flex;
@@ -80,67 +95,51 @@ export const LastThirtyDaysBtn = styled.div`
     font-weight: 600;
 `;
 
-export const TopSectionCaptionCTABtnBig = styled.div`
-    flex: 3;
-    background-color: black;
-    border-radius: 12px;
-    color: #E77B0F;
-    font-weight: 600;
-    margin: 5px;
-    padding: 12px;
-    text-align: center;
-    border: 0.5px solid grey;
-`;
-
 export const TopSectionMainContent = styled.div`
     display: flex;
     flex-direction: row;
+    text-align: center;
     gap: 18px;
     height: 100%;
-    border-radius: 5px;
-    color: #fff;
-    text-align: center;
 `;
 
-export const TopSectionInnerCard = styled.div`
+export const InnerCard = styled.div`
     flex: 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border-radius: 5px;
-    color: #fff;
-    padding: 8px 15px;
     text-align: center;
+    color: #fff;
+    height: 100%;
+    padding: 8px 15px;
     border: 0.5px solid grey;
+    border-radius: 5px;
+    transition: transform 0.2s; /* Animation */
+    &:hover {
+        transform: scale(1.05);
+    }
 `;
 
 export const TopSectionInnerCardCaption = styled.div`
     display: flex;
     flex-direction: row;
-    gap: 15px;
-    background-color: #151414;
-    border-radius: 5px;
-    color: #fff;
     align-items: baseline;
+    gap: 15px;
+    color: #fff;
 `;
 
 export const TopSectionInnerCardCaptionTitle = styled.div`
     flex: 10;
     display: flex;
     justify-content: flex-start;
-    background-color: #151414;
-    border-radius: 5px;
     color: #fff;
     font-size: 12px;
-
 `;
 export const TopSectionInnerCardMainSectionSummary = styled.div`
     display: flex;
     justify-content: flex-start;
-    background-color: #151414;
-    color: #fff;
-    padding-top: 5px;
-    padding-left: 5px;
+    // padding: 5px 0 0 5px;
+    padding: 1.5rem 0 0 1.7rem;
 `;
 
 export const MainFigure = styled.p`
@@ -155,14 +154,14 @@ export const FigureInPercent = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #BCFE30;
-    border-radius: 8px;
-    color: black;
     text-align: center;
+    background-color: #bcfe30;
+    color: black;
     font-size: 10px;
-    border: 0.5px solid green;
     margin-left: 1rem;
     padding: 3px;
+    border: 0.5px solid green;
+    border-radius: 8px;
 `;
 
 export const TopSectionInnerCardMainSection = styled.div`
@@ -170,16 +169,10 @@ export const TopSectionInnerCardMainSection = styled.div`
     flex-direction: column;
     justify-content: space-between;
     gap: 5px;
-    background-color: #151414;
-    border-radius: 5px;
-    color: #fff;
 `;
 
 export const TopSectionInnerCardMainSectionChart = styled.div`
     display: flex;
-    background-color: #151414;
-    border-radius: 5px;
-    color: #fff;
     font-size: 12px;
 `;
 
@@ -204,23 +197,20 @@ export const TopSectionInnerCardMainSectionDateRangeEnd = styled.div`
 export const HorizontalStackedBarSection = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    background-color: #151414;
-    border-radius: 5px;
-    margin-top: 50px;
-    color: #fff;
+    gap: 2rem;
+    // margin-top: 50px;
 `;
 
 export const HorizontalStackedBarLabel = styled.div`
     display: flex;
     flex-direction: row;
-    color: grey;
     align-items: baseline;
-    margin-bottom: 20px;
+    color: grey;
+    margin-bottom: 3px;
 `;
 
 export const HorizontalStackedBarFirstLabel = styled.div`
-    flex: 2; 
+    flex: 2;
     display: flex;
     justify-content: flex-start;
 `;
@@ -231,29 +221,23 @@ export const HorizontalStackedBarSecondLabel = styled.div`
 `;
 
 export const BottomSection = styled.div`
-    height: 40vw;
     display: flex;
     flex-direction: row;
     gap: 40px;
-    border-radius: 5px;
-    color: #fff;
-    text-align: center;
+    height: 40vw;
 `;
 
 export const BottomLeftSection = styled.div`
     flex: 6;
     flex-direction: column;
-    gap: 5px;
     display: flex;
     justify-content: flex-start;
-    border: 2px solid white;
+    text-align: center;
     background-color: #151414;
+    gap: 5px;
+    padding: 20px;
     border: 1px solid #151414;
     border-radius: 5px;
-    color: #fff;
-    color: #E77B0F;
-    padding: 20px;
-    text-align: center;
 `;
 
 export const BottomLeftSectionCaption = styled.div`
@@ -261,8 +245,8 @@ export const BottomLeftSectionCaption = styled.div`
     flex-direction: row;
     gap: 15px;
     background-color: #151414;
-    border-radius: 5px;
     color: #fff;
+    border-radius: 5px;
 `;
 
 export const BottomSectionCaptionTitle = styled.div`
@@ -280,52 +264,53 @@ export const LastUpdated = styled.p`
     align-items: flex-start;
     background-color: #151414;
     color: grey;
-    font-size:12px;
+    font-size: 12px;
 `;
 
-export const TimeCaptionBtn = styled.div`
+export const TimeCaptionBtnHours = styled.div`
     flex: 3;
-    background-color: #FF6B07;
-    border-radius: 10px;
+    text-align: center;
+    background-color: #ff6b07;
     color: black;
     font-weight: 400;
     margin: 15px;
     padding: 8px 14px;
-    text-align: center;
     border: 0.5px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+    }
 `;
 
-export const TimeCaptionBtnTwo = styled.div`
+export const TimeCaptionBtnDays = styled.div`
     flex: 3;
-    background-color: #0000FF;
-    border-radius: 10px;
+    text-align: center;
+    background-color: #0000ff;
     color: white;
     font-weight: 400;
     margin: 15px;
     padding: 8px 14px;
-    text-align: center;
     border: 0.5px solid grey;
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+    }
 `;
 
 export const BottomRightSection = styled.div`
     flex: 3;
     display: flex;
     flex-direction: column;
-    gap: 35px;
     justify-content: flex-start;
-    border: 2px solid white;
+    text-align: center;
+    gap: 25px;
     background-color: #151414;
+    color: #fff;
     border: 1px solid #151414;
     border-radius: 5px;
-    color: #fff;
     padding: 20px;
-    text-align: center;
-`;
-
-export const BottomRightSectionMainCard = styled.div`
-    display: flex;
-    height: 100%;
-    border-radius: 5px;
 `;
 
 export const BottomRightSectionInnerCard = styled.div`
@@ -333,19 +318,90 @@ export const BottomRightSectionInnerCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    color: #fff;
     text-align: center;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    color: #fff;
 `;
 
-export const PopularPostCardCaption = styled.div`
+export const PopularPostCard = styled.div`
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
     gap: 15px;
+    margin: 0 0 10px 0;
+    font-size: 12px;
     border-radius: 5px;
-    margin: 4px 0 4px 0;
-    padding: 4px 0 4px 0;
-    border: 0.5px solid grey;
+    cursor: pointer;
+`;
+export const PostDetails = styled.div`
+    flex: 1;
+    display: flex;
+    align-items: start;
+    font-size: 12px;
+`;
+
+export const PostTitleDate = styled.div`
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    color: #fff;
+`;
+
+export const PostTitle = styled.h5`
+    display: block;
+    justify-content: flex-start;
+    align-items: start;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 9vw;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+        color: grey;
+    }
+`;
+export const PostDate = styled.p`
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    color: grey;
+`;
+
+export const PostIcons = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    color: grey;
+    font-size: 11px;
+    font-weight: 600;
+`;
+
+export const LikesIcon = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    &:hover {
+        color: #fff;
+    }
+`;
+
+export const CommentsIcon = styled.div`
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    &:hover {
+        color: #fff;
+    }
 `;
 
 export const Post = styled.div`

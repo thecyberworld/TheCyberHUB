@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
-export const DoughnutChart = styled.div`
+export const DoughnutChartContainer = styled.div`
 display: flex;
-justify-content: flex-start; 
+justify-content: center; 
 align-item: baseline;
-width: 70%;
-margin-left: 20px;
-padding-left: 35px;
+width: 80%;
+// margin-left: 20px;
+// margin-left: 0.52rem;
+// padding-left: 35px;
+// padding-left: 0.5rem;
+padding: 1.1rem;
 `;
 

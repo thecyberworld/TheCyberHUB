@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const VerticalBarChartMainSection = styled.div`
+export const VerticalBarChartContainer = styled.div`
     display: flex;
     width: 95%;
     height: 100%;

@@ -1,52 +1,66 @@
 import React, { useEffect } from "react";
 import {
+    AnalyticsContainer,
     AnalyticsHeader,
     Container,
     TopSection,
-    BottomSection,
-    BottomLeftSection,
-    BottomLeftSectionCaption,
-    BottomSectionCaptionTitle,
-    TimeCaptionBtn,
-    TimeCaptionBtnTwo,
-    BottomRightSection,
-    TopSectionCaption,
+    Caption,
+    TopSectionCaptionTitle,
+    Title,
+    CTABtn,
+    TopSectionCaptionCTABtnBig,
+    TopSectionCaptionCTABtnBigInnerSection,
+    TopSectionMainContent,
+    InnerCard,
+    TopSectionInnerCardCaption,
     TopSectionInnerCardCaptionTitle,
+    LastThirtyDaysBtn,
+    MainFigure,
+    FigureInPercent,
+    TopSectionInnerCardMainSectionSummary,
     TopSectionInnerCardMainSection,
+    TopSectionInnerCardMainSectionChart,
     HorizontalStackedBarSection,
     HorizontalStackedBarLabel,
     HorizontalStackedBarFirstLabel,
     HorizontalStackedBarSecondLabel,
+    TopSectionInnerCardMainSectionDateRange,
     TopSectionInnerCardMainSectionDateRangeStart,
     TopSectionInnerCardMainSectionDateRangeEnd,
-    TopSectionInnerCardCaption,
-    TopSectionInnerCardMainSectionSummary,
-    MainFigure,
-    FigureInPercent,
-    TopSectionInnerCardMainSectionChart,
-    TopSectionInnerCardMainSectionDateRange,
-    TopSectionCaptionTitle,
-    TopSectionCaptionCTABtn,
-    LastThirtyDaysBtn,
-    TopSectionCaptionCTABtnBig,
-    TopSectionMainContent,
-    TopSectionInnerCard,
-    Post,
-    Title,
-    AnalyticsContainer,
+    BottomSection,
+    BottomLeftSection,
+    BottomLeftSectionCaption,
+    BottomSectionCaptionTitle,
     LastUpdated,
-    BottomRightSectionMainCard,
+    TimeCaptionBtnHours,
+    TimeCaptionBtnDays,
+    BottomRightSection,
     BottomRightSectionInnerCard,
-    PopularPostCardCaption
+    PopularPostCard,
+    PostDetails,
+    PostTitleDate,
+    PostIcons,
+    PostTitle,
+    PostDate,
+    LikesIcon,
+    CommentsIcon,
+    Post,
 } from "./AnalyticsElements";
 import { getFeeds } from "../../../features/feeds/feedsSlice";
 import { getBlogs } from "../../../features/blogs/blogSlice";
 import { getViews } from "../../../features/feeds/views/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
 import BarChart from "./AnalyticsBarChart";
-import MainBarChart from "./AnalyticsMainBarChart";
-import { Doughnut } from "./AnalyticsDoughnutChart";
 import HorizontalStackedBar from "./AnalyticsStackedBar";
+import { DoughnutChart } from "./AnalyticsDoughnutChart";
+import MainBarChart from "./AnalyticsMainBarChart";
+import {
+    FiInfoIcon,
+    SlCalenderIcon,
+    TbFileDownloadIcon,
+    CiHeartIcon,
+    IoChatboxOutlineIcon,
+} from "./AnalyticsIconElements";
 
 const Analytics = () => {
     const dispatch = useDispatch();
@@ -82,137 +96,105 @@ const Analytics = () => {
             </AnalyticsHeader>
             <Container>
                 <TopSection>
-                    <TopSectionCaption>
+                    <Caption>
                         <TopSectionCaptionTitle>
-                            <Title>Audience</Title>
+                            <Title>Audience </Title>
+                            <FiInfoIcon />
                         </TopSectionCaptionTitle>
-                        <TopSectionCaptionCTABtn>
+                        <CTABtn>
                             <TopSectionCaptionCTABtnBig>
-                            Last 30 days
+                                <TopSectionCaptionCTABtnBigInnerSection>
+                                    Last 30 days
+                                    <SlCalenderIcon />
+                                </TopSectionCaptionCTABtnBigInnerSection>
                             </TopSectionCaptionCTABtnBig>
                             <TopSectionCaptionCTABtnBig>
-                                Downloaded
+                                <TopSectionCaptionCTABtnBigInnerSection>
+                                    Download
+                                    <TbFileDownloadIcon />
+                                </TopSectionCaptionCTABtnBigInnerSection>
                             </TopSectionCaptionCTABtnBig>
-                        </TopSectionCaptionCTABtn>
-                    </TopSectionCaption>
+                        </CTABtn>
+                    </Caption>
                     <TopSectionMainContent>
-                        <TopSectionInnerCard>
+                        <InnerCard>
                             <TopSectionInnerCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Most Active Times</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>          
+                                <TopSectionInnerCardCaptionTitle>
+                                    <Title>Most Active Times</Title>
+                                </TopSectionInnerCardCaptionTitle>
+                                <LastThirtyDaysBtn>Last 30 days</LastThirtyDaysBtn>
                             </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
                                 <TopSectionInnerCardMainSectionSummary>
                                     <MainFigure>1.234</MainFigure>
-                                    <FigureInPercent>
-                                        +89.67%
-                                    </FigureInPercent>  
+                                    <FigureInPercent>+89.67%</FigureInPercent>
                                 </TopSectionInnerCardMainSectionSummary>
-                                <TopSectionInnerCardMainSectionChart>                         
-                                <BarChart />
-                                </TopSectionInnerCardMainSectionChart></TopSectionInnerCardMainSection>
-                        </TopSectionInnerCard>
-                        <TopSectionInnerCard>
-                        <TopSectionInnerCardCaption>
-                            <TopSectionInnerCardCaptionTitle>
-                                <Title>Total Visitor</Title>
+                                <TopSectionInnerCardMainSectionChart>
+                                    <BarChart />
+                                </TopSectionInnerCardMainSectionChart>
+                            </TopSectionInnerCardMainSection>
+                        </InnerCard>
+                        <InnerCard>
+                            <TopSectionInnerCardCaption>
+                                <TopSectionInnerCardCaptionTitle>
+                                    <Title>Total Visitor</Title>
                                 </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                        </TopSectionInnerCardCaption>
+                                <LastThirtyDaysBtn>Last 30 days</LastThirtyDaysBtn>
+                            </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
                                 <TopSectionInnerCardMainSectionSummary>
                                     <MainFigure>1.004</MainFigure>
-                                    <FigureInPercent>
-                                        +71.80%
-                                    </FigureInPercent>  
+                                    <FigureInPercent>+71.80%</FigureInPercent>
                                 </TopSectionInnerCardMainSectionSummary>
                                 <TopSectionInnerCardMainSectionChart>
-                                    <HorizontalStackedBarSection>                     
-                                        <HorizontalStackedBarLabel>                          
-                                            <HorizontalStackedBarFirstLabel>
-                                                Mobile
-                                            </HorizontalStackedBarFirstLabel>
-                                            <HorizontalStackedBarSecondLabel>
-                                                Desktop
-                                            </HorizontalStackedBarSecondLabel>
+                                    <HorizontalStackedBarSection>
+                                        <HorizontalStackedBarLabel>
+                                            <HorizontalStackedBarFirstLabel>Mobile</HorizontalStackedBarFirstLabel>
+                                            <HorizontalStackedBarSecondLabel>Desktop</HorizontalStackedBarSecondLabel>
                                         </HorizontalStackedBarLabel>
                                         <HorizontalStackedBar />
                                         <TopSectionInnerCardMainSectionDateRange>
                                             <TopSectionInnerCardMainSectionDateRangeStart>
-                                            11 Oct, 2021
+                                                11 Oct, 2021
                                             </TopSectionInnerCardMainSectionDateRangeStart>
                                             <TopSectionInnerCardMainSectionDateRangeEnd>
-                                            11 Nov, 2021
-                                            </TopSectionInnerCardMainSectionDateRangeEnd>            
+                                                11 Nov, 2021
+                                            </TopSectionInnerCardMainSectionDateRangeEnd>
                                         </TopSectionInnerCardMainSectionDateRange>
                                     </HorizontalStackedBarSection>
-                                </TopSectionInnerCardMainSectionChart>         
+                                </TopSectionInnerCardMainSectionChart>
                             </TopSectionInnerCardMainSection>
-                        </TopSectionInnerCard>
-                        <TopSectionInnerCard>
-                        <TopSectionInnerCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Age Average</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
+                        </InnerCard>
+                        <InnerCard>
+                            <TopSectionInnerCardCaption>
+                                <TopSectionInnerCardCaptionTitle>
+                                    <Title>Age Average</Title>
+                                </TopSectionInnerCardCaptionTitle>
+                                <LastThirtyDaysBtn>Last 30 days</LastThirtyDaysBtn>
                             </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
-                                <TopSectionInnerCardMainSectionChart>
-                                    <Doughnut />
-                                </TopSectionInnerCardMainSectionChart>         
-                            </TopSectionInnerCardMainSection>  
-                        </TopSectionInnerCard>
+                                {/* <TopSectionInnerCardMainSectionChart> */}
+                                    <DoughnutChart />
+                                {/* </TopSectionInnerCardMainSectionChart> */}
+                            </TopSectionInnerCardMainSection>
+                        </InnerCard>
                     </TopSectionMainContent>
                 </TopSection>
                 <BottomSection>
                     <BottomLeftSection>
-                        <BottomLeftSectionCaption>     
+                        <BottomLeftSectionCaption>
                             <BottomSectionCaptionTitle>
                                 <Title>Most Active Times</Title>
                                 <LastUpdated>Last updated 14 min ago</LastUpdated>
                             </BottomSectionCaptionTitle>
-                            <TopSectionCaptionCTABtn>
-                                <TimeCaptionBtn>
-                                    Hours
-                                </TimeCaptionBtn>
-                                <TimeCaptionBtnTwo>
-                                    Days
-                                </TimeCaptionBtnTwo>
-                            </TopSectionCaptionCTABtn>
+                            <CTABtn>
+                                <TimeCaptionBtnHours>Hours</TimeCaptionBtnHours>
+                                <TimeCaptionBtnDays>Days</TimeCaptionBtnDays>
+                            </CTABtn>
                         </BottomLeftSectionCaption>
-                        <TopSectionMainContent>
-                            <TopSectionInnerCard>
-                                {/* {blogData.blogs?.map((post) => (
-                                    <Post key={post?._id}>
-                                        <h3>{post?.summary}</h3>
-                                        <p>
-                                            Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                            {post?.updatedAt || post?.createdAt}
-                                        </p>
-                                    </Post>
-                                ))}
-                                {feedData.feed?.map((post) => (
-                                    <Post key={post?._id}>
-                                        <h3>{post?.content}</h3>
-                                        <p>
-                                            Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                            {post?.updatedAt || post?.createdAt}
-                                        </p>
-                                    </Post>
-                                ))} */}
-                                {/* <BarChart /> */}
-                                <MainBarChart />
-                                {/* <DoughnutChart/> */}
-                            </TopSectionInnerCard>
-                        </TopSectionMainContent>
+                        <InnerCard>
+                            <MainBarChart />
+                        </InnerCard>
                     </BottomLeftSection>
                     <BottomRightSection>
                         {/* {blogData.blogs?.map((post) => (
@@ -233,112 +215,198 @@ const Analytics = () => {
                                 </p>
                             </Post>
                         ))} */}
-                        <TopSectionCaption>
+                        <Caption>
                             <BottomSectionCaptionTitle>
                                 <Title>Popular Post </Title>
                                 <LastUpdated>Last updated 14 min ago</LastUpdated>
                             </BottomSectionCaptionTitle>
-                            <TopSectionCaptionCTABtn>
-                                <LastThirtyDaysBtn>
-                                    Last 30 days
-                                </LastThirtyDaysBtn>
-                            </TopSectionCaptionCTABtn>
-                        </TopSectionCaption>
+                            <CTABtn>
+                                <LastThirtyDaysBtn>Last 30 days</LastThirtyDaysBtn>
+                            </CTABtn>
+                        </Caption>
+                        <BottomRightSectionInnerCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Learn to build servers</PostTitle>
+                                        <PostDate>May 26</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        30.5K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        56K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Understanding Linux OS Begginers level</PostTitle>
+                                        <PostDate>May 26</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        102.7K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        86K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Master the basics of Git</PostTitle>
+                                        <PostDate>Mar 06</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        9.3K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        16K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Learn to build servers </PostTitle>
+                                        <PostDate>May 26</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        30.5K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        56K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Understanding Linux OS</PostTitle>
+                                        <PostDate>May 26</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        102.7K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        86K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Master the basics of Git</PostTitle>
+                                        <PostDate>Mar 06</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        9.3K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        16K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Learn to build servers </PostTitle>
+                                        <PostDate>May 26</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        30.5K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        56K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Understanding Linux OS</PostTitle>
+                                        <PostDate>May 26</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        102.7K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        86K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
+                            <PopularPostCard>
+                                <PostDetails>
+                                    <PostTitleDate>
+                                        <PostTitle>Master the basics of Git</PostTitle>
+                                        <PostDate>Mar 06</PostDate>
+                                    </PostTitleDate>
+                                </PostDetails>
+                                <PostIcons>
+                                    <LikesIcon>
+                                        <CiHeartIcon />
+                                        9.3K
+                                    </LikesIcon>
+                                    <CommentsIcon>
+                                        <IoChatboxOutlineIcon />
+                                        16K
+                                    </CommentsIcon>
+                                </PostIcons>
+                            </PopularPostCard>
 
-                        <BottomRightSectionMainCard>
-                            <BottomRightSectionInnerCard>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                <PopularPostCardCaption>
-                                        <TopSectionInnerCardCaptionTitle>
-                                            <Title>Post title</Title>
-                                        </TopSectionInnerCardCaptionTitle>
-                                        <LastThirtyDaysBtn>
-                                            Last 30 days
-                                        </LastThirtyDaysBtn>            
-                                </PopularPostCardCaption>
-                                {blogData.blogs?.map((post) => (
-                                    <Post key={post?._id}>
-                                        <h3>{post?.summary}</h3>
-                                        <p>
-                                            Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                            {post?.updatedAt || post?.createdAt}
-                                        </p>
-                                    </Post>
-                                ))}
-                                {feedData.feed?.map((post) => (
-                                    <Post key={post?._id}>
-                                        <h3>{post?.content}</h3>
-                                        <p>
-                                            Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                            {post?.updatedAt || post?.createdAt}
-                                        </p>
-                                    </Post>
-                                ))}
-                            </BottomRightSectionInnerCard>
-                        </BottomRightSectionMainCard>
+                            {blogData.blogs?.map((post) => (
+                                <Post key={post?._id}>
+                                    <h3>{post?.summary}</h3>
+                                    <p>
+                                        Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
+                                        {post?.updatedAt || post?.createdAt}
+                                    </p>
+                                </Post>
+                            ))}
+                            {feedData.feed?.map((post) => (
+                                <Post key={post?._id}>
+                                    <h3>{post?.content}</h3>
+                                    <p>
+                                        Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
+                                        {post?.updatedAt || post?.createdAt}
+                                    </p>
+                                </Post>
+                            ))}
+                        </BottomRightSectionInnerCard>
                         {/* {AnalyticsData.slice(0, 10).map((post) => (
                             <Post key={post?.id}>
                                 <h3>{post?.title}</h3>
@@ -348,7 +416,7 @@ const Analytics = () => {
                             </Post>
                         ))} */}
                     </BottomRightSection>
-                </BottomSection>        
+                </BottomSection>
             </Container>
         </AnalyticsContainer>
     );
