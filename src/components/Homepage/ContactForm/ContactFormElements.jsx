@@ -8,18 +8,14 @@ import { SiFirefoxbrowser, SiFsecure } from "react-icons/si";
 export const H1 = styled.h1`
     font-size: 30px;
     font-family: "Fira Code Medium", monospace;
-
     padding: 15px 25px;
-    //background: #70ff00;
-    //color: black;
     color: #f5f5f5;
-
-    &:hover {
-        background: #ff6b08;
-        color: black;
-        transition: all 0.2s ease-in-out;
-    }
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    max-width: 600px;
 `;
+
 export const ContentH = styled.h1`
     text-align: center;
     color: #f5f5f5;
@@ -47,14 +43,41 @@ export const ContentP = styled.p`
 
 export const ContactFormContainer = styled.div`
     color: #f5f5f5;
-    margin: 150px 0 50px;
+    margin: 150px auto 50px;
+    width: 1000px;
+    background: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+    border: 2px solid transparent;
+    padding: 32px 24px;
+    font-size: 14px;
+    font-family: inherit;
+    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    width: 100%;
-    background: #000;
+    border-radius: 16px;
+
+    // CSS for input fields
+    input,
+    textarea {
+        width: calc(100% - 30px); /* Adjusted width to accommodate icon */
+        padding: 12px 16px;
+        border-radius: 8px;
+        color: #fff;
+        font-family: inherit;
+        background-color: transparent;
+        border: 1px solid #414141;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        opacity: 0.5;
+    }
+
+    input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #e81cff;
+    }
 `;
 
 export const Cover = styled.div`
@@ -70,6 +93,7 @@ export const Cover = styled.div`
         transition: 0.1s ease-in-out;
     }
 `;
+
 export const CoverLeft = styled.div`
     display: flex;
     flex-direction: row;
@@ -111,7 +135,7 @@ export const PersonIcon = styled(BsFillPersonFill)`
 
 export const MessageIcon = styled(RiQuestionAnswerFill)`
     color: #666666;
-    margin: 0 10px;
+    margin: 20px 10px 0; /* Add 20px margin from the top */
 `;
 
 export const ReasonIcon = styled(BsQuestionSquareFill)`
@@ -141,7 +165,7 @@ export const OrgIcon = styled(CgOrganisation)`
 `;
 export const EmailIcon = styled(AiTwotoneMail)`
     color: #666666;
-    margin: 0 10px;
+    margin: 20px 10px;
 `;
 
 export const WebIcon = styled(SiFirefoxbrowser)`
@@ -167,6 +191,7 @@ export const ContactFormSection = styled.form`
     max-width: 1100px;
     background: #090909;
     padding: 25px;
+    margin-right: 40px;
 
     @media (max-width: 500px) {
         padding: 5px;
@@ -176,9 +201,9 @@ export const ContactFormSection = styled.form`
 export const ContactFormInput = styled.input`
     font-family: "Poppins", sans-serif;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: center; /* Align icon vertically with input field */
     border-radius: 5px;
     background: transparent;
     border: transparent;
@@ -186,13 +211,6 @@ export const ContactFormInput = styled.input`
     width: 100%;
     text-underline-offset: 5px;
     font-size: 20px;
-
-    @media (max-width: 900px) {
-        font-size: 17px;
-    }
-    @media (max-width: 500px) {
-        font-size: 15px;
-    }
 
     ::placeholder {
         color: #f5f5f5;
@@ -203,8 +221,6 @@ export const ContactFormInput = styled.input`
     }
 
     &:hover {
-        background: transparent;
-        border: transparent;
         color: #f5f5f5;
     }
 `;
@@ -282,8 +298,6 @@ export const ContactFormTextArea = styled.textarea`
     }
 
     &:hover {
-        background: transparent;
-        border: transparent;
         color: #f5f5f5;
     }
 `;
@@ -292,7 +306,10 @@ export const ContactFormSubmit = styled.button`
     padding: 15px 10px;
     font-size: 1.5rem;
     background: #101010;
-    border: transparent;
+    border: 2px solid;
+    border-image: linear-gradient(#212121, #212121) padding-box,
+        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+    border-image-slice: 1;
     color: #f5f5f5;
     border-radius: 5px;
     margin: 5px 0;
