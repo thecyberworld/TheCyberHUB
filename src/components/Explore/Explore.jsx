@@ -211,6 +211,29 @@ const Explore = () => {
         { value: followers, label: "Followers" },
     ];
 
+    const renderNotFoundComponents = () => {
+        const dataTypes = ["Users", "Feeds", "Blogs", "Ctfs"];
+        const filteredData = {
+            Users: filteredUsers,
+            Feeds: filteredFeeds,
+            Blogs: filteredBlogs,
+            Ctfs: filteredCtf,
+        };
+        const missingDataTypes = dataTypes.filter((type) => !filteredData[type].length);
+
+        if (missingDataTypes.length === dataTypes.length) {
+            return <NotFound title="Not Found" description="There are no items" />;
+        } else if (missingDataTypes.length) {
+            const lastType = missingDataTypes.pop();
+            const missingDataTypesString = missingDataTypes.length
+                ? `${missingDataTypes.join(", ")} and ${lastType}`
+                : lastType;
+            return <NotFound title="Not Found" description={`${missingDataTypesString} Not Found`} />;
+        }
+
+        return null;
+    };
+
     if (isApiLoading || isCtfLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
@@ -237,39 +260,41 @@ const Explore = () => {
 
                 <RightContainer>
                     {selectedType === "all" ? (
-                        !filteredUsers.length &&
-                        !filteredFeeds.length &&
-                        !filteredBlogs.length &&
-                        !filteredCtf.length ? (
-                            <NotFound title="Not Found" description="There are no items" />
-                        ) : (
-                            <>
+                        <>
+                            {filteredUsers.length ? (
                                 <Users
                                     userDetails={filteredUsers}
                                     isUserDetailLoading={isUserDetailLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
                                 />
+                            ) : null}
+                            {filteredFeeds.length ? (
                                 <FeedsExplore
                                     feeds={filteredFeeds}
                                     isFeedLoading={isFeedLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
                                 />
+                            ) : null}
+                            {filteredBlogs.length ? (
                                 <BlogCards
                                     blogs={filteredBlogs}
                                     isBlogLoading={isBlogLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
                                 />
+                            ) : null}
+                            {filteredCtf.length ? (
                                 <CtfChallenges
                                     ctf={filteredCtf}
                                     isCtfLoading={isCtfLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
                                 />
-                            </>
-                        )
+                            ) : null}
+                            {renderNotFoundComponents()}
+                        </>
                     ) : (
                         <>
                             {selectedType === "users" ? (
