@@ -228,7 +228,7 @@ const Explore = () => {
             const missingDataTypesString = missingDataTypes.length
                 ? `${missingDataTypes.join(", ")} and ${lastType}`
                 : lastType;
-            return <NotFound title="Not Found" description={`${missingDataTypesString} Not Found`} />;
+            return <NotFound title="" description={`${missingDataTypesString} Not Found`} />;
         }
 
         return null;
