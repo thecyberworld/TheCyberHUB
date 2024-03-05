@@ -63,7 +63,7 @@ const ContactForm = () => {
     const [isOpened, setIsOpened] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
 
-    {/* <reset form> */ }
+    {/* <reset form> 
 
     const resetForm = () => {
         setFormData({
@@ -80,7 +80,7 @@ const ContactForm = () => {
         setIsLoading(false);
         setError(false);
         setError2(false);
-    };
+    };*/ }
 
     useEffect(() => {
         if (error || error2) {
@@ -167,6 +167,10 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
+                        toast.success("Form submitted successfully")
+                        setTimeout(() => {
+                            setIsSuccess(false); // Allow the user to submit the form again
+                        }, 2000); // Reset after 5 seconds
 
                         setFormData({
                             name: "",
@@ -462,9 +466,7 @@ Including:
 
 
                     <div>
-                        <GlowingButton>Submit Successfully</GlowingButton>
-                        {/* <reset button> */}
-                        <button onClick={resetForm}>Submit another response</button>
+                        <GlowingButton>Submitted Successfully</GlowingButton>
                     </div>
 
 
