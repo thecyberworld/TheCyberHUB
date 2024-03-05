@@ -22,7 +22,6 @@ import Sidebar from "../Feeds/SocialSidebar/Sidebar";
 import { FilterButton } from "../Feeds/FeedsElements";
 import { HintIcon } from "../WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import NotFound from "../../NotFound";
 
 const FilterContainer = styled.div``;
 
@@ -236,79 +235,45 @@ const Explore = () => {
                 </LeftContainer>
 
                 <RightContainer>
-                    {selectedType === "all" ? (
-                        !filteredUsers.length &&
-                        !filteredFeeds.length &&
-                        !filteredBlogs.length &&
-                        !filteredCtf.length ? (
-                            <NotFound title="Not Found" description="There are no items" />
-                        ) : (
-                            <>
-                                <Users
-                                    userDetails={filteredUsers}
-                                    isUserDetailLoading={isUserDetailLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                                <FeedsExplore
-                                    feeds={filteredFeeds}
-                                    isFeedLoading={isFeedLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                                <BlogCards
-                                    blogs={filteredBlogs}
-                                    isBlogLoading={isBlogLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                                <CtfChallenges
-                                    ctf={filteredCtf}
-                                    isCtfLoading={isCtfLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                            </>
-                        )
-                    ) : (
-                        <>
-                            {selectedType === "users" ? (
-                                <Users
-                                    userDetails={filteredUsers}
-                                    isUserDetailLoading={isUserDetailLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                            ) : null}
+                    {selectedType === "all" || selectedType === "users" ? (
+                        <Users
+                            userDetails={filteredUsers}
+                            isUserDetailLoading={isUserDetailLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
+                    ) : null}
 
-                            {selectedType === "feeds" ? (
-                                <FeedsExplore
-                                    feeds={filteredFeeds}
-                                    isFeedLoading={isFeedLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                            ) : null}
+                    {selectedType === "all" || selectedType === "feeds" ? (
+                        <FeedsExplore
+                            feeds={filteredFeeds}
+                            isFeedLoading={isFeedLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
+                    ) : null}
 
-                            {selectedType === "blogs" ? (
-                                <BlogCards
-                                    blogs={filteredBlogs}
-                                    isBlogLoading={isBlogLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                            ) : null}
+                    {selectedType === "all" || selectedType === "blogs" ? (
+                        <BlogCards
+                            blogs={filteredBlogs}
+                            isBlogLoading={isBlogLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
+                    ) : null}
 
-                            {selectedType === "ctf" ? (
-                                <CtfChallenges
-                                    ctf={filteredCtf}
-                                    isCtfLoading={isCtfLoading}
-                                    searchTerm={searchTerm}
-                                    displayAt={"explore"}
-                                />
-                            ) : null}
-                        </>
-                    )}
+                    {/* {selectedType === "all" || selectedType === "forum" ? ( */}
+                    {/*    <ForumPosts forums={forums} searchTerm={searchTerm} displayAt={"explore"}/> */}
+                    {/* ) : null} */}
+
+                    {selectedType === "all" || selectedType === "ctf" ? (
+                        <CtfChallenges
+                            ctf={filteredCtf}
+                            isCtfLoading={isCtfLoading}
+                            searchTerm={searchTerm}
+                            displayAt={"explore"}
+                        />
+                    ) : null}
                 </RightContainer>
             </ExploreContainer>
         </Wrapper>
