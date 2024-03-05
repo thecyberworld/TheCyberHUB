@@ -14,9 +14,8 @@ export default function MainBarChart() {
     });
     const [chartOptions, setChartOptions] = useState({});
 
-    const labels = displayMonths();
-
     useEffect(() => {
+        const labels = displayMonths();
         setChartData({
             labels,
             datasets,

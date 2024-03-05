@@ -167,15 +167,11 @@ const Analytics = () => {
                         </InnerCard>
                         <InnerCard>
                             <TopSectionInnerCardCaption>
-                                <TopSectionInnerCardCaptionTitle>
                                     <Title>Age Average</Title>
-                                </TopSectionInnerCardCaptionTitle>
                                 <LastThirtyDaysBtn>Last 30 days</LastThirtyDaysBtn>
                             </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
-                                {/* <TopSectionInnerCardMainSectionChart> */}
                                     <DoughnutChart />
-                                {/* </TopSectionInnerCardMainSectionChart> */}
                             </TopSectionInnerCardMainSection>
                         </InnerCard>
                     </TopSectionMainContent>

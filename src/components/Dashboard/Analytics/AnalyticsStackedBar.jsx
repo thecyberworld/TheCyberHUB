@@ -10,7 +10,7 @@ export default function HorizontalStackedBar() {
         <HorizontalStackedbar>
             <div style={{ width: "100%", marginBottom: "5px" }}>
                 <HSBar
-                    height={25}
+                    height={30}
                     outlineWidth={1.5}
                     outlineColor="#151414"
                     showTextUp

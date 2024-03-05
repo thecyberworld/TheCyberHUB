@@ -110,7 +110,6 @@ export const InnerCard = styled.div`
     justify-content: flex-start;
     text-align: center;
     color: #fff;
-    height: 100%;
     padding: 8px 15px;
     border: 0.5px solid grey;
     border-radius: 5px;
@@ -138,7 +137,6 @@ export const TopSectionInnerCardCaptionTitle = styled.div`
 export const TopSectionInnerCardMainSectionSummary = styled.div`
     display: flex;
     justify-content: flex-start;
-    // padding: 5px 0 0 5px;
     padding: 1.5rem 0 0 1.7rem;
 `;
 
@@ -167,8 +165,7 @@ export const FigureInPercent = styled.div`
 export const TopSectionInnerCardMainSection = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 5px;
+    gap: 2.25rem;
 `;
 
 export const TopSectionInnerCardMainSectionChart = styled.div`
@@ -198,7 +195,6 @@ export const HorizontalStackedBarSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    // margin-top: 50px;
 `;
 
 export const HorizontalStackedBarLabel = styled.div`

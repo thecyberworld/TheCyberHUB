@@ -13,9 +13,9 @@ export function DoughnutChart() {
     });
     const [chartOptions, setChartOptions] = useState({});
 
-    const labels = colorLists;
-
+    
     useEffect(() => {
+        const labels = colorLists;
         setChartData({
             labels,
             datasets,
