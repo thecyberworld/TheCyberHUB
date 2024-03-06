@@ -35,7 +35,7 @@ import apiStatus from "../../../features/apiStatus";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
 import { volunteerPrograms } from "../../Opportunities/Volunteer/VolunteerData";
-import { validateEmail } from "../../../utils/validateEmail.js"
+import {validateEmail} from "../../../utils/validateEmail.js"
 
 const ContactForm = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -121,11 +121,11 @@ const ContactForm = () => {
             submissionFrom: "thecyberhub.org",
         };
 
-        // Validate email
-        if (!validateEmail(email)) {
-            setError("Please enter a valid email address");
-            return; // Stop the form submission
-        }
+    // Validate email
+    if (!validateEmail(email)) {
+        setError("Please enter a valid email address");
+        return; // Stop the form submission
+    }
 
 
         if (name.length === 0) {
@@ -150,10 +150,6 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
-                       
-                   
-
-                        
                         toast.success("Form submitted successfully")
                         setTimeout(() => {
                             setIsSuccess(false); 
@@ -438,7 +434,7 @@ Including:
                             <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
                                 Submit
                             </ContactFormSubmit>
-                        ) : (
+  ) : (
                             <LoadingButton width={"10 0%"}>
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
@@ -452,6 +448,7 @@ Including:
                 
 
             </ContactFormCard>
+
         </ContactFormContainer>
     );
 };
