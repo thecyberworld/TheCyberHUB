@@ -152,6 +152,8 @@ const ContactForm = () => {
                         setIsSuccess(true);
                        
                    
+
+                        
                         toast.success("Form submitted successfully")
                         setTimeout(() => {
                             setIsSuccess(false); 
