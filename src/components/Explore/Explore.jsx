@@ -195,9 +195,9 @@ const Explore = () => {
             .reverse()
             ?.slice(0, 10)
             .reverse()
-            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter.includes(user))) || [];
+            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
 
-    const filteredUsers = userDetailsLocal.filter((user) => selectedFilter.includes(user.user));
+    const filteredUsers = userDetailsLocal?.filter((user) => selectedFilter?.includes(user.user));
 
     const handleTypeFilter = (filter) => {
         setSelectedFilter(filter.value);
