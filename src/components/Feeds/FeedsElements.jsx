@@ -27,6 +27,15 @@ export const FilterButton = styled.button`
     gap: 10px;
     font-weight: 600;
     padding: 5px 10px;
+    &:first-child {
+        border-top-left-radius: 7px;
+        border-bottom-left-radius: 7px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
 `;
 export const FilterContainer = styled.div`
     display: flex;
@@ -37,6 +46,6 @@ export const FilterContainer = styled.div`
     width: 100%;
     background: #131313;
     border-radius: 7px;
-    overflow: clip;
+    height: 6vh;
     align-self: center;
 `;
