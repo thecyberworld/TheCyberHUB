@@ -167,10 +167,12 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
+                       
+                       
                         toast.success("Form submitted successfully")
                         setTimeout(() => {
-                            setIsSuccess(false); // Allow the user to submit the form again
-                        }, 2000); // Reset after 5 seconds
+                            setIsSuccess(false); 
+                        }, 50); // Reset after 0.005 seconds
 
                         setFormData({
                             name: "",
@@ -462,15 +464,7 @@ Including:
                         <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>
                     )}
                 </ContactFormSection>
-                {isSuccess && !error ?
-
-
-                    <div>
-                        <GlowingButton>Submitted Successfully</GlowingButton>
-                    </div>
-
-
-                    : null}
+                
 
             </ContactFormCard>
         </ContactFormContainer>
