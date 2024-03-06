@@ -1,9 +1,16 @@
 import { StartMachineButton, DescriptionTitle } from "./MainPageElement";
-import QuestionAnswerComponent from "./QuestionAnswerComponent";
+// import QuestionAnswerComponent from "./QuestionAnswerComponent";
 import { FaPlay } from "react-icons/fa";
 import React from "react";
+import Submission from "./Submission";
 
-export default function QuestionAnswer() {
+export default function QuestionAnswer(props) {
+    const challenge = props.challenge;
+    const user = props.user;
+    const setIsCompleted = props.setIsCompleted;
+    const setIsCertExisted = props.setIsCertExisted;
+    const isUserDetailLoading = props.isUserDetailLoading;
+    const userDetail = props.userDetail;
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "space-between", paddingBottom: "5px" }}>
@@ -11,19 +18,27 @@ export default function QuestionAnswer() {
                     <DescriptionTitle>Description</DescriptionTitle>
                 </div>
                 <div>
-                    <StartMachineButton>
+                    <StartMachineButton
+                        onClick={() => {
+                            window.open(props.link);
+                        }}
+                    >
                         <FaPlay style={{ margin: "3px" }} />
                         Play Machine
                     </StartMachineButton>
                 </div>
             </div>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci doloremque a totam, tempora nam
-                obcaecati reprehenderit doloribus quisquam harum ab. Incidunt cupiditate maiores consequatur sit?
-                Aperiam est quidem quibusdam provident?
-            </p>
+            <p>{props.Description}</p>
             <DescriptionTitle>Answer The Question Below</DescriptionTitle>
-            <QuestionAnswerComponent></QuestionAnswerComponent>
+            <Submission
+                ctfId={challenge?._id}
+                flags={challenge?.flags}
+                user={user}
+                setIsCompleted={setIsCompleted}
+                setIsCertExisted={setIsCertExisted}
+                userDetailIsLoading={isUserDetailLoading}
+                userDetail={userDetail}
+            />
         </div>
     );
 }

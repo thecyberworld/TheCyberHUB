@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-import Submission from "./Submission";
+import Submission from "../CtFPage/Submission";
 import {
     ChallengeContainer,
     ChallengeDescription,
@@ -60,9 +60,9 @@ const SingleCTF = () => {
     const registeredUsers = challenge?.registeredUsers || [];
 
     useEffect(() => {
-        if (!user) {
-            navigate("/login");
-        }
+        // if (!user) {
+        //     navigate("/login");
+        // }
         if (user) {
             dispatch(getUserDetail(user?.username));
         }

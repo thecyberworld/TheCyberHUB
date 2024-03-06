@@ -1,42 +1,164 @@
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { CtfLikeButton, Ctftitle, DifficultyLevelLabel, MenuButton, QuestionConatiner } from "./MainPageElement";
 import { MdComputer } from "react-icons/md";
-import React from "react";
-import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
+import React, { useState, useEffect } from "react";
+// import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
 import QuestionAnswer from "./QuestionAnswer";
+// import Submission from "./Submission";
 import { GoArrowUpRight } from "react-icons/go";
+import createCtfCertificate from "../../Other/Certificate/createCtfCertificate";
 import { CiHeart } from "react-icons/ci";
+import apiStatus from "../../../features/apiStatus";
+import CtfRegister from "../SingleCTF/CtfRegister";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
+import GetCertificate from "../SingleCTF/GetCertificate";
+import { getUserDetail } from "../../../features/userDetail/userDetailSlice";
+import {
+    getAllCTFs,
+    registerCTF,
+    // , updateLikesAndViews
+} from "../../../features/ctf/ctfSlice";
+import { CircleSpinner } from "react-spinners-kit";
+import { encodeURL } from "../../Blogs/util";
 
 export default function MainPage() {
-    return (
-        <Wrapper style={{ width: "100vw" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", width: "75%", paddingBottom: "20px" }}>
-                <div style={{ display: "flex" }}>
-                    <MdComputer style={{ width: "80px", height: "80px", marginRight: "10px" }} />
-                    <div>
-                        <Ctftitle>Basic Pentesting</Ctftitle>
-                        <p>This is a machine that allows you to practise web app hacking and privilege escalation</p>
-                    </div>
-                </div>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                    <DifficultyLevelLabel>Beginner</DifficultyLevelLabel>
-                    <CtfLikeButton>
-                        <CiHeart style={{ width: "25px", height: "25px" }} />
-                    </CtfLikeButton>
-                </div>
-            </div>
-            <div style={{ width: "78%", marginBottom: "10px", display: "flex" }}>
-                <MenuButton style={{ backgroundColor: "rgb(19, 19, 19)" }}>Play Machine</MenuButton>
-                <MenuButton style={{ display: "flex", backgroundColor: "rgb(19, 19, 19)" }}>
-                    Walkthrough <GoArrowUpRight style={{ marginLeft: "3px", marginTop: "3px" }} />
-                </MenuButton>
-            </div>
+    const { isApiLoading, isApiWorking } = apiStatus();
 
-            <div style={{ display: "flex", alignItems: "flex-start" }}>
-                <QuestionConatiner>
-                    <QuestionAnswer />
-                </QuestionConatiner>
-                <div style={{ marginLeft: "20px" }}>
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { ctf, isLoading: isCtfLoading } = useSelector((state) => state.ctf);
+    const { user } = useSelector((state) => state.auth);
+    const { userDetail, isUserDetailLoading } = useSelector((state) => state.userDetail);
+    const [isCompleted, setIsCompleted] = useState(false);
+    const [isCertExisted, setIsCertExisted] = useState(false);
+
+    const [isRegistered, setIsRegistered] = useState(false);
+
+    const { ctfId } = useParams();
+    const challenge =
+        ctf &&
+        ctf?.length > 0 &&
+        ctf?.find((challenge) => `${encodeURL(challenge?.challengeName)}`.toLowerCase() === ctfId?.toLowerCase());
+
+    // const ctfDate = challenge?.startTime || new Date(Date.now()).toLocaleString();
+    // const dateNow = new Date(Date.now()).toLocaleString();
+
+    const registeredUsers = challenge?.registeredUsers || [];
+
+    useEffect(() => {
+        if (!user) {
+            navigate("/login");
+        }
+        if (user) {
+            dispatch(getUserDetail(user?.username));
+        }
+
+        dispatch(getAllCTFs());
+
+        if (user?.username && challenge?.registeredUsers?.some((regUser) => regUser?.username === user?.username)) {
+            setIsRegistered(true);
+        }
+    }, [dispatch, user, navigate, challenge?._id]);
+
+    const registeredUsernames = registeredUsers.map((user) => {
+        return user?.username;
+    });
+
+    const handleRegister = () => {
+        dispatch(registerCTF({ ctfId: challenge?._id }));
+    };
+
+    if (!isCertExisted && isCompleted) {
+        createCtfCertificate({
+            ctf: challenge?.challengeName,
+            ctfId: challenge?._id,
+            ctfDate: challenge?.startTime,
+            userId: user?._id,
+            username: user?.username,
+            fullName: user?.name,
+            email: user?.email,
+        }).then((r) => {
+            setIsCertExisted(true);
+        });
+    }
+
+    if (isCtfLoading || isApiLoading) {
+        return (
+            <Wrapper>
+                <CircleSpinner size={25} color={"#ff6b08"} isLoading={isCtfLoading || isApiLoading} />
+            </Wrapper>
+        );
+    }
+
+    if (!isApiWorking) return <UnderMaintenance />;
+
+    return (
+        <Wrapper>
+            {registeredUsernames.includes(user?.username) || isRegistered ? (
+                <div
+                    style={{
+                        width: "100vw",
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            width: "74%",
+                            paddingBottom: "20px",
+                        }}
+                    >
+                        <div style={{ display: "flex" }}>
+                            <MdComputer style={{ width: "80px", height: "80px", marginRight: "10px" }} />
+                            <div>
+                                <Ctftitle>{challenge?.challengeName}</Ctftitle>
+                                <p>{challenge?.subtitle}</p>
+                            </div>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "flex-start" }}>
+                            <DifficultyLevelLabel>Beginner</DifficultyLevelLabel>
+                            <CtfLikeButton>
+                                <CiHeart style={{ width: "25px", height: "25px" }} />
+                            </CtfLikeButton>
+                        </div>
+                    </div>
+                    <div style={{ width: "77%", marginBottom: "10px", display: "flex" }}>
+                        <MenuButton style={{ backgroundColor: "rgb(19, 19, 19)" }} href={challenge?.machineLink}>
+                            Play Machine
+                        </MenuButton>
+                        <MenuButton style={{ display: "flex", backgroundColor: "rgb(19, 19, 19)" }}>
+                            Walkthrough <GoArrowUpRight style={{ marginLeft: "3px", marginTop: "3px" }} />
+                        </MenuButton>
+                    </div>
+
+                    <div style={{ display: "flex", alignItems: "flex-start" }}>
+                        <QuestionConatiner>
+                            <QuestionAnswer
+                                Description={challenge?.challengeDescription}
+                                flags={challenge?.flags}
+                                link={challenge?.machineLink}
+                                challenge={challenge}
+                                user={user}
+                                setIsCompleted={setIsCompleted}
+                                setIsCertExisted={setIsCertExisted}
+                                userDetailIsLoading={isUserDetailLoading}
+                                userDetail={userDetail}
+                            />
+                        </QuestionConatiner>
+                        <GetCertificate
+                            challenge={userDetail?.challenge}
+                            user={user}
+                            ctfCertificates={userDetail.ctfCertificates}
+                            ctfId={challenge?._id}
+                            isCertExisted={isCertExisted}
+                        />
+                        {/* <div style={{ marginLeft: "20px" }}>
                     <div
                         className="bg-[#1a1c1d] text-white p-5 rounded-lg max-w-md mx-auto "
                         style={{ marginBottom: "20px" }}
@@ -56,9 +178,16 @@ export default function MainPage() {
                             Download
                         </button>
                     </div>
-                    <CTFLeaderboard />
+                    <CTFLeaderboard 
+                    registeredUsers={registeredUsers}
+                    ctfId={challenge?._id}
+                    flags={challenge?.flags}/>
+                </div> */}
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <CtfRegister challenge={challenge} handleRegister={handleRegister} />
+            )}
         </Wrapper>
     );
 }
