@@ -63,24 +63,7 @@ const ContactForm = () => {
     const [isOpened, setIsOpened] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
 
-    {/* <reset form> 
-
-    const resetForm = () => {
-        setFormData({
-            name: "",
-            email: "",
-            reason: "",
-            reasonType: "",
-            contextHeading: "",
-            resume: "",
-            message: "",
-            isExperienced: "",
-        });
-        setIsSuccess(false);
-        setIsLoading(false);
-        setError(false);
-        setError2(false);
-    };*/ }
+ 
 
     useEffect(() => {
         if (error || error2) {
@@ -168,7 +151,7 @@ const ContactForm = () => {
                         setIsLoading(false);
                         setIsSuccess(true);
                        
-                       
+                   
                         toast.success("Form submitted successfully")
                         setTimeout(() => {
                             setIsSuccess(false); 
