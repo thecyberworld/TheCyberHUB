@@ -10,8 +10,8 @@ import {
     UserPicture,
     // UserPicture,
     ViewCommentsContainer,
-} from "./ViewCommentsElements";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
+} from "src/components/Blogs/BlogComments/ViewCommentsElements";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 // import { CircleSpinner } from "react-spinners-kit";
 // import { getCdnAssets } from "../../../features/apiUrl";
 

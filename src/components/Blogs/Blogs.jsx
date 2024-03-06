@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { blogReset, getAllBlogs } from "../../features/blogs/blogSlice";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { AllBlogs, BlogsContainer, BlogsSection, MiddleContainer } from "./BlogsElements";
-import LoadingBlogCard from "./BlogCard/LoadingBlogCard";
-import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../features/apiStatus";
-import BlogCards from "./BlogCard/BlogCards";
-import { getAllUserDetails, userDetailReset } from "../../features/userDetail/userDetailSlice";
-import { getFollowData, reset } from "../../features/follow/followSlice";
-import Sidebar from "../Feeds/SocialSidebar/Sidebar";
+import { blogReset, getAllBlogs } from "src/features/blogs/blogSlice";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { AllBlogs, BlogsContainer, BlogsSection, MiddleContainer } from "src/components/Blogs/BlogsElements";
+import LoadingBlogCard from "src/components/Blogs/BlogCard/LoadingBlogCard";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
+import BlogCards from "src/components/Blogs/BlogCard/BlogCards";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
+import { getFollowData, reset } from "src/features/follow/followSlice";
+import Sidebar from "src/components/Feeds/SocialSidebar/Sidebar";
 
 const Blogs = () => {
     const dispatch = useDispatch();

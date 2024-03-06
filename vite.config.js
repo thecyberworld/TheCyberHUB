@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const path = require("path");
+
 let apiUrl;
 if (process.env.VITE_API_URL) {
     apiUrl = process.env.VITE_API_URL;
@@ -12,6 +14,11 @@ if (process.env.VITE_API_URL) {
 }
 
 export default defineConfig({
+    resolve: {
+        alias: {
+            src: path.resolve(__dirname, "./src"),
+        },
+    },
     server: {
         proxy: {
             // "/api": "http://localhost:5000",

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Option, Select } from "./BlogsElements";
+import { Option, Select } from "src/components/Blogs/BlogsElements";
 
 const BlogFilter = ({ selectedBlogs, handleSelectedBlogs }) => {
     return (

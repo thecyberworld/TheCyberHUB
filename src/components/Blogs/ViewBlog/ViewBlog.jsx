@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { encodeURL } from "../util";
+import { encodeURL } from "src/components/Blogs/util";
 import { useDispatch, useSelector } from "react-redux";
-import { blogReset, getAllBlogs } from "../../../features/blogs/blogSlice";
+import { blogReset, getAllBlogs } from "src/features/blogs/blogSlice";
 import { Helmet } from "react-helmet";
 
 import {
@@ -18,24 +18,24 @@ import {
     Tags,
     UsernameAndDate,
     ViewBlogHeader,
-} from "./ViewBlogElements";
+} from "src/components/Blogs/ViewBlog/ViewBlogElements";
 
-import NotFound from "../../../NotFound";
+import NotFound from "src/NotFound";
 import { CircleSpinner } from "react-spinners-kit";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
-import apiStatus from "../../../features/apiStatus";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
+import apiStatus from "src/features/apiStatus";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 
 import "react-quill/dist/quill.bubble.css";
 // import {RouterLink} from "../../Beta/Tools/ToolsElements";
 // import PostActionsAndStats from "../../Feeds/FeedPosts/PostActionsAndStats";
 // import AddCommentForm from "../BlogComments/AddCommentForm";
-import BlogComments from "../BlogComments/BlogComments";
-import ViewComments from "../BlogComments/ViewComments";
-import { blogCommentReset, getBlogComments } from "../../../features/blogs/blogComments/blogCommentSlice";
-import { getAllUserDetails, userDetailReset } from "../../../features/userDetail/userDetailSlice";
-import { RouterLink } from "../../Tools/ToolsElements";
+import BlogComments from "src/components/Blogs/BlogComments/BlogComments";
+import ViewComments from "src/components/Blogs/BlogComments/ViewComments";
+import { blogCommentReset, getBlogComments } from "src/features/blogs/blogComments/blogCommentSlice";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
+import { RouterLink } from "src/components/Tools/ToolsElements";
 
 const ViewBlog = () => {
     const dispatch = useDispatch();

@@ -16,18 +16,14 @@ import {
     Title,
     Username,
 } from "./BlogCardElements";
-import { RouterLink } from "../../Tools/ToolsElements";
-import { encodeURL } from "../util";
-// import { AiFillDelete } from "react-icons/ai";
-// import { BiEdit } from "react-icons/bi";
-// import { deleteBlog } from "../../../features/blogs/blogSlice";
-// import { Link, useLocation } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import { RouterLink } from "src/components/Tools/ToolsElements";
+import { encodeURL } from "src/components/Blogs/util";
+
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { BiEdit } from "react-icons/bi";
-import { deleteBlog } from "../../../features/blogs/blogSlice";
+import { deleteBlog } from "src/features/blogs/blogSlice";
 import { AiFillDelete } from "react-icons/ai";
 
 const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f71a7-df74-43b9-8330-af9740d9e8ba.png";
