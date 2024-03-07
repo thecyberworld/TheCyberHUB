@@ -63,25 +63,6 @@ const ContactForm = () => {
     const [isOpened, setIsOpened] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
 
-    {/* <reset form> */ }
-
-    const resetForm = () => {
-        setFormData({
-            name: "",
-            email: "",
-            reason: "",
-            reasonType: "",
-            contextHeading: "",
-            resume: "",
-            message: "",
-            isExperienced: "",
-        });
-        setIsSuccess(false);
-        setIsLoading(false);
-        setError(false);
-        setError2(false);
-    };
-
     useEffect(() => {
         if (error || error2) {
             toast.error("Please fill all the fields");
@@ -137,6 +118,7 @@ const ContactForm = () => {
             isExperienced,
             submissionFrom: "thecyberhub.org",
         };
+
     // Validate email
     if (!validateEmail(email)) {
         setError("Please enter a valid email address");
