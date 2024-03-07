@@ -78,6 +78,7 @@ export const PostTag = styled.span`
 export const PostHeader = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 10px;
     margin-bottom: 10px;
     width: 100%;
