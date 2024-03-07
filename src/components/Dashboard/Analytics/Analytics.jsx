@@ -61,6 +61,7 @@ import {
     CiHeartIcon,
     IoChatboxOutlineIcon,
 } from "./AnalyticsIconElements";
+import { myPosts } from "./AnalyticsPostsData";
 
 const Analytics = () => {
     const dispatch = useDispatch();
@@ -167,11 +168,11 @@ const Analytics = () => {
                         </InnerCard>
                         <InnerCard>
                             <TopSectionInnerCardCaption>
-                                    <Title>Age Average</Title>
+                                <Title>Age Average</Title>
                                 <LastThirtyDaysBtn>Last 30 days</LastThirtyDaysBtn>
                             </TopSectionInnerCardCaption>
                             <TopSectionInnerCardMainSection>
-                                    <DoughnutChart />
+                                <DoughnutChart />
                             </TopSectionInnerCardMainSection>
                         </InnerCard>
                     </TopSectionMainContent>
@@ -221,168 +222,34 @@ const Analytics = () => {
                             </CTABtn>
                         </Caption>
                         <BottomRightSectionInnerCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Learn to build servers</PostTitle>
-                                        <PostDate>May 26</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        30.5K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        56K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Understanding Linux OS Begginers level</PostTitle>
-                                        <PostDate>May 26</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        102.7K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        86K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Master the basics of Git</PostTitle>
-                                        <PostDate>Mar 06</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        9.3K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        16K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Learn to build servers </PostTitle>
-                                        <PostDate>May 26</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        30.5K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        56K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Understanding Linux OS</PostTitle>
-                                        <PostDate>May 26</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        102.7K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        86K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Master the basics of Git</PostTitle>
-                                        <PostDate>Mar 06</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        9.3K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        16K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Learn to build servers </PostTitle>
-                                        <PostDate>May 26</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        30.5K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        56K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Understanding Linux OS</PostTitle>
-                                        <PostDate>May 26</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        102.7K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        86K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
-                            <PopularPostCard>
-                                <PostDetails>
-                                    <PostTitleDate>
-                                        <PostTitle>Master the basics of Git</PostTitle>
-                                        <PostDate>Mar 06</PostDate>
-                                    </PostTitleDate>
-                                </PostDetails>
-                                <PostIcons>
-                                    <LikesIcon>
-                                        <CiHeartIcon />
-                                        9.3K
-                                    </LikesIcon>
-                                    <CommentsIcon>
-                                        <IoChatboxOutlineIcon />
-                                        16K
-                                    </CommentsIcon>
-                                </PostIcons>
-                            </PopularPostCard>
+                            {myPosts.map((myPost) => (
+                                <PopularPostCard key={myPost.id}>
+                                    <PostDetails>
+                                        <PostTitleDate>
+                                            <PostTitle>{myPost.title}</PostTitle>
+                                            <PostDate>May 26</PostDate>
+                                        </PostTitleDate>
+                                    </PostDetails>
+                                    <PostIcons>
+                                        <LikesIcon>
+                                            <CiHeartIcon />
+                                            {myPost.likes}
+                                        </LikesIcon>
+                                        <CommentsIcon>
+                                            <IoChatboxOutlineIcon />
+                                            {myPost.views}
+                                        </CommentsIcon>
+                                    </PostIcons>
+                                </PopularPostCard>
+
+                                // <Post key={post?._id}>
+                                //     <h3>{post?.summary}</h3>
+                                //     <p>
+                                //         Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
+                                //         {post?.updatedAt || post?.createdAt}
+                                //     </p>
+                                // </Post>
+                            ))}
 
                             {blogData.blogs?.map((post) => (
                                 <Post key={post?._id}>
