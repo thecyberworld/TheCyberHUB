@@ -241,14 +241,6 @@ const Analytics = () => {
                                         </CommentsIcon>
                                     </PostIcons>
                                 </PopularPostCard>
-
-                                // <Post key={post?._id}>
-                                //     <h3>{post?.summary}</h3>
-                                //     <p>
-                                //         Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                //         {post?.updatedAt || post?.createdAt}
-                                //     </p>
-                                // </Post>
                             ))}
 
                             {blogData.blogs?.map((post) => (
