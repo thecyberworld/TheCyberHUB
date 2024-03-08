@@ -82,8 +82,7 @@
     },
     "lint-staged": {
         "*.{js,jsx}": [
-            "eslint --cache --fix",
-            "git add"
+            "eslint --cache --fix"
         ],
         "*.{js,jsx,css,md}": "prettier --write"
     },
