@@ -10,8 +10,9 @@ export const BlogImageContainer = styled.div`
 export const BlogImage = styled.img`
     width: 100%;
     height: 100%;
-
-    object-fit: cover; /* Adjust the value based on your requirement */
+    max-height: 400px;
+    max-width: 1000px;
+    object-fit: cover;
     display: block;
     margin: 0 auto;
     border-radius: 15px 15px 0 0;

@@ -1,4 +1,4 @@
 import DisplayCommunityEvents from "./DisplayCommunityEvents";
-import DisplayCommunityEventDetails from "./DisplayCommunityEventDetails";
+import DisplayEventDetails from "./DisplayEventDetails";
 export default DisplayCommunityEvents;
-export { DisplayCommunityEventDetails };
+export { DisplayEventDetails };

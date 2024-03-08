@@ -109,6 +109,7 @@ const Blogs = () => {
                         tags={blogTags}
                         showOnlyFollowing={showOnlyFollowingBlogs}
                         setShowOnlyFollowing={setShowOnlyFollowingBlogs}
+                        data={blogs}
                     />
                 </BlogsSection>
             </BlogsContainer>

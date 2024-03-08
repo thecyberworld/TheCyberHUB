@@ -79,6 +79,7 @@ const Feeds = () => {
                         showOnlyFollowing={showOnlyFollowingPosts}
                         setShowOnlyFollowing={setShowOnlyFollowingPosts}
                         sidebarType={"feeds"}
+                        data={feeds}
                     />
                 </LeftContainer>
             </FeedsContainer>

@@ -148,7 +148,7 @@ const Topics = () => {
                                 <h3
                                     style={{
                                         marginBottom: "10px",
-                                        color: "#77889a",
+                                        color: "#ff6b08",
                                         fontSize: "1.2em",
                                     }}
                                 >

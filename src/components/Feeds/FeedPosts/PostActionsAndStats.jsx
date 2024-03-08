@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { PostActionsAndStatsContainer, PostStat, PostStatLabel, PostStatValue } from "./FeedPostsElements";
 import { AiOutlineHeart } from "react-icons/ai";
 import { FcLike } from "react-icons/fc";
@@ -6,6 +6,7 @@ import { BiCommentDetail } from "react-icons/bi";
 import { VscGraphLine } from "react-icons/vsc";
 import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
+import { updateView } from "src/features/feeds/views/viewSlice";
 import { addFeedLike, removeFeedLike } from "src/features/feeds/feedLikes/feedLikesSlice";
 import { addBookmark, removeBookmark } from "src/features/bookmarks/bookmarkSlice";
 import AuthPopup from "src/pages/AuthPopup/AuthPopup";
@@ -20,7 +21,7 @@ const PostActionsAndStats = ({
     bookmarks,
     likes,
     setStopRefresh,
-    // updateFeedView,
+    updateFeedView,
 }) => {
     const dispatch = useDispatch();
     const feedRef = useRef(null);
@@ -29,17 +30,17 @@ const PostActionsAndStats = ({
 
     const userId = user?._id;
 
-    // useEffect(() => {
-    //     if (user && updateFeedView === true) {
-    // const isViewed = () => {
-    //     return views?.some((view) => view.user === userId && view.itemId === feed?._id);
-    // };
+    useEffect(() => {
+        if (user && updateFeedView === true) {
+            const isViewed = () => {
+                return views?.some((view) => view.user === userId && view.itemId === feed?._id);
+            };
 
-    // if (!isViewed()) {
-    //     dispatch(updateView({ itemId: feed?._id }));
-    // }
-    // }
-    // }, [updateFeedView]);
+            if (!isViewed()) {
+                dispatch(updateView({ itemId: feed?._id }));
+            }
+        }
+    }, [updateFeedView]);
 
     const filteredViews = views.filter(
         (view, index, self) => index === self.findIndex((v) => v.itemId === view.itemId && v.user === view.user),

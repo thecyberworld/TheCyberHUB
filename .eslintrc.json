@@ -17,6 +17,6 @@
     "plugins": ["react", "no-relative-import-paths"],
     "rules": {
         "react/prop-types": "off",
-        "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": true, "rootDir": "src" }]
+        "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": true }]
     }
 }

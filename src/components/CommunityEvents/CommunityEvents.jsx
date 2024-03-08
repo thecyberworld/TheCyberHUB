@@ -19,7 +19,7 @@ import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "src/components/Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
-import ModifyTimeLine from "./ModifyTimeLine";
+import ModifyTimeline from "./ModifyTimeLine";
 
 const CommunityEvents = ({
     pageHeader,
@@ -46,6 +46,23 @@ const CommunityEvents = ({
         { id: 2, status: "past" },
         { id: 3, status: "cancelled" },
     ];
+
+    useEffect(() => {
+        if (isEventError) {
+            toast.error(eventMessage);
+        }
+        dispatch(getEvents()).then((action) => {
+            const hasOngoingEvent = action.payload.findIndex((eventItem) => {
+                return (
+                    eventItem.status === "approved" &&
+                    new Date().getTime() >= new Date(eventItem.startTime).getTime() &&
+                    new Date().getTime() < new Date(eventItem.endTime).getTime()
+                );
+            });
+            if (hasOngoingEvent > -1) setActiveTab(1);
+        });
+        return () => dispatch(eventsReset());
+    }, [dispatch]);
 
     const filteredEvents = events
         ? events
@@ -87,13 +104,6 @@ const CommunityEvents = ({
         setModifyEventId("");
         setEventManageTimelineId("");
     };
-    useEffect(() => {
-        if (isEventError) {
-            toast.error(eventMessage);
-        }
-        dispatch(getEvents());
-        return () => dispatch(eventsReset());
-    }, [dispatch]);
 
     useEffect(() => {
         if (!eventManageTimelineId) setOpenCreatingNewEvent(modifyEventId);
@@ -106,6 +116,7 @@ const CommunityEvents = ({
         }
     }, [modifyEventId, eventManageTimelineId]);
 
+    const modifyEvent = events.find((event) => event._id === modifyEventId || event._id === eventManageTimelineId);
     return (
         <ParentContainer pageHeader={pageHeader}>
             <Container>
@@ -136,20 +147,18 @@ const CommunityEvents = ({
                         <EventList>
                             {modify && openCreatingNewEvent && (
                                 <ModifyCommunityEvent
-                                    setOpenCreatingNewEvent={setOpenCreatingNewEvent}
                                     onModify={handleModifyEvent}
-                                    modifyEvent={events.find((event) => event._id === modifyEventId)}
-                                    setModifyEventId={setModifyEventId}
+                                    modifyEvent={modifyEvent}
                                     modifyEventId={modifyEventId}
-                                    handleCloseChangeMode={handleCloseChangeMode}
+                                    onCloseChangeMode={handleCloseChangeMode}
                                 />
                             )}
                             {modify && !openCreatingNewEvent && eventManageTimelineId && (
-                                <ModifyTimeLine
+                                <ModifyTimeline
                                     eventManageTimelineId={eventManageTimelineId}
-                                    setEventManageTimelineId={setEventManageTimelineId}
-                                    modifyEventId={modifyEventId}
-                                    handleCloseChangeMode={handleCloseChangeMode}
+                                    onCloseChangeMode={handleCloseChangeMode}
+                                    onModify={handleModifyEvent}
+                                    modifyEvent={modifyEvent}
                                 />
                             )}
                             {filteredEvents.length !== 0 ? (
@@ -170,7 +179,7 @@ const CommunityEvents = ({
                                 })
                             ) : (
                                 <NoDataComponent>
-                                    <h2>There is no {tabNames[isActiveTab].status} event right now.</h2>
+                                    <h2>There are no {tabNames[isActiveTab].status} events right now.</h2>
                                     <img src={NoDataFound} alt="No data found" />
                                 </NoDataComponent>
                             )}

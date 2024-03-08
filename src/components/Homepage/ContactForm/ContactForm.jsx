@@ -14,7 +14,6 @@ import {
     CoverRight,
     EmailIcon,
     ErrorMessage,
-    GlowingButton,
     H1,
     InternshipIcon,
     MessageIcon,
@@ -31,6 +30,7 @@ import InternshipProgramData from "src/components/Opportunities/Internship/Inter
 import { JobsData } from "src/components/Resources/Jobs/JobsData";
 import { LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import { CircleSpinner } from "react-spinners-kit";
+import { validateEmail } from "src/utils/validateEmail.js";
 import apiStatus from "src/features/apiStatus";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
@@ -117,6 +117,12 @@ const ContactForm = () => {
             submissionFrom: "thecyberhub.org",
         };
 
+        // Validate email
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address");
+            return; // Stop the form submission
+        }
+
         if (name.length === 0) {
             setError("Please add your name");
         } else if (email.length === 0) {
@@ -139,6 +145,11 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
+                        toast.success("Form submitted successfully");
+                        setTimeout(() => {
+                            setIsSuccess(false);
+                        }, 50); // Reset after 0.005 seconds
+
                         setFormData({
                             name: "",
                             email: "",
@@ -429,7 +440,6 @@ Including:
                         <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>
                     )}
                 </ContactFormSection>
-                {isSuccess && !error ? <GlowingButton>Submit Successfully</GlowingButton> : null}
             </ContactFormCard>
         </ContactFormContainer>
     );

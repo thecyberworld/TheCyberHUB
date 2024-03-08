@@ -5,7 +5,7 @@ export const FeedPostsContainer = styled(ExploreContentContainer)`
     background-color: ${(props) => (props.displayAt === "explore" ? "#090909" : "#000000")};
     padding: ${(props) => (props.displayAt === "explore" ? "15px" : "0")};
 
-    grid-auto-rows: ${(props) => (props.displayAt === "explore" ? "1fr" : "0fr")};
+    grid-auto-rows: minmax(min-content, max-content);
     gap: ${(props) => (props.displayAt === "explore" ? "25px" : "0")};
 
     @media screen and (max-width: 1230px) {
@@ -46,6 +46,8 @@ export const LeftSection = styled.div`
     align-items: start;
     justify-content: flex-start;
     gap: 5px;
+    width: 60px;
+    margin-right: 20px;
 `;
 
 export const RightSection = styled.div`
@@ -85,7 +87,6 @@ export const PostHeaderImg = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 25px;
-    margin-right: 20px;
     font-size: 12px;
     color: #999;
     word-break: break-all;

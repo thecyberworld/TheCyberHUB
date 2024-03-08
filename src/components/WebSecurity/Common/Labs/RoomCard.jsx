@@ -29,12 +29,13 @@ const RoomCard = (props) => {
                         background: "transparent",
                         height: "100%",
                         width: "130px",
-                        fontSize: "20px",
+                        fontSize: "16px",
                         color: "#FF6B08",
                         fontWeight: "bold",
                         display: "flex",
+                        marginTop: "10px",
                         justifyContent: "center",
-                        alignItems: "center",
+                        alignItems: "flex-start",
                         textDecoration: "none",
                     }}
                 >

@@ -16,6 +16,7 @@
         "@radix-ui/react-slot": "^1.0.1",
         "@reduxjs/toolkit": "^1.9.1",
         "@uiw/react-md-editor": "^4.0.1",
+        "add-to-calendar-button-react": "^2.5.9",
         "axios": "^1.6.4",
         "crypto-js": "^4.2.0",
         "date-fns": "^2.30.0",
