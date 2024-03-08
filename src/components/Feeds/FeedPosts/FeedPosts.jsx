@@ -3,12 +3,12 @@ import { FeedPostsContainer } from "./FeedPostsElements";
 import { useDispatch, useSelector } from "react-redux";
 import FeedPost from "./FeedPost";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { getFeedLikes } from "../../../features/feeds/feedLikes/feedLikesSlice";
-import { getBookmarks } from "../../../features/bookmarks/bookmarkSlice";
-import { getViews } from "../../../features/feeds/views/viewSlice";
-import { getFeedComments } from "../../../features/feeds/feedComments/feedCommentsSlice";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
-import { getAllFeeds } from "../../../features/feeds/feedsSlice";
+import { getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
+import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
+import { getViews } from "src/features/feeds/views/viewSlice";
+import { getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import { getAllFeeds } from "src/features/feeds/feedsSlice";
 import { HiRefresh } from "react-icons/hi";
 
 const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, displayAt }) => {

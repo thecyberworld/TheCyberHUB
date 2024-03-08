@@ -23,7 +23,7 @@ import {
     FaYoutube,
 } from "react-icons/fa";
 import { FaThreads, FaXTwitter } from "react-icons/fa6";
-import { H1 } from "../ContactForm/ContactFormElements";
+import { H1 } from "src/components/Homepage/ContactForm/ContactFormElements";
 
 const Socials = () => {
     return (

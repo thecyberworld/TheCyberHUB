@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import CommunityEvents from "../../CommunityEvents/CommunityEvents";
-import { addParticipant, removeParticipant } from "../../../features/events/eventsSlice";
-import { getUserDetail } from "../../../features/userDetail/userDetailSlice";
+import CommunityEvents from "src/components/CommunityEvents/CommunityEvents";
+import { addParticipant, removeParticipant } from "src/features/events/eventsSlice";
+import { getUserDetail } from "src/features/userDetail/userDetailSlice";
 import { toast } from "react-toastify";
 
 const DisplayCommunityEvents = () => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { createBlog } from "../../../../features/blogs/blogSlice";
-import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
-import { reset } from "../../../../features/goals/goalSlice";
+import { createBlog } from "src/features/blogs/blogSlice";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { reset } from "src/features/goals/goalSlice";
 import {
     AddCoverImageSection,
     AddImage,
@@ -15,11 +15,11 @@ import {
     TextGrey,
 } from "./CreateBlogElements";
 import axios from "axios";
-import PreviewBlogContent from "../../PreviewBlogContent";
-import { Button, PreviewIcon, PreviewSection } from "../../../Forum/ForumSubPageElements";
-import { getApiUrl } from "../../../../features/apiUrl";
+import PreviewBlogContent from "src/components/Blogs/PreviewBlogContent";
+import { Button, PreviewIcon, PreviewSection } from "src/components/Forum/ForumSubPageElements";
+import { getApiUrl } from "src/features/apiUrl";
 import { toast } from "react-toastify";
-import BlogPostForm from "../BlogPostForm";
+import BlogPostForm from "src/components/Blogs/ManageBlogs/BlogPostForm";
 
 const CreateBlog = () => {
     const dispatch = useDispatch();

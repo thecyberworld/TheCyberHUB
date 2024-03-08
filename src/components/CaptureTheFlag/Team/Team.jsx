@@ -17,7 +17,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
-import { registeredUser } from "../CTFData";
+import { registeredUser } from "src/components/CaptureTheFlag/CTFData";
 
 const Team = ({ team, isTeamEdit }) => {
     const [editTeam, setEditTeam] = useState(false);

@@ -13,8 +13,8 @@ import {
     CategoryMenuButtons,
     CategoryOptionsMenuContainer,
 } from "./CategoryElements";
-import { deleteNotesCategory, updateNotesCategory } from "../../../../features/notes/notesCategory/notesCategorySlice";
-import "../NoteApp.css";
+import { deleteNotesCategory, updateNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
+import "src/components/Dashboard/Notetaker/NoteApp.css";
 import ModifyCategory from "./ModifyCategory";
 import { toast } from "react-toastify";
 

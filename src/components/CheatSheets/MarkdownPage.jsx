@@ -1,5 +1,5 @@
 import React from "react";
-import PreviewMarkdown from "../Blogs/ViewBlog/PreviewMarkdown";
+import PreviewMarkdown from "src/components/Blogs/ViewBlog/PreviewMarkdown";
 
 const MarkdownPage = ({ dirName, fileName }) => {
     const [markdown, setMarkdown] = React.useState("");

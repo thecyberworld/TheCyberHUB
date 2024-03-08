@@ -8,7 +8,7 @@ import {
     MdAnalyticsIcon,
     BiLogoBloggerIcon,
 } from "./DashbaordSidebarElements";
-import GeneralDashboardSidebar from "../../Common/GeneralDashboardSidebar";
+import GeneralDashboardSidebar from "src/components/Common/GeneralDashboardSidebar";
 
 const DashboardSidebar = ({ userDetail }) => {
     const sidebarItems = [

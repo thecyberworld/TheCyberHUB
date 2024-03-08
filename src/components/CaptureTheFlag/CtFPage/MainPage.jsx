@@ -1,8 +1,8 @@
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { CtfLikeButton, Ctftitle, DifficultyLevelLabel, MenuButton, QuestionConatiner } from "./MainPageElement";
 import { MdComputer } from "react-icons/md";
 import React from "react";
-import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
+import CTFLeaderboard from "src/components/CaptureTheFlag/CTFLeaderboard/CTFLeaderboard";
 import QuestionAnswer from "./QuestionAnswer";
 import { GoArrowUpRight } from "react-icons/go";
 import { CiHeart } from "react-icons/ci";

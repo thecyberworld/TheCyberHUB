@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { NotFound } from "../index";
+import { NotFound } from "src/components/index";
 import AdminDashboardSidebar from "./AdminDashboardSidebar/AdminDashboardSidebar";
-import { DashboardRoutesContainer } from "../Dashboard/DashboardElements";
+import { DashboardRoutesContainer } from "src/components/Dashboard/DashboardElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUserDetails } from "../../features/userDetail/userDetailSlice";
+import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
 import AdminDashboard from "./AdminDashboard";
 import ManageCommunityEvents from "./ManageCommunityEvents/ManageCommunityEvents";
 

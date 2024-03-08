@@ -1,14 +1,14 @@
 import React from "react";
-import { getCdnAssets } from "../../../features/apiUrl";
+import { getCdnAssets } from "src/features/apiUrl";
 
 import { FaGithub } from "react-icons/fa";
-import { IconsSpacing, IconsSpacing2 } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { IconsSpacing, IconsSpacing2 } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import { BsFillPlayFill } from "react-icons/bs";
-import { List, ListContainer, ListContent, ListIcon } from "../../Resources/Jobs/JobDetailsElements";
+import { List, ListContainer, ListContent, ListIcon } from "src/components/Resources/Jobs/JobDetailsElements";
 
-import contributeSvg from "../../../assets/images/open-source-contribution.svg";
-import ResourcesSvg from "../../../assets/images/undraw_firmware_re_fgdy.svg";
-import VersionControlSvg from "../../../assets/images/undraw_version_control_re_mg66.svg";
+import contributeSvg from "src/assets/images/open-source-contribution.svg";
+import ResourcesSvg from "src/assets/images/undraw_firmware_re_fgdy.svg";
+import VersionControlSvg from "src/assets/images/undraw_version_control_re_mg66.svg";
 
 const logoThecyberworld = `${getCdnAssets}/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png`;
 

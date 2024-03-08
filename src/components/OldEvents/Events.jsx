@@ -1,6 +1,6 @@
 import React from "react";
 import EventsData from "./EventsData/EventsData";
-import CTFDataOld from "../CaptureTheFlag/CTFDataOld";
+import CTFDataOld from "src/components/CaptureTheFlag/CTFDataOld";
 import PastEvents from "./PastEvents/PastEvents";
 import OnGoingEvents from "./OnGoingEvents/OnGoingEvents";
 import UpComingEvents from "./UpComingEvents/UpComingEvents";
@@ -14,8 +14,8 @@ import {
     UpComingEventsContainer,
     UpComingEventsSection,
 } from "./EventsElement";
-import { encodeURL } from "../Blogs/util";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { encodeURL } from "src/components/Blogs/util";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 
 function padTo2Digits(num) {
     return num.toString().padStart(2, "0");

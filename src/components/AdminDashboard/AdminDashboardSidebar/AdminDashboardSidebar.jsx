@@ -1,6 +1,6 @@
 import React from "react";
 import { BiHomeCircleIcon, MdOutlineEventNoteIcon } from "./AdminDashbaordSidebarElements";
-import GeneralDashboardSidebar from "../../Common/GeneralDashboardSidebar";
+import GeneralDashboardSidebar from "src/components/Common/GeneralDashboardSidebar";
 
 const AdminDashboardSidebar = ({ userDetail }) => {
     const sidebarItems = [

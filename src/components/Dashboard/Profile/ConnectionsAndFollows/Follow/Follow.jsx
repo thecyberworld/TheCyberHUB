@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { DotIcon, FollowButton, FollowContainer, FollowCount } from "./FollowElements";
 import { useDispatch, useSelector } from "react-redux";
-import { followUser, getFollowData, reset, unfollowUser } from "../../../../../features/follow/followSlice";
-// import Followers from "../Followers/Followers";
-import { RouterLink } from "../../../../Tools/ToolsElements";
+import { followUser, getFollowData, reset, unfollowUser } from "src/features/follow/followSlice";
+import { RouterLink } from "src/components/Tools/ToolsElements";
 import { CircleSpinner } from "react-spinners-kit";
-// import { CircleSpinner } from "react-spinners-kit";
 
 const Follow = ({ userDetail, userDetails }) => {
     const dispatch = useDispatch();

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-import { createEvent, updateEvent, getEvents, eventsReset } from "../../features/events/eventsSlice";
+import { createEvent, updateEvent, getEvents, eventsReset } from "src/features/events/eventsSlice";
 import {
     ParentContainer,
     Container,
@@ -14,12 +14,12 @@ import {
     EventNote,
     CommunityEventHeaderContainer,
 } from "./CommunityEventsElement";
-import NoDataFound from "../../assets/images/no_data_found.svg";
+import NoDataFound from "src/assets/images/no_data_found.svg";
 import { EventItemList } from "./EventItemList";
-import { RouterNavCreateButton } from "../Header/Navbar/NavbarElements";
+import { RouterNavCreateButton } from "src/components/Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
-import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import ModifyTimeline from "./ModifyTimeline";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import ModifyTimeline from "./ModifyTimeLine";
 
 const CommunityEvents = ({
     pageHeader,

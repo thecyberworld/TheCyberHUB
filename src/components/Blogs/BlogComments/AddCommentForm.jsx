@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { AddCommentFormContainer, Form, Input } from "./AddCommentFormElements";
-import { addBlogComment } from "../../../features/blogs/blogComments/blogCommentSlice"; // Import the comment slice action
+import { AddCommentFormContainer, Form, Input } from "src/components/Blogs/BlogComments/AddCommentFormElements";
+import { addBlogComment } from "src/features/blogs/blogComments/blogCommentSlice"; // Import the comment slice action
 import { useDispatch } from "react-redux";
-import { ButtonGreen } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { ButtonGreen } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 
 const AddCommentForm = (props) => {
     const [addCommentData, setAddCommentData] = useState({ comment: "" });

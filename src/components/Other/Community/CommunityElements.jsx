@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { getCdnAssets } from "../../../features/apiUrl";
+import { getCdnAssets } from "src/features/apiUrl";
 import { FaDiscord } from "react-icons/fa";
 const bgImage = `${getCdnAssets}/images/WebsiteLogo/thecyberworld-green01.png`;
 

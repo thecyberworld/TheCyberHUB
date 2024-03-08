@@ -1,5 +1,5 @@
 import React from "react";
-import CheatSheet from "../CheatSheet";
+import CheatSheet from "src/components/CheatSheets/CheatSheet";
 import secureBook from "./SecureBookData/securebook.json";
 
 const SecureBook = () => {

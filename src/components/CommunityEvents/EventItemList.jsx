@@ -4,9 +4,9 @@ import { useNavigate } from "react-router";
 
 import { EventItem } from "./EventItemListElement";
 import { MdLocationOnIcon, BiChevronDownIcon, BiSolidChevronUpIcon } from "./CommunityEventsElement";
-import DateDisplay from "../Common/DateDisplay";
+import DateDisplay from "src/components/Common/DateDisplay";
 import ParticipantsDisplay from "./ParticipantsDisplay";
-import DurationDisplay from "../Common/DurationDisplay/DurationDisplay";
+import DurationDisplay from "src/components/Common/DurationDisplay/DurationDisplay";
 
 export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, user, onActionChange, tabStatus }) => {
     const [openEventIndex, setOpenEventIndex] = useState(null);

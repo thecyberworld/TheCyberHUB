@@ -4,9 +4,9 @@ import { JobsCardSection, JobsDetailContainer, JobsDetailSection } from "./Jobs/
 import Job from "./Jobs/Job";
 import JobDetailsPage from "./Jobs/JobDetailsPage";
 import { useSelector } from "react-redux";
-import { Wrapper } from "../Profile/ProfileElements";
-import { NotFound } from "../../index";
-import { getApiUrl } from "../../../features/apiUrl";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { NotFound } from "src/components/index";
+import { getApiUrl } from "src/features/apiUrl";
 
 const FormData = () => {
     const { user } = useSelector((state) => state.auth);

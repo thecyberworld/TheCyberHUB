@@ -1,7 +1,7 @@
 import React from "react";
 
-import { UserPicture } from "../../../Explore/Users/UsersElements";
-import { cdnContentImagesUrl } from "../../../../features/apiUrl";
+import { UserPicture } from "src/components/Explore/Users/UsersElements";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { UserInfoContainer } from "./UserLinksElements";
 
 const UserInfo = ({ children, heightSize, widthSize, fontSizeName, fontSizeUsername, avatarPath }) => {

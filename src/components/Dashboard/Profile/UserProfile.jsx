@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ProfileContainer, ProfileDetailsSection, Wrapper } from "./ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUserDetails, userDetailReset } from "../../../features/userDetail/userDetailSlice";
-import { getAllBlogs } from "../../../features/blogs/blogSlice";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
+import { getAllBlogs } from "src/features/blogs/blogSlice";
 import { useParams } from "react-router-dom";
 import { CircleSpinner } from "react-spinners-kit";
 import UserLinks from "./UserLinks/UserLinks";
@@ -13,12 +13,12 @@ import AboutMe from "./AboutMe";
 import Achievements from "./Achievements/Achievements";
 import ActivityGraph from "./ActivityGraph/ActivityGraph";
 import UserProjects from "./UserProjects/UserProjects";
-import { NotFound } from "../../index";
+import { NotFound } from "src/components/index";
 import UserPoints from "./UserPoints/UserPoints";
 import MyCtfCertificates from "./MyCtfCertificates";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../../features/apiStatus";
-import AuthPopup from "../../../pages/AuthPopup/AuthPopup";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
+import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 
 const UserProfile = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

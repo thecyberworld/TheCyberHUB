@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { WebSecurityContainer } from "./WebSecurityElements";
 
 // Styled components for the sections

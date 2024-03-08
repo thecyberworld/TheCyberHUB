@@ -1,18 +1,16 @@
 import styled from "styled-components";
-import { ExploreContentContainer } from "../../Explore/ExploreElements";
+import { ExploreContentContainer } from "src/components/Explore/ExploreElements";
 
 export const FeedPostsContainer = styled(ExploreContentContainer)`
     background-color: ${(props) => (props.displayAt === "explore" ? "#090909" : "#000000")};
     padding: ${(props) => (props.displayAt === "explore" ? "15px" : "0")};
 
-    grid-auto-rows:  minmax(min-content, max-content);
+    grid-auto-rows: minmax(min-content, max-content);
     gap: ${(props) => (props.displayAt === "explore" ? "25px" : "0")};
 
     @media screen and (max-width: 1230px) {
         grid-auto-rows: 0fr;
         gap: 15px;
-
-   
     }
 `;
 

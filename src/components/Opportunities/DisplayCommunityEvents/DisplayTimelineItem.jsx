@@ -9,8 +9,8 @@ import {
     DisplayTimelineItemTitle,
     DisplayTimelineItemTopic,
 } from "./DisplayTimelineElements";
-import UserInfo from "../../Dashboard/Profile/UserLinks/UserInfo";
-import DurationDisplay from "../../Common/DurationDisplay/DurationDisplay";
+import UserInfo from "src/components/Dashboard/Profile/UserLinks/UserInfo";
+import DurationDisplay from "src/components/Common/DurationDisplay/DurationDisplay";
 
 const DisplayTimelineItem = ({ children }) => {
     const programInfo = {

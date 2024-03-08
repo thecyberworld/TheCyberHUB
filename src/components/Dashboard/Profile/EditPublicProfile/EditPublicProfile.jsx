@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetail, userDetailReset, updateUserDetail } from "../../../../features/userDetail/userDetailSlice";
-import { ProfileContainer, ProfileDetailsSection, Wrapper } from "../ProfileElements";
+import { getUserDetail, userDetailReset, updateUserDetail } from "src/features/userDetail/userDetailSlice";
+import { ProfileContainer, ProfileDetailsSection, Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { CircleSpinner } from "react-spinners-kit";
-import { NotFound } from "../../../index";
-import { UserDetailsContainer } from "../SkillSet/SkillSetElements";
+import { NotFound } from "src/components/index";
+import { UserDetailsContainer } from "src/components/Dashboard/Profile/SkillSet/SkillSetElements";
 import EditUserProjects from "./EditUserProjects";
 import EditAchievements from "./EditAchievements";
 import EditSkillSet from "./EditSkillSet";

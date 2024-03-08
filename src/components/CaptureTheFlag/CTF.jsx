@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { getAllCTFs } from "../../features/ctf/ctfSlice";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { getAllCTFs } from "src/features/ctf/ctfSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { CTFContainer, CTFHeader, CTFHeading, Option, SearchContainer, SearchDifficulty, Select } from "./CTFElements";
-import { getUserDetail } from "../../features/userDetail/userDetailSlice";
-// import { encodeURL } from "../Blogs/util";
-import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../features/apiStatus";
-// import CtfCard from "./CtfCard";
+import { getUserDetail } from "src/features/userDetail/userDetailSlice";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
 import CtfChallenges from "./CTFCards/CtfChallenges";
-import { RankTrophy } from "../Header/Navbar/NavbarElements";
-import { RouteLink } from "../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
-import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import SearchInputBox from "../Common/SearchInputBox";
+import { RankTrophy } from "src/components/Header/Navbar/NavbarElements";
+import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import SearchInputBox from "src/components/Common/SearchInputBox";
 
 const CTF = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

@@ -1,22 +1,22 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { feedReset, getAllFeeds } from "../../../features/feeds/feedsSlice";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import AddFeedComment from "./FeedComments/AddFeedComment";
 
 import { FeedContentSection, FeedPageContainer } from "./FeedPageElements";
-import { getAllUserDetails, userDetailReset } from "../../../features/userDetail/userDetailSlice";
-import { FeedLikeReset, getFeedLikes } from "../../../features/feeds/feedLikes/feedLikesSlice";
-import { getBookmarks } from "../../../features/bookmarks/bookmarkSlice";
-import { getViews } from "../../../features/feeds/views/viewSlice";
-import { feedReplyReset, getFeedComments } from "../../../features/feeds/feedComments/feedCommentsSlice";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
+import { FeedLikeReset, getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
+import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
+import { getViews } from "src/features/feeds/views/viewSlice";
+import { feedReplyReset, getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
 
 import FeedPagePost from "./FeedPagePost";
 import FeedReplies from "./FeedComments/FeedComments";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../../features/apiStatus";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
 
 const FeedPage = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

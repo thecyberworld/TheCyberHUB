@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserDetail, reset } from "../../../../features/userDetail/userDetailSlice";
+import { getUserDetail, reset } from "src/features/userDetail/userDetailSlice";
 import { StreakContainer, StreakIcon, Streaks } from "./StreakElements";
 import { CircleSpinner } from "react-spinners-kit";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AuthPopup from "../../../pages/AuthPopup/AuthPopup";
+import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import AddPostTags from "./AddPostTags/AddPostTags";
 import {
     AddFeedCommentContainer,
@@ -12,13 +12,13 @@ import {
     RemoveButton,
     FeedImage,
 } from "./AddPostElements";
-import { FeedCommentInput } from "../FeedPage/FeedComments/AddFeedCommentsElements";
-import { LeftSection, PostHeaderImg, RightSection } from "../FeedPosts/FeedPostsElements";
-import { ImageUploadLabel } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
-import { cdnContentImagesUrl, getApiUrl } from "../../../features/apiUrl";
+import { FeedCommentInput } from "src/components/Feeds/FeedPage/FeedComments/AddFeedCommentsElements";
+import { LeftSection, PostHeaderImg, RightSection } from "src/components/Feeds/FeedPosts/FeedPostsElements";
+import { ImageUploadLabel } from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
+import { cdnContentImagesUrl, getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { CircleSpinner } from "react-spinners-kit";
-import { createFeed } from "../../../features/feeds/feedsSlice";
+import { createFeed } from "src/features/feeds/feedsSlice";
 import { toast } from "react-toastify";
 
 const AddPost = ({ showPostTags, userDetails }) => {

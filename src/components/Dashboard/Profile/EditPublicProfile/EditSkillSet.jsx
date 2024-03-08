@@ -4,14 +4,14 @@ import {
     AchievementLink,
     AchievementList,
     AddButtonSection,
-} from "../Achievements/AchievementsElements";
+} from "src/components/Dashboard/Profile/Achievements/AchievementsElements";
 import {
     AddSkillInput,
     IconAdd,
     RemoveButton,
     SkillSetContainer,
     SkillSetListItem,
-} from "../SkillSet/SkillSetElements";
+} from "src/components/Dashboard/Profile/SkillSet/SkillSetElements";
 
 const SkillSet = ({ skills, setUserDetailData }) => {
     const [updatedSkills, setUpdatedSkills] = useState(skills || []);

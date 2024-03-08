@@ -12,11 +12,11 @@ import {
     NavMenu,
     NavUsersDetailsSection,
 } from "./NavbarElements";
-import Dropdown from "../Dropdowns/Dropdown";
-import UserOptions from "../UserOptions/UserOptions";
+import Dropdown from "src/components/Header/Dropdowns/Dropdown";
+import UserOptions from "src/components/Header/UserOptions/UserOptions";
 import { FaBars } from "react-icons/fa";
-import { getCdnAssets } from "../../../features/apiUrl";
-import { SideOptionsContainer } from "../ExpElemenets";
+import { getCdnAssets } from "src/features/apiUrl";
+import { SideOptionsContainer } from "src/components/Header/ExpElemenets";
 import { useLocation } from "react-router-dom";
 
 const logo = `${getCdnAssets}/images/ThecyberworldLogo/Thecyberworld_logo.png`;

@@ -10,10 +10,10 @@ import {
 } from "./NoteElements";
 import { MdOutlineCancel } from "react-icons/md";
 import NotePinning from "./NotePinning";
-import MarkdownEditor from "../../Common/MarkdownEditor";
-import InputEditor from "../../Common/InputEditor";
+import MarkdownEditor from "src/components/Common/MarkdownEditor";
+import InputEditor from "src/components/Common/InputEditor";
 import { useDispatch } from "react-redux";
-import { createNote, updateNote, deleteNote } from "../../../features/notes/notesSlice";
+import { createNote, updateNote, deleteNote } from "src/features/notes/notesSlice";
 import { FaSave } from "react-icons/fa";
 import { TbEditCircle } from "react-icons/tb";
 import { AiTwotoneDelete } from "react-icons/ai";

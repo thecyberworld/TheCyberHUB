@@ -4,7 +4,7 @@ import Tools from "./Tools";
 import BreachCheck from "./BreachCheck/BreachCheck";
 import SubdomainFinder from "./SubdomainFinder/SubdomainFinder";
 import ReverseShellGenerator from "./ReverseShell/ShellGenerator";
-import { NotFound } from "../index";
+import { NotFound } from "src/components/index";
 import PassGen from "./PassGen/PassGen";
 import EncoderMain from "./EncoderDecoder.jsx/EncoderMain";
 import GtfoBin from "./BinaryExploits/BinaryExploits";

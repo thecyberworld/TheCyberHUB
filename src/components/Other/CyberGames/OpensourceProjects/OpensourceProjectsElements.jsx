@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { getCdnAssets } from "../../../../features/apiUrl";
+import { getCdnAssets } from "src/features/apiUrl";
 const projectImage = `${getCdnAssets}/images/projects-bg.png`;
 
 const whiteColor = "whitesmoke";

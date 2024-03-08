@@ -6,11 +6,11 @@ import {
     ContactFormSelect,
     ContactFormSelectOption,
 } from "./CheckValuesElements";
-import { LoadingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import { CircleSpinner } from "react-spinners-kit";
-import { TextArea } from "../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
+import { TextArea } from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
-import { getApiUrl } from "../../../features/apiUrl";
+import { getApiUrl } from "src/features/apiUrl";
 import { toast } from "react-toastify";
 import { DetailsText } from "./Jobs/JobDetailsElements";
 

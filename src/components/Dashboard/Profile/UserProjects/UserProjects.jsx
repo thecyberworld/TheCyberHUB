@@ -6,7 +6,7 @@ import {
     AchievementList,
     AchievementsContainer,
     IconDot,
-} from "../Achievements/AchievementsElements";
+} from "src/components/Dashboard/Profile/Achievements/AchievementsElements";
 
 const UserProjects = ({ projects }) => {
     return (

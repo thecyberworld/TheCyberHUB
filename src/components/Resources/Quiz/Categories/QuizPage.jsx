@@ -21,12 +21,11 @@ import {
     SRAQQuestions,
     TSSQQuestions,
     VSQQuestions,
-} from "../CategoriesData";
-import RenderProgressIndicator from "../../../../utils/components/RenderProgressIndicator";
-// import QuizStartSection from "../QuizStartSection";
-import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
+} from "src/components/Resources/Quiz/CategoriesData";
+import RenderProgressIndicator from "src/utils/components/RenderProgressIndicator";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { useNavigate } from "react-router-dom";
-import HeadingBanner from "../../../Common/HeadingBanner/HeadingBanner";
+import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 import { CategoriesButtonData } from "./CategoriesButtonData";
 
 export default function QuizPage() {

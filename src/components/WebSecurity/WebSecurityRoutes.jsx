@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { NotFound } from "../index";
+import { NotFound } from "src/components/index";
 import SubHeader from "./SubHeader";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import Topics from "./WebSecurityTopics/Topics";
 import Topic from "./WebSecurityTopics/Topic";
 import CodeReview from "./CodeReviews/CodeReview";

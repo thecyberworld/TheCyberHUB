@@ -1,6 +1,5 @@
 import React from "react";
-// import BotAvatar from "../../../../assets/thecyberworld-green01.png";
-import { getCdnAssets } from "../../../../features/apiUrl";
+import { getCdnAssets } from "src/features/apiUrl";
 const logoThecyberworld = `${getCdnAssets}/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png`;
 
 export default function ChatBotAvatar() {
