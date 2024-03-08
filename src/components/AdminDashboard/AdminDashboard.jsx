@@ -1,10 +1,9 @@
 import React from "react";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import { DashboardContainer } from "../Dashboard/DashboardElements";
-import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../features/apiStatus";
-import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-// import AuthPopup from "../../pages/AuthPopup/AuthPopup";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { DashboardContainer } from "src/components/Dashboard/DashboardElements";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 
 const AdminDashboard = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

@@ -10,7 +10,7 @@ import { ThecyberhubBot, BotButtonCont } from "./ChatbotElements";
 
 // import { FaRobot } from "react-icons/fa";
 import { CgClose } from "react-icons/cg";
-import { getCdnAssets } from "../../features/apiUrl";
+import { getCdnAssets } from "src/features/apiUrl";
 
 const logoThecyberworld = `${getCdnAssets}/images/ThecyberworldLogo/Thecyberworld_logo_outlined.png`;
 

@@ -9,9 +9,9 @@ import {
     CategoryCreateContainer,
 } from "./CategoryElements";
 import CategoryList from "./CategoryList";
-import LoadingSpinner from "../../../Other/MixComponents/Spinner/LoadingSpinner";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyCategory from "./ModifyCategory";
-import { createNotesCategory } from "../../../../features/notes/notesCategory/notesCategorySlice";
+import { createNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 

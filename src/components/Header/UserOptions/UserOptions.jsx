@@ -9,12 +9,11 @@ import { RiAdminFill } from "react-icons/ri";
 
 import { useDispatch, useSelector } from "react-redux";
 import { RouterLink, UserOptionsContainer, UserOptionsDropdownContainer } from "./UserOptionsElements";
-import { logout, userReset } from "../../../features/auth/authSlice";
+import { logout, userReset } from "src/features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
-import { CiSettingsIcon } from "../../Dashboard/DashbaordSidebar/DashbaordSidebarElements";
-// import Streak from "../../Dashboard/Streak/Streak";
+import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
+import { CiSettingsIcon } from "src/components/Dashboard/DashbaordSidebar/DashbaordSidebarElements";
 
 const NavItem = (props) => {
     const [open, setOpen] = useState(false);

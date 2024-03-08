@@ -4,11 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { NotesContainer } from "./NoteElements";
 import "./NoteApp.css";
 import NoteDescription from "./NoteDescription";
-import { getNotes, noteReset, pinNote } from "../../../features/notes/notesSlice";
+import { getNotes, noteReset, pinNote } from "src/features/notes/notesSlice";
 import { CategorySidebar } from "./Category";
 import NoteSidebar from "./NoteSidebar";
 import { toast } from "react-toastify";
-import { notesCategoryReset, getNotesCategories } from "../../../features/notes/notesCategory/notesCategorySlice";
+import { notesCategoryReset, getNotesCategories } from "src/features/notes/notesCategory/notesCategorySlice";
 
 const defaultCategory = {
     name: "All Notes",

@@ -10,8 +10,8 @@ import {
     UserPointsContainer,
     UserStreakContainer,
 } from "./UserPointsElements";
-import { getStreak } from "../../../Header/Exp";
-import { ExpIcon } from "../../../Header/ExpElemenets";
+import { getStreak } from "src/components/Header/Exp";
+import { ExpIcon } from "src/components/Header/ExpElemenets";
 
 const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
     const isCompleted = userDetail?.solved?.map((ctf) => (ctf?.isCompleted ? 1 : 0));

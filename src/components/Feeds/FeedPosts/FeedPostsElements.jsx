@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ExploreContentContainer } from "../../Explore/ExploreElements";
+import { ExploreContentContainer } from "src/components/Explore/ExploreElements";
 
 export const FeedPostsContainer = styled(ExploreContentContainer)`
     background-color: ${(props) => (props.displayAt === "explore" ? "#090909" : "#000000")};

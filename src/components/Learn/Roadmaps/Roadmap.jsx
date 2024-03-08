@@ -2,7 +2,7 @@ import React from "react";
 
 import { useParams } from "react-router-dom";
 import RoadmapsData from "./RoadmapsData";
-import { encodeURL } from "../../Blogs/util";
+import { encodeURL } from "src/components/Blogs/util";
 import {
     HrLine,
     RedirectLink,
@@ -15,7 +15,7 @@ import {
     RoadmapHeadingSection,
     RoadmapSectionHeading,
 } from "./RoadmapElements";
-import { DotSymbol } from "../../Homepage/Info/InfoElements";
+import { DotSymbol } from "src/components/Homepage/Info/InfoElements";
 
 const Roadmap = () => {
     const { title } = useParams();

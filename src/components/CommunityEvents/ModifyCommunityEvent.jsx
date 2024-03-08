@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-import InputEditor from "../Common/InputEditor";
+import InputEditor from "src/components/Common/InputEditor";
 import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 import { GoProjectSymlink } from "react-icons/go";
 import { MdOutlineEventSeat } from "react-icons/md";

@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router";
 
-import { CardTool, CardToolHeading, ContainerTools } from "../../../Tools/ToolsElements";
-// import HeadingBanner from "../../../Common/HeadingBanner/HeadingBanner";
+import { CardTool, CardToolHeading, ContainerTools } from "src/components/Tools/ToolsElements";
 import { CategoriesButtonData } from "./CategoriesButtonData";
-import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 
 export default function Categories() {
     const navigator = useNavigate();

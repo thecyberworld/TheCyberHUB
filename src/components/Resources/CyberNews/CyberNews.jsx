@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useGetCyberNewsQuery, useLazyGetCyberNewsQuery, cyberNewsApi } from "../../../services/cyberNewsApi";
+import { useGetCyberNewsQuery, useLazyGetCyberNewsQuery, cyberNewsApi } from "src/services/cyberNewsApi";
 import {
     CyberNewsSection,
     SectionHeading,

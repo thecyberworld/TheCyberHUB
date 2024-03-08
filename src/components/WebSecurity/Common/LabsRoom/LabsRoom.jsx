@@ -16,12 +16,12 @@ import {
     DescriptionSection,
     SolutionSection,
 } from "./LabsRoomElement";
-import SubmissionBox from "../SubmissionBox";
+import SubmissionBox from "src/components/WebSecurity/Common/SubmissionBox";
 import { ImLab } from "react-icons/im";
-import { LabIcon } from "../../WebSecurityTopics/SubTopic";
-import { HintContainer, HintIcon, SolutionContainer } from "../HintElements";
+import { LabIcon } from "src/components/WebSecurity/WebSecurityTopics/SubTopic";
+import { HintContainer, HintIcon, SolutionContainer } from "src/components/WebSecurity/Common/HintElements";
 import { RiLightbulbFlashFill, RiLightbulbFlashLine } from "react-icons/ri";
-import SyntaxHighlight from "../SyntaxHighlight";
+import SyntaxHighlight from "src/components/WebSecurity/Common/SyntaxHighlight";
 
 const Room = ({ roomData }) => {
     const { "*": path, id } = useParams();

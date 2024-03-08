@@ -7,7 +7,7 @@ import {
     TimePicking,
     TimeLineListItem,
 } from "./ModifyElements";
-import InputEditor from "../Common/InputEditor";
+import InputEditor from "src/components/Common/InputEditor";
 import TimePickerDisplay from "./TimePickerDisplay";
 import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 

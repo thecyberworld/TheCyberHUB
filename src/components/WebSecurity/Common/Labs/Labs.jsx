@@ -3,8 +3,8 @@ import { LabContainer, LevelContainer, RoomContainer } from "./LabsElement";
 import RoomCard from "./RoomCard";
 import { LevelButton } from "./RoomCardElement";
 
-import Sidebar from "../../Sidebar";
-import { Input } from "../SubmissionBoxElements";
+import Sidebar from "src/components/WebSecurity/Sidebar";
+import { Input } from "src/components/WebSecurity/Common/SubmissionBoxElements";
 
 const Labs = ({ LabData }) => {
     const [levelActive, setLevelActive] = useState("All");

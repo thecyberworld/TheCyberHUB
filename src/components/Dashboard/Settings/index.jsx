@@ -7,7 +7,7 @@ import Account from "./Account";
 import Appearance from "./Appearance";
 import Notifications from "./Notifications";
 import Display from "./Display";
-import NotFound from "../../../NotFound";
+import NotFound from "src/NotFound";
 import Api from "./Api";
 
 export default function SettingsRoute() {

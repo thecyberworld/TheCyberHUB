@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 
 import { DisplayDate, TimeInputEditorContainer, TimeInputLabel, TimePickerContainer } from "./ModifyElements";
-import InputEditor from "../Common/InputEditor";
+import InputEditor from "src/components/Common/InputEditor";
 
 const TimePickerDisplay = ({ children, rangeDate, time, handleUpdatePropertyValue, showDate }) => {
     const [isStartTime, setIsStartTime] = useState(true);

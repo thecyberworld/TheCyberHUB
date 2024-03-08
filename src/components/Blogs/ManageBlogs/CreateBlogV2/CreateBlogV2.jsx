@@ -20,7 +20,7 @@ import {
     ImageUploadInput,
     ImageUploadLabel,
     TextGrey,
-} from "../CreateBlog/CreateBlogElements";
+} from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import { blogReset, createBlog } from "src/features/blogs/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getApiUrl } from "src/features/apiUrl";

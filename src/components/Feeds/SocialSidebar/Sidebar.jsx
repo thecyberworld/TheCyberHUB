@@ -1,11 +1,11 @@
 import React from "react";
-import { SearchContainer } from "../../Explore/ExploreElements";
-import { FilterButton, FilterContainer } from "../FeedsElements";
-import SearchInputBox from "../../Common/SearchInputBox";
-import { filterByTags } from "../../Common/Tags/filterByTags";
-import SocialTags from "../FeedTags/SocialTags";
+import { SearchContainer } from "src/components/Explore/ExploreElements";
+import { FilterButton, FilterContainer } from "src/components/Feeds/FeedsElements";
+import SearchInputBox from "src/components/Common/SearchInputBox";
+import { filterByTags } from "src/components/Common/Tags/filterByTags";
+import SocialTags from "src/components/Feeds/FeedTags/SocialTags";
 import { SidebarContainer } from "./SidebarElements";
-import { RouterNavCreateButtonLink } from "../../Header/Navbar/NavbarElements";
+import { RouterNavCreateButtonLink } from "src/components/Header/Navbar/NavbarElements";
 const Sidebar = ({
     user,
     searchTerm,

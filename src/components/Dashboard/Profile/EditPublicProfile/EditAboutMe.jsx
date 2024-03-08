@@ -1,7 +1,7 @@
 import React from "react";
-import { AboutSection } from "../ProfileElements";
+import { AboutSection } from "src/components/Dashboard/Profile/ProfileElements";
 import styled from "styled-components";
-import { AchievementHeading } from "../Achievements/AchievementsElements";
+import { AchievementHeading } from "src/components/Dashboard/Profile/Achievements/AchievementsElements";
 
 const AboutMe = ({ aboutMe, userDetailData, setUserDetailData }) => {
     const onChange = (e) => {

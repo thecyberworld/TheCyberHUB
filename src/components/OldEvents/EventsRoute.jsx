@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Event, Events, NotFound } from "../index";
+import { Event, Events, NotFound } from "src/components/index";
 
 const EventsRoute = () => {
     return (

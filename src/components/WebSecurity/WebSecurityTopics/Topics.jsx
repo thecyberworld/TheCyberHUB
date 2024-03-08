@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { RouterLink } from "../../Tools/ToolsElements";
+import { RouterLink } from "src/components/Tools/ToolsElements";
 import topics from "./topicsData";
-import Sidebar from "../Sidebar";
+import Sidebar from "src/components/WebSecurity/Sidebar";
 import { StyledTag } from "./TopicsElements";
-import { LevelContainer } from "../Common/Labs/LabsElement";
-import { Input } from "../Common/SubmissionBoxElements";
-import { LevelButton } from "../Common/Labs/RoomCardElement";
+import { LevelContainer } from "src/components/WebSecurity/Common/Labs/LabsElement";
+import { Input } from "src/components/WebSecurity/Common/SubmissionBoxElements";
+import { LevelButton } from "src/components/WebSecurity/Common/Labs/RoomCardElement";
 
 // Styled component for the container
 export const TopicsContainer = styled.div`

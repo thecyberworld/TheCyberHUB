@@ -1,5 +1,5 @@
 import React from "react";
-import { cdnContentImagesUrl } from "../../features/apiUrl";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { ParticipantsContainer } from "./ParticipantsDisplayElement";
 
 const ParticipantsDisplay = ({ participants = [] }) => {

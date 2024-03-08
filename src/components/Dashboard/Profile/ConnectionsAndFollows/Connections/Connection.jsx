@@ -7,7 +7,7 @@ import {
     acceptConnectionRequest,
     getConnections,
     reset,
-} from "../../../../../features/connections/connectionSlice";
+} from "src/features/connections/connectionSlice";
 import Connections from "./Connections";
 
 const Connection = ({ userDetail, userDetails }) => {

@@ -24,17 +24,17 @@ import {
     ResumeIcon,
 } from "./ContactFormElements.jsx";
 
-import { getApiUrl } from "../../../features/apiUrl";
+import { getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { toast } from "react-toastify";
-import InternshipProgramData from "../../Opportunities/Internship/InternshipProgramData";
-import { JobsData } from "../../Resources/Jobs/JobsData";
-import { LoadingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import InternshipProgramData from "src/components/Opportunities/Internship/InternshipProgramData";
+import { JobsData } from "src/components/Resources/Jobs/JobsData";
+import { LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import { CircleSpinner } from "react-spinners-kit";
-import apiStatus from "../../../features/apiStatus";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
-import { volunteerPrograms } from "../../Opportunities/Volunteer/VolunteerData";
+import apiStatus from "src/features/apiStatus";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import { volunteerPrograms } from "src/components/Opportunities/Volunteer/VolunteerData";
 
 const ContactForm = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

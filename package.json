@@ -9,7 +9,8 @@
         "dev": "vite",
         "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" vite build",
         "preview": "vite preview",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "lint:fix": "eslint --fix --ext .js,.jsx ."
     },
     "dependencies": {
         "@radix-ui/react-slot": "^1.0.1",
@@ -26,6 +27,7 @@
         "jspdf": "^2.5.1",
         "jwt-decode": "^4.0.0",
         "moment": "^2.29.4",
+        "path": "^0.12.7",
         "path-to-regexp": "^6.2.1",
         "react": "^18.2.0",
         "react-calendar-heatmap": "^1.9.0",
@@ -63,6 +65,7 @@
         "eslint-config-standard": "^17.0.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-n": "^15.3.0",
+        "eslint-plugin-no-relative-import-paths": "^1.5.3",
         "eslint-plugin-promise": "^6.1.1",
         "eslint-plugin-react": "^7.31.10",
         "gh-pages": "^4.0.0",
@@ -80,8 +83,7 @@
     },
     "lint-staged": {
         "*.{js,jsx}": [
-            "eslint --cache --fix",
-            "git add"
+            "eslint --cache --fix"
         ],
         "*.{js,jsx,css,md}": "prettier --write"
     },

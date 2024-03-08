@@ -11,7 +11,7 @@ import {
     BiSolidChevronUpIcon,
     AiFillExclamationCircleIcon,
 } from "./CommunityEventsElement";
-import DateDisplay from "../Common/DateDisplay";
+import DateDisplay from "src/components/Common/DateDisplay";
 import ParticipantsDisplay from "./ParticipantsDisplay";
 
 const addZeroToDateString = (dateValue) => {

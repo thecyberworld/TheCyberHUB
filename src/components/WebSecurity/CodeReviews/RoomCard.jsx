@@ -1,6 +1,6 @@
 import React from "react";
-import { RouterLink } from "../../Tools/ToolsElements";
-import { RoomCardContainer, RoomTags } from "../Common/Labs/RoomCardElement";
+import { RouterLink } from "src/components/Tools/ToolsElements";
+import { RoomCardContainer, RoomTags } from "src/components/WebSecurity/Common/Labs/RoomCardElement";
 
 export default function CodeReviewCard(props) {
     return (

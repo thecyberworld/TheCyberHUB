@@ -1,11 +1,15 @@
 import React from "react";
 import { UserBio, UserInfo, UserLinksContainer } from "./UserLinksElements";
-import { SocialLink, SocialUsername, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
+import {
+    SocialLink,
+    SocialUsername,
+    UserSocialLinksContainer,
+} from "src/components/Dashboard/Profile/UserSocialLinks/UserSocialLinksElements";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium, FaTwitter } from "react-icons/fa";
-import { UserPicture } from "../../../Explore/Users/UsersElements";
+import { UserPicture } from "src/components/Explore/Users/UsersElements";
 import { CgWebsite } from "react-icons/cg";
-import { cdnContentImagesUrl } from "../../../../features/apiUrl";
-import ConnectionsAndFollows from "../ConnectionsAndFollows/ConnectionsAndFollows";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
+import ConnectionsAndFollows from "src/components/Dashboard/Profile/ConnectionsAndFollows/ConnectionsAndFollows";
 
 const UserLinks = ({ userDetail, userDetails, setShowAuthPopup }) => {
     const socialUsernames = userDetail?.socialLinks?.map(

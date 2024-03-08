@@ -12,9 +12,9 @@ import {
     PasswordDisplay,
     PasswordDisplayContainer,
 } from "./PassGenElements";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { toast } from "react-toastify";
-import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
+import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 
 const PassGen = () => {
     const [password, setPassword] = useState("7h3cyb3rw04ld (0mmun17y");

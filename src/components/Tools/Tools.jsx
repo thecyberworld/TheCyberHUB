@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { CardTool, CardToolHeading, CardTools, ContainerTools, RouterLink, ToolIcon } from "./ToolsElements";
 import { GoFileBinary } from "react-icons/go";
 import { RiEarthFill } from "react-icons/ri";
@@ -9,7 +9,7 @@ import {
     // MdScreenSearchDesktop
 } from "react-icons/md";
 import { TbHash } from "react-icons/tb";
-import HeadingBanner from "../Common/HeadingBanner/HeadingBanner";
+import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 
 const Tools = () => {
     const tools = [

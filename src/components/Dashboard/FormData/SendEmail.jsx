@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { getApiUrl } from "../../../features/apiUrl";
+import { getApiUrl } from "src/features/apiUrl";
 import {
     ContactFormInput,
     ContactFormLabel,
@@ -12,9 +12,9 @@ import {
     ErrorMessage,
     MessageIcon,
     OrgIcon,
-} from "../../Homepage/ContactForm/ContactFormElements";
+} from "src/components/Homepage/ContactForm/ContactFormElements";
 import { toast } from "react-toastify";
-import { LoadingButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import { CircleSpinner } from "react-spinners-kit";
 
 const SendEmail = () => {

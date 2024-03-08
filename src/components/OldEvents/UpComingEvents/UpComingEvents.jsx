@@ -10,7 +10,7 @@ import {
     EventLocation,
     EventLink,
     EventsHeadingMedium,
-} from "../EventsElement";
+} from "src/components/OldEvents/EventsElement";
 
 const UpComingEvents = (event) => {
     return (

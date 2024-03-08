@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ExploreContentContainer } from "../ExploreElements";
+import { ExploreContentContainer } from "src/components/Explore/ExploreElements";
 import { PiSealCheckDuotone } from "react-icons/pi";
 
 export const UsersContainer = styled(ExploreContentContainer)`

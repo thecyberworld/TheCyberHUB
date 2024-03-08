@@ -28,9 +28,6 @@ import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 
 import "react-quill/dist/quill.bubble.css";
-// import {RouterLink} from "../../Beta/Tools/ToolsElements";
-// import PostActionsAndStats from "../../Feeds/FeedPosts/PostActionsAndStats";
-// import AddCommentForm from "../BlogComments/AddCommentForm";
 import BlogComments from "src/components/Blogs/BlogComments/BlogComments";
 import ViewComments from "src/components/Blogs/BlogComments/ViewComments";
 import { blogCommentReset, getBlogComments } from "src/features/blogs/blogComments/blogCommentSlice";

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { SaveButton, Wrapper } from "../../../Dashboard/Profile/ProfileElements";
-import { CategoriesButtonData } from "../Categories/CategoriesButtonData";
+import { SaveButton, Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { CategoriesButtonData } from "src/components/Resources/Quiz/Categories/CategoriesButtonData";
 import { AddQuestionAndOptionContainer, Input, Label, QuizContainer } from "./CreateQuizElement";
-import AddFeedTags from "../../../Feeds/PostForm/AddPostTags/AddPostTags";
+import AddFeedTags from "src/components/Feeds/PostForm/AddPostTags/AddPostTags";
 
 const QuizAdder = () => {
     const [question, setQuestion] = useState("");

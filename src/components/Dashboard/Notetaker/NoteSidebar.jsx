@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { MdNoteAdd } from "react-icons/md";
 
-import SearchInputBox from "../../Common/SearchInputBox";
+import SearchInputBox from "src/components/Common/SearchInputBox";
 import { NotesSidebarContainer, NotesSidebarHeader, NotesSidebarHeaderTitle, SearchContainer } from "./NoteElements";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import NoteList from "./NoteList";
 import "./NoteApp.css";
 

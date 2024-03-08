@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DotSymbol } from "../../Homepage/Info/InfoElements";
+import { DotSymbol } from "src/components/Homepage/Info/InfoElements";
 
 export const FormDetailsContainer = styled.div`
     background-color: rgba(32, 194, 14, 0.04);

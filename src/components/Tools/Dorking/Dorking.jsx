@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-import { getApiUrl } from "../../../features/apiUrl";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { getApiUrl } from "src/features/apiUrl";
 
 const Dorking = () => {
     const [query, setQuery] = useState("");

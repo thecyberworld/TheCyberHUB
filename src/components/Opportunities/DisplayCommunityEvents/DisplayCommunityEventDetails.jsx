@@ -10,8 +10,8 @@ import {
     EventDetailsTitle,
     EventLink,
 } from "./DisplayCommunityEventDetailsElement";
-import DateDisplay from "../../Common/DateDisplay";
-import ParticipantsDisplay from "../../CommunityEvents/ParticipantsDisplay";
+import DateDisplay from "src/components/Common/DateDisplay";
+import ParticipantsDisplay from "src/components/CommunityEvents/ParticipantsDisplay";
 import { GoProjectSymlink } from "react-icons/go";
 
 const DisplayCommunityEventDetails = () => {

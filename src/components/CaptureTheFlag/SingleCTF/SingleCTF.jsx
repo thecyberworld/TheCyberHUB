@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import Submission from "./Submission";
 import {
     ChallengeContainer,
@@ -13,27 +13,23 @@ import {
     SingleCTFSection,
 } from "./SingleCTFElements";
 
-import { TeamContainer } from "../Team/TeamInviteElements";
+import { TeamContainer } from "src/components/CaptureTheFlag/Team/TeamInviteElements";
 import {
     getAllCTFs,
     registerCTF,
     // , updateLikesAndViews
-} from "../../../features/ctf/ctfSlice";
+} from "src/features/ctf/ctfSlice";
 
 import { useDispatch, useSelector } from "react-redux";
-// import CtfTimeToStart from "../CtfTimeToStart";
-import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
-import {
-    // AiFillEye, AiFillLike,
-    AiOutlineCloudDownload,
-} from "react-icons/ai";
-import { encodeURL } from "../../Blogs/util";
-import createCtfCertificate from "../../Other/Certificate/createCtfCertificate";
-import { getUserDetail } from "../../../features/userDetail/userDetailSlice";
+import CTFLeaderboard from "src/components/CaptureTheFlag/CTFLeaderboard/CTFLeaderboard";
+import { AiOutlineCloudDownload } from "react-icons/ai";
+import { encodeURL } from "src/components/Blogs/util";
+import createCtfCertificate from "src/components/Other/Certificate/createCtfCertificate";
+import { getUserDetail } from "src/features/userDetail/userDetailSlice";
 import GetCertificate from "./GetCertificate";
-import apiStatus from "../../../features/apiStatus";
+import apiStatus from "src/features/apiStatus";
 import { CircleSpinner } from "react-spinners-kit";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import CtfRegister from "./CtfRegister";
 
 const SingleCTF = () => {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import topics from "./topicsData";
 import { useParams } from "react-router-dom";
 import { Container } from "./TopicElements";
-import Sidebar from "../Sidebar";
+import Sidebar from "src/components/WebSecurity/Sidebar";
 import SubTopic from "./SubTopic";
 
 const Topic = () => {

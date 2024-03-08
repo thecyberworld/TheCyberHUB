@@ -5,15 +5,11 @@ import {
     CommentSection,
     SectionCommentDetails,
     SectionUserPicture,
-    // SectionUserPicture,
     Username,
     UserPicture,
-    // UserPicture,
     ViewCommentsContainer,
 } from "src/components/Blogs/BlogComments/ViewCommentsElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
-// import { CircleSpinner } from "react-spinners-kit";
-// import { getCdnAssets } from "../../../features/apiUrl";
 
 const ViewComments = ({ comments }) => {
     return (

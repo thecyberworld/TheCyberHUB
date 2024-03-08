@@ -6,11 +6,10 @@ import { BiCommentDetail } from "react-icons/bi";
 import { VscGraphLine } from "react-icons/vsc";
 import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { addFeedLike, removeFeedLike } from "../../../features/feeds/feedLikes/feedLikesSlice";
-import { addBookmark, removeBookmark } from "../../../features/bookmarks/bookmarkSlice";
-import AuthPopup from "../../../pages/AuthPopup/AuthPopup";
-// import { updateView } from "../../../features/feeds/views/viewSlice";
-import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
+import { addFeedLike, removeFeedLike } from "src/features/feeds/feedLikes/feedLikesSlice";
+import { addBookmark, removeBookmark } from "src/features/bookmarks/bookmarkSlice";
+import AuthPopup from "src/pages/AuthPopup/AuthPopup";
+import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 
 const PostActionsAndStats = ({
     feed,
