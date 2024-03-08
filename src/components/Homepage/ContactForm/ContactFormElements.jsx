@@ -135,7 +135,7 @@ export const PersonIcon = styled(BsFillPersonFill)`
 
 export const MessageIcon = styled(RiQuestionAnswerFill)`
     color: #666666;
-    margin: 20px 10px 0; /* Add 20px margin from the top */
+    margin: 15px 10px 0; /* Add 20px margin from the top */
 `;
 
 export const ReasonIcon = styled(BsQuestionSquareFill)`
