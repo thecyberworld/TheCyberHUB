@@ -46,7 +46,7 @@ export const LeftSection = styled.div`
     align-items: start;
     justify-content: flex-start;
     gap: 5px;
-    width: 60px;
+    width: max-content;
     margin-right: 20px;
 `;
 
@@ -78,7 +78,6 @@ export const PostTag = styled.span`
 export const PostHeader = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 10px;
     margin-bottom: 10px;
     width: 100%;
