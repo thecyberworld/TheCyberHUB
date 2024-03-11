@@ -2,7 +2,7 @@ import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import { CtfLikeButton, Ctftitle, DifficultyLevelLabel, MenuButton, QuestionConatiner } from "./MainPageElement";
 import { MdComputer } from "react-icons/md";
 import React, { useState, useEffect } from "react";
-// import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
+import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
 import QuestionAnswer from "./QuestionAnswer";
 // import Submission from "./Submission";
 import { GoArrowUpRight } from "react-icons/go";
@@ -158,8 +158,8 @@ export default function MainPage() {
                             ctfId={challenge?._id}
                             isCertExisted={isCertExisted}
                         />
-                        {/* <div style={{ marginLeft: "20px" }}>
-                    <div
+                        <div style={{ marginLeft: "20px" }}>
+                            {/* <div
                         className="bg-[#1a1c1d] text-white p-5 rounded-lg max-w-md mx-auto "
                         style={{ marginBottom: "20px" }}
                     >
@@ -177,12 +177,13 @@ export default function MainPage() {
                         <button className="bg-[#000000] text-white px-4 py-2 rounded shadow hover:bg-opacity-80 transition duration-150">
                             Download
                         </button>
-                    </div>
-                    <CTFLeaderboard 
-                    registeredUsers={registeredUsers}
-                    ctfId={challenge?._id}
-                    flags={challenge?.flags}/>
-                </div> */}
+                    </div> */}
+                            <CTFLeaderboard
+                                registeredUsers={registeredUsers}
+                                ctfId={challenge?._id}
+                                flags={challenge?.flags}
+                            />
+                        </div>
                     </div>
                 </div>
             ) : (
