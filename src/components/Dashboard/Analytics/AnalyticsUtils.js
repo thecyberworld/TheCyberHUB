@@ -1,68 +1,8 @@
-// Barcharts
-
-export const barChartOptions = {
-    plugins: {
-        legend: {
-            position: "top",
-            display: false,
-        },
-        title: {
-            display: false,
-            text: "Activity",
-        },
-    },
-    maintainAspectRatio: false,
-    responsive: true,
-};
-
-export const mainBarChartDatasets = [
-    {
-        label: "Contributions days",
-        data: [345, 567, 765, 453, 676, 876, 564, 234, 440, 280, 440, 280],
-
-        borderColor: "rgb(128, 128, 128)",
-        backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 106, 9)",
-            "rgb(54, 162, 235)",
-            "rgb(0, 47, 225)",
-            "rgb(255, 205, 86)",
-            "rgb(255, 99, 132)",
-            "rgb(255, 106, 9)",
-            "rgb(54, 162, 235)",
-            "rgb(0, 47, 225)",
-            "rgb(255, 205, 86)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-        ],
-        hoverOffset: 4,
-    },
-];
-
-export const smallBarChartDatasets = [
-    {
-        label: "Contributions days",
-        data: [345, 567, 765, 453, 676, 876, 564, 234, 440, 280, 440, 280],
-
-        borderColor: "rgb(128, 128, 128)",
-        backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(255, 106, 9)",
-            "rgb(54, 162, 235)",
-            "rgb(0, 47, 225)",
-            "rgb(255, 205, 86)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-            "rgb(169, 169, 169, 0.1)",
-        ],
-        hoverOffset: 4,
-    },
-];
+export const lastAmountOfDays = 30;
+export const lastAmountOfMinAgo = 14;
+export const postDate = "May 26";
+export const startDate = "11 Oct, 2021";
+export const endDate = "11 Nov, 2021";
 
 export function displayMonths(count) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -71,24 +11,48 @@ export function displayMonths(count) {
 }
 
 // Doughnut chart
-export const doughnutChartOptions = {
-    plugins: {
-        legend: {
-            position: "side-right",
-            display: false,
-        },
-        title: {
-            display: false,
-            text: "Age Average",
-        },
-    },
-    maintainAspectRatio: false,
-    responsive: true,
-};
-
 export const colorLists = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
 
-export const doughNutDatasets = [
+// Horizontal Stacked Bars
+export const horizontalStackedBardata = [
+    {
+        value: 65,
+        description: "65%",
+        color: "blue",
+    },
+    {
+        value: 35,
+        description: "35%",
+        color: "rgb(255, 205, 86)",
+    },
+];
+
+// index 0: smallBarChartDatasets
+// index 1: doughNutDatasets
+// index 2: mainBarChartDatasets
+export const allDatasets = [
+    {
+        label: "Contributions days",
+        data: [345, 567, 765, 453, 676, 876, 564, 234, 440, 280, 440, 280],
+
+        borderColor: "rgb(128, 128, 128)",
+        backgroundColor: [
+            "rgb(255, 99, 132)",
+            "rgb(255, 106, 9)",
+            "rgb(54, 162, 235)",
+            "rgb(0, 47, 225)",
+            "rgb(255, 205, 86)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+        ],
+        hoverOffset: 4,
+    },
     {
         label: "# of Votes",
         data: [10, 13, 8, 5, 2, 3],
@@ -104,18 +68,69 @@ export const doughNutDatasets = [
         borderWidth: 1.25,
         cutout: "40%",
     },
+    {
+        label: "Contributions days",
+        data: [345, 567, 765, 453, 676, 876, 564, 234, 440, 280, 440, 280],
+
+        borderColor: "rgb(128, 128, 128)",
+        backgroundColor: [
+            "rgb(255, 99, 132)",
+            "rgb(255, 106, 9)",
+            "rgb(54, 162, 235)",
+            "rgb(0, 47, 225)",
+            "rgb(255, 205, 86)",
+            "rgb(255, 99, 132)",
+            "rgb(255, 106, 9)",
+            "rgb(54, 162, 235)",
+            "rgb(0, 47, 225)",
+            "rgb(255, 205, 86)",
+            "rgb(169, 169, 169, 0.1)",
+            "rgb(169, 169, 169, 0.1)",
+        ],
+        hoverOffset: 4,
+    },
 ];
 
-// Horizontal Stacked Bars
-export const horizontalStackedBardata = [
-  {
-    value: 65,
-    description: "65%",
-    color: "blue",
-  },
-  {
-    value: 35,
-    description: "35%",
-    color: "rgb(255, 205, 86)",
-  },
+// index 0: barChartOptions
+// index 1: doughNutOptions
+export const allOptions = [
+    {
+        plugins: {
+            legend: {
+                // position: "top",
+                display: true,
+            },
+            // title: {
+            //     display: false,
+            //     // text: "Activity",
+            // },
+            // label: {
+            //     display: false,
+            //     // text: "Activity",
+            // },
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+    },
+    {
+        plugins: {
+            legend: {
+                // position: "side-right",
+                display: true,
+                label: {
+                    display: false,
+                },
+            },
+            // title: {
+            //     display: false,
+            //     // text: "Age Average",
+            // },
+            // label: {
+            //     display: false,
+            //     // text: "Activity",
+            // },
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+    },
 ];

@@ -50,6 +50,7 @@ export const TopSectionCaptionTitle = styled.div`
     flex: 6;
     display: flex;
     justify-content: flex-start;
+    align-items: start;
     color: #fff;
     padding-top: 15px;
     gap: 25px;
@@ -110,7 +111,7 @@ export const InnerCard = styled.div`
     justify-content: flex-start;
     text-align: center;
     color: #fff;
-    padding: 8px 15px;
+    padding: 0.8rem;
     border: 0.5px solid grey;
     border-radius: 5px;
     transition: transform 0.2s; /* Animation */
@@ -137,7 +138,7 @@ export const TopSectionInnerCardCaptionTitle = styled.div`
 export const TopSectionInnerCardMainSectionSummary = styled.div`
     display: flex;
     justify-content: flex-start;
-    padding: 1.5rem 0 0 1.7rem;
+    padding: 1rem 0 0 0;
 `;
 
 export const MainFigure = styled.p`
@@ -165,7 +166,7 @@ export const FigureInPercent = styled.div`
 export const TopSectionInnerCardMainSection = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2.25rem;
+    gap: 1.05rem;
 `;
 
 export const TopSectionInnerCardMainSectionChart = styled.div`
@@ -194,7 +195,7 @@ export const TopSectionInnerCardMainSectionDateRangeEnd = styled.div`
 export const HorizontalStackedBarSection = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.75rem;
 `;
 
 export const HorizontalStackedBarLabel = styled.div`
