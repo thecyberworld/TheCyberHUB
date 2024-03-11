@@ -22,6 +22,7 @@ import Sidebar from "../Feeds/SocialSidebar/Sidebar";
 import { FilterButton } from "../Feeds/FeedsElements";
 import { HintIcon } from "../WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import NotFound from "../../NotFound";
 
 const FilterContainer = styled.div``;
 
@@ -195,9 +196,9 @@ const Explore = () => {
             .reverse()
             ?.slice(0, 10)
             .reverse()
-            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter.includes(user))) || [];
+            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
 
-    const filteredUsers = userDetailsLocal.filter((user) => selectedFilter.includes(user.user));
+    const filteredUsers = userDetailsLocal?.filter((user) => selectedFilter?.includes(user.user));
 
     const handleTypeFilter = (filter) => {
         setSelectedFilter(filter.value);
@@ -209,6 +210,29 @@ const Explore = () => {
         { value: following, label: "Following" },
         { value: followers, label: "Followers" },
     ];
+
+    const renderNotFoundComponents = () => {
+        const dataTypes = ["Users", "Feeds", "Blogs", "Ctfs"];
+        const filteredData = {
+            Users: filteredUsers,
+            Feeds: filteredFeeds,
+            Blogs: filteredBlogs,
+            Ctfs: filteredCtf,
+        };
+        const missingDataTypes = dataTypes.filter((type) => !filteredData[type].length);
+
+        if (missingDataTypes.length === dataTypes.length) {
+            return <NotFound title="Not Found" description="There are no items" />;
+        } else if (missingDataTypes.length) {
+            const lastType = missingDataTypes.pop();
+            const missingDataTypesString = missingDataTypes.length
+                ? `${missingDataTypes.join(", ")} and ${lastType}`
+                : lastType;
+            return <NotFound title="" description={`${missingDataTypesString} Not Found`} />;
+        }
+
+        return null;
+    };
 
     if (isApiLoading || isCtfLoading) return <LoadingSpinner />;
 
@@ -235,45 +259,81 @@ const Explore = () => {
                 </LeftContainer>
 
                 <RightContainer>
-                    {selectedType === "all" || selectedType === "users" ? (
-                        <Users
-                            userDetails={filteredUsers}
-                            isUserDetailLoading={isUserDetailLoading}
-                            searchTerm={searchTerm}
-                            displayAt={"explore"}
-                        />
-                    ) : null}
+                    {selectedType === "all" ? (
+                        <>
+                            {filteredUsers.length ? (
+                                <Users
+                                    userDetails={filteredUsers}
+                                    isUserDetailLoading={isUserDetailLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
+                            {filteredFeeds.length ? (
+                                <FeedsExplore
+                                    feeds={filteredFeeds}
+                                    isFeedLoading={isFeedLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
+                            {filteredBlogs.length ? (
+                                <BlogCards
+                                    blogs={filteredBlogs}
+                                    isBlogLoading={isBlogLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
+                            {filteredCtf.length ? (
+                                <CtfChallenges
+                                    ctf={filteredCtf}
+                                    isCtfLoading={isCtfLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
+                            {renderNotFoundComponents()}
+                        </>
+                    ) : (
+                        <>
+                            {selectedType === "users" ? (
+                                <Users
+                                    userDetails={filteredUsers}
+                                    isUserDetailLoading={isUserDetailLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
 
-                    {selectedType === "all" || selectedType === "feeds" ? (
-                        <FeedsExplore
-                            feeds={filteredFeeds}
-                            isFeedLoading={isFeedLoading}
-                            searchTerm={searchTerm}
-                            displayAt={"explore"}
-                        />
-                    ) : null}
+                            {selectedType === "feeds" ? (
+                                <FeedsExplore
+                                    feeds={filteredFeeds}
+                                    isFeedLoading={isFeedLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
 
-                    {selectedType === "all" || selectedType === "blogs" ? (
-                        <BlogCards
-                            blogs={filteredBlogs}
-                            isBlogLoading={isBlogLoading}
-                            searchTerm={searchTerm}
-                            displayAt={"explore"}
-                        />
-                    ) : null}
+                            {selectedType === "blogs" ? (
+                                <BlogCards
+                                    blogs={filteredBlogs}
+                                    isBlogLoading={isBlogLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
 
-                    {/* {selectedType === "all" || selectedType === "forum" ? ( */}
-                    {/*    <ForumPosts forums={forums} searchTerm={searchTerm} displayAt={"explore"}/> */}
-                    {/* ) : null} */}
-
-                    {selectedType === "all" || selectedType === "ctf" ? (
-                        <CtfChallenges
-                            ctf={filteredCtf}
-                            isCtfLoading={isCtfLoading}
-                            searchTerm={searchTerm}
-                            displayAt={"explore"}
-                        />
-                    ) : null}
+                            {selectedType === "ctf" ? (
+                                <CtfChallenges
+                                    ctf={filteredCtf}
+                                    isCtfLoading={isCtfLoading}
+                                    searchTerm={searchTerm}
+                                    displayAt={"explore"}
+                                />
+                            ) : null}
+                        </>
+                    )}
                 </RightContainer>
             </ExploreContainer>
         </Wrapper>

@@ -63,6 +63,8 @@ const ContactForm = () => {
     const [isOpened, setIsOpened] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
 
+ 
+
     useEffect(() => {
         if (error || error2) {
             toast.error("Please fill all the fields");
@@ -148,8 +150,12 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
+                        toast.success("Form submitted successfully")
+                        setTimeout(() => {
+                            setIsSuccess(false); 
+                        }, 50); // Reset after 0.005 seconds
 
-                         setFormData({
+                        setFormData({
                             name: "",
                             email: "",
                             reason: "",
@@ -439,8 +445,10 @@ Including:
                         <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>
                     )}
                 </ContactFormSection>
-                {isSuccess && !error ? <GlowingButton>Submit Successfully</GlowingButton>: null}
-                </ContactFormCard>
+                
+
+            </ContactFormCard>
+
         </ContactFormContainer>
     );
 };
