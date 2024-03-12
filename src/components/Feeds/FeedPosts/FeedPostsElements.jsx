@@ -101,6 +101,7 @@ export const PostHeaderUsername = styled.h2`
 export const PostTimestamp = styled.p`
     font-size: 14px;
     color: #999;
+    margin-left: auto;
 `;
 
 export const PostContent = styled.p`
