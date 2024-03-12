@@ -21,8 +21,14 @@ export const UserPointsContainer = styled.div`
     text-align: center;
 `;
 
-export const RankContainer = styled.div``;
-
+export const RankContainer = styled.div`
+    position: relative;
+`;
+export const IconContainer = styled.div`
+    position: absolute;
+    left: 50px;
+    top: 8px;
+`;
 export const RankNumberContainer = styled.div`
     display: flex;
     justify-content: center;
