@@ -10,9 +10,6 @@ export function displayMonths(count) {
     return months.slice(0, count);
 }
 
-// Doughnut chart
-export const colorLists = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"];
-
 // Horizontal Stacked Bars
 export const horizontalStackedBardata = [
     {

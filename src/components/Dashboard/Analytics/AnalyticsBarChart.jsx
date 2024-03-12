@@ -9,21 +9,17 @@ import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } f
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function BarChart() {
-    const datasets = newDatasets.slice(0, 1); // 0
-    const options = newOptions.slice(0, 1); // 0
-
     const [chartData, setChartData] = useState({
         datasets: [],
     });
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
-        const labels = displayMonths(9);
         setChartData({
-            labels,
-            datasets,
+            labels: displayMonths(9),
+            datasets: newDatasets.slice(0, 1),
         });
-        setChartOptions(options);
+        setChartOptions({ options: newOptions.slice(0, 1) });
     }, []);
 
     return (
