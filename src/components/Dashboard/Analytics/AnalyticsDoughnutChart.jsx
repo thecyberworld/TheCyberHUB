@@ -1,25 +1,21 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { DoughnutChartContainer } from "./AnalyticsDoughnutChartElements";
-import { allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
+import { displayMonths,allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
+import useAnalyticsChartCustomHook from "./useAnalyticsChartCustomHook";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
+
 export function DoughnutChart() {
-    const [chartData, setChartData] = useState({
-        datasets: [],
+    const [chartData, chartOptions] = useAnalyticsChartCustomHook({
+        displayMonths: displayMonths(0),
+        newDatasets: newDatasets.slice(1, 2),
+        newOptions: newOptions.slice(-1),
     });
-    const [chartOptions, setChartOptions] = useState({});
-
-    useEffect(() => {
-        setChartData({
-            datasets: newDatasets.slice(1, 2),
-        });
-
-        setChartOptions({ options: newOptions.slice(-1) });
-    }, []);
 
     return (
         <DoughnutChartContainer>

@@ -29,7 +29,11 @@ import BarChart from "./AnalyticsBarChart";
 import HorizontalStackedBar from "./AnalyticsStackedBar";
 import { DoughnutChart } from "./AnalyticsDoughnutChart";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
-import { endDate, lastAmountOfDays, startDate } from "./AnalyticsUtils";
+import {
+    endDate,
+    lastAmountOfDays,
+    startDate,
+} from "./AnalyticsUtils";
 
 const AnalyticsPageTopSectionMainContent = () => {
     return (

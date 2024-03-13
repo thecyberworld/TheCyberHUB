@@ -1,30 +1,23 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Bar } from "react-chartjs-2";
-import { VerticalBarChartContainer } from "./AnalyticsBarChartElements";
+import { BarChartContainer } from "./AnalyticsBarChartElements";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
-
+import useAnalyticsChartCustomHook from "./useAnalyticsChartCustomHook";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export default function BarChart() {
-    const [chartData, setChartData] = useState({
-        datasets: [],
+    const [chartData, chartOptions] = useAnalyticsChartCustomHook({
+        displayMonths: displayMonths(9),
+        newDatasets: newDatasets.slice(0, 1),
+        newOptions: newOptions.slice(0, 1),
     });
-    const [chartOptions, setChartOptions] = useState({});
-
-    useEffect(() => {
-        setChartData({
-            labels: displayMonths(9),
-            datasets: newDatasets.slice(0, 1),
-        });
-        setChartOptions({ options: newOptions.slice(0, 1) });
-    }, []);
 
     return (
-        <VerticalBarChartContainer>
+        <BarChartContainer>
             <Bar options={chartOptions} data={chartData} />
-        </VerticalBarChartContainer>
+        </BarChartContainer>
     );
 }

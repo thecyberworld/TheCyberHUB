@@ -94,17 +94,8 @@ export const allOptions = [
     {
         plugins: {
             legend: {
-                // position: "top",
                 display: true,
             },
-            // title: {
-            //     display: false,
-            //     // text: "Activity",
-            // },
-            // label: {
-            //     display: false,
-            //     // text: "Activity",
-            // },
         },
         maintainAspectRatio: false,
         responsive: true,
@@ -112,20 +103,11 @@ export const allOptions = [
     {
         plugins: {
             legend: {
-                // position: "side-right",
                 display: true,
                 label: {
                     display: false,
                 },
             },
-            // title: {
-            //     display: false,
-            //     // text: "Age Average",
-            // },
-            // label: {
-            //     display: false,
-            //     // text: "Activity",
-            // },
         },
         maintainAspectRatio: false,
         responsive: true,

@@ -7,7 +7,7 @@ import { horizontalStackedBardata } from "./AnalyticsUtils";
 
 export default function HorizontalStackedBar() {
     return (
-        <HorizontalStackedbar>
+        <HorizontalStackedbar style={{ width: "100%", marginBottom: "5px" }}>
             <div style={{ width: "100%", marginBottom: "5px" }}>
                 <HSBar
                     height={30}
