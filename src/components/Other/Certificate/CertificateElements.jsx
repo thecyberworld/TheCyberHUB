@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { ButtonGreen } from "../MixComponents/Buttons/ButtonElements";
-import bgImage from "../../../assets/images/certificate-bg.png";
+import { ButtonGreen } from "src/components/Other/MixComponents/Buttons/ButtonElements";
+import bgImage from "src/assets/images/certificate-bg.png";
 
-// import {getCDNUrl} from "../../../features/apiUrl";
 // const bgImage = `${getCDNUrl}/images/certificate-bg.png`;
 
 export const CertificateContainer = styled.div`

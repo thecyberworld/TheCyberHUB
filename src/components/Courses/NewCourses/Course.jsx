@@ -1,20 +1,7 @@
 import CoursesData from "./CoursesData";
 import React from "react";
+import { Button } from "src/components/Learn/Courses/VideoCard/VideoCardElements";
 import {
-    Button, //   Card,
-    //   CardBody,
-    //   CardFooter,
-    //   ChannelImg,
-    //   ChannelHeading,
-    //   Img,
-    //   Link,
-    //   Tag,
-    //   User,
-    //   UserInfo,
-    //   VideoHeading,
-} from "../../Learn/Courses/VideoCard/VideoCardElements";
-import {
-    //   BackArrow,
     Checkbox,
     CheckboxContainer, //   Content,
     ContentHeading, //   ContentList,
@@ -26,13 +13,10 @@ import {
     RightContainer, // SectionHeading,
     TopicBox, //   VLine,
     Weeks,
-} from "../LearningPath/LearningPathElements";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-// import { useState } from "react";
-import { encodeURL } from "../../Blogs/util";
+} from "src/components/Courses/LearningPath/LearningPathElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { encodeURL } from "src/components/Blogs/util";
 import { useParams } from "react-router";
-// import { ArrowForward, ArrowRight } from "../../Homepage/Hero/HeroElements";
-// import { BsArrowLeft } from "react-icons/bs";
 
 const Course = () => {
     // const [filterContent, setFilterContent] = useState("")

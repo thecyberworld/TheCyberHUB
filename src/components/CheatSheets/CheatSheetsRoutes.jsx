@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { NotFound } from "../index";
+import { NotFound } from "src/components/index";
 import CheatSheets from "./CheatSheets";
 import HackBook from "./HackBook/HackBook";
 import SecureBook from "./SecureBook/SecureBook";

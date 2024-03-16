@@ -4,7 +4,7 @@ import { GoProjectSymlink } from "react-icons/go";
 import { MdOutlineEventSeat } from "react-icons/md";
 import { toast } from "react-toastify";
 
-import InputEditor from "../Common/InputEditor";
+import InputEditor from "src/components/Common/InputEditor";
 import {
     ModifyActionsContainer,
     ModifyActionButton,
@@ -19,9 +19,9 @@ import {
     TimePickingEvent,
     TimePickerLabel,
 } from "./ModifyElements";
-import TimePickerDisplay from "../Common/TimePickerDisplay";
+import TimePickerDisplay from "src/components/Common/TimePickerDisplay";
 import "react-day-picker/dist/style.css";
-import { setDateAndTime } from "../../utils/dateTimeRelatedFunctions";
+import { setDateAndTime } from "src/utils/dateTimeRelatedFunctions";
 
 const validURL = (str) => {
     const pattern = new RegExp(

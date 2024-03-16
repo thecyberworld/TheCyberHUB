@@ -11,9 +11,9 @@ import {
     SingleQuestion,
 } from "./InterviewQuestionsElements";
 import InterviewsQuestionsData from "./InterviewQuestionsData";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-import { BackArrow } from "../Jobs/JobsElements";
-import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { BackArrow } from "src/components/Resources/Jobs/JobsElements";
+import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 
 const InterviewQuestions = () => {
     const firstQuestion = InterviewsQuestionsData[0].details[0].question;

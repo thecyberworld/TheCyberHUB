@@ -7,7 +7,7 @@ import {
     DurationDisplayContainer,
     DurationRequest,
 } from "./DurationDisplayElements";
-import { addZeroToDateString } from "../../../utils/dateTimeRelatedFunctions";
+import { addZeroToDateString } from "src/utils/dateTimeRelatedFunctions";
 
 const DurationDisplay = ({ children, showDate }) => {
     const startTimeDate = new Date(children?.startTime);

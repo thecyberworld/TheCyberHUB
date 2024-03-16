@@ -1,7 +1,7 @@
 import React from "react";
 import { MessageContainer, MessageContent, SenderImage, Timestamp } from "./ChatMessageElement";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
-import dateFormat from "../../Common/dateFormat";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
+import dateFormat from "src/components/Common/dateFormat";
 
 const ChatMessage = ({ userDetails, message, sender, recipient, image, user, isOur, createdAt }) => {
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === sender);

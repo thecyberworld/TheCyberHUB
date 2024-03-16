@@ -10,7 +10,7 @@ import {
     SponsorsP,
     TextGreenBG,
 } from "./SponsorsElements";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 
 const Sponsors = () => {
     return (

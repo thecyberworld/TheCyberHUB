@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getApiUrl } from "../../../../features/apiUrl";
+import { getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";

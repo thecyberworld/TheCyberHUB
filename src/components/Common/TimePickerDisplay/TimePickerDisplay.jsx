@@ -8,9 +8,9 @@ import {
     TimeInputLabel,
     TimePickerContainer,
 } from "./TimePickerDisplayElements";
-import InputEditor from "../InputEditor";
-import { addZeroToDateString, setDateAndTime } from "../../../utils/dateTimeRelatedFunctions";
-import MultipleSelect from "../MultipleSelect";
+import InputEditor from "src/components/Common/InputEditor";
+import { addZeroToDateString, setDateAndTime } from "src/utils/dateTimeRelatedFunctions";
+import MultipleSelect from "src/components/Common/MultipleSelect";
 
 const TimePickerDisplay = ({
     rangeDate,

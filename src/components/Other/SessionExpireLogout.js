@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
-import { logout, userReset } from "../../features/auth/authSlice";
+import { logout, userReset } from "src/features/auth/authSlice";
 import { toast } from "react-toastify";
 
 // Function to extract expiration time from JWT

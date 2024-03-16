@@ -7,8 +7,8 @@ import {
     AchievementsContainer,
     AddButtonSection,
     EditTitle,
-} from "../Achievements/AchievementsElements";
-import { IconAdd, RemoveButton } from "../SkillSet/SkillSetElements";
+} from "src/components/Dashboard/Profile/Achievements/AchievementsElements";
+import { IconAdd, RemoveButton } from "src/components/Dashboard/Profile/SkillSet/SkillSetElements";
 
 const Achievements = ({ achievements, setUserDetailData }) => {
     const [updatedAchievements, setUpdatedAchievements] = useState(achievements || []);

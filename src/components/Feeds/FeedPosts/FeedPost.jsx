@@ -12,11 +12,11 @@ import {
     RightSection,
 } from "./FeedPostsElements";
 import PostActionsAndStats from "./PostActionsAndStats";
-import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
-import { dateFormatter } from "../../Common/dateFormatter";
-import { ImageContainer, ImagesContainer, FeedImage } from "../PostForm/AddPostElements";
-import { IconVerified } from "../../Explore/Users/UsersElements";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
+import { dateFormatter } from "src/components/Common/dateFormatter";
+import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
+import { IconVerified } from "src/components/Explore/Users/UsersElements";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 
 const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefresh, displayAt }) => {
     const avatar = cdnContentImagesUrl("/user/" + (feed?.avatar || "avatarDummy.png"));
@@ -36,7 +36,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
                             {feed?.verified && <IconVerified />}
                         </LeftSection>
-                <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
+                        <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                     </PostHeader>
                     <PostContent>
                         {feed?.content.slice(0, 225)}

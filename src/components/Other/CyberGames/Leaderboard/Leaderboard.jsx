@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUserDetails, getUserDetail, userDetailReset } from "../../../../features/userDetail/userDetailSlice";
+import { getAllUserDetails, getUserDetail, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import {
     LeaderboardContainer,
     LeaderboardHeader,
@@ -16,12 +16,12 @@ import {
     LeaderboardTextIconData,
     LeaderboardFirstRow,
 } from "./LeaderboardElements";
-import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
-import { RouterLink } from "../../../Tools/ToolsElements";
-import { RankTrophy } from "../../../Dashboard/Profile/UserPoints/UserPointsElements";
-import UnderMaintenance from "../../UnderMaintenance/UnderMaintenance";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { RouterLink } from "src/components/Tools/ToolsElements";
+import { RankTrophy } from "src/components/Dashboard/Profile/UserPoints/UserPointsElements";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import { CircleSpinner } from "react-spinners-kit";
-import apiStatus from "../../../../features/apiStatus";
+import apiStatus from "src/features/apiStatus";
 
 const Leaderboard = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

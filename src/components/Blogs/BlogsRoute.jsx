@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { Blogs, NotFound, SingleBlog } from "../index";
+import { Blogs, NotFound, SingleBlog } from "src/components/index";
 
 const BlogsRoute = () => {
     return (

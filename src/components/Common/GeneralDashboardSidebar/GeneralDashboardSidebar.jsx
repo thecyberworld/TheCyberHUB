@@ -10,7 +10,7 @@ import {
     SideBarLink,
     SideBarLinkContainer,
 } from "./GeneralDashboardSidebarElements";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 
 const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));

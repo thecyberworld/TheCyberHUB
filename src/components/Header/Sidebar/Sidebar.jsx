@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Dropdown from "../Dropdowns/Dropdown";
-import { DropdownIcon, NavItem } from "../Navbar/NavbarElements";
+import Dropdown from "src/components/Header/Dropdowns/Dropdown";
+import { DropdownIcon, NavItem } from "src/components/Header/Navbar/NavbarElements";
 
 import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarLink, SidebarMenu } from "./SidebarElements";
 

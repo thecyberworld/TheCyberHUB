@@ -10,15 +10,15 @@ import {
     PostTags,
     PostTimestamp,
     RightSection,
-} from "../FeedPosts/FeedPostsElements";
-import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
-import PostActionsAndStats from "../FeedPosts/PostActionsAndStats";
-import { dateFormatter } from "../../Common/dateFormatter";
-import PopUpWindow from "../../Common/PopUpWindow";
-import ImageSlider from "../../Common/ImageSlider/ImageSlider";
-import { ImageContainer, ImagesContainer, FeedImage } from "../PostForm/AddPostElements";
-import { IconVerified } from "../../Explore/Users/UsersElements";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
+} from "src/components/Feeds/FeedPosts/FeedPostsElements";
+import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
+import PostActionsAndStats from "src/components/Feeds/FeedPosts/PostActionsAndStats";
+import { dateFormatter } from "src/components/Common/dateFormatter";
+import PopUpWindow from "src/components/Common/PopUpWindow";
+import ImageSlider from "src/components/Common/ImageSlider/ImageSlider";
+import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
+import { IconVerified } from "src/components/Explore/Users/UsersElements";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
     const [showPopupWindow, setShowPopupWindow] = useState(false);

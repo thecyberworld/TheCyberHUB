@@ -1,8 +1,15 @@
 import React from "react";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
-import HeadingBanner from "../Common/HeadingBanner/HeadingBanner";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 import { GiLaptop } from "react-icons/gi";
-import { CardTool, CardToolHeading, CardTools, ContainerTools, RouterLink, ToolIcon } from "../Tools/ToolsElements";
+import {
+    CardTool,
+    CardToolHeading,
+    CardTools,
+    ContainerTools,
+    RouterLink,
+    ToolIcon,
+} from "src/components/Tools/ToolsElements";
 import { FaLinux, FaWindows } from "react-icons/fa";
 import { MdSecurity } from "react-icons/md";
 

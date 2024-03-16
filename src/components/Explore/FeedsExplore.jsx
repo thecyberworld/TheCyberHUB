@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
-import { FeedPostsContainer } from "../Feeds/FeedPosts/FeedPostsElements";
+import { FeedPostsContainer } from "src/components/Feeds/FeedPosts/FeedPostsElements";
 import { useDispatch, useSelector } from "react-redux";
-import FeedPost from "../Feeds/FeedPosts/FeedPost";
-import { getFeedLikes } from "../../features/feeds/feedLikes/feedLikesSlice";
-import { getBookmarks } from "../../features/bookmarks/bookmarkSlice";
-import { getViews } from "../../features/feeds/views/viewSlice";
-import { getFeedComments } from "../../features/feeds/feedComments/feedCommentsSlice";
-import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import NotFound from "../../NotFound";
+import FeedPost from "src/components/Feeds/FeedPosts/FeedPost";
+import { getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
+import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
+import { getViews } from "src/features/feeds/views/viewSlice";
+import { getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "src/NotFound";
 
 const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt }) => {
     const dispatch = useDispatch();

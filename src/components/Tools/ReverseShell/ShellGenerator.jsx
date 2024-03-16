@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import {
     Input,
     Dropdown,
@@ -23,10 +23,10 @@ import {
 } from "./ReveseShellElement";
 
 import { FaDownload, FaMinus, FaPlus } from "react-icons/fa";
-import CodeSyntaxHighlighter from "../../Common/CodeSyntaxHighlighter";
+import CodeSyntaxHighlighter from "src/components/Common/CodeSyntaxHighlighter";
 import { ShellCommands, CommandType } from "./shellData";
 import { BsClipboardFill } from "react-icons/bs";
-import HeadingBanner from "../../Common/HeadingBanner/HeadingBanner";
+import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 
 function ReverseShellGenerator() {
     const [useIp, setIp] = useState("10.10.10.10");

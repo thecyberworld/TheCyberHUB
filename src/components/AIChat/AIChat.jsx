@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { AIChatContainer, ChatHeader, ChatInput, ChatBox, ChatTitle, ToggleSection } from "./AIChatElements";
 import ChatMessages from "./ChatMessages";
 import RecentChats from "./RecentChats";
 import { useSelector } from "react-redux";
 import { BiSend } from "react-icons/bi";
 import { CircleSpinner } from "react-spinners-kit";
-import { getApiUrl } from "../../features/apiUrl";
+import { getApiUrl } from "src/features/apiUrl";
 import { toast } from "react-toastify";
 import { SlOptionsVertical } from "react-icons/sl";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
-// import LoginBox from "../Common/LoginBox";
-// import {useNavigate} from "react-router-dom";
-import AuthPopup from "../../pages/AuthPopup/AuthPopup";
+import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import Prompts from "./Prompts/Prompts";
 
 const API_BASE_URL = getApiUrl("api/aiChat");

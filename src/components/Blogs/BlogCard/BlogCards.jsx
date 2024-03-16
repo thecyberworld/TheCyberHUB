@@ -1,8 +1,8 @@
 import React from "react";
-import { AllBlogs } from "../BlogsElements";
+import { AllBlogs } from "src/components/Blogs/BlogsElements";
 import BlogCard from "./BlogCard";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
-import NotFound from "../../../NotFound";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "src/NotFound";
 
 const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displayAt }) => {
     if (isBlogLoading) return <LoadingSpinner />;

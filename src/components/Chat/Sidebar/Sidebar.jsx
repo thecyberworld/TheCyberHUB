@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { SidebarContainer, SidebarSection, RouteLink, SidebarTitle, UserList, SidebarHeader } from "./SidebarElements";
-import Contact from "../Contact";
-import SearchInputBox from "../../Common/SearchInputBox";
+import Contact from "src/components/Chat/Contact";
+import SearchInputBox from "src/components/Common/SearchInputBox";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { getConnections } from "../../../features/connections/connectionSlice";
+import { getConnections } from "src/features/connections/connectionSlice";
 
 const Sidebar = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, setSelectedUserId }) => {
     const dispatch = useDispatch();

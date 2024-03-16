@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Input } from "../../WebSecurity/Common/SubmissionBoxElements";
+import { Input } from "src/components/WebSecurity/Common/SubmissionBoxElements";
 import { Button } from "./QuestionAnswerComponentElement";
 
-export default function QuestionAnswerComponent() {
+export default function QuestionAnswerComponent(props) {
     const [loggedIn, setLoggedIn] = useState(false);
 
     function handleHints() {
@@ -11,7 +11,7 @@ export default function QuestionAnswerComponent() {
 
     return (
         <div style={{ paddingLeft: "10px" }}>
-            <span style={{ marginBottom: "10px" }}>Find the services exposed by the machine</span>
+            <span style={{ marginBottom: "10px" }}>{props.question}</span>
             <div style={{ display: "flex", marginTop: "5px" }}>
                 <Input placeholder="Enter Flag value" />
                 <Button>Submit</Button>
@@ -29,7 +29,7 @@ export default function QuestionAnswerComponent() {
             >
                 {loggedIn && (
                     <div style={{ width: "100%", borderRadius: "5px", backgroundColor: "black", padding: "10px" }}>
-                        Hint is here!
+                        {props.hints}
                     </div>
                 )}
             </div>

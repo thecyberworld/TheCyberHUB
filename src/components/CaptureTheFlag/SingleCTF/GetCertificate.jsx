@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { GetCertificateContainer } from "./GetCertificateElements";
-// import {RefreshButton} from "../CTFLeaderboard/CTFLeaderboardElements";
-// import {getUserDetail} from "../../../../../features/userDetail/userDetailSlice";
-// import {useDispatch, useSelector} from "react-redux";
 
 const GetCertificate = ({ ctfCertificates, ctfId, user, isCompleted, isCertExisted }) => {
     // const dispatch = useDispatch();

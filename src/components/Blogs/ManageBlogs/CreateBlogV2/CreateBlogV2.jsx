@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
-import BlogPostFormV2 from "./BlogPostFormV2";
-import { Wrapper } from "../../../Dashboard/Profile/ProfileElements";
+import BlogPostFormV2 from "src/components/Blogs/ManageBlogs/CreateBlogV2/BlogPostFormV2";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import {
     CreateBlogContainer,
     Form,
@@ -11,7 +11,7 @@ import {
     SectionCreateBlog,
     Submit,
     TextArea,
-} from "./CreateBlogV2Elements";
+} from "src/components/Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2Elements";
 import {
     AddCoverImageSection,
     AddImage,
@@ -20,17 +20,17 @@ import {
     ImageUploadInput,
     ImageUploadLabel,
     TextGrey,
-} from "../CreateBlog/CreateBlogElements";
-import { blogReset, createBlog } from "../../../../features/blogs/blogSlice";
+} from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
+import { blogReset, createBlog } from "src/features/blogs/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { getApiUrl } from "../../../../features/apiUrl";
+import { getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { toast } from "react-toastify";
-import AddFeedTags from "../../../Feeds/PostForm/AddPostTags/AddPostTags";
-import AuthPopup from "../../../../pages/AuthPopup/AuthPopup";
+import AddFeedTags from "src/components/Feeds/PostForm/AddPostTags/AddPostTags";
+import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import { CircleSpinner } from "react-spinners-kit";
-import { LoadingButton } from "../../../Other/MixComponents/Buttons/ButtonElements";
-import { Option, Select } from "../../../CaptureTheFlag/CTFElements";
+import { LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
+import { Option, Select } from "src/components/CaptureTheFlag/CTFElements";
 
 const CreateBlogV2 = () => {
     const dispatch = useDispatch();

@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AddFeedCommentContainer, FeedCommentInput } from "./AddFeedCommentsElements";
-import { FooterSection, PostFormButton } from "../../PostForm/AddPostElements";
-import { addFeedComment } from "../../../../features/feeds/feedComments/feedCommentsSlice";
-import { LeftSection, PostHeader, PostHeaderImg, RightSection } from "../../FeedPosts/FeedPostsElements";
-import AuthPopup from "../../../../pages/AuthPopup/AuthPopup";
-import { cdnContentImagesUrl } from "../../../../features/apiUrl";
+import { FooterSection, PostFormButton } from "src/components/Feeds/PostForm/AddPostElements";
+import { addFeedComment } from "src/features/feeds/feedComments/feedCommentsSlice";
+import { LeftSection, PostHeader, PostHeaderImg, RightSection } from "src/components/Feeds/FeedPosts/FeedPostsElements";
+import AuthPopup from "src/pages/AuthPopup/AuthPopup";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 
 const AddFeedComment = ({ feedId, userDetails }) => {
     const dispatch = useDispatch();

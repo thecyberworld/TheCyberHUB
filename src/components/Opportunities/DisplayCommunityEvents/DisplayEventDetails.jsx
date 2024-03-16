@@ -15,8 +15,8 @@ import {
     EventDetailsTitle,
     EventLink,
 } from "./DisplayEventDetailsElement";
-import DateDisplay from "../../Common/DateDisplay";
-import ParticipantsDisplay from "../../CommunityEvents/ParticipantsDisplay";
+import DateDisplay from "src/components/Common/DateDisplay";
+import ParticipantsDisplay from "src/components/CommunityEvents/ParticipantsDisplay";
 import DisplayTimelineList from "./DisplayTimelineList";
 
 const DisplayEventDetails = () => {

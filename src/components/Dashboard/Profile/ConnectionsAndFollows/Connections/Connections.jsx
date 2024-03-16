@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ConnectionsContainer, ConnectionWrapper } from "./ConnectionsElements";
 import { ConnectionButton, ConnectionUsername } from "./ConnectionElements";
-import { Wrapper } from "../../ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { useDispatch, useSelector } from "react-redux";
 import {
     acceptConnectionRequest,
@@ -9,9 +9,9 @@ import {
     removeConnectionRequest,
     reset,
     removeConnection,
-} from "../../../../../features/connections/connectionSlice";
-import { getAllUserDetails, userDetailReset } from "../../../../../features/userDetail/userDetailSlice";
-import { RouterLink } from "../../../../Tools/ToolsElements";
+} from "src/features/connections/connectionSlice";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
+import { RouterLink } from "src/components/Tools/ToolsElements";
 
 const Connections = () => {
     const dispatch = useDispatch();

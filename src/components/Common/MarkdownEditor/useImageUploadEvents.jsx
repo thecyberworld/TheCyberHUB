@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { cdnContentImagesUrl, getApiUrl } from "../../../features/apiUrl";
+import { cdnContentImagesUrl, getApiUrl } from "src/features/apiUrl";
 import { toast } from "react-toastify";
 
 const useImageUploadEvents = (prevContent, setContent, pageName) => {

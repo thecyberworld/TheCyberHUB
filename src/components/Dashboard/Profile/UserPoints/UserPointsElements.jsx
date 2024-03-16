@@ -21,28 +21,51 @@ export const UserPointsContainer = styled.div`
     text-align: center;
 `;
 
-export const RankContainer = styled.div``;
+export const RankContainer = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+export const StreakNumberContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-right: 37px;
+`;
 
+export const StreakNumber = styled.p`
+    font-weight: 600;
+`;
 export const RankNumberContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    margin-right: ${(props) => props.userRank === 1 && "30px"};
 `;
 
 export const RankNumber = styled.p`
     // color: ${(props) => (props.userRank === 1 ? "#ff6b08" : "#d7d7d7")};
     margin-bottom: ${(props) => (props.userRank === 1 ? "-5px" : "")};
     font-weight: 600;
+    margin-left: ${(props) => props.userRank === 1 && "5px"};
 `;
 
 export const RankTrophy = styled(BsTrophyFill)`
     color: white;
+    font-size: 1.1rem;
 `;
 
 export const UserExpContainer = styled.div``;
 
-export const UserStreakContainer = styled.div``;
+export const UserStreakContainer = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 export const RoomsCompletedContainer = styled.div``;
 

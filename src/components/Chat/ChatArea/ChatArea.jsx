@@ -1,5 +1,5 @@
 import React from "react";
-import { ChatContainer, LeftNav, RightNav } from "../Chat/ChatElement";
+import { ChatContainer, LeftNav, RightNav } from "src/components/Chat/Chat/ChatElement";
 import { FaPhoneAlt, FaVideo, FaUserCircle } from "react-icons/fa";
 
 const ChatArea = ({ name }) => {

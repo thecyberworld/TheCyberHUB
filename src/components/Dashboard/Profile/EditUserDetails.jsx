@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ContainerViewBlog, ViewBlogHeader } from "../../Blogs/ViewBlog/ViewBlogElements";
+import { ContainerViewBlog, ViewBlogHeader } from "src/components/Blogs/ViewBlog/ViewBlogElements";
 import { EditProfileContainer, Form, Input, Label } from "./EditProfileElements";
-import { getUserDetail, updateUserDetail } from "../../../features/userDetail/userDetailSlice";
+import { getUserDetail, updateUserDetail } from "src/features/userDetail/userDetailSlice";
 import { CircleSpinner } from "react-spinners-kit";
 
 const EditUserDetails = ({ user }) => {

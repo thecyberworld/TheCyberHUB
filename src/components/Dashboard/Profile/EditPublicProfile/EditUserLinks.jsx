@@ -1,20 +1,29 @@
 import React, { useState } from "react";
-import { EditUserBioTextarea, UserBio, UserInfoContainer, UserLinksContainer } from "../UserLinks/UserLinksElements";
-import { EditSocialUsername, SocialLink, UserSocialLinksContainer } from "../UserSocialLinks/UserSocialLinksElements";
+import {
+    EditUserBioTextarea,
+    UserBio,
+    UserInfoContainer,
+    UserLinksContainer,
+} from "src/components/Dashboard/Profile/UserLinks/UserLinksElements";
+import {
+    EditSocialUsername,
+    SocialLink,
+    UserSocialLinksContainer,
+} from "src/components/Dashboard/Profile/UserSocialLinks/UserSocialLinksElements";
 import { FaGithub, FaInstagram, FaLinkedin, FaMedium } from "react-icons/fa";
 import { IoMdSave } from "react-icons/io";
-import { FollowButton } from "../ConnectionsAndFollows/Follow/FollowElements";
+import { FollowButton } from "src/components/Dashboard/Profile/ConnectionsAndFollows/Follow/FollowElements";
 import { CgWebsite } from "react-icons/cg";
-import { UserPicture } from "../../../Explore/Users/UsersElements";
-import { EditButton } from "../SkillSet/SkillSetElements";
-import { getApiUrl, cdnContentImagesUrl } from "../../../../features/apiUrl";
+import { UserPicture } from "src/components/Explore/Users/UsersElements";
+import { EditButton } from "src/components/Dashboard/Profile/SkillSet/SkillSetElements";
+import { getApiUrl, cdnContentImagesUrl } from "src/features/apiUrl";
 import { toast } from "react-toastify";
 import {
     AddCoverImageSection,
     AddImage,
     ImageUploadInput,
     ImageUploadLabel,
-} from "../../../Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
+} from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
 import { FaXTwitter } from "react-icons/fa6";
 

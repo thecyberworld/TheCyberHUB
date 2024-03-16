@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { MethodologyData } from "./MethodlogyData";
 import { DataContainer, HideDataContainer, MainTitleContainer, MethodologyHeading } from "./MethodologyElement";
-import { HintIcon } from "../../WebSecurity/Common/HintElements";
+import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 const Methodology = () => {

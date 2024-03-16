@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { ChatItemsContainer, Input, InputGroup, Message, MessageInputContainer } from "./ChatElement";
-import ChatArea from "../ChatArea/ChatArea";
-import ChatMessage from "../DummyChat/ChatMessage";
-import ChatMessageSelf from "../DummyChat/ChatMessageSelf";
-import chatData from "../DummyChat/ChatData";
-import SendMessage from "../SendMessage";
+import ChatArea from "src/components/Chat/ChatArea/ChatArea";
+import ChatMessage from "src/components/Chat/DummyChat/ChatMessage";
+import ChatMessageSelf from "src/components/Chat/DummyChat/ChatMessageSelf";
+import chatData from "src/components/Chat/DummyChat/ChatData";
+import SendMessage from "src/components/Chat/SendMessage";
 import { BiSend } from "react-icons/bi";
 import ChatHeader from "./ChatHeader";
 

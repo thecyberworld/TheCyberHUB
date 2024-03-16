@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link as LinkRouter } from "react-router-dom";
-import { CloseIcon } from "../Sidebar/SidebarElements";
+import { CloseIcon } from "src/components/Header/Sidebar/SidebarElements";
 
 export const SideCloseIcon = styled(CloseIcon)`
     margin-left: 50%;
