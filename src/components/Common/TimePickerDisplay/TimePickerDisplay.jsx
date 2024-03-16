@@ -12,7 +12,15 @@ import InputEditor from "../InputEditor";
 import { addZeroToDateString, setDateAndTime } from "../../../utils/dateTimeRelatedFunctions";
 import MultipleSelect from "../MultipleSelect";
 
-const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyObj, modifyObj, nestedObj = false }) => {
+const TimePickerDisplay = ({
+    rangeDate,
+    dateFieldType = "",
+    setModifyObj,
+    modifyObj,
+    nestedObj = false,
+    pickerLabel,
+    showLabel = true,
+}) => {
     const [time, setTime] = useState({ startTime: "", endTime: "" });
     const [isStartTime, setIsStartTime] = useState(true);
     const [rangeSubDate, setRangeSubDate] = useState({});
@@ -52,8 +60,8 @@ const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyO
     }, []);
 
     useEffect(() => {
-        setIsStartTime(children === "From:");
-    }, [children]);
+        setIsStartTime(pickerLabel === "From");
+    }, [pickerLabel]);
 
     const handleUpdateTimeValue = (properyName, timeValue, dateValue) => {
         setModifyObj((prevEventObj) => {
@@ -89,7 +97,7 @@ const TimePickerDisplay = ({ children, rangeDate, dateFieldType = "", setModifyO
     };
     return (
         <TimePickerContainer>
-            <TimeInputLabel>{children}</TimeInputLabel>
+            <TimeInputLabel>{showLabel && `${pickerLabel}:`}</TimeInputLabel>
             {dateFieldType === "show date" && (
                 <DisplayDate>
                     {isStartTime

@@ -47,37 +47,44 @@ export const DayPickerContainer = styled.div`
 export const DetailsInputEventContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 330px;
-    width: 100%;
-    padding: 0 50px;
     justify-content: space-between;
+    height: 470px;
+    padding: 0 50px;
+    width: 100%;
 `;
+
 export const TimelineListItem = styled.li`
-    display: flex;
-    flex-direction: column;
     height: 250px;
     width: 100%;
-    justify-content: space-around;
     border: 3px inset #2e2e2e;
     border-radius: 8px;
     padding: 1rem 1.5rem;
     margin-bottom: 5px;
-`;
-export const DetailsInputTimelineContainer = styled.div`
     display: grid;
-    grid-template-columns: ${({ childElements }) => (childElements === 3 ? "1fr 1.2fr 1fr" : "1fr")};
-    column-gap: 20px;
+    grid-template-areas:
+        "title title duration"
+        "activity topic duration"
+        "description description description";
+    grid-auto-rows: 50px 50px 150px;
+    gap: 10px;
+    padding: 10px;
 `;
-export const DetailsTextInputTimelineContainer = styled.div`
-    input {
-        width: 100%;
-        height: 42px;
-    }
+export const TimePickerLabel = styled.div`
+    text-decoration: underline;
+    margin-bottom: 5px;
+`;
+export const TimePickingEvent = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 15px;
 `;
 export const TimePicking = styled.div`
     display: flex;
-    justify-content: start;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: end;
+    height: 100px;
 `;
 
 export const InputEditorIconContainer = styled.div`
@@ -140,4 +147,19 @@ export const LinkEditor = styled.div`
     input {
         text-transform: lowercase;
     }
+`;
+export const TimelineTitleContainer = styled.div`
+    grid-area: title;
+`;
+export const TimelineActivityContainer = styled.div`
+    grid-area: activity;
+`;
+export const TimelineTopicContainer = styled.div`
+    grid-area: topic;
+`;
+export const TimelineDurationContainer = styled.div`
+    grid-area: duration;
+`;
+export const TimelineDescriptionContainer = styled.div`
+    grid-area: description;
 `;
