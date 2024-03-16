@@ -13,7 +13,7 @@ import CtfRegister from "../SingleCTF/CtfRegister";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
-import GetCertificate from "../SingleCTF/GetCertificate";
+// import GetCertificate from "../SingleCTF/GetCertificate";
 import { getUserDetail } from "../../../features/userDetail/userDetailSlice";
 import {
     getAllCTFs,
@@ -114,7 +114,14 @@ export default function MainPage() {
                             paddingBottom: "20px",
                         }}
                     >
-                        <div style={{ display: "flex" }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                width: "100%",
+                                gap: "10px",
+                            }}
+                        >
                             <MdComputer style={{ width: "80px", height: "80px", marginRight: "10px" }} />
                             <div>
                                 <Ctftitle>{challenge?.challengeName}</Ctftitle>
@@ -128,16 +135,31 @@ export default function MainPage() {
                             </CtfLikeButton>
                         </div>
                     </div>
-                    <div style={{ width: "77%", marginBottom: "10px", display: "flex" }}>
-                        <MenuButton style={{ backgroundColor: "rgb(19, 19, 19)" }} href={challenge?.machineLink}>
-                            Play Machine
+                    <div style={{ width: "77%", marginBottom: "10px", display: "flex", padding: "10px" }}>
+                        <MenuButton
+                            style={{
+                                backgroundColor: "#212121FF",
+                                padding: "0 20px",
+                            }}
+                            href={challenge?.machineLink}
+                        >
+                            CTF
                         </MenuButton>
                         <MenuButton style={{ display: "flex", backgroundColor: "rgb(19, 19, 19)" }}>
                             Walkthrough <GoArrowUpRight style={{ marginLeft: "3px", marginTop: "3px" }} />
                         </MenuButton>
+                        <MenuButton style={{ display: "flex", backgroundColor: "rgb(19, 19, 19)" }}>
+                            Get Certificate <GoArrowUpRight style={{ marginLeft: "3px", marginTop: "3px" }} />
+                        </MenuButton>
                     </div>
 
-                    <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                        }}
+                    >
                         <QuestionConatiner>
                             <QuestionAnswer
                                 Description={challenge?.challengeDescription}
@@ -151,14 +173,7 @@ export default function MainPage() {
                                 userDetail={userDetail}
                             />
                         </QuestionConatiner>
-                        <GetCertificate
-                            challenge={userDetail?.challenge}
-                            user={user}
-                            ctfCertificates={userDetail.ctfCertificates}
-                            ctfId={challenge?._id}
-                            isCertExisted={isCertExisted}
-                        />
-                        <div style={{ marginLeft: "20px" }}>
+                        <div style={{ marginLeft: "20px", minWidth: "300px" }}>
                             {/* <div
                         className="bg-[#1a1c1d] text-white p-5 rounded-lg max-w-md mx-auto "
                         style={{ marginBottom: "20px" }}

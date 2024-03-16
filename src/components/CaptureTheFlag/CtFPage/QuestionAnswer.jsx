@@ -24,7 +24,7 @@ export default function QuestionAnswer(props) {
                         }}
                     >
                         <FaPlay style={{ margin: "3px" }} />
-                        Play Machine
+                        Run Machine
                     </StartMachineButton>
                 </div>
             </div>
