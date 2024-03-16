@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Ctftitle = styled.h1`
     color: #ff6b08;
-    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
@@ -11,6 +10,7 @@ export const Ctftitle = styled.h1`
 export const DifficultyLevelLabel = styled.h2`
     padding: 10px;
     border-radius: 5px;
+    color: #9ca3af;
     background: #142638;
 `;
 export const CtfLikeButton = styled.button`
@@ -38,7 +38,10 @@ export const DescriptionTitle = styled.h2`
 export const StartMachineButton = styled.button`
     display: flex;
     padding: 10px;
+    font-weight: 600;
+    gap: 10px;
     border-radius: 5px;
+    color: #232221;
     background: #ff6b08;
 `;
 export const MenuButton = styled.button`
