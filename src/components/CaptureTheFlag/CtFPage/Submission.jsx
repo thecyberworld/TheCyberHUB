@@ -9,7 +9,7 @@ import {
     SubmissionContainer,
     SubmissionFlagSection,
     SubmissionSection,
-} from "./SubmissionElements";
+} from "src/components/CaptureTheFlag/SingleCTF/SubmissionElements";
 import { TbBulb } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { updateUserDetail } from "src/features/userDetail/userDetailSlice";

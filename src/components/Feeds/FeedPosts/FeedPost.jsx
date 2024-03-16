@@ -24,9 +24,6 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
 
     return (
         <FeedPostContainer displayAt={displayAt}>
-            <LeftSection>
-                <PostHeaderImg src={avatar} alt={feed?.username + ` avatar`} />
-            </LeftSection>
             <RightSection>
                 <RouteLink to={`/feeds/${feed?._id}`}>
                     <PostHeader>
@@ -35,10 +32,11 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                                 alignItems: "center",
                             }}
                         >
+                            <PostHeaderImg src={avatar} alt={feed?.username + ` avatar`} />
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
                             {feed?.verified && <IconVerified />}
                         </LeftSection>
-                        •<PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
+                        <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                     </PostHeader>
                     <PostContent>
                         {feed?.content.slice(0, 225)}

@@ -9,6 +9,8 @@ import {
     UserExpContainer,
     UserPointsContainer,
     UserStreakContainer,
+    StreakNumberContainer,
+    StreakNumber,
 } from "./UserPointsElements";
 import { getStreak } from "src/components/Header/Exp";
 import { ExpIcon } from "src/components/Header/ExpElemenets";
@@ -22,7 +24,7 @@ const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
     return (
         <UserPointsContainer>
             <RankContainer>
-                <RankNumberContainer>
+                <RankNumberContainer userRank={userRank}>
                     {userRank === 1 ? <RankTrophy /> : null}
                     <RankNumber userRank={userRank}>{userRank}</RankNumber>
                 </RankNumberContainer>
@@ -54,12 +56,11 @@ const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
                 )}
             </UserBlogsCountContainer>
             <UserStreakContainer>
-                <div>
-                    <h4>
-                        {getStreak(userDetail)} <ExpIcon />
-                    </h4>
-                    <h5>Streak</h5>
-                </div>
+                <StreakNumberContainer>
+                    <ExpIcon />
+                    <StreakNumber>{getStreak(userDetail)}</StreakNumber>
+                </StreakNumberContainer>
+                <h5>Streak</h5>
             </UserStreakContainer>
         </UserPointsContainer>
     );

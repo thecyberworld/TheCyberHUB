@@ -44,7 +44,7 @@ export const ContentP = styled.p`
 export const ContactFormContainer = styled.div`
     color: #f5f5f5;
     margin: 150px auto 50px;
-    width: 1000px;
+    max-width: 1000px;
     background: linear-gradient(#212121, #212121) padding-box,
         linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
     border: 2px solid transparent;

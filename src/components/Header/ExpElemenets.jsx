@@ -33,7 +33,7 @@ export const ExpContainer = styled.div`
 export const ExpIcon = styled(MdOutlineLocalFireDepartment)`
     color: #ff6b08;
     margin: 0 5px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     @media screen and (max-width: 400px) {
         font-size: 12px;
     }

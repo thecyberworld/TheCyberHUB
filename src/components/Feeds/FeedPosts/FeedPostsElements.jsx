@@ -46,7 +46,7 @@ export const LeftSection = styled.div`
     align-items: start;
     justify-content: flex-start;
     gap: 5px;
-    width: 60px;
+    width: max-content;
     margin-right: 20px;
 `;
 
@@ -101,6 +101,7 @@ export const PostHeaderUsername = styled.h2`
 export const PostTimestamp = styled.p`
     font-size: 14px;
     color: #999;
+    margin-left: auto;
 `;
 
 export const PostContent = styled.p`
