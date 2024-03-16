@@ -1,14 +1,48 @@
 export const lastAmountOfDays = 30;
 export const lastAmountOfMinAgo = 14;
-export const postDate = "May 26";
-export const startDate = "11 Oct, 2021";
-export const endDate = "11 Nov, 2021";
 
 export function displayMonths(count) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
     return months.slice(0, count);
 }
+
+export const visitingTimedata = [
+    {
+        title: "Most Active Times",
+        value: 1.234,
+        percent: "+89.67%",
+    },
+    {
+        title: "Total Visitors",
+        value: 1.004,
+        percent: "+71.80%",
+    },
+    {
+        title: "Age Average",
+        value: 0,
+        percent: "--.--%",
+    },
+];
+export const timeBtns = [
+    {
+        time: "Hours",
+    },
+    {
+        time: "Days",
+    }
+];
+
+export const deviceTypeDate = [
+    {
+        mobile: "Mobile",
+        desktop: "Desktop",
+    },
+    {
+        startDate: "11 Oct, 2021",
+        endDate: "11 Nov, 2021",
+    },
+];
 
 // Horizontal Stacked Bars
 export const horizontalStackedBardata = [

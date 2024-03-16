@@ -29,11 +29,7 @@ import BarChart from "./AnalyticsBarChart";
 import HorizontalStackedBar from "./AnalyticsStackedBar";
 import { DoughnutChart } from "./AnalyticsDoughnutChart";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
-import {
-    endDate,
-    lastAmountOfDays,
-    startDate,
-} from "./AnalyticsUtils";
+import { lastAmountOfDays,visitingTimedata, deviceTypeDate } from "./AnalyticsUtils";
 
 const AnalyticsPageTopSectionMainContent = () => {
     return (
@@ -62,14 +58,14 @@ const AnalyticsPageTopSectionMainContent = () => {
                 <InnerCard>
                     <TopSectionInnerCardCaption>
                         <TopSectionInnerCardCaptionTitle>
-                            <Title>Most Active Times</Title>
+                            <Title>{visitingTimedata[0].title}</Title>
                         </TopSectionInnerCardCaptionTitle>
                         <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
                     </TopSectionInnerCardCaption>
                     <TopSectionInnerCardMainSection>
                         <TopSectionInnerCardMainSectionSummary>
-                            <MainFigure>1.234</MainFigure>
-                            <FigureInPercent>+89.67%</FigureInPercent>
+                            <MainFigure>{visitingTimedata[0].value}</MainFigure>
+                            <FigureInPercent>{visitingTimedata[0].percent}</FigureInPercent>
                         </TopSectionInnerCardMainSectionSummary>
                         <TopSectionInnerCardMainSectionChart>
                             <BarChart />
@@ -79,27 +75,31 @@ const AnalyticsPageTopSectionMainContent = () => {
                 <InnerCard>
                     <TopSectionInnerCardCaption>
                         <TopSectionInnerCardCaptionTitle>
-                            <Title>Total Visitor</Title>
+                            <Title>{visitingTimedata[1].title}</Title>
                         </TopSectionInnerCardCaptionTitle>
                         <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
                     </TopSectionInnerCardCaption>
                     <TopSectionInnerCardMainSection>
                         <TopSectionInnerCardMainSectionSummary>
-                            <MainFigure>1.004</MainFigure>
-                            <FigureInPercent>+71.80%</FigureInPercent>
+                            <MainFigure>{visitingTimedata[1].value}</MainFigure>
+                            <FigureInPercent>{visitingTimedata[1].percent}</FigureInPercent>
                         </TopSectionInnerCardMainSectionSummary>
                         <HorizontalStackedBarSection>
                             <HorizontalStackedBarLabel>
-                                <HorizontalStackedBarFirstLabel>Mobile</HorizontalStackedBarFirstLabel>
-                                <HorizontalStackedBarSecondLabel>Desktop</HorizontalStackedBarSecondLabel>
+                                <HorizontalStackedBarFirstLabel>
+                                    {deviceTypeDate[0].mobile}
+                                </HorizontalStackedBarFirstLabel>
+                                <HorizontalStackedBarSecondLabel>
+                                    {deviceTypeDate[0].desktop}
+                                </HorizontalStackedBarSecondLabel>
                             </HorizontalStackedBarLabel>
                             <HorizontalStackedBar />
                             <TopSectionInnerCardMainSectionDateRange>
                                 <TopSectionInnerCardMainSectionDateRangeStart>
-                                    {startDate}
+                                    {deviceTypeDate[1].startDate}
                                 </TopSectionInnerCardMainSectionDateRangeStart>
                                 <TopSectionInnerCardMainSectionDateRangeEnd>
-                                    {endDate}
+                                    {deviceTypeDate[1].endDate}
                                 </TopSectionInnerCardMainSectionDateRangeEnd>
                             </TopSectionInnerCardMainSectionDateRange>
                         </HorizontalStackedBarSection>
@@ -107,7 +107,7 @@ const AnalyticsPageTopSectionMainContent = () => {
                 </InnerCard>
                 <InnerCard>
                     <TopSectionInnerCardCaption>
-                        <Title>Age Average</Title>
+                        <Title>{visitingTimedata[2].title}</Title>
                         <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
                     </TopSectionInnerCardCaption>
                     <TopSectionInnerCardMainSection>
