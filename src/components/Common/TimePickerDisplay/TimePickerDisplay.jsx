@@ -103,10 +103,10 @@ const TimePickerDisplay = ({
                     {isStartTime
                         ? rangeDate?.from
                             ? format(rangeDate?.from, "yyyy-MM-dd")
-                            : "yyyy-MM-dd"
+                            : "yyyy-mm-dd"
                         : rangeDate?.to
                         ? format(rangeDate?.to, "yyyy-MM-dd")
-                        : "yyyy-MM-dd"}
+                        : "yyyy-mm-dd"}
                 </DisplayDate>
             )}
             {dateFieldType === "pick date" && (
