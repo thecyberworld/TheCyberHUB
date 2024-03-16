@@ -14,7 +14,6 @@ import {
     CoverRight,
     EmailIcon,
     ErrorMessage,
-    GlowingButton,
     H1,
     InternshipIcon,
     MessageIcon,
@@ -35,7 +34,7 @@ import apiStatus from "../../../features/apiStatus";
 import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
 import { volunteerPrograms } from "../../Opportunities/Volunteer/VolunteerData";
-import {validateEmail} from "../../../utils/validateEmail.js"
+import { validateEmail } from "../../../utils/validateEmail.js";
 
 const ContactForm = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -62,8 +61,6 @@ const ContactForm = () => {
 
     const [isOpened, setIsOpened] = useState(false);
     const [isClosed, setIsClosed] = useState(false);
-
- 
 
     useEffect(() => {
         if (error || error2) {
@@ -102,7 +99,6 @@ const ContactForm = () => {
         });
     };
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
         setIsLoading(false);
@@ -121,12 +117,11 @@ const ContactForm = () => {
             submissionFrom: "thecyberhub.org",
         };
 
-    // Validate email
-    if (!validateEmail(email)) {
-        setError("Please enter a valid email address");
-        return; // Stop the form submission
-    }
-
+        // Validate email
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address");
+            return; // Stop the form submission
+        }
 
         if (name.length === 0) {
             setError("Please add your name");
@@ -150,9 +145,9 @@ const ContactForm = () => {
                     if (response.data.message === "Form submitted successfully") {
                         setIsLoading(false);
                         setIsSuccess(true);
-                        toast.success("Form submitted successfully")
+                        toast.success("Form submitted successfully");
                         setTimeout(() => {
-                            setIsSuccess(false); 
+                            setIsSuccess(false);
                         }, 50); // Reset after 0.005 seconds
 
                         setFormData({
@@ -250,7 +245,9 @@ const ContactForm = () => {
                             value={formData.reason}
                             onChange={handleChange}
                         >
-                            <ContactFormSelectOption value="">Select a reason</ContactFormSelectOption>
+                            <ContactFormSelectOption style={{ display: "none" }} value="">
+                                Select a reason
+                            </ContactFormSelectOption>
                             <ContactFormSelectOption value="internship">
                                 Internship {isOpened ? "(Applications are Now Open!)" : null}
                                 {isClosed ? "(Applications Closed)" : null}
@@ -434,7 +431,7 @@ Including:
                             <ContactFormSubmit type="submit" value="submit" placeholder={"Submit"}>
                                 Submit
                             </ContactFormSubmit>
-  ) : (
+                        ) : (
                             <LoadingButton width={"10 0%"}>
                                 <CircleSpinner size={20} color={"#131313"} />
                             </LoadingButton>
@@ -445,10 +442,7 @@ Including:
                         <ErrorMessage>{"Server Error - Please contact us on discord"}</ErrorMessage>
                     )}
                 </ContactFormSection>
-                
-
             </ContactFormCard>
-
         </ContactFormContainer>
     );
 };
