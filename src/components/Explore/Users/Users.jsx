@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllUserDetails, userDetailReset } from "../../../features/userDetail/userDetailSlice";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import {
     Header,
     IconVerified,
@@ -12,11 +12,11 @@ import {
     UserPicture,
     UsersContainer,
 } from "./UsersElements";
-import { RouteLink } from "../../Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
-import { cdnContentImagesUrl } from "../../../features/apiUrl";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
-import NotFound from "../../../NotFound";
-import { LeftSection } from "../../Feeds/FeedPosts/FeedPostsElements";
+import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "src/NotFound";
+import { LeftSection } from "src/components/Feeds/FeedPosts/FeedPostsElements";
 
 const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
     const dispatch = useDispatch();

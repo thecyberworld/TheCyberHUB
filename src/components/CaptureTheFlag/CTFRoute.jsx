@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { CertificateCard, CTF, NotFound } from "../index";
-// import SingleCTF from "./SingleCTF/SingleCTF";
+import { CertificateCard, CTF, NotFound } from "src/components/index";
 import CreateCTF from "./CreateCTF";
 import MainPage from "./CtFPage/MainPage";
 

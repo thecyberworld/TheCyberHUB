@@ -10,10 +10,10 @@ import {
     HeroP,
     VideoBg,
 } from "./HeroElements";
-import { ScrollButton } from "../../Other/MixComponents/Buttons/ButtonElements";
-import { getCdnAssets } from "../../../features/apiUrl";
+import { ScrollButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
+import { getCdnAssets } from "src/features/apiUrl";
 
-import greenBG from "../../../assets/greenBG.png";
+import greenBG from "src/assets/greenBG.png";
 const video = `${getCdnAssets}/video/bgvideo.mp4`;
 
 const Hero = () => {

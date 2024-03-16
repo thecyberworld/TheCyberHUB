@@ -9,10 +9,10 @@ import {
     SubmissionContainer,
     SubmissionFlagSection,
     SubmissionSection,
-} from "../SingleCTF/SubmissionElements";
+} from "src/components/CaptureTheFlag/SingleCTF/SubmissionElements";
 import { TbBulb } from "react-icons/tb";
 import { useDispatch } from "react-redux";
-import { updateUserDetail } from "../../../features/userDetail/userDetailSlice";
+import { updateUserDetail } from "src/features/userDetail/userDetailSlice";
 import { CircleSpinner } from "react-spinners-kit";
 
 const Submission = ({ ctfId, flags, user, userDetail, userDetailIsLoading, setIsCompleted, setIsCertExisted }) => {

@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { FeedsContainer, MiddleSection } from "./FeedsElements";
-import { Wrapper } from "../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import AddFeed from "./PostForm/AddFeed";
 import FeedPosts from "./FeedPosts/FeedPosts";
 import { useDispatch, useSelector } from "react-redux";
-import { feedReset, getAllFeeds } from "../../features/feeds/feedsSlice";
-import { getAllUserDetails, userDetailReset } from "../../features/userDetail/userDetailSlice";
-import LoadingSpinner from "../Other/MixComponents/Spinner/LoadingSpinner";
-import UnderMaintenance from "../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../features/apiStatus";
-import { LeftContainer } from "../Explore/ExploreElements";
-import { getFollowData, reset } from "../../features/follow/followSlice";
+import { feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
+import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
+import { LeftContainer } from "src/components/Explore/ExploreElements";
+import { getFollowData, reset } from "src/features/follow/followSlice";
 import Sidebar from "./SocialSidebar/Sidebar";
 
 const Feeds = () => {

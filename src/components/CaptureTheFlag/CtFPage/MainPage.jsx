@@ -1,27 +1,27 @@
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { CtfLikeButton, Ctftitle, DifficultyLevelLabel, MenuButton, QuestionConatiner } from "./MainPageElement";
 import { MdComputer } from "react-icons/md";
 import React, { useState, useEffect } from "react";
-import CTFLeaderboard from "../CTFLeaderboard/CTFLeaderboard";
+import CTFLeaderboard from "src/components/CaptureTheFlag/CTFLeaderboard/CTFLeaderboard";
 import QuestionAnswer from "./QuestionAnswer";
 // import Submission from "./Submission";
 import { GoArrowUpRight } from "react-icons/go";
-import createCtfCertificate from "../../Other/Certificate/createCtfCertificate";
+import createCtfCertificate from "src/components/Other/Certificate/createCtfCertificate";
 import { CiHeart } from "react-icons/ci";
-import apiStatus from "../../../features/apiStatus";
-import CtfRegister from "../SingleCTF/CtfRegister";
+import apiStatus from "src/features/apiStatus";
+import CtfRegister from "src/components/CaptureTheFlag/SingleCTF/CtfRegister";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 // import GetCertificate from "../SingleCTF/GetCertificate";
-import { getUserDetail } from "../../../features/userDetail/userDetailSlice";
+import { getUserDetail } from "src/features/userDetail/userDetailSlice";
 import {
     getAllCTFs,
     registerCTF,
     // , updateLikesAndViews
-} from "../../../features/ctf/ctfSlice";
+} from "src/features/ctf/ctfSlice";
 import { CircleSpinner } from "react-spinners-kit";
-import { encodeURL } from "../../Blogs/util";
+import { encodeURL } from "src/components/Blogs/util";
 
 export default function MainPage() {
     const { isApiLoading, isApiWorking } = apiStatus();

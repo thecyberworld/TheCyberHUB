@@ -1,6 +1,6 @@
 import React from "react";
-import Labs from "../Common/Labs/Labs";
-import { LabData } from "../Common/Labs/LabsData";
+import Labs from "src/components/WebSecurity/Common/Labs/Labs";
+import { LabData } from "src/components/WebSecurity/Common/Labs/LabsData";
 
 const WebSecurityLabs = () => {
     return <Labs LabData={LabData} heading={"Labs"} />;

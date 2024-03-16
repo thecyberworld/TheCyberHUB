@@ -1,5 +1,8 @@
 import React from "react";
-import { AchievementHeading, AchievementList } from "../Achievements/AchievementsElements";
+import {
+    AchievementHeading,
+    AchievementList,
+} from "src/components/Dashboard/Profile/Achievements/AchievementsElements";
 import { SkillName, SkillSetContainer, SkillSetListItem } from "./SkillSetElements";
 
 const SkillSet = ({ skills }) => {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import CommunityEvents from "../../CommunityEvents";
-import { updateEvent } from "../../../features/events/eventsSlice";
+import CommunityEvents from "src/components/CommunityEvents";
+import { updateEvent } from "src/features/events/eventsSlice";
 import {
     AiOutlineCloseCircleIcon,
     AiOutlineFieldTimeIcon,

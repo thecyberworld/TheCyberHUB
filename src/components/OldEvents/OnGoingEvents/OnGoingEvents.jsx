@@ -9,7 +9,7 @@ import {
     EventsSubHeading,
     EventsImage,
     EventsHeader,
-} from "../EventsElement";
+} from "src/components/OldEvents/EventsElement";
 
 const OnGoingEvents = (event) => {
     return (

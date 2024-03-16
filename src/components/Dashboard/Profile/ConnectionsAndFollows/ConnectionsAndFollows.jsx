@@ -7,10 +7,10 @@ import {
     removeConnection,
     reset as resetConnection,
     sendConnectionRequest,
-} from "../../../../features/connections/connectionSlice";
-import { followUser, getFollowData, unfollowUser, reset } from "../../../../features/follow/followSlice";
+} from "src/features/connections/connectionSlice";
+import { followUser, getFollowData, unfollowUser, reset } from "src/features/follow/followSlice";
 import { DotIcon, FollowButton, FollowContainer, FollowCount } from "./Follow/FollowElements";
-import { RouterLink } from "../../../Tools/ToolsElements";
+import { RouterLink } from "src/components/Tools/ToolsElements";
 import { CircleSpinner } from "react-spinners-kit";
 import { ConnectionButton } from "./Connections/ConnectionElements";
 

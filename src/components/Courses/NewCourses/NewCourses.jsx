@@ -1,42 +1,9 @@
 import CoursesData from "./CoursesData";
 import React, { useState } from "react";
-import {
-    Card,
-    CardBody,
-    //   CardFooter,
-    //   ChannelImg,
-    //   ChannelHeading,
-    Img,
-    Link,
-    //   Tag,
-    //   User,
-    //   UserInfo,
-    VideoHeading,
-} from "../../Learn/Courses/VideoCard/VideoCardElements";
-// import {
-//   BackArrow,
-//   Checkbox,
-//   CheckboxContainer,
-//   Content,
-//   ContentHeading,
-//   ContentList,
-//   ContentNavigation,
-//   Days,
-//   ForwardArrow,
-//   LearningPathContainer,
-//   LearningPathWrapper,
-//   LeftContainer,
-//   NavigationButtonSection,
-//   RightContainer,
-//   // SectionHeading,
-//   TopicBox,
-//   VLine,
-//   Weeks,
-// } from "../LearningPath/LearningPathElements";
-import { RouterLink } from "../../Tools/ToolsElements";
-import { encodeURL } from "../../Blogs/util";
-import { Cards } from "../../Forum/ForumPosts/ForumPostsElements";
-// import { Cards } from "../../Forum/ForumPosts/ForumPostsElements";
+import { Card, CardBody, Img, Link, VideoHeading } from "src/components/Learn/Courses/VideoCard/VideoCardElements";
+import { RouterLink } from "src/components/Tools/ToolsElements";
+import { encodeURL } from "src/components/Blogs/util";
+import { Cards } from "src/components/Forum/ForumPosts/ForumPostsElements";
 
 const NewCourses = () => {
     const [filterContent, setFilterContent] = useState("");

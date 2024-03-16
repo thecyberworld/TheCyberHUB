@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { CenterCard, Container } from "../components/Homepage/Registration/CenterCard";
-import { Learn2CodePromotion } from "../components/Homepage/Registration/Learn2CodePromotion";
+import { CenterCard, Container } from "src/components/Homepage/Registration/CenterCard";
+import { Learn2CodePromotion } from "src/components/Homepage/Registration/Learn2CodePromotion";
 import {
     CustomInputGroup,
     VerificationCodeSection,
-} from "../components/Other/MixComponents/InputField/CustomInputField";
-import { RegistrationFormContainer } from "../components/Homepage/Registration/Form";
-import { ButtonGreen, LoadingButton } from "../components/Other/MixComponents/Buttons/ButtonElements";
+} from "src/components/Other/MixComponents/InputField/CustomInputField";
+import { RegistrationFormContainer } from "src/components/Homepage/Registration/Form";
+import { ButtonGreen, LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import { FaUserCircle } from "react-icons/fa";
 import { AiTwotoneMail } from "react-icons/ai";
 import { SiNamecheap } from "react-icons/si";
@@ -14,9 +14,9 @@ import { CgPassword } from "react-icons/cg";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { registerUser, userReset, sendEmailCode, verifyEmailCode } from "../features/auth/authSlice";
+import { registerUser, userReset, sendEmailCode, verifyEmailCode } from "src/features/auth/authSlice";
 import { CircleSpinner } from "react-spinners-kit";
-import { RouterLink } from "../components/Tools/ToolsElements";
+import { RouterLink } from "src/components/Tools/ToolsElements";
 
 const Register = ({ authPopup }) => {
     const navigate = useNavigate();

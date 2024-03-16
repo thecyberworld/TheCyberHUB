@@ -1,5 +1,5 @@
 import React from "react";
-import { RedirectButton, RouterButton, ScrollButton } from "../../Other/MixComponents/Buttons/ButtonElements";
+import { RedirectButton, RouterButton, ScrollButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
 import {
     BtnWrap,
     Column1,

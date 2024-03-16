@@ -7,9 +7,9 @@ import {
     TimePicking,
     TimelineListItem,
 } from "./ModifyElements";
-import InputEditor from "../Common/InputEditor";
-import MultipleSelect from "../Common/MultipleSelect";
-import TimePickerDisplay from "../Common/TimePickerDisplay";
+import InputEditor from "src/components/Common/InputEditor";
+import MultipleSelect from "src/components/Common/MultipleSelect";
+import TimePickerDisplay from "src/components/Common/TimePickerDisplay";
 import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 
 const topics = [

@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { EditBlog, GoalSetter, NotFound, UserBlogs } from "../index";
-import CreateBlogV2 from "../Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
+import { EditBlog, GoalSetter, NotFound, UserBlogs } from "src/components/index";
+import CreateBlogV2 from "src/components/Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import DashboardSidebar from "./DashbaordSidebar/DashboardSidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
 import NoteApp from "./Notetaker/NoteApp";
-import Tools from "../Tools/Tools";
-import CommunityChat from "../Chat/CommunityChat";
+import Tools from "src/components/Tools/Tools";
+import CommunityChat from "src/components/Chat/CommunityChat";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUserDetails } from "../../features/userDetail/userDetailSlice";
+import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
 import Analytics from "./Analytics/Analytics";
 
 const DashboardRoute = () => {

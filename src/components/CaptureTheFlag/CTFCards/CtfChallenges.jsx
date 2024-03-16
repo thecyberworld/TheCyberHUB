@@ -1,9 +1,9 @@
 import React from "react";
-import { CTFCardsContainer, CTFLink } from "../CTFElements";
-import { encodeURL } from "../../Blogs/util";
-import CtfCard from "../CtfCard";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
-import NotFound from "../../../NotFound";
+import { CTFCardsContainer, CTFLink } from "src/components/CaptureTheFlag/CTFElements";
+import { encodeURL } from "src/components/Blogs/util";
+import CtfCard from "src/components/CaptureTheFlag/CtfCard";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import NotFound from "src/NotFound";
 
 const CtfChallenges = ({ ctf, user, userDetail, isCtfLoading, searchTerm, ctfBookmarksData }) => {
     if (isCtfLoading) return <LoadingSpinner />;

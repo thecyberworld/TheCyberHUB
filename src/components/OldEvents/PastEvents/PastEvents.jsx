@@ -8,7 +8,7 @@ import {
     EventsImage,
     EventsSubHeading,
     EventsVenue,
-} from "../EventsElement";
+} from "src/components/OldEvents/EventsElement";
 
 const PastEvents = (event) => {
     return (

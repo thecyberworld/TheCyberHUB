@@ -1,28 +1,26 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/auth/authSlice";
-import userDetailReducer from "../features/userDetail/userDetailSlice";
-import goalReducer from "../features/goals/goalSlice";
-import blogReducer from "../features/blogs/blogSlice";
-import notesReducer from "../features/notes/notesSlice";
-import notesCategoriesReducer from "../features/notes/notesCategory/notesCategorySlice";
-import forumReducer from "../features/forum/forumSlice";
-import viewReducer from "../features/feeds/views/viewSlice";
-import feedReducer from "../features/feeds/feedsSlice";
-import feedLikeReduces from "../features/feeds/feedLikes/feedLikesSlice";
-import blogLikeReduces from "../features/blogs/blogLikes/blogLikesSlice";
+import authReducer from "src/features/auth/authSlice";
+import userDetailReducer from "src/features/userDetail/userDetailSlice";
+import goalReducer from "src/features/goals/goalSlice";
+import blogReducer from "src/features/blogs/blogSlice";
+import notesReducer from "src/features/notes/notesSlice";
+import notesCategoriesReducer from "src/features/notes/notesCategory/notesCategorySlice";
+import forumReducer from "src/features/forum/forumSlice";
+import viewReducer from "src/features/feeds/views/viewSlice";
+import feedReducer from "src/features/feeds/feedsSlice";
+import feedLikeReduces from "src/features/feeds/feedLikes/feedLikesSlice";
+import blogLikeReduces from "src/features/blogs/blogLikes/blogLikesSlice";
 
-import blogCommentsReducer from "../features/blogs/blogComments/blogCommentSlice";
-import feedCommentsReducer from "../features/feeds/feedComments/feedCommentsSlice";
+import blogCommentsReducer from "src/features/blogs/blogComments/blogCommentSlice";
+import feedCommentsReducer from "src/features/feeds/feedComments/feedCommentsSlice";
 
-import ctfReducer from "../features/ctf/ctfSlice";
-import bookmarkReduces from "../features/bookmarks/bookmarkSlice";
-import resetPasswordReducer from "../features/resetPassword/resetPasswordSlice";
-import followReducer from "../features/follow/followSlice";
-import connectionReducer from "../features/connections/connectionSlice";
+import ctfReducer from "src/features/ctf/ctfSlice";
+import bookmarkReduces from "src/features/bookmarks/bookmarkSlice";
+import resetPasswordReducer from "src/features/resetPassword/resetPasswordSlice";
+import followReducer from "src/features/follow/followSlice";
+import connectionReducer from "src/features/connections/connectionSlice";
 
-import eventsReducer from "../features/events/eventsSlice";
-
-// import { cyberNewsApi } from "../services/cyberNewsApi";
+import eventsReducer from "src/features/events/eventsSlice";
 
 export default configureStore({
     reducer: {

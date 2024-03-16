@@ -9,9 +9,9 @@ import {
     SummaryItem,
     AnalyticsContainer,
 } from "./AnalyticsElements";
-import { getFeeds } from "../../../features/feeds/feedsSlice";
-import { getBlogs } from "../../../features/blogs/blogSlice";
-import { getViews } from "../../../features/feeds/views/viewSlice";
+import { getFeeds } from "src/features/feeds/feedsSlice";
+import { getBlogs } from "src/features/blogs/blogSlice";
+import { getViews } from "src/features/feeds/views/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
 
 const Analytics = () => {

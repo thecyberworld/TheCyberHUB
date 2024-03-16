@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { getCdnAssets } from "../../../features/apiUrl";
+import { getCdnAssets } from "src/features/apiUrl";
 const CybersecurityRegImage = `${getCdnAssets}/images/Registration/CybersecurityRegPage.png`;
 
 export const Container = styled.div`

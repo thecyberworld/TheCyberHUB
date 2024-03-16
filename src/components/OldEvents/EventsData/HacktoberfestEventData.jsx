@@ -1,6 +1,6 @@
 import React from "react";
-import { ListContent, List, Link } from "../../Learn/Roadmaps/RoadmapsElements";
-import { getCdnAssets } from "../../../features/apiUrl";
+import { ListContent, List, Link } from "src/components/Learn/Roadmaps/RoadmapsElements";
+import { getCdnAssets } from "src/features/apiUrl";
 const HacktoberfestXthecyberworld = `${getCdnAssets}/images/Events/HacktoberfestXthecyberworld.png`;
 
 const HacktoberfestEventData = [

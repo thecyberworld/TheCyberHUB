@@ -41,8 +41,8 @@ export { default as ViewBlog } from "./Blogs/ViewBlog/ViewBlog";
 export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";
 
 export { default as Dashboard } from "./Dashboard/Dashboard";
-export { default as Login } from "../pages/Login";
-export { default as UserProfile } from "../components/Dashboard/Profile/UserProfile";
+export { default as Login } from "src/pages/Login";
+export { default as UserProfile } from "src/components/Dashboard/Profile/UserProfile";
 export { default as LearningPath } from "./Resources/LearningPath/LearningPath";
 export { default as CreateBlog } from "./Blogs/ManageBlogs/CreateBlog/CreateBlog";
 export { default as GoalSetter } from "./Dashboard/OldDashbaord/GoalSetter/GoalSetter";
@@ -50,7 +50,7 @@ export { default as UserBlogs } from "./Dashboard/OldDashbaord/Blogs/UserBlogs";
 export { default as Blogs } from "./Blogs/Blogs";
 export { default as SingleBlog } from "./Blogs/SingleBlog/SingleBlog";
 export { default as EditBlog } from "./Blogs/ManageBlogs/EditBlog/EditBlog";
-export { default as NotFound } from "../NotFound";
+export { default as NotFound } from "src/NotFound";
 export { default as CertificateCard } from "./Other/Certificate/CertificateCard";
 
 export { default as Chat } from "./Chat/Chat/Chat";

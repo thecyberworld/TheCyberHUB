@@ -1,5 +1,5 @@
 import React from "react";
-import { Section } from "../WriteUps/WriteUpsElements";
+import { Section } from "src/components/Resources/WriteUps/WriteUpsElements";
 
 const Loader = () => {
     return (

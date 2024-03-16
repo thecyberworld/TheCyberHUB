@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { validateEmail } from "../../../../utils/validateEmail";
+import { validateEmail } from "src/utils/validateEmail";
 import { useSelector } from "react-redux";
 
 export default function SettingsForm() {

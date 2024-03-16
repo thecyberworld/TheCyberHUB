@@ -1,8 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
-import CTFDataOld from "../../CaptureTheFlag/CTFDataOld";
-import { encodeURL } from "../../Blogs/util";
-// import EventsData from "../EventsData/EventsData";
+import CTFDataOld from "src/components/CaptureTheFlag/CTFDataOld";
+import { encodeURL } from "src/components/Blogs/util";
 import {
     EventComponent,
     EventContent,
@@ -11,7 +10,7 @@ import {
     EventHeaderImageContainer,
     EventTitle,
     // EventVenue,
-} from "../EventsElement";
+} from "src/components/OldEvents/EventsElement";
 
 const Event = () => {
     const { title } = useParams();

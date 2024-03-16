@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input } from "../../WebSecurity/Common/SubmissionBoxElements";
+import { Input } from "src/components/WebSecurity/Common/SubmissionBoxElements";
 import { Button } from "./QuestionAnswerComponentElement";
 
 export default function QuestionAnswerComponent(props) {

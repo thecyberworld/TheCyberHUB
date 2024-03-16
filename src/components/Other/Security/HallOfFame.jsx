@@ -8,8 +8,8 @@ import {
     HallOfFameYear,
     HallOfFameYearSection,
 } from "./HallOfFameElements";
-import { Wrapper } from "../../Dashboard/Profile/ProfileElements";
-import { DotSymbol } from "../Support/SponsorsElements";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { DotSymbol } from "src/components/Other/Support/SponsorsElements";
 import SecurityNavigation from "./SecurityNavigation";
 
 const HallOfFame = () => {

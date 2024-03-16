@@ -1,7 +1,7 @@
 import React from "react";
 
 import LinuxData from "./linuxData.json";
-import CheatSheet from "../CheatSheet";
+import CheatSheet from "src/components/CheatSheets/CheatSheet";
 
 const Linux = () => {
     return (

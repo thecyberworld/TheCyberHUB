@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { BookmarksContainer } from "./BookmarksElements";
 import { useDispatch, useSelector } from "react-redux";
-import { getBookmarks } from "../../../features/bookmarks/bookmarkSlice";
-import FeedPosts from "../../Feeds/FeedPosts/FeedPosts";
-import { getAllFeeds } from "../../../features/feeds/feedsSlice";
-import { getAllUserDetails } from "../../../features/userDetail/userDetailSlice";
-import LoadingSpinner from "../../Other/MixComponents/Spinner/LoadingSpinner";
-import UnderMaintenance from "../../Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "../../../features/apiStatus";
+import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
+import FeedPosts from "src/components/Feeds/FeedPosts/FeedPosts";
+import { getAllFeeds } from "src/features/feeds/feedsSlice";
+import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
+import apiStatus from "src/features/apiStatus";
 
 const Bookmarks = () => {
     const dispatch = useDispatch();

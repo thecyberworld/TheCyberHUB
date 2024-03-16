@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DotSymbol } from "../../../Homepage/Info/InfoElements";
+import { DotSymbol } from "src/components/Homepage/Info/InfoElements";
 
 export const JobDetailsContainer = styled.div`
     color: #a4a4a4;

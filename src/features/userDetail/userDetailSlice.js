@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userDetailService from "./userDetailService";
-import { addParticipant, removeParticipant } from "../events/eventsSlice";
+import { addParticipant, removeParticipant } from "src/features/events/eventsSlice";
 
 const initialState = {
     userDetail: [],
