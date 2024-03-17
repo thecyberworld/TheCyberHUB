@@ -5,6 +5,7 @@ import { BsTrophyFill } from "react-icons/bs";
 
 export const DropdownIcon = styled(AiFillCaretDown)`
     margin: 2px 0 0 5px;
+    transform: ${(props) => (props.clicked ? "rotate(270deg)" : "rotate(0deg)")};
 `;
 
 export const Nav = styled.nav`
@@ -40,6 +41,7 @@ export const NavbarContainer = styled.div`
     z-index: 1;
     width: 100%;
     max-width: 1500px;
+    // display: none;
 `;
 
 export const NavUsersDetailsSection = styled.div`
@@ -130,6 +132,11 @@ export const NavItem = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    @media screen and (max-width: 768px) {
+        // height: max-content;
+        position: relative;
+    }
 `;
 
 export const NavLink = styled(LinkRouter)`
@@ -141,7 +148,7 @@ export const NavLink = styled(LinkRouter)`
     height: 98%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-
+    margin: 1rem;
     @media screen and (max-width: 920px) {
         transition: all 0.3s ease-in-out;
         padding: 0 0.5rem;

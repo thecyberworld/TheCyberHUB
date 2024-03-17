@@ -64,7 +64,10 @@ const Sidebar = (props) => {
                                 title: (
                                     <>
                                         <p onClick={() => onClickResources()}>Resources</p>
-                                        <DropdownIcon onClick={() => onClickResources()} />
+                                        <DropdownIcon
+                                            onClick={() => onClickResources()}
+                                            clicked={!!(resourcesClick === true && toggleDropdown === true)}
+                                        />
                                     </>
                                 ),
                                 dropdown: "resources",
@@ -73,16 +76,23 @@ const Sidebar = (props) => {
                                 title: (
                                     <>
                                         <p onClick={() => onClickOpportunities()}>Opportunities</p>
-                                        <DropdownIcon onClick={() => onClickOpportunities()} />
+                                        <DropdownIcon
+                                            onClick={() => onClickOpportunities()}
+                                            clicked={
+                                                !!(opportunitiesClick === true && toggleDropdown === true)
+                                            }
+                                        />
                                     </>
                                 ),
                                 dropdown: "opportunities",
                             },
                         ].map(({ to, title, dropdown }) => (
-                            <NavItem onClick={() => dropHandler(dropdown)} key={dropdown}>
-                                <SidebarLink to={to} onClick={to && toggle}>
-                                    {title}
-                                </SidebarLink>
+                            <>
+                                <NavItem onClick={() => dropHandler(dropdown)} key={dropdown}>
+                                    <SidebarLink to={to} onClick={to && toggle}>
+                                        {title}
+                                    </SidebarLink>
+                                </NavItem>
                                 {dropdown === "resources" && resourcesClick && drop && (
                                     <Dropdown
                                         isResources={true}
@@ -99,7 +109,7 @@ const Sidebar = (props) => {
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
-                            </NavItem>
+                            </>
                         ))}
                     </SidebarMenu>
                 </SidebarWrapper>
