@@ -261,7 +261,7 @@ const Explore = () => {
                 <RightContainer>
                     {selectedType === "all" ? (
                         <>
-                            {filteredUsers.length ? (
+                            {filteredUsers?.length ? (
                                 <Users
                                     userDetails={filteredUsers}
                                     isUserDetailLoading={isUserDetailLoading}
@@ -269,7 +269,7 @@ const Explore = () => {
                                     displayAt={"explore"}
                                 />
                             ) : null}
-                            {filteredFeeds.length ? (
+                            {filteredFeeds?.length ? (
                                 <FeedsExplore
                                     feeds={filteredFeeds}
                                     isFeedLoading={isFeedLoading}
@@ -277,7 +277,7 @@ const Explore = () => {
                                     displayAt={"explore"}
                                 />
                             ) : null}
-                            {filteredBlogs.length ? (
+                            {filteredBlogs?.length ? (
                                 <BlogCards
                                     blogs={filteredBlogs}
                                     isBlogLoading={isBlogLoading}
@@ -285,7 +285,7 @@ const Explore = () => {
                                     displayAt={"explore"}
                                 />
                             ) : null}
-                            {filteredCtf.length ? (
+                            {filteredCtf?.length ? (
                                 <CtfChallenges
                                     ctf={filteredCtf}
                                     isCtfLoading={isCtfLoading}

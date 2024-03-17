@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 
 import {
-    DetailsInputTimelineContainer,
-    DetailsTextInputTimelineContainer,
-    InputEditorIconContainer,
     TimePicking,
+    TimelineActivityContainer,
+    TimelineDescriptionContainer,
+    TimelineDurationContainer,
     TimelineListItem,
+    TimelineTitleContainer,
+    TimelineTopicContainer,
 } from "./ModifyElements";
 import InputEditor from "src/components/Common/InputEditor";
 import MultipleSelect from "src/components/Common/MultipleSelect";
 import TimePickerDisplay from "src/components/Common/TimePickerDisplay";
-import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 
 const topics = [
     "secure coding",
@@ -54,69 +55,64 @@ const TimelineListItemDisplay = ({ timeLineListItemObj, setTimelineListItems, ra
 
     return (
         <TimelineListItem>
-            <DetailsInputTimelineContainer>
+            <TimelineTitleContainer>
+                <InputEditor
+                    inputType="text"
+                    label="title"
+                    placeholder="Title"
+                    onCopyChanges={handleChangeInput}
+                    content={timeLineListItemObj.title}
+                />
+            </TimelineTitleContainer>
+            <TimelineActivityContainer>
+                <InputEditor
+                    inputType="text"
+                    label="program"
+                    placeholder="Activity/ Speaker (Name/@Username) "
+                    onCopyChanges={handleChangeInput}
+                    content={timeLineListItemObj.program}
+                />
+            </TimelineActivityContainer>
+            <TimelineTopicContainer>
+                <MultipleSelect
+                    selectLabel="Topic"
+                    selectedValue={selectedTopic}
+                    onValueSelect={handleSelectTopic}
+                    optionsValuesWithLabels={optionsValuesWithLabels}
+                    defaultValue={timeLineListItemObj.topic}
+                />
+            </TimelineTopicContainer>
+            <TimelineDurationContainer>
                 <TimePicking>
-                    <InputEditorIconContainer inputType="time">
-                        <AiFillClockCircleIcon />
-                    </InputEditorIconContainer>
                     <TimePickerDisplay
                         rangeDate={rangeDate}
                         nestedObj
                         modifyObj={timeLineListItemObj}
                         setModifyObj={setTimelineListItems}
                         dateFieldType={dateFieldType}
-                    >
-                        From:
-                    </TimePickerDisplay>
+                        pickerLabel="From"
+                    />
                     <TimePickerDisplay
                         rangeDate={rangeDate}
                         nestedObj
                         modifyObj={timeLineListItemObj}
                         setModifyObj={setTimelineListItems}
                         dateFieldType={dateFieldType}
-                    >
-                        To:
-                    </TimePickerDisplay>
+                        pickerLabel="To"
+                    />
                 </TimePicking>
-            </DetailsInputTimelineContainer>
-            <DetailsInputTimelineContainer childElements={3}>
-                <DetailsTextInputTimelineContainer>
-                    <InputEditor
-                        inputType="text"
-                        label="title"
-                        placeholder="Title"
-                        onCopyChanges={handleChangeInput}
-                        content={timeLineListItemObj.title}
-                    />
-                </DetailsTextInputTimelineContainer>
-                <DetailsTextInputTimelineContainer>
-                    <InputEditor
-                        inputType="text"
-                        label="program"
-                        placeholder="Activity / Speaker (Full Name/@Username) "
-                        onCopyChanges={handleChangeInput}
-                        content={timeLineListItemObj.program}
-                    />
-                </DetailsTextInputTimelineContainer>
-                <DetailsTextInputTimelineContainer>
-                    <MultipleSelect
-                        selectLabel="Topic"
-                        selectedValue={selectedTopic}
-                        onValueSelect={handleSelectTopic}
-                        optionsValuesWithLabels={optionsValuesWithLabels}
-                        defaultValue={timeLineListItemObj.topic}
-                    />
-                </DetailsTextInputTimelineContainer>
-            </DetailsInputTimelineContainer>
-
-            <InputEditor
-                inputType="text"
-                label="description"
-                placeholder="Description"
-                onCopyChanges={handleChangeInput}
-                content={timeLineListItemObj.description}
-                isTextarea
-            />
+            </TimelineDurationContainer>
+            <TimelineDescriptionContainer>
+                <InputEditor
+                    inputType="text"
+                    label="description"
+                    placeholder="Description"
+                    onCopyChanges={handleChangeInput}
+                    content={timeLineListItemObj.description}
+                    isTextarea
+                    textAreaHeight="100px"
+                />
+            </TimelineDescriptionContainer>
         </TimelineListItem>
     );
 };

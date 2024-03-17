@@ -23,6 +23,7 @@ export const InputEditorTheInput = styled.input`
 export const InputEditorTextarea = styled.textarea`
     ${InputEditorField}
     resize: none;
+    height: ${(props) => props.textAreaHeight};
 `;
 
 export const InputEditorLabel = styled.h2`

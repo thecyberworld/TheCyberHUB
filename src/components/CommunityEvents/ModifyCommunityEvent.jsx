@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { GoProjectSymlink } from "react-icons/go";
 import { MdOutlineEventSeat } from "react-icons/md";
 import { toast } from "react-toastify";
 
 import InputEditor from "src/components/Common/InputEditor";
-import { AiFillClockCircleIcon } from "./CommunityEventsElement";
 import {
     ModifyActionsContainer,
     ModifyActionButton,
@@ -16,9 +14,10 @@ import {
     LinkEditor,
     MaxParticipants,
     InputEditorIconContainer,
-    TimePicking,
     ModifyItem,
     DetailsInputEventContainer,
+    TimePickingEvent,
+    TimePickerLabel,
 } from "./ModifyElements";
 import TimePickerDisplay from "src/components/Common/TimePickerDisplay";
 import "react-day-picker/dist/style.css";
@@ -91,27 +90,6 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
         });
     };
     // related only to the DayPicker
-    let footer = (
-        <div style={{ height: "50px" }}>
-            <p style={{ textAlign: "center" }}>Please pick the first day.</p>
-        </div>
-    );
-    if (rangeDate?.from) {
-        if (rangeDate?.to === rangeDate?.from) {
-            footer = (
-                <div style={{ height: "50px" }}>
-                    <p style={{ textAlign: "center" }}>{format(rangeDate?.from, "PPP")}</p>
-                </div>
-            );
-        } else if (rangeDate?.to) {
-            footer = (
-                <div style={{ height: "50px", marginLeft: "10%" }}>
-                    <p>From: {format(rangeDate?.from, "PPP")}</p>
-                    <p>To: {format(rangeDate?.to, "PPP")}</p>
-                </div>
-            );
-        }
-    }
 
     const handleSaveChanges = () => {
         if (
@@ -143,7 +121,28 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                     defaultMonth={rangeDate?.from || new Date()}
                     selected={rangeDate}
                     onSelect={(selectedDateValue) => handleUpdateEventPropertyValue("rangeDate", selectedDateValue)}
-                    footer={footer}
+                    footer={
+                        <TimePickingEvent>
+                            <TimePickerLabel>From:</TimePickerLabel>
+                            <TimePickerDisplay
+                                rangeDate={rangeDate}
+                                dateFieldType="show date"
+                                modifyObj={modifyEvent}
+                                setModifyObj={setEventObj}
+                                pickerLabel="From"
+                                showLabel={false}
+                            />
+                            <TimePickerLabel>To:</TimePickerLabel>
+                            <TimePickerDisplay
+                                rangeDate={rangeDate}
+                                dateFieldType="show date"
+                                modifyObj={modifyEvent}
+                                setModifyObj={setEventObj}
+                                pickerLabel="To"
+                                showLabel={false}
+                            />
+                        </TimePickingEvent>
+                    }
                     showOutsideDays
                     modifiersClassNames={{
                         selected: "selected-date",
@@ -153,6 +152,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                 />
             </DayPickerContainer>
             <DetailsInputEventContainer>
+                {/* <DetailsInputEventHeader>Event Details:</DetailsInputEventHeader> */}
                 <InputEditor
                     inputType="text"
                     content={eventObj.name}
@@ -160,34 +160,7 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                     placeholder="Event Name"
                     onCopyChanges={handleUpdateEventPropertyValue}
                 />
-                <InputEditor
-                    inputType="text"
-                    content={eventObj.description}
-                    label="description"
-                    placeholder="Event Description"
-                    onCopyChanges={handleUpdateEventPropertyValue}
-                />
-                <TimePicking>
-                    <InputEditorIconContainer inputType="time">
-                        <AiFillClockCircleIcon />
-                    </InputEditorIconContainer>
-                    <TimePickerDisplay
-                        rangeDate={rangeDate}
-                        dateFieldType="show date"
-                        modifyObj={modifyEvent}
-                        setModifyObj={setEventObj}
-                    >
-                        From:
-                    </TimePickerDisplay>
-                    <TimePickerDisplay
-                        rangeDate={rangeDate}
-                        dateFieldType="show date"
-                        modifyObj={modifyEvent}
-                        setModifyObj={setEventObj}
-                    >
-                        To:
-                    </TimePickerDisplay>
-                </TimePicking>
+
                 <MaxParticipants>
                     <InputEditorIconContainer>
                         <MdOutlineEventSeat size="20px" />
@@ -200,20 +173,6 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                         onCopyChanges={handleUpdateEventPropertyValue}
                     />
                 </MaxParticipants>
-
-                {/* we host locations only online so we don't need a location picker */
-                /* <LocationPicking>
-                    <InputEditorIconContainer>
-                        <MdLocationOnIcon />
-                    </InputEditorIconContainer>
-                    <InputEditor
-                        inputType="text"
-                        content={eventObj.location}
-                        label="location"
-                        placeholder="Event Location"
-                        onCopyChanges={handleUpdateEventPropertyValue}
-                    />
-                </LocationPicking> */}
                 <Link>
                     <InputEditorIconContainer>
                         <GoProjectSymlink size="20px" />
@@ -228,6 +187,28 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
                         />
                     </LinkEditor>
                 </Link>
+                <InputEditor
+                    inputType="text"
+                    content={eventObj.description}
+                    label="description"
+                    placeholder="Event Description"
+                    onCopyChanges={handleUpdateEventPropertyValue}
+                    isTextarea
+                    textAreaHeight="200px"
+                />
+                {/* we host locations only online so we don't need a location picker */
+                /* <LocationPicking>
+                    <InputEditorIconContainer>
+                        <MdLocationOnIcon />
+                    </InputEditorIconContainer>
+                    <InputEditor
+                        inputType="text"
+                        content={eventObj.location}
+                        label="location"
+                        placeholder="Event Location"
+                        onCopyChanges={handleUpdateEventPropertyValue}
+                    />
+                </LocationPicking> */}
             </DetailsInputEventContainer>
 
             <ModifyActionsContainer>

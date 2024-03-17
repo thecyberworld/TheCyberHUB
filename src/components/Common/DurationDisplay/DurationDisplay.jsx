@@ -27,7 +27,7 @@ const DurationDisplay = ({ children, showDate }) => {
             ) : (
                 <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
                     <div>
-                        <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
+                        <p title="yyyy-mm-dd" style={{ textAlign: "center", fontSize: 11 }}>
                             {format(startTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
                         </p>
                         <p style={{ textAlign: "center" }}>{`${addZeroToDateString(
@@ -36,7 +36,7 @@ const DurationDisplay = ({ children, showDate }) => {
                     </div>
                     -
                     <div>
-                        <p title="yyyy-MM-dd" style={{ textAlign: "center", fontSize: 11 }}>
+                        <p title="yyyy-mm-dd" style={{ textAlign: "center", fontSize: 11 }}>
                             {format(endTimeDate, "yyyy-MM-dd").replace(/-/g, "/")}
                         </p>
                         <p style={{ textAlign: "center" }}>{`${addZeroToDateString(

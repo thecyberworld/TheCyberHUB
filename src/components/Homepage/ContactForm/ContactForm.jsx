@@ -245,7 +245,9 @@ const ContactForm = () => {
                             value={formData.reason}
                             onChange={handleChange}
                         >
-                            <ContactFormSelectOption value="">Select a reason</ContactFormSelectOption>
+                            <ContactFormSelectOption style={{ display: "none" }} value="">
+                                Select a reason
+                            </ContactFormSelectOption>
                             <ContactFormSelectOption value="internship">
                                 Internship {isOpened ? "(Applications are Now Open!)" : null}
                                 {isClosed ? "(Applications Closed)" : null}
