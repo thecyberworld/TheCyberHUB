@@ -17,21 +17,44 @@ import {
     TopSectionInnerCardMainSectionSummary,
     TopSectionInnerCardMainSection,
     TopSectionInnerCardMainSectionChart,
-    HorizontalStackedBarSection,
-    HorizontalStackedBarLabel,
-    HorizontalStackedBarFirstLabel,
-    HorizontalStackedBarSecondLabel,
-    TopSectionInnerCardMainSectionDateRange,
-    TopSectionInnerCardMainSectionDateRangeStart,
-    TopSectionInnerCardMainSectionDateRangeEnd,
+    // HorizontalStackedBarSection,
+    // HorizontalStackedBarLabel,
+    // HorizontalStackedBarFirstLabel,
+    // HorizontalStackedBarSecondLabel,
+    // TopSectionInnerCardMainSectionDateRange,
+    // TopSectionInnerCardMainSectionDateRangeStart,
+    // TopSectionInnerCardMainSectionDateRangeEnd,
 } from "./AnalyticsPageTopSectionMainContentElements";
-import BarChart from "./AnalyticsBarChart";
-import HorizontalStackedBar from "./AnalyticsStackedBar";
-import { DoughnutChart } from "./AnalyticsDoughnutChart";
+// import BarChart from "./AnalyticsBarChart";
+// import HorizontalStackedBar from "./AnalyticsStackedBar";
+// import { DoughnutChart } from "./AnalyticsDoughnutChart";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
-import { lastAmountOfDays,visitingTimedata, deviceTypeDate } from "./AnalyticsUtils";
+import { lastAmountOfDays } from "./AnalyticsUtils";
+import visitors from "./AnalyticsVisitorsData.json";
+
+const visitorsData = visitors.map((visitor) => (
+    <InnerCard key={visitor.id}>
+        <TopSectionInnerCardCaption>
+            <TopSectionInnerCardCaptionTitle>
+                <Title>{visitor.title}</Title>
+            </TopSectionInnerCardCaptionTitle>
+            <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
+        </TopSectionInnerCardCaption>
+        <TopSectionInnerCardMainSection>
+            <TopSectionInnerCardMainSectionSummary>
+                <MainFigure>{visitor.value}</MainFigure>
+                <FigureInPercent>{visitor.percent}</FigureInPercent>
+            </TopSectionInnerCardMainSectionSummary>
+            <TopSectionInnerCardMainSectionChart>
+                {/* <BarChart /> */}
+            </TopSectionInnerCardMainSectionChart>
+        </TopSectionInnerCardMainSection>
+    </InnerCard>
+));
 
 const AnalyticsPageTopSectionMainContent = () => {
+    console.log(visitors[0].title);
+
     return (
         <TopSection>
             <Caption>
@@ -55,7 +78,27 @@ const AnalyticsPageTopSectionMainContent = () => {
                 </CTABtn>
             </Caption>
             <TopSectionMainContent>
-                <InnerCard>
+            {/* {data.content.body.map(block => 
+                <InnerCard key={visitor.id}>                 
+                <TopSectionInnerCardCaption>
+                    <TopSectionInnerCardCaptionTitle>
+                        <Title>{visitor.title}</Title>
+                    </TopSectionInnerCardCaptionTitle>
+                    <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
+                </TopSectionInnerCardCaption>
+                <TopSectionInnerCardMainSection>
+                    <TopSectionInnerCardMainSectionSummary>
+                        <MainFigure>{visitor.value}</MainFigure>
+                        <FigureInPercent>{visitor.percent}</FigureInPercent>
+                    </TopSectionInnerCardMainSectionSummary>
+                    <TopSectionInnerCardMainSectionChart> 
+                        <BarChart />
+                    </TopSectionInnerCardMainSectionChart>
+                </TopSectionInnerCardMainSection>
+            </InnerCard>
+                Components(block))} */}
+                {visitorsData}
+                {/* <InnerCard>
                     <TopSectionInnerCardCaption>
                         <TopSectionInnerCardCaptionTitle>
                             <Title>{visitingTimedata[0].title}</Title>
@@ -113,7 +156,7 @@ const AnalyticsPageTopSectionMainContent = () => {
                     <TopSectionInnerCardMainSection>
                         <DoughnutChart />
                     </TopSectionInnerCardMainSection>
-                </InnerCard>
+                </InnerCard> */}
             </TopSectionMainContent>
         </TopSection>
     );

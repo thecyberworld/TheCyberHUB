@@ -25,8 +25,10 @@ import {
 } from "./AnalyticsPageBottomSectionMainContentElements";
 import MainBarChart from "./AnalyticsMainBarChart";
 import { CiHeartIcon, IoChatboxOutlineIcon } from "./AnalyticsIconElements";
-import { myPosts } from "./AnalyticsPostsData";
-import { lastAmountOfDays, lastAmountOfMinAgo, visitingTimedata, timeBtns } from "./AnalyticsUtils";
+import myPosts from "./AnalyticsPostsData.json";
+import { lastAmountOfDays, lastAmountOfMinAgo,  timeBtns } from "./AnalyticsUtils";
+import Visitors from "./AnalyticsVisitorsData.json";
+
 
 const AnalyticsPageBottomSectionMainContent = () => {
     const dateString = myPosts.map((myPost) => {
@@ -54,9 +56,7 @@ const AnalyticsPageBottomSectionMainContent = () => {
             <BottomLeftSection>
                 <BottomLeftSectionCaption>
                     <BottomSectionCaptionTitle>
-                        <Title>
-                            {visitingTimedata[0].title}
-                        </Title>
+                        <Title>{Visitors[0].title}</Title>
                         <LastUpdated>Last updated {lastAmountOfMinAgo} min ago</LastUpdated>
                     </BottomSectionCaptionTitle>
                     <CTABtn>

@@ -8,7 +8,7 @@ import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } f
 import useAnalyticsChartCustomHook from "./useAnalyticsChartCustomHook";
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export default function BarChart() {
+export default function props() {
     const [chartData, chartOptions] = useAnalyticsChartCustomHook({
         displayMonths: displayMonths(9),
         newDatasets: newDatasets.slice(0, 1),

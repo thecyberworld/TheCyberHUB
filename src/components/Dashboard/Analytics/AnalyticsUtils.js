@@ -7,23 +7,6 @@ export function displayMonths(count) {
     return months.slice(0, count);
 }
 
-export const visitingTimedata = [
-    {
-        title: "Most Active Times",
-        value: 1.234,
-        percent: "+89.67%",
-    },
-    {
-        title: "Total Visitors",
-        value: 1.004,
-        percent: "+71.80%",
-    },
-    {
-        title: "Age Average",
-        value: 0,
-        percent: "--.--%",
-    },
-];
 export const timeBtns = [
     {
         time: "Hours",
