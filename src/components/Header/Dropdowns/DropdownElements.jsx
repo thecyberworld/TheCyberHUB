@@ -29,7 +29,7 @@ export const DropdownContainer = styled.div`
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 821px) {
         display: flex;
         padding: 0;
         background: transparent;
@@ -49,7 +49,7 @@ export const DropdownItemsContainer = styled.div`
     margin-bottom: 1rem;
     z-index: 999;
     width: max-content;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 821px) {
         height: max-content;
         // background: #000000;
         background: transparent;
@@ -78,7 +78,7 @@ export const DropdownItemContainer = styled.div`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 821px) {
         // width: min-content;
         background: rgba(194, 108, 62, 0.04);
         border: 1px solid rgba(194, 113, 62, 0.2);
@@ -116,7 +116,7 @@ export const DropdownDesc = styled.p`
     color: #ababab;
     //white-space: pre-wrap;
     word-wrap: break-word;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 821px) {
         font-size: 0.8rem;
         widht: max-content;
         display: none;
@@ -127,7 +127,7 @@ export const DropdownRouterLink = styled(LinkRouter)`
     text-decoration: none;
     color: #f5f5f5;
     margin-left: 50px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 821px) {
         display: flex;
         margin: 0;
     }

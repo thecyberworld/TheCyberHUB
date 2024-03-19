@@ -66,7 +66,7 @@ const Sidebar = (props) => {
                                         <p onClick={() => onClickResources()}>Resources</p>
                                         <DropdownIcon
                                             onClick={() => onClickResources()}
-                                            clicked={!!(resourcesClick === true && toggleDropdown === true)}
+                                            clicked={resourcesClick && toggleDropdown ? "rotate(270deg)" : undefined}
                                         />
                                     </>
                                 ),
@@ -79,7 +79,7 @@ const Sidebar = (props) => {
                                         <DropdownIcon
                                             onClick={() => onClickOpportunities()}
                                             clicked={
-                                                !!(opportunitiesClick === true && toggleDropdown === true)
+                                                opportunitiesClick && toggleDropdown ? "rotate(270deg)" : undefined
                                             }
                                         />
                                     </>
@@ -87,8 +87,8 @@ const Sidebar = (props) => {
                                 dropdown: "opportunities",
                             },
                         ].map(({ to, title, dropdown }) => (
-                            <>
-                                <NavItem onClick={() => dropHandler(dropdown)} key={dropdown}>
+                            <div key={dropdown}>
+                                <NavItem onClick={() => dropHandler(dropdown)}>
                                     <SidebarLink to={to} onClick={to && toggle}>
                                         {title}
                                     </SidebarLink>
@@ -109,7 +109,7 @@ const Sidebar = (props) => {
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
-                            </>
+                            </div>
                         ))}
                     </SidebarMenu>
                 </SidebarWrapper>

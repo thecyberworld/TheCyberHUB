@@ -5,7 +5,7 @@ import { BsTrophyFill } from "react-icons/bs";
 
 export const DropdownIcon = styled(AiFillCaretDown)`
     margin: 2px 0 0 5px;
-    transform: ${(props) => (props.clicked ? "rotate(270deg)" : "rotate(0deg)")};
+    transform: ${(props) => props.clicked};
 `;
 
 export const Nav = styled.nav`
@@ -148,7 +148,7 @@ export const NavLink = styled(LinkRouter)`
     height: 98%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin: 1rem;
+    // margin: 1rem;
     @media screen and (max-width: 920px) {
         transition: all 0.3s ease-in-out;
         padding: 0 0.5rem;
