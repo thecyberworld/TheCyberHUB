@@ -21,20 +21,22 @@ const Sidebar = (props) => {
 
     const dropHandler = (title) => {
         if (title === "resources") {
+            if (resourcesClick && toggleDropdown) setToggleDropdown(false);
+            else setToggleDropdown(true);
             setDrop(true);
             setResourcesClick(true);
             setOpportunitiesClick(false);
-            setToggleDropdown(!toggleDropdown);
         } else if (title === "opportunities") {
+            if (opportunitiesClick && toggleDropdown) setToggleDropdown(false);
+            else setToggleDropdown(true);
             setDrop(true);
             setOpportunitiesClick(true);
             setResourcesClick(false);
-            setToggleDropdown(!toggleDropdown);
         } else {
             setDrop(false);
             setResourcesClick(false);
             setOpportunitiesClick(false);
-            setToggleDropdown(!toggleDropdown);
+            setToggleDropdown(false);
         }
     };
 
@@ -64,7 +66,10 @@ const Sidebar = (props) => {
                                 title: (
                                     <>
                                         <p onClick={() => onClickResources()}>Resources</p>
-                                        <DropdownIcon onClick={() => onClickResources()} />
+                                        <DropdownIcon
+                                            onClick={() => onClickResources()}
+                                            clicked={resourcesClick && toggleDropdown ? "rotate(270deg)" : undefined}
+                                        />
                                     </>
                                 ),
                                 dropdown: "resources",
@@ -73,16 +78,23 @@ const Sidebar = (props) => {
                                 title: (
                                     <>
                                         <p onClick={() => onClickOpportunities()}>Opportunities</p>
-                                        <DropdownIcon onClick={() => onClickOpportunities()} />
+                                        <DropdownIcon
+                                            onClick={() => onClickOpportunities()}
+                                            clicked={
+                                                opportunitiesClick && toggleDropdown ? "rotate(270deg)" : undefined
+                                            }
+                                        />
                                     </>
                                 ),
                                 dropdown: "opportunities",
                             },
                         ].map(({ to, title, dropdown }) => (
-                            <NavItem onClick={() => dropHandler(dropdown)} key={dropdown}>
-                                <SidebarLink to={to} onClick={to && toggle}>
-                                    {title}
-                                </SidebarLink>
+                            <div key={dropdown}>
+                                <NavItem onClick={() => dropHandler(dropdown)}>
+                                    <SidebarLink to={to} onClick={to && toggle}>
+                                        {title}
+                                    </SidebarLink>
+                                </NavItem>
                                 {dropdown === "resources" && resourcesClick && drop && (
                                     <Dropdown
                                         isResources={true}
@@ -99,7 +111,7 @@ const Sidebar = (props) => {
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
-                            </NavItem>
+                            </div>
                         ))}
                     </SidebarMenu>
                 </SidebarWrapper>
