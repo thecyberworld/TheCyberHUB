@@ -21,20 +21,22 @@ const Sidebar = (props) => {
 
     const dropHandler = (title) => {
         if (title === "resources") {
+            if (resourcesClick && toggleDropdown) setToggleDropdown(false);
+            else setToggleDropdown(true);
             setDrop(true);
             setResourcesClick(true);
             setOpportunitiesClick(false);
-            setToggleDropdown(!toggleDropdown);
         } else if (title === "opportunities") {
+            if (opportunitiesClick && toggleDropdown) setToggleDropdown(false);
+            else setToggleDropdown(true);
             setDrop(true);
             setOpportunitiesClick(true);
             setResourcesClick(false);
-            setToggleDropdown(!toggleDropdown);
         } else {
             setDrop(false);
             setResourcesClick(false);
             setOpportunitiesClick(false);
-            setToggleDropdown(!toggleDropdown);
+            setToggleDropdown(false);
         }
     };
 
