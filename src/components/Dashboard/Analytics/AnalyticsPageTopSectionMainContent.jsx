@@ -2,59 +2,30 @@ import React from "react";
 import {
     TopSection,
     Caption,
-    TopSectionCaptionTitle,
     Title,
+    TopSectionCaptionTitle,
     CTABtn,
     TopSectionCaptionCTABtnBig,
     TopSectionCaptionCTABtnBigInnerSection,
     TopSectionMainContent,
-    InnerCard,
-    TopSectionInnerCardCaption,
-    TopSectionInnerCardCaptionTitle,
-    LastThirtyDaysBtn,
-    MainFigure,
-    FigureInPercent,
-    TopSectionInnerCardMainSectionSummary,
-    TopSectionInnerCardMainSection,
-    TopSectionInnerCardMainSectionChart,
-    // HorizontalStackedBarSection,
-    // HorizontalStackedBarLabel,
-    // HorizontalStackedBarFirstLabel,
-    // HorizontalStackedBarSecondLabel,
-    // TopSectionInnerCardMainSectionDateRange,
-    // TopSectionInnerCardMainSectionDateRangeStart,
-    // TopSectionInnerCardMainSectionDateRangeEnd,
+    HorizontalStackedBarSection,
+    HorizontalStackedBarLabel,
+    HorizontalStackedBarFirstLabel,
+    HorizontalStackedBarSecondLabel,
+    TopSectionInnerCardMainSectionDateRange,
+    TopSectionInnerCardMainSectionDateRangeStart,
+    TopSectionInnerCardMainSectionDateRangeEnd,
 } from "./AnalyticsPageTopSectionMainContentElements";
-// import BarChart from "./AnalyticsBarChart";
-// import HorizontalStackedBar from "./AnalyticsStackedBar";
-// import { DoughnutChart } from "./AnalyticsDoughnutChart";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
-import { lastAmountOfDays } from "./AnalyticsUtils";
+import { lastAmountOfDays, deviceTypeDate } from "./AnalyticsUtils";
+import AnalyticsTopInnerCards from "./AnalyticsTopInnerCards";
+import AnalyticsBarChart from "./AnalyticsBarChart";
+import HorizontalStackedBar from "./AnalyticsStackedBar";
+import AnalyticsDoughnutChart from "./AnalyticsDoughnutChart";
 import visitors from "./AnalyticsVisitorsData.json";
 
-const visitorsData = visitors.map((visitor) => (
-    <InnerCard key={visitor.id}>
-        <TopSectionInnerCardCaption>
-            <TopSectionInnerCardCaptionTitle>
-                <Title>{visitor.title}</Title>
-            </TopSectionInnerCardCaptionTitle>
-            <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
-        </TopSectionInnerCardCaption>
-        <TopSectionInnerCardMainSection>
-            <TopSectionInnerCardMainSectionSummary>
-                <MainFigure>{visitor.value}</MainFigure>
-                <FigureInPercent>{visitor.percent}</FigureInPercent>
-            </TopSectionInnerCardMainSectionSummary>
-            <TopSectionInnerCardMainSectionChart>
-                {/* <BarChart /> */}
-            </TopSectionInnerCardMainSectionChart>
-        </TopSectionInnerCardMainSection>
-    </InnerCard>
-));
 
 const AnalyticsPageTopSectionMainContent = () => {
-    console.log(visitors[0].title);
-
     return (
         <TopSection>
             <Caption>
@@ -78,56 +49,24 @@ const AnalyticsPageTopSectionMainContent = () => {
                 </CTABtn>
             </Caption>
             <TopSectionMainContent>
-            {/* {data.content.body.map(block => 
-                <InnerCard key={visitor.id}>                 
-                <TopSectionInnerCardCaption>
-                    <TopSectionInnerCardCaptionTitle>
-                        <Title>{visitor.title}</Title>
-                    </TopSectionInnerCardCaptionTitle>
-                    <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
-                </TopSectionInnerCardCaption>
-                <TopSectionInnerCardMainSection>
-                    <TopSectionInnerCardMainSectionSummary>
-                        <MainFigure>{visitor.value}</MainFigure>
-                        <FigureInPercent>{visitor.percent}</FigureInPercent>
-                    </TopSectionInnerCardMainSectionSummary>
-                    <TopSectionInnerCardMainSectionChart> 
-                        <BarChart />
-                    </TopSectionInnerCardMainSectionChart>
-                </TopSectionInnerCardMainSection>
-            </InnerCard>
-                Components(block))} */}
-                {visitorsData}
-                {/* <InnerCard>
-                    <TopSectionInnerCardCaption>
-                        <TopSectionInnerCardCaptionTitle>
-                            <Title>{visitingTimedata[0].title}</Title>
-                        </TopSectionInnerCardCaptionTitle>
-                        <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
-                    </TopSectionInnerCardCaption>
-                    <TopSectionInnerCardMainSection>
-                        <TopSectionInnerCardMainSectionSummary>
-                            <MainFigure>{visitingTimedata[0].value}</MainFigure>
-                            <FigureInPercent>{visitingTimedata[0].percent}</FigureInPercent>
-                        </TopSectionInnerCardMainSectionSummary>
-                        <TopSectionInnerCardMainSectionChart>
-                            <BarChart />
-                        </TopSectionInnerCardMainSectionChart>
-                    </TopSectionInnerCardMainSection>
-                </InnerCard>
-                <InnerCard>
-                    <TopSectionInnerCardCaption>
-                        <TopSectionInnerCardCaptionTitle>
-                            <Title>{visitingTimedata[1].title}</Title>
-                        </TopSectionInnerCardCaptionTitle>
-                        <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
-                    </TopSectionInnerCardCaption>
-                    <TopSectionInnerCardMainSection>
-                        <TopSectionInnerCardMainSectionSummary>
-                            <MainFigure>{visitingTimedata[1].value}</MainFigure>
-                            <FigureInPercent>{visitingTimedata[1].percent}</FigureInPercent>
-                        </TopSectionInnerCardMainSectionSummary>
-                        <HorizontalStackedBarSection>
+                {
+                    <AnalyticsTopInnerCards
+                        key={visitors[0].id}
+                        title={visitors[0].title}
+                        value={visitors[0].value}
+                        percent={visitors[0].percent}
+                    >
+                        <AnalyticsBarChart />
+                    </AnalyticsTopInnerCards>
+                }
+                {
+                    <AnalyticsTopInnerCards
+                        key={visitors[1].id}
+                        title={visitors[1].title}
+                        value={visitors[1].value}
+                        percent={visitors[1].percent}
+                    >
+                         <HorizontalStackedBarSection>
                             <HorizontalStackedBarLabel>
                                 <HorizontalStackedBarFirstLabel>
                                     {deviceTypeDate[0].mobile}
@@ -146,17 +85,18 @@ const AnalyticsPageTopSectionMainContent = () => {
                                 </TopSectionInnerCardMainSectionDateRangeEnd>
                             </TopSectionInnerCardMainSectionDateRange>
                         </HorizontalStackedBarSection>
-                    </TopSectionInnerCardMainSection>
-                </InnerCard>
-                <InnerCard>
-                    <TopSectionInnerCardCaption>
-                        <Title>{visitingTimedata[2].title}</Title>
-                        <LastThirtyDaysBtn>Last {lastAmountOfDays} days</LastThirtyDaysBtn>
-                    </TopSectionInnerCardCaption>
-                    <TopSectionInnerCardMainSection>
-                        <DoughnutChart />
-                    </TopSectionInnerCardMainSection>
-                </InnerCard> */}
+                    </AnalyticsTopInnerCards>
+                }
+                {
+                    <AnalyticsTopInnerCards
+                        key={visitors[2].id}
+                        title={visitors[2].title}
+                        value={visitors[2].value}
+                        percent={visitors[2].percent}
+                    >
+                        <AnalyticsDoughnutChart />
+                    </AnalyticsTopInnerCards>
+                }
             </TopSectionMainContent>
         </TopSection>
     );

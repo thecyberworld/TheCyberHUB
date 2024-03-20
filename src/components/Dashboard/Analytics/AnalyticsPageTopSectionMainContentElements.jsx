@@ -21,30 +21,30 @@ export const Caption = styled.div`
     gap: 15px;
 `;
 
-export const LastThirtyDaysBtn = styled.div`
-    flex: 5;
-    display: flex;
-    justify-content: flex-end;
-    color: grey;
-    font-size: 11px;
-    font-weight: 600;
-`;
+// export const LastThirtyDaysBtn = styled.div`
+//     flex: 5;
+//     display: flex;
+//     justify-content: flex-end;
+//     color: grey;
+//     font-size: 11px;
+//     font-weight: 600;
+// `;
 
-export const InnerCard = styled.div`
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    color: #fff;
-    padding: 0.8rem;
-    border: 0.5px solid grey;
-    border-radius: 5px;
-    transition: transform 0.2s; /* Animation */
-    &:hover {
-        transform: scale(1.05);
-    }
-`;
+// export const InnerCard = styled.div`
+//     flex: 3;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     text-align: center;
+//     color: #fff;
+//     padding: 0.8rem;
+//     border: 0.5px solid grey;
+//     border-radius: 5px;
+//     transition: transform 0.2s; /* Animation */
+//     &:hover {
+//         transform: scale(1.05);
+//     }
+// `;
 
 export const TopSectionCaptionTitle = styled.div`
     flex: 6;
@@ -111,43 +111,43 @@ export const TopSectionInnerCardCaptionTitle = styled.div`
     font-size: 12px;
 `;
 
-export const TopSectionInnerCardMainSectionSummary = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    padding: 0 0 0.9rem 0;
-`;
+// export const TopSectionInnerCardMainSectionSummary = styled.div`
+//     display: flex;
+//     justify-content: flex-start;
+//     padding: 0 0 0.9rem 0;
+// `;
 
-export const MainFigure = styled.p`
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    color: white;
-    font-size: 16px;
-`;
+// export const MainFigure = styled.p`
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-start;
+//     color: white;
+//     font-size: 16px;
+// `;
 
-export const FigureInPercent = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: center;
-    background-color: #bcfe30;
-    color: black;
-    font-size: 10px;
-    margin-left: 1rem;
-    padding: 3px;
-    border: 0.5px solid green;
-    border-radius: 8px;
-`;
+// export const FigureInPercent = styled.div`
+//     display: flex;
+//     justify-content: flex-end;
+//     align-items: center;
+//     text-align: center;
+//     background-color: #bcfe30;
+//     color: black;
+//     font-size: 10px;
+//     margin-left: 1rem;
+//     padding: 3px;
+//     border: 0.5px solid green;
+//     border-radius: 8px;
+// `;
 
-export const TopSectionInnerCardMainSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-`;
+// export const TopSectionInnerCardMainSection = styled.div`
+//     display: flex;
+//     flex-direction: column;
+//     gap: 0.5rem;
+// `;
 
-export const TopSectionInnerCardMainSectionChart = styled.div`
-    font-size: 12px;
-`;
+// export const TopSectionInnerCardMainSectionChart = styled.div`
+//     font-size: 12px;
+// `;
 
 export const TopSectionInnerCardMainSectionDateRange = styled.div`
     display: flex;
