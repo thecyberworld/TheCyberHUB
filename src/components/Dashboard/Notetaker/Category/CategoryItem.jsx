@@ -17,6 +17,7 @@ import { deleteNotesCategory, updateNotesCategory } from "src/features/notes/not
 import "src/components/Dashboard/Notetaker/NoteApp.css";
 import ModifyCategory from "./ModifyCategory";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 const CategoryItem = ({
     category,
@@ -83,30 +84,35 @@ const CategoryItem = ({
                     pickedCategoryId={id}
                 />
             ) : (
-                <CategoryItemElementContainer>
-                    <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
-                        <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
-                    </CategoryItemElement>
-                    <CategoryOptionsMenuContainer>
-                        <SlOptionsVertical
-                            size="16"
-                            className="icon icon-options"
-                            onClick={() => handleOpenCategoryMenu(!isCategoryMenuOpen)}
-                        />
-                        {isCategoryMenuOpen && (
-                            <CategoryMenuButtons onMouseLeave={() => handleOpenCategoryMenu(false)}>
-                                <CategoryMenuButton onClick={() => handleEditCategory(true)}>
-                                    <TbEditCircle className="icon icon-edit icon-not-hover-effect" size="18px" />
-                                    <CategoryMenuButtonLabel>Edit</CategoryMenuButtonLabel>
-                                </CategoryMenuButton>
-                                <CategoryMenuButton onClick={handleDeleteCategory}>
-                                    <AiTwotoneDelete className="icon icon-delete icon-not-hover-effect" size="18px" />
-                                    <CategoryMenuButtonLabel>Delete</CategoryMenuButtonLabel>
-                                </CategoryMenuButton>
-                            </CategoryMenuButtons>
-                        )}
-                    </CategoryOptionsMenuContainer>
-                </CategoryItemElementContainer>
+                <motion.div whileHover={{ scale: 0.9 }}>
+                    <CategoryItemElementContainer>
+                        <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
+                            <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
+                        </CategoryItemElement>
+                        <CategoryOptionsMenuContainer>
+                            <SlOptionsVertical
+                                size="16"
+                                className="icon icon-options"
+                                onClick={() => handleOpenCategoryMenu(!isCategoryMenuOpen)}
+                            />
+                            {isCategoryMenuOpen && (
+                                <CategoryMenuButtons onMouseLeave={() => handleOpenCategoryMenu(false)}>
+                                    <CategoryMenuButton onClick={() => handleEditCategory(true)}>
+                                        <TbEditCircle className="icon icon-edit icon-not-hover-effect" size="18px" />
+                                        <CategoryMenuButtonLabel>Edit</CategoryMenuButtonLabel>
+                                    </CategoryMenuButton>
+                                    <CategoryMenuButton onClick={handleDeleteCategory}>
+                                        <AiTwotoneDelete
+                                            className="icon icon-delete icon-not-hover-effect"
+                                            size="18px"
+                                        />
+                                        <CategoryMenuButtonLabel>Delete</CategoryMenuButtonLabel>
+                                    </CategoryMenuButton>
+                                </CategoryMenuButtons>
+                            )}
+                        </CategoryOptionsMenuContainer>
+                    </CategoryItemElementContainer>
+                </motion.div>
             )}
         </>
     );
