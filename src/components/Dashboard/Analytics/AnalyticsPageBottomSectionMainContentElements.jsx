@@ -33,7 +33,7 @@ export const LastThirtyDaysBtn = styled.div`
     font-weight: 600;
 `;
 
-export const InnerCard = styled.div`
+export const BottomLeftInnerCard = styled.div`
     flex: 3;
     display: flex;
     flex-direction: column;

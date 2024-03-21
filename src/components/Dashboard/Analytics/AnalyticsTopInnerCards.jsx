@@ -34,7 +34,6 @@ const AnalyticsTopInnerCards = ({key,title,value,percent, children}) => {
             </TopSectionInnerCardMainSectionChart>
         </TopSectionInnerCardMainSection>
     </AnalyticsInnerCard>
-
    </>
   )
 }

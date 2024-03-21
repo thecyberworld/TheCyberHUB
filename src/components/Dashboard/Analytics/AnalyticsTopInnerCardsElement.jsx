@@ -4,7 +4,6 @@ export const AnalyticsInnerCard = styled.div`
     flex: 3;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     text-align: center;
     color: #fff;
     padding: 0.8rem;
@@ -20,16 +19,12 @@ export const TopSectionInnerCardCaption = styled.span`
     display: flex;
     flex-direction: row;
     text-align: center;
-    gap: 18px;
-    height: 100%;
 `;
 
 export const TopSectionInnerCardCaptionTitle = styled.span`
     display: flex;
     flex-direction: row;
     text-align: center;
-    gap: 18px;
-    height: 100%;
 `;
 export const Title = styled.h1`
     color: #fff;
@@ -57,16 +52,6 @@ export const TopSectionInnerCardMainSectionSummary = styled.div`
     padding: 0 0 0.9rem 0;
 `;
 
-// export const TopSectionCaptionTitle = styled.div`
-//     flex: 6;
-//     display: flex;
-//     justify-content: flex-start;
-//     align-items: start;
-//     color: #fff;
-//     padding-top: 15px;
-//     gap: 25px;
-// `;
-
 export const MainFigure = styled.p`
     display: flex;
     flex-direction: column;
@@ -93,48 +78,4 @@ export const TopSectionInnerCardMainSectionChart = styled.div`
     font-size: 12px;
 `;
 
-// export const TopSectionInnerCardMainSectionDateRange = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     gap: 35px;
-//     font-size: 11px;
-// `;
 
-// export const TopSectionInnerCardMainSectionDateRangeStart = styled.div`
-//     display: flex;
-//     color: grey;
-// `;
-
-// export const TopSectionInnerCardMainSectionDateRangeEnd = styled.div`
-//     display: flex;
-//     color: grey;
-// `;
-
-// export const HorizontalStackedBarSection = styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     gap: 1.75rem;
-//     font-size: 12px;
-//     margin-top: 0.7rem;
-// `;
-
-// export const HorizontalStackedBarLabel = styled.div`
-//     display: flex;
-//     flex-direction: row;
-//     align-items: baseline;
-//     color: grey;
-//     margin-bottom: 3px;
-// `;
-
-// export const HorizontalStackedBarFirstLabel = styled.div`
-//     flex: 2;
-//     display: flex;
-//     justify-content: flex-start;
-// `;
-
-// export const HorizontalStackedBarSecondLabel = styled.div`
-//     flex: 1;
-//     display: flex;
-//     justify-content: flex-end;
-// `;

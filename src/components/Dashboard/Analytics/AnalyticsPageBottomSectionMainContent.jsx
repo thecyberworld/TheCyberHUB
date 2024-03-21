@@ -3,7 +3,7 @@ import {
     Caption,
     Title,
     CTABtn,
-    InnerCard,
+    BottomLeftInnerCard,
     LastThirtyDaysBtn,
     BottomSection,
     BottomLeftSection,
@@ -26,30 +26,15 @@ import {
 import MainBarChart from "./AnalyticsMainBarChart";
 import { CiHeartIcon, IoChatboxOutlineIcon } from "./AnalyticsIconElements";
 import myPosts from "./AnalyticsPostsData.json";
-import { lastAmountOfDays, lastAmountOfMinAgo,  timeBtns } from "./AnalyticsUtils";
+import { lastAmountOfDays, lastAmountOfMinAgo, timeBtns } from "./AnalyticsUtils";
 import Visitors from "./AnalyticsVisitorsData.json";
 
-
 const AnalyticsPageBottomSectionMainContent = () => {
-    const dateString = myPosts.map((myPost) => {
-        return myPost.datetime;
-    });
-    console.log(dateString);
 
-    const datetime = dateString[0];
-    const splittedDay = datetime.split(":");
-    const myDate = splittedDay[0];
-    const mySplittedDate = myDate.split("-");
-    const myDayTime = mySplittedDate[2].split("T");
-
-    const myDay = myDayTime[0];
-    const myMonth = mySplittedDate[1];
-    const myYear = mySplittedDate[0];
-
-    const postDate = myDay + "-" + myMonth + "-" + myYear;
-
-    console.log("dayMonthYear:", postDate);
-    // TODO: Dynamicallly call postDate
+    const getFormattedDate = (dateStr) => {
+        const date = new Date(dateStr);
+        return date.toDateString();
+      }
 
     return (
         <BottomSection>
@@ -64,9 +49,9 @@ const AnalyticsPageBottomSectionMainContent = () => {
                         <TimeCaptionBtnDays>{timeBtns[1].time}</TimeCaptionBtnDays>
                     </CTABtn>
                 </BottomLeftSectionCaption>
-                <InnerCard>
+                <BottomLeftInnerCard>
                     <MainBarChart />
-                </InnerCard>
+                </BottomLeftInnerCard>
             </BottomLeftSection>
             <BottomRightSection>
                 <Caption>
@@ -84,7 +69,7 @@ const AnalyticsPageBottomSectionMainContent = () => {
                             <PostDetails>
                                 <PostTitleDate>
                                     <PostTitle>{myPost.title}</PostTitle>
-                                    <PostDate>{myPost.datetime}</PostDate>
+                                    <PostDate>{getFormattedDate(myPost.datetime)}</PostDate>
                                 </PostTitleDate>
                             </PostDetails>
                             <PostIcons>
