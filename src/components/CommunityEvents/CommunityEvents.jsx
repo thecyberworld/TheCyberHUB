@@ -19,7 +19,7 @@ import { EventItemList } from "./EventItemList";
 import { RouterNavCreateButton } from "src/components/Header/Navbar/NavbarElements";
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
-import ModifyTimeline from "./ModifyTimeLine";
+import ModifyTimeline from "./ModifyTimeline";
 
 const CommunityEvents = ({
     pageHeader,
