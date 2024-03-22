@@ -7,7 +7,7 @@ import useAnalyticsChartCustomHook from "./useAnalyticsChartCustomHook";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export default function AnalyticsDoughnutChart() {
+function AnalyticsDoughnutChart() {
     const [chartData, chartOptions] = useAnalyticsChartCustomHook({
         displayMonths: displayMonths(0),
         newDatasets: newDatasets.slice(1, 2),
@@ -20,3 +20,4 @@ export default function AnalyticsDoughnutChart() {
         </DoughnutChartContainer>
     );
 }
+export default AnalyticsDoughnutChart;
