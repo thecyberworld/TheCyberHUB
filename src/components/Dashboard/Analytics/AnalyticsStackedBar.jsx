@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import HSBar from "react-horizontal-stacked-bar-chart";
 import { HorizontalStackedbar } from "./AnalyticsStackedBarElements";
