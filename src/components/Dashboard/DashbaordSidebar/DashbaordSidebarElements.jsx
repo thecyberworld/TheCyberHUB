@@ -7,7 +7,7 @@ import { MdAnalytics } from "react-icons/md";
 
 const createStyledIcon = (IconComponent) => {
     return styled(IconComponent)`
-        font-size: 20px;
+        font-size: 30px;
     `;
 };
 
