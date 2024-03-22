@@ -1,9 +1,9 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 import { BarChartContainer } from "./AnalyticsBarChartElements";
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
 import { useAnalyticsChartCustomHook } from "./useAnalyticsChartCustomHook";
+const { Chart: ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } = await import("chart.js");
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export function AnalyticsBarChart() {
