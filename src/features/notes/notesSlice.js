@@ -75,7 +75,11 @@ export const noteSlice = createSlice({
     initialState,
     reducers: {
         noteReset: () => initialState,
+        notesReorder: (state, action) => {
+            state.notes = [...action.payload];
+        },
     },
+
     extraReducers: (builder) => {
         builder
             .addCase(createNote.pending, (state) => {
@@ -173,5 +177,5 @@ export const noteSlice = createSlice({
     },
 });
 
-export const { noteReset } = noteSlice.actions;
+export const { noteReset, notesReorder } = noteSlice.actions;
 export default noteSlice.reducer;

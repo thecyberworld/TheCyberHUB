@@ -62,6 +62,9 @@ export const notesCategorySlice = createSlice({
     initialState,
     reducers: {
         notesCategoryReset: () => initialState,
+        notesCategoryReorder: (state, action) => {
+            state.notes = [...action.payload];
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -135,5 +138,5 @@ export const notesCategorySlice = createSlice({
     },
 });
 
-export const { notesCategoryReset } = notesCategorySlice.actions;
+export const { notesCategoryReset, notesCategoryReorder } = notesCategorySlice.actions;
 export default notesCategorySlice.reducer;
