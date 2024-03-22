@@ -43,6 +43,7 @@ export const BottomLeftInnerCard = styled.div`
     padding: 0.8rem;
     border: 0.5px solid grey;
     border-radius: 5px;
+    cursor: pointer;
     transition: transform 0.2s; /* Animation */
     &:hover {
         transform: scale(1.05);

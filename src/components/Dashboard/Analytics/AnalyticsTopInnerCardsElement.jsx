@@ -10,6 +10,7 @@ export const AnalyticsInnerCard = styled.div`
     border: 0.5px solid grey;
     border-radius: 5px;
     transition: transform 0.2s; /* Animation */
+    cursor: pointer;
     &:hover {
         transform: scale(1.05);
     }
@@ -77,5 +78,3 @@ export const FigureInPercent = styled.div`
 export const TopSectionInnerCardMainSectionChart = styled.div`
     font-size: 12px;
 `;
-
-

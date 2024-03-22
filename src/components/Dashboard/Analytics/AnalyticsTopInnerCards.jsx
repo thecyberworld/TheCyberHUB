@@ -14,10 +14,10 @@ import {
 import { lastAmountOfDays } from "./AnalyticsUtils";
 
 
-const AnalyticsTopInnerCards = ({key,title,value,percent, children}) => {
+const AnalyticsTopInnerCards = ({title,value,percent, children}) => {
   return (
    <>
-    <AnalyticsInnerCard key={key} >
+    <AnalyticsInnerCard >
         <TopSectionInnerCardCaption>
             <TopSectionInnerCardCaptionTitle>
                 <Title>{title}</Title>

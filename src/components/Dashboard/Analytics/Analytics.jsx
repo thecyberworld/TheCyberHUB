@@ -47,44 +47,6 @@ const Analytics = () => {
             <Container>
                 <AnalyticsPageTopSectionMainContent />
                 <AnalyticsPageBottomSectionMainContent />
-                    
-                        {/* {blogData.blogs?.map((post) => (
-                            <Post key={post?._id}>
-                                <h3>{post?.summary}</h3>
-                                <p>
-                                    Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                    {post?.updatedAt || post?.createdAt}
-                                </p>
-                            </Post>
-                        ))}
-                        {feedData.feed?.map((post) => (
-                            <Post key={post?._id}>
-                                <h3>{post?.content}</h3>
-                                <p>
-                                    Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                    {post?.updatedAt || post?.createdAt}
-                                </p>
-                            </Post>
-                        ))} */}
-        
-                            {/* {blogData.blogs?.map((post) => (
-                                <Post key={post?._id}>
-                                    <h3>{post?.summary}</h3>
-                                    <p>
-                                        Type: {post?.category} | Views: {post?.views || dummyData} | Time:{" "}
-                                        {post?.updatedAt || post?.createdAt}
-                                    </p>
-                                </Post>
-                            ))} */}
-                            {/* {feedData.feed?.map((post) => (
-                                <Post key={post?._id}>
-                                    <h3>{post?.content}</h3>
-                                    <p>
-                                        Type: Feed | Views: {post?.views || dummyData} | Time:{" "}
-                                        {post?.updatedAt || post?.createdAt}
-                                    </p>
-                                </Post>
-                            ))} */}
             </Container>
         </AnalyticsContainer>
     );

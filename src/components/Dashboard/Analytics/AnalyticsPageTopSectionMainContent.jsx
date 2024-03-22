@@ -24,7 +24,6 @@ import HorizontalStackedBar from "./AnalyticsStackedBar";
 import AnalyticsDoughnutChart from "./AnalyticsDoughnutChart";
 import visitors from "./AnalyticsVisitorsData.json";
 
-
 const AnalyticsPageTopSectionMainContent = () => {
     return (
         <TopSection>
@@ -49,54 +48,43 @@ const AnalyticsPageTopSectionMainContent = () => {
                 </CTABtn>
             </Caption>
             <TopSectionMainContent>
-                {
-                    <AnalyticsTopInnerCards
-                        key={visitors[0].id}
-                        title={visitors[0].title}
-                        value={visitors[0].value}
-                        percent={visitors[0].percent}
-                    >
-                        <AnalyticsBarChart />
-                    </AnalyticsTopInnerCards>
-                }
-                {
-                    <AnalyticsTopInnerCards
-                        key={visitors[1].id}
-                        title={visitors[1].title}
-                        value={visitors[1].value}
-                        percent={visitors[1].percent}
-                    >
-                         <HorizontalStackedBarSection>
-                            <HorizontalStackedBarLabel>
-                                <HorizontalStackedBarFirstLabel>
-                                    {deviceTypeDate[0].mobile}
-                                </HorizontalStackedBarFirstLabel>
-                                <HorizontalStackedBarSecondLabel>
-                                    {deviceTypeDate[0].desktop}
-                                </HorizontalStackedBarSecondLabel>
-                            </HorizontalStackedBarLabel>
-                            <HorizontalStackedBar />
-                            <TopSectionInnerCardMainSectionDateRange>
-                                <TopSectionInnerCardMainSectionDateRangeStart>
-                                    {deviceTypeDate[1].startDate}
-                                </TopSectionInnerCardMainSectionDateRangeStart>
-                                <TopSectionInnerCardMainSectionDateRangeEnd>
-                                    {deviceTypeDate[1].endDate}
-                                </TopSectionInnerCardMainSectionDateRangeEnd>
-                            </TopSectionInnerCardMainSectionDateRange>
-                        </HorizontalStackedBarSection>
-                    </AnalyticsTopInnerCards>
-                }
-                {
-                    <AnalyticsTopInnerCards
-                        key={visitors[2].id}
-                        title={visitors[2].title}
-                        value={visitors[2].value}
-                        percent={visitors[2].percent}
-                    >
-                        <AnalyticsDoughnutChart />
-                    </AnalyticsTopInnerCards>
-                }
+                <AnalyticsTopInnerCards
+                    title={visitors[0].title}
+                    value={visitors[0].value}
+                    percent={visitors[0].percent}
+                >
+                    <AnalyticsBarChart />
+                </AnalyticsTopInnerCards>
+                <AnalyticsTopInnerCards
+                    title={visitors[1].title}
+                    value={visitors[1].value}
+                    percent={visitors[1].percent}
+                >
+                    <HorizontalStackedBarSection>
+                        <HorizontalStackedBarLabel>
+                            <HorizontalStackedBarFirstLabel>{deviceTypeDate[0].mobile}</HorizontalStackedBarFirstLabel>
+                            <HorizontalStackedBarSecondLabel>
+                                {deviceTypeDate[0].desktop}
+                            </HorizontalStackedBarSecondLabel>
+                        </HorizontalStackedBarLabel>
+                        <HorizontalStackedBar />
+                        <TopSectionInnerCardMainSectionDateRange>
+                            <TopSectionInnerCardMainSectionDateRangeStart>
+                                {deviceTypeDate[1].startDate}
+                            </TopSectionInnerCardMainSectionDateRangeStart>
+                            <TopSectionInnerCardMainSectionDateRangeEnd>
+                                {deviceTypeDate[1].endDate}
+                            </TopSectionInnerCardMainSectionDateRangeEnd>
+                        </TopSectionInnerCardMainSectionDateRange>
+                    </HorizontalStackedBarSection>
+                </AnalyticsTopInnerCards>
+                <AnalyticsTopInnerCards
+                    title={visitors[2].title}
+                    value={visitors[2].value}
+                    percent={visitors[2].percent}
+                >
+                    <AnalyticsDoughnutChart />
+                </AnalyticsTopInnerCards>
             </TopSectionMainContent>
         </TopSection>
     );
