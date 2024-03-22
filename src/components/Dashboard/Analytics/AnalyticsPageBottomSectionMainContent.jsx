@@ -23,18 +23,17 @@ import {
     LikesIcon,
     CommentsIcon,
 } from "./AnalyticsPageBottomSectionMainContentElements";
-import MainBarChart from "./AnalyticsMainBarChart";
+import { AnalyticsMainBarChart } from "./AnalyticsMainBarChart";
 import { CiHeartIcon, IoChatboxOutlineIcon } from "./AnalyticsIconElements";
 import myPosts from "./AnalyticsPostsData.json";
 import { lastAmountOfDays, lastAmountOfMinAgo, timeBtns } from "./AnalyticsUtils";
 import Visitors from "./AnalyticsVisitorsData.json";
 
-const AnalyticsPageBottomSectionMainContent = () => {
-
+export const AnalyticsPageBottomSectionMainContent = () => {
     const getFormattedDate = (dateStr) => {
         const date = new Date(dateStr);
         return date.toDateString();
-      }
+    };
 
     return (
         <BottomSection>
@@ -50,7 +49,7 @@ const AnalyticsPageBottomSectionMainContent = () => {
                     </CTABtn>
                 </BottomLeftSectionCaption>
                 <BottomLeftInnerCard>
-                    <MainBarChart />
+                    <AnalyticsMainBarChart />
                 </BottomLeftInnerCard>
             </BottomLeftSection>
             <BottomRightSection>
@@ -89,5 +88,3 @@ const AnalyticsPageBottomSectionMainContent = () => {
         </BottomSection>
     );
 };
-
-export default AnalyticsPageBottomSectionMainContent;

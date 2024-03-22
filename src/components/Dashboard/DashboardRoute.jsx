@@ -10,7 +10,7 @@ import Tools from "src/components/Tools/Tools";
 import CommunityChat from "src/components/Chat/CommunityChat";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
-import Analytics from "./Analytics/Analytics";
+import { Analytics } from "./Analytics/Analytics";
 
 const DashboardRoute = () => {
     const dispatch = useDispatch();

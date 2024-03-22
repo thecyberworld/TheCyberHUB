@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useAnalyticsChartCustomHook = (props) => {
+export const useAnalyticsChartCustomHook = (props) => {
     const { displayMonths, newDatasets, newOptions } = props;
 
     const [chartData, setChartData] = useState({
@@ -22,5 +22,3 @@ const useAnalyticsChartCustomHook = (props) => {
 
     return [chartData, chartOptions];
 };
-
-export default useAnalyticsChartCustomHook;

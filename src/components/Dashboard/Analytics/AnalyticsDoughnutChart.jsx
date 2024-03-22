@@ -3,11 +3,11 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { DoughnutChartContainer } from "./AnalyticsDoughnutChartElements";
 import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
-import useAnalyticsChartCustomHook from "./useAnalyticsChartCustomHook";
+import { useAnalyticsChartCustomHook } from "./useAnalyticsChartCustomHook";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function AnalyticsDoughnutChart() {
+export function AnalyticsDoughnutChart() {
     const [chartData, chartOptions] = useAnalyticsChartCustomHook({
         displayMonths: displayMonths(0),
         newDatasets: newDatasets.slice(1, 2),
@@ -20,4 +20,3 @@ function AnalyticsDoughnutChart() {
         </DoughnutChartContainer>
     );
 }
-export default AnalyticsDoughnutChart;

@@ -3,11 +3,11 @@ import { Bar } from "react-chartjs-2";
 import { BarChartContainer } from "./AnalyticsMainBarChartElements";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
-import useAnalyticsChartCustomHook from "./useAnalyticsChartCustomHook";
+import { useAnalyticsChartCustomHook } from "./useAnalyticsChartCustomHook";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function AnalyticsMainBarChart() {
+export function AnalyticsMainBarChart() {
     const [chartData, chartOptions] = useAnalyticsChartCustomHook({
         displayMonths: displayMonths(),
         newDatasets: newDatasets.slice(-1),
@@ -20,4 +20,3 @@ function AnalyticsMainBarChart() {
         </BarChartContainer>
     );
 }
-export default AnalyticsMainBarChart;

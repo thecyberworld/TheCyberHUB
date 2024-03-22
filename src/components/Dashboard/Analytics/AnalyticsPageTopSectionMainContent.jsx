@@ -18,13 +18,13 @@ import {
 } from "./AnalyticsPageTopSectionMainContentElements";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
 import { lastAmountOfDays, deviceTypeDate } from "./AnalyticsUtils";
-import AnalyticsTopInnerCards from "./AnalyticsTopInnerCards";
-import AnalyticsBarChart from "./AnalyticsBarChart";
-import HorizontalStackedBar from "./AnalyticsStackedBar";
-import AnalyticsDoughnutChart from "./AnalyticsDoughnutChart";
+import { AnalyticsTopInnerCards } from "./AnalyticsTopInnerCards";
+import { AnalyticsBarChart } from "./AnalyticsBarChart";
+import { HorizontalStackedBar } from "./AnalyticsStackedBar";
+import { AnalyticsDoughnutChart } from "./AnalyticsDoughnutChart";
 import visitors from "./AnalyticsVisitorsData.json";
 
-const AnalyticsPageTopSectionMainContent = () => {
+export const AnalyticsPageTopSectionMainContent = () => {
     return (
         <TopSection>
             <Caption>
@@ -89,5 +89,3 @@ const AnalyticsPageTopSectionMainContent = () => {
         </TopSection>
     );
 };
-
-export default AnalyticsPageTopSectionMainContent;
