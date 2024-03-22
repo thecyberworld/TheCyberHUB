@@ -3,8 +3,8 @@ import { Pie } from "react-chartjs-2";
 import { DoughnutChartContainer } from "./AnalyticsDoughnutChartElements";
 import { displayMonths, allOptions as newOptions, allDatasets as newDatasets } from "./AnalyticsUtils";
 import { useAnalyticsChartCustomHook } from "./useAnalyticsChartCustomHook";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
-const { Chart: ChartJS, ArcElement, Tooltip, Legend } = await import("chart.js");
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function AnalyticsDoughnutChart() {
