@@ -13,7 +13,7 @@ export const timeBtns = [
     },
     {
         time: "Days",
-    }
+    },
 ];
 
 export const deviceTypeDate = [
@@ -24,20 +24,6 @@ export const deviceTypeDate = [
     {
         startDate: "11 Oct, 2021",
         endDate: "11 Nov, 2021",
-    },
-];
-
-// Horizontal Stacked Bars
-export const horizontalStackedBardata = [
-    {
-        value: 65,
-        description: "65%",
-        color: "blue",
-    },
-    {
-        value: 35,
-        description: "35%",
-        color: "rgb(255, 205, 86)",
     },
 ];
 
