@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
 import AnalyticsPageTopSectionMainContent from "./AnalyticsPageTopSectionMainContent";
 import AnalyticsPageBottomSectionMainContent from "./AnalyticsPageBottomSectionMainContent";
-import {
-    AnalyticsContainer,
-    AnalyticsHeader,
-    Container,
-} from "./AnalyticsElements";
+import { AnalyticsContainer, AnalyticsHeader, Container } from "./AnalyticsElements";
 import { getFeeds } from "src/features/feeds/feedsSlice";
 import { getBlogs } from "src/features/blogs/blogSlice";
 import { getViews } from "src/features/feeds/views/viewSlice";
 import { useSelector, useDispatch } from "react-redux";
-
 
 const Analytics = () => {
     const dispatch = useDispatch();
