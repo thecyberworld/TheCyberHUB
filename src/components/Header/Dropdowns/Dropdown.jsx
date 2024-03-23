@@ -68,7 +68,7 @@ export default function Dropdown({
 
     return (
         toggleDropdown && (
-            <DropdownContainer isOpen={isOpen} style={{ backgroundColor, color }}>
+            <DropdownContainer $isOpen={isOpen} style={{ backgroundColor, color }}>
                 <DropdownItemsContainer>
                     {isOpportunities === true &&
                         opportunities.map((program, id) => (

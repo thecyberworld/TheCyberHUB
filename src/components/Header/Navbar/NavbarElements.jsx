@@ -9,7 +9,7 @@ export const DropdownIcon = styled(AiFillCaretDown)`
 `;
 
 export const Nav = styled.nav`
-    // background: ${({ scrollNav }) => (scrollNav ? "0000007F" : "transparent")};
+    // background: ${({ $scrollNav }) => ($scrollNav ? "0000007F" : "transparent")};
     height: 80px;
     margin-top: -80px;
     display: flex;
@@ -22,7 +22,7 @@ export const Nav = styled.nav`
     padding: 0 25px;
 
     //if showBottomBorder then show bottom border
-    border-bottom: ${({ showBottomBorder }) => (showBottomBorder ? "1px solid #2a2a2a" : "none")};
+    border-bottom: ${({ $showBottomBorder }) => ($showBottomBorder ? "1px solid #2a2a2a" : "none")};
 
     background: rgba(0, 0, 0, 0.34);
     backdrop-filter: blur(5px);
