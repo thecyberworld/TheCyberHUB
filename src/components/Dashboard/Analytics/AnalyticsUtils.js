@@ -13,33 +13,46 @@ export const timeBtns = [
     },
     {
         time: "Days",
-    }
-];
-
-export const deviceTypeDate = [
-    {
-        mobile: "Mobile",
-        desktop: "Desktop",
-    },
-    {
-        startDate: "11 Oct, 2021",
-        endDate: "11 Nov, 2021",
     },
 ];
 
-// Horizontal Stacked Bars
-export const horizontalStackedBardata = [
-    {
-        value: 65,
-        description: "65%",
-        color: "blue",
+// Horizontal BarCharts
+export const options = {
+    indexAxis: "y",
+    elements: {
+        bar: {
+            borderWidth: 3,
+        },
     },
-    {
-        value: 35,
-        description: "35%",
-        color: "rgb(255, 205, 86)",
+    responsive: true,
+    plugins: {
+        legend: {
+            position: "top",
+        },
+        title: {
+            display: true,
+            text: "Clients devices",
+        },
     },
-];
+};
+
+const labels = [""];
+
+export const data = {
+    labels,
+    datasets: [
+        {
+            label: "Mobile",
+            data: [745, 567],
+            backgroundColor: "rgba(0, 47, 255)",
+        },
+        {
+            label: "Desktop",
+            data: [475, 267],
+            backgroundColor: "rgba(255, 106, 9)",
+        },
+    ],
+};
 
 // index 0: smallBarChartDatasets
 // index 1: doughNutDatasets

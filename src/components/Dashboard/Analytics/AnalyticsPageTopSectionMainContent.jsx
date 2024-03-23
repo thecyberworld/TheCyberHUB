@@ -8,21 +8,14 @@ import {
     TopSectionCaptionCTABtnBig,
     TopSectionCaptionCTABtnBigInnerSection,
     TopSectionMainContent,
-    HorizontalStackedBarSection,
-    HorizontalStackedBarLabel,
-    HorizontalStackedBarFirstLabel,
-    HorizontalStackedBarSecondLabel,
-    TopSectionInnerCardMainSectionDateRange,
-    TopSectionInnerCardMainSectionDateRangeStart,
-    TopSectionInnerCardMainSectionDateRangeEnd,
 } from "./AnalyticsPageTopSectionMainContentElements";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
-import { lastAmountOfDays, deviceTypeDate } from "./AnalyticsUtils";
+import { lastAmountOfDays } from "./AnalyticsUtils";
 import AnalyticsTopInnerCards from "./AnalyticsTopInnerCards";
 import AnalyticsBarChart from "./AnalyticsBarChart";
-import HorizontalStackedBar from "./AnalyticsStackedBar";
 import AnalyticsDoughnutChart from "./AnalyticsDoughnutChart";
 import visitors from "./AnalyticsVisitorsData.json";
+import AnalyticsHorizontalBarCharts from "./AnalyticsHorizontalBarCharts";
 
 const AnalyticsPageTopSectionMainContent = () => {
     return (
@@ -60,23 +53,7 @@ const AnalyticsPageTopSectionMainContent = () => {
                     value={visitors[1].value}
                     percent={visitors[1].percent}
                 >
-                    <HorizontalStackedBarSection>
-                        <HorizontalStackedBarLabel>
-                            <HorizontalStackedBarFirstLabel>{deviceTypeDate[0].mobile}</HorizontalStackedBarFirstLabel>
-                            <HorizontalStackedBarSecondLabel>
-                                {deviceTypeDate[0].desktop}
-                            </HorizontalStackedBarSecondLabel>
-                        </HorizontalStackedBarLabel>
-                        <HorizontalStackedBar />
-                        <TopSectionInnerCardMainSectionDateRange>
-                            <TopSectionInnerCardMainSectionDateRangeStart>
-                                {deviceTypeDate[1].startDate}
-                            </TopSectionInnerCardMainSectionDateRangeStart>
-                            <TopSectionInnerCardMainSectionDateRangeEnd>
-                                {deviceTypeDate[1].endDate}
-                            </TopSectionInnerCardMainSectionDateRangeEnd>
-                        </TopSectionInnerCardMainSectionDateRange>
-                    </HorizontalStackedBarSection>
+                    <AnalyticsHorizontalBarCharts />
                 </AnalyticsTopInnerCards>
                 <AnalyticsTopInnerCards
                     title={visitors[2].title}
