@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const DoughnutChartContainer = styled.div`
 display: flex;
 justify-content: center; 
-height: 11.5rem;
+height: 10.5rem;
+margin-top: -1.5rem
 `;
 
