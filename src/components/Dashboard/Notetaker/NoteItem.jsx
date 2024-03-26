@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import {
     NoteItemElement,
     NoteItemElementContainer,
@@ -7,29 +6,17 @@ import {
     NoteItemShortTitle,
 } from "./NoteElements";
 import NotePinning from "./NotePinning";
-import { motion , Reorder } from "framer-motion";
-import { getNotes, noteReset, notesReorder } from "src/features/notes/notesSlice";
 
 const NoteItem = ({ _id, title, pinned, onPick, onPin, isPicked }) => {
-    const dispatch = useDispatch();
-    const { notes } = useSelector((state) => state.notes);
-    useEffect(() => {
-        dispatch(getNotes());
-        return () => dispatch(noteReset());
-    }, []);
     return (
-        <Reorder.Group axis="y" values={notes} onReorder={(newValues) => dispatch(notesReorder(newValues))}>
-            <motion.div whileHover={{ scale: 0.9 }}>
-                <NoteItemElementContainer>
-                    <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)} isPicked={isPicked}>
-                        <NoteItemShortTitle>{title.slice(0, 23)}</NoteItemShortTitle>
-                    </NoteItemElement>
-                    <NoteItemPinningContainer isPinned={pinned}>
-                        <NotePinning isPinned={pinned} onPin={onPin} noteId={_id} />
-                    </NoteItemPinningContainer>
-                </NoteItemElementContainer>
-            </motion.div>
-        </Reorder.Group>
+        <NoteItemElementContainer>
+            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)} isPicked={isPicked}>
+                <NoteItemShortTitle>{title.slice(0, 23)}</NoteItemShortTitle>
+            </NoteItemElement>
+            <NoteItemPinningContainer isPinned={pinned}>
+                <NotePinning isPinned={pinned} onPin={onPin} noteId={_id} />
+            </NoteItemPinningContainer>
+        </NoteItemElementContainer>
     );
 };
 export default NoteItem;
