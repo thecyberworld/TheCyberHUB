@@ -11,7 +11,7 @@ export const HeroContainer = styled.div`
     position: relative;
     z-index: 1;
     height: 100vh;
-    :before {
+    &:before {
         content: "";
         position: absolute;
         top: 0;

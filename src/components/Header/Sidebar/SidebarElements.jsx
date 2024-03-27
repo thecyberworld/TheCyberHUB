@@ -8,11 +8,11 @@ export const SidebarContainer = styled.nav`
     width: 100%;
     height: 100%;
     background: #0d0d0d;
-    display: ${({ isOpen }) => (isOpen ? "grid" : "none")};
+    display: ${({ $isOpen }) => ($isOpen ? "grid" : "none")};
     align-items: center;
     right: 0;
-    opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
-    top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+    opacity: ${({ $isOpen }) => ($isOpen ? "100%" : "0")};
+    top: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
     overflow: auto;
     transition: all 0.2s ease-in-out;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));

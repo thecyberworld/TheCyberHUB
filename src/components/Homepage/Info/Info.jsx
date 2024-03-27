@@ -42,12 +42,12 @@ const InfoSection = ({
     return (
         <InfoContainer id={id}>
             <InfoWrapper>
-                <InfoRow imgStart={imgStart}>
+                <InfoRow $imgStart={imgStart}>
                     <Column1>
                         <TextWrapper>
                             <TopLine> {topLine} </TopLine>
-                            <Heading lightText={lightText}> {headline} </Heading>
-                            <Subtitle darkText={darkText}> {description} </Subtitle>
+                            <Heading $lightText={lightText}> {headline} </Heading>
+                            <Subtitle $darkText={darkText}> {description} </Subtitle>
                             <BtnWrap>
                                 {buttonType1 === "router" && (
                                     <RouterButton

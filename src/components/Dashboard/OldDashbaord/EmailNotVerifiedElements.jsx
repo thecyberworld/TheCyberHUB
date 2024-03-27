@@ -7,7 +7,7 @@ export const EmailNotVerifiedContainer = styled.div`
     height: 50px;
     display: flex;
     justify-content: center;
-    background: ${({ scrollNav }) => (scrollNav ? "#000000" : "transparent")};
+    background: ${({ $scrollNav }) => ($scrollNav ? "#000000" : "transparent")};
     align-items: center;
     text-align: center;
     top: 80px;
