@@ -4,6 +4,6 @@ export const DoughnutChartContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10.5rem;
+    height: 100%;
     margin-top: -1.5rem;
 `;
