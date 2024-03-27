@@ -16,16 +16,43 @@ export const timeBtns = [
     },
 ];
 
-export const deviceTypeDate = [
-    {
-        mobile: "Mobile",
-        desktop: "Desktop",
+// Horizontal Barcharts
+export const options = {
+    indexAxis: "y",
+    elements: {
+        bar: {
+            borderWidth: 3,
+        },
     },
-    {
-        startDate: "11 Oct, 2021",
-        endDate: "11 Nov, 2021",
+    responsive: true,
+    plugins: {
+        legend: {
+            position: "top",
+        },
+        title: {
+            display: true,
+            text: "Clients Devices",
+        },
     },
-];
+};
+
+const labels = [""];
+
+export const data = {
+    labels,
+    datasets: [
+        {
+            label: "Mobile",
+            data: [745],
+            backgroundColor: "rgba(0, 47, 255)",
+        },
+        {
+            label: "Desktop",
+            data: [435],
+            backgroundColor: "rgba(255, 106, 9)",
+        },
+    ],
+};
 
 // index 0: smallBarChartDatasets
 // index 1: doughNutDatasets
