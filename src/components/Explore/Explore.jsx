@@ -97,12 +97,12 @@ const Explore = () => {
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
     const userId = user?._id;
     const { followData } = useSelector((state) => state.followData);
-
+    const allUsers = userDetailsLocal?.map((user) => user?.user)||[];
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user) || [];
 
-    const [filterLabel, setFilterLabel] = useState("Connections");
+    const [filterLabel, setFilterLabel] = useState("all users");
     const [selectedFilter, setSelectedFilter] = useState("all");
 
     useEffect(() => {
@@ -127,7 +127,7 @@ const Explore = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        setSelectedFilter(allConnections);
+        setSelectedFilter(allUsers);
     }, [connections]);
 
     const blogTags = blogs?.map((blog) => blog && blog?.tags).flat() || [];
@@ -201,15 +201,21 @@ const Explore = () => {
     const filteredUsers = userDetailsLocal?.filter((user) => selectedFilter?.includes(user.user));
 
     const handleTypeFilter = (filter) => {
-        setSelectedFilter(filter.value);
-        setFilterLabel(filter.label);
+        if (filter.label === filterLabel) {
+          setSelectedFilter(allUsers); // Deselect the filter
+          setFilterLabel("all"); // Reset the filter label
+        } else {
+          setSelectedFilter(filter.value); // Select the filter
+          setFilterLabel(filter.label); // Set the filter label
+        }
     };
 
     const userFilters = [
         { value: allConnections, label: "Connections" },
         { value: following, label: "Following" },
         { value: followers, label: "Followers" },
-    ];
+        { value: allUsers, label: "all users"},
+    ];
 
     const renderNotFoundComponents = () => {
         const dataTypes = ["Users", "Feeds", "Blogs", "Ctfs"];
