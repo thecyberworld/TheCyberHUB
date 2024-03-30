@@ -97,7 +97,7 @@ const Explore = () => {
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
     const userId = user?._id;
     const { followData } = useSelector((state) => state.followData);
-    const allUsers = userDetailsLocal?.map((user) => user?.user)||[];
+    const allUsers = userDetailsLocal?.map((user) => user?.user) || [];
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user) || [];
@@ -156,57 +156,54 @@ const Explore = () => {
         setSelectedType(type);
     };
 
-    const feedData = feeds
-        ?.slice()
+    const feedData = feeds?.map((feed) => {
+        const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
+        if (!selectedFilter?.includes(userDetail?.user)) {
+            return null;
+        }
+        const { username, avatar, verified } = userDetail || {};
+
+        return { ...feed, username, avatar, verified };
+    });
+
+    const filteredFeeds = feedData
+        ?.filter((feed) => feed !== null)
         .reverse()
         ?.slice(0, 10)
-        .reverse()
-        .map((feed) => {
-            const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
+        .reverse();
 
-            return { ...feed, username, avatar, verified };
-        });
+    const blogsData = blogs?.map((blog) => {
+        const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
+        if (!selectedFilter?.includes(userDetail?.user)) {
+            return null;
+        }
+        const { username, avatar, verified } = userDetail || {};
 
-    const filteredFeeds = feedData?.filter((feed) => feed !== null);
+        return { ...blog, username, avatar, verified };
+    });
 
-    const blogsData = blogs
-        ?.slice()
+    const filteredBlogs = blogsData
+        ?.filter((blog) => blog !== null)
         .reverse()
         ?.slice(0, 10)
-        .reverse()
-        .map((blog) => {
-            const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
-
-            return { ...blog, username, avatar, verified };
-        });
-
-    const filteredBlogs = blogsData?.filter((blog) => blog !== null);
+        .reverse();
 
     const filteredCtf =
-        ctf
-            ?.slice()
-            .reverse()
-            ?.slice(0, 10)
-            .reverse()
-            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
+        ctf?.filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
 
-    const filteredUsers = userDetailsLocal?.filter((user) => selectedFilter?.includes(user.user));
+    const filteredUsers = userDetailsLocal
+        ?.filter((user) => selectedFilter?.includes(user.user))
+        .reverse()
+        ?.slice(0, 10)
+        .reverse();
 
     const handleTypeFilter = (filter) => {
         if (filter.label === filterLabel) {
-          setSelectedFilter(allUsers); // Deselect the filter
-          setFilterLabel("all"); // Reset the filter label
+            setSelectedFilter(allUsers); // Deselect the filter
+            setFilterLabel("all"); // Reset the filter label
         } else {
-          setSelectedFilter(filter.value); // Select the filter
-          setFilterLabel(filter.label); // Set the filter label
+            setSelectedFilter(filter.value); // Select the filter
+            setFilterLabel(filter.label); // Set the filter label
         }
     };
 
@@ -214,8 +211,8 @@ const Explore = () => {
         { value: allConnections, label: "Connections" },
         { value: following, label: "Following" },
         { value: followers, label: "Followers" },
-        { value: allUsers, label: "all users"},
-    ];
+        { value: allUsers, label: "all users" },
+    ];
 
     const renderNotFoundComponents = () => {
         const dataTypes = ["Users", "Feeds", "Blogs", "Ctfs"];
