@@ -90,7 +90,10 @@ const Navbar = ({ isOpen, toggle }) => {
                             title: (
                                 <>
                                     <p onClick={() => onClickResources()}>Resources</p>
-                                    <DropdownIcon onClick={() => onClickResources()} />
+                                    <DropdownIcon
+                                        onClick={() => onClickResources()}
+                                        clicked={resourcesClick && toggleDropdown ? "rotate(270deg)" : undefined}
+                                    />
                                 </>
                             ),
                             dropdown: "resources",
@@ -99,7 +102,10 @@ const Navbar = ({ isOpen, toggle }) => {
                             title: (
                                 <>
                                     <p onClick={() => onClickOpportunities()}>Opportunities</p>
-                                    <DropdownIcon onClick={() => onClickOpportunities()} />
+                                    <DropdownIcon
+                                        onClick={() => onClickOpportunities()}
+                                        clicked={opportunities && toggleDropdown ? "rotate(270deg)" : undefined}
+                                    />
                                 </>
                             ),
                             dropdown: "programs",

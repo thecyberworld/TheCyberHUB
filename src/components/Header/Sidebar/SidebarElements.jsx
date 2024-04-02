@@ -13,7 +13,7 @@ export const SidebarContainer = styled.nav`
     right: 0;
     opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
     top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
-
+    overflow: auto;
     transition: all 0.2s ease-in-out;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(20px);
@@ -81,7 +81,8 @@ export const SidebarMenu = styled.div`
     // grid-template-columns: 1fr;
     // grid-template-rows:repeat(6, 80px);
     text-align: center;
-
+    display: flex;
+    flex-direction: column;
     @media screen and (min-width: 480px) {
         grid-template-rows: repeat(6, 60px);
     }

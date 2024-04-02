@@ -97,12 +97,12 @@ const Explore = () => {
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
     const userId = user?._id;
     const { followData } = useSelector((state) => state.followData);
-
+    const allUsers = userDetailsLocal?.map((user) => user?.user) || [];
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user) || [];
 
-    const [filterLabel, setFilterLabel] = useState("Connections");
+    const [filterLabel, setFilterLabel] = useState("all users");
     const [selectedFilter, setSelectedFilter] = useState("all");
 
     useEffect(() => {
@@ -127,7 +127,7 @@ const Explore = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        setSelectedFilter(allConnections);
+        setSelectedFilter(allUsers);
     }, [connections]);
 
     const blogTags = blogs?.map((blog) => blog && blog?.tags).flat() || [];
@@ -156,59 +156,62 @@ const Explore = () => {
         setSelectedType(type);
     };
 
-    const feedData = feeds
-        ?.slice()
+    const feedData = feeds?.map((feed) => {
+        const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
+        if (!selectedFilter?.includes(userDetail?.user)) {
+            return null;
+        }
+        const { username, avatar, verified } = userDetail || {};
+
+        return { ...feed, username, avatar, verified };
+    });
+
+    const filteredFeeds = feedData
+        ?.filter((feed) => feed !== null)
         .reverse()
         ?.slice(0, 10)
-        .reverse()
-        .map((feed) => {
-            const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
+        .reverse();
 
-            return { ...feed, username, avatar, verified };
-        });
+    const blogsData = blogs?.map((blog) => {
+        const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
+        if (!selectedFilter?.includes(userDetail?.user)) {
+            return null;
+        }
+        const { username, avatar, verified } = userDetail || {};
 
-    const filteredFeeds = feedData?.filter((feed) => feed !== null);
+        return { ...blog, username, avatar, verified };
+    });
 
-    const blogsData = blogs
-        ?.slice()
+    const filteredBlogs = blogsData
+        ?.filter((blog) => blog !== null)
         .reverse()
         ?.slice(0, 10)
-        .reverse()
-        .map((blog) => {
-            const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
-
-            return { ...blog, username, avatar, verified };
-        });
-
-    const filteredBlogs = blogsData?.filter((blog) => blog !== null);
+        .reverse();
 
     const filteredCtf =
-        ctf
-            ?.slice()
-            .reverse()
-            ?.slice(0, 10)
-            .reverse()
-            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
+        ctf?.filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
 
-    const filteredUsers = userDetailsLocal?.filter((user) => selectedFilter?.includes(user.user));
+    const filteredUsers = userDetailsLocal
+        ?.filter((user) => selectedFilter?.includes(user.user))
+        .reverse()
+        ?.slice(0, 10)
+        .reverse();
 
     const handleTypeFilter = (filter) => {
-        setSelectedFilter(filter.value);
-        setFilterLabel(filter.label);
+        if (filter.label === filterLabel) {
+            setSelectedFilter(allUsers); // Deselect the filter
+            setFilterLabel("all"); // Reset the filter label
+        } else {
+            setSelectedFilter(filter.value); // Select the filter
+            setFilterLabel(filter.label); // Set the filter label
+        }
     };
 
     const userFilters = [
         { value: allConnections, label: "Connections" },
         { value: following, label: "Following" },
         { value: followers, label: "Followers" },
+        { value: allUsers, label: "all users" },
     ];
 
     const renderNotFoundComponents = () => {
