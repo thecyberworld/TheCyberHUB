@@ -36,7 +36,7 @@ export const SideBarLinkContainer = styled.div`
     align-items: flex-start;
     width: 100%;
     padding: 15px;
-    gap: 25px;
+    gap: 15px;
 `;
 
 export const SideBarLink = styled(({ isOpen, ...props }) => <NavLink {...props} />)`

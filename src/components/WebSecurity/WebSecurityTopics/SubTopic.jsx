@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ImLab } from "react-icons/im";
+import PreviewMarkdown from "src/components/Common/MarkdownPreview";
 
 const SubTopicContainer = styled.div`
     display: flex;
@@ -17,7 +18,7 @@ const SubTopicTitle = styled.p`
     color: #eeeeee;
 `;
 
-const SubTopicContent = styled.p``;
+// const SubTopicContent = styled.p``;
 
 // const LabLevel = styled.p`
 //   display: flex;
@@ -104,7 +105,8 @@ const SubTopic = ({ subtopic }) => {
     return (
         <SubTopicContainer id={subtopic.id} key={subtopic.id}>
             <SubTopicTitle>{subtopic.title}</SubTopicTitle>
-            <SubTopicContent>{subtopic.content}</SubTopicContent>
+            {/* <SubTopicContent>{subtopic.content}</SubTopicContent> */}
+            <PreviewMarkdown content={subtopic.content} />
 
             {subtopic?.labs ? (
                 <LabContainer>
