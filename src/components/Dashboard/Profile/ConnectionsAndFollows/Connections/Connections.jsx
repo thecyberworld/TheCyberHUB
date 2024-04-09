@@ -12,6 +12,7 @@ import {
 } from "src/features/connections/connectionSlice";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { RouterLink } from "src/components/Tools/ToolsElements";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 
 const Connections = () => {
     const dispatch = useDispatch();
@@ -93,6 +94,8 @@ const Connections = () => {
             })) ||
         [];
 
+    const avatar = (userDetail) => cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
+
     return (
         <Wrapper>
             {user ? (
@@ -121,9 +124,11 @@ const Connections = () => {
                                 <RouterLink to={`/user/${username}`}>
                                     <ConnectionUsername>
                                         <img
-                                            src={
-                                                "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/user/1692524710620.jpeg"
-                                            }
+                                            src={avatar(
+                                                userDetails?.find(
+                                                    (userDetail) => userDetail?.user === connection?.user,
+                                                ),
+                                            )}
                                             style={{ width: "40px", height: "40px", borderRadius: "50%" }}
                                             alt="Profile"
                                         />

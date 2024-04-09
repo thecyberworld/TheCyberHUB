@@ -397,11 +397,11 @@ const ContactForm = () => {
                                 id="contextHeading"
                                 value={formData.contextHeading}
                                 onChange={handleChange}
-                                placeholder={"Title"}
+                                placeholder={"Subject"}
                             />
                         </CoverLeft>
                     )}
-                    {isClosed && reason === "internship" ? null : (
+                    {reason === "internship" && !isOpened ? null : (
                         <CoverLeft style={{ alignItems: "start" }}>
                             <ContactFormLabel htmlFor="message">
                                 <MessageIcon />

@@ -26,7 +26,7 @@ const Topic = () => {
                 margin: "5px auto",
             }}
         >
-            <Sidebar topics={topics} onSelectSubtopic={handleSelectSubtopic} />
+            <Sidebar topic={topic} topics={topics} onSelectSubtopic={handleSelectSubtopic} />
             <Container>
                 <h1
                     style={{
@@ -35,7 +35,7 @@ const Topic = () => {
                         textAlign: "center",
                     }}
                 >
-                    {topic.title}
+                    {topic?.title}
                 </h1>
                 <p
                     style={{
@@ -52,7 +52,7 @@ const Topic = () => {
                         margin: "0 auto",
                     }}
                 >
-                    {topic.level}
+                    {topic?.level}
                 </p>
                 <div
                     style={{
@@ -63,7 +63,7 @@ const Topic = () => {
                     }}
                 >
                     {topic?.desc?.map((desc, index) => (
-                        <SubTopic id={desc.title} subtopic={desc} key={index} />
+                        <SubTopic id={desc?.title} subtopic={desc} key={index} />
                     ))}
                 </div>
 
