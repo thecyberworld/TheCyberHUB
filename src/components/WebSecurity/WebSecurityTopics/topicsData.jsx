@@ -16,13 +16,15 @@ const topics = [
                         title: "Reflected XSS",
                         content: "Lab 1 content",
                         level: "Beginner",
-                        link: "labs/lab1",
+                        link: "1",
+                        isCompleted: true,
                     },
                     {
                         title: "Stored XSS",
                         content: "Lab 2 content",
                         level: "Beginner",
-                        link: "labs/lab2",
+                        link: "2",
+                        isCompleted: false,
                     },
                 ],
             },
@@ -33,6 +35,13 @@ const topics = [
             {
                 title: "Reflected XSS",
                 content: `Reflected Cross-Site Scripting (XSS) occurs when an attacker injects malicious scripts into user-provided data, such as input fields or URL parameters. These scripts are then reflected back to the user's browser by the web application, potentially leading to the execution of the malicious code in the context of the victim's session. Here's a javascript code which is vulnerable to Reflected XSS:
+
+![](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/notes/1708420176731.png)
+
+![](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/notes/1702915910929.png)
+
+Reflected Cross-Site Scripting (XSS) occurs when an attacker injects malicious scripts into user-provided data, such as input fields or URL parameters. These scripts are then reflected back to the user's browser by the web application, potentially leading to the execution of the malicious code in the context of the victim's session. Here's a javascript code which is vulnerable to Reflected XSS:
+
 \`\`\`javascript
 let username = new URLSearchParams(window.location.search).get('user');
 document.write("<h1>Hello, " + username + "!</h1>");
@@ -94,6 +103,34 @@ The vulnerable code doesn't validate or sanitize the user input and thus the scr
             {
                 title: "Importance",
                 content: `XSS is a serious security threat that can have significant consequences for both users and organizations. By understanding XSS and implementing appropriate mitigation strategies, developers and security professionals can significantly reduce the risk of XSS attack.`,
+            },
+        ],
+    },
+    {
+        id: 2,
+        title: "Detailed Explanation of Reflected XSS",
+        tags: ["XSS", "Reflected XSS", "Web Security"],
+        level: "Intermediate",
+        category: "XSS",
+        desc: [
+            {
+                title: "What is Reflected XSS?",
+                content:
+                    "Reflected XSS occurs when user input, such as what is entered into a search form, is immediately returned by web applications in error messages or search results. This vulnerability allows attackers to execute malicious scripts in the browser of the user viewing the content, as the browser believes the script is coming from a trusted source.",
+            },
+            {
+                title: "Example of Reflected XSS",
+                content:
+                    "Consider a website with a search feature that reflects user input in its results without proper sanitization or encoding. An attacker could craft a malicious URL with a script embedded within the search parameters. If another user clicks on this link, the malicious script will execute, potentially leading to unauthorized actions performed under the user's credentials.",
+            },
+            {
+                title: "How it Works",
+                content: "Here's a step-by-step illustration of how reflected XSS attacks work:",
+            },
+            {
+                title: "Prevention and Mitigation",
+                content:
+                    "To prevent reflected XSS, developers must implement proper input validation, sanitization, and output encoding. These measures ensure that special characters do not execute as part of the HTML or JavaScript, thus neutralizing the threat.",
             },
         ],
     },
