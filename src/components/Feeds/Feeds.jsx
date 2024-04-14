@@ -11,7 +11,7 @@ import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMainten
 import apiStatus from "src/features/apiStatus";
 import { LeftContainer } from "src/components/Explore/ExploreElements";
 import { getFollowData, reset } from "src/features/follow/followSlice";
-import Sidebar from "./SocialSidebar/Sidebar";
+import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
 
 const Feeds = () => {
     const dispatch = useDispatch();
