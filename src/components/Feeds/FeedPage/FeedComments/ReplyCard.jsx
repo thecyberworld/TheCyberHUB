@@ -7,11 +7,13 @@ import {
     PostHeaderImg,
     PostHeaderUsername,
     PostTimestamp,
+    RightHeaderSection,
     RightSection,
 } from "src/components/Feeds/FeedPosts/FeedPostsElements";
 import { dateFormatter } from "src/components/Common/dateFormatter";
 import PostActionsAndStats from "src/components/Feeds/FeedPosts/PostActionsAndStats";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
+import FeedOptions from "src/components/Feeds/FeedOptions";
 
 const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, updateFeedView }) => {
     const avatar = cdnContentImagesUrl("/user/" + (reply?.avatar || "avatarDummy.png"));
@@ -25,9 +27,12 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                 {/* <RouteLink to={`/feeds/${reply?._id}`}> */}
                 <PostHeader>
                     <LeftSection>
-                        <PostHeaderUsername>{reply?.username}</PostHeaderUsername>
+                        <PostHeaderUsername>{reply?.username}</PostHeaderUsername> •
                     </LeftSection>
-                    • <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
+                    <RightHeaderSection>
+                        <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
+                        <FeedOptions />
+                    </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{reply?.reply}</PostContent>
                 {/* </RouteLink> */}

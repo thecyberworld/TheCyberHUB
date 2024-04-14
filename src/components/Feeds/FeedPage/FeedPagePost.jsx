@@ -9,6 +9,7 @@ import {
     PostTag,
     PostTags,
     PostTimestamp,
+    RightHeaderSection,
     RightSection,
 } from "src/components/Feeds/FeedPosts/FeedPostsElements";
 import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
@@ -19,6 +20,7 @@ import ImageSlider from "src/components/Common/ImageSlider/ImageSlider";
 import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
+import FeedOptions from "src/components/Feeds/FeedOptions";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
     const [showPopupWindow, setShowPopupWindow] = useState(false);
@@ -45,10 +47,14 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                             }}
                         >
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
-                            {feed?.verified && <IconVerified />}
+                            {feed?.verified && <IconVerified />} •
                         </LeftSection>
                     </RouteLink>
-                    • <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
+
+                    <RightHeaderSection>
+                        <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
+                        <FeedOptions />
+                    </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>
 
