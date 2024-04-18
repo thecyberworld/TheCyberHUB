@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FeedOptionsMainContainer = styled.div`
+export const OptionsMainContainer = styled.div`
     position: relative;
     padding: 5px;
     &:hover {
@@ -8,7 +8,7 @@ export const FeedOptionsMainContainer = styled.div`
     }
     cursor: pointer;
 `;
-export const FeedOptionsContainer = styled.div`
+export const OptionsContainer = styled.div`
     width: 200px;
     height: 160px;
     background-color: #0e0e0e;
@@ -20,14 +20,14 @@ export const FeedOptionsContainer = styled.div`
     box-shadow: 2px 2px 10px #333333;
     padding: 20px 0;
 `;
-export const FeedOptionsList = styled.ul`
+export const OptionsList = styled.ul`
     padding: 15px 20px;
     display: flex;
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
 `;
-export const FeedOptionsItem = styled.li`
+export const OptionsItem = styled.li`
     &:hover {
         border-bottom: 0.5px #a1a1a1 solid;
         opacity: 0.7;
@@ -42,7 +42,7 @@ export const OptionLabel = styled.p`
 `;
 export const OptionButton = styled.button``;
 
-export const FeedOptionsClose = styled.button`
+export const OptionsClose = styled.button`
     position: absolute;
     top: 5px;
     right: 5px;

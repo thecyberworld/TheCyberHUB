@@ -20,7 +20,7 @@ import ImageSlider from "src/components/Common/ImageSlider/ImageSlider";
 import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
-import FeedOptions from "src/components/Feeds/FeedOptions";
+import Options from "src/components/Common/ModalWindowOptions";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
     const [showPopupWindow, setShowPopupWindow] = useState(false);
@@ -53,7 +53,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
 
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                        <FeedOptions />
+                        {user._id === feed.user && <Options />}
                     </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>

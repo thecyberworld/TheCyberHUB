@@ -18,7 +18,7 @@ import { dateFormatter } from "src/components/Common/dateFormatter";
 import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
-import FeedOptions from "src/components/Feeds/FeedOptions";
+import Options from "src/components/Common/ModalWindowOptions";
 
 const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefresh, displayAt }) => {
     const avatar = cdnContentImagesUrl("/user/" + (feed?.avatar || "avatarDummy.png"));
@@ -40,7 +40,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                         </LeftSection>
                         <RightHeaderSection>
                             <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                            <FeedOptions />
+                            {user._id === feed.user && <Options />}
                         </RightHeaderSection>
                     </PostHeader>
                     <PostContent>

@@ -13,7 +13,7 @@ import {
 import { dateFormatter } from "src/components/Common/dateFormatter";
 import PostActionsAndStats from "src/components/Feeds/FeedPosts/PostActionsAndStats";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
-import FeedOptions from "src/components/Feeds/FeedOptions";
+import Options from "src/components/Common/ModalWindowOptions";
 
 const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, updateFeedView }) => {
     const avatar = cdnContentImagesUrl("/user/" + (reply?.avatar || "avatarDummy.png"));
@@ -31,7 +31,7 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                     </LeftSection>
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
-                        <FeedOptions />
+                        {user._id === reply.user && <Options />}
                     </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{reply?.reply}</PostContent>

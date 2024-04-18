@@ -5,17 +5,17 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import { MdClose } from "react-icons/md";
 
 import {
-    FeedOptionsList,
-    FeedOptionsContainer,
-    FeedOptionsMainContainer,
-    FeedOptionsItem,
+    OptionsList,
+    OptionsContainer,
+    OptionsMainContainer,
+    OptionsItem,
     OptionLabel,
     OptionButton,
-    FeedOptionsClose,
-} from "./FeedOptionsElements";
-import "./Feed.css";
+    OptionsClose,
+} from "./OptionsElements";
+import "./Options.css";
 
-const FeedOptions = () => {
+const Options = ({ onDelete, onEdit }) => {
     const [isOpen, setIsOpen] = useState(false);
     const modalWindow = useRef(null);
 
@@ -36,43 +36,36 @@ const FeedOptions = () => {
         setIsOpen(option);
     };
 
-    const handleDeleteFeed = () => {};
-    const handleEditFeed = () => {};
     return (
-        <FeedOptionsMainContainer ref={modalWindow} isOpen={isOpen} onClick={(e) => handleClickEvent(e, true)}>
+        <OptionsMainContainer ref={modalWindow} isOpen={isOpen} onClick={(e) => handleClickEvent(e, true)}>
             <BsThreeDotsVertical />
             {isOpen && (
-                <FeedOptionsContainer>
-                    <FeedOptionsClose onClick={(e) => handleClickEvent(e, false)}>
+                <OptionsContainer>
+                    <OptionsClose onClick={(e) => handleClickEvent(e, false)}>
                         <MdClose className="icon icon-close" size="18px" title="Close" />
-                    </FeedOptionsClose>
-                    <FeedOptionsList>
-                        <FeedOptionsItem>
+                    </OptionsClose>
+                    <OptionsList>
+                        <OptionsItem>
                             <OptionLabel>Edit</OptionLabel>
                             <OptionButton>
-                                <TbEditCircle
-                                    className="icon icon-edit"
-                                    size="18px"
-                                    title="Edit"
-                                    onClick={handleEditFeed}
-                                />
+                                <TbEditCircle className="icon icon-edit" size="18px" title="Edit" onClick={onEdit} />
                             </OptionButton>
-                        </FeedOptionsItem>
-                        <FeedOptionsItem>
+                        </OptionsItem>
+                        <OptionsItem>
                             <OptionLabel>Delete</OptionLabel>
                             <OptionButton>
                                 <AiTwotoneDelete
                                     className="icon icon-delete"
                                     size="18px"
                                     title="Delete"
-                                    onClick={handleDeleteFeed}
+                                    onClick={onDelete}
                                 />
                             </OptionButton>
-                        </FeedOptionsItem>
-                    </FeedOptionsList>
-                </FeedOptionsContainer>
+                        </OptionsItem>
+                    </OptionsList>
+                </OptionsContainer>
             )}
-        </FeedOptionsMainContainer>
+        </OptionsMainContainer>
     );
 };
-export default FeedOptions;
+export default Options;
