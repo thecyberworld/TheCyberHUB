@@ -1,7 +1,7 @@
 import React from "react";
 import { NotesListContainer, NotesListNoFound } from "./NoteElements";
 import NoteItem from "./NoteItem";
-import { Reorder , motion } from "framer-motion";
+import { Reorder, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { notesReorder } from "src/features/notes/notesSlice";
 
@@ -13,7 +13,6 @@ const NoteList = ({ children, onPick, onPin, pickedNoteId }) => {
             <Reorder.Group
                 values={children}
                 onReorder={(newValues) => {
-                    console.log(newValues);
                     return dispatch(notesReorder(newValues));
                 }}
             >

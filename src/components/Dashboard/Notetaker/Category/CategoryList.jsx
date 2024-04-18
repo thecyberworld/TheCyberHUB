@@ -1,7 +1,7 @@
 import React from "react";
 import { CategoriesListContainer, CategoriesListNoFound } from "./CategoryElements";
 import CategoryItem from "./CategoryItem";
-import { Reorder , motion } from "framer-motion";
+import { Reorder, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { notesCategoryReorder } from "src/features/notes/notesCategory/notesCategorySlice";
 
@@ -24,7 +24,6 @@ const CategoryList = ({
             <Reorder.Group
                 values={children}
                 onReorder={(newValues) => {
-                    console.log(newValues);
                     return dispatch(notesCategoryReorder(newValues));
                 }}
             >
