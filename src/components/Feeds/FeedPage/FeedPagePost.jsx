@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import {
     FeedPostContainer,
     LeftSection,
@@ -21,18 +24,24 @@ import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import Options from "src/components/Common/ModalWindowOptions";
+import { deleteFeed } from "src/features/feeds/feedsSlice";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
+    const dispatch = useDispatch();
     const [showPopupWindow, setShowPopupWindow] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const handleImageClick = (index) => {
         setSelectedImageIndex(index);
         setShowPopupWindow(true);
     };
+    const navigate = useNavigate();
+
     const avatar = cdnContentImagesUrl("/user/" + (feed?.avatar || "avatarDummy.png"));
 
     const feedImage = (image) => cdnContentImagesUrl(`/feed/${image}`);
-
+    const handleDeleteFeed = async () => {
+        dispatch(deleteFeed(feed._id)).then(() => navigate("/feeds", { replace: true }));
+    };
     return (
         <FeedPostContainer>
             <LeftSection>
@@ -53,7 +62,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
 
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                        {user._id === feed.user && <Options />}
+                        {user._id === feed.user && <Options onDelete={handleDeleteFeed} />}
                     </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>

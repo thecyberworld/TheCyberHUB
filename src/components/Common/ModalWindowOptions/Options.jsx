@@ -45,21 +45,16 @@ const Options = ({ onDelete, onEdit }) => {
                         <MdClose className="icon icon-close" size="18px" title="Close" />
                     </OptionsClose>
                     <OptionsList>
-                        <OptionsItem>
+                        <OptionsItem onClick={onEdit}>
                             <OptionLabel>Edit</OptionLabel>
                             <OptionButton>
-                                <TbEditCircle className="icon icon-edit" size="18px" title="Edit" onClick={onEdit} />
+                                <TbEditCircle className="icon icon-edit" size="18px" title="Edit" />
                             </OptionButton>
                         </OptionsItem>
-                        <OptionsItem>
+                        <OptionsItem onClick={onDelete}>
                             <OptionLabel>Delete</OptionLabel>
                             <OptionButton>
-                                <AiTwotoneDelete
-                                    className="icon icon-delete"
-                                    size="18px"
-                                    title="Delete"
-                                    onClick={onDelete}
-                                />
+                                <AiTwotoneDelete className="icon icon-delete" size="18px" title="Delete" />
                             </OptionButton>
                         </OptionsItem>
                     </OptionsList>
