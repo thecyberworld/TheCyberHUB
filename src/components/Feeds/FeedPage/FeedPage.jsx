@@ -95,7 +95,7 @@ const FeedPage = () => {
         return feedRepliesData?.filter((reply) => reply?.feedId === feedId);
     };
 
-    if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
+    if (isApiLoading || isUserDetailLoading || isFeedLoading || isFeedReplyLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
