@@ -44,6 +44,7 @@ const Feeds = () => {
     };
 
     const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
+    const uniqueFeedTags = [...new Set([...feedTags])];
 
     const combinedData = feeds?.map((feed) => {
         const userDetail = userDetails?.find((user) => user?.user === feed?.user);
@@ -75,7 +76,7 @@ const Feeds = () => {
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
-                        tags={feedTags}
+                        tags={uniqueFeedTags}
                         showOnlyFollowing={showOnlyFollowingPosts}
                         setShowOnlyFollowing={setShowOnlyFollowingPosts}
                         sidebarType={"feeds"}

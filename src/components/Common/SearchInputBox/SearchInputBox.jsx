@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { SearchBox, SearchIcon, SearchInput, CancelIcon, CancelIconWrapper } from "./SearchInputBoxElements";
 import { FcSearch } from "react-icons/fc";
 
-const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
+const SearchInputBox = ({ placeholder, value, onChange, clearValue }) => {
     const inputRef = useRef(null);
     const [isFocused, setIsFocused] = useState(false);
 
@@ -13,9 +13,6 @@ const SearchInputBox = ({ placeholder, value, onChange, setValue }) => {
     const handleFocusOut = () => {
         setIsFocused(false);
         inputRef.current.blur();
-    };
-    const clearValue = () => {
-        setValue("");
     };
 
     return (

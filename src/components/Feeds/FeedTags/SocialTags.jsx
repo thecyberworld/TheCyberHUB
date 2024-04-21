@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { AllTags, Tag, TagsContainer } from "./FeedTagsElements";
 
-const SocialTags = ({ tags, handleClick }) => {
-    const [selectedTags, setSelectedTags] = useState([]);
-
+const SocialTags = ({ tags, handleClick, searchTerm, selectedTags, setSelectedTags }) => {
     const handleTagSelection = (tag) => {
-        if (selectedTags.includes(tag)) {
+        if (selectedTags.includes(tag) || searchTerm.includes(tag)) {
             setSelectedTags(selectedTags.filter((item) => item !== tag));
         } else {
             setSelectedTags([...selectedTags, tag]);

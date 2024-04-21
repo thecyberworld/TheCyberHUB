@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { SearchContainer } from "src/components/Explore/ExploreElements";
 import { FilterButton, FilterContainer } from "src/components/Feeds/FeedsElements";
 import SearchInputBox from "src/components/Common/SearchInputBox";
@@ -84,6 +84,19 @@ const Sidebar = ({
             )}
         </>
     );
+    const [selectedTags, setSelectedTags] = useState([]);
+
+    const displayedSearchText = () => {
+        const words = searchTerm.split(" ");
+        const filteredWords = words.filter((word) => !selectedTags.includes(word));
+        const filteredString = filteredWords.join(" ");
+
+        return filteredString;
+    };
+    const clearSearch = () => {
+        setSelectedTags([]);
+        setSearchTerm("");
+    };
 
     return (
         <SidebarContainer sidebarType={sidebarType}>
@@ -104,15 +117,21 @@ const Sidebar = ({
             <SearchContainer>
                 <SearchInputBox
                     placeholder="Search by name"
-                    value={searchTerm}
+                    value={displayedSearchText()}
                     onChange={handleSearchTermChange}
-                    setValue={setSearchTerm}
+                    clearValue={clearSearch}
                 />
             </SearchContainer>
 
             {sidebarType === "explore" && exploreFiltersComponent}
 
-            <SocialTags tags={tags} handleClick={handleFilterByTags} />
+            <SocialTags
+                tags={tags}
+                handleClick={handleFilterByTags}
+                searchTerm={searchTerm}
+                selectedTags={selectedTags}
+                setSelectedTags={setSelectedTags}
+            />
 
             {(sidebarType === "blogs" || sidebarType === "feeds") && data && data.length > 0 && (
                 <div
