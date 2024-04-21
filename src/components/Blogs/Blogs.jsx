@@ -59,13 +59,13 @@ const Blogs = () => {
 
     const filteredBlogs = blogsData?.filter((blog) => {
         const postedByFollowingUser = !showOnlyFollowingBlogs || followData?.following?.includes(blog.user);
-        const cleanSearchTerm = searchTerm.trim();
+        const cleanSearchTerm = searchTerm.trim().toLowerCase();
         const contentIncludesSearchTerm =
-            !cleanSearchTerm || blog?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || blog?.content?.toLowerCase().includes(cleanSearchTerm) || false;
         const tagsIncludeSearchTerm =
-            !cleanSearchTerm || blog?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || blog?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm) || false;
         const usernameIncludeSearchTerm =
-            !cleanSearchTerm || blog?.username.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || blog?.username?.toLowerCase().includes(cleanSearchTerm) || false;
 
         return (
             postedByFollowingUser &&
@@ -74,6 +74,7 @@ const Blogs = () => {
     });
 
     const blogTags = blogs?.map((blog) => blog?.tags).flat() || [];
+    const uniqueBlogTags = [...new Set([...blogTags])];
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {
         return (
@@ -106,7 +107,7 @@ const Blogs = () => {
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
-                        tags={blogTags}
+                        tags={uniqueBlogTags}
                         showOnlyFollowing={showOnlyFollowingBlogs}
                         setShowOnlyFollowing={setShowOnlyFollowingBlogs}
                         data={blogs}
