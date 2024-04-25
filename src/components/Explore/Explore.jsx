@@ -18,7 +18,7 @@ import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMainten
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import { getFollowData } from "src/features/follow/followSlice";
 import { getConnections } from "src/features/connections/connectionSlice";
-import Sidebar from "src/components/Feeds/SocialSidebar/Sidebar";
+import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
 import { FilterButton } from "src/components/Feeds/FeedsElements";
 import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
