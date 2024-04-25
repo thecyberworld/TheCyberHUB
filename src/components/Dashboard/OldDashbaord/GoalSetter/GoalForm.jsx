@@ -9,6 +9,8 @@ const GoalForm = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+        if (text.trim() === "") return;
+
         dispatch(createGoal({ text }));
         setText("");
     };
