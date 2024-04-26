@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
     DashboardSidebarContainer,
     SidebarTitle,
@@ -19,7 +20,7 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
 
     return (
         <DashboardSidebarContainer isOpen={isOpen}>
-           <UserProfile isOpen={isOpen}>
+            <UserProfile isOpen={isOpen}>
                 <Link to={`/user/${userDetail?.username}`}>
                     <div className="user-profile-image">
                         <img
