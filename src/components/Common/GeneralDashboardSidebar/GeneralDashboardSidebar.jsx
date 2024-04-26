@@ -19,18 +19,20 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
 
     return (
         <DashboardSidebarContainer isOpen={isOpen}>
-            <UserProfile isOpen={isOpen}>
-                <div className="user-profile-image">
-                    <img
-                        style={{
-                            width: "40px",
-                            height: "40px",
-                        }}
-                        src={avatar}
-                        alt={userDetail?.username + " Profile Picture"}
-                    />
-                    <BiSolidCircleIcon />
-                </div>
+           <UserProfile isOpen={isOpen}>
+                <Link to={`/user/${userDetail?.username}`}>
+                    <div className="user-profile-image">
+                        <img
+                            style={{
+                                width: "40px",
+                                height: "40px",
+                            }}
+                            src={avatar}
+                            alt={userDetail?.username + " Profile Picture"}
+                        />
+                        <BiSolidCircleIcon />
+                    </div>
+                </Link>
                 <UserProfileDescription isOpen={isOpen}>
                     <h4>{userDetail?.name}</h4>
                     <span>@{userDetail?.username}</span>
