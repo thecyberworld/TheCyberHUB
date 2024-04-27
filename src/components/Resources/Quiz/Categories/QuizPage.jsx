@@ -186,12 +186,6 @@ export default function QuizPage() {
                                                     borderRadius: "5px",
                                                 }}
                                             >
-                                                afezfbfibzfbzbfezbfbezzfbfbijbbfzfff iueb f f hfen c v v e vbe vebvv
-                                                nnffbfefbjfnefefnejnfjenff fn fnuf i jafinevjnzkfdiezjfnz vj ejf vef ee
-                                                vfeunejiuir rencnerc freuer vuire reinjznjzeof zef efiiv rjr f ervne f
-                                                nvevf vfenv rf revevne fn reinvev evue vebve jveiuv h
-                                                jnrjfnerjnjnijnegene vnv e vri jner v jnf erfref v feij ionz ezf &jv vi
-                                                invenvvjev vnvevev iefenrbvnjre e r en n iuznfjnerzfv nn n v{" "}
                                                 {questions[currentQuestion].additionalInfo}
                                             </div>
                                         </PopUpWindow>
