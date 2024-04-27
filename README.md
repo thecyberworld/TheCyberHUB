@@ -82,8 +82,8 @@ This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
 
 <a href="https://discord.gg/QHBPq6xP5p" ><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
 <a href="https://www.github.com/thecyberworld" ><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="Github" /></a>
-<a href="https://www.twitter.com/thecyberw0rld" ><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>
-<a href="https://linkedin.com/company/thecyberworld" ><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" ></a>
+<a href="https://www.linkedin.com/company/thecyberw0rld/" ><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" ></a>
 <a href="https://t.me/thecyberw0rld" ><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" /></a>
+<a href="https://www.twitter.com/thecyberw0rld" ><img src="https://img.shields.io/badge/twitter-100000?style=for-the-badge&logo=x&logoColor=white" alt="Twitter" /></a>
 
 [Back to top 🖱](#thecyberhub-hub-of-cyber-security)

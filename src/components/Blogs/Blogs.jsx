@@ -9,7 +9,7 @@ import apiStatus from "src/features/apiStatus";
 import BlogCards from "src/components/Blogs/BlogCard/BlogCards";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { getFollowData, reset } from "src/features/follow/followSlice";
-import Sidebar from "src/components/Feeds/SocialSidebar/Sidebar";
+import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
 
 const Blogs = () => {
     const dispatch = useDispatch();

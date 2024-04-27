@@ -45,8 +45,7 @@ const TimelineListItemDisplay = ({ timeLineListItemObj, setTimelineListItems, ra
             return { ...prevTimeline, [updateTimelineItem.id]: { ...updateTimelineItem } };
         });
     };
-    const dateFieldType =
-        new Date(rangeDate.to).getDate() - new Date(rangeDate.from).getDate() > 0 ? "pick date" : "show date";
+    const dateFieldType = rangeDate.to - rangeDate.from > 0 ? "pick date" : "show date";
 
     const handleSelectTopic = (topic) => {
         setSelectedTopic(topic);
@@ -68,7 +67,7 @@ const TimelineListItemDisplay = ({ timeLineListItemObj, setTimelineListItems, ra
                 <InputEditor
                     inputType="text"
                     label="program"
-                    placeholder="Activity/ Speaker (Name/@Username) "
+                    placeholder="Activity / @Speaker"
                     onCopyChanges={handleChangeInput}
                     content={timeLineListItemObj.program}
                 />
