@@ -130,7 +130,7 @@ h3 {
 .form-group textarea,
 .form-group select {
     width: 93%;
-    height: 7vh;
+    height: 51px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
