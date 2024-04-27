@@ -69,23 +69,19 @@ export const InfoButton = styled.button`
     text-decoration: none;
     cursor: pointer;
     display: flex;
-    align-items: center;
-    transition: all 0.2s ease-in-out;
 
+    align-items: end;
+    transition: all 0.2s ease-in-out;
+    font-size: 18px;
     position: absolute;
     top: 35%;
     right: 101%;
 
     z-index: 2;
-    &:active {
-        border-color: #343434;
-        font-size: 1px;
-        transition: all 0.2s ease-out;
-    }
 
     &:hover {
         border-color: #343434;
-        font-size: 20px;
+        font-size: 19px;
     }
 `;
 
@@ -109,6 +105,17 @@ export const QuestionInfo = styled.div`
     @media screen and (max-width: 800px) {
         margin: 50px 30px;
     }
+`;
+export const TooltipText = styled.div`
+    position: relative;
+    top: 27px;
+    right: 89px;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+    width: 58px;
+    background: ;
+    font-size: 10px;
 `;
 export const ResetButton = styled.button`
     width: 100%;

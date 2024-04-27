@@ -13,6 +13,7 @@ import {
     SkipButton,
     ScoreSection,
     InfoButton,
+    TooltipText,
 } from "./CategoriesElements";
 import PopUpWindow from "src/components/Common/PopUpWindow";
 import { BsInfoCircle } from "react-icons/bs";
@@ -41,6 +42,7 @@ export default function QuizPage() {
     const [buttonClicked, setButtonClicked] = useState(false);
     const [disableSkipButton, setDisableSkipButton] = useState(true);
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(false);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -67,27 +69,13 @@ export default function QuizPage() {
     }, [type]);
 
     const handleAnswerButtonClick = (isCorrect, length, i) => {
-        let nextQuestion = currentQuestion;
+        const nextQuestion = currentQuestion;
 
         if (isCorrect === true) {
             setShowAnswer(true);
             setClickedAnswerIndex(null);
             setButtonClicked(true);
-            setDisableSkipButton(false);
-            setTimeout(() => {
-                nextQuestion = currentQuestion + 1;
-                setScore(score + 1);
-                setCurrentQuestion(nextQuestion);
-                setShowAnswer(false);
-                setButtonClicked(false);
-                setDisableSkipButton(true);
-
-                if (nextQuestion < length) {
-                    setCurrentQuestion(nextQuestion);
-                } else {
-                    setShowScore(true);
-                }
-            }, 2000);
+            setDisableSkipButton(true);
         } else if (isCorrect === false) {
             setScore(score - 1);
             setShowAnswer(true);
@@ -127,6 +115,13 @@ export default function QuizPage() {
         } else {
             setShowScore(true);
         }
+    };
+    const handleMouseEnter = () => {
+        setShowTooltip(true);
+    };
+
+    const handleMouseLeave = () => {
+        setShowTooltip(false);
     };
 
     const handleResetButton = () => {
@@ -213,10 +208,17 @@ export default function QuizPage() {
                         <AnswerSection>
                             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
                                 <div key={i} style={{ position: "relative", zIndex: 0 }}>
-                                    {showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex && (
-                                        <InfoButton onClick={(event) => handleAdditionalInfoButton(event)}>
-                                            <BsInfoCircle />
-                                        </InfoButton>
+                                    {showAnswer && answerOption.isCorrect && (
+                                        <div style={{ height: "0px" }}>
+                                            <InfoButton
+                                                onClick={(event) => handleAdditionalInfoButton(event)}
+                                                onMouseEnter={handleMouseEnter}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                <BsInfoCircle />
+                                            </InfoButton>
+                                            {showTooltip && <TooltipText>additional information</TooltipText>}
+                                        </div>
                                     )}
                                     <QuestionButton
                                         onClick={() =>
