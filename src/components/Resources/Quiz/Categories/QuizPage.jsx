@@ -40,7 +40,7 @@ export default function QuizPage() {
     const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
     const [buttonClicked, setButtonClicked] = useState(false);
     const [disableSkipButton, setDisableSkipButton] = useState(true);
-    const [ShowAdditionalInfo, setShowAdditionalInfo] = useState(false);
+    const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -93,7 +93,7 @@ export default function QuizPage() {
             setShowAnswer(true);
             setClickedAnswerIndex(i);
             setButtonClicked(true);
-            if (ShowAdditionalInfo) {
+            if (showAdditionalInfo) {
                 setShowAdditionalInfo(false);
             }
         }
@@ -119,7 +119,7 @@ export default function QuizPage() {
         setCurrentQuestion(nextQuestion);
         setShowAnswer(false);
         setButtonClicked(false);
-        if (ShowAdditionalInfo) {
+        if (showAdditionalInfo) {
             setShowAdditionalInfo(false);
         }
         if (nextQuestion < length) {
@@ -177,7 +177,7 @@ export default function QuizPage() {
                                         maxWidth: "100%",
                                     }}
                                 >
-                                    {ShowAdditionalInfo && showAnswer ? (
+                                    {showAdditionalInfo && showAnswer ? (
                                         <PopUpWindow onClose={handleClosePopup}>
                                             <div
                                                 style={{
