@@ -29,7 +29,7 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
                                 height: "40px",
                             }}
                             src={avatar}
-                            alt={userDetail?.username + " Profile Picture"}
+                            alt={`${userDetail?.username} Profile Picture `}
                         />
                         <BiSolidCircleIcon />
                     </div>
