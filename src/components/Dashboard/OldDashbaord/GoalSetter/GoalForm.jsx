@@ -25,14 +25,9 @@ const GoalForm = () => {
                         value={text}
                         onChange={(e) => setText(e.target.value)}
                         placeholder="What's your goal?"
-                        style={{ color: "#000" }}
                     />
-                    <div className="form-group"></div>
-                </div>
-
-                <div className="form-group">
                     <button className={"btn btn-block"} type={"submit"}>
-                        Add Goal
+                        +
                     </button>
                 </div>
             </form>
