@@ -12,7 +12,10 @@ import {
     ScoreInfo,
     SkipButton,
     ScoreSection,
+    InfoButton,
 } from "./CategoriesElements";
+import PopUpWindow from "src/components/Common/PopUpWindow";
+import { BsInfoCircle } from "react-icons/bs";
 import {
     CBQQuestions,
     PhishingQuestions,
@@ -37,6 +40,7 @@ export default function QuizPage() {
     const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
     const [buttonClicked, setButtonClicked] = useState(false);
     const [disableSkipButton, setDisableSkipButton] = useState(true);
+    const [ShowAdditionalInfo, setShowAdditionalInfo] = useState(false);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -89,6 +93,9 @@ export default function QuizPage() {
             setShowAnswer(true);
             setClickedAnswerIndex(i);
             setButtonClicked(true);
+            if (ShowAdditionalInfo) {
+                setShowAdditionalInfo(false);
+            }
         }
 
         if (nextQuestion < length) {
@@ -98,12 +105,23 @@ export default function QuizPage() {
         }
     };
 
+    const handleAdditionalInfoButton = (event) => {
+        event.stopPropagation();
+        setShowAdditionalInfo((prevState) => !prevState);
+    };
+
+    const handleClosePopup = () => {
+        setShowAdditionalInfo(false);
+    };
     const handleSkipButton = (length) => {
         const nextQuestion = currentQuestion + 1;
         setScore(score + 1);
         setCurrentQuestion(nextQuestion);
         setShowAnswer(false);
         setButtonClicked(false);
+        if (ShowAdditionalInfo) {
+            setShowAdditionalInfo(false);
+        }
         if (nextQuestion < length) {
             setCurrentQuestion(nextQuestion);
         } else {
@@ -150,30 +168,79 @@ export default function QuizPage() {
                             </QuestionCount>
                             <QuestionText>{questions[currentQuestion].questionText}</QuestionText>
                             {showAnswer && disableSkipButton ? (
-                                <SkipButton onClick={() => handleSkipButton(questions.length)}>
-                                    nextQuestion {`>>>`}
-                                </SkipButton>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignSelf: "end",
+                                        margin: "10px",
+                                        maxWidth: "100%",
+                                    }}
+                                >
+                                    {ShowAdditionalInfo && showAnswer ? (
+                                        <PopUpWindow onClose={handleClosePopup}>
+                                            <div
+                                                style={{
+                                                    backgroundColor: "#282828",
+                                                    padding: "30px",
+                                                    borderRadius: "5px",
+                                                }}
+                                            >
+                                                afezfbfibzfbzbfezbfbezzfbfbijbbfzfff iueb f f hfen c v v e vbe vebvv
+                                                nnffbfefbjfnefefnejnfjenff fn fnuf i jafinevjnzkfdiezjfnz vj ejf vef ee
+                                                vfeunejiuir rencnerc freuer vuire reinjznjzeof zef efiiv rjr f ervne f
+                                                nvevf vfenv rf revevne fn reinvev evue vebve jveiuv h
+                                                jnrjfnerjnjnijnegene vnv e vri jner v jnf erfref v feij ionz ezf &jv vi
+                                                invenvvjev vnvevev iefenrbvnjre e r en n iuznfjnerzfv nn n v{" "}
+                                                {questions[currentQuestion].additionalInfo}
+                                            </div>
+                                        </PopUpWindow>
+                                    ) : (
+                                        ""
+                                    )}
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            alignSelf: "end",
+                                            margin: "10px",
+                                            maxWidth: "100%",
+                                        }}
+                                    >
+                                        <SkipButton onClick={() => handleSkipButton(questions.length)}>
+                                            nextQuestion {`>>>`}
+                                        </SkipButton>
+                                    </div>
+                                </div>
                             ) : (
                                 ""
                             )}
                         </QuestionSection>
                         <AnswerSection>
                             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
-                                <QuestionButton
-                                    key={i}
-                                    onClick={() => handleAnswerButtonClick(answerOption.isCorrect, questions.length, i)}
-                                    style={{
-                                        backgroundColor:
-                                            showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex
-                                                ? "red"
-                                                : showAnswer && answerOption.isCorrect
-                                                ? "green"
-                                                : "",
-                                    }}
-                                    disabled={buttonClicked}
-                                >
-                                    {answerOption.answerText}
-                                </QuestionButton>
+                                <div key={i} style={{ position: "relative", zIndex: 0 }}>
+                                    {showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex && (
+                                        <InfoButton onClick={(event) => handleAdditionalInfoButton(event)}>
+                                            <BsInfoCircle />
+                                        </InfoButton>
+                                    )}
+                                    <QuestionButton
+                                        onClick={() =>
+                                            handleAnswerButtonClick(answerOption.isCorrect, questions.length, i)
+                                        }
+                                        style={{
+                                            backgroundColor:
+                                                showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex
+                                                    ? "red"
+                                                    : showAnswer && answerOption.isCorrect
+                                                    ? "green"
+                                                    : "",
+                                        }}
+                                        disabled={buttonClicked}
+                                    >
+                                        {answerOption.answerText}
+                                    </QuestionButton>
+                                </div>
                             ))}
                         </AnswerSection>
                     </QuizBody>

@@ -41,8 +41,8 @@ export const PopupContainer = styled.div`
 
 export const CloseButton = styled(ImCross)`
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 6px;
+    right: 6px;
     background: none;
     border: none;
     cursor: pointer;
