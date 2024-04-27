@@ -16,6 +16,7 @@ const Blogs = () => {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [showOnlyFollowingBlogs, setShowOnlyFollowingBlogs] = useState(false);
+    const [selectedTags, setSelectedTags] = useState([]);
 
     const { user } = useSelector((state) => state.auth);
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -62,18 +63,23 @@ const Blogs = () => {
         const cleanSearchTerm = searchTerm.trim().toLowerCase();
         const contentIncludesSearchTerm =
             !cleanSearchTerm || blog?.content?.toLowerCase().includes(cleanSearchTerm) || false;
-        const tagsIncludeSearchTerm =
-            !cleanSearchTerm || blog?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm) || false;
+        const allFilterTagsIncluded =
+            !selectedTags || selectedTags.length === 0
+                ? true
+                : selectedTags.every((selectedTag) =>
+                      blog?.tags?.some((blogTag) => blogTag.toLowerCase() === selectedTag.toLowerCase()),
+                  );
         const usernameIncludeSearchTerm =
             !cleanSearchTerm || blog?.username?.toLowerCase().includes(cleanSearchTerm) || false;
 
         return (
             postedByFollowingUser &&
-            (!cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm)
+            allFilterTagsIncluded &&
+            (!cleanSearchTerm || contentIncludesSearchTerm || usernameIncludeSearchTerm)
         );
     });
 
-    const blogTags = blogs?.map((blog) => blog?.tags).flat() || [];
+    const blogTags = blogs?.map((blog) => blog?.tags.map((tag) => tag.toLowerCase())).flat() || [];
     const uniqueBlogTags = [...new Set([...blogTags])];
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {
@@ -99,7 +105,7 @@ const Blogs = () => {
             <BlogsContainer>
                 <BlogsSection>
                     <MiddleContainer>
-                        <BlogCards blogs={filteredBlogs || blogs} />
+                        <BlogCards selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
                     </MiddleContainer>
                     <Sidebar
                         sidebarType={"blogs"}
@@ -108,6 +114,8 @@ const Blogs = () => {
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
                         tags={uniqueBlogTags}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                         showOnlyFollowing={showOnlyFollowingBlogs}
                         setShowOnlyFollowing={setShowOnlyFollowingBlogs}
                         data={blogs}

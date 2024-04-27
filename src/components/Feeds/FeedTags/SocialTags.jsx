@@ -1,14 +1,13 @@
 import React from "react";
 import { AllTags, Tag, TagsContainer } from "./FeedTagsElements";
 
-const SocialTags = ({ tags, handleClick, searchTerm, selectedTags, setSelectedTags }) => {
+const SocialTags = ({ tags, handleClick, selectedTags, setSelectedTags }) => {
     const handleTagSelection = (tag) => {
-        if (selectedTags.includes(tag) || searchTerm.includes(tag)) {
+        if (selectedTags.includes(tag)) {
             setSelectedTags(selectedTags.filter((item) => item !== tag));
         } else {
             setSelectedTags([...selectedTags, tag]);
         }
-        handleClick(tag);
     };
     return (
         <TagsContainer>
@@ -17,10 +16,7 @@ const SocialTags = ({ tags, handleClick, searchTerm, selectedTags, setSelectedTa
                     (tag, key) =>
                         tag.length !== 0 && (
                             <Tag
-                                style={{
-                                    background: selectedTags.includes(tag) ? "#FF6B08" : "#1a1a1a",
-                                    color: selectedTags.includes(tag) ? "#0A0A0A" : "",
-                                }}
+                                isSelected={selectedTags.includes(tag)}
                                 key={key}
                                 onClick={() => {
                                     handleTagSelection(tag);

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { SearchContainer } from "src/components/Explore/ExploreElements";
 import { FilterButton, FilterContainer } from "src/components/Feeds/FeedsElements";
 import SearchInputBox from "src/components/Common/SearchInputBox";
-import { filterByTags } from "src/components/Common/Tags/filterByTags";
 import SocialTags from "src/components/Feeds/FeedTags/SocialTags";
 import { SidebarContainer } from "./SidebarElements";
 import { RouterLink } from "src/components/Tools/ToolsElements";
@@ -23,11 +22,9 @@ const Sidebar = ({
     exploreFiltersComponent,
     sidebarType,
     data,
+    selectedTags,
+    setSelectedTags,
 }) => {
-    const handleFilterByTags = (tag) => {
-        filterByTags(tag, searchTerm, setSearchTerm);
-    };
-
     const renderFollowingFilterButtons = () => (
         <>
             {sidebarType === "explore" ? (
@@ -84,19 +81,6 @@ const Sidebar = ({
             )}
         </>
     );
-    const [selectedTags, setSelectedTags] = useState([]);
-
-    const displayedSearchText = () => {
-        const words = searchTerm.split(" ");
-        const filteredWords = words.filter((word) => !selectedTags.includes(word));
-        const filteredString = filteredWords.join(" ");
-
-        return filteredString;
-    };
-    const clearSearch = () => {
-        setSelectedTags([]);
-        setSearchTerm("");
-    };
 
     return (
         <SidebarContainer sidebarType={sidebarType}>
@@ -117,9 +101,9 @@ const Sidebar = ({
             <SearchContainer>
                 <SearchInputBox
                     placeholder="Search by name"
-                    value={displayedSearchText()}
+                    value={searchTerm}
                     onChange={handleSearchTermChange}
-                    clearValue={clearSearch}
+                    setValue={setSearchTerm}
                 />
             </SearchContainer>
 
@@ -127,7 +111,6 @@ const Sidebar = ({
 
             <SocialTags
                 tags={tags}
-                handleClick={handleFilterByTags}
                 searchTerm={searchTerm}
                 selectedTags={selectedTags}
                 setSelectedTags={setSelectedTags}

@@ -38,13 +38,13 @@ const Feeds = () => {
 
     const [showOnlyFollowingPosts, setShowOnlyFollowingPosts] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
-
+    const [selectedTags, setSelectedTags] = useState([]);
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
-    const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
-    const uniqueFeedTags = [...new Set([...feedTags])];
+    const feedTags = feeds?.map((feed) => feed && feed?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const uniqueFeedTags = [...new Set(feedTags)];
 
     const combinedData = feeds?.map((feed) => {
         const userDetail = userDetails?.find((user) => user?.user === feed?.user);
@@ -68,6 +68,7 @@ const Feeds = () => {
                         feeds={combinedData}
                         isFeedLoading={isFeedLoading}
                         showOnlyFollowingPosts={showOnlyFollowingPosts}
+                        selectedTags={selectedTags}
                     />
                 </MiddleSection>
                 <LeftContainer style={{ padding: "25px 0" }}>
@@ -81,6 +82,8 @@ const Feeds = () => {
                         setShowOnlyFollowing={setShowOnlyFollowingPosts}
                         sidebarType={"feeds"}
                         data={feeds}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                     />
                 </LeftContainer>
             </FeedsContainer>
