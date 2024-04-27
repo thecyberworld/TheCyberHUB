@@ -22,7 +22,7 @@ const GoalForm = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         if (text.trim() === "") {
-            toast("Cannot submit empty goal");
+            toast.warn("Cannot submit empty goal");
             setError(true);
             return;
         }
