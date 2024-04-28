@@ -11,7 +11,7 @@ import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSp
 import { getAllFeeds } from "src/features/feeds/feedsSlice";
 import { HiRefresh } from "react-icons/hi";
 
-const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, displayAt }) => {
+const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, displayAt, selectedTags }) => {
     const dispatch = useDispatch();
 
     const { user } = useSelector((state) => state.auth);
@@ -50,13 +50,18 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
         const cleanSearchTerm = removeInvisibleChars(searchTerm);
         const contentIncludesSearchTerm =
             !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
-        const tagsIncludeSearchTerm =
-            !cleanSearchTerm || feed?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+        const allFilterTagsIncluded =
+            !selectedTags || selectedTags.length === 0
+                ? true
+                : selectedTags.every((selectedTag) =>
+                      feed?.tags?.some((postTag) => postTag.toLowerCase() === selectedTag.toLowerCase()),
+                  );
         const usernameIncludeSearchTerm =
             !cleanSearchTerm || feed?.username.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
         return (
             postedByFollowingUser &&
-            (!cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm)
+            allFilterTagsIncluded &&
+            (!cleanSearchTerm || contentIncludesSearchTerm || usernameIncludeSearchTerm)
         );
     });
 

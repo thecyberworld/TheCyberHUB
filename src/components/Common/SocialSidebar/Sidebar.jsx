@@ -2,7 +2,6 @@ import React from "react";
 import { SearchContainer } from "src/components/Explore/ExploreElements";
 import { FilterButton, FilterContainer } from "src/components/Feeds/FeedsElements";
 import SearchInputBox from "src/components/Common/SearchInputBox";
-import { filterByTags } from "src/components/Common/Tags/filterByTags";
 import SocialTags from "src/components/Feeds/FeedTags/SocialTags";
 import { SidebarContainer } from "./SidebarElements";
 import { RouterLink } from "src/components/Tools/ToolsElements";
@@ -23,11 +22,9 @@ const Sidebar = ({
     exploreFiltersComponent,
     sidebarType,
     data,
+    selectedTags,
+    setSelectedTags,
 }) => {
-    const handleFilterByTags = (tag) => {
-        filterByTags(tag, searchTerm, setSearchTerm);
-    };
-
     const renderFollowingFilterButtons = () => (
         <>
             {sidebarType === "explore" ? (
@@ -112,7 +109,12 @@ const Sidebar = ({
 
             {sidebarType === "explore" && exploreFiltersComponent}
 
-            <SocialTags tags={tags} handleClick={handleFilterByTags} />
+            <SocialTags
+                tags={tags}
+                searchTerm={searchTerm}
+                selectedTags={selectedTags}
+                setSelectedTags={setSelectedTags}
+            />
 
             {(sidebarType === "blogs" || sidebarType === "feeds") && data && data.length > 0 && (
                 <div
