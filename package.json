@@ -16,7 +16,7 @@
         "@radix-ui/react-slot": "^1.0.1",
         "@reduxjs/toolkit": "^1.9.1",
         "@uiw/react-md-editor": "^4.0.1",
-        "add-to-calendar-button-react": "^2.5.9",
+        "add-to-calendar-button-react": "^2.6.9",
         "axios": "^1.6.4",
         "chart.js": "^4.4.1",
         "crypto-js": "^4.2.0",
@@ -75,7 +75,7 @@
         "postcss": "^8.4.32",
         "prettier": "^2.7.1",
         "tailwindcss": "^3.3.6",
-        "vite": "^3.1.8"
+        "vite": "^5.2.8"
     },
     "husky": {
         "hooks": {

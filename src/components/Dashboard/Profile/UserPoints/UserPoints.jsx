@@ -18,7 +18,8 @@ import { ExpIcon } from "src/components/Header/ExpElemenets";
 const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
     const isCompleted = userDetail?.solved?.map((ctf) => (ctf?.isCompleted ? 1 : 0));
     const roomCompleted = isCompleted?.reduce((a, b) => a + b, 0);
-    const blogCount = blogs?.filter((blog) => blog?.username === userDetail?.username)?.length;
+    const userBlogs = blogs.filter((blog) => blog?.userDetail === userDetail?.id);
+    const blogCount = userBlogs?.length || 0;
 
     const userRank = getUserRank(userDetail || [], allUserDetail || []);
     return (
