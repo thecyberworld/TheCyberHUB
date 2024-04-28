@@ -1,32 +1,30 @@
 import React, { useState } from "react";
-import { AddCommentFormContainer, Form, Input } from "src/components/Blogs/BlogComments/AddCommentFormElements";
-import { addBlogComment } from "src/features/blogs/blogComments/blogCommentSlice"; // Import the comment slice action
 import { useDispatch } from "react-redux";
 import { ButtonGreen } from "src/components/Other/MixComponents/Buttons/ButtonElements";
+import { AddCommentFormContainer, StyledForm, Input } from "src/components/Blogs/BlogComments/AddCommentFormElements";
+import { addBlogComment } from "src/features/blogs/blogComments/blogCommentSlice"; // Import the comment slice action
 
 const AddCommentForm = (props) => {
-    const [addCommentData, setAddCommentData] = useState({ comment: "" });
-    const { comment } = addCommentData;
+    const [comment, setComment] = useState("");
     const [error, setError] = useState("");
     const dispatch = useDispatch();
 
     const onChange = (e) => {
-        setAddCommentData({
-            ...addCommentData,
-            [e.target.name]: e.target.value,
-        });
+        setComment(e.target.value);
         setError("");
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (comment !== "") {
+        if (comment.trim() !== "") {
+            if (comment.length > 500) {
+                setError("Comment is too long.");
+                return;
+            }
             const commentData = { comment };
             dispatch(addBlogComment({ blogId: props.blogId, commentData }));
-            setAddCommentData({
-                comment: "",
-            });
+            setComment("");
             setError("");
         } else {
             setError("Please add a comment first.");
@@ -35,11 +33,11 @@ const AddCommentForm = (props) => {
 
     return (
         <AddCommentFormContainer>
-            <Form onSubmit={handleSubmit}>
+            <StyledForm onSubmit={handleSubmit}>
                 <Input
                     type="text"
                     name="comment"
-                    id={"comment"}
+                    id="comment"
                     value={comment}
                     onChange={onChange}
                     placeholder="Add your comment here..."
@@ -47,8 +45,22 @@ const AddCommentForm = (props) => {
                 <ButtonGreen width={"100%"} type="submit">
                     Submit
                 </ButtonGreen>
-            </Form>
-            {error && <p style={{ marginTop: "10px" }}>{error}</p>}
+            </StyledForm>
+            {error && (
+                <p
+                    style={{
+                        position: "fixed",
+                        bottom: "20px",
+                        right: "20px",
+                        backgroundColor: "red",
+                        color: "white",
+                        padding: "10px",
+                        borderRadius: "5px",
+                    }}
+                >
+                    {error}
+                </p>
+            )}
         </AddCommentFormContainer>
     );
 };

@@ -88,3 +88,25 @@ export const Submit = styled.button`
     font-size: 13px;
     font-family: "Roboto", sans-serif;
 `;
+export const addCommentFormContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 30px;
+    maxheight: 300px;
+    overflowy: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+`;
+
+export const StyledForm = styled(Form)`
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 10px;
+    maxheight: 200px;
+    overflowy: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+`;
