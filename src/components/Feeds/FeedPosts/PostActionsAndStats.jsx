@@ -40,7 +40,7 @@ const PostActionsAndStats = ({
                 dispatch(updateView({ itemId: feed?._id }));
             }
         }
-    }, [updateFeedView]);
+    }, []);
 
     const filteredViews = views.filter(
         (view, index, self) => index === self.findIndex((v) => v.itemId === view.itemId && v.user === view.user),

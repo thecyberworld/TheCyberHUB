@@ -33,22 +33,27 @@ export const addFeedComment = createAsyncThunk("comments/addComment", async ({ f
 });
 
 // Update a comment
-export const updateComment = createAsyncThunk("comments/updateComment", async ({ commentId, content }, thunkAPI) => {
-    try {
-        const token = thunkAPI.getState().auth.user.token;
-        return await feedService.updateComment(commentId, content, token);
-    } catch (error) {
-        const message =
-            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
-        return thunkAPI.rejectWithValue(message);
-    }
-});
+export const updateComment = createAsyncThunk(
+    "comments/updateComment",
+    async ({ feedId, commentId, content }, thunkAPI) => {
+        try {
+            const token = thunkAPI.getState().auth.user.token;
+            return await feedService.updateComment(feedId, commentId, content, token);
+        } catch (error) {
+            const message =
+                (error.response && error.response.data && error.response.data.message) ||
+                error.message ||
+                error.toString();
+            return thunkAPI.rejectWithValue(message);
+        }
+    },
+);
 
 // Delete a comment
-export const deleteComment = createAsyncThunk("comments/deleteComment", async (commentId, thunkAPI) => {
+export const deleteComment = createAsyncThunk("comments/deleteComment", async (feedId, commentId, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        await feedService.deleteComment(commentId, token);
+        await feedService.deleteComment(feedId, commentId, token);
         return commentId;
     } catch (error) {
         const message =
