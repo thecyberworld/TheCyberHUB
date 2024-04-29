@@ -98,38 +98,22 @@ export const RedirectButton = styled.a`
 `;
 
 export const ButtonGreen = styled.button`
-    text-decoration: none;
+    padding: 15px 10px;
+    font-size: 1.5rem;
+    background: rgb(16, 16, 16);
+    color: rgb(245, 245, 245);
+    border: 1px solid rgb(42, 42, 42);
     border-radius: 5px;
-
-    border: 2px solid #262626;
-
-    white-space: nowrap;
-    padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
-    font-size: ${({ fontBig }) => (fontBig ? "22px" : "18px")};
-    outline: none;
+    margin: 5px 0px;
+    width: 100%;
     cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #151515;
-    background: #ff6b08;
-
+    font-family: "Roboto", sans-serif;
     transition: all 0.2s ease-in-out;
 
     &:hover {
-        padding: ${({ big }) => (big ? "12px 46px" : "12px 30px")};
-        font-size: ${({ fontBig }) => (fontBig ? "24px" : "20px")};
-        //box-shadow: 0 0 10px -5px rgb(23, 243, 30);
-        //-webkit-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
-        //-moz-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
         background: #ff6b08;
         color: black;
         border-color: #343434;
-        // font-size: 18px;
-    }
-
-    @media screen and (max-width: 600px) {
-        padding: 10px 10px;
     }
 `;
 
