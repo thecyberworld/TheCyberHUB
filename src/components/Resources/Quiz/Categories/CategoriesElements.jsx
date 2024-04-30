@@ -109,11 +109,11 @@ export const QuestionInfo = styled.div`
 export const TooltipText = styled.div`
     position: relative;
     top: 27px;
-    right: 89px;
+    right: 95px;
     display: flex;
     align-items: center;
     font-weight: 100;
-    width: 58px;
+    width: 65px;
     font-size: 10px;
 `;
 export const ResetButton = styled.button`
