@@ -3,7 +3,7 @@ import { NotesListContainer, NotesListNoFound } from "./NoteElements";
 import NoteItem from "./NoteItem";
 import { Reorder, motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { notesReorder , updateNote } from "src/features/notes/notesSlice";
+import { notesReorder, updateNote } from "src/features/notes/notesSlice";
 
 const NoteList = ({ children, onPick, onPin, pickedNoteId }) => {
     const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const NoteList = ({ children, onPick, onPin, pickedNoteId }) => {
     return (
         <NotesListContainer>
             <button className="bg-white" onClick={() => updateNoteId(sortedNotes)}>
-                NotesId
+                Update NoteId
             </button>
             {!sortedNotes.length && <NotesListNoFound>There Are No Notes</NotesListNoFound>}
             <Reorder.Group
