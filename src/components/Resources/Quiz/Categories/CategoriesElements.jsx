@@ -114,7 +114,6 @@ export const TooltipText = styled.div`
     align-items: center;
     font-weight: 100;
     width: 58px;
-    background: ;
     font-size: 10px;
 `;
 export const ResetButton = styled.button`
