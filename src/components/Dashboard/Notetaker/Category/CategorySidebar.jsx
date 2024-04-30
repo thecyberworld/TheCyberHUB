@@ -11,9 +11,10 @@ import {
 import CategoryList from "./CategoryList";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyCategory from "./ModifyCategory";
-import { createNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
-import { useDispatch } from "react-redux";
+import { createNotesCategory, deleteNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { BiTrash } from "react-icons/bi";
 
 const CategorySidebar = ({
     pickedCategory,
@@ -59,7 +60,14 @@ const CategorySidebar = ({
         handleCloseModal();
         onPick({});
     };
+    const { selectedCategories } = useSelector((state) => state.notesCategories);
 
+    const deleteAllCategories = () => {
+        const userConfirmed = window.confirm("Are you sure you want to delete all selected categories?");
+        if (userConfirmed) {
+            selectedCategories.map((e) => dispatch(deleteNotesCategory(e)));
+        }
+    };
     return (
         <CategoriesSidebarContainer>
             <CategoriesSidebarHeader>
@@ -83,6 +91,16 @@ const CategorySidebar = ({
                 <LoadingSpinner />
             ) : (
                 <>
+                    {selectedCategories.length > 0 ? (
+                        <div
+                            onClick={deleteAllCategories}
+                            style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}
+                        >
+                            <BiTrash size="25px" fill="red" />
+                            <span style={{ marginRight: "5px", color: "orange" }}>Delete All</span>
+                        </div>
+                    ) : null}
+
                     <CategoryList
                         required
                         onPick={onPick}
