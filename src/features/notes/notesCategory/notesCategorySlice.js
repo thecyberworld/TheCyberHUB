@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import notesCategoryService from "./notesCategoryService";
 
 const initialState = {
+    selectedCategories: [],
     notesCategories: [],
     isNotesCategoryError: false,
     isNotesCategorySuccess: false,
@@ -56,12 +57,56 @@ export const deleteNotesCategory = createAsyncThunk("notesCategory/delete", asyn
         return thunkAPI.rejectWithValue(message);
     }
 });
+// IsSelected user category: note
+export const AddSelectedCategory = createAsyncThunk("notesCategory/selected", async (id, thunkAPI) => {
+    try {
+        const isExist = initialState.selectedCategories.findIndex((c) => c.id === id);
+        console.log(isExist);
+        if (isExist === -1) {
+            return id;
+        } else {
+            return thunkAPI.rejectWithValue("mesasge");
+        }
+    } catch (error) {
+        return thunkAPI.rejectWithValue();
+    }
+});
+// RemoveSelected note
+export const RemoveSelectedCategory = createAsyncThunk("notesCategory/remove", async (id, thunkAPI) => {
+    try {
+        const isExist = initialState.selectedCategories.findIndex((c) => c === id);
+        console.log(initialState.selectedCategories);
+        console.log(isExist);
+        if (isExist !== -1) {
+            return id;
+        } else {
+            return thunkAPI.rejectWithValue("mesasge");
+        }
+    } catch (error) {
+        return thunkAPI.rejectWithValue();
+    }
+});
 
+/* export const deleteAllSelectedCategory = createAsyncThunk("notesCategory/delete",(id,thunkApi)=>{
+
+    try {
+        
+    } catch (error) {
+        
+    }
+}) */
 export const notesCategorySlice = createSlice({
     name: "notesCategories",
     initialState,
     reducers: {
         notesCategoryReset: () => initialState,
+        RemoveCategory: (state, action) => {
+            const isExist = state.selectedCategories.findIndex((c) => c === action.payload);
+
+            if (isExist !== -1) {
+                state.selectedCategories = state.selectedCategories.filter((e) => e !== action.payload);
+            }
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -131,9 +176,15 @@ export const notesCategorySlice = createSlice({
                 state.isNotesCategoryLoading = false;
                 state.isNotesCategoryError = true;
                 state.notesCategoryMessage = action.payload;
+            })
+            .addCase(AddSelectedCategory.fulfilled, (state, action) => {
+                state.selectedCategories.push(action.payload);
+            })
+            .addCase(RemoveSelectedCategory.fulfilled, (state, action) => {
+                /*  state.selectedCategories = state.selectedCategories.filter((category) => category !== action.payload) */
             });
     },
 });
 
-export const { notesCategoryReset } = notesCategorySlice.actions;
+export const { notesCategoryReset, RemoveCategory } = notesCategorySlice.actions;
 export default notesCategorySlice.reducer;

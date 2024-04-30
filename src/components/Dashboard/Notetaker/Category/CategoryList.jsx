@@ -13,24 +13,28 @@ const CategoryList = ({
     editCategoryId,
 }) => {
     return (
-        <CategoriesListContainer required={required} addMode={addMode}>
-            {!children.length && !addMode && (
-                <CategoriesListNoFound>There Are No {<br />} Unique Categories</CategoriesListNoFound>
-            )}
-            {children.map((category) => (
-                <CategoryItem
-                    key={category.name}
-                    id={category._id}
-                    category={category}
-                    onPick={onPick}
-                    isPicked={category.name === pickedCategory.name}
-                    requiredCategory={required}
-                    defaultCategory={defaultCategory}
-                    onEditCategory={onEditCategory}
-                    stillEditing={editCategoryId === category._id}
-                />
-            ))}
-        </CategoriesListContainer>
+        <>
+            <div></div>
+            <CategoriesListContainer required={required} addMode={addMode}>
+                {!children.length && !addMode && (
+                    <CategoriesListNoFound>There Are No {<br />} Unique Categories</CategoriesListNoFound>
+                )}
+
+                {children.map((category) => (
+                    <CategoryItem
+                        key={category.name}
+                        id={category._id}
+                        category={category}
+                        onPick={onPick}
+                        isPicked={category.name === pickedCategory.name}
+                        requiredCategory={required}
+                        defaultCategory={defaultCategory}
+                        onEditCategory={onEditCategory}
+                        stillEditing={editCategoryId === category._id}
+                    />
+                ))}
+            </CategoriesListContainer>
+        </>
     );
 };
 export default CategoryList;

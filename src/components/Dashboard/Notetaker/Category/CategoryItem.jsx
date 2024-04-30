@@ -12,8 +12,14 @@ import {
     CategoryMenuButtonLabel,
     CategoryMenuButtons,
     CategoryOptionsMenuContainer,
+    CategoriesSidebarCheckbox,
 } from "./CategoryElements";
-import { deleteNotesCategory, updateNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
+import {
+    AddSelectedCategory,
+    RemoveCategory,
+    deleteNotesCategory,
+    updateNotesCategory,
+} from "src/features/notes/notesCategory/notesCategorySlice";
 import "src/components/Dashboard/Notetaker/NoteApp.css";
 import ModifyCategory from "./ModifyCategory";
 import { toast } from "react-toastify";
@@ -85,6 +91,11 @@ const CategoryItem = ({
             ) : (
                 <CategoryItemElementContainer>
                     <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
+                        <CategoriesSidebarCheckbox
+                            onChange={(e) => {
+                                e.target.checked ? dispatch(AddSelectedCategory(id)) : dispatch(RemoveCategory(id));
+                            }}
+                        />
                         <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
                     </CategoryItemElement>
                     <CategoryOptionsMenuContainer>

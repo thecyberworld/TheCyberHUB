@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+export const CategoriesSidebarCheckbox = styled.input.attrs({ type: "checkbox" })`
+    accent-color: orange;
+`;
+
 export const CategoriesSidebarContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -61,6 +65,8 @@ export const CategoryItemElementContainer = styled.div`
 `;
 
 export const CategoryItemElement = styled.li`
+    display: flex;
+    flex-direction: row;
     position: relative;
     width: 100%;
     padding: 10px;
