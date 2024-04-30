@@ -30,7 +30,7 @@ const addComment = async (feedId, replyData, token) => {
 };
 
 // Update a comment
-const updateComment = async (commentId, content, token) => {
+const updateComment = async (feedId, commentId, content, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
@@ -46,7 +46,7 @@ const updateComment = async (commentId, content, token) => {
 };
 
 // Delete a comment
-const deleteComment = async (commentId, token) => {
+const deleteComment = async (feedId, commentId, token) => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,

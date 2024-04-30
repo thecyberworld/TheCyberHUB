@@ -7,14 +7,20 @@ import {
     PostHeaderImg,
     PostHeaderUsername,
     PostTimestamp,
+    RightHeaderSection,
     RightSection,
 } from "src/components/Feeds/FeedPosts/FeedPostsElements";
 import { dateFormatter } from "src/components/Common/dateFormatter";
 import PostActionsAndStats from "src/components/Feeds/FeedPosts/PostActionsAndStats";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
+import Options from "src/components/Common/ModalWindowOptions";
+// import { useDispatch } from "react-redux";
+// import { deleteComment } from "src/features/feeds/feedComments/feedCommentsSlice";
 
 const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, updateFeedView }) => {
     const avatar = cdnContentImagesUrl("/user/" + (reply?.avatar || "avatarDummy.png"));
+    // const dispatch = useDispatch();
+    const handleCommentDelete = () => {};
 
     return (
         <FeedPostContainer displayAt={displayAt}>
@@ -25,9 +31,12 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                 {/* <RouteLink to={`/feeds/${reply?._id}`}> */}
                 <PostHeader>
                     <LeftSection>
-                        <PostHeaderUsername>{reply?.username}</PostHeaderUsername>
+                        <PostHeaderUsername>{reply?.username}</PostHeaderUsername> •
                     </LeftSection>
-                    • <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
+                    <RightHeaderSection>
+                        <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
+                        {user._id === reply.user && <Options onDelete={handleCommentDelete} />}
+                    </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{reply?.reply}</PostContent>
                 {/* </RouteLink> */}

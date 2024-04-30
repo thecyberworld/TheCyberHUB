@@ -21,29 +21,31 @@ const Feeds = () => {
         (state) => state.userDetail,
     );
     const { user } = useSelector((state) => state.auth);
-
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         if (isFeedError) console.log(feedMessage);
         if (isUserDetailError) console.log(userDetailMessage);
 
         dispatch(getAllFeeds());
         dispatch(getAllUserDetails());
+        setIsLoading(false);
         user && dispatch(getFollowData(user?._id));
         return () => {
             dispatch(feedReset());
             dispatch(userDetailReset());
             dispatch(reset());
         };
-    }, [dispatch]);
+    }, [dispatch, setIsLoading]);
 
     const [showOnlyFollowingPosts, setShowOnlyFollowingPosts] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
-
+    const [selectedTags, setSelectedTags] = useState([]);
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
-    const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
+    const feedTags = feeds?.map((feed) => feed && feed?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const uniqueFeedTags = [...new Set(feedTags)];
 
     const combinedData = feeds?.map((feed) => {
         const userDetail = userDetails?.find((user) => user?.user === feed?.user);
@@ -53,7 +55,7 @@ const Feeds = () => {
         return { ...feed, username, avatar, verified };
     });
 
-    if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
+    if (isApiLoading || isUserDetailLoading || isFeedLoading || isLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
@@ -67,6 +69,7 @@ const Feeds = () => {
                         feeds={combinedData}
                         isFeedLoading={isFeedLoading}
                         showOnlyFollowingPosts={showOnlyFollowingPosts}
+                        selectedTags={selectedTags}
                     />
                 </MiddleSection>
                 <LeftContainer style={{ padding: "25px 0" }}>
@@ -75,11 +78,13 @@ const Feeds = () => {
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
-                        tags={feedTags}
+                        tags={uniqueFeedTags}
                         showOnlyFollowing={showOnlyFollowingPosts}
                         setShowOnlyFollowing={setShowOnlyFollowingPosts}
                         sidebarType={"feeds"}
                         data={feeds}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                     />
                 </LeftContainer>
             </FeedsContainer>
