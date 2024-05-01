@@ -35,7 +35,7 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                     </LeftSection>
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
-                        {user._id === reply.user && <Options onDelete={handleCommentDelete} />}
+                        {user && user._id === reply.user && <Options onDelete={handleCommentDelete} />}
                     </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{reply?.reply}</PostContent>

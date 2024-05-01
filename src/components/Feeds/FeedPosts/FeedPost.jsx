@@ -44,7 +44,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                         </LeftSection>
                         <RightHeaderSection>
                             <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                            {user._id === feed.user && <Options onDelete={handleDeleteFeed} />}
+                            {user && user._id === feed.user && <Options onDelete={handleDeleteFeed} />}
                         </RightHeaderSection>
                     </PostHeader>
                     <PostContent>
