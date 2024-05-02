@@ -48,7 +48,8 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                             {feed?.verified && <IconVerified />}
                         </LeftSection>
                     </RouteLink>
-                    • <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
+                    {/* • */}
+                    <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                 </PostHeader>
                 <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>
 

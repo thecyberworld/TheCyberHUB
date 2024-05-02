@@ -27,7 +27,7 @@ export const SponsorsH1 = styled.div`
 `;
 
 export const TextGreenBG = styled.p`
-    color: #73ff00;
+    color: #ff6b08;
     margin: 0 15px;
     @media screen and (max-width: 450px) {
         margin: 0;
@@ -45,6 +45,7 @@ export const SponsorsDescriptionContainer = styled.div`
 export const SponsorsDescription = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
 `;
 
 export const DotSymbol = styled(BsSquareFill)`
@@ -53,6 +54,8 @@ export const DotSymbol = styled(BsSquareFill)`
     display: inline;
     justify-content: center;
     text-align: center;
+    margin-top: 23px;
+    margin-right: 10px;
 `;
 export const SponsorsP = styled.p`
     margin: 10px;
@@ -84,8 +87,8 @@ export const SponsorsLink = styled.a`
 
 export const BuyMeACoffeeImage = styled.img`
     cursor: pointer;
-    color: #73ff00;
-    background: #73ff00;
+    color: #ff6b08;
+    background: #ff6b08;
     border-radius: 5px;
     font-size: 12px;
     word-break: break-all;

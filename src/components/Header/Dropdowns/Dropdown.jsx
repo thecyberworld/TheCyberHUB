@@ -33,11 +33,11 @@ export default function Dropdown({
             to: "/community-events",
             desc: "Checkout and Join to our Weekly Cyber Community Events",
         },
-        // {
-        //     title: "Volunteer",
-        //     to: "/volunteer",
-        //     desc: `Volunteer for Change: \nJoin Our Community Program and Make an Impact.`,
-        // },
+        {
+            title: "Volunteer",
+            to: "/volunteer",
+            desc: `Volunteer for Change: \nJoin Our Community Program and Make an Impact.`,
+        },
         // {
         //     title: "TheCyberXcel",
         //     to: "/thecyberxcel",
@@ -55,14 +55,12 @@ export default function Dropdown({
         { title: "Roadmap", to: "/roadmaps", desc: "Guide to becoming a cybersecurity professional" },
         { title: "Interview Questions", to: "/interviewQuestions", desc: "Prepare for your interview" },
         { title: "Quiz", to: "/quiz", desc: "Test your knowledge" },
-        { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
+        // { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
         { title: "Tools", to: "tools", desc: "Tools for your hacking needs" },
         { title: "Community", to: "/community", desc: "Join our community" },
         { title: "Methodology", to: "/resources/methodology", desc: "Test your knowledge" },
         { title: "Victim Help", to: "/victimhelp", desc: "Guidance and Support for Victim" },
-
-        // { title: "Events", to: "/events", desc: "Find Cybersecurity Events" },
-        // { title: "Support", to: "/support", desc: "Support us" },
+        { title: "Support", to: "/support", desc: "Support us" },
         // {title: "News", to: "/cyberNews", desc: "Stay up to date with the latest news"},
     ];
 

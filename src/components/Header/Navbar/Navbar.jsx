@@ -79,11 +79,11 @@ const Navbar = ({ isOpen, toggle }) => {
                 <NavMenu>
                     {[
                         { to: "explore", title: "Explore", dropdown: "explore" },
-                        { to: "aiChat", title: "AI Chat", dropdown: "aiChat" },
                         { to: "feeds", title: "Feeds", dropdown: "feeds" },
                         { to: "blogs", title: "Blogs", dropdown: "blogs" },
                         // { to: "forum", title: "Forum", dropdown: "forum" },
                         // { to: "courses", title: "Courses", dropdown: "courses" },
+                        { to: "aiChat", title: "AI ", dropdown: "aiChat" },
                         { to: "ctf", title: "CTF", dropdown: "ctf" },
                         { to: "websecurity", title: "Web Security", dropdown: "websecurity" },
                         {

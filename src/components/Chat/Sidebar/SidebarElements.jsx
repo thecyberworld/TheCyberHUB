@@ -60,7 +60,7 @@ export const ChannelItem = styled.div`
     padding: 12px 0;
 `;
 
-export const UserList = styled.div`
+export const UserListContainer = styled.div`
     display: flex;
     flex-direction: column;
 `;

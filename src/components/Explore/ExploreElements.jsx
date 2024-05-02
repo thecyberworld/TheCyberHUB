@@ -12,7 +12,6 @@ export const ExploreContainer = styled.div`
     @media screen and (max-width: 800px) {
         flex-direction: column;
         gap: 0px;
-
         align-items: center;
     }
 `;
@@ -26,7 +25,7 @@ export const SearchContainer = styled.div`
     border-radius: 5px;
 
     @media screen and (max-width: 800px) {
-        padding: 15px;
+        //padding: 15px;
     }
 `;
 

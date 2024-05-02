@@ -132,7 +132,7 @@ const NewLeaderboard = () => {
                         wordWrap: "break-word",
                     }}
                 >
-                    Region
+                    Global
                 </div>
                 <div
                     className="National"
@@ -152,7 +152,7 @@ const NewLeaderboard = () => {
                 <div
                     className="Global"
                     style={{
-                        left: 292,
+                        left: 287,
                         top: 111,
                         position: "absolute",
                         color: "white",
@@ -162,7 +162,7 @@ const NewLeaderboard = () => {
                         wordWrap: "break-word",
                     }}
                 >
-                    Global
+                    Regional
                 </div>
 
                 <div

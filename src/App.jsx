@@ -9,14 +9,15 @@ import {
     About,
     Community,
     CreateBlog,
-    CyberGames,
+    // CyberGames,
     Footer,
     InterviewQuestions,
     Jobs,
-    LearningPath,
+    // LearningPath,
+    Login,
     Navbar,
     NotFound,
-    OSINTGame,
+    // OSINTGame,
     Quiz,
     Sidebar,
     SpecialSponsors,
@@ -35,10 +36,10 @@ import InternshipResponse from "./components/Dashboard/FormData/InternshipRespon
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
 import DisplayCommunityEvents, { DisplayEventDetails } from "./components/Opportunities/DisplayCommunityEvents";
-import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
+// import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
-import CreateForumPost from "./components/Forum/CreateForumPost/CreateForumPost";
+// import CreateForumPost from "./components/Forum/CreateForumPost/CreateForumPost";
 import FeedsRoute from "./components/Feeds/FeedsRoute";
 import Course from "./components/Courses/NewCourses/Course";
 import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
@@ -48,12 +49,12 @@ import BlogsRoute from "./components/Blogs/BlogsRoute";
 import RoadmapsRoute from "./components/Learn/Roadmaps/RoadmapsRoute";
 import CoursesRoute from "./components/Learn/Courses/CoursesRoute";
 import ForumRoute from "./components/Forum/ForumRoute";
-import AuthRoute from "./pages/AuthRoute";
+// import AuthRoute from "./pages/AuthRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
-import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
+// import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
 import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
@@ -66,6 +67,11 @@ import SessionExpireLogout from "./components/Other/SessionExpireLogout";
 import { useSelector } from "react-redux";
 import MainPage from "./components/CaptureTheFlag/CtFPage/MainPage";
 import NewLeaderboard from "src/components/Other/CyberGames/Leaderboard/NewLeaderboard";
+import ForgotPassword from "src/pages/ForgotPassword";
+import ResetPassword from "src/pages/ResetPassword";
+import Register from "src/pages/Register";
+// import CyberNews from "./components/Resources/CyberNews/CyberNews";
+import ChatBox from "src/components/Chat/ChatBox/ChatBox";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -128,19 +134,26 @@ const App = () => {
                     <>
                         <Sidebar isOpen={isOpen} toggle={toggle} />
                         <Navbar toggle={toggle} />
+                        <ChatBox />
                     </>
                 )}
                 <ScrollToTop>
                     <Routes>
                         <Route index exact path={"/"} element={<Homepage />} />
 
-                        <Route path={"/*"} element={<AuthRoute />} />
+                        {/* <Route path={"/*"} element={<AuthRoute />} /> */}
+                        <Route exact path={"/login"} element={<Login />} />
+                        <Route exact path={"/forgetPassword"} element={<ForgotPassword />} />
+                        <Route exact path={"/resetPassword/:token"} element={<ResetPassword />} />
+                        <Route exact path={"/register"} element={<Register />} />
 
+                        <Route exact path={"/aichat"} element={<AiChat />} />
+
+                        {/* <Route path={"/cyberNews/*"} element={<CyberNews />} /> */}
                         <Route path={"/explore/*"} element={<ExploreRoutes />} />
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
                         <Route path={"/blogs/*"} element={<BlogsRoute />} />
                         <Route exact path={"/blogs/create-blog"} element={<CreateBlog />} />
-                        <Route exact path={"/victimhelp"} element={<VictimHelp />} />
 
                         <Route path={"/forum/*"} element={<ForumRoute />} />
 
@@ -153,12 +166,14 @@ const App = () => {
 
                         <Route path={"/websecurity/*"} element={<WebSecurityRoutes />} />
 
+                        {/* Resources */}
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
+                        <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
-                        <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />
+                        {/* <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} /> */}
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
+                        <Route exact path={"/victimhelp"} element={<VictimHelp />} />
 
-                        <Route path={"/security/*"} element={<SecurityRoutes />} />
                         <Route path={"/resources/methodology"} element={<Methodology />} />
 
                         <Route path={"/settings/*"} element={<SettingsRoute />} />
@@ -177,35 +192,38 @@ const App = () => {
                         <Route exact path={"/support"} element={<Support />} />
                         <Route exact path={"/sponsors"} element={<SpecialSponsors />} />
 
-                        <Route exact path={"/about"} element={<About />} />
-                        <Route exact path={"/terms-conditions"} element={<TermsAndCondition />} />
-                        <Route exact path={"/privacy-policy"} element={<PrivacyPolicy />} />
-
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
                         <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
                         <Route exact path={"/community-events"} element={<DisplayCommunityEvents />} />
                         <Route exact path={"/community-events/:eventId"} element={<DisplayEventDetails />} />
-                        <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} />
-                        <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} />
 
-                        <Route exact path={"/CyberGames"} element={<CyberGames />} />
-                        <Route exact path={"/OSINT"} element={<OSINTGame />} />
-                        <Route exact path={"/course"} element={<LearningPath />} />
-                        <Route exact path={"/aichat"} element={<AiChat />} />
+                        {/* <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} /> */}
+                        {/* <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} /> */}
 
-                        <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} />
+                        {/* <Route exact path={"/CyberGames"} element={<CyberGames />} /> */}
+                        {/* <Route exact path={"/OSINT"} element={<OSINTGame />} /> */}
+                        {/* <Route exact path={"/course"} element={<LearningPath />} /> */}
+
+                        {/* <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} /> */}
 
                         <Route path={"/internship"} element={<Jobs />} />
                         <Route path={"/quiz"} element={<Quiz />} />
                         <Route path={"/createquiz"} element={<MakeQuiz />} />
                         <Route path={"/quiz/:type"} element={<QuizPage />} />
-                        <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
+
                         <Route exact path={"/contactFormResponses"} element={<FormData />} />
                         <Route
                             exact
                             path={"/contactFormResponses/internshipResponse"}
                             element={<InternshipResponse />}
                         />
+
+                        <Route path={"/security/*"} element={<SecurityRoutes />} />
+
+                        <Route exact path={"/about"} element={<About />} />
+                        <Route exact path={"/terms-conditions"} element={<TermsAndCondition />} />
+                        <Route exact path={"/privacy-policy"} element={<PrivacyPolicy />} />
+
                         <Route path={"*"} element={<NotFound />} />
                     </Routes>
                 </ScrollToTop>

@@ -40,7 +40,7 @@ export const DropdownContainer = styled.div`
 export const DropdownItemsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
     text-align: center;
     max-width: 60rem;
@@ -49,6 +49,8 @@ export const DropdownItemsContainer = styled.div`
     margin-bottom: 1rem;
     z-index: 999;
     width: max-content;
+    gap: 25px;
+    padding: 25px;
     @media screen and (max-width: 821px) {
         height: max-content;
         // background: #000000;
@@ -66,12 +68,10 @@ export const DropdownItemsContainer = styled.div`
 export const DropdownItemContainer = styled.div`
     color: black;
     position: relative;
-    margin: 1rem;
     width: 270px;
     z-index: 999;
     background: none;
     border: none;
-    padding: 8px;
     margin: 0;
 
     &:hover {
@@ -91,7 +91,6 @@ export const DropdownItemContainer = styled.div`
 
 export const DropdownItem = styled.h2`
     text-align: start;
-
     font-size: 1.5rem;
 
     &:hover {
@@ -107,14 +106,12 @@ export const DropdownItem = styled.h2`
 `;
 
 export const DropdownDesc = styled.p`
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: start;
     align-items: start;
     color: #ababab;
-    //white-space: pre-wrap;
     word-wrap: break-word;
     @media screen and (max-width: 821px) {
         font-size: 0.8rem;
@@ -126,7 +123,6 @@ export const DropdownDesc = styled.p`
 export const DropdownRouterLink = styled(LinkRouter)`
     text-decoration: none;
     color: #f5f5f5;
-    margin-left: 50px;
     @media screen and (max-width: 821px) {
         display: flex;
         margin: 0;

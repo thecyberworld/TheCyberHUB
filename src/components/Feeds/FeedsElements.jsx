@@ -24,9 +24,9 @@ export const FilterButton = styled.button`
     font-size: 15px;
     height: 100%;
     width: 100%;
-    gap: 10px;
     font-weight: 600;
     padding: 5px 10px;
+
     &:first-child {
         border-top-left-radius: 7px;
         border-bottom-left-radius: 7px;
@@ -35,6 +35,14 @@ export const FilterButton = styled.button`
     &:last-child {
         border-top-right-radius: 7px;
         border-bottom-right-radius: 7px;
+    }
+
+    transition: all 0.3s ease;
+    border: 1px solid #1e1e1e;
+
+    &:hover {
+        background: #ff6800;
+        color: #171717;
     }
 `;
 export const FilterContainer = styled.div`
@@ -46,6 +54,5 @@ export const FilterContainer = styled.div`
     width: 100%;
     background: #131313;
     border-radius: 7px;
-    height: 6vh;
     align-self: center;
 `;

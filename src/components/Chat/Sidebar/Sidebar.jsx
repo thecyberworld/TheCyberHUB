@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { SidebarContainer, SidebarSection, RouteLink, SidebarTitle, UserList, SidebarHeader } from "./SidebarElements";
+import {
+    SidebarContainer,
+    SidebarSection,
+    RouteLink,
+    SidebarTitle,
+    UserListContainer,
+    SidebarHeader,
+} from "./SidebarElements";
 import Contact from "src/components/Chat/Contact";
 import SearchInputBox from "src/components/Common/SearchInputBox";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
@@ -60,7 +67,7 @@ const Sidebar = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, set
                 <SidebarTitle onClick={toggleUsers}>Users {showUsers ? <FaAngleUp /> : <FaAngleDown />}</SidebarTitle>
 
                 {!showUsers ? null : (
-                    <UserList>
+                    <UserListContainer>
                         {onlineConnections &&
                             onlineConnections.map((person) => (
                                 <RouteLink to={`/dashboard/chat/${person.user}`} key={person.user}>
@@ -91,7 +98,7 @@ const Sidebar = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, set
                                     />
                                 </RouteLink>
                             ))}
-                    </UserList>
+                    </UserListContainer>
                 )}
             </SidebarSection>
 

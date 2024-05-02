@@ -18,7 +18,7 @@ import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 
-const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefresh, displayAt }) => {
+const FeedPost = ({ feed, user, comments, likes, bookmarks, views, displayAt }) => {
     const avatar = cdnContentImagesUrl("/user/" + (feed?.avatar || "avatarDummy.png"));
     const feedImage = (image) => cdnContentImagesUrl(`/feed/${image}`);
 
@@ -27,12 +27,8 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
             <RightSection>
                 <RouteLink to={`/feeds/${feed?._id}`}>
                     <PostHeader>
-                        <LeftSection
-                            style={{
-                                alignItems: "center",
-                            }}
-                        >
-                            <PostHeaderImg src={avatar} alt={feed?.username + ` avatar`} />
+                        <LeftSection style={{ alignItems: "center" }}>
+                            <PostHeaderImg src={avatar} alt={feed?.username + `avatar`} />
                             <PostHeaderUsername>{feed?.username}</PostHeaderUsername>
                             {feed?.verified && <IconVerified />}
                         </LeftSection>
@@ -72,7 +68,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                     likes={likes}
                     bookmarks={bookmarks}
                     views={views}
-                    setStopRefresh={setStopRefresh}
+                    // setStopRefresh={setStopRefresh}
                 />
             </RightSection>
         </FeedPostContainer>

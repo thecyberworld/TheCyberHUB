@@ -31,7 +31,13 @@ const Sidebar = ({
     const renderFollowingFilterButtons = () => (
         <>
             {sidebarType === "explore" ? (
-                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        width: "100%",
+                    }}
+                >
                     <FilterButton
                         style={{
                             background: filterLabel === "Connections" ? "#FF6B08" : "",
@@ -127,7 +133,7 @@ const Sidebar = ({
                         <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
                             <FilterButton
                                 style={{
-                                    background: showOnlyFollowing === false ? "#313131" : "",
+                                    padding: "15px 25px",
                                     color: showOnlyFollowing === false ? "#FF6B08" : "",
                                 }}
                                 onClick={() => setShowOnlyFollowing(false)}
@@ -158,7 +164,7 @@ const Sidebar = ({
                                         gap: "5px",
                                         padding: "10px",
                                         borderRadius: "5px",
-                                        backgroundColor: "#1a1a1a",
+                                        backgroundColor: "#1c1b1b",
                                         cursor: "pointer",
                                         border: "1px solid #1a1a1a",
                                         scrollBehavior: "smooth",
