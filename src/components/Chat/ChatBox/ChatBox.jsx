@@ -19,13 +19,19 @@ import {
 import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { FcSearch } from "react-icons/fc";
+import apiStatus from "src/features/apiStatus";
 // import {SearchIcon} from "src/components/Common/SearchInputBox/SearchInputBoxElements";
 
 const ChatBox = () => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
+    const { isApiLoading, isApiWorking } = apiStatus();
 
-    if (!user) {
+    if (isApiLoading) {
+        return;
+    }
+
+    if (!user || !isApiWorking) {
         return;
     }
 
