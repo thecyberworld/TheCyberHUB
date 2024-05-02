@@ -17,6 +17,7 @@ import { RouterLink } from "src/components/Tools/ToolsElements";
 import { FaUserCircle } from "react-icons/fa";
 import { verifyEmailCode } from "src/features/auth/authSlice";
 import { CgPassword } from "react-icons/cg";
+import validator from "validator";
 
 const ForgotPassword = () => {
     const [formData, setFormData] = useState({
@@ -78,11 +79,17 @@ const ForgotPassword = () => {
         "proton.me",
         "protonmail.ch",
     ];
+    const validateEmail = (email) => {
+        return validator?.isEmail(email);
+    };
+
     const onSubmitSendEmail = (e) => {
         e.preventDefault();
         const domain = email.split("@")[1];
         if (domain === undefined) {
             toast.error("Please enter a valid email");
+        } else if (!validateEmail(email)) {
+            toast.error("Please enter a valid email address.");
         } else if (whitelistedDomains.indexOf(domain) === -1) {
             toast.error(`Sorry, ${domain} email domain is not allowed`);
         } else {

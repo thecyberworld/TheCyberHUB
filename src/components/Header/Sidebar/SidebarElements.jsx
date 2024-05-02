@@ -16,8 +16,8 @@ export const SidebarContainer = styled.nav`
     overflow: auto;
     transition: all 0.2s ease-in-out;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(120px);
+    -webkit-backdrop-filter: blur(120px);
     border: 1px solid rgba(3, 3, 3, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 `;
@@ -46,6 +46,20 @@ export const SidebarWrapper = styled.div`
     color: #f5f5f5;
 `;
 
+export const SidebarNavItem = styled.div`
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 1rem;
+
+    background: rgba(26, 26, 29, 0.53);
+    @media screen and (max-width: 768px) {
+        // height: max-content;
+        position: relative;
+    }
+`;
+
 export const SidebarLink = styled(RouterLink)`
     display: flex;
     align-items: center;
@@ -56,9 +70,9 @@ export const SidebarLink = styled(RouterLink)`
     list-style: none;
     color: #f5f5f5;
     cursor: pointer;
-    width: 80%;
-    background: rgba(194, 108, 62, 0.04);
-    border: 1px solid rgba(194, 113, 62, 0.2);
+    //width: 80%;
+    background: /rgba(194, 108, 62, 0.04);
+    //border: 1px solid rgba(194, 113, 62, 0.2);
     border-radius: 10px;
 
     transition: all 0.3s ease-in-out;

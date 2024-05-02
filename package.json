@@ -21,7 +21,7 @@
         "chart.js": "^4.4.1",
         "crypto-js": "^4.2.0",
         "date-fns": "^2.30.0",
-        "dompurify": "^3.0.5",
+        "dompurify": "^3.1.0",
         "dotenv": "^16.0.3",
         "fs-extra": "^11.1.1",
         "highlight.js": "^11.8.0",
@@ -54,7 +54,8 @@
         "rehype-sanitize": "^6.0.0",
         "remark-gfm": "^3.0.1",
         "sass": "^1.55.0",
-        "styled-components": "^5.3.6"
+        "styled-components": "^5.3.6",
+        "validator": "^13.11.0"
     },
     "devDependencies": {
         "@types/react": "^18.0.0",

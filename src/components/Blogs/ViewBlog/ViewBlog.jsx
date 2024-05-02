@@ -33,7 +33,7 @@ import ViewComments from "src/components/Blogs/BlogComments/ViewComments";
 import { blogCommentReset, getBlogComments } from "src/features/blogs/blogComments/blogCommentSlice";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { RouterLink } from "src/components/Tools/ToolsElements";
-
+import DOMPurify from "dompurify";
 const ViewBlog = () => {
     const dispatch = useDispatch();
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -135,6 +135,7 @@ const ViewBlog = () => {
 
     const blogCommentsData = blogsCommentsData.filter((comment) => comment.blogId === blog?._id);
 
+    const purifiedCode = DOMPurify.sanitize(filterContent);
     return (
         <>
             <Helmet>
@@ -159,7 +160,7 @@ const ViewBlog = () => {
                     </ContentSection>
                     <ContentSection>
                         <BlogContent
-                            value={filterContent}
+                            value={purifiedCode}
                             readOnly={true}
                             modules={{ toolbar: false }}
                             formats={formats}

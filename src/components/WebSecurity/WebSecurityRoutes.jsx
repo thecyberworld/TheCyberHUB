@@ -15,7 +15,7 @@ import CrackMeRoom from "./CrackMe/CrackMeRoom";
 const WebSecurityRoutes = () => {
     const subHeaderData = [
         { id: 1, title: "Topics", link: "topics" },
-        { id: 2, title: "Web Labs", link: "labs" },
+        { id: 2, title: "Labs", link: "labs" },
         { id: 3, title: "Code Review", link: "code-review" },
         { id: 4, title: "Crack Me", link: "crack-me" },
         // {id: 3, title: "Resources", link: "./"},

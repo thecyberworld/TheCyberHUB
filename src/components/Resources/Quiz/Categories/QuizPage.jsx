@@ -217,7 +217,9 @@ export default function QuizPage() {
                                             >
                                                 <BsInfoCircle />
                                             </InfoButton>
-                                            {showTooltip && <TooltipText>Click here for additional information</TooltipText>}
+                                            {showTooltip && (
+                                                <TooltipText>Click here for additional information</TooltipText>
+                                            )}
                                         </div>
                                     )}
                                     <QuestionButton

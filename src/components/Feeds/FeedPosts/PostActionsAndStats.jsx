@@ -12,17 +12,7 @@ import { addBookmark, removeBookmark } from "src/features/bookmarks/bookmarkSlic
 import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import { RouteLink } from "src/components/Common/GeneralDashboardSidebar/GeneralDashboardSidebarElements";
 
-const PostActionsAndStats = ({
-    feed,
-    comments,
-    user,
-    itemType,
-    views,
-    bookmarks,
-    likes,
-    setStopRefresh,
-    updateFeedView,
-}) => {
+const PostActionsAndStats = ({ feed, comments, user, itemType, views, bookmarks, likes, updateFeedView }) => {
     const dispatch = useDispatch();
     const feedRef = useRef(null);
 
@@ -63,7 +53,7 @@ const PostActionsAndStats = ({
     function handleLike(_id) {
         if (!user) {
             setShowAuthPopup(true);
-            setStopRefresh && setStopRefresh(true);
+            // setStopRefresh && setStopRefresh(true);
             return;
         }
 
@@ -81,7 +71,7 @@ const PostActionsAndStats = ({
     const handleBookmark = (_id) => {
         if (!user) {
             setShowAuthPopup(true);
-            setStopRefresh && setStopRefresh(true);
+            // setStopRefresh && setStopRefresh(true);
             return;
         }
         if (isBookmarked(_id)) {
@@ -93,7 +83,6 @@ const PostActionsAndStats = ({
 
     const handleCloseAuthPopup = () => {
         setShowAuthPopup(false);
-        setStopRefresh && setStopRefresh(false);
     };
 
     return (

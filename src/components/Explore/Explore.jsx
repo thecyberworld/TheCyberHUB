@@ -38,7 +38,7 @@ const FilterHeader = styled.div`
 
 const FilterTitle = styled.p`
     margin: 0;
-    font-weight: bold;
+    //font-weight: bold;
 `;
 
 const FilterContent = styled.div`
@@ -55,7 +55,7 @@ const FilterSection = ({ title, children }) => {
         <FilterContainer>
             <FilterHeader onClick={() => setIsOpen(!isOpen)}>
                 <FilterTitle>{title}</FilterTitle>
-                <HintIcon>{!isOpen ? <FaAngleDown /> : <FaAngleUp />}</HintIcon>
+                <HintIcon>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
             </FilterHeader>
             {isOpen && <FilterContent>{children}</FilterContent>}
         </FilterContainer>
