@@ -12,7 +12,11 @@ import {
     ScoreInfo,
     SkipButton,
     ScoreSection,
+    InfoButton,
+    TooltipText,
 } from "./CategoriesElements";
+import PopUpWindow from "src/components/Common/PopUpWindow";
+import { BsInfoCircle } from "react-icons/bs";
 import {
     CBQQuestions,
     PhishingQuestions,
@@ -37,6 +41,8 @@ export default function QuizPage() {
     const [clickedAnswerIndex, setClickedAnswerIndex] = useState(null);
     const [buttonClicked, setButtonClicked] = useState(false);
     const [disableSkipButton, setDisableSkipButton] = useState(true);
+    const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(false);
 
     const { type } = useParams();
     const navigator = useNavigate();
@@ -63,32 +69,21 @@ export default function QuizPage() {
     }, [type]);
 
     const handleAnswerButtonClick = (isCorrect, length, i) => {
-        let nextQuestion = currentQuestion;
+        const nextQuestion = currentQuestion;
 
         if (isCorrect === true) {
             setShowAnswer(true);
             setClickedAnswerIndex(null);
             setButtonClicked(true);
-            setDisableSkipButton(false);
-            setTimeout(() => {
-                nextQuestion = currentQuestion + 1;
-                setScore(score + 1);
-                setCurrentQuestion(nextQuestion);
-                setShowAnswer(false);
-                setButtonClicked(false);
-                setDisableSkipButton(true);
-
-                if (nextQuestion < length) {
-                    setCurrentQuestion(nextQuestion);
-                } else {
-                    setShowScore(true);
-                }
-            }, 2000);
+            setDisableSkipButton(true);
         } else if (isCorrect === false) {
             setScore(score - 1);
             setShowAnswer(true);
             setClickedAnswerIndex(i);
             setButtonClicked(true);
+            if (showAdditionalInfo) {
+                setShowAdditionalInfo(false);
+            }
         }
 
         if (nextQuestion < length) {
@@ -98,17 +93,35 @@ export default function QuizPage() {
         }
     };
 
+    const handleAdditionalInfoButton = (event) => {
+        event.stopPropagation();
+        setShowAdditionalInfo((prevState) => !prevState);
+    };
+
+    const handleClosePopup = () => {
+        setShowAdditionalInfo(false);
+    };
     const handleSkipButton = (length) => {
         const nextQuestion = currentQuestion + 1;
         setScore(score + 1);
         setCurrentQuestion(nextQuestion);
         setShowAnswer(false);
         setButtonClicked(false);
+        if (showAdditionalInfo) {
+            setShowAdditionalInfo(false);
+        }
         if (nextQuestion < length) {
             setCurrentQuestion(nextQuestion);
         } else {
             setShowScore(true);
         }
+    };
+    const handleMouseEnter = () => {
+        setShowTooltip(true);
+    };
+
+    const handleMouseLeave = () => {
+        setShowTooltip(false);
     };
 
     const handleResetButton = () => {
@@ -150,30 +163,80 @@ export default function QuizPage() {
                             </QuestionCount>
                             <QuestionText>{questions[currentQuestion].questionText}</QuestionText>
                             {showAnswer && disableSkipButton ? (
-                                <SkipButton onClick={() => handleSkipButton(questions.length)}>
-                                    nextQuestion {`>>>`}
-                                </SkipButton>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: "row",
+                                        alignSelf: "end",
+                                        margin: "10px",
+                                        maxWidth: "100%",
+                                    }}
+                                >
+                                    {showAdditionalInfo && showAnswer ? (
+                                        <PopUpWindow onClose={handleClosePopup}>
+                                            <div
+                                                style={{
+                                                    backgroundColor: "#282828",
+                                                    padding: "30px",
+                                                    borderRadius: "5px",
+                                                }}
+                                            >
+                                                {questions[currentQuestion].additionalInfo}
+                                            </div>
+                                        </PopUpWindow>
+                                    ) : (
+                                        ""
+                                    )}
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                            alignSelf: "end",
+                                            margin: "10px",
+                                            maxWidth: "100%",
+                                        }}
+                                    >
+                                        <SkipButton onClick={() => handleSkipButton(questions.length)}>
+                                            nextQuestion {`>>>`}
+                                        </SkipButton>
+                                    </div>
+                                </div>
                             ) : (
                                 ""
                             )}
                         </QuestionSection>
                         <AnswerSection>
                             {questions[currentQuestion].answerOptions.map((answerOption, i) => (
-                                <QuestionButton
-                                    key={i}
-                                    onClick={() => handleAnswerButtonClick(answerOption.isCorrect, questions.length, i)}
-                                    style={{
-                                        backgroundColor:
-                                            showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex
-                                                ? "red"
-                                                : showAnswer && answerOption.isCorrect
-                                                ? "green"
-                                                : "",
-                                    }}
-                                    disabled={buttonClicked}
-                                >
-                                    {answerOption.answerText}
-                                </QuestionButton>
+                                <div key={i} style={{ position: "relative", zIndex: 0 }}>
+                                    {showAnswer && answerOption.isCorrect && (
+                                        <div style={{ height: "0px" }}>
+                                            <InfoButton
+                                                onClick={(event) => handleAdditionalInfoButton(event)}
+                                                onMouseEnter={handleMouseEnter}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                <BsInfoCircle />
+                                            </InfoButton>
+                                            {showTooltip && <TooltipText>Click here for additional information</TooltipText>}
+                                        </div>
+                                    )}
+                                    <QuestionButton
+                                        onClick={() =>
+                                            handleAnswerButtonClick(answerOption.isCorrect, questions.length, i)
+                                        }
+                                        style={{
+                                            backgroundColor:
+                                                showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex
+                                                    ? "red"
+                                                    : showAnswer && answerOption.isCorrect
+                                                    ? "green"
+                                                    : "",
+                                        }}
+                                        disabled={buttonClicked}
+                                    >
+                                        {answerOption.answerText}
+                                    </QuestionButton>
+                                </div>
                             ))}
                         </AnswerSection>
                     </QuizBody>
