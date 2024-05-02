@@ -50,7 +50,7 @@ Before installation, please make sure you have already installed the following t
 4. Move to the dev branch: `git checkout dev`
 5. Install the dependencies with `npm i`
 6. Create a `.env` file in the root directory of the project
-7. Copy the contents of `.env.example` to `.env` file
+7. Copy the contents of `example.env` to `.env` file
 8. Run `npm run dev` to start the server
 9. Open the browser to visit the website at http://localhost:3000/
 
