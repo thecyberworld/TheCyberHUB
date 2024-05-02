@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
 // import Sidebar from "src/components/Chat/Sidebar/Sidebar";
 import { cdnContentImagesUrl, getApiUrl, getApiUrlWs } from "src/features/apiUrl";
@@ -24,8 +23,12 @@ import { FcSearch } from "react-icons/fc";
 
 const ChatBox = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
+
+    if (!user) {
+        return;
+    }
+
     const { userDetails } = useSelector((state) => state.userDetail);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -38,12 +41,6 @@ const ChatBox = () => {
     const [messages, setMessages] = useState([]);
     const [hideSidebar, setHideSidebar] = useState(false);
     const divUnderMessage = useRef();
-
-    useEffect(() => {
-        if (!user) {
-            navigate("/");
-        }
-    }, [user, navigate]);
 
     useEffect(() => {
         if (user) dispatch(getAllUserDetails());

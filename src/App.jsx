@@ -134,7 +134,7 @@ const App = () => {
                     <>
                         <Sidebar isOpen={isOpen} toggle={toggle} />
                         <Navbar toggle={toggle} />
-                        <ChatBox />
+                        {user ? <ChatBox /> : null}
                     </>
                 )}
                 <ScrollToTop>
