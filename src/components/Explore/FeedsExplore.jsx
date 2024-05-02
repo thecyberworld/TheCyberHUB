@@ -9,7 +9,7 @@ import { getFeedComments } from "src/features/feeds/feedComments/feedCommentsSli
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "src/NotFound";
 
-const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt }) => {
+const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt, selectedTags }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { feedLikes } = useSelector((state) => state.feedLikes);
@@ -39,10 +39,14 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
         const cleanSearchTerm = removeInvisibleChars(searchTerm);
         const contentIncludesSearchTerm =
             !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
-        const tagsIncludeSearchTerm =
-            !cleanSearchTerm || feed?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+        const allFilterTagsIncluded =
+            !selectedTags || selectedTags.length === 0
+                ? true
+                : selectedTags.every((selectedTag) =>
+                      feed?.tags?.some((postTag) => postTag.toLowerCase() === selectedTag.toLowerCase()),
+                  );
 
-        return !cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm;
+        return allFilterTagsIncluded && (!cleanSearchTerm || contentIncludesSearchTerm);
     });
 
     const feedLikesData = ({ feedId }) => {
