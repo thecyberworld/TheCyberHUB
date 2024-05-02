@@ -54,7 +54,13 @@ const Labs = ({ LabData, heading }) => {
         <>
             <div style={{ width: "100%", maxWidth: "1200px", margin: "5px auto" }}>
                 <LabContainer>
-                    <Sidebar heading={heading} topics={LabData} onlyCat={true} setCategoryActive={setCategoryActive} />
+                    <Sidebar
+                        heading={heading}
+                        topics={LabData}
+                        onlyCat={true}
+                        setCategoryActive={setCategoryActive}
+                        categoryActive={categoryActive}
+                    />
 
                     <RoomContainer>
                         <div className="header">

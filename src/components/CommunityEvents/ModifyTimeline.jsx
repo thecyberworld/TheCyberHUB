@@ -92,6 +92,7 @@ const ModifyTimeline = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
                 }
                 return validationError;
             });
+
             if (
                 new Date(modifyEvent.startTime) > new Date(valueObj.startTime) ||
                 new Date(modifyEvent.endTime) < new Date(valueObj.endTime) ||
@@ -102,7 +103,6 @@ const ModifyTimeline = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
             }
             return validationError;
         });
-
         if (validationError || timeValidationError) {
             if (validationError)
                 return toast.error("Some of the input fields are empty, fill all the fields and try again");
@@ -111,13 +111,17 @@ const ModifyTimeline = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
                 toast.error(
                     `In addition, the sub-event needs to be during the event time. from: ${format(
                         new Date(modifyEvent.startTime),
-                        "EEEE hh:m a",
-                    )}, to: ${format(new Date(modifyEvent.endTime), "EEEE hh:m a")}`,
+                        "EEEE hh:mm a",
+                    )}, to: ${format(new Date(modifyEvent.endTime), "EEEE hh:mm a")}`,
                 );
                 return;
             }
         }
-        const timelineArray = convertFromObjToArray(timeLineListItems);
+        const timelineArray = convertFromObjToArray(timeLineListItems).sort((itemA, itemB) => {
+            const firstStart = new Date(itemA.startTime) - new Date(itemB.startTime);
+            if (firstStart) return firstStart;
+            return new Date(itemA.endTime) - new Date(itemB.endTime);
+        });
         onModify({ ...modifyEvent, timeline: timelineArray }, eventManageTimelineId);
         onCloseChangeMode();
     };

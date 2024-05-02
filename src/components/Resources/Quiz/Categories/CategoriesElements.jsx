@@ -61,10 +61,61 @@ export const SkipButton = styled.button`
         transition: all 0.2s ease-in-out;
         background: transparent;
         border-color: #343434;
-        font-size: 18px;
+        font-size: 17px;
+    }
+`;
+export const InfoButton = styled.button`
+    align-self: center;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+
+    align-items: end;
+    transition: all 0.2s ease-in-out;
+    font-size: 18px;
+    position: absolute;
+    top: 35%;
+    right: 101%;
+
+    z-index: 2;
+
+    &:hover {
+        border-color: #343434;
+        font-size: 19px;
     }
 `;
 
+export const QuestionInfo = styled.div`
+    min-height: 2em;
+    margin: 40px auto;
+    color: white;
+    font-weight: 1;
+    font-size: 15px;
+    background: #181818;
+    width: auto;
+    max-width: calc(70rem - 75px);
+    height: min-content;
+
+    box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
+    border-radius: 10px;
+    padding: 30px 40px;
+
+    display: flex;
+
+    @media screen and (max-width: 800px) {
+        margin: 50px 30px;
+    }
+`;
+export const TooltipText = styled.div`
+    position: relative;
+    top: 27px;
+    right: 95px;
+    display: flex;
+    align-items: center;
+    font-weight: 100;
+    width: 65px;
+    font-size: 10px;
+`;
 export const ResetButton = styled.button`
     width: 100%;
     display: flex;
@@ -129,20 +180,19 @@ export const QuestionText = styled.div`
     font-size: 1.2rem;
     font-weight: normal;
     width: 90%;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 25px 0;
 `;
 
 export const AnswerSection = styled.div`
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    position: relative;
+    z-index: 0;
 `;
 
 export const QuestionButton = styled.button`
     font-family: "Poppins", sans-serif;
     text-align: left;
-    width: auto;
+    width: 100%;
     font-size: 15px;
     color: #cecac3;
     background: #101010;

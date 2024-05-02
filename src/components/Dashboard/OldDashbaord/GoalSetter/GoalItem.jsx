@@ -9,19 +9,19 @@ const GoalItem = ({ goal }) => {
     return (
         <div className={"goal"}>
             <div>
+                <button onClick={() => dispatch(deleteGoal(goal._id))} className="close">
+                    X
+                </button>
                 <GoalText>{goal.text}</GoalText>
-                <hr />
-                <div>
+
+                <div className="creation-date">
+                    <hr />
                     {new Intl.DateTimeFormat("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
                     }).format(new Date(goal.createdAt))}
                 </div>
-                <hr />
-                <button onClick={() => dispatch(deleteGoal(goal._id))} className="close">
-                    X
-                </button>
             </div>
         </div>
     );

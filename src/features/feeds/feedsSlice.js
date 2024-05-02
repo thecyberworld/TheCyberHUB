@@ -112,7 +112,7 @@ export const feedsSlice = createSlice({
             .addCase(getFeeds.fulfilled, (state, action) => {
                 state.isFeedLoading = false;
                 state.isFeedSuccess = true;
-                state.feed = action.payload;
+                state.feeds = action.payload;
             })
             .addCase(getFeeds.rejected, (state, action) => {
                 state.isFeedLoading = false;
@@ -138,7 +138,7 @@ export const feedsSlice = createSlice({
             .addCase(deleteFeed.fulfilled, (state, action) => {
                 state.isFeedLoading = false;
                 state.isFeedSuccess = true;
-                state.feed = state.feed.filter((feed) => feed._id !== action.payload.id);
+                state.feeds = state.feeds.filter((feed) => feed._id !== action.payload.id);
             })
             .addCase(deleteFeed.rejected, (state, action) => {
                 state.isFeedLoading = false;

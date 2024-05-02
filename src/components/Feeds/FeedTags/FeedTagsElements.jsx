@@ -37,7 +37,8 @@ export const AllTags = styled.div`
 `;
 
 export const Tag = styled.p`
-    background: #212121;
+    background: ${(props) => (props.isSelected ? "#FF6B08" : "#1a1a1a")};
+    color: ${(props) => (props.isSelected ? "#0A0A0A" : "#e5e5e5")};
     padding: 0 10px;
     margin: 5px 10px 5px 0;
     border-radius: 5px;
@@ -50,7 +51,6 @@ export const Tag = styled.p`
     overflow-wrap: break-word;
     text-transform: capitalize;
     user-select: none;
-    color: #e5e5e5;
 
     &:hover {
         transform: scale(1.03);

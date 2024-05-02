@@ -57,13 +57,9 @@ const FeedPage = () => {
         };
     }, [dispatch]);
 
-    console.log(feedComments);
-
     const feed = feeds?.find((feed) => feed?._id === feedId) || feedComments?.find((feed) => feed?._id === feedId);
 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === feed?.user);
-
-    // console.log(blogComments)
 
     const combinedData = {
         ...feed,
@@ -99,11 +95,10 @@ const FeedPage = () => {
         return feedRepliesData?.filter((reply) => reply?.feedId === feedId);
     };
 
-    if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
+    if (isApiLoading || isUserDetailLoading || isFeedLoading || isFeedReplyLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
-    console.log(feedId, feed);
     if (!feed) {
         return <p>Feed not found</p>;
     }
