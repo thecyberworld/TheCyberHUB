@@ -21,6 +21,7 @@ import followReducer from "src/features/follow/followSlice";
 import connectionReducer from "src/features/connections/connectionSlice";
 
 import eventsReducer from "src/features/events/eventsSlice";
+import { cyberNewsApi } from "src/services/cyberNewsApi";
 
 export default configureStore({
     reducer: {
@@ -51,6 +52,6 @@ export default configureStore({
 
         events: eventsReducer,
 
-        // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
+        [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },
 });

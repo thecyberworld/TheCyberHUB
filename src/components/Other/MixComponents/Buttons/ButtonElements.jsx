@@ -111,7 +111,6 @@ export const ButtonGreen = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #151515;
     background: #ff6b08;
 
     transition: all 0.2s ease-in-out;

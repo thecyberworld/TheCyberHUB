@@ -131,6 +131,7 @@ const Topics = () => {
                 setCategoryActive={setCategoryActive}
                 onSelectSubtopic={handleSelectSubtopic}
                 onlyCat={true}
+                categoryActive={categoryActive}
             />
             <Container>
                 <div className="header">

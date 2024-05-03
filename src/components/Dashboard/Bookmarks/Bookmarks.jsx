@@ -24,19 +24,21 @@ const Bookmarks = () => {
     }, [dispatch]);
 
     const feedBookmarksData = bookmarks.map((bookmark) => {
-        const feed = feeds.find((feed) => feed._id === bookmark.itemId && bookmark.itemType === "feed");
-        const userDetail = userDetails?.find((user) => user?.user === feed?.user);
+        const feed = feeds.find((feed) => feed?._id === bookmark?.itemId && bookmark?.itemType === "feed") || {};
+
+        const userDetail = userDetails?.find((userDetail) => userDetail?.user === feed?.user);
         const { username, avatar, verified } = userDetail || {};
         return { ...feed, username, avatar, verified };
     });
 
+    const filteredFeedBookmarksData = feedBookmarksData.filter((feed) => feed.user);
     if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
     return (
         <BookmarksContainer>
-            <FeedPosts feeds={feedBookmarksData} isFeedLoading={isFeedLoading} />
+            <FeedPosts feeds={filteredFeedBookmarksData} isFeedLoading={isFeedLoading} />
         </BookmarksContainer>
     );
 };

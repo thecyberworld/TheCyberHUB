@@ -9,6 +9,7 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
     const feedViewsData = ({ feedId }) => {
         return views?.filter((view) => view.itemId === feedId);
     };
+
     const feedUserBookmarksData = ({ feedId }) => {
         return bookmarks?.length > 0
             ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
@@ -36,7 +37,7 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
                         user={user}
                         // comments={comments}
                         likes={feedLikesData({ replyId: reply._id })}
-                        views={feedViewsData({ replyId: reply._id })}
+                        views={feedViewsData({ feedId: reply._id })}
                         bookmarks={feedUserBookmarksData({ replyId: reply._id })}
                         updateFeedView={updateFeedView}
                     />

@@ -27,6 +27,18 @@ export const SubHeader = styled.p`
     color: gray;
 `;
 
+export const FilterContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: #131313;
+    border-radius: 7px;
+    height: 6vh;
+    align-self: center;
+    margin-bottom: 2.5rem;
+`;
 export const Tabs = styled.div`
     display: flex;
     gap: 1rem;

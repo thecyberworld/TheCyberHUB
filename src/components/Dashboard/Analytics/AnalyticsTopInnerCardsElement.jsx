@@ -45,6 +45,7 @@ export const TopSectionInnerCardMainSection = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    height: 100%;
 `;
 
 export const TopSectionInnerCardMainSectionSummary = styled.div`
@@ -77,4 +78,5 @@ export const FigureInPercent = styled.div`
 
 export const TopSectionInnerCardMainSectionChart = styled.div`
     font-size: 12px;
+    height: 100%;
 `;

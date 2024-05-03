@@ -62,8 +62,9 @@ const CreateBlogV2 = () => {
     const [remainingCharacters, setRemainingCharacters] = useState(maxCharacterCount);
 
     useEffect(() => {
-        setRemainingCharacters(maxCharacterCount - content.length);
-    }, [content]);
+        const filteredContentLength = content.replace(/<img src="data:image[^>]*>/g, "").length;
+        setRemainingCharacters(maxCharacterCount - filteredContentLength);
+    }, [content, maxCharacterCount]);
 
     let updatedContent;
 
@@ -71,7 +72,9 @@ const CreateBlogV2 = () => {
         if (isBlogError || errorMessage) {
             toast.error(errorMessage || blogMessage);
         }
+
         if (!user) navigate("/login");
+
         if (isSuccess) navigate("/blogs");
 
         return () => dispatch(blogReset());
@@ -117,7 +120,7 @@ const CreateBlogV2 = () => {
                 toast.warn("Content should be atleast 100 characters");
                 return;
             }
-            if (content.length > 10000) {
+            if (remainingCharacters > 10000) {
                 toast.warn("Content should be less than 10000 characters");
                 return;
             }

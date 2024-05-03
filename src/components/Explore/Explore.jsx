@@ -18,7 +18,7 @@ import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMainten
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import { getFollowData } from "src/features/follow/followSlice";
 import { getConnections } from "src/features/connections/connectionSlice";
-import Sidebar from "src/components/Feeds/SocialSidebar/Sidebar";
+import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
 import { FilterButton } from "src/components/Feeds/FeedsElements";
 import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
@@ -38,7 +38,7 @@ const FilterHeader = styled.div`
 
 const FilterTitle = styled.p`
     margin: 0;
-    font-weight: bold;
+    //font-weight: bold;
 `;
 
 const FilterContent = styled.div`
@@ -55,7 +55,7 @@ const FilterSection = ({ title, children }) => {
         <FilterContainer>
             <FilterHeader onClick={() => setIsOpen(!isOpen)}>
                 <FilterTitle>{title}</FilterTitle>
-                <HintIcon>{!isOpen ? <FaAngleDown /> : <FaAngleUp />}</HintIcon>
+                <HintIcon>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
             </FilterHeader>
             {isOpen && <FilterContent>{children}</FilterContent>}
         </FilterContainer>
@@ -97,12 +97,12 @@ const Explore = () => {
     const [userDetailsLocal, setUserDetailsLocal] = useState([]);
     const userId = user?._id;
     const { followData } = useSelector((state) => state.followData);
-
+    const allUsers = userDetailsLocal?.map((user) => user?.user) || [];
     const followers = followData?.followers;
     const following = followData?.following;
     const allConnections = connections?.connections?.map((connection) => connection.user) || [];
 
-    const [filterLabel, setFilterLabel] = useState("Connections");
+    const [filterLabel, setFilterLabel] = useState("all users");
     const [selectedFilter, setSelectedFilter] = useState("all");
 
     useEffect(() => {
@@ -127,17 +127,18 @@ const Explore = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        setSelectedFilter(allConnections);
+        setSelectedFilter(allUsers);
     }, [connections]);
 
-    const blogTags = blogs?.map((blog) => blog && blog?.tags).flat() || [];
-    const ctfTags = ctf?.map((ctf) => ctf && ctf?.tags).flat() || [];
-    const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
+    const blogTags = blogs?.map((blog) => blog && blog?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const ctfTags = ctf?.map((ctf) => ctf && ctf?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const feedTags = feeds?.map((feed) => feed && feed?.tags.map((tag) => tag.toLowerCase())).flat() || [];
     // const forumTags = forums.map((forum) => forum && forum.tags).flat() || [];
 
     const tags = [...new Set([...feedTags, ...blogTags, ...ctfTags])].sort();
 
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedTags, setSelectedTags] = useState([]);
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
@@ -156,59 +157,62 @@ const Explore = () => {
         setSelectedType(type);
     };
 
-    const feedData = feeds
-        ?.slice()
+    const feedData = feeds?.map((feed) => {
+        const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
+        if (!selectedFilter?.includes(userDetail?.user)) {
+            return null;
+        }
+        const { username, avatar, verified } = userDetail || {};
+
+        return { ...feed, username, avatar, verified };
+    });
+
+    const filteredFeeds = feedData
+        ?.filter((feed) => feed !== null)
         .reverse()
         ?.slice(0, 10)
-        .reverse()
-        .map((feed) => {
-            const userDetail = userDetailsLocal?.find((user) => user?.user === feed?.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
+        .reverse();
 
-            return { ...feed, username, avatar, verified };
-        });
+    const blogsData = blogs?.map((blog) => {
+        const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
+        if (!selectedFilter?.includes(userDetail?.user)) {
+            return null;
+        }
+        const { username, avatar, verified } = userDetail || {};
 
-    const filteredFeeds = feedData?.filter((feed) => feed !== null);
+        return { ...blog, username, avatar, verified };
+    });
 
-    const blogsData = blogs
-        ?.slice()
+    const filteredBlogs = blogsData
+        ?.filter((blog) => blog !== null)
         .reverse()
         ?.slice(0, 10)
-        .reverse()
-        .map((blog) => {
-            const userDetail = userDetailsLocal?.find((user) => user?.user === blog?.user);
-            if (!selectedFilter?.includes(userDetail?.user)) {
-                return null;
-            }
-            const { username, avatar, verified } = userDetail || {};
-
-            return { ...blog, username, avatar, verified };
-        });
-
-    const filteredBlogs = blogsData?.filter((blog) => blog !== null);
+        .reverse();
 
     const filteredCtf =
-        ctf
-            ?.slice()
-            .reverse()
-            ?.slice(0, 10)
-            .reverse()
-            .filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
+        ctf?.filter((ctf) => ctf?.registeredUsers.find(({ user }) => selectedFilter?.includes(user))) || [];
 
-    const filteredUsers = userDetailsLocal?.filter((user) => selectedFilter?.includes(user.user));
+    const filteredUsers = userDetailsLocal
+        ?.filter((user) => selectedFilter?.includes(user.user))
+        .reverse()
+        ?.slice(0, 10)
+        .reverse();
 
     const handleTypeFilter = (filter) => {
-        setSelectedFilter(filter.value);
-        setFilterLabel(filter.label);
+        if (filter.label === filterLabel) {
+            setSelectedFilter(allUsers); // Deselect the filter
+            setFilterLabel("all"); // Reset the filter label
+        } else {
+            setSelectedFilter(filter.value); // Select the filter
+            setFilterLabel(filter.label); // Set the filter label
+        }
     };
 
     const userFilters = [
         { value: allConnections, label: "Connections" },
         { value: following, label: "Following" },
         { value: followers, label: "Followers" },
+        { value: allUsers, label: "all users" },
     ];
 
     const renderNotFoundComponents = () => {
@@ -248,6 +252,8 @@ const Explore = () => {
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
                         tags={tags}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                         showOnlyFollowing={showOnlyFollowing}
                         setShowOnlyFollowing={setShowOnlyFollowing}
                         userFilters={userFilters}
@@ -275,6 +281,7 @@ const Explore = () => {
                                     isFeedLoading={isFeedLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                             {filteredBlogs?.length ? (
@@ -283,6 +290,7 @@ const Explore = () => {
                                     isBlogLoading={isBlogLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                             {filteredCtf?.length ? (
@@ -291,6 +299,7 @@ const Explore = () => {
                                     isCtfLoading={isCtfLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                             {renderNotFoundComponents()}
@@ -320,6 +329,7 @@ const Explore = () => {
                                     blogs={filteredBlogs}
                                     isBlogLoading={isBlogLoading}
                                     searchTerm={searchTerm}
+                                    selectedTags={selectedTags}
                                     displayAt={"explore"}
                                 />
                             ) : null}
@@ -330,6 +340,7 @@ const Explore = () => {
                                     isCtfLoading={isCtfLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                         </>

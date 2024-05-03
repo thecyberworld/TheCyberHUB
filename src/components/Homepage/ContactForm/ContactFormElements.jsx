@@ -45,8 +45,6 @@ export const ContactFormContainer = styled.div`
     color: #f5f5f5;
     margin: 150px auto 50px;
     max-width: 1000px;
-    background: linear-gradient(#212121, #212121) padding-box,
-        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
     padding: 32px 24px;
     font-size: 14px;
@@ -57,6 +55,7 @@ export const ContactFormContainer = styled.div`
     border-radius: 16px;
 
     // CSS for input fields
+
     input,
     textarea {
         width: calc(100% - 30px); /* Adjusted width to accommodate icon */
@@ -76,7 +75,7 @@ export const ContactFormContainer = styled.div`
     input&:focus,
     textarea:focus {
         outline: none;
-        border-color: #e81cff;
+        border-color: #ff731c;
     }
 `;
 
@@ -306,11 +305,9 @@ export const ContactFormSubmit = styled.button`
     padding: 15px 10px;
     font-size: 1.5rem;
     background: #101010;
-    border: 2px solid;
-    border-image: linear-gradient(#212121, #212121) padding-box,
-        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
     border-image-slice: 1;
     color: #f5f5f5;
+    border: 1px solid #2a2a2a;
     border-radius: 5px;
     margin: 5px 0;
     width: 100%;

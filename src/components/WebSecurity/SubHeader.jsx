@@ -11,9 +11,11 @@ import {
     DropdownLi,
     DropdownLink,
 } from "./Common/SubHeaderElements"; // Make sure to provide the correct path
+import { useLocation } from "react-router-dom";
 
 const SubHeader = (props) => {
     const { subHeaderData } = props;
+    const currentSubPath = useLocation().pathname.split("/").pop();
 
     return (
         <Nav>
@@ -48,7 +50,9 @@ const SubHeader = (props) => {
                                       </DropdownUl>
                                   </DropdownContainer>
                               ) : (
-                                  <NavLink to={item.link}>{item.title}</NavLink>
+                                  <NavLink to={item.link} style={{ color: currentSubPath === item.link && "#ff6b08" }}>
+                                      {item.title}
+                                  </NavLink>
                               )}
                           </Li>
                       ))

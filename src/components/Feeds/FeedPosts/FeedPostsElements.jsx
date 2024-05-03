@@ -57,7 +57,12 @@ export const RightSection = styled.div`
     width: 100%;
     gap: 10px;
 `;
-
+export const RightHeaderSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+`;
 export const PostTags = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +81,9 @@ export const PostTag = styled.span`
 `;
 
 export const PostHeader = styled.div`
+    position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;

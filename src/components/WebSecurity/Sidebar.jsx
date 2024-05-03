@@ -94,7 +94,7 @@ const VerticalLine = styled.div`
 //   width: 100%;
 // `;
 
-const Sidebar = ({ heading, topics, onSelectSubtopic, setCategoryActive, onlyCat }) => {
+const Sidebar = ({ heading, topic, topics, onSelectSubtopic, setCategoryActive, onlyCat, categoryActive }) => {
     const [openDropdown, setOpenDropdown] = useState(null);
 
     const toggleDropdown = (index) => {
@@ -105,13 +105,15 @@ const Sidebar = ({ heading, topics, onSelectSubtopic, setCategoryActive, onlyCat
 
     const categories = [...new Set(topics.map((topic) => topic.category))].sort();
 
+    const sidebarHeader = heading || topic?.category;
+
     return (
         <SidebarContainer>
             <div
                 style={{
                     display: "flex",
                     flexDirection: "column",
-                    gap: "20px",
+                    gap: "10px",
                 }}
             >
                 <div
@@ -121,17 +123,15 @@ const Sidebar = ({ heading, topics, onSelectSubtopic, setCategoryActive, onlyCat
                         gap: "10px",
                     }}
                 >
-                    {heading && (
-                        <h3
-                            style={{
-                                color: "#ecf0f1",
-                                fontSize: "20px",
-                                textAlign: "center",
-                            }}
-                        >
-                            {heading}
-                        </h3>
-                    )}
+                    <h3
+                        style={{
+                            color: "#ecf0f1",
+                            fontSize: "20px",
+                            textAlign: "center",
+                        }}
+                    >
+                        {sidebarHeader}
+                    </h3>
                 </div>
                 <div
                     style={{
@@ -142,7 +142,14 @@ const Sidebar = ({ heading, topics, onSelectSubtopic, setCategoryActive, onlyCat
                 >
                     {onlyCat &&
                         categories.map((category, index) => (
-                            <MainTitle key={index} onClick={() => setCategoryActive(category)}>
+                            <MainTitle
+                                key={index}
+                                onClick={() => setCategoryActive(category)}
+                                style={{
+                                    background: categoryActive === category && "#ff6b08",
+                                    color: categoryActive === category && "#000000",
+                                }}
+                            >
                                 <div
                                     style={{
                                         display: "flex",
