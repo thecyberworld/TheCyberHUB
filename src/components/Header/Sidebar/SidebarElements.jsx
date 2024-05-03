@@ -77,9 +77,9 @@ export const SideBtnWrap = styled.div`
     align-items: center;
 `;
 export const SidebarMenu = styled.div`
-    // display: grid;
-    // grid-template-columns: 1fr;
-    // grid-template-rows:repeat(6, 80px);
+    /*display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:repeat(6, 80px);*/
     text-align: center;
     display: flex;
     flex-direction: column;

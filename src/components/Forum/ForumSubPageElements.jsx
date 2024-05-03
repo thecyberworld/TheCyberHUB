@@ -75,7 +75,7 @@ export const CommentTextArea = styled.textarea`
     width: 100%;
     min-height: 250px;
 
-    ::placeholder {
+    &::placeholder {
         color: gainsboro;
     }
 

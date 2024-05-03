@@ -23,7 +23,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
     const feedImage = (image) => cdnContentImagesUrl(`/feed/${image}`);
 
     return (
-        <FeedPostContainer displayAt={displayAt}>
+        <FeedPostContainer $displayAt={displayAt}>
             <RightSection>
                 <RouteLink to={`/feeds/${feed?._id}`}>
                     <PostHeader>

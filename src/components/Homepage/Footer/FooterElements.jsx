@@ -267,7 +267,7 @@ export const SocialLogo = styled(RouterLink)`
     align-items: center;
     font-weight: bold;
 
-    :hover {
+    &:hover {
         color: #ff6b08;
         scale: 1.2;
         transition: 0.3s ease-out;

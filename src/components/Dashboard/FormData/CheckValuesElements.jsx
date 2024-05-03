@@ -100,7 +100,7 @@ export const HiredInput = styled.input`
         font-size: 15px;
     }
 
-    ::placeholder {
+    &::placeholder {
         color: #fff;
     }
 

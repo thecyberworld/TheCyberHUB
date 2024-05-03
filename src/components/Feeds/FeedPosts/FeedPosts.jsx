@@ -108,7 +108,7 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
                 </h3>
             }
         >
-            <FeedPostsContainer displayAt={displayAt}>
+            <FeedPostsContainer $displayAt={displayAt}>
                 {filteredData
                     ?.slice()
                     .reverse()
@@ -131,7 +131,7 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
             </FeedPostsContainer>
         </InfiniteScroll>
     ) : (
-        <FeedPostsContainer displayAt={displayAt}>
+        <FeedPostsContainer $displayAt={displayAt}>
             {filteredData
                 ?.slice()
                 .reverse()

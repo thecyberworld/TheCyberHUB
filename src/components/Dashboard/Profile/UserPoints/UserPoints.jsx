@@ -24,9 +24,9 @@ const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
     return (
         <UserPointsContainer>
             <RankContainer>
-                <RankNumberContainer userRank={userRank}>
+                <RankNumberContainer $userRank={userRank}>
                     {userRank === 1 ? <RankTrophy /> : null}
-                    <RankNumber userRank={userRank}>{userRank}</RankNumber>
+                    <RankNumber $userRank={userRank}>{userRank}</RankNumber>
                 </RankNumberContainer>
                 <h5>Rank</h5>
             </RankContainer>

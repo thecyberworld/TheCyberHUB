@@ -26,7 +26,7 @@ export const PostFormTextarea = styled.textarea`
     width: 100%;
     height: 250px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 

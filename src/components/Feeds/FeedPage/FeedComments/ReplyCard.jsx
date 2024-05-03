@@ -17,7 +17,7 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
     const avatar = cdnContentImagesUrl("/user/" + (reply?.avatar || "avatarDummy.png"));
 
     return (
-        <FeedPostContainer displayAt={displayAt}>
+        <FeedPostContainer $displayAt={displayAt}>
             <LeftSection>
                 <PostHeaderImg src={avatar} alt={reply?.username + `avatar`} />
             </LeftSection>

@@ -3,7 +3,7 @@ import { ExploreContentContainer } from "src/components/Explore/ExploreElements"
 import { PiSealCheckDuotone } from "react-icons/pi";
 
 export const UsersContainer = styled(ExploreContentContainer)`
-    grid-auto-rows: ${(props) => (props.displayAt === "explore" ? "1fr" : "0fr")};
+    grid-auto-rows: ${(props) => (props.$displayAt === "explore" ? "1fr" : "0fr")};
     gap: 15px;
     @media screen and (max-width: 800px) {
         grid-auto-rows: 0fr;

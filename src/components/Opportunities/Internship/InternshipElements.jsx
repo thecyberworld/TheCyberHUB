@@ -72,7 +72,7 @@ export const InternshipCard = styled.div`
     }
 
     ${(props) =>
-        props.isBetweenDates || props.appClosed
+        props.$isBetweenDates || props.$appClosed
             ? `
   padding: 0 25px 20px 25px;
   font-family: "Fira Code", monospace;

@@ -65,7 +65,7 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     };
 
     return (
-        <FeedPostsContainer displayAt={displayAt}>
+        <FeedPostsContainer $displayAt={displayAt}>
             {filteredData?.length > 0 &&
                 filteredData
                     ?.slice()

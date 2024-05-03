@@ -33,7 +33,7 @@ export const TextArea = styled.textarea`
     width: 100%;
     height: 50px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -61,7 +61,7 @@ export const Input = styled.input`
     font-size: 15px;
     text-underline-offset: 5px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 

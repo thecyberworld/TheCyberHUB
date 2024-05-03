@@ -43,14 +43,14 @@ export const RankNumberContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    margin-right: ${(props) => props.userRank === 1 && "30px"};
+    margin-right: ${(props) => props.$userRank === 1 && "30px"};
 `;
 
 export const RankNumber = styled.p`
-    // color: ${(props) => (props.userRank === 1 ? "#ff6b08" : "#d7d7d7")};
-    margin-bottom: ${(props) => (props.userRank === 1 ? "-5px" : "")};
+    /* color: ${(props) => (props.$userRank === 1 ? "#ff6b08" : "#d7d7d7")};*/
+    margin-bottom: ${(props) => (props.$userRank === 1 ? "-5px" : "")};
     font-weight: 600;
-    margin-left: ${(props) => props.userRank === 1 && "5px"};
+    margin-left: ${(props) => props.$userRank === 1 && "5px"};
 `;
 
 export const RankTrophy = styled(BsTrophyFill)`

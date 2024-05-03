@@ -86,7 +86,7 @@ const Sidebar = ({
     );
 
     return (
-        <SidebarContainer sidebarType={sidebarType}>
+        <SidebarContainer $sidebarType={sidebarType}>
             {sidebarType === "blogs" && (
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
                     <RouterNavCreateButtonLink to={"/dashboard/blogs/create"}>Create Blog</RouterNavCreateButtonLink>

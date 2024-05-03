@@ -9,7 +9,7 @@ export const DropdownIcon = styled(AiFillCaretDown)`
 `;
 
 export const Nav = styled.nav`
-    // background: ${({ $scrollNav }) => ($scrollNav ? "0000007F" : "transparent")};
+    /* background: ${({ $scrollNav }) => ($scrollNav ? "0000007F" : "transparent")}; */
     height: 80px;
     margin-top: -80px;
     display: flex;
@@ -21,7 +21,7 @@ export const Nav = styled.nav`
     top: 0;
     padding: 0 25px;
 
-    //if showBottomBorder then show bottom border
+    /* if showBottomBorder then show bottom border */
     border-bottom: ${({ $showBottomBorder }) => ($showBottomBorder ? "1px solid #2a2a2a" : "none")};
 
     background: rgba(0, 0, 0, 0.34);
@@ -41,7 +41,7 @@ export const NavbarContainer = styled.div`
     z-index: 1;
     width: 100%;
     max-width: 1500px;
-    // display: none;
+    /* display: none; */
 `;
 
 export const NavUsersDetailsSection = styled.div`
@@ -134,7 +134,7 @@ export const NavItem = styled.div`
     justify-content: center;
     flex-direction: column;
     @media screen and (max-width: 768px) {
-        // height: max-content;
+        /* height: max-content; */
         position: relative;
     }
 `;
@@ -148,7 +148,7 @@ export const NavLink = styled(LinkRouter)`
     height: 98%;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    // margin: 1rem;
+    /* margin: 1rem; */
     @media screen and (max-width: 920px) {
         transition: all 0.3s ease-in-out;
         padding: 0 0.5rem;
@@ -215,12 +215,12 @@ export const RouterNavCreateButtonLink = styled(Link)`
         font-size: 12px;
     }
 
-    //@media screen and (max-width: 1150px) {
-    //  display: none;
-    //}
-    //@media screen and (max-width: 900px) {
-    //  display: initial;
-    //}
+    /* @media screen and (max-width: 1150px) {
+     display: none;
+    }
+    @media screen and (max-width: 900px) {
+     display: initial;
+    } */
 
     &:hover {
         transition: 0.2s ease-in-out;
@@ -242,12 +242,12 @@ export const RouterNavCreateButton = styled.button`
         font-size: 12px;
     }
 
-    //@media screen and (max-width: 1150px) {
-    //  display: none;
-    //}
-    //@media screen and (max-width: 900px) {
-    //  display: initial;
-    //}
+    /* @media screen and (max-width: 1150px) {
+     display: none;
+    }
+    @media screen and (max-width: 900px) {
+     display: initial;
+    } */
 
     &:hover {
         transition: 0.2s ease-in-out;

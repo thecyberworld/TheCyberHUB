@@ -26,7 +26,7 @@ const StartSection = styled.div`
         border-radius: 10px;
     }
 
-    button:hover {
+    button&:hover {
         background-color: #ff6b07;
         color: #000000;
     }

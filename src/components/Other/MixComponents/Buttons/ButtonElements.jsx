@@ -119,13 +119,13 @@ export const ButtonGreen = styled.button`
     &:hover {
         padding: ${({ big }) => (big ? "12px 46px" : "12px 30px")};
         font-size: ${({ fontBig }) => (fontBig ? "24px" : "20px")};
-        //box-shadow: 0 0 10px -5px rgb(23, 243, 30);
-        //-webkit-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
-        //-moz-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+        /*box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+        -webkit-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+        -moz-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+         font-size: 18px; */
         background: #ff6b08;
         color: black;
         border-color: #343434;
-        // font-size: 18px;
     }
 
     @media screen and (max-width: 600px) {
@@ -231,7 +231,7 @@ export const RouterButtonGreen = styled(RouterLink)`
         color: black;
         scale: 1.01;
         border-color: #343434;
-        // font-size: 18px;
+        /* font-size: 18px;*/
     }
 
     @media screen and (max-width: 600px) {

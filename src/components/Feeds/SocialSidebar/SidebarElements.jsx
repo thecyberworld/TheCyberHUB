@@ -10,7 +10,7 @@ export const SidebarContainer = styled.div`
 
     width: 100%;
     max-width: 400px;
-    min-width: ${(props) => (props.sidebarType === "explore" ? "300px" : "400px")};
+    min-width: ${(props) => (props.$sidebarType === "explore" ? "300px" : "400px")};
 
     color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

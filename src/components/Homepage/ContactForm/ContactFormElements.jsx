@@ -68,12 +68,12 @@ export const ContactFormContainer = styled.div`
         border: 1px solid #414141;
     }
 
-    input::placeholder,
+    input&::placeholder,
     textarea::placeholder {
         opacity: 0.5;
     }
 
-    input:focus,
+    input&:focus,
     textarea:focus {
         outline: none;
         border-color: #e81cff;
@@ -212,7 +212,7 @@ export const ContactFormInput = styled.input`
     text-underline-offset: 5px;
     font-size: 20px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -289,7 +289,7 @@ export const ContactFormTextArea = styled.textarea`
         font-size: 15px;
     }
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 

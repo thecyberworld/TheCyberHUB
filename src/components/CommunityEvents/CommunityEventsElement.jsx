@@ -4,10 +4,10 @@ import { BiSolidChevronDown, BiSolidChevronUp } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
 
 export const ParentContainer = styled.div`
-    margin: ${(props) => (props.pageHeader ? "6.25rem auto;" : "0 auto;")}
+    margin: ${(props) => (props.$pageHeader ? "6.25rem auto;" : "0 auto;")};
     width: 100%;
     color: #f5f5f5;
-    padding: ${(props) => (props.pageHeader ? "0 1.563rem" : "0")}
+    padding: ${(props) => (props.$pageHeader ? "0 1.563rem" : "0")};
 `;
 
 export const Container = styled.div`

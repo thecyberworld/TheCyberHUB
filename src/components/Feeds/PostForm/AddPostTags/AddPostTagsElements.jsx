@@ -23,9 +23,9 @@ export const TagsInput = styled.div`
     text-underline-offset: 5px;
     font-family: "Poppins", sans-serif;
     gap: 5px;
-    //border: #222222 1px solid;
+    /* border: #222222 1px solid; */
 
-    // props
+    /* props */
     font-size: ${(props) => (props.size === "lg" ? "11rem" : "0.8rem")};
 `;
 
@@ -48,7 +48,7 @@ export const TagInput = styled.input`
     font-size: ${(props) => (props.size === "lg" ? "13px" : "11px")};
     padding: ${(props) => (props.size === "lg" ? "3px 5px" : "2px 5px")};
 
-    ::placeholder {
+    &::placeholder {
         //transition: all 0.1s ease-in-out;
         color: #f5f5f5;
     }
