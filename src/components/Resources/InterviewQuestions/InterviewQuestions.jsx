@@ -114,7 +114,7 @@ const InterviewQuestions = () => {
                                     <BackArrow onClick={handleIsShown} />
                                 </BackArrowSection>
                                 <InterviewsAnswerQuestionsHeading>
-                                    {selectedQuestion && <h4>{selectedQuestion}</h4>}
+                                    {selectedQuestion && <div>{selectedQuestion}</div>}
                                 </InterviewsAnswerQuestionsHeading>
                                 {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
                             </AnswerContainer>

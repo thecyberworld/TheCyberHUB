@@ -4,7 +4,7 @@ export const OptionsMainContainer = styled.div`
     position: relative;
     padding: 5px;
     &:hover {
-        transform: ${({ isOpen }) => !isOpen && "scale(1.1)"};
+        transform: ${({ $isOpen }) => !$isOpen && "scale(1.1)"};
     }
     cursor: pointer;
 `;

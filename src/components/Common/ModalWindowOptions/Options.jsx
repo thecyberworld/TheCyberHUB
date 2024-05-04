@@ -37,7 +37,7 @@ const Options = ({ onDelete, onEdit }) => {
     };
 
     return (
-        <OptionsMainContainer ref={modalWindow} isOpen={isOpen} onClick={(e) => handleClickEvent(e, true)}>
+        <OptionsMainContainer ref={modalWindow} $isOpen={isOpen} onClick={(e) => handleClickEvent(e, true)}>
             <BsThreeDotsVertical />
             {isOpen && (
                 <OptionsContainer>

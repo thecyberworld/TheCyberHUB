@@ -74,14 +74,16 @@ const FreeCourse = () => {
                                                             <TopicBox
                                                                 key={index}
                                                                 onClick={() => handleHeadingClick(content.heading)}
-                                                                isSelected={content.heading === selectedContent}
+                                                                $isSelected={content.heading === selectedContent}
                                                             >
                                                                 <ContentHeading>{content.heading}</ContentHeading>
                                                                 <CheckboxContainer>
                                                                     <Checkbox
                                                                         id={content.heading}
                                                                         value={content.heading}
-                                                                        isSelected={content.heading === selectedContent}
+                                                                        $isSelected={
+                                                                            content.heading === selectedContent
+                                                                        }
                                                                         type="checkbox"
                                                                     />
                                                                 </CheckboxContainer>

@@ -136,7 +136,7 @@ export const TopicBox = styled.div`
     padding: 0 5px;
     cursor: pointer;
     ${(props) =>
-        props.isSelected &&
+        props.$isSelected &&
         `
       background: #505050;
   `}

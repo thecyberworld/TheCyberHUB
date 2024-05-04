@@ -112,8 +112,8 @@ export const RoadmapDetailsCard = styled.h3`
         color: #0a0a0a;
     }
 
-    ${({ isSelected }) =>
-        isSelected &&
+    ${({ $isSelected }) =>
+        $isSelected &&
         `
         background: #ff6b08;
         color: #0a0a0a;

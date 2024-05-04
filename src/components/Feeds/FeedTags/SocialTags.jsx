@@ -16,7 +16,7 @@ const SocialTags = ({ tags, handleClick, selectedTags, setSelectedTags }) => {
                     (tag, key) =>
                         tag.length !== 0 && (
                             <Tag
-                                isSelected={selectedTags.includes(tag)}
+                                $isSelected={selectedTags.includes(tag)}
                                 key={key}
                                 onClick={() => {
                                     handleTagSelection(tag);

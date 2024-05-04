@@ -14,7 +14,7 @@ export const ChatBoxShowButton = styled.button`
     background-color: #151515;
     color: white;
     border: 1px solid #2a2a2a;
-    border-radius: ${(props) => (props?.isOpen ? "0" : "5px 5px 0 0")};
+    border-radius: ${(props) => (props?.$isOpen ? "0" : "5px 5px 0 0")};
 
     padding: 10px 25px;
     font-size: 18px;

@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { BsDot } from "react-icons/bs";
 
 export const FollowContainer = styled.div`
-    //display: flex;
-    //flex-direction: row;
-    //justify-content: space-between;
-    //align-items: center;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; */
     gap: 10px;
 `;
 
