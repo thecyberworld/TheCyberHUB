@@ -10,7 +10,9 @@
         "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" vite build",
         "preview": "vite preview",
         "prepare": "husky install",
-        "lint:fix": "eslint --fix --ext .js,.jsx ."
+        "lint:fix": "eslint --fix --ext .js,.jsx .",
+        "lint:css": "stylelint **/*.jsx",
+        "lint:css-fix": "stylelint **/*.jsx --fix"
     },
     "dependencies": {
         "@radix-ui/react-slot": "^1.0.1",
@@ -21,7 +23,7 @@
         "chart.js": "^4.4.1",
         "crypto-js": "^4.2.0",
         "date-fns": "^2.30.0",
-        "dompurify": "^3.0.11",
+        "dompurify": "^3.1.0",
         "dotenv": "^16.0.3",
         "fs-extra": "^11.1.1",
         "highlight.js": "^11.8.0",
@@ -54,7 +56,8 @@
         "rehype-sanitize": "^6.0.0",
         "remark-gfm": "^3.0.1",
         "sass": "^1.55.0",
-        "styled-components": "^5.3.6"
+        "styled-components": "^6.1.8",
+        "validator": "^13.11.0"
     },
     "devDependencies": {
         "@types/react": "^18.0.0",
@@ -66,14 +69,17 @@
         "eslint-config-standard": "^17.0.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-n": "^15.3.0",
-        "eslint-plugin-no-relative-import-paths": "^1.5.3",
+        "eslint-plugin-no-relative-import-paths": "^1.5.4",
         "eslint-plugin-promise": "^6.1.1",
         "eslint-plugin-react": "^7.31.10",
         "gh-pages": "^4.0.0",
         "husky": "^8.0.3",
         "lint-staged": "^13.0.3",
-        "postcss": "^8.4.32",
+        "postcss": "^8.4.38",
+        "postcss-styled-syntax": "^0.6.4",
         "prettier": "^2.7.1",
+        "stylelint": "^16.5.0",
+        "stylelint-plugin-styled-components": "^1.0.1",
         "tailwindcss": "^3.3.6",
         "vite": "^3.1.8"
     },

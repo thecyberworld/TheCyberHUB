@@ -28,9 +28,9 @@ export const PlayersContainer = styled.div`
     flex-direction: column;
     width: 100%;
     max-height: 450px;
-    // scrollable
+    /* scrollable */
     overflow-y: auto;
-    // small scroll bar width
+    /* small scroll bar width */
     scrollbar-width: thin;
     scrollbar-color: #4a4a4a #090909;
     &::-webkit-scrollbar {
@@ -42,7 +42,7 @@ export const PlayersContainer = styled.div`
     &::-webkit-scrollbar-thumb {
         background-color: #4a4a4a;
     }
-    &::-webkit-scrollbar-thumb:hover {
+    &::-webkit-scrollbar-thumb&:hover {
         background-color: #4a4a4a;
     }
 `;

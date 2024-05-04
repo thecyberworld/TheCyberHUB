@@ -117,33 +117,33 @@ export const RoadmapDetailsCard = styled.div`
     width: 100%;
     gap: 10px;
 
-    //width: 30em;
-    //text-decoration: none;
-    //background: #0a0a0a;
-    //border: #383838 1px solid;
-    //border-radius: 3px;
-    //display: flex;
-    //margin: 0 0 5px 0;
-    //padding: 5px 15px;
-    //transition: all 0.3s ease-in-out;
-    //cursor: pointer;
-    //
-    //&:hover {
-    //    scale: 1.05;
-    //    border: #faf089 1px solid;
-    //    color: #faf089;
-    //    transition: all 0.3s ease-in-out;
-    //}
-    //
-    //@media screen and (max-width: 600px) {
-    //    width: 25em;
-    //}
-    //@media screen and (max-width: 500px) {
-    //    width: 20em;
-    //}
-    //@media screen and (max-width: 350px) {
-    //    width: 100%;
-    //}
+    /*width: 30em;
+    text-decoration: none;
+    background: #0a0a0a;
+    border: #383838 1px solid;
+    border-radius: 3px;
+    display: flex;
+    margin: 0 0 5px 0;
+    padding: 5px 15px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    
+    &:hover {
+        scale: 1.05;
+        border: #faf089 1px solid;
+        color: #faf089;
+        transition: all 0.3s ease-in-out;
+    }
+    
+    @media screen and (max-width: 600px) {
+        width: 25em;
+    }
+    @media screen and (max-width: 500px) {
+        width: 20em;
+    }
+    @media screen and (max-width: 350px) {
+        width: 100%;
+    }*/
 `;
 
 export const RoadmapSectionHeading = styled.h2`
@@ -241,7 +241,7 @@ export const RouterLink = styled(Link)`
 `;
 
 export const RedirectLink = styled.a`
-    // buttom margin 5x for undeline
+    /* buttom margin 5x for undeline */
     width: 100%;
 `;
 

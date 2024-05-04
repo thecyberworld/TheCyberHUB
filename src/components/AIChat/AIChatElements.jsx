@@ -145,8 +145,9 @@ export const BotMessage = styled.div`
 `;
 
 export const UserMessage = styled.div`
-    //background: #3d3d3d; // vote pankaj
-    background: #1e1e1e; // vote kabir
+    /* background: #3d3d3d; vote pankaj */
+
+    background: #1e1e1e; /* vote kabir */
     align-self: flex-end;
     border: 1px solid #333;
 

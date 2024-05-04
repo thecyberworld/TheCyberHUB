@@ -139,7 +139,7 @@ export const HeadingContainer = styled.div`
     padding: 15px;
     pointer-events: none;
     display: none;
-    //
+
     @media screen and (max-width: 768px) {
         display: flex;
         box-shadow: 0 0 4px rgb(255 255 255 / 15%);
@@ -150,10 +150,10 @@ export const HeadingContainer = styled.div`
 
 export const IconContainer = styled.div`
     color: #f5f5f5;
-    //display: none;
-    //@media screen and (max-width: 768px) {
+    /*display: none;
+    @media screen and (max-width: 768px) {*/
     display: flex;
-    //}
+    /*}*/
 
     svg {
         height: 24px;
@@ -181,10 +181,10 @@ export const Content = styled.div`
     list-style: none;
     opacity: ${({ visible }) => (visible ? 1 : 0)};
     overflow: hidden;
-    // padding: ${({ visible }) => (visible ? "10px 10px" : 0)};
-    //transition: all .2s ease-in-out;
+    /* padding: ${({ visible }) => (visible ? "10px 10px" : 0)}; */
+    /* transition: all .2s ease-in-out;*/
     @media screen and (max-width: 768px) {
-        // padding: ${({ visible }) => (visible ? "10px 10px" : 0)};
+        /* padding: ${({ visible }) => (visible ? "10px 10px" : 0)}; */
         display: flex;
         align-items: start;
         justify-content: start;

@@ -30,7 +30,7 @@ export const ThecyberhubBot = styled.div`
         transition: 260ms all;
         width: 100%;
 
-        :hover {
+        &:hover {
             outline-color: #545454;
             outline-offset: 2px;
         }
@@ -137,10 +137,10 @@ export const ThecyberhubBot = styled.div`
                     width: 100%;
                     text-indent: 1rem;
 
-                    :focus {
+                    &:focus {
                         outline: none;
                     }
-                    ::placeholder {
+                    &::placeholder {
                         color: #cecac3;
                         font-weight: 100;
                         letter-spacing: 0.1rem;
@@ -155,7 +155,7 @@ export const ThecyberhubBot = styled.div`
                     width: 3rem;
                     transition: 260ms all;
 
-                    :hover {
+                    &:hover {
                         background: rgba(32, 194, 14, 0.2);
                     }
                 }
@@ -186,7 +186,7 @@ export const BotButtonCont = styled.div`
         height: 3.5rem;
         transition: 260ms all;
 
-        :hover {
+        &:hover {
             background: #23150e;
             outline-color: #545454;
             outline-offset: 1px;

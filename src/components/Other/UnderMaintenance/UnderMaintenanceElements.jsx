@@ -31,17 +31,17 @@ export const UnderMaintenanceLogo = styled.img`
     font-size: 12px;
     color: #999;
     word-break: break-all;
-    //border-radius: 5px;
-    //position: relative;
-    //animation: logo-animation 1s ease-in-out infinite alternate;
-    //transition: transform 10s ease-in-out;
-    //
-    //@keyframes logo-animation {
-    //  0% {
-    //    transform: translateY(0);
-    //  }
-    //  100% {
-    //    transform: translateY(-10px);
-    //  }
-    //}
+    /*border-radius: 5px;
+    position: relative;
+    animation: logo-animation 1s ease-in-out infinite alternate;
+    transition: transform 10s ease-in-out;
+    
+    @keyframes logo-animation {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }*/
 `;

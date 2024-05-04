@@ -45,9 +45,9 @@ export const ExpText = styled.div`
     justify-content: end;
     text-align: right;
     width: 100%;
-    //@media screen and (max-width: 1350px) {
-    //    display: none;
-    //}
+    /* @media screen and (max-width: 1350px) {
+       display: none;
+    } */
     @media screen and (max-width: 900px) {
         display: initial;
     }

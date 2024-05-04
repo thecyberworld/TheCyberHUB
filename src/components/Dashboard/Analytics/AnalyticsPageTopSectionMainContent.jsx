@@ -7,7 +7,7 @@ import {
     CTABtn,
     TopSectionCaptionCTABtnBig,
     TopSectionCaptionCTABtnBigInnerSection,
-    TopSectionMainContent
+    TopSectionMainContent,
 } from "./AnalyticsPageTopSectionMainContentElements";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
 import { lastAmountOfDays } from "./AnalyticsUtils";

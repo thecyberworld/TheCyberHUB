@@ -24,7 +24,10 @@ export const ChatContainer = styled.div`
 
 export const ChatItemsContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: ${(props) => (props?.isBox ? "100%" : "100vh")};
+    max-height: ${(props) => (props?.isBox ? "500px" : "100vh")};
+    min-height: ${(props) => (props?.isBox ? "500px" : "100vh")};
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;

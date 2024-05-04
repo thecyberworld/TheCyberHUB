@@ -16,6 +16,10 @@ export const Form = styled.form`
     flex-direction: column;
     width: 100%;
     max-width: 600px;
+    background: #151515;
+    padding: 25px;
+    gap: 25px;
+    border-radius: 10px;
 `;
 
 export const Label = styled.label``;
@@ -33,7 +37,7 @@ export const TextArea = styled.textarea`
     width: 100%;
     height: 50px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -53,15 +57,16 @@ export const Input = styled.input`
     justify-content: flex-start;
     align-items: center;
     border-radius: 5px;
-    background: transparent;
+    background: #262525;
     border: transparent;
     color: #f5f5f5;
     width: 100%;
     height: 50px;
     font-size: 15px;
     text-underline-offset: 5px;
+    padding: 10px 20px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 

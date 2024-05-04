@@ -11,16 +11,15 @@ import { BiSend } from "react-icons/bi";
 import ChatHeader from "./ChatHeader";
 
 const Chat = ({
-    ws,
     userDetails,
     setNewMessageText,
     messages,
     sendMessage,
-    setMessages,
     newMessageText,
     divUnderMessage,
     setHideSidebar,
     hideSidebar,
+    isBox,
 }) => {
     const { user } = useSelector((state) => state.auth);
     const location = useLocation();
@@ -34,7 +33,7 @@ const Chat = ({
 
     if (!channel && userDetails) {
         return (
-            <ChatItemsContainer>
+            <ChatItemsContainer isBox={isBox && isBox}>
                 <ChatHeader hideSidebar={hideSidebar} setHideSidebar={setHideSidebar} />
                 <MessageInputContainer>
                     {messages &&

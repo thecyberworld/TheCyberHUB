@@ -22,9 +22,6 @@ const DashboardRoute = () => {
         if (!user) {
             navigate("/");
         }
-        // setTimeout(() => {
-        //     setIsLoading(false);
-        // }, 1000);
     }, [user, navigate]);
 
     useEffect(() => {

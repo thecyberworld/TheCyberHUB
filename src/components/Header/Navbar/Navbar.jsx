@@ -71,7 +71,7 @@ const Navbar = ({ isOpen, toggle }) => {
     const showBottomBorder = pathName !== "";
 
     return (
-        <Nav onMouseLeave={() => setDrop(false)} scrollNav={scrollNav} showBottomBorder={showBottomBorder}>
+        <Nav onMouseLeave={() => setDrop(false)} $scrollNav={scrollNav} $showBottomBorder={showBottomBorder}>
             <NavbarContainer>
                 <NavLogoRouter to={"/"} onClick={toggleHome}>
                     <NavLogo src={logo} alt="logo" />
@@ -79,11 +79,11 @@ const Navbar = ({ isOpen, toggle }) => {
                 <NavMenu>
                     {[
                         { to: "explore", title: "Explore", dropdown: "explore" },
-                        { to: "aiChat", title: "AI Chat", dropdown: "aiChat" },
                         { to: "feeds", title: "Feeds", dropdown: "feeds" },
                         { to: "blogs", title: "Blogs", dropdown: "blogs" },
                         // { to: "forum", title: "Forum", dropdown: "forum" },
                         // { to: "courses", title: "Courses", dropdown: "courses" },
+                        { to: "aiChat", title: "AI ", dropdown: "aiChat" },
                         { to: "ctf", title: "CTF", dropdown: "ctf" },
                         { to: "websecurity", title: "Web Security", dropdown: "websecurity" },
                         {
@@ -125,7 +125,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                     isResources={true}
                                     toggle={setToggleDropdown}
                                     toggleDropdown={toggleDropdown}
-                                    isOpen={isOpen}
+                                    $isOpen={isOpen}
                                 />
                             )}
                             {dropdown === "programs" && opportunities && drop && (
@@ -133,7 +133,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                     isOpportunities={true}
                                     toggle={setToggleDropdown}
                                     toggleDropdown={toggleDropdown}
-                                    isOpen={isOpen}
+                                    $isOpen={isOpen}
                                 />
                             )}
                         </NavItem>

@@ -26,7 +26,7 @@ export const PostFormTextarea = styled.textarea`
     width: 100%;
     height: 250px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -119,5 +119,5 @@ export const RemoveButton = styled.button`
 export const ImagesContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust column width */
-    grid-gap: 8px; /* Adjust gap between images */
+    grid-gap: 10px; /* Adjust gap between images */
 `;

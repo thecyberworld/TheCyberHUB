@@ -30,7 +30,7 @@ export const FeedCommentInput = styled.textarea`
 
     padding: 15px 0;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 

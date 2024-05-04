@@ -24,7 +24,7 @@ export const Input = styled.input`
     }
 
     @media (max-width: 768px) {
-        // Add styles for smaller screens if needed
+        /* Add styles for smaller screens if needed */
     }
 `;
 
@@ -49,9 +49,9 @@ export const ReverseShellHeader = styled.div`
     padding: 25px;
     border-radius: 5px;
 
-    //@media (max-width: 768px) {
-    //    flex-direction: column;
-    //}
+    /*@media (max-width: 768px) {
+       flex-direction: column;
+    }*/
 `;
 
 export const RevShellHeaderSubContainer = styled.div`

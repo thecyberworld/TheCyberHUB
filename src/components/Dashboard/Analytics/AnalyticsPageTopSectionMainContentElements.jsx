@@ -85,4 +85,3 @@ export const TopSectionInnerCardCaptionTitle = styled.div`
     color: #fff;
     font-size: 12px;
 `;
-

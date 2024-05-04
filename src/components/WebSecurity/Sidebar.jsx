@@ -68,7 +68,7 @@ const DropdownList = styled.div`
     //background: #1a1a1a;
     //border: 1px solid #3a3a3a;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: ${(props) => (props.isOpen ? "block" : "none")};
+    display: ${(props) => (props.$isOpen ? "block" : "none")};
 `;
 
 const DropdownItem = styled.div`
@@ -94,7 +94,7 @@ const VerticalLine = styled.div`
 //   width: 100%;
 // `;
 
-const Sidebar = ({ heading, topic, topics, onSelectSubtopic, setCategoryActive, onlyCat }) => {
+const Sidebar = ({ heading, topic, topics, onSelectSubtopic, setCategoryActive, onlyCat, categoryActive }) => {
     const [openDropdown, setOpenDropdown] = useState(null);
 
     const toggleDropdown = (index) => {
@@ -142,7 +142,14 @@ const Sidebar = ({ heading, topic, topics, onSelectSubtopic, setCategoryActive, 
                 >
                     {onlyCat &&
                         categories.map((category, index) => (
-                            <MainTitle key={index} onClick={() => setCategoryActive(category)}>
+                            <MainTitle
+                                key={index}
+                                onClick={() => setCategoryActive(category)}
+                                style={{
+                                    background: categoryActive === category && "#ff6b08",
+                                    color: categoryActive === category && "#000000",
+                                }}
+                            >
                                 <div
                                     style={{
                                         display: "flex",
@@ -182,7 +189,7 @@ const Sidebar = ({ heading, topic, topics, onSelectSubtopic, setCategoryActive, 
                                         <span></span>
                                     </>
                                 )}
-                                <DropdownList isOpen={openDropdown === index}>
+                                <DropdownList $isOpen={openDropdown === index}>
                                     {topic.desc.map((subtopic) => (
                                         <DropdownItem
                                             key={subtopic.title}

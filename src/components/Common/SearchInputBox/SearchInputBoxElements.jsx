@@ -5,7 +5,7 @@ export const SearchInput = styled.input`
     border: none;
     background: #212121;
     color: #d7d7d7;
-    padding: 8px 12px;
+    padding: 7px 12px;
     font-size: 16px;
     width: 100%;
     border-radius: 0 4px 4px 0;
@@ -20,7 +20,6 @@ export const SearchInput = styled.input`
 `;
 export const SearchBox = styled.div`
     display: flex;
-    //gap: 10px;
     position: relative;
     flex-direction: row;
     justify-content: space-between;

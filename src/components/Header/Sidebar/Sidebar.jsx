@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import Dropdown from "src/components/Header/Dropdowns/Dropdown";
-import { DropdownIcon, NavItem } from "src/components/Header/Navbar/NavbarElements";
+import { DropdownIcon } from "src/components/Header/Navbar/NavbarElements";
 
-import { SidebarContainer, Icon, CloseIcon, SidebarWrapper, SidebarLink, SidebarMenu } from "./SidebarElements";
+import {
+    SidebarContainer,
+    Icon,
+    CloseIcon,
+    SidebarWrapper,
+    SidebarLink,
+    SidebarMenu,
+    SidebarNavItem,
+} from "./SidebarElements";
 
 const Sidebar = (props) => {
     const { isOpen, toggle } = props;
@@ -48,7 +56,7 @@ const Sidebar = (props) => {
 
     return (
         toggle && (
-            <SidebarContainer isOpen={isOpen}>
+            <SidebarContainer $isOpen={isOpen}>
                 <Icon onClick={toggle}>
                     <CloseIcon onClick={setDropHandler} />
                 </Icon>
@@ -90,16 +98,16 @@ const Sidebar = (props) => {
                             },
                         ].map(({ to, title, dropdown }) => (
                             <div key={dropdown}>
-                                <NavItem onClick={() => dropHandler(dropdown)}>
+                                <SidebarNavItem onClick={() => dropHandler(dropdown)}>
                                     <SidebarLink to={to} onClick={to && toggle}>
                                         {title}
                                     </SidebarLink>
-                                </NavItem>
+                                </SidebarNavItem>
                                 {dropdown === "resources" && resourcesClick && drop && (
                                     <Dropdown
                                         isResources={true}
                                         toggle={toggle}
-                                        isOpen={isOpen}
+                                        $isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
@@ -107,7 +115,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isOpportunities={true}
                                         toggle={toggle}
-                                        isOpen={isOpen}
+                                        $isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}

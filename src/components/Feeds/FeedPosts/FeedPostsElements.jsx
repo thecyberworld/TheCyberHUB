@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { ExploreContentContainer } from "src/components/Explore/ExploreElements";
 
 export const FeedPostsContainer = styled(ExploreContentContainer)`
-    background-color: ${(props) => (props.displayAt === "explore" ? "#090909" : "#000000")};
-    padding: ${(props) => (props.displayAt === "explore" ? "15px" : "0")};
+    background-color: ${(props) => (props.$displayAt === "explore" ? "#090909" : "#000000")};
+    padding: ${(props) => (props.$displayAt === "explore" ? "15px" : "0")};
 
     grid-auto-rows: minmax(min-content, max-content);
-    gap: ${(props) => (props.displayAt === "explore" ? "25px" : "0")};
+    gap: ${(props) => (props.$displayAt === "explore" ? "25px" : "0")};
 
     @media screen and (max-width: 1230px) {
         grid-auto-rows: 0fr;
@@ -32,7 +32,7 @@ export const FeedPostContainer = styled.div`
     width: 100%;
     flex-direction: row;
 
-    height: ${(props) => (props.displayAt === "explore" ? "auto" : "min-content")};
+    height: ${(props) => (props.$displayAt === "explore" ? "auto" : "min-content")};
 
     @media screen and (max-width: 800px) {
         width: 100%;
@@ -57,7 +57,12 @@ export const RightSection = styled.div`
     width: 100%;
     gap: 10px;
 `;
-
+export const RightHeaderSection = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+`;
 export const PostTags = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +81,9 @@ export const PostTag = styled.span`
 `;
 
 export const PostHeader = styled.div`
+    position: relative;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
@@ -109,15 +116,15 @@ export const PostContent = styled.p`
     flex-wrap: wrap;
     width: 100%;
     overflow: hidden;
-    //break text
+    /* break text */
     word-wrap: break-word;
 
-    // pre line
+    /* pre line */
     white-space: pre-line;
 
     display: -webkit-box;
     -webkit-line-clamp: 5;
-    //-webkit-box-orient: vertical;
+    /* -webkit-box-orient: vertical; */
 `;
 
 export const PostActions = styled.div`

@@ -61,7 +61,7 @@ const InternshipCycle = ({
     const appClosed = currentDate >= closeDate && currentDate <= internCloseDate;
 
     return (
-        <InternshipCard isBetweenDates={isBetweenDates} appClosed={appClosed}>
+        <InternshipCard $isBetweenDates={isBetweenDates} $appClosed={appClosed}>
             {isBetweenDates ? (
                 <ApplicationOpenTextSection>
                     <ApplicationOpenText>Applications Now Open!</ApplicationOpenText>

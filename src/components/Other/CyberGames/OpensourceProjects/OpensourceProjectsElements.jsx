@@ -37,7 +37,7 @@ export const Project = styled.div`
     padding: 10px;
     border: 1px solid #262626;
     background-size: cover;
-    // background: url(${projectImage}) center;
+    /* background: url(${projectImage}) center; */
 
     transition: all 0.2s ease-in-out;
     background: linear-gradient(135deg, rgba(75, 75, 75, 0.1), rgba(255, 255, 255, 0));

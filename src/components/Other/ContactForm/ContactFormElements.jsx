@@ -130,7 +130,7 @@ export const ContactFormInput = styled.input`
     width: 100%;
     text-underline-offset: 5px;
 
-    ::placeholder {
+    &::placeholder {
         color: #fff;
     }
 
@@ -169,7 +169,7 @@ export const ContactFormTextArea = styled.textarea`
     width: 100%;
     height: 50px;
 
-    ::placeholder {
+    &::placeholder {
         color: #fff;
     }
 
