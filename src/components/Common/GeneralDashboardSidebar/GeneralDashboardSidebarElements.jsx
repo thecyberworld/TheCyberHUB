@@ -9,6 +9,7 @@ export const DashboardSidebarContainer = styled.div`
     align-items: flex-start;
     background: #090909;
     height: 100vh;
+
     /* border-radius: 10px; */
     color: #f5f5f5;
     border-right: 1px solid #2d2d2d;
@@ -57,6 +58,7 @@ export const SideBarLink = styled(({ $isOpen, ...props }) => <NavLink {...props}
     &.active {
         background: #ff6b08;
         color: #111;
+
         /* background: ${(props) => (props.$isOpen ? "#ff6b08" : "")};
            color: ${(props) => (props.$isOpen ? "#111" : "#ff6b08")}; */
     }
@@ -73,7 +75,7 @@ export const SidebarTitle = styled.p`
 `;
 
 export const ToggleButton = styled.div`
-    //top: 100px;
+    /* top: 100px; */
     cursor: pointer;
     border-radius: 12px;
     border: 1px solid #2a2a2a;
@@ -90,6 +92,7 @@ export const UserProfile = styled.div`
     width: 100%;
     padding: 10px;
     background: #1c1c1c;
+
     /* margin-left: ${(props) => (props.$isOpen ? "0" : "8px")}; */
 
     .user-profile-image {

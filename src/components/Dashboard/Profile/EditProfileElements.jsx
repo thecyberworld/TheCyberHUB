@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-export const EditProfileContainer = styled.div``;
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -8,15 +7,14 @@ export const Form = styled.form`
     max-width: 800px;
 `;
 
-export const Label = styled.label``;
-
 export const TextArea = styled.textarea`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    //border-radius: 5px;
-    //padding: 10px;
+
+    /* border-radius: 5px;
+    padding: 10px; */
     background: transparent;
     border: transparent;
     color: #fff;
@@ -76,5 +74,5 @@ export const Submit = styled.button`
     width: 100%;
     cursor: pointer;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
 `;

@@ -19,7 +19,7 @@ export const YouTubeVideoContainer = styled.div`
     justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         margin-top: 100px;
     }
 `;
@@ -28,23 +28,27 @@ export const YouTubeVideoIFrame = styled.iframe`
     width: 500px;
     height: 300px;
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (width <= 1000px) {
         width: 400px;
         height: 300px;
     }
-    @media screen and (max-width: 900px) {
+
+    @media screen and (width <= 900px) {
         width: 280px;
         height: 200px;
     }
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         width: 500px;
         height: 300px;
     }
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         width: 350px;
         height: 250px;
     }
-    @media screen and (max-width: 400px) {
+
+    @media screen and (width <= 400px) {
         width: 280px;
         height: 200px;
     }
@@ -52,10 +56,9 @@ export const YouTubeVideoIFrame = styled.iframe`
 
 export const InfoContainer = styled.div`
     color: #f5f5f5;
-
     background: ${({ lightBg }) => (lightBg ? "#f9f9f9" : "#000000")};
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         padding: 100px 0;
     }
 `;
@@ -71,7 +74,7 @@ export const InfoWrapper = styled.div`
     padding: 0 24px;
     justify-content: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         height: 100%;
     }
 `;
@@ -85,9 +88,10 @@ export const InfoRow = styled.div`
     display: grid;
     grid-auto-columns: minmax(auto, 1 lf);
     align-items: center;
+
     grid-template-areas: ${({ $imgStart }) => ($imgStart ? `'col2 col1'` : `'col1 col2'`)};
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         grid-template-areas: ${({ $imgStart }) => ($imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`)};
     }
 `;
@@ -127,7 +131,7 @@ export const Heading = styled.h1`
     font-weight: 600;
     color: ${({ $lightText }) => ($lightText ? "#f5f5f5" : "#000000")};
 
-    @media screen and (max-width: 480px) {
+    @media screen and (width <= 480px) {
         font-size: 32px;
     }
 `;
@@ -144,7 +148,7 @@ export const BtnWrap = styled.div`
     display: flex;
     justify-content: flex-start;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         display: grid;
         flex-direction: row;
         justify-content: center;
@@ -153,7 +157,7 @@ export const BtnWrap = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         margin-top: 100px;
     }
 `;

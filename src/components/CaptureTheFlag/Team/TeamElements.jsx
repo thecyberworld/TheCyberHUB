@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const TeamContainer = styled.div``;
-
 export const TeamName = styled.div`
     display: flex;
     justify-content: space-between;
@@ -10,7 +8,7 @@ export const TeamName = styled.div`
     font-size: 25px;
     font-weight: bold;
     margin: 25px 0;
-    padding: 15px 15px;
+    padding: 15px;
 `;
 export const TeamMembers = styled.ul`
     min-width: 350px;
@@ -43,7 +41,7 @@ export const SearchPlayer = styled.input`
     width: 100%;
     padding: 5px 10px;
     margin: 10px 0;
-    font: 16px "Poppins", sans-serif;
+    font: 16px Poppins, sans-serif;
 `;
 export const ButtonAddPlayer = styled.button`
     background: #2a2a2a;
@@ -84,6 +82,7 @@ export const SearchPlayerItem = styled.li`
     border-radius: 3px;
     transition: all 0.2s ease-in-out;
     cursor: pointer;
+
     &:hover {
         background: #212121;
         color: #fff;

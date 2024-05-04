@@ -10,7 +10,6 @@ import {
     SubHeader,
     Tabs,
     NoDataComponent,
-    EventList,
     EventNote,
     CommunityEventHeaderContainer,
     FilterContainer,
@@ -217,7 +216,7 @@ const CommunityEvents = ({
                                 </FilterContainer>
                             )}
                         </CommunityEventHeaderContainer>
-                        <EventList>
+                        <div>
                             {modify && openCreatingNewEvent && (
                                 <ModifyCommunityEvent
                                     onModify={handleModifyEvent}
@@ -256,7 +255,7 @@ const CommunityEvents = ({
                                     <img src={NoDataFound} alt="No data found" />
                                 </NoDataComponent>
                             )}
-                        </EventList>
+                        </div>
                     </>
                 )}
                 {!modify && !user && (

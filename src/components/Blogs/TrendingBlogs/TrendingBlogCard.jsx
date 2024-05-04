@@ -7,7 +7,6 @@ import {
     FooterDetailsSection,
     MainSection,
     SubSection,
-    Title,
 } from "src/components/Blogs/TrendingBlogs/TrendingBlogCardElements";
 import { RouterLink } from "src/components/Tools/ToolsElements";
 import { encodeURL } from "src/components/Blogs/util";
@@ -18,7 +17,7 @@ const TrendingBlogCard = ({ title, categories, username, timeString }) => {
             <MainSection>
                 <SubSection>
                     <RouterLink to={{ pathname: `${encodeURL(title)}` }}>
-                        <Title> {title} </Title>
+                        <h4> {title} </h4>
                     </RouterLink>
                 </SubSection>
             </MainSection>

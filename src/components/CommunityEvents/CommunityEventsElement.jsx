@@ -87,8 +87,6 @@ export const EventNote = styled.p`
     color: gray;
 `;
 
-export const EventList = styled.div``;
-
 const createStyledIcon = (IconComponent) => {
     return styled(IconComponent)`
         width: 20px;

@@ -127,10 +127,10 @@ const ForgotPassword = () => {
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer>
-                    <p className="registration__promotion__p">
+                    <p className="registration-promotion-p">
                         Master Cybersecurity. This path will prepare you to build you base strong in cyber security
                     </p>
-                    <div className="registration__ctas">
+                    <div className="registration-ctas">
                         {!emailSent
                             ? SendEmail({ email, onChange, onSubmitSendEmail, isLoading })
                             : !isEmailVerified
@@ -145,8 +145,8 @@ const ForgotPassword = () => {
 
 const SendEmail = ({ email, onChange, onSubmitSendEmail, isLoading }) => (
     <>
-        <h1 className="registration__promotion__h1">Forgot Password</h1>
-        <div className="registration__inputfields">
+        <h1 className="registration-promotion-h1">Forgot Password</h1>
+        <div className="registration-inputfields">
             <CustomInputGroup>
                 <span>
                     <FaUserCircle />
@@ -178,12 +178,12 @@ const SendEmail = ({ email, onChange, onSubmitSendEmail, isLoading }) => (
 const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
     <>
         <>
-            <h1 className="registration__promotion__h1">Verify Code</h1>
+            <h1 className="registration-promotion-h1">Verify Code</h1>
             <VerificationCodeSection>
                 {/* <span> Code </span> */}
                 <CustomInputGroup style={{ width: "100%" }}>
                     <input
-                        className={"codeInput"}
+                        className={"code-input"}
                         type={"text"}
                         id={"code"}
                         name={"code"}
@@ -211,8 +211,8 @@ const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
 
 const ResetPassword = ({ password, confirmPassword, onChange, onSubmitPassword, isLoading }) => (
     <>
-        <h1 className="registration__promotion__h1">Reset Password</h1>
-        <div className="registration__inputfields">
+        <h1 className="registration-promotion-h1">Reset Password</h1>
+        <div className="registration-inputfields">
             <CustomInputGroup>
                 <span>
                     <CgPassword />

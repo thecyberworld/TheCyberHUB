@@ -6,7 +6,6 @@ import {
     ContactFormLabel,
     ContactFormSection,
     ContactFormSelect,
-    ContactFormSelectOption,
     ContactFormSubmit,
     ContactFormTextArea,
     Cover,
@@ -245,18 +244,18 @@ const ContactForm = () => {
                             value={formData.reason}
                             onChange={handleChange}
                         >
-                            <ContactFormSelectOption style={{ display: "none" }} value="">
+                            <option style={{ display: "none" }} value="">
                                 Select a reason
-                            </ContactFormSelectOption>
-                            <ContactFormSelectOption value="internship">
+                            </option>
+                            <option value="internship">
                                 Internship {isOpened ? "(Applications are Now Open!)" : null}
                                 {isClosed ? "(Applications Closed)" : null}
-                            </ContactFormSelectOption>
-                            {/* <ContactFormSelectOption value="volunteer"> */}
+                            </option>
+                            {/* <option value="volunteer"> */}
                             {/*    Volunteer (Contribute to the Community) */}
-                            {/* </ContactFormSelectOption> */}
-                            <ContactFormSelectOption value="feedback">Feedback</ContactFormSelectOption>
-                            <ContactFormSelectOption value="other">Other</ContactFormSelectOption>
+                            {/* </option> */}
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
                         </ContactFormSelect>
                     </CoverLeft>
 
@@ -272,11 +271,11 @@ const ContactForm = () => {
                                     value={formData.reasonType}
                                     onChange={handleChange}
                                 >
-                                    <ContactFormSelectOption value="">Select an Internship</ContactFormSelectOption>
+                                    <option value="">Select an Internship</option>
                                     {JobsData.map((job, id) => (
-                                        <ContactFormSelectOption value={job.id} key={id}>
+                                        <option value={job.id} key={id}>
                                             {job.id}
-                                        </ContactFormSelectOption>
+                                        </option>
                                     ))}
                                 </ContactFormSelect>
                             </CoverLeft>
@@ -327,18 +326,16 @@ const ContactForm = () => {
                                     value={formData.reasonType}
                                     onChange={handleChange}
                                 >
-                                    <ContactFormSelectOption value="">
-                                        Select a Volunteer Program (remote/online)
-                                    </ContactFormSelectOption>
+                                    <option value="">Select a Volunteer Program (remote/online)</option>
                                     {volunteerPrograms.map((volunteerProgram, id) => (
-                                        <ContactFormSelectOption value={volunteerProgram.volunteerFor} key={id}>
+                                        <option value={volunteerProgram.volunteerFor} key={id}>
                                             {volunteerProgram.volunteerFor}
-                                        </ContactFormSelectOption>
+                                        </option>
                                     ))}
 
-                                    <ContactFormSelectOption value={"other"}>
+                                    <option value={"other"}>
                                         Anything else you want to volunteer for (Please specify in the message)
-                                    </ContactFormSelectOption>
+                                    </option>
                                 </ContactFormSelect>
                             </CoverLeft>
                             <CoverLeft>

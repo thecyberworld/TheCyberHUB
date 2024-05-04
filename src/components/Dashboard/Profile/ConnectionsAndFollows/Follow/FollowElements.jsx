@@ -19,7 +19,8 @@ export const FollowCount = styled.p`
     justify-content: space-evenly;
     gap: 5px;
     color: #adadad;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         font-size: 0.8rem;
         justify-content: start;
     }

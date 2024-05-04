@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-    AchievementHeading,
     AchievementLink,
     AchievementList,
     AddButtonSection,
@@ -50,7 +49,7 @@ const SkillSet = ({ skills, setUserDetailData }) => {
 
     return (
         <SkillSetContainer>
-            <AchievementHeading>Skills</AchievementHeading>
+            <h3>Skills</h3>
             <AchievementList>
                 <SkillSetListItem>
                     {updatedSkills?.length >= 0 &&

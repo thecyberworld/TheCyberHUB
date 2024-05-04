@@ -7,6 +7,7 @@ export const ParticipantsContainer = styled.div`
         flex-wrap: wrap;
         height: 40px;
         overflow: hidden;
+
         img {
             width: 40px;
             height: 40px;

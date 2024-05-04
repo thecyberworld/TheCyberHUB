@@ -22,15 +22,14 @@ export const Form = styled.form`
     border-radius: 10px;
 `;
 
-export const Label = styled.label``;
-
 export const TextArea = styled.textarea`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    //border-radius: 5px;
-    //padding: 10px;
+
+    /* border-radius: 5px;
+    padding: 10px; */
     background: transparent;
     border: transparent;
     color: #f5f5f5;
@@ -91,5 +90,5 @@ export const Submit = styled.button`
     width: 100%;
     cursor: pointer;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
 `;

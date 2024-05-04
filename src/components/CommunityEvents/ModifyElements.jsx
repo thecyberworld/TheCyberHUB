@@ -35,10 +35,12 @@ export const ModifyActionsContainer = styled.div`
 export const DayPickerContainer = styled.div`
     border-right: 1px solid #f0f0f0;
     padding-right: 0.75rem;
+
     .today-date {
         color: #e45221;
         font-weight: 900;
     }
+
     .selected-date {
         background: #ff6b08;
         color: #111;
@@ -58,7 +60,6 @@ export const TimelineListItem = styled.li`
     width: 100%;
     border: 3px inset #2e2e2e;
     border-radius: 8px;
-    padding: 1rem 1.5rem;
     margin-bottom: 5px;
     display: grid;
     grid-template-areas:
@@ -112,6 +113,7 @@ export const ModifyActionButton = styled.div`
     }};
     margin-top: ${(props) => (props.type === "add" || props.type === "remove") && "10px"};
     color: #f8f8f8;
+
     &:hover {
         opacity: 0.7;
         cursor: pointer;
@@ -125,7 +127,6 @@ export const ModifyItemActionsContainer = styled.div`
     width: 250px;
 `;
 
-export const ModifyActionText = styled.p``;
 export const LocationPicking = styled.div`
     display: flex;
     justify-content: space-between;
@@ -144,6 +145,7 @@ export const MaxParticipants = styled.div`
 `;
 export const LinkEditor = styled.div`
     width: 100%;
+
     input {
         text-transform: lowercase;
     }

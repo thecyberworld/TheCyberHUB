@@ -4,7 +4,6 @@ export const MessageContainer = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: ${({ isOur }) => (isOur ? "flex-end" : "flex-start")};
-
     margin: 10px;
 `;
 
@@ -25,14 +24,13 @@ export const SenderImage = styled.img`
 export const MessageContent = styled.div`
     background-color: ${({ isOur }) => (isOur ? "#1f96ec" : "#3d3d3d")};
     border: 1px solid #28292a;
-
     padding: 10px;
     border-radius: 10px;
     min-width: 200px;
     max-width: 300px;
     font-size: 14px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         width: 100%;
     }
 `;

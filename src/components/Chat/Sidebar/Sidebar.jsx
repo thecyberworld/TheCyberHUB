@@ -53,7 +53,7 @@ const Sidebar = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, set
     });
 
     return (
-        <SidebarContainer hideSidebar={hideSidebar}>
+        <SidebarContainer $hideSidebar={hideSidebar}>
             <SidebarHeader>
                 <h2>Community Chat</h2>
             </SidebarHeader>

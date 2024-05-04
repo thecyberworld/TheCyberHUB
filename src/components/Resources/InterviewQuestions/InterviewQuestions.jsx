@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
     AnswerContainer,
-    BackArrowSection,
     InterviewQuestionContainer,
     InterviewQuestionSection,
     InterviewsAnswerQuestionsHeading,
@@ -78,9 +77,9 @@ const InterviewQuestions = () => {
                             </InterviewQuestionSection>
                         ) : (
                             <AnswerContainer>
-                                <BackArrowSection>
+                                <div>
                                     <BackArrow onClick={handleIsShown} />
-                                </BackArrowSection>
+                                </div>
                                 <InterviewsAnswerQuestionsHeading>
                                     {selectedQuestion && <p>{selectedQuestion}</p>}
                                 </InterviewsAnswerQuestionsHeading>
@@ -110,9 +109,9 @@ const InterviewQuestions = () => {
                                 })}
                             </InterviewQuestionSection>
                             <AnswerContainer>
-                                <BackArrowSection>
+                                <div>
                                     <BackArrow onClick={handleIsShown} />
-                                </BackArrowSection>
+                                </div>
                                 <InterviewsAnswerQuestionsHeading>
                                     {selectedQuestion && <div>{selectedQuestion}</div>}
                                 </InterviewsAnswerQuestionsHeading>

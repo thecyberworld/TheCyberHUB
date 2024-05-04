@@ -11,12 +11,13 @@ export const TagsContainer = styled.div`
     max-width: 500px;
     background: #131313;
     border-radius: 5px;
-    @media screen and (max-width: 800px) {
+
+    @media screen and (width <= 800px) {
         padding: 15px;
         display: none;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         padding: 15px;
         display: none;
     }
@@ -24,11 +25,12 @@ export const TagsContainer = styled.div`
 
 export const AllTags = styled.div`
     display: flex;
-    //font-size: 150%;
+
+    /* font-size: 150%; */
     flex-wrap: wrap;
     word-wrap: break-word;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         flex-wrap: wrap;
         padding: 15px 0;
         width: 100%;

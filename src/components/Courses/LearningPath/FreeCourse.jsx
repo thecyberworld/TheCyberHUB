@@ -17,7 +17,6 @@ import {
     // SectionHeading,
     TopicBox,
     VLine,
-    Weeks,
 } from "./LearningPathElements";
 import LearningPathData from "./LearningPathData";
 import { useSelector } from "react-redux";
@@ -65,7 +64,7 @@ const FreeCourse = () => {
                                 {LearningPathData.map((data, index) => (
                                     <ContentList key={index}>
                                         {data?.weeks.map((week, index) => (
-                                            <Weeks key={index}>
+                                            <div key={index}>
                                                 <h2>{week.week}</h2>
                                                 {week?.days.map((days, index) => (
                                                     <Days key={index}>
@@ -91,7 +90,7 @@ const FreeCourse = () => {
                                                         ))}
                                                     </Days>
                                                 ))}
-                                            </Weeks>
+                                            </div>
                                         ))}
                                     </ContentList>
                                 ))}
