@@ -31,7 +31,7 @@ export const DotIcon = styled(BsDot)`
 export const FollowButton = styled.button`
     padding: 5px 45px;
     margin: 15px 0;
-    width: stretch;
+    width: 100%;
     border-radius: 50px;
     background: #0e0e0e;
     color: #e0e0e0;
