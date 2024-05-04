@@ -27,14 +27,6 @@ const ChatBox = () => {
     const { user } = useSelector((state) => state.auth);
     const { isApiLoading, isApiWorking } = apiStatus();
 
-    if (isApiLoading) {
-        return;
-    }
-
-    if (!user || !isApiWorking) {
-        return;
-    }
-
     const { userDetails } = useSelector((state) => state.userDetail);
     const [isOpen, setIsOpen] = useState(false);
 
@@ -177,6 +169,14 @@ const ChatBox = () => {
     };
 
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
+
+    if (isApiLoading) {
+        return;
+    }
+
+    if (!user || !isApiWorking) {
+        return;
+    }
 
     return (
         <ChatBoxContainer style={{ zIndex: "2", color: "white", position: "relative" }}>
