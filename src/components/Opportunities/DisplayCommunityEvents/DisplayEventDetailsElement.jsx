@@ -49,7 +49,7 @@ export const EventLink = styled.a`
     margin-bottom: 20px;
     display: inline;
     color: white;
-    :hover {
+    &:hover {
         color: #2c2cf0;
     }
     svg {

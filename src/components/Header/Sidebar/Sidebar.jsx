@@ -56,7 +56,7 @@ const Sidebar = (props) => {
 
     return (
         toggle && (
-            <SidebarContainer isOpen={isOpen}>
+            <SidebarContainer $isOpen={isOpen}>
                 <Icon onClick={toggle}>
                     <CloseIcon onClick={setDropHandler} />
                 </Icon>
@@ -107,7 +107,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isResources={true}
                                         toggle={toggle}
-                                        isOpen={isOpen}
+                                        $isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
@@ -115,7 +115,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isOpportunities={true}
                                         toggle={toggle}
-                                        isOpen={isOpen}
+                                        $isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}

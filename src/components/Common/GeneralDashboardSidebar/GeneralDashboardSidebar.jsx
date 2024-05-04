@@ -19,8 +19,8 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     return (
-        <DashboardSidebarContainer isOpen={isOpen}>
-            <UserProfile isOpen={isOpen}>
+        <DashboardSidebarContainer $isOpen={isOpen}>
+            <UserProfile $isOpen={isOpen}>
                 <Link to={`/user/${userDetail?.username}`}>
                     <div className="user-profile-image">
                         <img
@@ -40,11 +40,11 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
                 </UserProfileDescription>
             </UserProfile>
 
-            <SideBarLinkContainer isOpen={isOpen}>
+            <SideBarLinkContainer $isOpen={isOpen}>
                 {sidebarItems.map((item) => (
-                    <SideBarLink key={item.to} to={item.to} isOpen={isOpen}>
+                    <SideBarLink key={item.to} to={item.to} $isOpen={isOpen}>
                         {item.icon}
-                        {isOpen && <SidebarTitle isOpen={isOpen}> {item.label} </SidebarTitle>}
+                        {isOpen && <SidebarTitle $isOpen={isOpen}> {item.label} </SidebarTitle>}
                     </SideBarLink>
                 ))}
             </SideBarLinkContainer>
@@ -61,13 +61,13 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
                     borderRadius: "0",
                     color: "#f5f5f5",
                 }}
-                isOpen={isOpen}
+                $isOpen={isOpen}
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {isOpen ? (
                     <>
                         <BiSolidChevronLeftIcon />
-                        <SidebarTitle isOpen={isOpen}> Collapse </SidebarTitle>
+                        <SidebarTitle $isOpen={isOpen}> Collapse </SidebarTitle>
                     </>
                 ) : (
                     <BiSolidChevronRighIcon />

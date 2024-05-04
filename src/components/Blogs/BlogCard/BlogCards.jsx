@@ -30,7 +30,7 @@ const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displ
     });
 
     return filteredData.length > 0 ? (
-        <AllBlogs displayAt={displayAt}>
+        <AllBlogs $displayAt={displayAt}>
             {filteredData
                 ?.slice()
                 .reverse()

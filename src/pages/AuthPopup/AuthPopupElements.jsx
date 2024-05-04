@@ -21,7 +21,7 @@ export const PopupContainer = styled.div`
         transform: translate(-50%, -50%);
     }
 
-    ::before {
+    &::before {
         content: "";
         position: absolute;
         left: 0;

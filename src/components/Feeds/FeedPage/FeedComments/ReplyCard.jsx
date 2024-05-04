@@ -22,7 +22,7 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
     const handleCommentDelete = () => {};
 
     return (
-        <FeedPostContainer displayAt={displayAt}>
+        <FeedPostContainer $displayAt={displayAt}>
             <LeftSection>
                 <PostHeaderImg src={avatar} alt={reply?.username + `avatar`} />
             </LeftSection>

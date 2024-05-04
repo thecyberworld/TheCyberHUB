@@ -34,9 +34,9 @@ export const AchievementLink = styled.a`
     &:hover {
         color: #007bff;
     }
-    //@media (max-width: 700px) {
-    //  flex-wrap: wrap;
-    //}
+    /*@media (max-width: 700px) {
+      flex-wrap: wrap;
+    }*/
 `;
 
 export const IconDot = styled(BsDot)`

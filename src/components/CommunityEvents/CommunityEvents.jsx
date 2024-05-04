@@ -183,7 +183,7 @@ const CommunityEvents = ({
 
     const modifyEvent = events.find((event) => event._id === modifyEventId || event._id === eventManageTimelineId);
     return (
-        <ParentContainer pageHeader={pageHeader}>
+        <ParentContainer $pageHeader={pageHeader}>
             <Container>
                 <Header>{title}</Header>
                 <SubHeader>{subtitle}</SubHeader>

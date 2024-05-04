@@ -11,7 +11,7 @@ export const OptionButton = styled.button`
     padding: 0.5rem;
     transition: 260ms all;
 
-    :hover {
+    &:hover {
         background: rgba(32, 194, 14, 0.2);
         color: white;
         outline-color: #545454;
@@ -45,7 +45,7 @@ export const LinkList = styled.ul`
             padding: 0.5rem;
             transition: 260ms all;
 
-            :hover {
+            &:hover {
                 background: transparent;
                 color: #cecac3;
                 outline-color: rgba(32, 194, 14, 0.4);

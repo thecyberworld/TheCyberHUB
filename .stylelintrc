@@ -1,0 +1,7 @@
+{
+    "customSyntax": "postcss-styled-syntax",
+    "plugins": ["stylelint-plugin-styled-components"],
+    "rules": {
+        "plugin/styled-components-enforce-ampersand": true
+    }
+}

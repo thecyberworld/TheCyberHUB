@@ -24,7 +24,7 @@ export const MenuButton = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    :hover {
+    &:hover {
         cursor: pointer;
     }
 `;
@@ -46,7 +46,7 @@ export const Input = styled.input`
     border-radius: 5px;
     background-color: #1a1c1d;
     color: white;
-    :focus {
+    &:focus {
         outline: none;
     }
 `;

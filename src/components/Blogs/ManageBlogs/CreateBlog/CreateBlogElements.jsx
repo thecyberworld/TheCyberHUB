@@ -110,7 +110,7 @@ export const Input = styled.input`
     padding: 25px;
     font-family: "Poppins", sans-serif;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -140,7 +140,7 @@ export const TextArea = styled.textarea`
     width: 100%;
     height: 200px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -165,7 +165,7 @@ export const TagInput = styled.input`
     border: #222222 1px solid;
     padding: 25px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 

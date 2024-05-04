@@ -8,7 +8,6 @@ import { data, options } from "./AnalyticsUtils";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-
 export default function AnalyticsHorizontalBarCharts() {
     return (
         <BarChartsContainer>

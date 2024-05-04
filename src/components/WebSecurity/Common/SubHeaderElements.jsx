@@ -13,7 +13,7 @@ export const Nav = styled.nav`
     align-items: center;
     border: 1px solid #232222;
     border-radius: 10px;
-    // z-index: 99;
+    /*z-index: 99;*/
 `;
 
 export const Ul = styled.ul`
@@ -60,8 +60,10 @@ export const DropdownUl = styled.ul`
     display: none;
     width: 150px;
 
-    ${DropdownContainer}:hover & {
-        display: block;
+    ${DropdownContainer} {
+        &:hover {
+            display: block;
+        }
     }
 `;
 

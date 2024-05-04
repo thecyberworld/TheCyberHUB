@@ -29,7 +29,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
     const handleDeleteFeed = () => dispatch(deleteFeed(feed._id));
 
     return (
-        <FeedPostContainer displayAt={displayAt}>
+        <FeedPostContainer $displayAt={displayAt}>
             <RightSection>
                 <RouteLink to={`/feeds/${feed?._id}`}>
                     <PostHeader>

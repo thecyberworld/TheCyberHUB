@@ -72,9 +72,9 @@ export const BackArrow = styled(IoMdArrowRoundBack)`
         scale: 1.1;
     }
 
-    //@media only screen and (min-width: 1200px) {
-    //    display: none;
-    //}
+    /*@media only screen and (min-width: 1200px) {
+        display: none;
+    }*/
 `;
 export const ForwardArrow = styled(IoMdArrowRoundForward)`
     background: #ff6b08;
@@ -92,9 +92,9 @@ export const ForwardArrow = styled(IoMdArrowRoundForward)`
         scale: 1.1;
     }
 
-    //@media only screen and (min-width: 1200px) {
-    //    display: none;
-    //}
+    /*@media only screen and (min-width: 1200px) {
+       display: none;
+    }*/
 `;
 
 export const IFrameVideo = styled.iframe`
@@ -166,7 +166,7 @@ export const Checkbox = styled.input`
     appearance: none;
     cursor: pointer;
 
-    :checked {
+    &:checked {
         background-color: #36cc24;
         border: 1.5px solid #313131;
     }
@@ -209,9 +209,9 @@ export const VLine = styled.hr`
     height: auto;
     border: #1a1a1a 1px solid;
     background: #1a1a1a;
-    //@media (max-width: 1100px) {
-    //    display: none;
-    //}
+    /* @media (max-width: 1100px) {
+       display: none;
+    } */
 `;
 
 export const HLine = styled.hr`

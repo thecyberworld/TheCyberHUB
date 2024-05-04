@@ -53,12 +53,12 @@ export const DropdownItemsContainer = styled.div`
     padding: 25px;
     @media screen and (max-width: 821px) {
         height: max-content;
-        // background: #000000;
+        /* background: #000000; */
         background: transparent;
         backdrop-filter: blur(1000px);
         -webkit-backdrop-filter: blur(1000px);
-        // box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        // flex-direction: column;
+        /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
+        /* flex-direction: column; */
         padding: 0;
         margin-right: 1rem;
         width: 62%;
@@ -79,7 +79,7 @@ export const DropdownItemContainer = styled.div`
     }
 
     @media screen and (max-width: 821px) {
-        // width: min-content;
+        /* width: min-content; */
         background: rgba(194, 108, 62, 0.04);
         border: 1px solid rgba(194, 113, 62, 0.2);
         border-radius: 10px;

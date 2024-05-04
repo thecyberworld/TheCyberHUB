@@ -13,7 +13,7 @@ export const ParticipantsContainer = styled.div`
             object-fit: cover;
             border-radius: 100%;
 
-            :not(:first-child) {
+            :not(&:first-child) {
                 margin-left: -0.8rem;
             }
         }
