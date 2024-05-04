@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { encodeURL } from "src/components/Blogs/util";
 import { useDispatch, useSelector } from "react-redux";
 import { blogReset, getAllBlogs } from "src/features/blogs/blogSlice";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import {
     BlogContent,
@@ -137,7 +137,7 @@ const ViewBlog = () => {
 
     const purifiedCode = DOMPurify.sanitize(filterContent);
     return (
-        <>
+        <HelmetProvider>
             <Helmet>
                 <meta property="og:title" content={blog?.title} />
                 <meta property="og:description" content={blog?.description} />
@@ -182,7 +182,7 @@ const ViewBlog = () => {
             </ContainerViewBlog>
             {/* <LeftBlogSidebar/> */}
             {/* </ViewBlogContainer> */}
-        </>
+        </HelmetProvider>
     );
 };
 
