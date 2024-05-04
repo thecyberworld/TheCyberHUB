@@ -90,7 +90,10 @@
         }
     },
     "lint-staged": {
-        "*.{js,jsx}": "eslint --cache --fix",
+        "*.{js,jsx}": [
+            "eslint --cache --fix",
+            "stylelint --fix"
+        ],
         "*.{js,jsx,css,md}": "prettier --write"
     },
     "eslintConfig": {
