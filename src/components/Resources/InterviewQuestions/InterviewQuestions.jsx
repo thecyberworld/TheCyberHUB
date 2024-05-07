@@ -66,8 +66,8 @@ const InterviewQuestions = () => {
                                                     <InterviewsQuestionsTitle
                                                         onClick={() => onQuestionClick(resources.question)}
                                                         key={index}
+                                                        isSelected={selectedQuestion === resources.question}
                                                     >
-                                                        {/* {index + 1} */}
                                                         <SingleQuestion> {">"} </SingleQuestion> {resources.question}
                                                     </InterviewsQuestionsTitle>
                                                 );
@@ -99,6 +99,7 @@ const InterviewQuestions = () => {
                                                     <InterviewsQuestionsTitle
                                                         onClick={() => onQuestionClick(resources.question)}
                                                         key={index}
+                                                        isSelected={selectedQuestion === resources.question}
                                                     >
                                                         {/* {index + 1} */}
                                                         <SingleQuestion> {">"} </SingleQuestion> {resources.question}

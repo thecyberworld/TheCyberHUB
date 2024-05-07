@@ -57,13 +57,13 @@ export const InterviewsQuestionsTitle = styled.div`
     //border: #4cc23e 1px solid;
     border-radius: 3px;
     width: 100%;
-    background: #131313;
+    background: ${(props) => (props.isSelected ? "#ff6b08" : "#131313")};
+    color: ${(props) => (props.isSelected ? "#0A0A0A" : "#e1e1e1")};
     display: flex;
     margin: 0 0 5px 0;
     padding: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    color: #e1e1e1;
 
     &:hover {
         background: #ff6b08;
