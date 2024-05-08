@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useAnalyticsChartCustomHook = (props) => {
-    const { displayMonths, newDatasets, newOptions } = props;
+    const { displayMonths, newDatasets, newOptions, timePeriod = "hours" } = props;
 
     const [chartData, setChartData] = useState({
         datasets: [],
@@ -18,7 +18,7 @@ export const useAnalyticsChartCustomHook = (props) => {
             datasets,
         });
         setChartOptions({ options });
-    }, []);
+    }, [timePeriod]);
 
     return [chartData, chartOptions];
 };
