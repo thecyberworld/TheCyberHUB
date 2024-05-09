@@ -155,7 +155,7 @@ export default function QuizPage() {
                         </div>
                     </ScoreSection>
                 ) : (
-                    <QuizBody>
+                    <QuizBody style={{ display: "flex", justifyContent: "flex-end", flexDirection: "column" }}>
                         <QuestionSection>
                             <QuestionCount>
                                 <RenderProgressIndicator length={questions.length} currentQuestion={currentQuestion} />
@@ -195,11 +195,7 @@ export default function QuizPage() {
                                             margin: "10px",
                                             maxWidth: "100%",
                                         }}
-                                    >
-                                        <SkipButton onClick={() => handleSkipButton(questions.length)}>
-                                            nextQuestion {`>>>`}
-                                        </SkipButton>
-                                    </div>
+                                    ></div>
                                 </div>
                             ) : (
                                 ""
@@ -241,6 +237,9 @@ export default function QuizPage() {
                                 </div>
                             ))}
                         </AnswerSection>
+                        <SkipButton onClick={() => handleSkipButton(questions.length)}>
+                            next question {`>>>`}
+                        </SkipButton>
                     </QuizBody>
                 )}
             </QuizSection>
