@@ -106,9 +106,9 @@ export const LabSolved = styled(Link)`
     }
 `;
 
-const SubTopic = ({ subtopic }) => {
+const SubTopic = ({ id, subtopic }) => {
     return (
-        <SubTopicContainer id={subtopic.id} key={subtopic.id}>
+        <SubTopicContainer id={id} key={subtopic.id}>
             <SubTopicTitle>{subtopic.title}</SubTopicTitle>
             {/* <SubTopicContent>{subtopic.content}</SubTopicContent> */}
             <PreviewMarkdown content={subtopic.content} />
