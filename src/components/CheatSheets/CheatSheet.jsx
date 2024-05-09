@@ -100,7 +100,7 @@ const CheatSheet = ({ data, heading }) => {
                                                             Object.keys(file)[0].endsWith(".md") && (
                                                                 <RoadmapDetailsCard
                                                                     key={fileId}
-                                                                    isSelected={
+                                                                    $isSelected={
                                                                         selectedFile &&
                                                                         selectedFile.name === Object.keys(file)[0]
                                                                     }

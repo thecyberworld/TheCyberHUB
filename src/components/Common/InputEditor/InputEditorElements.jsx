@@ -8,13 +8,13 @@ const InputEditorField = css`
     color: white;
     width: 100%;
     border-radius: 3px;
-    border: 1px solid #111111;
+    border: 1px solid #111;
     box-shadow: 0 0 0 2px #090909;
     outline: none;
-    line-height: 1;
     text-transform: capitalize;
     background-color: #090909;
-    font: 16px "Poppins", sans-serif;
+    font: 16px Poppins, sans-serif;
+    line-height: 1;
 `;
 export const InputEditorTheInput = styled.input`
     ${InputEditorField}

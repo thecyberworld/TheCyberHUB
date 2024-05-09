@@ -19,7 +19,7 @@ export const PassGenCard = styled.div`
     gap: 25px;
     width: 100%;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         flex-direction: column;
     }
 `;
@@ -38,9 +38,7 @@ export const GenerateButton = styled.button`
     border: 1px solid #343834;
     border-radius: 10px;
     margin-bottom: 10px;
-
     font-weight: bold;
-
     width: 100%;
 
     &:focus {
@@ -66,7 +64,6 @@ export const PasswordDisplay = styled.div`
     width: 100%;
     align-content: center;
     text-align: center;
-
     word-wrap: break-word;
 `;
 export const IsStrongText = styled.div`
@@ -77,22 +74,18 @@ export const IsStrongText = styled.div`
     width: 100%;
     align-content: center;
     text-align: center;
-
     font-weight: bold;
 `;
 
 export const CopyToClipboardButton = styled(FiClipboard)`
     color: #fff;
     cursor: pointer;
-
     min-width: 35px;
-
     font-size: 30px;
     padding: 5px;
     margin: 5px;
     background-color: #1a1c1d;
     border-radius: 10px;
-
     transition: color 0.2s ease-in-out;
 
     &:hover {
@@ -110,17 +103,15 @@ export const PassGenOptionsContainer = styled.div`
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 0 10px #000;
-
     min-height: 300px;
     height: 100%;
     max-height: 500px;
-
     min-width: 400px;
     width: 100%;
     max-width: 500px;
     gap: 20px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         max-width: 100%;
     }
 
@@ -136,7 +127,6 @@ export const PassGenOptionsContainer = styled.div`
     span {
         color: #fff;
         font-size: 18px;
-
         background-color: #1a1c1d;
         padding: 10px;
         border-radius: 10px;
@@ -145,16 +135,16 @@ export const PassGenOptionsContainer = styled.div`
     .range {
         width: 100%;
         background: #1a1c1d;
-        -webkit-appearance: none;
+        appearance: none;
         border-radius: 10px;
         height: 10px;
         outline: none;
-        //opacity: 0.7;
-        -webkit-transition: 0.2s;
+
+        /* opacity: 0.7; */
+        transition: 0.2s;
         transition: opacity 0.2s;
 
         &::-webkit-slider-thumb {
-            -webkit-appearance: none;
             appearance: none;
             width: 20px;
             height: 20px;
@@ -171,9 +161,6 @@ export const PassGenOptionsContainer = styled.div`
             border-radius: 50%;
             cursor: pointer;
         }
-    }
-
-    .checkbox {
     }
 
     label {
@@ -201,15 +188,13 @@ export const PassGenPasswordContainer = styled.div`
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 0 10px #000;
-
     min-height: 300px;
     height: 100%;
     max-height: 500px;
-
     width: 100%;
     max-width: 400px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         max-width: 100%;
     }
 `;

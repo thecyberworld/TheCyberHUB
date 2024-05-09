@@ -79,6 +79,7 @@
         "postcss-styled-syntax": "^0.6.4",
         "prettier": "^2.7.1",
         "stylelint": "^16.5.0",
+        "stylelint-config-standard": "^36.0.0",
         "stylelint-plugin-styled-components": "^1.0.1",
         "tailwindcss": "^3.3.6",
         "vite": "^3.1.8"
@@ -90,7 +91,8 @@
     },
     "lint-staged": {
         "*.{js,jsx}": [
-            "eslint --cache --fix"
+            "eslint --cache --fix",
+            "stylelint --fix"
         ],
         "*.{js,jsx,css,md}": "prettier --write"
     },

@@ -8,7 +8,6 @@ import {
     DropdownContainer,
     DropdownTitle,
     DropdownUl,
-    DropdownLi,
     DropdownLink,
 } from "./Common/SubHeaderElements"; // Make sure to provide the correct path
 import { useLocation } from "react-router-dom";
@@ -43,9 +42,9 @@ const SubHeader = (props) => {
                                       <DropdownTitle>{item.title}</DropdownTitle>
                                       <DropdownUl>
                                           {item.dropdownOptions.map((subItem) => (
-                                              <DropdownLi key={subItem.id}>
+                                              <li key={subItem.id}>
                                                   <DropdownLink to={`#${subItem.link}`}>{subItem.title}</DropdownLink>
-                                              </DropdownLi>
+                                              </li>
                                           ))}
                                       </DropdownUl>
                                   </DropdownContainer>

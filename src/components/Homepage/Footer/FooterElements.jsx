@@ -9,7 +9,7 @@ export const FooterContainer = styled.footer`
     width: 100%;
     padding: 100px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         padding: 24px;
     }
 `;
@@ -28,7 +28,7 @@ export const FooterLinksContainer = styled.div`
     justify-content: center;
     width: 100%;
 
-    @media screen and (max-width: 820px) {
+    @media screen and (width <= 820px) {
         padding-top: 32px;
     }
 `;
@@ -51,9 +51,9 @@ export const FooterLinkItems = styled.li`
     text-align: left;
     box-sizing: border-box;
     color: #f5f5f5;
-
     transition: all 0.3s ease-in-out;
-    @media screen and (max-width: 420px) {
+
+    @media screen and (width <= 420px) {
         transition: all 0.3s ease-in-out;
         margin: 0;
         padding: 10px;
@@ -85,7 +85,8 @@ export const FooterScrollLink = styled(ScrollLink)`
 
     &:hover {
         color: #ff6b08;
-        //scale: 1.1;
+
+        /* scale: 1.1; */
         transition: 0.3s ease-out;
     }
 `;
@@ -117,7 +118,7 @@ export const SocialMedia = styled.div`
     max-width: 1500px;
     width: 100%;
     color: #f5f5f5;
-    margin: 50px 0 0 0;
+    margin: 50px 0 0;
 `;
 
 export const SocialMediaWrap = styled.div`
@@ -128,7 +129,8 @@ export const SocialMediaWrap = styled.div`
     justify-content: space-between;
     gap: 25px;
     align-items: center;
-    @media screen and (max-width: 1000px) {
+
+    @media screen and (width <= 1000px) {
         flex-direction: column;
     }
 `;
@@ -230,7 +232,7 @@ export const SocialIconLinkYoutube = styled.a`
     font-size: 24px;
 
     &:hover {
-        color: #ff0000;
+        color: #f00;
         transition: 0.3s ease-out;
         scale: 1.2;
     }

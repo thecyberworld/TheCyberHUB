@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    AchievementHeading,
     AchievementItem,
     AchievementLink,
     AchievementList,
@@ -11,7 +10,7 @@ import {
 const UserProjects = ({ projects }) => {
     return (
         <AchievementsContainer>
-            <AchievementHeading>Projects</AchievementHeading>
+            <h3>Projects</h3>
             <AchievementList>
                 <AchievementItem>
                     {projects?.length > 0 &&

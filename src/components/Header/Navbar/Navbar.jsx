@@ -125,7 +125,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                     isResources={true}
                                     toggle={setToggleDropdown}
                                     toggleDropdown={toggleDropdown}
-                                    $isOpen={isOpen}
+                                    isOpen={isOpen}
                                 />
                             )}
                             {dropdown === "programs" && opportunities && drop && (
@@ -133,7 +133,7 @@ const Navbar = ({ isOpen, toggle }) => {
                                     isOpportunities={true}
                                     toggle={setToggleDropdown}
                                     toggleDropdown={toggleDropdown}
-                                    $isOpen={isOpen}
+                                    isOpen={isOpen}
                                 />
                             )}
                         </NavItem>

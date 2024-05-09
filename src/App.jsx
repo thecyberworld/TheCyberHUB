@@ -132,7 +132,7 @@ const App = () => {
             <Container>
                 {!hideHomeHeader() && (
                     <>
-                        <Sidebar $isOpen={isOpen} toggle={toggle} />
+                        <Sidebar isOpen={isOpen} toggle={toggle} />
                         <Navbar toggle={toggle} />
                         {user ? <ChatBox /> : null}
                     </>

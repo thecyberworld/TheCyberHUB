@@ -11,12 +11,13 @@ export const TagsContainer = styled.div`
     max-width: 500px;
     background: #131313;
     border-radius: 5px;
-    @media screen and (max-width: 800px) {
+
+    @media screen and (width <= 800px) {
         padding: 15px;
         display: none;
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         padding: 15px;
         display: none;
     }
@@ -24,11 +25,12 @@ export const TagsContainer = styled.div`
 
 export const AllTags = styled.div`
     display: flex;
-    //font-size: 150%;
+
+    /* font-size: 150%; */
     flex-wrap: wrap;
     word-wrap: break-word;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         flex-wrap: wrap;
         padding: 15px 0;
         width: 100%;
@@ -37,8 +39,8 @@ export const AllTags = styled.div`
 `;
 
 export const Tag = styled.p`
-    background: ${(props) => (props.isSelected ? "#FF6B08" : "#1a1a1a")};
-    color: ${(props) => (props.isSelected ? "#0A0A0A" : "#e5e5e5")};
+    background: ${(props) => (props.$isSelected ? "#FF6B08" : "#1a1a1a")};
+    color: ${(props) => (props.$isSelected ? "#0A0A0A" : "#e5e5e5")};
     padding: 0 10px;
     margin: 5px 10px 5px 0;
     border-radius: 5px;

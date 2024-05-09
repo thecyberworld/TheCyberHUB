@@ -22,11 +22,12 @@ export const CTFHeader = styled.div`
     justify-content: center;
     text-align: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         padding: 10px;
         min-height: 200px;
     }
-    @media screen and (max-width: 520px) {
+
+    @media screen and (width <= 520px) {
         padding: 10px;
         min-height: 100px;
     }
@@ -35,10 +36,12 @@ export const CTFHeader = styled.div`
 export const CTFHeading = styled.h1`
     font-size: 5rem;
     font-style: oblique;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         font-size: 3rem;
     }
-    @media screen and (max-width: 520px) {
+
+    @media screen and (width <= 520px) {
         font-size: 2rem;
     }
 `;
@@ -62,7 +65,7 @@ export const Heading = styled.h2`
 export const InvalidCertificate = styled.div`
     width: 37vw;
     padding: 1rem 5rem;
-    font-family: "Oswald", sans-serif;
+    font-family: Oswald, sans-serif;
     text-transform: uppercase;
     color: #f5f5f5;
     background-repeat: no-repeat;
@@ -84,7 +87,7 @@ export const InputBox = styled.input`
     border: #3f3f3f 1px solid;
     border-radius: 0.5rem;
     color: #f5f5f5;
-    padding: 5px 5px;
+    padding: 5px;
 `;
 
 export const CertificateContainer = styled.div`
@@ -96,7 +99,8 @@ export const CertificateContainer = styled.div`
 export const CTFCardsContainer = styled.div`
     background: #090909;
     width: 100%;
-    //min-height: 500px;
+
+    /* min-height: 500px; */
     border-radius: 0.6rem;
     color: #d7d7d7;
     display: grid;
@@ -105,10 +109,11 @@ export const CTFCardsContainer = styled.div`
     padding: 20px;
     box-sizing: border-box;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         grid-template-columns: 1fr;
     }
-    @media screen and (max-width: 500px) {
+
+    @media screen and (width <= 500px) {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 `;
@@ -122,7 +127,6 @@ export const CTFCardContainer = styled.div`
     box-sizing: border-box;
     width: 100%;
     text-align: left;
-
     transition: 0.2s ease-in-out;
 
     &:hover {
@@ -133,7 +137,7 @@ export const CTFCardContainer = styled.div`
 `;
 
 export const CTFCardHeader = styled.div`
-    padding: 15px 15px 5px 15px;
+    padding: 15px 15px 5px;
     display: flex;
     justify-content: space-between;
 `;
@@ -168,10 +172,11 @@ export const CTFTags = styled.div`
     font-size: 150%;
     flex-wrap: wrap;
     word-wrap: break-word;
-    //max-width: 1000px;
+
+    /* max-width: 1000px; */
     gap: 10px;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         flex-wrap: wrap;
         padding: 15px 0;
         width: 100%;
@@ -184,7 +189,8 @@ export const CTFType = styled.div`
     justify-content: center;
     align-items: center;
     height: 100%;
-    //max-width: 400px;
+
+    /* max-width: 400px; */
     font-size: 16px;
     background: #0c1921;
     border: #1a1c1d 1px solid;
@@ -222,16 +228,16 @@ export const CTFLink = styled(Link)`
 
 export const SearchContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    flex-wrap: wrap;
     width: 100%;
-    //margin: 10px 0;
+
+    /* margin: 10px 0; */
     background: #090909;
     border-radius: 4px;
-    padding: 25px 25px 25px;
+    padding: 25px;
 `;
 
 export const SearchDifficulty = styled.div`
@@ -244,12 +250,12 @@ export const SearchDifficulty = styled.div`
     border-radius: 4px;
     padding: 0 0 0 10px;
 
-    @media screen and (max-width: 380px) {
+    @media screen and (width <= 380px) {
         width: 100%;
     }
 `;
 export const Select = styled.select`
-    border: 1px solid #000000;
+    border: 1px solid #000;
     padding: 8px;
     font-size: 16px;
     width: 200px;
@@ -262,15 +268,16 @@ export const Select = styled.select`
         box-shadow: 0 0 0 1px #1a1c1d;
     }
 
-    @media screen and (max-width: 380px) {
+    @media screen and (width <= 380px) {
         width: 100%;
     }
 `;
 
 // Option Component
 export const Option = styled.option`
-    border: 1px solid #000000;
+    border: 1px solid #000;
     font-size: 16px;
+
     &:focus {
         outline: none;
         box-shadow: 0 0 0 1px #1a1c1d;

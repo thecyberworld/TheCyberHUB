@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { MethodologyData } from "./MethodlogyData";
-import { DataContainer, HideDataContainer, MainTitleContainer, MethodologyHeading } from "./MethodologyElement";
+import { HideDataContainer, MainTitleContainer, MethodologyHeading } from "./MethodologyElement";
 import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
@@ -51,7 +51,7 @@ const Methodology = () => {
                             <div key={topic} style={{ width: "100%", margin: "20px" }}>
                                 <h2 style={{ textAlign: "center", fontSize: "25px" }}>{topic}</h2>
                                 {Object.keys(MethodologyData[mainTitle].Topics[topic]).map((subTopic) => (
-                                    <DataContainer key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
+                                    <div key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
                                         <MethodologyHeading onClick={() => handleClick(subTopic)}>
                                             {subTopic}
                                             <HintIcon>{active === subTopic ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
@@ -73,7 +73,7 @@ const Methodology = () => {
                                                 )}
                                             </ul>
                                         </HideDataContainer>
-                                    </DataContainer>
+                                    </div>
                                 ))}
                             </div>
                         ))}

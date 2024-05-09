@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import {
-    DescriptionContent,
     DescriptionDisplayTitle,
     DescriptionTitle,
     NotesDescription,
@@ -145,7 +144,7 @@ const NoteDescription = ({
                         </DescriptionDisplayTitle>
                     )}
                 </DescriptionTitle>
-                <DescriptionContent>
+                <div>
                     {needToAdd || needToEdit ? (
                         <MarkdownEditor
                             content={needToEdit && showNote.content ? showNote.content : ""}
@@ -156,7 +155,7 @@ const NoteDescription = ({
                     ) : (
                         <MarkdownEditor content={showNote.content || ""} previewModeOnly pageName="notes" />
                     )}
-                </DescriptionContent>
+                </div>
             </NotesDescription>
         </NotesDescriptionContainer>
     );

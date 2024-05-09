@@ -16,7 +16,6 @@ import {
     Heading,
     HR,
     Image,
-    ImageSection,
     Paragraph,
     CyberNewsBody,
 } from "./CyberNewsElements";
@@ -90,9 +89,9 @@ const CyberNews = ({ simplified }) => {
                                             : news.description}
                                     </Paragraph>
                                 </Content>
-                                <ImageSection>
+                                <div>
                                     <Image src={news?.image?.thumbnail?.contentUrl || demoImage} alt={"news image"} />
-                                </ImageSection>
+                                </div>
                             </ContentBody>
                             <ContentFooter>
                                 <AuthorSection>
