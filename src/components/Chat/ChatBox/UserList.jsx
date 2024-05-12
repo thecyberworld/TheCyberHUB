@@ -54,7 +54,7 @@ const UserList = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, se
                             online={true}
                             username={person.username.toLowerCase()}
                             onClick={() => {
-                                if (selectedUserId) {
+                                if (selectedUserId === person.user) {
                                     setSelectedUserId(null);
                                 } else {
                                     setSelectedUserId(person.user);
@@ -73,7 +73,7 @@ const UserList = ({ hideSidebar, onlinePeople, offlinePeople, selectedUserId, se
                         online={false}
                         username={person.username.toLowerCase()}
                         onClick={() => {
-                            if (selectedUserId) {
+                            if (selectedUserId === person.user) {
                                 setSelectedUserId(null);
                             } else {
                                 setSelectedUserId(person.user);
