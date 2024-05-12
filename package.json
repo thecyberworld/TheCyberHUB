@@ -16,7 +16,7 @@
     },
     "dependencies": {
         "@radix-ui/react-slot": "^1.0.1",
-        "@reduxjs/toolkit": "^1.9.1",
+        "@reduxjs/toolkit": "^2.2.3",
         "@uiw/react-md-editor": "^4.0.1",
         "add-to-calendar-button-react": "^2.5.9",
         "axios": "^1.6.4",
