@@ -35,6 +35,9 @@
         <meta property="og:type" content="website" />
 
         <script type="text/javascript">
+            if (window !== window.top) {
+                window.top.location = window.location;
+            }
             (function (l) {
                 if (l.search[1] === "/") {
                     var decoded = l.search
