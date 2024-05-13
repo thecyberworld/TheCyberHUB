@@ -180,7 +180,7 @@ const ChatBox = () => {
 
     return (
         <ChatBoxContainer style={{ zIndex: "2", color: "white", position: "relative" }}>
-            <ChatBoxShowButton onClick={toggleChat} isOpen={isOpen}>
+            <ChatBoxShowButton onClick={toggleChat} $isOpen={isOpen}>
                 <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                     <div className="user-profile-image">
                         <img

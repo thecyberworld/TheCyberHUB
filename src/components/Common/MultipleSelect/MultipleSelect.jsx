@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, Option, Select, SelectContainer } from "./MultipleSelectElements";
+import { Option, Select, SelectContainer } from "./MultipleSelectElements";
 
 /*
 optionsValuesWithLabels=[
@@ -19,7 +19,7 @@ const MultipleSelect = ({ selectLabel, selectedValue, onValueSelect, optionsValu
     });
     return (
         <SelectContainer>
-            {selectLabel && <Label htmlFor="Select">{selectLabel}:</Label>}
+            {selectLabel && <label htmlFor="Select">{selectLabel}:</label>}
             <Select
                 name={selectLabel.toLowerCase()}
                 value={defaultValue || selectedValue}

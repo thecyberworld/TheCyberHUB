@@ -34,7 +34,7 @@ const GeneralDashboardSidebar = ({ userDetail, sidebarItems }) => {
                         <BiSolidCircleIcon />
                     </div>
                 </Link>
-                <UserProfileDescription isOpen={isOpen}>
+                <UserProfileDescription $isOpen={isOpen}>
                     <h4>{userDetail?.name}</h4>
                     <span>@{userDetail?.username}</span>
                 </UserProfileDescription>

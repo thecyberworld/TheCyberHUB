@@ -62,7 +62,7 @@ export const Card = styled.div`
     flex-direction: column;
     width: clamp(20rem, calc(20rem + 2vw), 22rem);
     overflow: hidden;
-    box-shadow: 0 0.1rem 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.1rem 1rem rgb(0 0 0 / 10%);
     border-radius: 1em;
     background: #1a1c1d;
     margin-bottom: 30px;
@@ -140,6 +140,7 @@ export const Button = styled(RouterLink)`
     text-transform: uppercase;
     transition: 0.3s;
     border: 1px solid #1a1c1d;
+
     &:hover {
         background: #fff;
         color: #1a1c1d;

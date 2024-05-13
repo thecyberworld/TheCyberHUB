@@ -11,11 +11,11 @@ export const CreateQuizContainer = styled.div`
     height: min-content;
     border-radius: 10px;
     padding: 30px 40px;
-    box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px 0 rgb(0 0 0 / 75%);
     display: flex;
     flex-direction: column;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         margin: 50px 30px;
     }
 `;
@@ -31,7 +31,6 @@ export const Label = styled.label`
 
 export const Input = styled.input`
     padding: 10px 15px;
-
     flex: 1;
     background: #1a1c1d;
     color: #fff;
@@ -57,7 +56,7 @@ export const Input = styled.input`
     }
 `;
 export const QuizContainer = styled.div`
-    background-color: #111111;
+    background-color: #111;
     color: white;
     width: 70%;
     margin: auto;

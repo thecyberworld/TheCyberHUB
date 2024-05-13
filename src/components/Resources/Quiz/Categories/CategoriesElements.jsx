@@ -11,10 +11,10 @@ export const QuizSection = styled.div`
     height: min-content;
     border-radius: 10px;
     padding: 30px 40px;
-    box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px 0 rgb(0 0 0 / 75%);
     display: flex;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         margin: 50px 30px;
     }
 `;
@@ -34,7 +34,7 @@ export const ScoreInfo = styled.div`
     align-items: center;
     text-align: center;
     font-size: 24px;
-    margin: 0 0 30px 0;
+    margin: 0 0 30px;
 `;
 
 export const SkipButton = styled.button`
@@ -52,7 +52,6 @@ export const SkipButton = styled.button`
     outline: none;
     cursor: pointer;
     display: flex;
-
     align-items: center;
     transition: all 0.2s ease-in-out;
     color: #ff6b08;
@@ -69,14 +68,12 @@ export const InfoButton = styled.button`
     text-decoration: none;
     cursor: pointer;
     display: flex;
-
     align-items: end;
     transition: all 0.2s ease-in-out;
     font-size: 18px;
     position: absolute;
     top: 35%;
     right: 101%;
-
     z-index: 2;
 
     &:hover {
@@ -95,14 +92,12 @@ export const QuestionInfo = styled.div`
     width: auto;
     max-width: calc(70rem - 75px);
     height: min-content;
-
-    box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px 0 rgb(0 0 0 / 75%);
     border-radius: 10px;
     padding: 30px 40px;
-
     display: flex;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         margin: 50px 30px;
     }
 `;
@@ -123,7 +118,7 @@ export const ResetButton = styled.button`
     align-items: center;
     text-align: center;
     font-size: 16px;
-    color: #ffffff;
+    color: #fff;
     background-color: #1a1c1d;
     border-radius: 5px;
     padding: 15px 0;
@@ -156,7 +151,7 @@ export const QuizProgressIndicator = styled.div`
 `;
 
 export const ProgressBar = styled.progress`
-    -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 10px;
     grid-column: 1 / -1;
@@ -165,6 +160,7 @@ export const ProgressBar = styled.progress`
         background-color: #fff;
         border-radius: 100px;
     }
+
     ::-webkit-progress-value {
         background-color: #ff6b07;
         border-radius: 100px;
@@ -180,7 +176,7 @@ export const QuestionText = styled.div`
     font-size: 1.2rem;
     font-weight: normal;
     width: 90%;
-    margin: 10px 0 25px 0;
+    margin: 10px 0 25px;
 `;
 
 export const AnswerSection = styled.div`
@@ -190,7 +186,7 @@ export const AnswerSection = styled.div`
 `;
 
 export const QuestionButton = styled.button`
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     text-align: left;
     width: 100%;
     font-size: 15px;
@@ -206,8 +202,7 @@ export const QuestionButton = styled.button`
 
     &:hover {
         background-color: #ff6b07;
-
-        color: #000000;
+        color: #000;
     }
 
     &:active {
@@ -230,7 +225,7 @@ export const CategoriesSection = styled.section`
         cursor: pointer;
         font-size: 1.5rem;
 
-        @media screen and (min-width: 769px) {
+        @media screen and (width >= 769px) {
             display: none;
         }
     }
@@ -239,9 +234,7 @@ export const CategoriesSection = styled.section`
 export const MobileCategories = styled(CategoriesSection)`
     background-color: #1a1c1d;
     border-radius: 1rem;
-
     box-shadow: 0 0 3px 1px #ff6b07;
-
     flex-direction: column;
     justify-content: start;
     max-width: fit-content;
@@ -272,21 +265,20 @@ export const CategoriesButton = styled.button`
 
     &:hover {
         background-color: #ff6b07;
-
-        color: #000000;
+        color: #000;
     }
 
     &:active {
         transform: scale(0.9);
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         display: ${(props) => (props.type === props.show ? "inline-block" : "none")};
     }
 `;
 
 export const CategoriesButtonMobile = styled(CategoriesButton)`
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         display: ${(props) => (props.type === props.show ? "none" : "inline-block")};
     }
 `;

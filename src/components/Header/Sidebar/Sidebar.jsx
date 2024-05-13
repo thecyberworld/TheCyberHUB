@@ -108,7 +108,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isResources={true}
                                         toggle={toggle}
-                                        $isOpen={isOpen}
+                                        isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
@@ -116,7 +116,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isOpportunities={true}
                                         toggle={toggle}
-                                        $isOpen={isOpen}
+                                        isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}

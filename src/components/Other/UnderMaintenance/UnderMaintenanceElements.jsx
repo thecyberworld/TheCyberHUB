@@ -10,7 +10,6 @@ export const UnderMaintenanceContainer = styled.div`
     justify-content: center;
     margin-top: 100px;
     margin-bottom: 150px;
-
     position: relative;
     animation: logo-animation 1s ease-in-out infinite alternate;
     transition: transform 10s ease-in-out;
@@ -19,6 +18,7 @@ export const UnderMaintenanceContainer = styled.div`
         0% {
             transform: translateY(0);
         }
+
         100% {
             transform: translateY(-10px);
         }
@@ -31,7 +31,8 @@ export const UnderMaintenanceLogo = styled.img`
     font-size: 12px;
     color: #999;
     word-break: break-all;
-    /*border-radius: 5px;
+
+    /* border-radius: 5px;
     position: relative;
     animation: logo-animation 1s ease-in-out infinite alternate;
     transition: transform 10s ease-in-out;
@@ -43,5 +44,5 @@ export const UnderMaintenanceLogo = styled.img`
       100% {
         transform: translateY(-10px);
       }
-    }*/
+    } */
 `;

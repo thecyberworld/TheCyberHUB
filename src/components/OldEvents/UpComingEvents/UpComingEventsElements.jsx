@@ -11,9 +11,10 @@ export const UpComingEventsContainer = styled.div`
     border-radius: 10px;
     background-color: #0c0c0c;
     padding: 15px 20px;
-    margin: 0 0 25px 0;
-    @media screen and (max-width: 768px) {
-        margin: 0 0 20px 0;
+    margin: 0 0 25px;
+
+    @media screen and (width <= 768px) {
+        margin: 0 0 20px;
         width: 100%;
     }
 `;
@@ -27,10 +28,7 @@ export const UpComingEventsImage = styled.img`
     word-break: break-all;
 `;
 
-export const UpComingEventsTitle = styled.div``;
-
-export const UpComingEventsHeading = styled.h2``;
 export const UpComingEventsSubHeading = styled.h4`
-    margin: 5px 0 10px 0;
-    color: #777777;
+    margin: 5px 0 10px;
+    color: #777;
 `;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import topics from "./topicsData";
 import { useParams } from "react-router-dom";
 import { Container } from "./TopicElements";
@@ -9,11 +9,18 @@ const Topic = () => {
     const { id } = useParams();
     const topic = topics.find((topic) => topic.id === parseInt(id));
 
-    const [subtopic, setSubtopic] = useState(null);
-
     const handleSelectSubtopic = (subtopicId) => {
-        setSubtopic(subtopicId);
-        console.log(subtopic);
+        const element = document.getElementById(subtopicId);
+        if (element) {
+            const fixedDistanceFromTop = 150;
+            const elementTop = element.offsetTop - fixedDistanceFromTop;
+            window.scrollTo({
+                top: elementTop,
+                behavior: "smooth",
+            });
+        } else {
+            console.log("Element not found:", subtopicId);
+        }
     };
 
     return (

@@ -74,11 +74,11 @@ const Login = () => {
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer onSubmit={onSubmit}>
-                    <h1 className="registration__promotion__h1">Join over 25 million learners from around the globe</h1>
-                    <p className="registration__promotion__p">
+                    <h1 className="registration-promotion-h1">Join over 25 million learners from around the globe</h1>
+                    <p className="registration-promotion-p">
                         Master Cybersecurity. This path will prepare you to build you base strong in cyber security
                     </p>
-                    <div className="registration__inputfields">
+                    <div className="registration-inputfields">
                         <CustomInputGroup>
                             <span>
                                 <FaUserCircle />
@@ -110,7 +110,7 @@ const Login = () => {
                             />
                         </CustomInputGroup>
                     </div>
-                    <div className={"forgot_register"}>
+                    <div className={"forgot-register"}>
                         <RouterLink to={"/forgetPassword"}>
                             <p style={{ color: "white", margin: "15px 0 0 0" }}>Forgot Password?</p>
                         </RouterLink>
@@ -118,8 +118,8 @@ const Login = () => {
                             <p style={{ color: "white", margin: "15px 0 0 0" }}>Register Instead?</p>
                         </RouterLink>
                     </div>
-                    <div className="registration__ctas">
-                        {/* <div className="registration__tandc"> */}
+                    <div className="registration-ctas">
+                        {/* <div className="registration-tandc"> */}
                         {/*    <input role="checkbox" type="checkbox" autoComplete="" /> */}
                         {/*    <div> */}
                         {/*        I agree to all statements included in */}

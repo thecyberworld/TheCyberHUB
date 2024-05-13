@@ -22,15 +22,16 @@ const StartSection = styled.div`
     button {
         margin-top: 2rem;
         padding: 1rem 7rem;
-        font-family: "Poppins", sans-serif;
+        font-family: Poppins, sans-serif;
         border-radius: 10px;
     }
 
     button&:hover {
         background-color: #ff6b07;
-        color: #000000;
+        color: #000;
     }
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         h1 {
             font-size: 1.5rem;
         }

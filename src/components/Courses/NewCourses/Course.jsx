@@ -12,7 +12,6 @@ import {
     // LeftContainer, //   NavigationButtonSection,
     RightContainer, // SectionHeading,
     TopicBox, //   VLine,
-    Weeks,
 } from "src/components/Courses/LearningPath/LearningPathElements";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { encodeURL } from "src/components/Blogs/util";
@@ -79,9 +78,9 @@ const Course = () => {
 
                     {course.sections.map((section, index) => (
                         <div key={index}>
-                            <Weeks key={index}>
+                            <div key={index}>
                                 <h3>{section.sectionName}</h3>
-                            </Weeks>
+                            </div>
 
                             <Days key={index}>
                                 <ul>

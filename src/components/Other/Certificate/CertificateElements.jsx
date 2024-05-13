@@ -34,7 +34,7 @@ export const TCWText = styled.p`
 
 export const CertificateContent = styled.div`
     padding: 0 5rem 1rem;
-    font-family: "Oswald", sans-serif;
+    font-family: Oswald, sans-serif;
     text-transform: uppercase;
     color: whitesmoke;
     align-items: center;
@@ -46,11 +46,13 @@ export const CertificateContent = styled.div`
 export const CertificateComponent = styled.div`
     margin: 50px;
     width: 70em;
-    //padding: 1rem 5rem;
-    font-family: "Oswald", sans-serif;
+
+    /* padding: 1rem 5rem; */
+    font-family: Oswald, sans-serif;
     text-transform: uppercase;
     color: whitesmoke;
-    //background: #0e0e0e;
+
+    /* background: #0e0e0e; */
     background-image: url(${bgImage});
     background-repeat: no-repeat;
     background-size: cover;
@@ -79,7 +81,7 @@ export const CertificateComponent = styled.div`
     }
 
     .full-name {
-        padding: 0 2rem 0.5rem 2rem;
+        padding: 0 2rem 0.5rem;
         margin-top: 3rem;
         font-weight: 300;
         font-size: 2rem;
@@ -125,7 +127,7 @@ export const CertificateFooter = styled.div`
 
     .date-block {
         .date {
-            padding: 0.7rem 1rem 0.5rem 1rem;
+            padding: 0.7rem 1rem 0.5rem;
             border-bottom: 2px solid #ccc;
         }
 
@@ -144,9 +146,9 @@ export const CertificateFooter = styled.div`
 
     .signature-block {
         .signature {
-            padding: 1rem 1rem 0.2rem 1rem;
+            padding: 1rem 1rem 0.2rem;
             border-bottom: 2px solid #ccc;
-            font-family: "Caveat", cursive;
+            font-family: Caveat, cursive;
         }
 
         .signature-word {
