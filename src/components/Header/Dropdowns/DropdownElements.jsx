@@ -23,7 +23,7 @@ export const DropdownContainer = styled.div`
     top: 80px;
     left: 0;
     z-index: 999;
-    background: #030303;
+
     display: block;
 
     backdrop-filter: blur(10px);
@@ -31,9 +31,10 @@ export const DropdownContainer = styled.div`
 
     @media screen and (max-width: 821px) {
         display: flex;
-        padding: 0;
         background: transparent;
         position: static;
+        border-radius: 10px;
+        top: 0;
     }
 `;
 
@@ -49,19 +50,24 @@ export const DropdownItemsContainer = styled.div`
     margin-bottom: 1rem;
     z-index: 999;
     width: max-content;
-    gap: 25px;
     padding: 25px;
+
+    // sidebar
     @media screen and (max-width: 821px) {
-        height: max-content;
-        /* background: #000000; */
-        background: transparent;
-        backdrop-filter: blur(1000px);
-        -webkit-backdrop-filter: blur(1000px);
-        /* box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); */
-        /* flex-direction: column; */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, auto);
+
+        text-align: center;
+        width: 100%;
         padding: 0;
-        margin-right: 1rem;
-        width: 62%;
+        margin: 0;
+        height: 100%;
+
+        @media screen and (max-width: 380px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(6, auto);
+        }
     }
 `;
 
@@ -70,7 +76,6 @@ export const DropdownItemContainer = styled.div`
     position: relative;
     width: 270px;
     z-index: 999;
-    background: none;
     border: none;
     margin: 0;
 
@@ -80,22 +85,30 @@ export const DropdownItemContainer = styled.div`
 
     @media screen and (max-width: 821px) {
         /* width: min-content; */
-        background: rgba(194, 108, 62, 0.04);
-        border: 1px solid rgba(194, 113, 62, 0.2);
-        border-radius: 10px;
-        padding: 1rem;
-        margin: 0.4rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 1rem;
+        gap: 10px;
         width: 100%;
+
+        background: rgba(26, 26, 29, 0.53);
+        @media screen and (max-width: 768px) {
+            // height: max-content;
+            position: relative;
+        }
     }
 `;
 
 export const DropdownItem = styled.h2`
     text-align: start;
     font-size: 1.5rem;
+    font-family: "Fira Code", monospace;
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        transform: scale(1.05);
+        transform: scale(1.01);
         border-bottom: 3px solid #ff6b08;
     }
     @media screen and (max-width: 768px) {
@@ -125,6 +138,28 @@ export const DropdownRouterLink = styled(LinkRouter)`
     color: #f5f5f5;
     @media screen and (max-width: 821px) {
         display: flex;
-        margin: 0;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        padding: 8px;
+        text-decoration: none;
+        list-style: none;
+        color: #f5f5f5;
+        cursor: pointer;
+        //width: 80%;
+        width: 100%;
+        margin: 10px auto;
+
+        background: rgb(26, 26, 26);
+        //border: 1px solid rgba(194, 113, 62, 0.2);
+        border-radius: 10px;
+
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            //color: #ff6b08;
+            scale: 101%;
+            transition: 0.2s ease-in-out;
+        }
     }
 `;
