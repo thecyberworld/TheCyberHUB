@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const OptionsMainContainer = styled.div`
     position: relative;
-    padding: 5px;
+    padding: 2px;
+    max-width: 32px;
 
     &:hover {
         transform: ${({ $isOpen }) => !$isOpen && "scale(1.1)"};
@@ -11,16 +12,7 @@ export const OptionsMainContainer = styled.div`
     cursor: pointer;
 `;
 export const OptionsContainer = styled.div`
-    width: 200px;
-    height: 160px;
-    background-color: #0e0e0e;
     position: absolute;
-    right: 10px;
-    top: 25px;
-    border-radius: 10px;
-    border: 1px #3d3d3d solid;
-    box-shadow: 2px 2px 10px #333;
-    padding: 20px 0;
 `;
 export const OptionsList = styled.ul`
     padding: 15px 20px;
@@ -48,4 +40,21 @@ export const OptionsClose = styled.button`
     position: absolute;
     top: 5px;
     right: 5px;
+`;
+export const OptionsOverlay = styled.div`
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 20%);
+    z-index: 100;
+`;
+export const OptionsModalContainer = styled.div`
+    width: 200px;
+    height: 160px;
+    position: relative;
+    background-color: #0e0e0e;
+    border-radius: 10px;
+    border: 1px #3d3d3d solid;
+    box-shadow: 2px 2px 10px #333;
+    padding: 20px 0;
+    z-index: 1000;
 `;

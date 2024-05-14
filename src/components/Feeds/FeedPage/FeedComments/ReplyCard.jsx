@@ -14,9 +14,9 @@ import { dateFormatter } from "src/components/Common/dateFormatter";
 import PostActionsAndStats from "src/components/Feeds/FeedPosts/PostActionsAndStats";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
-import Options from "src/components/Common/ModalWindowOptions";
+import Options from "src/components/Common/ModalOptions";
 
-const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, updateFeedView }) => {
+const ReplyCard = ({ id, reply, user, comments, likes, bookmarks, views, displayAt, updateFeedView }) => {
     const avatar = cdnContentImagesUrl("/user/" + (reply?.avatar || "avatarDummy.png"));
     // const dispatch = useDispatch();
     const handleCommentDelete = () => {};
@@ -35,7 +35,12 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                     </LeftSection>
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
-                        {user && user._id === reply.user && <Options onDelete={handleCommentDelete} />}
+                        {user && user._id === reply.user && (
+                            <Options
+                                onDelete={handleCommentDelete}
+                                modalContainerId={"reply-card-options-container" + id}
+                            />
+                        )}
                     </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{reply?.reply}</PostContent>

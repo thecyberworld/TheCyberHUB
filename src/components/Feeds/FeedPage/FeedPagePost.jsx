@@ -23,7 +23,7 @@ import ImageSlider from "src/components/Common/ImageSlider/ImageSlider";
 import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
-import Options from "src/components/Common/ModalWindowOptions";
+import Options from "src/components/Common/ModalOptions";
 import { deleteFeed } from "src/features/feeds/feedsSlice";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
@@ -62,7 +62,9 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
 
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                        {user && user._id === feed.user && <Options onDelete={handleDeleteFeed} />}
+                        {user && user._id === feed.user && (
+                            <Options onDelete={handleDeleteFeed} modalContainerId="feed-page-post-options-container" />
+                        )}
                     </RightHeaderSection>
                 </PostHeader>
                 <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>

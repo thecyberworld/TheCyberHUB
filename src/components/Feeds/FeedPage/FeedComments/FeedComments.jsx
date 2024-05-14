@@ -40,6 +40,7 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
                         views={feedViewsData({ feedId: reply._id })}
                         bookmarks={feedUserBookmarksData({ replyId: reply._id })}
                         updateFeedView={updateFeedView}
+                        id={id}
                     />
                 ))}
         </>

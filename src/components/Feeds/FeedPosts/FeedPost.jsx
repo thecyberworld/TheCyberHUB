@@ -18,7 +18,7 @@ import { dateFormatter } from "src/components/Common/dateFormatter";
 import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds/PostForm/AddPostElements";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
-import Options from "src/components/Common/ModalWindowOptions";
+import Options from "src/components/Common/ModalOptions";
 import { deleteFeed } from "src/features/feeds/feedsSlice";
 import { useDispatch } from "react-redux";
 
@@ -40,7 +40,9 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                         </LeftSection>
                         <RightHeaderSection>
                             <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                            {user && user._id === feed.user && <Options onDelete={handleDeleteFeed} />}
+                            {user && user._id === feed.user && (
+                                <Options onDelete={handleDeleteFeed} modalContainerId="feed-post-options-container" />
+                            )}
                         </RightHeaderSection>
                     </PostHeader>
                     <PostContent>
