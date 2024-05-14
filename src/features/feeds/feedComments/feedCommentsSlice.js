@@ -50,8 +50,9 @@ export const updateComment = createAsyncThunk(
 );
 
 // Delete a comment
-export const deleteComment = createAsyncThunk("comments/deleteComment", async (feedId, commentId, thunkAPI) => {
+export const deleteComment = createAsyncThunk("comments/deleteComment", async ({ feedId, commentId }, thunkAPI) => {
     try {
+        console.log(feedId, commentId, "in feed comments slice");
         const token = thunkAPI.getState().auth.user.token;
         await feedService.deleteComment(feedId, commentId, token);
         return commentId;
@@ -98,7 +99,7 @@ const commentSlice = createSlice({
             .addCase(addFeedComment.rejected, (state, action) => {
                 state.isFeedReplyLoading = false;
                 state.isFeedReplyError = true;
-                state.isFeedReplySucces = false;
+                state.isFeedReplySuccess = false;
                 state.feedCommentMessage = action.payload;
             })
             .addCase(updateComment.pending, (state) => {

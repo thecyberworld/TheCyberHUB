@@ -46,6 +46,7 @@ export const OptionsOverlay = styled.div`
     inset: 0;
     background-color: rgb(0 0 0 / 20%);
     z-index: 100;
+    cursor: default;
 `;
 export const OptionsModalContainer = styled.div`
     width: 200px;

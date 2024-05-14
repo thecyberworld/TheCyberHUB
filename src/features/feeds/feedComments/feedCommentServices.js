@@ -44,7 +44,7 @@ const updateComment = async (feedId, commentId, content, token) => {
         console.error(error);
     }
 };
-
+//
 // Delete a comment
 const deleteComment = async (feedId, commentId, token) => {
     const config = {
@@ -54,7 +54,7 @@ const deleteComment = async (feedId, commentId, token) => {
     };
 
     try {
-        const response = await axios.delete(API_URL + commentId, config);
+        const response = await axios.delete(`${API_URL}/${feedId}/replies/${commentId}`, config);
         return response.data;
     } catch (error) {
         console.error(error);
