@@ -47,7 +47,7 @@ Before installation, please make sure you have already installed the following t
 1. `Fork` the repository
 2. `Clone` the forked project
 3. Navigate to the cloned project directory
-4. Move to the dev branch: `git checkout dev`
+4. Make sure you are in dev branch: `git rev-parse --abbrev-ref HEAD`
 5. Install the dependencies with `npm i`
 6. Create a `.env` file in the root directory of the project
 7. Copy the contents of `example.env` to `.env` file
