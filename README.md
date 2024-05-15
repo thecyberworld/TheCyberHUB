@@ -47,12 +47,11 @@ Before installation, please make sure you have already installed the following t
 1. `Fork` the repository
 2. `Clone` the forked project
 3. Navigate to the cloned project directory
-4. Make sure you are in dev branch: `git rev-parse --abbrev-ref HEAD`
-5. Install the dependencies with `npm i`
-6. Create a `.env` file in the root directory of the project
-7. Copy the contents of `example.env` to `.env` file
-8. Run `npm run dev` to start the server
-9. Open the browser to visit the website at http://localhost:3000/
+4. Install the dependencies with `npm i`
+5. Create a `.env` file in the root directory of the project
+6. Copy the contents of `example.env` to `.env` file
+7. Run `npm run dev` to start the server
+8. Open the browser to visit the website at http://localhost:3000/
 
 > If you are new to Git and GitHub, then must check out **[first-contribution](https://github.com/thecyberworld/first-contribution)** repository **first** and contribute to it before you contributing to other open-source projects.
 
