@@ -98,8 +98,10 @@ export const RedirectButton = styled.a`
 `;
 
 export const ButtonGreen = styled.button`
-    text-decoration: none;
+    color: rgb(245 245 245);
     border-radius: 5px;
+    font-family: Roboto, sans-serif;
+    margin: 5px 0;
     border: 2px solid #262626;
     white-space: nowrap;
     padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};

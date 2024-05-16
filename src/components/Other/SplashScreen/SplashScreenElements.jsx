@@ -31,7 +31,9 @@ export const SplashImageNeon = styled.img`
     width: 150px;
     height: 150px;
     object-fit: cover;
-    animation: fade-in 1s forwards, neon-effect 2s ease-in-out infinite;
+    animation:
+        fade-in 1s forwards,
+        neon-effect 2s ease-in-out infinite;
     font-size: 12px;
     color: #999;
     word-break: break-all;
@@ -57,7 +59,9 @@ export const SplashImageNeon2 = styled.img`
     width: 150px;
     height: 150px;
     object-fit: cover;
-    animation: fade-in 1s forwards, neon-effect 0.5s ease-in-out infinite;
+    animation:
+        fade-in 1s forwards,
+        neon-effect 0.5s ease-in-out infinite;
     font-size: 12px;
     color: #999;
     word-break: break-all;
