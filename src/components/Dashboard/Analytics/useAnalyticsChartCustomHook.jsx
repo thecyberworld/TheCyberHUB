@@ -9,16 +9,20 @@ export const useAnalyticsChartCustomHook = (props) => {
     const [chartOptions, setChartOptions] = useState({});
 
     useEffect(() => {
-        const labels = displayMonths;
-        const datasets = newDatasets;
-        const options = newOptions;
-
         setChartData({
-            labels,
-            datasets,
+            labels: displayMonths,
+            datasets: newDatasets,
         });
-        setChartOptions({ options });
+        setChartOptions({ options: newOptions });
     }, []);
 
-    return [chartData, chartOptions];
+    const setGeneralChartData = ({ displayMonths, newDatasets, newOptions }) => {
+        setChartData({
+            labels: displayMonths,
+            datasets: newDatasets,
+        });
+        setChartOptions({ options: newOptions });
+    };
+
+    return [chartData, chartOptions, setGeneralChartData];
 };

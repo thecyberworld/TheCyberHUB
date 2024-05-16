@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Caption,
     Title,
@@ -30,6 +30,10 @@ import { lastAmountOfDays, lastAmountOfMinAgo, timeBtns } from "./AnalyticsUtils
 import Visitors from "./AnalyticsVisitorsData.json";
 
 export const AnalyticsPageBottomSectionMainContent = () => {
+    const DAYS = "days";
+    const HOURS = "hours";
+    const [timePeriod, setTimePeriod] = useState(HOURS);
+
     const getFormattedDate = (dateStr) => {
         const date = new Date(dateStr);
         return date.toDateString();
@@ -44,12 +48,14 @@ export const AnalyticsPageBottomSectionMainContent = () => {
                         <LastUpdated>Last updated {lastAmountOfMinAgo} min ago</LastUpdated>
                     </BottomSectionCaptionTitle>
                     <CTABtn>
-                        <TimeCaptionBtnHours>{timeBtns[0].time}</TimeCaptionBtnHours>
-                        <TimeCaptionBtnDays>{timeBtns[1].time}</TimeCaptionBtnDays>
+                        <TimeCaptionBtnHours onClick={() => setTimePeriod(HOURS)}>
+                            {timeBtns[0].time}
+                        </TimeCaptionBtnHours>
+                        <TimeCaptionBtnDays onClick={() => setTimePeriod(DAYS)}>{timeBtns[1].time}</TimeCaptionBtnDays>
                     </CTABtn>
                 </BottomLeftSectionCaption>
                 <BottomLeftInnerCard>
-                    <AnalyticsMainBarChart />
+                    <AnalyticsMainBarChart timePeriod={timePeriod} />
                 </BottomLeftInnerCard>
             </BottomLeftSection>
             <BottomRightSection>
