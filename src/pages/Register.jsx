@@ -127,8 +127,8 @@ const Register = ({ authPopup }) => {
     };
 
     return (
-        <Container authPopup={authPopup}>
-            <CenterCard authPopup={authPopup}>
+        <Container $authPopup={authPopup}>
+            <CenterCard $authPopup={authPopup}>
                 {!authPopup ? (
                     <Learn2CodePromotion>
                         <div id="reg-promo-content">

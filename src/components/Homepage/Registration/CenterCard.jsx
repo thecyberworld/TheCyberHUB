@@ -16,7 +16,7 @@ export const Container = styled.div`
     }
 
     ${(props) =>
-        props.authPopup
+        props.$authPopup
             ? `
 
     `
@@ -41,7 +41,7 @@ export const CenterCard = styled.div`
     background-blend-mode: soft-light;
 
     ${(props) =>
-        props.authPopup
+        props.$authPopup
             ? `
 
     `
