@@ -102,7 +102,6 @@ export const ButtonGreen = styled.button`
     border-radius: 5px;
     font-family: Roboto, sans-serif;
     margin: 5px 0;
-    width: 100%;
     border: 2px solid #262626;
     white-space: nowrap;
     padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
