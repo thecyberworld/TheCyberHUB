@@ -15,9 +15,9 @@ const SidebarContainer = styled.div`
     max-width: 400px;
     min-width: 300px;
     background: #131313;
-    color: #ffffff;
+    color: #fff;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
     border: 1px solid #232222;
     border-radius: 10px;
 `;
@@ -27,24 +27,24 @@ const MainTitle = styled(Link)`
     align-items: center;
     cursor: pointer;
     font-size: 18px;
-    color: #eeeeee;
+    color: #eee;
     background: #0e0e0e;
     border-radius: 8px;
     padding: 10px 20px;
     border: 1px solid #3a3a3a;
     gap: 15px;
-
     transition: all 0.3s ease-in-out;
 
     &:hover {
         background: #ff6b08;
-        color: #000000;
+        color: #000;
     }
 `;
 
 const DropdownContainer = styled.div`
     position: relative;
-    //margin-top: 10px;
+
+    /* margin-top: 10px; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,10 +65,11 @@ const DropdownContainer = styled.div`
 
 const DropdownList = styled.div`
     width: 100%;
-    //background: #1a1a1a;
-    //border: 1px solid #3a3a3a;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: ${(props) => (props.isOpen ? "block" : "none")};
+
+    /* background: #1a1a1a;
+    border: 1px solid #3a3a3a; */
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    display: ${(props) => (props.$isOpen ? "block" : "none")};
 `;
 
 const DropdownItem = styled.div`
@@ -81,7 +82,7 @@ const DropdownItem = styled.div`
     }
 `;
 const VerticalLine = styled.div`
-    border: 1px solid rgba(140, 140, 140, 0.4);
+    border: 1px solid rgb(140 140 140 / 40%);
     height: 90%;
     width: fit-content;
     margin: 0 0 0 10px;
@@ -189,7 +190,7 @@ const Sidebar = ({ heading, topic, topics, onSelectSubtopic, setCategoryActive, 
                                         <span></span>
                                     </>
                                 )}
-                                <DropdownList isOpen={openDropdown === index}>
+                                <DropdownList $isOpen={openDropdown === index}>
                                     {topic.desc.map((subtopic) => (
                                         <DropdownItem
                                             key={subtopic.title}

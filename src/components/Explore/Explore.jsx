@@ -24,8 +24,6 @@ import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import NotFound from "src/NotFound";
 
-const FilterContainer = styled.div``;
-
 const FilterHeader = styled.div`
     display: flex;
     justify-content: space-between;
@@ -38,27 +36,28 @@ const FilterHeader = styled.div`
 
 const FilterTitle = styled.p`
     margin: 0;
-    font-weight: bold;
+
+    /* font-weight: bold; */
 `;
 
 const FilterContent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    padding: 10px 0 0 0;
+    padding: 10px 0 0;
 `;
 
 const FilterSection = ({ title, children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <FilterContainer>
+        <div>
             <FilterHeader onClick={() => setIsOpen(!isOpen)}>
                 <FilterTitle>{title}</FilterTitle>
-                <HintIcon>{!isOpen ? <FaAngleDown /> : <FaAngleUp />}</HintIcon>
+                <HintIcon>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
             </FilterHeader>
             {isOpen && <FilterContent>{children}</FilterContent>}
-        </FilterContainer>
+        </div>
     );
 };
 

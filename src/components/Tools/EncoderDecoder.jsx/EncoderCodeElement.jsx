@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-export const H1 = styled.h1``;
 export const CodeContainer = styled.div`
     height: 50px;
     background: #131313;
@@ -8,7 +7,7 @@ export const CodeContainer = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: Center;
+    justify-content: center;
     padding: 5px;
     overflow: clip;
 `;

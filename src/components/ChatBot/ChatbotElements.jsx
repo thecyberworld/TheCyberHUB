@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ThecyberhubBot = styled.div`
     background-color: #0b0b0b;
     color: #cecac3;
-    outline: 1px solid rgb(42, 42, 42);
+    outline: 1px solid rgb(42 42 42);
     display: ${({ callBot }) => (callBot ? "block" : "none")};
     height: 100vh;
     width: 40vw;
@@ -14,13 +14,15 @@ export const ThecyberhubBot = styled.div`
     top: 0;
     z-index: 11;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (width <= 1024px) {
         width: 50vw;
     }
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         width: 70vw;
     }
-    @media screen and (max-width: 640px) {
+
+    @media screen and (width <= 640px) {
         width: 100vw;
     }
 
@@ -30,89 +32,21 @@ export const ThecyberhubBot = styled.div`
         transition: 260ms all;
         width: 100%;
 
-        :hover {
+        &:hover {
             outline-color: #545454;
             outline-offset: 2px;
         }
 
         .react-chatbot-kit-chat-inner-container {
             .react-chatbot-kit-chat-header {
-                background: rgba(32, 194, 14, 0.04);
+                background: rgb(32 194 14 / 4%);
                 background: linear-gradient(to right, #b1faa9, #f6dbaa);
                 background-clip: text;
-                -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 border-bottom: 1px solid #363636;
                 border-radius: 0.5rem 0.5rem 0 0;
                 font-weight: 500;
                 padding: 1rem;
-            }
-
-            .react-chatbot-kit-chat-message-container {
-                display: flex;
-                flex-direction: column;
-                justify-content: start;
-                row-gap: 1.3rem;
-                height: 60vh;
-                overflow: auto;
-                padding: 1.5rem;
-
-                .react-chatbot-kit-chat-bot-message-container {
-                    display: flex;
-                    column-gap: 0.5rem;
-                    .react-chatbot-kit-chat-bot-avatar {
-                        div {
-                            width: 2.5rem;
-                        }
-                        img {
-                            object-fit: fill;
-                            width: 100%;
-                        }
-                    }
-                    .react-chatbot-kit-chat-bot-message {
-                        background: #1a1c1d;
-                        border-radius: 0 0.5rem 0.5rem;
-                        outline: 2px solid #2a2a2a;
-                        overflow-wrap: break-word;
-                        padding: 0.5rem;
-                        /* width: fit-content; */
-
-                        span {
-                            font-weight: 400;
-                            letter-spacing: 0.08rem;
-                        }
-                    }
-                }
-
-                .react-chatbot-kit-user-chat-message-container {
-                    display: flex;
-                    justify-content: end;
-                    column-gap: 0.5rem;
-                    .react-chatbot-kit-user-chat-message {
-                        background: rgba(32, 194, 14, 0.2);
-                        border-radius: 0.5rem 0 0.5rem 0.5rem;
-                        font-weight: 300;
-                        letter-spacing: 0.08rem;
-                        outline: 2px solid #2a2a2a;
-                        overflow-wrap: break-word;
-                        padding: 0.5rem;
-                    }
-                    .react-chatbot-kit-user-avatar {
-                        div {
-                            height: 2rem;
-                            width: 2rem;
-                            background: linear-gradient(to right, #b1faa9, #f6dbaa);
-                            border-radius: 50%;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                        }
-                        svg {
-                            fill: rgb(32, 194, 14);
-                            width: 50%;
-                        }
-                    }
-                }
             }
 
             .react-chatbot-kit-chat-input-container {
@@ -127,8 +61,9 @@ export const ThecyberhubBot = styled.div`
                     height: 100%;
                     width: 100%;
                 }
+
                 input {
-                    background: rgba(32, 194, 14, 0.04);
+                    background: rgb(32 194 14 / 4%);
                     border: none;
                     border-radius: 0 0 0 0.5rem;
                     caret-color: white;
@@ -137,31 +72,108 @@ export const ThecyberhubBot = styled.div`
                     width: 100%;
                     text-indent: 1rem;
 
-                    :focus {
+                    &:focus {
                         outline: none;
                     }
-                    ::placeholder {
+
+                    &::placeholder {
                         color: #cecac3;
                         font-weight: 100;
                         letter-spacing: 0.1rem;
                     }
                 }
+
                 button {
-                    background: rgba(32, 194, 14, 0.04);
+                    background: rgb(32 194 14 / 4%);
                     border: none;
-                    border-radius: 0 0 0.5rem 0;
+                    border-radius: 0 0 0.5rem;
                     cursor: pointer;
                     height: 100%;
                     width: 3rem;
                     transition: 260ms all;
 
-                    :hover {
-                        background: rgba(32, 194, 14, 0.2);
+                    &:hover {
+                        background: rgb(32 194 14 / 20%);
                     }
                 }
+
                 svg {
                     fill: #cecac3;
                     width: 1rem;
+                }
+            }
+
+            .react-chatbot-kit-chat-message-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                row-gap: 1.3rem;
+                height: 60vh;
+                overflow: auto;
+                padding: 1.5rem;
+
+                .react-chatbot-kit-chat-bot-message-container {
+                    display: flex;
+                    column-gap: 0.5rem;
+
+                    .react-chatbot-kit-chat-bot-avatar {
+                        div {
+                            width: 2.5rem;
+                        }
+
+                        img {
+                            object-fit: fill;
+                            width: 100%;
+                        }
+                    }
+
+                    .react-chatbot-kit-chat-bot-message {
+                        background: #1a1c1d;
+                        border-radius: 0 0.5rem 0.5rem;
+                        outline: 2px solid #2a2a2a;
+                        overflow-wrap: break-word;
+                        padding: 0.5rem;
+
+                        /* width: fit-content; */
+
+                        span {
+                            font-weight: 400;
+                            letter-spacing: 0.08rem;
+                        }
+                    }
+                }
+
+                .react-chatbot-kit-user-chat-message-container {
+                    display: flex;
+                    justify-content: end;
+                    column-gap: 0.5rem;
+
+                    .react-chatbot-kit-user-chat-message {
+                        background: rgb(32 194 14 / 20%);
+                        border-radius: 0.5rem 0 0.5rem 0.5rem;
+                        font-weight: 300;
+                        letter-spacing: 0.08rem;
+                        outline: 2px solid #2a2a2a;
+                        overflow-wrap: break-word;
+                        padding: 0.5rem;
+                    }
+
+                    .react-chatbot-kit-user-avatar {
+                        div {
+                            height: 2rem;
+                            width: 2rem;
+                            background: linear-gradient(to right, #b1faa9, #f6dbaa);
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        svg {
+                            fill: rgb(32 194 14);
+                            width: 50%;
+                        }
+                    }
                 }
             }
         }
@@ -186,7 +198,7 @@ export const BotButtonCont = styled.div`
         height: 3.5rem;
         transition: 260ms all;
 
-        :hover {
+        &:hover {
             background: #23150e;
             outline-color: #545454;
             outline-offset: 1px;

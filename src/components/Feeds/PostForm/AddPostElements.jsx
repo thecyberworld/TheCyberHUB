@@ -3,7 +3,7 @@ import { FcAddImage } from "react-icons/fc";
 
 export const AddFeedCommentContainer = styled.div`
     border-bottom: 1px solid #1a1a1a;
-    background: #000000;
+    background: #000;
     padding: 15px;
     border-radius: 5px;
     width: 100%;
@@ -12,7 +12,7 @@ export const AddFeedCommentContainer = styled.div`
 `;
 
 export const PostFormTextarea = styled.textarea`
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     border: none;
     padding: 25px;
     margin: 10px 0;
@@ -26,7 +26,7 @@ export const PostFormTextarea = styled.textarea`
     width: 100%;
     height: 250px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -39,7 +39,8 @@ export const FooterSection = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    //padding: 0 10px 0 12px;
+
+    /* padding: 0 10px 0 12px; */
     width: 100%;
 `;
 
@@ -60,7 +61,6 @@ export const PostFormButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-
     transition: all 0.2s ease-in-out;
 
     &:hover {
@@ -102,7 +102,7 @@ export const RemoveButton = styled.button`
     position: absolute;
     top: 4px;
     right: 4px;
-    background: rgba(42, 42, 42, 0.78);
+    background: rgb(42 42 42 / 78%);
     border: none;
     border-radius: 50%;
     color: #f00;
@@ -119,5 +119,5 @@ export const RemoveButton = styled.button`
 export const ImagesContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust column width */
-    grid-gap: 8px; /* Adjust gap between images */
+    grid-gap: 10px; /* Adjust gap between images */
 `;

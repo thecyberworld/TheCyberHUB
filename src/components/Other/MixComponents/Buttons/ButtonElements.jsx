@@ -15,7 +15,7 @@ export const IconsSpacing2 = styled.span`
 `;
 
 export const ScrollButton = styled(ScrollLink)`
-    margin: auto 10px 10px 10px;
+    margin: auto 10px 10px;
     text-decoration: none;
     border-radius: 5px;
     border-width: 1px;
@@ -42,7 +42,7 @@ export const ScrollButton = styled(ScrollLink)`
 `;
 
 export const RouterButton = styled(RouterLink)`
-    margin: auto 10px 10px 10px;
+    margin: auto 10px 10px;
     text-decoration: none;
     border-radius: 5px;
     border-width: 1px;
@@ -70,7 +70,7 @@ export const RouterButton = styled(RouterLink)`
 `;
 
 export const RedirectButton = styled.a`
-    margin: auto 10px 10px 10px;
+    margin: auto 10px 10px;
     text-decoration: none;
     border-radius: 5px;
     border-width: 1px;
@@ -98,22 +98,38 @@ export const RedirectButton = styled.a`
 `;
 
 export const ButtonGreen = styled.button`
-    padding: 15px 10px;
-    font-size: 1.5rem;
-    background: rgb(16, 16, 16);
-    color: rgb(245, 245, 245);
-    border: 1px solid rgb(42, 42, 42);
+    color: rgb(245 245 245);
     border-radius: 5px;
-    margin: 5px 0px;
+    font-family: Roboto, sans-serif;
+    margin: 5px 0;
     width: 100%;
+    border: 2px solid #262626;
+    white-space: nowrap;
+    padding: ${({ big }) => (big ? "14px 48px" : "12px 30px")};
+    font-size: ${({ fontBig }) => (fontBig ? "22px" : "18px")};
+    outline: none;
     cursor: pointer;
-    font-family: "Roboto", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff6b08;
     transition: all 0.2s ease-in-out;
 
     &:hover {
+        padding: ${({ big }) => (big ? "12px 46px" : "12px 30px")};
+        font-size: ${({ fontBig }) => (fontBig ? "24px" : "20px")};
+
+        /* box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+        -webkit-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+        -moz-box-shadow: 0 0 10px -5px rgb(23, 243, 30);
+         font-size: 18px; */
         background: #ff6b08;
         color: black;
         border-color: #343434;
+    }
+
+    @media screen and (width <= 600px) {
+        padding: 10px;
     }
 `;
 
@@ -133,24 +149,27 @@ export const LoadingButton = styled.button`
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease-in-out;
-    color: #000000;
+    color: #000;
     background: #ff6b08;
-    box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+    box-shadow: 0 0 30px rgb(32 194 14 / 0%);
     animation: glowing 2s ease-in-out infinite;
 
     @keyframes glowing {
         0% {
-            box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+            box-shadow: 0 0 30px rgb(32 194 14 / 0%);
         }
+
         50% {
             box-shadow: 0 0 60px 15px #ff6b08;
         }
+
         100% {
-            box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+            box-shadow: 0 0 30px rgb(32 194 14 / 0%);
         }
     }
-    @media screen and (max-width: 600px) {
-        padding: 10px 10px;
+
+    @media screen and (width <= 600px) {
+        padding: 10px;
     }
 `;
 
@@ -172,22 +191,25 @@ export const LoadingRedirectButton = styled(RouterLink)`
     transition: all 0.2s ease-in-out;
     color: #f5f5f5;
     background: #ff6b08;
-    box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+    box-shadow: 0 0 30px rgb(32 194 14 / 0%);
     animation: glowing 2s ease-in-out infinite;
 
     @keyframes glowing {
         0% {
-            box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+            box-shadow: 0 0 30px rgb(32 194 14 / 0%);
         }
+
         50% {
             box-shadow: 0 0 60px 15px #ff6b08;
         }
+
         100% {
-            box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+            box-shadow: 0 0 30px rgb(32 194 14 / 0%);
         }
     }
-    @media screen and (max-width: 600px) {
-        padding: 10px 10px;
+
+    @media screen and (width <= 600px) {
+        padding: 10px;
     }
 `;
 
@@ -215,10 +237,11 @@ export const RouterButtonGreen = styled(RouterLink)`
         color: black;
         scale: 1.01;
         border-color: #343434;
-        // font-size: 18px;
+
+        /* font-size: 18px; */
     }
 
-    @media screen and (max-width: 600px) {
-        padding: 10px 10px;
+    @media screen and (width <= 600px) {
+        padding: 10px;
     }
 `;

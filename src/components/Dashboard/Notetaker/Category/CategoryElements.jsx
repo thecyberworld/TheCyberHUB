@@ -5,7 +5,8 @@ export const CategoriesSidebarContainer = styled.div`
     flex-direction: column;
     height: 100vh;
     width: 250px;
-    @media screen and (max-width: 800px) {
+
+    @media screen and (width <= 800px) {
         width: 35%;
     }
 `;
@@ -15,7 +16,7 @@ export const CategoriesSidebarHeader = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 10px;
-    border: 2px solid #111111;
+    border: 2px solid #111;
     height: 3rem;
 `;
 
@@ -31,8 +32,8 @@ export const CategoriesListContainer = styled.ul`
     display: flex;
     flex-direction: column;
     gap: 5px;
-    border: 2px solid #111111;
-    border-top: 0px;
+    border: 2px solid #111;
+    border-top: 0;
     border-bottom: ${(props) => (props.addMode ? "0px" : "2px solid #111111")};
     padding: 5px;
     overflow-y: auto;
@@ -66,7 +67,7 @@ export const CategoryItemElement = styled.li`
     padding: 10px;
     gap: 5px;
     background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
-    border: 1px solid #111111;
+    border: 1px solid #111;
     border-radius: 5px;
     color: #f5f5f5;
 
@@ -75,14 +76,16 @@ export const CategoryItemElement = styled.li`
         cursor: pointer;
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (width <= 500px) {
         font-size: 1.5rem;
         padding: 25px;
     }
 `;
 export const CategoryItemShortTitle = styled.p`
     text-transform: capitalize;
-    font: 15px "Roboto Mono", monospace;
+    font:
+        15px "Roboto Mono",
+        monospace;
     font-weight: 600;
 `;
 
@@ -90,8 +93,8 @@ export const ModifyCategoryModalContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #111111;
-    background-color: #111111;
+    border: 1px solid #111;
+    background-color: #111;
     padding: 2px;
 `;
 export const ModifyCategoryModalInput = styled.input`
@@ -100,10 +103,12 @@ export const ModifyCategoryModalInput = styled.input`
     width: 100%;
     border-radius: 3px;
     outline: none;
-    line-height: 1;
     text-transform: capitalize;
     background-color: #090909;
-    font: 16px "Poppins", sans-serif;
+    font:
+        16px Poppins,
+        sans-serif;
+    line-height: 1;
 `;
 export const ModifyCategoryModalButtons = styled.div`
     display: flex;
@@ -121,14 +126,14 @@ export const CategoriesOptionsModeButtons = styled.div`
     width: 70px;
 `;
 export const CategoryMenuButtons = styled.div`
-    padding: 20px 10px 5px 10px;
+    padding: 20px 10px 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     position: absolute;
     width: 100px;
-    right: 0px;
+    right: 0;
     z-index: 5;
     border: #383838 1px solid;
     background-color: #090909;
@@ -142,6 +147,7 @@ export const CategoryMenuButton = styled.div`
     justify-content: start;
     cursor: pointer;
     margin-bottom: 15px;
+
     &:hover {
         opacity: 0.7;
     }

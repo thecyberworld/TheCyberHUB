@@ -17,7 +17,8 @@ export const BlogsSection = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     padding: 15px;
-    @media screen and (max-width: 800px) {
+
+    @media screen and (width <= 800px) {
         flex-direction: column;
     }
 `;
@@ -37,13 +38,11 @@ export const SubContainerTop = styled.div`
     justify-content: space-between;
 `;
 
-export const SubContainerHeading = styled.h4``;
-
 export const AllBlogs = styled(ExploreContentContainer)`
-    background-color: ${(props) => (props.displayAt === "explore" ? "#090909" : "#000000")};
-    padding: ${(props) => (props.displayAt ? "15px" : "0")};
+    background-color: ${(props) => (props.$displayAt === "explore" ? "#090909" : "#000000")};
+    padding: ${(props) => (props.$displayAt ? "15px" : "0")};
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         grid-auto-rows: 0fr;
         gap: 15px;
         padding: 15px;
@@ -51,7 +50,7 @@ export const AllBlogs = styled(ExploreContentContainer)`
 `;
 
 export const Select = styled.select`
-    border: 1px solid #000000;
+    border: 1px solid #000;
     padding: 8px;
     font-size: 16px;
     width: 200px;
@@ -64,14 +63,15 @@ export const Select = styled.select`
         box-shadow: 0 0 0 1px #1a1c1d;
     }
 
-    @media screen and (max-width: 380px) {
+    @media screen and (width <= 380px) {
         width: 100%;
     }
 `;
 
 export const Option = styled.option`
-    border: 1px solid #000000;
+    border: 1px solid #000;
     font-size: 16px;
+
     &:focus {
         outline: none;
         box-shadow: 0 0 0 1px #1a1c1d;

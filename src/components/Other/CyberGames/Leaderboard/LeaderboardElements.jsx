@@ -10,7 +10,7 @@ export const LeaderboardContainer = styled.div`
     height: 100%;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
     background: #090909;
     max-width: 1000px;
 `;
@@ -32,15 +32,16 @@ export const LeaderboardTableRow = styled.tr`
     background-color: #181818;
     color: #dadada;
     padding: 8px;
-    &:hover{
-        background-color: #333333;
+
+    &:hover {
+        background-color: #333;
     }
 `;
 
 export const LeaderboardTableHeader = styled.th`
     background-color: #101010;
     border: 1px solid #181818;
-    text-align:start;
+    text-align: start;
     padding: 12px;
 `;
 export const LeaderboardTableHeaderPoints = styled.th`
@@ -61,15 +62,15 @@ export const LeaderboardTextIconData = styled.span`
     justify-content: start;
     align-items: center;
     gap: 5px;
-`
+`;
 export const LeaderboardFirstRow = styled.span`
     font-size: 20px;
     font-weight: bold;
     display: flex;
     justify-content: end;
     align-items: center;
-    gap: 5px
-`
+    gap: 5px;
+`;
 
 export const LeaderboardTablePoints = styled.td`
     border: 1px solid #181818;
@@ -99,15 +100,11 @@ export const TopPlayerSection = styled.div`
     gap: 5px;
 `;
 
-export const FirstPlace = styled.div``;
-
 export const Username = styled.p`
     font-size: 1rem;
     font-weight: 550;
     color: #d5d5d5;
-
     cursor: pointer;
-
     transition: all 0.2s ease-in-out;
 
     &:hover {

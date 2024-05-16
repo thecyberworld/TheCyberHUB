@@ -21,14 +21,14 @@ export const CtfLikeButton = styled.button`
 `;
 export const QuestionConatiner = styled.div`
     width: 1112px;
-    // height: 636px;
+
+    /* height: 636px; */
     border-radius: 15px;
     background: #131313;
     padding: 20px;
 `;
 export const DescriptionTitle = styled.h2`
     color: #ff6b08;
-
     font-size: 18px;
     font-style: normal;
     font-weight: 600;

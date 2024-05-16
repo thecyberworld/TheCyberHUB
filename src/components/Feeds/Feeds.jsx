@@ -21,20 +21,21 @@ const Feeds = () => {
         (state) => state.userDetail,
     );
     const { user } = useSelector((state) => state.auth);
-
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         if (isFeedError) console.log(feedMessage);
         if (isUserDetailError) console.log(userDetailMessage);
 
         dispatch(getAllFeeds());
         dispatch(getAllUserDetails());
+        setIsLoading(false);
         user && dispatch(getFollowData(user?._id));
         return () => {
             dispatch(feedReset());
             dispatch(userDetailReset());
             dispatch(reset());
         };
-    }, [dispatch]);
+    }, [dispatch, setIsLoading]);
 
     const [showOnlyFollowingPosts, setShowOnlyFollowingPosts] = useState(false);
     const [searchTerm, setSearchTerm] = useState("");
@@ -54,7 +55,7 @@ const Feeds = () => {
         return { ...feed, username, avatar, verified };
     });
 
-    if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
+    if (isApiLoading || isUserDetailLoading || isFeedLoading || isLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 

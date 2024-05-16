@@ -23,8 +23,8 @@ export const Input = styled.input`
         border: none;
     }
 
-    @media (max-width: 768px) {
-        // Add styles for smaller screens if needed
+    @media (width <= 768px) {
+        /* Add styles for smaller screens if needed */
     }
 `;
 
@@ -49,9 +49,9 @@ export const ReverseShellHeader = styled.div`
     padding: 25px;
     border-radius: 5px;
 
-    //@media (max-width: 768px) {
-    //    flex-direction: column;
-    //}
+    /* @media (max-width: 768px) {
+       flex-direction: column;
+    } */
 `;
 
 export const RevShellHeaderSubContainer = styled.div`
@@ -60,7 +60,7 @@ export const RevShellHeaderSubContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 25px;
-    background: rgba(65, 65, 65, 0.48);
+    background: rgb(65 65 65 / 48%);
     height: 100%;
     min-height: 150px;
     max-height: 200px;
@@ -73,7 +73,7 @@ export const RevShellHeaderTop = styled.div`
     width: 100%;
     font-size: 20px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         flex-direction: column;
     }
 `;
@@ -86,7 +86,7 @@ export const RevShellHeaderMiddle = styled.div`
     gap: 25px;
     width: 100%;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         flex-direction: column;
     }
 
@@ -97,14 +97,12 @@ export const RevShellHeaderMiddle = styled.div`
         font-weight: 600;
         background-color: #1e1e1e;
         padding: 5px 10px;
-
         font-family: "Fira Code", monospace;
     }
 `;
 
 export const IpAndPortSubContainer2 = styled.div`
     height: 40px;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -129,7 +127,6 @@ export const PortNumberIncAndDec = styled.div`
     width: 100%;
     background: #2a2a2a;
     padding: 5px 10px;
-
     cursor: pointer;
 `;
 
@@ -155,7 +152,7 @@ export const Button = styled.button`
         transition: all 0.2s ease-in-out;
     }
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         width: 100%;
 
         &:hover {
@@ -171,11 +168,11 @@ export const Title = styled.h1`
     background: transparent;
     display: flex;
     justify-content: center;
-    margin: 0 0 25px 0;
+    margin: 0 0 25px;
     align-items: center;
     gap: 5px;
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         font-size: 1.5rem;
     }
 `;
@@ -206,7 +203,7 @@ export const Dropdown = styled.select`
         box-shadow: 0 0 0 2px #07b6f6; /* Add a subtle focus border */
     }
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
         width: 100%;
     }
 `;
@@ -294,7 +291,6 @@ export const ShellList = styled.div`
     width: 100%;
     gap: 5px;
     padding: 5px;
-
     overflow-y: auto;
     max-height: 650px;
     min-height: 200px;

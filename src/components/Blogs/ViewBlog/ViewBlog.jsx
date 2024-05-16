@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { encodeURL } from "src/components/Blogs/util";
 import { useDispatch, useSelector } from "react-redux";
 import { blogReset, getAllBlogs } from "src/features/blogs/blogSlice";
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import {
     BlogContent,
@@ -33,7 +33,7 @@ import ViewComments from "src/components/Blogs/BlogComments/ViewComments";
 import { blogCommentReset, getBlogComments } from "src/features/blogs/blogComments/blogCommentSlice";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { RouterLink } from "src/components/Tools/ToolsElements";
-
+import DOMPurify from "dompurify";
 const ViewBlog = () => {
     const dispatch = useDispatch();
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -135,8 +135,9 @@ const ViewBlog = () => {
 
     const blogCommentsData = blogsCommentsData.filter((comment) => comment.blogId === blog?._id);
 
+    const purifiedCode = DOMPurify.sanitize(filterContent);
     return (
-        <>
+        <HelmetProvider>
             <Helmet>
                 <meta property="og:title" content={blog?.title} />
                 <meta property="og:description" content={blog?.description} />
@@ -159,7 +160,7 @@ const ViewBlog = () => {
                     </ContentSection>
                     <ContentSection>
                         <BlogContent
-                            value={filterContent}
+                            value={purifiedCode}
                             readOnly={true}
                             modules={{ toolbar: false }}
                             formats={formats}
@@ -181,7 +182,7 @@ const ViewBlog = () => {
             </ContainerViewBlog>
             {/* <LeftBlogSidebar/> */}
             {/* </ViewBlogContainer> */}
-        </>
+        </HelmetProvider>
     );
 };
 

@@ -13,8 +13,8 @@ export const OnGoingEventsContainer = styled.div`
     margin: 0 20px 20px 0;
     padding: 15px 20px;
 
-    @media screen and (max-width: 768px) {
-        margin: 0 0 20px 0;
+    @media screen and (width <= 768px) {
+        margin: 0 0 20px;
     }
 `;
 
@@ -33,12 +33,12 @@ export const OnGoingEventsContent = styled.div`
 
 export const OnGoingEventsSubHeading = styled.h4`
     color: #9b9b9b;
-    margin: 5px 0 10px 0;
+    margin: 5px 0 10px;
 `;
 
 export const OnGoingEventsChangeViewBtn = styled.a`
     text-decoration: none;
-    color: currentColor;
+    color: currentcolor;
     opacity: 0.5;
     cursor: pointer;
 `;

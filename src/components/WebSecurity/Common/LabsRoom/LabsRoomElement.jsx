@@ -56,24 +56,26 @@ export const Description = styled.p`
     background: #151717;
     padding: 15px;
     font-size: 16px;
-    opacity: 80%;
+    opacity: 0.8;
     white-space: pre-wrap;
 `;
 
 export const SolutionHeader = styled.div`
     width: 100%;
     display: flex;
-    //padding: 10px 20px;
+
+    /* padding: 10px 20px; */
     justify-content: space-between;
     align-items: center;
-    //background-color: #1a1c1d;
+
+    /* background-color: #1a1c1d; */
     cursor: pointer;
 `;
 
 export const SolutionTitle = styled.p`
-    //font-size: 20px;
-    //font-weight: bold;
-    //color: white;
+    /* font-size: 20px;
+    font-weight: bold;
+    color: white; */
 `;
 
 export const SolutionToggleIcon = styled.span`
@@ -85,7 +87,7 @@ export const SolutionHolder = styled.div`
     padding: 20px;
     background-color: #1a1a1a;
     border-radius: 5px;
-    border: 1px solid rgba(40, 40, 40, 0.63);
+    border: 1px solid rgb(40 40 40 / 63%);
 `;
 
 export const SolutionItem = styled.div`
@@ -94,20 +96,20 @@ export const SolutionItem = styled.div`
 
 export const SolutionIndex = styled.span`
     font-size: 16px;
-    opacity: 80%;
+    opacity: 0.8;
 `;
 
 export const SolutionText = styled.span`
     padding-left: 10px;
     font-size: 16px;
-    opacity: 80%;
+    opacity: 0.8;
 `;
 
 export const Button = styled.button`
     padding: 10px 15px;
-    backgroundcolor: #ff6b08;
+    background-color: #ff6b08;
     color: #151515;
     border: none;
-    borderradius: 5px;
+    border-radius: 5px;
     cursor: pointer;
 `;

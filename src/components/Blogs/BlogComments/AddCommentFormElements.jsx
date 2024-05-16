@@ -11,9 +11,9 @@ export const AddCommentFormContainer = styled.div`
     padding: 30px;
     max-height: 300px;
     overflow-y: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     color: #f5f5f5;
-    border: 1px solid rgb(65, 65, 65);
+    border: 1px solid rgb(65 65 65);
     background: transparent;
 `;
 
@@ -22,27 +22,25 @@ export const StyledForm = styled.form`
     flex-direction: column;
     width: 100%;
     max-width: 600px;
-
-    padding: 30px;
     border-radius: 10px;
     max-height: 200px;
     overflow-y: auto;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    background: #151515;
+    padding: 25px;
+    gap: 25px;
 `;
 
-export const Label = styled.label``;
-
 export const Input = styled.input`
-    padding: 10px;
-    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: transparent;
-    color: #f5f5f5; /* Modify this line */
+    background: #262525;
+    border: transparent;
+    color: #f5f5f5;
     width: 100%;
     height: 50px;
     font-size: 15px;
     text-underline-offset: 5px;
-    border: 1px solid rgb(65, 65, 65);
+    padding: 10px 20px;
 
     &:focus {
         outline: none;
@@ -67,5 +65,5 @@ export const Submit = styled.button`
     width: 100%;
     cursor: pointer;
     font-size: 13px;
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
 `;

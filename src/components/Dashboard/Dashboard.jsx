@@ -10,7 +10,6 @@ const Dashboard = () => {
     // const [isLoading, setIsLoading] = useState(false);
 
     if (isApiLoading) return <LoadingSpinner />;
-
     if (!isApiWorking) return <UnderMaintenance />;
 
     return (

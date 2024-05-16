@@ -17,7 +17,6 @@ import {
     AddImage,
     CategorySection,
     ImageSelected,
-    ImageUploadInput,
     ImageUploadLabel,
     TextGrey,
 } from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
@@ -62,8 +61,9 @@ const CreateBlogV2 = () => {
     const [remainingCharacters, setRemainingCharacters] = useState(maxCharacterCount);
 
     useEffect(() => {
-        setRemainingCharacters(maxCharacterCount - content.length);
-    }, [content]);
+        const filteredContentLength = content.replace(/<img src="data:image[^>]*>/g, "").length;
+        setRemainingCharacters(maxCharacterCount - filteredContentLength);
+    }, [content, maxCharacterCount]);
 
     let updatedContent;
 
@@ -71,7 +71,9 @@ const CreateBlogV2 = () => {
         if (isBlogError || errorMessage) {
             toast.error(errorMessage || blogMessage);
         }
+
         if (!user) navigate("/login");
+
         if (isSuccess) navigate("/blogs");
 
         return () => dispatch(blogReset());
@@ -117,7 +119,7 @@ const CreateBlogV2 = () => {
                 toast.warn("Content should be atleast 100 characters");
                 return;
             }
-            if (content.length > 10000) {
+            if (remainingCharacters > 10000) {
                 toast.warn("Content should be less than 10000 characters");
                 return;
             }
@@ -240,7 +242,7 @@ const CreateBlogV2 = () => {
                             )}
                             <ImageSelected> {file && <>{fileName.slice(0, 20)}..</>} </ImageSelected>
                         </ImageUploadLabel>
-                        <ImageUploadInput
+                        <input
                             type="file"
                             name="addCoverImage"
                             id="addCoverImage"
@@ -276,8 +278,8 @@ const CreateBlogV2 = () => {
                                     remainingCharacters <= 1000
                                         ? "#ff2525"
                                         : remainingCharacters <= 5000
-                                        ? "#ff6b08"
-                                        : "grey",
+                                          ? "#ff6b08"
+                                          : "grey",
                                 width: "100%",
                                 textAlign: "right",
                                 fontSize: "12px",
