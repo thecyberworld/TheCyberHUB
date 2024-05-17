@@ -9,6 +9,7 @@ export const DashboardSidebarContainer = styled.div`
     align-items: flex-start;
     background: #090909;
     height: 100vh;
+
     /* border-radius: 10px; */
     color: #f5f5f5;
     border-right: 1px solid #2d2d2d;
@@ -49,7 +50,9 @@ export const SideBarLink = styled(({ $isOpen, ...props }) => <NavLink {...props}
     padding: 7px 0;
     gap: 10px;
     padding-left: ${(props) => (props.$isOpen ? "10px" : "0")};
-    transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
+    transition:
+        background 0.3s ease-in-out,
+        padding 0.3s ease-in-out;
     width: 100%;
     justify-content: ${(props) => (props.$isOpen ? "unset" : "center")};
 
@@ -57,6 +60,7 @@ export const SideBarLink = styled(({ $isOpen, ...props }) => <NavLink {...props}
     &.active {
         background: #ff6b08;
         color: #111;
+
         /* background: ${(props) => (props.$isOpen ? "#ff6b08" : "")};
            color: ${(props) => (props.$isOpen ? "#111" : "#ff6b08")}; */
     }
@@ -73,7 +77,7 @@ export const SidebarTitle = styled.p`
 `;
 
 export const ToggleButton = styled.div`
-    //top: 100px;
+    /* top: 100px; */
     cursor: pointer;
     border-radius: 12px;
     border: 1px solid #2a2a2a;
@@ -90,6 +94,7 @@ export const UserProfile = styled.div`
     width: 100%;
     padding: 10px;
     background: #1c1c1c;
+
     /* margin-left: ${(props) => (props.$isOpen ? "0" : "8px")}; */
 
     .user-profile-image {
@@ -112,7 +117,9 @@ export const UserProfileDescription = styled.div`
     margin-left: ${(props) => (props.$isOpen ? "16px" : "0")};
     opacity: ${(props) => (props.$isOpen ? "1" : "0")};
     transform: ${(props) => (props.$isOpen ? "translateX(0)" : "translateX(-100%)")};
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
     visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
     width: ${(props) => (props.$isOpen ? "unset" : "0")};
 

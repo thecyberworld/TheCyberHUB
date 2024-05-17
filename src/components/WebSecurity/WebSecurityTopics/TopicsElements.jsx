@@ -21,7 +21,8 @@ export const StyledTopicCard = styled.div`
     padding: 20px;
     border-radius: 10px;
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgb(255 255 255 / 18%);
+
     &:hover {
         transition: all 0.3s ease-in-out;
         transform: translateY(-5px);
@@ -33,8 +34,9 @@ export const StyledTag = styled.span`
     display: inline-block;
     margin: 2px;
     padding: 4px 8px;
-    background: rgba(61, 61, 61, 0.53);
+    background: rgb(61 61 61 / 53%);
     border-radius: 4px;
-    //border: 1px solid #444444;
+
+    /* border: 1px solid #444; */
     color: #a1a1a1; /* Tag Text Color */
 `;

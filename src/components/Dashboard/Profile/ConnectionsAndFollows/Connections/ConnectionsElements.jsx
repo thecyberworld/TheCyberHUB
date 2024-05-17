@@ -32,7 +32,7 @@ export const DropdownContent = styled.div`
     background: #1a1c1d;
     position: absolute;
     min-width: 160px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgb(0 0 0 / 20%);
     z-index: 1;
 `;
 

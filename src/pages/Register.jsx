@@ -127,8 +127,8 @@ const Register = ({ authPopup }) => {
     };
 
     return (
-        <Container authPopup={authPopup}>
-            <CenterCard authPopup={authPopup}>
+        <Container $authPopup={authPopup}>
+            <CenterCard $authPopup={authPopup}>
                 {!authPopup ? (
                     <Learn2CodePromotion>
                         <div id="reg-promo-content">
@@ -140,11 +140,11 @@ const Register = ({ authPopup }) => {
                     </Learn2CodePromotion>
                 ) : null}
                 <RegistrationFormContainer>
-                    <h1 className="registration__promotion__h1">Join over 25 million learners from around the globe</h1>
-                    <p className="registration__promotion__p">
+                    <h1 className="registration-promotion-h1">Join over 25 million learners from around the globe</h1>
+                    <p className="registration-promotion-p">
                         Master Cybersecurity. This path will prepare you to build you base strong in cyber security
                     </p>
-                    <div className="registration__inputfields">
+                    <div className="registration-inputfields">
                         {!emailRegistered
                             ? !emailSent
                                 ? RegisterEmail({
@@ -204,8 +204,8 @@ const RegisterEmail = ({
                 autoComplete="off"
             />
         </CustomInputGroup>
-        <div className="registration__ctas">
-            <div className="registration__tandc">
+        <div className="registration-ctas">
+            <div className="registration-tandc">
                 <input
                     role={"checkbox"}
                     type={"checkbox"}
@@ -223,7 +223,7 @@ const RegisterEmail = ({
                 </div>
             </div>
 
-            <div className="registration__tandc">
+            <div className="registration-tandc">
                 <input
                     role={"checkbox"}
                     type={"checkbox"}
@@ -262,7 +262,7 @@ const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
         <VerificationCodeSection>
             <CustomInputGroup style={{ width: "100%" }}>
                 <input
-                    className={"codeInput"}
+                    className={"code-input"}
                     type={"text"}
                     id={"code"}
                     name={"code"}

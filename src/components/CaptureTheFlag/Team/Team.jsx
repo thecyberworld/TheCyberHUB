@@ -8,7 +8,6 @@ import {
     SearchPlayerContainer,
     SearchPlayerItem,
     SearchPlayerList,
-    TeamContainer,
     TeamMember,
     TeamMembers,
     TeamName,
@@ -70,7 +69,7 @@ const Team = ({ team, isTeamEdit }) => {
     };
 
     return (
-        <TeamContainer>
+        <div>
             <CreateTeam>
                 <TeamName>
                     {editTeam ? (
@@ -114,7 +113,7 @@ const Team = ({ team, isTeamEdit }) => {
                     </TeamMember>
                 ))}
             </TeamMembers>
-        </TeamContainer>
+        </div>
     );
 };
 

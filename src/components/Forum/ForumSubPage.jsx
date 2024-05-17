@@ -6,21 +6,11 @@ import { encodeURL } from "src/components/Blogs/util";
 import {
     Button,
     CommentTextArea,
-    Date,
     ForumSubPageContainer,
     PublishSection,
     QuestionSection,
-    Title,
-    Views,
 } from "./ForumSubPageElements";
-import {
-    Categories,
-    Category,
-    Description,
-    DetailsSection,
-    FooterDetailsSection,
-    Votes,
-} from "./ForumPosts/CardElements";
+import { Categories, Category, DetailsSection, FooterDetailsSection, Votes } from "./ForumPosts/CardElements";
 // import PostCommentForm from "./PostCommentForm";
 import { CommentForm } from "./PostCommentFormElements";
 
@@ -62,8 +52,8 @@ const ForumSubPage = () => {
         <Wrapper>
             <ForumSubPageContainer>
                 <QuestionSection>
-                    <Title> {question.title} </Title>
-                    <Description> {question.description} </Description>
+                    <h1> {question.title} </h1>
+                    <p> {question.description} </p>
 
                     <FooterDetailsSection>
                         <Categories>
@@ -73,11 +63,11 @@ const ForumSubPage = () => {
                         </Categories>
                         <DetailsSection>
                             <Votes>{question.votes} votes </Votes>
-                            <Views> {question.views} views </Views>
+                            <p> {question.views} views </p>
                         </DetailsSection>
-                        <Date>
+                        <p>
                             by @{question.username} {question.date}
-                        </Date>
+                        </p>
                     </FooterDetailsSection>
                 </QuestionSection>
 

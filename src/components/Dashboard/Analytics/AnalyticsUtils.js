@@ -3,7 +3,6 @@ export const lastAmountOfMinAgo = 14;
 
 export function displayMonths(count) {
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
     return months.slice(0, count);
 }
 

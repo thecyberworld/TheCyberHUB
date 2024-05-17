@@ -10,11 +10,12 @@ export const SearchInput = styled.input`
     width: 100%;
     border-radius: 0 4px 4px 0;
     outline: none;
-    @media screen and (max-width: 380px) {
+
+    @media screen and (width <= 380px) {
         width: 100%;
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         width: 100%;
     }
 `;
@@ -26,7 +27,8 @@ export const SearchBox = styled.div`
     align-items: center;
     background: #252525;
     border-radius: 5px;
-    @media screen and (max-width: 380px) {
+
+    @media screen and (width <= 380px) {
         width: 100%;
     }
 `;
@@ -36,12 +38,9 @@ export const SearchIcon = styled.div`
     align-items: center;
     justify-content: center;
     background: #131313;
-
     width: 50px;
     height: 40px;
-
     font-size: 20px;
-
     color: #d7d7d7;
     border-radius: 4px 0 0 4px;
     cursor: pointer;
@@ -54,7 +53,7 @@ export const SearchIcon = styled.div`
 
 export const CancelIcon = styled(VscClose)`
     font-size: 1.7rem;
-    color: rgb(238, 238, 238);
+    color: rgb(238 238 238);
     cursor: pointer;
     transition: 0.2s ease-in-out;
 `;

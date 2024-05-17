@@ -5,7 +5,6 @@ import { encodeURL } from "src/components/Blogs/util";
 import {
     EventComponent,
     EventContent,
-    EventDate,
     EventHeaderImage,
     EventHeaderImageContainer,
     EventTitle,
@@ -23,7 +22,7 @@ const Event = () => {
                 {/* <EventVenue>{event?.venue}</EventVenue> */}
             </EventHeaderImageContainer>
             <EventTitle>{event?.title}</EventTitle>
-            <EventDate>{event?.date}</EventDate>
+            <h3>{event?.date}</h3>
             <EventContent>{event?.content}</EventContent>
         </EventComponent>
     );

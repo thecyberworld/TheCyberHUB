@@ -6,7 +6,7 @@ export const ContainerCard = styled.div`
     flex-direction: column;
     width: 100%;
     text-align: start;
-    background: #111111;
+    background: #111;
     justify-content: space-between;
     border-radius: 5px;
     transition: 0.3s ease-in-out;
@@ -76,7 +76,6 @@ export const BlogCardImage = styled.img`
     height: auto;
     object-fit: cover;
     max-height: 300px;
-
     display: block;
     margin: 0 auto;
     border-radius: 15px 15px 0 0;
@@ -93,7 +92,8 @@ export const MainSection = styled.div`
 
 export const SubSection = styled.div`
     padding: 25px;
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         padding: 10px 10px 15px 15px;
     }
 `;
@@ -122,31 +122,36 @@ export const Title = styled.div`
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 5px;
-
     word-wrap: break-word;
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         font-size: 16px;
     }
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         font-size: 12px;
     }
 `;
 
 export const Description = styled.div`
     word-wrap: break-word;
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         font-size: 14px;
     }
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         font-size: 11px;
     }
-    @media screen and (max-width: 460px) {
+
+    @media screen and (width <= 460px) {
         display: none;
     }
 `;
 export const Username = styled.p`
     padding: 0 5px 0 0;
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         font-size: 10px;
     }
 `;
@@ -159,7 +164,8 @@ export const Categories = styled.div`
     display: flex;
     flex-wrap: wrap;
     word-wrap: break-word;
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         margin-left: 15px;
     }
 `;
@@ -176,7 +182,7 @@ export const Category = styled.p`
         transform: scale(1.02);
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         font-size: 10px;
     }
 `;

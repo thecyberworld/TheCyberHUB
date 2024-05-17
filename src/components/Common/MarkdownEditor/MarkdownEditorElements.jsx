@@ -6,7 +6,6 @@ export const MarkdownContainer = styled.div`
     flex-direction: column;
 `;
 
-export const MarkdownEditorPreviewContainer = styled.div``;
 export const MarkdownEditorContainer = styled.div`
     border: 1px solid #4f4f4f;
     border-radius: 5px;

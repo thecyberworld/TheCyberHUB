@@ -6,21 +6,18 @@ export const SidebarContainer = styled.div`
     background-color: #0e0e0e;
     border-right: 1px solid #282828;
     color: #ecf0f1;
-
     height: 100vh;
     display: flex;
     flex-direction: column;
-
     width: 100%;
     min-width: 200px;
     max-width: 225px;
-
     transition: all 0.3s ease-in-out;
 `;
 
 export const SidebarHeader = styled.div`
     width: 100%;
-    padding: 10px 15px 0px 15px;
+    padding: 10px 15px 0;
     position: relative;
     display: flex;
     align-items: center;
@@ -31,8 +28,7 @@ export const SidebarHeader = styled.div`
 
 export const SidebarSection = styled.div`
     margin-bottom: 20px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: hidden scroll;
     height: 100%;
 `;
 

@@ -11,7 +11,6 @@ export const UserPointsContainer = styled.div`
     grid-gap: 20px;
     padding: 25px;
     box-sizing: border-box;
-
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -47,7 +46,7 @@ export const RankNumberContainer = styled.div`
 `;
 
 export const RankNumber = styled.p`
-    /* color: ${(props) => (props.$userRank === 1 ? "#ff6b08" : "#d7d7d7")};*/
+    /* color: ${(props) => (props.$userRank === 1 ? "#ff6b08" : "#d7d7d7")}; */
     margin-bottom: ${(props) => (props.$userRank === 1 ? "-5px" : "")};
     font-weight: 600;
     margin-left: ${(props) => props.$userRank === 1 && "5px"};
@@ -58,15 +57,9 @@ export const RankTrophy = styled(BsTrophyFill)`
     font-size: 1.1rem;
 `;
 
-export const UserExpContainer = styled.div``;
-
 export const UserStreakContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
-
-export const RoomsCompletedContainer = styled.div``;
-
-export const UserBlogsCountContainer = styled.div``;
