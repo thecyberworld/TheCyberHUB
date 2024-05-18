@@ -227,8 +227,8 @@ export default function QuizPage() {
                                                 showAnswer && !answerOption.isCorrect && i === clickedAnswerIndex
                                                     ? "red"
                                                     : showAnswer && answerOption.isCorrect
-                                                    ? "green"
-                                                    : "",
+                                                      ? "green"
+                                                      : "",
                                         }}
                                         disabled={buttonClicked}
                                     >

@@ -85,7 +85,9 @@ export const Input = styled.input`
     color: #fff;
     background-color: #2a2a2a;
     background-clip: padding-box;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
     position: relative;
     flex: 1 1 auto;
     width: 100%;
