@@ -3,58 +3,35 @@ import styled from "styled-components";
 export const AddCommentFormContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border-radius: 10px;
     width: 100%;
     max-width: 1200px;
-    padding: 25px;
+    padding: 30px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    color: #f5f5f5;
+    border: 1px solid rgb(65 65 65);
+    background: transparent;
 `;
 
-export const Form = styled.form`
+export const StyledForm = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 600px;
+    border-radius: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     background: #151515;
     padding: 25px;
     gap: 25px;
-    border-radius: 10px;
 `;
 
-export const TextArea = styled.textarea`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-    /* border-radius: 5px;
-    padding: 10px; */
-    background: transparent;
-    border: transparent;
-    color: #f5f5f5;
-    width: 100%;
-    height: 50px;
-
-    &::placeholder {
-        color: #f5f5f5;
-    }
-
-    &:focus {
-        outline: none;
-    }
-
-    &:hover {
-        background: transparent;
-        border: transparent;
-        color: #f5f5f5;
-    }
-`;
 export const Input = styled.input`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     border-radius: 5px;
     background: #262525;
     border: transparent;
@@ -65,18 +42,16 @@ export const Input = styled.input`
     text-underline-offset: 5px;
     padding: 10px 20px;
 
-    &::placeholder {
-        color: #f5f5f5;
-    }
-
     &:focus {
         outline: none;
     }
 
     &:hover {
-        background: transparent;
-        border: transparent;
-        color: #f5f5f5;
+        border: 1px solid #aaa;
+    }
+
+    &::placeholder {
+        color: #999;
     }
 `;
 

@@ -83,7 +83,9 @@ export const CategoryItemElement = styled.li`
 `;
 export const CategoryItemShortTitle = styled.p`
     text-transform: capitalize;
-    font: 15px "Roboto Mono", monospace;
+    font:
+        15px "Roboto Mono",
+        monospace;
     font-weight: 600;
 `;
 
@@ -103,7 +105,9 @@ export const ModifyCategoryModalInput = styled.input`
     outline: none;
     text-transform: capitalize;
     background-color: #090909;
-    font: 16px Poppins, sans-serif;
+    font:
+        16px Poppins,
+        sans-serif;
     line-height: 1;
 `;
 export const ModifyCategoryModalButtons = styled.div`

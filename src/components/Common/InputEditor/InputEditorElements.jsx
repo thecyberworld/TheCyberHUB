@@ -13,7 +13,9 @@ const InputEditorField = css`
     outline: none;
     text-transform: capitalize;
     background-color: #090909;
-    font: 16px Poppins, sans-serif;
+    font:
+        16px Poppins,
+        sans-serif;
     line-height: 1;
 `;
 export const InputEditorTheInput = styled.input`

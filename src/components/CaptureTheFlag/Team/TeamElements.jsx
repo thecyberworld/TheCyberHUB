@@ -41,7 +41,9 @@ export const SearchPlayer = styled.input`
     width: 100%;
     padding: 5px 10px;
     margin: 10px 0;
-    font: 16px Poppins, sans-serif;
+    font:
+        16px Poppins,
+        sans-serif;
 `;
 export const ButtonAddPlayer = styled.button`
     background: #2a2a2a;

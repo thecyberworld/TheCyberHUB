@@ -20,8 +20,8 @@ export const FilterButton = styled.button`
     width: 100%;
     gap: 10px;
     font-weight: 600;
-    background-color: ${({ activeButton }) => (activeButton ? "#ff6b08" : "")};
-    color: ${({ activeButton }) => (activeButton ? "#0a0a0a" : "")};
+    background-color: ${({ $activeButton }) => ($activeButton ? "#ff6b08" : "")};
+    color: ${({ $activeButton }) => ($activeButton ? "#0a0a0a" : "")};
     height: 6vh;
     padding: 0 20px;
 

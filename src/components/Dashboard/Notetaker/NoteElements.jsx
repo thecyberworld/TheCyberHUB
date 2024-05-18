@@ -103,7 +103,9 @@ export const NoteItemElement = styled.li`
 
 export const NoteItemShortTitle = styled.p`
     text-transform: capitalize;
-    font: 15px "Roboto Mono", monospace;
+    font:
+        15px "Roboto Mono",
+        monospace;
     font-weight: 600;
 `;
 
