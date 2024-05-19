@@ -166,12 +166,12 @@ export const Checkbox = styled.input`
     height: 1.3em;
     border-radius: 50%;
     vertical-align: middle;
-    border: 1.5px solid #b0b0b0;
+    border: 1.5px solid #474747;
     appearance: none;
     cursor: pointer;
 
     &:checked {
-        background-color: #36cc24;
+        background-color: #ff6b08;
         border: 1.5px solid #313131;
     }
 `;

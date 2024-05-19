@@ -16,6 +16,7 @@ import {
     RoadmapSectionHeading,
 } from "./RoadmapElements";
 import { DotSymbol } from "src/components/Homepage/Info/InfoElements";
+import { Checkbox, CheckboxContainer } from "src/components/Courses/LearningPath/LearningPathElements.jsx";
 
 const Roadmap = () => {
     const { title } = useParams();
@@ -39,6 +40,9 @@ const Roadmap = () => {
                                 <RedirectLink href={resource?.url} target={"_blank"}>
                                     <RoadmapContentHeading>{resource?.title}</RoadmapContentHeading>
                                 </RedirectLink>
+                                <CheckboxContainer>
+                                    <Checkbox type="checkbox" />
+                                </CheckboxContainer>
                             </RoadmapDetailsCard>
                         ))}
                         {/* <HrLine/> */}

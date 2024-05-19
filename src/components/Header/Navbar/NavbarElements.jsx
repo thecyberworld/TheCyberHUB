@@ -22,9 +22,10 @@ export const Nav = styled.nav`
     padding: 0 25px;
 
     /* if showBottomBorder then show bottom border */
-    border-bottom: ${({ $showBottomBorder }) => ($showBottomBorder ? "1px solid #2a2a2a" : "none")};
+
+    /* border-bottom: ${({ $showBottomBorder }) => ($showBottomBorder ? "1px solid #2a2a2a" : "none")}; */
     background: rgb(0 0 0 / 34%);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(40px);
 
     @media screen and (width <= 960px) {
         transition: 0.8s all ease;

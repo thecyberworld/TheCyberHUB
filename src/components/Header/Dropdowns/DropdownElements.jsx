@@ -24,7 +24,9 @@ export const DropdownContainer = styled.div`
     left: 0;
     z-index: 999;
     display: block;
-    backdrop-filter: blur(10px);
+    background: #0e0e0e;
+    backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px); /* Add this line */
 
     @media screen and (width <= 821px) {
         display: flex;
@@ -44,10 +46,10 @@ export const DropdownItemsContainer = styled.div`
     max-width: 60rem;
     height: auto;
     margin: 0 auto;
-    margin-bottom: 1rem;
     z-index: 999;
     width: max-content;
     padding: 25px;
+    gap: 25px;
 
     /* sidebar */
     @media screen and (width <= 821px) {
@@ -70,7 +72,7 @@ export const DropdownItemsContainer = styled.div`
 export const DropdownItemContainer = styled.div`
     color: black;
     position: relative;
-    width: 270px;
+    width: 280px;
     z-index: 999;
     border: none;
     margin: 0;
@@ -134,6 +136,9 @@ export const DropdownDesc = styled.p`
 export const DropdownRouterLink = styled(LinkRouter)`
     text-decoration: none;
     color: #f5f5f5;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 
     @media screen and (width <= 821px) {
         display: flex;

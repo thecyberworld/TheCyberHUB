@@ -12,7 +12,7 @@ const Topic = () => {
     const handleSelectSubtopic = (subtopicId) => {
         const element = document.getElementById(subtopicId);
         if (element) {
-            const fixedDistanceFromTop = 150;
+            const fixedDistanceFromTop = 100;
             const elementTop = element.offsetTop - fixedDistanceFromTop;
             window.scrollTo({
                 top: elementTop,

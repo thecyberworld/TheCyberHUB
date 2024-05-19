@@ -88,7 +88,8 @@ export const ChatInput = styled.form`
     display: flex;
     gap: 10px;
 
-    input {
+    input,
+    p {
         padding: 10px 15px;
         flex: 1;
         background: #1a1c1d;

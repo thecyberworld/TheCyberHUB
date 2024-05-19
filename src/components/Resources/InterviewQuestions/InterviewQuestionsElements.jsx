@@ -30,6 +30,7 @@ export const InterviewsQuestionsCard = styled.div`
     border-radius: 3px;
     padding: 10px 15px;
     transition: all 0.3s ease-in-out;
+    gap: 5px;
 `;
 
 export const InterviewsQuestionsHeading = styled.h2`
@@ -44,7 +45,7 @@ export const InterviewsAnswerQuestionsHeading = styled.h2`
     width: 100%;
 `;
 
-export const SingleQuestion = styled.p`
+export const ArrowIcon = styled.p`
     margin: 0 10px;
     color: #ff6b08;
     font-size: 1rem;
@@ -53,14 +54,12 @@ export const SingleQuestion = styled.p`
         color: #0a0a0a;
     }
 `;
-export const InterviewsQuestionsTitle = styled.div`
-    /* border: #4cc23e 1px solid; */
+export const SingleQuestion = styled.p`
     border-radius: 3px;
     width: 100%;
     background: ${(props) => (props.isSelected ? "#ff6b08" : "#131313")};
     color: ${(props) => (props.isSelected ? "#0A0A0A" : "#e1e1e1")};
     display: flex;
-    margin: 0 0 5px;
     padding: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
@@ -69,6 +68,22 @@ export const InterviewsQuestionsTitle = styled.div`
         background: #ff6b08;
         color: #0a0a0a;
     }
+`;
+
+export const QuestionSection = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+`;
+export const InterviewsQuestionsTitle = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
 `;
 
 export const AnswerContainer = styled.div`
