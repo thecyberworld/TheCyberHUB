@@ -7,20 +7,20 @@ export const LabRoomContainer = styled.div`
 `;
 
 export const DescriptionSection = styled.div`
-    background: #1a1c1d;
     border-radius: 7px;
     padding: 20px;
-    border: 1px solid #464646;
+    border: 1px solid #232323;
+    background: #131313;
     width: 100%;
 `;
 
 export const SolutionSection = styled.div`
     display: flex;
     flex-direction: column;
-    background: #1a1c1d;
+    border: 1px solid #232323;
+    background: #131313;
     border-radius: 7px;
     padding: 20px;
-    border: 1px solid #464646;
     gap: 10px;
     width: 100%;
     max-width: 450px;
@@ -33,11 +33,17 @@ export const Header = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
 `;
 
 export const LabTitle = styled.label`
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: bold;
+    font-family:
+        "Courier New",
+        monospace;
+    color: #dcdcdc;
+    padding: 15px;
+    width: 100%;
 `;
 
 export const StartLabButton = styled.a`
@@ -53,11 +59,13 @@ export const StartLabButton = styled.a`
 `;
 
 export const Description = styled.p`
-    background: #151717;
+    background: #151515;
     padding: 15px;
     font-size: 16px;
     opacity: 0.8;
     white-space: pre-wrap;
+    border: 1px solid #242425;
+    border-radius: 5px;
 `;
 
 export const SolutionHeader = styled.div`

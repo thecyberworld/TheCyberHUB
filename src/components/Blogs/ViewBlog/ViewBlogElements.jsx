@@ -98,6 +98,10 @@ export const BlogSummary = styled.div`
 export const BlogContent = styled(ReactQuill)`
     padding: 25px;
 
+    .ql-container.ql-snow {
+        border: none;
+    }
+
     * {
         font-family: Poppins, sans-serif;
         font-size: 17px;
