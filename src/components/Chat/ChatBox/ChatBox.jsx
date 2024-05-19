@@ -36,6 +36,7 @@ const ChatBox = () => {
     const [onlinePeople, setOnlinePeople] = useState([]);
     const [selectedUserId, setSelectedUserId] = useState(null);
     const [newMessageText, setNewMessageText] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
     const [messages, setMessages] = useState([]);
     const [hideSidebar, setHideSidebar] = useState(false);
     const divUnderMessage = useRef();
@@ -178,6 +179,13 @@ const ChatBox = () => {
         return;
     }
 
+    const filterUsers = (users) => {
+        return users.filter((user) => user.username.toLowerCase().includes(searchQuery.toLowerCase()));
+    };
+
+    const filteredOnlinePeople = filterUsers(onlinePeopleExclOurUser);
+    const filteredOfflinePeople = filterUsers(offlinePeopleData);
+
     return (
         <ChatBoxContainer style={{ zIndex: "2", color: "white", position: "relative" }}>
             <ChatBoxShowButton onClick={toggleChat} $isOpen={isOpen}>
@@ -220,12 +228,14 @@ const ChatBox = () => {
                             }}
                             type="text"
                             placeholder="Search"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
                     <UserList
                         hideSidebar={hideSidebar}
-                        onlinePeople={onlinePeopleExclOurUser}
-                        offlinePeople={offlinePeopleData}
+                        onlinePeople={filteredOnlinePeople}
+                        offlinePeople={filteredOfflinePeople}
                         selectedUserId={selectedUserId}
                         setSelectedUserId={setSelectedUserId}
                     />
