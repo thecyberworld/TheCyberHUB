@@ -223,6 +223,7 @@ const ChatBox = () => {
                                 width: "100%",
                                 padding: "10px",
                                 border: "none",
+                                outline: "none",
                                 color: "white",
                                 background: "transparent",
                             }}
