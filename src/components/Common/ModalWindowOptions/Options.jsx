@@ -10,7 +10,6 @@ import {
     OptionsMainContainer,
     OptionsItem,
     OptionLabel,
-    OptionButton,
     OptionsClose,
 } from "./OptionsElements";
 import "./Options.css";
@@ -37,7 +36,7 @@ const Options = ({ onDelete, onEdit }) => {
     };
 
     return (
-        <OptionsMainContainer ref={modalWindow} isOpen={isOpen} onClick={(e) => handleClickEvent(e, true)}>
+        <OptionsMainContainer ref={modalWindow} $isOpen={isOpen} onClick={(e) => handleClickEvent(e, true)}>
             <BsThreeDotsVertical />
             {isOpen && (
                 <OptionsContainer>
@@ -47,15 +46,15 @@ const Options = ({ onDelete, onEdit }) => {
                     <OptionsList>
                         <OptionsItem onClick={onEdit}>
                             <OptionLabel>Edit</OptionLabel>
-                            <OptionButton>
+                            <button>
                                 <TbEditCircle className="icon icon-edit" size="18px" title="Edit" />
-                            </OptionButton>
+                            </button>
                         </OptionsItem>
                         <OptionsItem onClick={onDelete}>
                             <OptionLabel>Delete</OptionLabel>
-                            <OptionButton>
+                            <button>
                                 <AiTwotoneDelete className="icon icon-delete" size="18px" title="Delete" />
-                            </OptionButton>
+                            </button>
                         </OptionsItem>
                     </OptionsList>
                 </OptionsContainer>

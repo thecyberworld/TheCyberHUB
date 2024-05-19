@@ -17,7 +17,6 @@ import {
     AddImage,
     CategorySection,
     ImageSelected,
-    ImageUploadInput,
     ImageUploadLabel,
     TextGrey,
 } from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
@@ -243,7 +242,7 @@ const CreateBlogV2 = () => {
                             )}
                             <ImageSelected> {file && <>{fileName.slice(0, 20)}..</>} </ImageSelected>
                         </ImageUploadLabel>
-                        <ImageUploadInput
+                        <input
                             type="file"
                             name="addCoverImage"
                             id="addCoverImage"
@@ -279,8 +278,8 @@ const CreateBlogV2 = () => {
                                     remainingCharacters <= 1000
                                         ? "#ff2525"
                                         : remainingCharacters <= 5000
-                                        ? "#ff6b08"
-                                        : "grey",
+                                          ? "#ff6b08"
+                                          : "grey",
                                 width: "100%",
                                 textAlign: "right",
                                 fontSize: "12px",

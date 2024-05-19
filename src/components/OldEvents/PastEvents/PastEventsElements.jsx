@@ -7,11 +7,13 @@ export const PastEventsContainer = styled.div`
     text-align: center;
     height: auto;
     width: 100%;
-    //border: 1px solid #f5f5f50d;
+
+    /* border: 1px solid #f5f5f50d; */
     border-radius: 5px;
     background-color: #0c0c0c;
-    padding: 15px 15px;
-    @media screen and (max-width: 768px) {
+    padding: 15px;
+
+    @media screen and (width <= 768px) {
         width: 100%;
     }
 `;
@@ -24,8 +26,6 @@ export const PastEventsImage = styled.img`
     color: #999;
     word-break: break-all;
 `;
-
-export const PastEventsTitle = styled.div``;
 
 export const PastEventsContent = styled.div`
     margin-bottom: 10px;
@@ -46,7 +46,7 @@ export const PastEventsDiscordLink = styled.a`
 
 export const PastEventsChangeViewBtn = styled.a`
     text-decoration: none;
-    color: currentColor;
+    color: currentcolor;
     opacity: 0.5;
     cursor: pointer;
 `;

@@ -38,7 +38,7 @@ export const InterviewsQuestionsHeading = styled.h2`
     font-size: 25px;
 `;
 export const InterviewsAnswerQuestionsHeading = styled.h2`
-    margin: 10px 0px;
+    margin: 10px 0;
     color: #ff6b08;
     font-size: 25px;
     width: 100%;
@@ -54,16 +54,16 @@ export const SingleQuestion = styled.p`
     }
 `;
 export const InterviewsQuestionsTitle = styled.div`
-    //border: #4cc23e 1px solid;
+    /* border: #4cc23e 1px solid; */
     border-radius: 3px;
     width: 100%;
-    background: #131313;
+    background: ${(props) => (props.isSelected ? "#ff6b08" : "#131313")};
+    color: ${(props) => (props.isSelected ? "#0A0A0A" : "#e1e1e1")};
     display: flex;
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
     padding: 5px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    color: #e1e1e1;
 
     &:hover {
         background: #ff6b08;
@@ -78,7 +78,7 @@ export const AnswerContainer = styled.div`
     justify-content: start;
     text-align: left;
     width: 100%;
-    color: #cccccc;
+    color: #ccc;
     background: #0a0a0a;
     border: #383838 1px solid;
     border-radius: 3px;
@@ -91,7 +91,6 @@ export const AnswerContainer = styled.div`
     top: 80px;
     overflow-wrap: break-word;
     white-space: pre-wrap;
-
     overflow: auto;
     max-height: 80vh;
 
@@ -100,11 +99,7 @@ export const AnswerContainer = styled.div`
     -ms-overflow-style: none; /* IE 10+ */
 
     &::-webkit-scrollbar {
-        width: 0px;
+        width: 0;
         background: transparent; /* Chrome/Safari/Webkit */
     }
 `;
-
-export const AnswerCard = styled.div``;
-
-export const BackArrowSection = styled.div``;

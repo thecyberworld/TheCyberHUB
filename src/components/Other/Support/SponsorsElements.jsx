@@ -20,16 +20,18 @@ export const SponsorsH1 = styled.div`
     margin: 25px;
     font-size: 25px;
     font-weight: bold;
-    @media screen and (max-width: 720px) {
+
+    @media screen and (width <= 720px) {
         flex-direction: column;
-        margin: 0 0 15px 0;
+        margin: 0 0 15px;
     }
 `;
 
 export const TextGreenBG = styled.p`
     color: #ff6b08;
     margin: 0 15px;
-    @media screen and (max-width: 450px) {
+
+    @media screen and (width <= 450px) {
         margin: 0;
         font-size: 23px;
     }
@@ -60,7 +62,7 @@ export const DotSymbol = styled(BsSquareFill)`
 export const SponsorsP = styled.p`
     margin: 10px;
     width: 100%;
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     text-align: left;
     font-size: 17px;
 `;
@@ -72,7 +74,6 @@ export const SponsorsLink = styled.a`
     display: flex;
     justify-content: center;
     flex-direction: column;
-
     align-items: center;
     color: #fff;
     text-decoration: none;
@@ -92,7 +93,8 @@ export const BuyMeACoffeeImage = styled.img`
     border-radius: 5px;
     font-size: 12px;
     word-break: break-all;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         margin: 0;
     }
 `;

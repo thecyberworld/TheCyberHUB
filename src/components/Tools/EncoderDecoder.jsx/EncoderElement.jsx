@@ -20,10 +20,10 @@ export const MenuButtonContainer = styled.div`
 export const MenuButton = styled.div`
     height: 40px;
     width: 85px;
-
     display: flex;
     justify-content: center;
     align-items: center;
+
     &:hover {
         cursor: pointer;
     }
@@ -46,6 +46,7 @@ export const Input = styled.input`
     border-radius: 5px;
     background-color: #1a1c1d;
     color: white;
+
     &:focus {
         outline: none;
     }

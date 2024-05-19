@@ -13,7 +13,8 @@ export const TopicsContainer = styled.div`
     width: 100%;
     max-width: 1500px;
     height: 100%;
-    //background-color: #090909;
+
+    /* background-color: #090909; */
     display: flex;
     flex-direction: row;
     gap: 15px;
@@ -23,7 +24,6 @@ export const TopicsContainer = styled.div`
 export const Container = styled.div`
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -38,11 +38,11 @@ export const Container = styled.div`
     }
 
     .room-cards-container {
-        //display: flex;
-        //flex-direction: row;
-        //flex-wrap: wrap;
-        //justify-content: space-between;
-        //gap: 20px;
+        /* display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px; */
         padding: 0;
         margin: 0;
     }
@@ -65,7 +65,7 @@ export const TopicCard = styled.div`
     gap: 10px;
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgb(255 255 255 / 18%);
     transition: all 0.3s ease-in-out;
     background: #131313;
 

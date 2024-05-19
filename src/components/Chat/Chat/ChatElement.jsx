@@ -6,7 +6,8 @@ export const ChatRoutesContainer = styled.div`
     align-items: start;
     justify-content: space-between;
     width: 100%;
-    //max-width: 1500px;
+
+    /* max-width: 1500px; */
 `;
 
 export const ChatContainer = styled.div`
@@ -17,9 +18,9 @@ export const ChatContainer = styled.div`
     z-index: 1000;
     top: 0;
     width: 100%;
-    //border-bottom: 1px solid gray;
 
-    //max-width: 1500px;
+    /* border-bottom: 1px solid gray;
+    max-width: 1500px; */
 `;
 
 export const ChatItemsContainer = styled.div`
@@ -27,7 +28,6 @@ export const ChatItemsContainer = styled.div`
     height: ${(props) => (props?.isBox ? "100%" : "100vh")};
     max-height: ${(props) => (props?.isBox ? "500px" : "100vh")};
     min-height: ${(props) => (props?.isBox ? "500px" : "100vh")};
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -41,7 +41,8 @@ export const MessageInputContainer = styled.div`
     width: 100%;
     position: relative;
     height: 100%;
-    //padding: 15px;
+
+    /* padding: 15px; */
     overflow: auto; /* Enable vertical scrolling if content overflows */
 `;
 
@@ -81,14 +82,16 @@ export const Input = styled.input`
     height: calc(2.25rem + 2px);
     padding: 0 10px;
     font-size: 16px;
-    color: #ffffff;
+    color: #fff;
     background-color: #2a2a2a;
     background-clip: padding-box;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition:
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
     position: relative;
     flex: 1 1 auto;
     width: 100%;
-    border: 1px solid #000000;
+    border: 1px solid #000;
 
     &:focus {
         outline: none;
@@ -107,7 +110,6 @@ export const InputGroup = styled.span`
     border-left: 1px solid #3f3f3f;
     align-items: center;
     justify-content: center;
-
     transition: background-color 0.2s ease-in-out;
 
     &:hover {

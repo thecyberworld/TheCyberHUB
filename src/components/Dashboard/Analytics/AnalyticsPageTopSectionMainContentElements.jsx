@@ -50,6 +50,7 @@ export const TopSectionCaptionCTABtnBig = styled.div`
     border: 0.5px solid grey;
     border-radius: 12px;
     cursor: pointer;
+
     &:hover {
         transform: scale(1.05);
     }

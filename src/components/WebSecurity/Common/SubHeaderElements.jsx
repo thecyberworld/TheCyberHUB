@@ -13,7 +13,8 @@ export const Nav = styled.nav`
     align-items: center;
     border: 1px solid #232222;
     border-radius: 10px;
-    /*z-index: 99;*/
+
+    /* z-index: 99; */
 `;
 
 export const Ul = styled.ul`
@@ -32,8 +33,8 @@ export const NavLink = styled(Link)`
     text-decoration: none;
     color: #b7b7b7;
     font-weight: bold;
-
     transition: all 0.3s ease-in-out;
+
     &:hover {
         color: #ff6b08;
     }
@@ -56,7 +57,7 @@ export const DropdownUl = styled.ul`
     top: 100%;
     left: 0;
     background-color: #2c2c2c; /* Lighter background color */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     display: none;
     width: 150px;
 
@@ -66,8 +67,6 @@ export const DropdownUl = styled.ul`
         }
     }
 `;
-
-export const DropdownLi = styled.li``;
 
 export const DropdownLink = styled(Link)`
     display: block;

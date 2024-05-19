@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
     AnswerContainer,
-    BackArrowSection,
     InterviewQuestionContainer,
     InterviewQuestionSection,
     InterviewsAnswerQuestionsHeading,
@@ -66,8 +65,8 @@ const InterviewQuestions = () => {
                                                     <InterviewsQuestionsTitle
                                                         onClick={() => onQuestionClick(resources.question)}
                                                         key={index}
+                                                        isSelected={selectedQuestion === resources.question}
                                                     >
-                                                        {/* {index + 1} */}
                                                         <SingleQuestion> {">"} </SingleQuestion> {resources.question}
                                                     </InterviewsQuestionsTitle>
                                                 );
@@ -78,9 +77,9 @@ const InterviewQuestions = () => {
                             </InterviewQuestionSection>
                         ) : (
                             <AnswerContainer>
-                                <BackArrowSection>
+                                <div>
                                     <BackArrow onClick={handleIsShown} />
-                                </BackArrowSection>
+                                </div>
                                 <InterviewsAnswerQuestionsHeading>
                                     {selectedQuestion && <p>{selectedQuestion}</p>}
                                 </InterviewsAnswerQuestionsHeading>
@@ -99,6 +98,7 @@ const InterviewQuestions = () => {
                                                     <InterviewsQuestionsTitle
                                                         onClick={() => onQuestionClick(resources.question)}
                                                         key={index}
+                                                        isSelected={selectedQuestion === resources.question}
                                                     >
                                                         {/* {index + 1} */}
                                                         <SingleQuestion> {">"} </SingleQuestion> {resources.question}
@@ -110,11 +110,11 @@ const InterviewQuestions = () => {
                                 })}
                             </InterviewQuestionSection>
                             <AnswerContainer>
-                                <BackArrowSection>
+                                <div>
                                     <BackArrow onClick={handleIsShown} />
-                                </BackArrowSection>
+                                </div>
                                 <InterviewsAnswerQuestionsHeading>
-                                    {selectedQuestion && <h4>{selectedQuestion}</h4>}
+                                    {selectedQuestion && <div>{selectedQuestion}</div>}
                                 </InterviewsAnswerQuestionsHeading>
                                 {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
                             </AnswerContainer>

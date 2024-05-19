@@ -4,7 +4,6 @@ import { UpComingEventsContainer } from "./UpComingEventsElements";
 import {
     EventsVenue,
     EventsContent,
-    EventsHeader,
     EventsImage,
     EventsSubHeading,
     EventLocation,
@@ -16,7 +15,7 @@ const UpComingEvents = (event) => {
     return (
         <>
             <UpComingEventsContainer>
-                <EventsHeader>
+                <div>
                     <EventsImage src={event.image} about="Event Image" width="100%" height="180px" />
                     <EventLink href={event.url} target={"_blank"}>
                         <EventsHeadingMedium> {event.title} </EventsHeadingMedium>
@@ -25,7 +24,7 @@ const UpComingEvents = (event) => {
                         <EventLocation> {event.location} </EventLocation>
                         {event.date} • <EventsVenue> {event.venue} </EventsVenue>
                     </EventsSubHeading>
-                </EventsHeader>
+                </div>
                 <EventsContent> {event.content.slice(0, 200)} </EventsContent>
             </UpComingEventsContainer>
         </>

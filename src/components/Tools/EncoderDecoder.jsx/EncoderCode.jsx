@@ -1,4 +1,4 @@
-import { CodeContainer, H1 } from "./EncoderCodeElement";
+import { CodeContainer } from "./EncoderCodeElement";
 import React from "react";
 
 function EncoderCode(props) {
@@ -46,17 +46,17 @@ function EncoderCode(props) {
     }
     return (
         <div>
-            <H1>Base64 Encode</H1>
+            <h1>Base64 Encode</h1>
             <CodeContainer>
                 <p>{Base64()}</p>
             </CodeContainer>
-            <H1>Url Encode</H1>
+            <h1>Url Encode</h1>
             <CodeContainer>{Url()}</CodeContainer>
-            <H1>Full Url Encode</H1>
+            <h1>Full Url Encode</h1>
             <CodeContainer>{fullURLEncode(props.Input)}</CodeContainer>
-            <H1>ASCII HEX Encode</H1>
+            <h1>ASCII HEX Encode</h1>
             <CodeContainer>{asciiHexEncode(props.Input)}</CodeContainer>
-            <H1>HTML Encode</H1>
+            <h1>HTML Encode</h1>
             <CodeContainer>{htmlEncode(props.Input)}</CodeContainer>
         </div>
     );

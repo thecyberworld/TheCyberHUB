@@ -5,7 +5,6 @@ import {
     Header,
     IconVerified,
     Name,
-    UserBio,
     UserContainer,
     UserDetail,
     Username,
@@ -70,7 +69,7 @@ const Users = ({ userDetails, searchTerm, isUserDetailLoading }) => {
                                     )}
                                 </LeftSection>
                             </Header>
-                            <UserBio>{user.bio}</UserBio>
+                            <p>{user.bio}</p>
                         </UserDetail>
                     </UserContainer>
                 </RouteLink>

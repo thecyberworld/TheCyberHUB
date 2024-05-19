@@ -3,7 +3,6 @@ import axios from "axios";
 import { getApiUrl } from "src/features/apiUrl";
 import {
     ContactFormInput,
-    ContactFormLabel,
     ContactFormSection,
     ContactFormSubmit,
     ContactFormTextArea,
@@ -87,9 +86,9 @@ const SendEmail = () => {
         <div>
             <ContactFormSection onSubmit={handleSubmit}>
                 <CoverRight>
-                    <ContactFormLabel htmlFor="email">
+                    <label htmlFor="email">
                         <EmailIcon />
-                    </ContactFormLabel>
+                    </label>
                     <ContactFormInput
                         type="email"
                         name="email"
@@ -100,9 +99,9 @@ const SendEmail = () => {
                     />
                 </CoverRight>
                 <CoverRight>
-                    <ContactFormLabel htmlFor="subject">
+                    <label htmlFor="subject">
                         <OrgIcon />
-                    </ContactFormLabel>
+                    </label>
                     <ContactFormInput
                         type="text"
                         name="subject"
@@ -113,9 +112,9 @@ const SendEmail = () => {
                     />
                 </CoverRight>
                 <CoverRight>
-                    <ContactFormLabel htmlFor="message">
+                    <label htmlFor="message">
                         <MessageIcon />
-                    </ContactFormLabel>
+                    </label>
                     <ContactFormTextArea
                         type="text"
                         name="message"

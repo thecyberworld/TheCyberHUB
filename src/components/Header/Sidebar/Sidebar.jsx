@@ -14,6 +14,7 @@ import {
 
 const Sidebar = (props) => {
     const { isOpen, toggle } = props;
+    console.log(isOpen);
 
     const [drop, setDrop] = useState(false);
     const [resourcesClick, setResourcesClick] = useState(true);
@@ -107,7 +108,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isResources={true}
                                         toggle={toggle}
-                                        $isOpen={isOpen}
+                                        isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
@@ -115,7 +116,7 @@ const Sidebar = (props) => {
                                     <Dropdown
                                         isOpportunities={true}
                                         toggle={toggle}
-                                        $isOpen={isOpen}
+                                        isOpen={isOpen}
                                         toggleDropdown={toggleDropdown}
                                     />
                                 )}
