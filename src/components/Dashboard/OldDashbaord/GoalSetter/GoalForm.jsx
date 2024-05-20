@@ -11,6 +11,7 @@ const GoalInput = styled.input`
     border-radius: 5px;
     margin-bottom: 10px;
     font-family: inherit;
+    color: #1c1c1c;
 `;
 
 const GoalForm = () => {
