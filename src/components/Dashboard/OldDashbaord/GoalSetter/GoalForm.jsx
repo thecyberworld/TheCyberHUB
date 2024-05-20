@@ -47,7 +47,10 @@ const GoalForm = () => {
                         onChange={(e) => setText(e.target.value)}
                         placeholder="What's your goal?"
                     />
-                    <button className={"btn btn-block"} type={"submit"}>
+                    <button
+                        className={"btn btn-block !bg-[#ff6b08] !text-[#1c1c1c] hover:opacity-[.95]"}
+                        type={"submit"}
+                    >
                         +
                     </button>
                 </div>
