@@ -1,3 +1,6 @@
+import { datasets as monthsDatasets, xDataSet as xDataSetMonths } from "./MainBarChartDataMonths.json";
+import { datasets as hoursDatasets, xDataSet as xDataSetHours } from "./MainBarChartDataHours.json";
+
 export const lastAmountOfDays = 30;
 export const lastAmountOfMinAgo = 14;
 
@@ -144,17 +147,21 @@ export const allOptions = [
 ];
 
 export const getAnalyticsFileData = () => {
+    const monthsDataset = monthsDatasets[0];
+    const hoursDataset = hoursDatasets[0];
+
     const headers = [
-        { label: "First Name", key: "firstname" },
-        { label: "Last Name", key: "lastname" },
-        { label: "Email", key: "email" },
+        { label: "Contributions Hours", key: "hours" },
+        { label: "Months Contribution", key: "months" },
     ];
 
-    const data = [
-        { firstname: "Ahmed", lastname: "Tomi", email: "ah@smthing.co.com" },
-        { firstname: "Raed", lastname: "Labes", email: "rl@smthing.co.com" },
-        { firstname: "Yezzi", lastname: "Min l3b", email: "ymin@cocococo.com" },
-    ];
+    const data = [];
+
+    for (let i = 0; i < xDataSetHours.length; i++) {
+        const hoursData = `${xDataSetHours[i]} - ${hoursDataset.data[i]}`;
+        const monthsData = `${xDataSetMonths[i]} - ${monthsDataset.data[i]}`;
+        data.push({ hours: hoursData, months: monthsData });
+    }
 
     return { headers, data };
 };
