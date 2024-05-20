@@ -51,6 +51,19 @@ const AiChat = () => {
     const [toggle, setToggle] = useState(false);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setToggle(true);
+            } else {
+                setToggle(false);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     const handleSendDummyMessage = async (dummyMessage) => {
         setUserInput(dummyMessage);
         setIsLoading(true);
