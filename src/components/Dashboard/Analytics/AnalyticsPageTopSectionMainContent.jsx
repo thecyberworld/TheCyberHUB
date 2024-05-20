@@ -37,7 +37,7 @@ export const AnalyticsPageTopSectionMainContent = () => {
                         </TopSectionCaptionCTABtnBigInnerSection>
                     </TopSectionCaptionCTABtnBig>
                     <TopSectionCaptionCTABtnBig>
-                        <CSVLink data={data} headers={headers}>
+                        <CSVLink data={data} headers={headers} filename="Analytics_Data.csv">
                             <TopSectionCaptionCTABtnBigInnerSection>
                                 <TopSectionDownloadText>Download</TopSectionDownloadText>
                                 <TbFileDownloadIcon />
