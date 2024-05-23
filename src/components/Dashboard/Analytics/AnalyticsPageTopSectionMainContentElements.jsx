@@ -56,6 +56,10 @@ export const TopSectionCaptionCTABtnBig = styled.div`
     }
 `;
 
+export const TopSectionDownloadText = styled.p`
+    color: #e77b0f;
+`;
+
 export const TopSectionCaptionCTABtnBigInnerSection = styled.div`
     display: flex;
     justify-content: space-between;
