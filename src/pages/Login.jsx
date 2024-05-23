@@ -24,6 +24,7 @@ const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [passwordType, setPasswordType] = useState("password");
+    const eyeColor = "white";
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -117,7 +118,7 @@ const Login = () => {
                                 autoComplete="off"
                             />
                             <button type="button" onClick={handleTogglePassword}>
-                                {showPassword ? <FaEyeSlash color="white" /> : <FaEye color="white" />}
+                                {showPassword ? <FaEyeSlash color={eyeColor} /> : <FaEye color={eyeColor} />}
                             </button>
                         </CustomInputGroup>
                     </div>
