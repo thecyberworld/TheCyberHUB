@@ -4,7 +4,7 @@ import { Learn2CodePromotion } from "src/components/Homepage/Registration/Learn2
 import { CustomInputGroup } from "src/components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "src/components/Homepage/Registration/Form";
 import { ButtonGreen, LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { CgPassword } from "react-icons/cg";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,9 @@ const Login = () => {
     });
 
     const { username, password } = formData;
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [passwordType, setPasswordType] = useState("password");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -62,6 +65,11 @@ const Login = () => {
         }
     };
 
+    const handleTogglePassword = () => {
+        setShowPassword(!showPassword);
+        setPasswordType(showPassword ? "text" : "password");
+    };
+
     return (
         <Container>
             <CenterCard>
@@ -99,7 +107,7 @@ const Login = () => {
                                 <CgPassword />
                             </span>
                             <input
-                                type="password"
+                                type={passwordType}
                                 id={"password"}
                                 name={"password"}
                                 value={password}
@@ -108,6 +116,9 @@ const Login = () => {
                                 aria-label="Password"
                                 autoComplete="off"
                             />
+                            <button type="button" onClick={handleTogglePassword}>
+                                {showPassword ? <FaEyeSlash color="white" /> : <FaEye color="white" />}
+                            </button>
                         </CustomInputGroup>
                     </div>
                     <div className={"forgot-register"}>
