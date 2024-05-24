@@ -67,8 +67,11 @@ const Login = () => {
     };
 
     const handleTogglePassword = () => {
-        setShowPassword(!showPassword);
-        setPasswordType(showPassword ? "text" : "password");
+        setShowPassword((prevState) => {
+            const newState = !prevState;
+            newState ? setPasswordType("text") : setPasswordType("password");
+            return newState;
+        });
     };
 
     return (
