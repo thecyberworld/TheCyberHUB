@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { FeedsContainer, MiddleSection } from "./FeedsElements";
+import { FeedsContainer, MiddleSection, ModifyFeedContainer } from "./FeedsElements";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
-import AddFeed from "./PostForm/AddFeed";
+import ModifyFeed from "./PostForm/ModifyFeed";
 import FeedPosts from "./FeedPosts/FeedPosts";
 import { useDispatch, useSelector } from "react-redux";
 import { feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
@@ -63,7 +63,9 @@ const Feeds = () => {
         <Wrapper style={{ marginTop: "80px" }}>
             <FeedsContainer>
                 <MiddleSection>
-                    <AddFeed showPostTags={true} userDetails={userDetails} />
+                    <ModifyFeedContainer>
+                        <ModifyFeed showPostTags={true} userDetails={userDetails} />
+                    </ModifyFeedContainer>
                     <FeedPosts
                         searchTerm={searchTerm}
                         feeds={combinedData}

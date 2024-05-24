@@ -4,7 +4,6 @@ import { FcAddImage } from "react-icons/fc";
 export const AddFeedCommentContainer = styled.div`
     border-bottom: 1px solid #1a1a1a;
     background: #000;
-    padding: 15px;
     border-radius: 5px;
     width: 100%;
     display: flex;

@@ -18,10 +18,10 @@ import { ImageUploadLabel } from "src/components/Blogs/ManageBlogs/CreateBlog/Cr
 import { cdnContentImagesUrl, getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { CircleSpinner } from "react-spinners-kit";
-import { createFeed } from "src/features/feeds/feedsSlice";
+import { createFeed, updateFeed } from "src/features/feeds/feedsSlice";
 import { toast } from "react-toastify";
 
-const AddPost = ({ showPostTags, userDetails }) => {
+const ModifyPost = ({ showPostTags, userDetails, editFeed = "" }) => {
     const dispatch = useDispatch();
     const textareaRef = useRef(null);
     const imageInputRef = useRef(null);
@@ -30,10 +30,10 @@ const AddPost = ({ showPostTags, userDetails }) => {
 
     const [isFeedLoading, setIsFeedLoading] = useState(false);
 
-    const [content, setContent] = useState("");
-    const [tags, setTags] = useState([]);
+    const [content, setContent] = useState(editFeed?.content || "");
+    const [tags, setTags] = useState(editFeed?.tags || []);
     const [files, setFiles] = useState([]);
-    const [feedImages, setFeedImages] = useState([]);
+    const [feedImages, setFeedImages] = useState(editFeed?.images || []);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
 
     const maxCharacterCount = 1500;
@@ -123,6 +123,7 @@ const AddPost = ({ showPostTags, userDetails }) => {
                 }
 
                 for (const file of files) {
+                    console.log(file);
                     await uploadFeedImage({ file });
                 }
             }
@@ -134,8 +135,11 @@ const AddPost = ({ showPostTags, userDetails }) => {
                 tags,
                 images: feedImages,
             };
-
-            dispatch(createFeed(data));
+            if (editFeed) {
+                dispatch(updateFeed({ id: editFeed?._id, feedData: data }));
+            } else {
+                dispatch(createFeed(data));
+            }
 
             toast.success("Feed posted successfully");
 
@@ -153,13 +157,15 @@ const AddPost = ({ showPostTags, userDetails }) => {
     };
 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
-    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
+    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || editFeed?.avatar || "avatarDummy.png"));
 
     return (
         <AddFeedCommentContainer>
-            <LeftSection>
-                <PostHeaderImg src={avatar} alt="Profile picture" />
-            </LeftSection>
+            {!editFeed && (
+                <LeftSection>
+                    <PostHeaderImg src={avatar} alt="Profile picture" />
+                </LeftSection>
+            )}
             <RightSection>
                 <div>
                     <FeedCommentInput
@@ -186,8 +192,8 @@ const AddPost = ({ showPostTags, userDetails }) => {
                 </div>
 
                 <ImagesContainer>
-                    {files.map((file, index) => (
-                        <ImageContainer key={index}>
+                    {files?.map((file, index) => (
+                        <ImageContainer key={`${editFeed?._id} + ${index}`}>
                             <FeedImage src={URL.createObjectURL(file)} alt={`Uploaded ${index + 1}`} />
                             <RemoveButton onClick={() => handleRemoveImage(index)}>&#10005;</RemoveButton>
                         </ImageContainer>
@@ -198,8 +204,8 @@ const AddPost = ({ showPostTags, userDetails }) => {
                 {files.length < 4 && (
                     <input
                         type="file"
-                        name="feedImage"
-                        id="feedImage"
+                        name={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                        id={editFeed ? editFeed._id + "feedImage" : "feedImage"}
                         ref={imageInputRef}
                         onChange={handleImageChange}
                         accept="image/*"
@@ -213,7 +219,7 @@ const AddPost = ({ showPostTags, userDetails }) => {
                 <FooterSection>
                     <ImageUploadLabel
                         style={{ background: "transparent", border: "transparent", padding: "0" }}
-                        htmlFor="feedImage"
+                        htmlFor={editFeed ? editFeed._id + "feedImage" : "feedImage"}
                     >
                         {files.length < 4 && <AddImage />}
                     </ImageUploadLabel>
@@ -223,7 +229,7 @@ const AddPost = ({ showPostTags, userDetails }) => {
                             <CircleSpinner size={17} />
                         </PostFormButton>
                     ) : (
-                        <PostFormButton onClick={onSubmit}>Create</PostFormButton>
+                        <PostFormButton onClick={onSubmit}>{editFeed ? "Update" : "Create"}</PostFormButton>
                     )}
                 </FooterSection>
             </RightSection>
@@ -234,4 +240,4 @@ const AddPost = ({ showPostTags, userDetails }) => {
     );
 };
 
-export default AddPost;
+export default ModifyPost;

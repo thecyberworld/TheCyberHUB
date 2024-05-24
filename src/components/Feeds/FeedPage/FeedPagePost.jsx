@@ -25,11 +25,13 @@ import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import Options from "src/components/Common/ModalOptions";
 import { deleteFeed } from "src/features/feeds/feedsSlice";
+import ModifyFeed from "src/components/Feeds/PostForm/ModifyFeed";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
     const dispatch = useDispatch();
     const [showPopupWindow, setShowPopupWindow] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
+    const [editMode, setEditMode] = useState(false);
     const handleImageClick = (index) => {
         setSelectedImageIndex(index);
         setShowPopupWindow(true);
@@ -39,8 +41,11 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
     const avatar = cdnContentImagesUrl("/user/" + (feed?.avatar || "avatarDummy.png"));
 
     const feedImage = (image) => cdnContentImagesUrl(`/feed/${image}`);
-    const handleDeleteFeed = async () => {
+    const handleDeleteFeed = () => {
         dispatch(deleteFeed(feed._id)).then(() => navigate("/feeds", { replace: true }));
+    };
+    const handleEditFeed = () => {
+        setEditMode(true);
     };
     return (
         <FeedPostContainer>
@@ -63,46 +68,56 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                     <RightHeaderSection>
                         <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                         {user && user._id === feed.user && (
-                            <Options onDelete={handleDeleteFeed} modalContainerId="feed-page-post-options-container" />
+                            <Options
+                                onDelete={handleDeleteFeed}
+                                onEdit={handleEditFeed}
+                                modalContainerId={"feed-post-options-container-" + feed._id}
+                            />
                         )}
                     </RightHeaderSection>
                 </PostHeader>
-                <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>
+                {editMode ? (
+                    <ModifyFeed showPostTags={true} editFeed={feed} />
+                ) : (
+                    <>
+                        <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>
 
-                <ImagesContainer>
-                    {feed?.images?.map((image, index) => (
-                        <ImageContainer key={index}>
-                            <FeedImage
-                                onClick={() => handleImageClick(index)}
-                                src={feedImage(image)}
-                                alt={feed.username + `image${index}`}
-                            />
-                        </ImageContainer>
-                    ))}
-                    {showPopupWindow && selectedImageIndex !== null ? (
-                        <PopUpWindow onClose={() => setShowPopupWindow(false)}>
-                            <ImageSlider
-                                images={feed?.images}
-                                username={feed?.username}
-                                selectedIndex={selectedImageIndex}
-                                onClose={() => setShowPopupWindow(false)}
-                            />
-                        </PopUpWindow>
-                    ) : null}
-                </ImagesContainer>
+                        <ImagesContainer>
+                            {feed?.images?.map((image, index) => (
+                                <ImageContainer key={index}>
+                                    <FeedImage
+                                        onClick={() => handleImageClick(index)}
+                                        src={feedImage(image)}
+                                        alt={feed.username + `image${index}`}
+                                    />
+                                </ImageContainer>
+                            ))}
+                            {showPopupWindow && selectedImageIndex !== null ? (
+                                <PopUpWindow onClose={() => setShowPopupWindow(false)}>
+                                    <ImageSlider
+                                        images={feed?.images}
+                                        username={feed?.username}
+                                        selectedIndex={selectedImageIndex}
+                                        onClose={() => setShowPopupWindow(false)}
+                                    />
+                                </PopUpWindow>
+                            ) : null}
+                        </ImagesContainer>
 
-                {feed?.tags ? (
-                    <PostTags>
-                        {feed?.tags.map(
-                            (tag, id) =>
-                                tag !== "" && (
-                                    <RouteLink to={`/explore/${tag}`} key={id}>
-                                        <PostTag key={id}>{tag}</PostTag>
-                                    </RouteLink>
-                                ),
-                        )}
-                    </PostTags>
-                ) : null}
+                        {feed?.tags ? (
+                            <PostTags>
+                                {feed?.tags.map(
+                                    (tag, id) =>
+                                        tag !== "" && (
+                                            <RouteLink to={`/explore/${tag}`} key={id}>
+                                                <PostTag key={id}>{tag}</PostTag>
+                                            </RouteLink>
+                                        ),
+                                )}
+                            </PostTags>
+                        ) : null}
+                    </>
+                )}
 
                 <PostActionsAndStats
                     user={user}

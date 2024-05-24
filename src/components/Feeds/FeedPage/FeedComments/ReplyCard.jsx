@@ -25,7 +25,6 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
     const { feedId } = useParams();
     const handleCommentDelete = () => {
         dispatch(deleteComment({ feedId, commentId: reply._id }));
-        console.log("d");
     };
 
     return (

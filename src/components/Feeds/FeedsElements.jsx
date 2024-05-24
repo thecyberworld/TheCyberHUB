@@ -20,6 +20,9 @@ export const MiddleSection = styled.div`
     border-left: 1px solid #1a1a1a;
     border-right: 1px solid #1a1a1a;
 `;
+export const ModifyFeedContainer = styled.div`
+    padding: 15px;
+`;
 export const FilterButton = styled.button`
     font-size: 15px;
     height: 100%;
