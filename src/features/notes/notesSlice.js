@@ -38,11 +38,9 @@ export const updateNote = createAsyncThunk("notes/update", async ({ id, noteData
 export const updateNoteId = createAsyncThunk("notes/updateNoteId", async (sortByNoteId, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        console.log("inside notes slice", sortByNoteId);
 
         for (let i = 0; i < sortByNoteId.length; i++) {
-            const res = await notesService.updateNote(sortByNoteId[i]._id, sortByNoteId[i], token);
-            console.log(res, "res of updateNoteId");
+            await notesService.updateNote(sortByNoteId[i]._id, sortByNoteId[i], token);
         }
 
         return;
