@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import topics from "./topicsData";
 import { useParams } from "react-router-dom";
 import { Container } from "./TopicElements";
@@ -9,11 +9,18 @@ const Topic = () => {
     const { id } = useParams();
     const topic = topics.find((topic) => topic.id === parseInt(id));
 
-    const [subtopic, setSubtopic] = useState(null);
-
     const handleSelectSubtopic = (subtopicId) => {
-        setSubtopic(subtopicId);
-        console.log(subtopic);
+        const element = document.getElementById(subtopicId);
+        if (element) {
+            const fixedDistanceFromTop = 100;
+            const elementTop = element.offsetTop - fixedDistanceFromTop;
+            window.scrollTo({
+                top: elementTop,
+                behavior: "smooth",
+            });
+        } else {
+            console.log("Element not found:", subtopicId);
+        }
     };
 
     return (
@@ -26,34 +33,45 @@ const Topic = () => {
                 margin: "5px auto",
             }}
         >
-            <Sidebar topics={topics} onSelectSubtopic={handleSelectSubtopic} />
+            <Sidebar topic={topic} topics={topics} onSelectSubtopic={handleSelectSubtopic} />
             <Container>
-                <h1
-                    style={{
-                        color: "#ecf0f1",
-                        fontSize: "2em",
-                        textAlign: "center",
-                    }}
-                >
-                    {topic.title}
-                </h1>
-                <p
+                <div
                     style={{
                         display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
                         justifyContent: "center",
-                        width: "fit-content",
-                        background: "rgba(224,112,0,0.21)",
-                        padding: "5px 15px",
-                        borderRadius: "20px",
-                        border: "2px solid #e07000",
-                        color: "#ecf0f1",
                         alignItems: "center",
-                        gap: "5px",
-                        margin: "0 auto",
+                        marginBottom: "20px",
                     }}
                 >
-                    {topic.level}
-                </p>
+                    <h1
+                        style={{
+                            color: "#ecf0f1",
+                            fontSize: "2em",
+                            textAlign: "center",
+                        }}
+                    >
+                        {topic?.title}
+                    </h1>
+                    <p
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "fit-content",
+                            background: "rgba(224,112,0,0.21)",
+                            padding: "5px 15px",
+                            borderRadius: "20px",
+                            border: "2px solid #e07000",
+                            color: "#ecf0f1",
+                            alignItems: "center",
+                            gap: "5px",
+                            margin: "0 auto",
+                        }}
+                    >
+                        {topic?.level}
+                    </p>
+                </div>
                 <div
                     style={{
                         display: "flex",
@@ -63,7 +81,7 @@ const Topic = () => {
                     }}
                 >
                     {topic?.desc?.map((desc, index) => (
-                        <SubTopic id={desc.title} subtopic={desc} key={index} />
+                        <SubTopic id={desc?.title} subtopic={desc} key={index} />
                     ))}
                 </div>
 

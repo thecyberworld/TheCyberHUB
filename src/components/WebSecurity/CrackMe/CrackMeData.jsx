@@ -237,11 +237,11 @@ else:
   print("Wrong password")
     `,
         language: "python",
-        category: "python",
+        category: "Python",
         answer: "nice",
         hint: "read about how xor works",
         solution: ["reverse the xor", "do TCM{X0r_ls xor password"],
-        tags: ["Crackme", "python", "Password"],
+        tags: ["Crackme", "Python", "Password"],
         level: "Beginner",
     },
     {
@@ -316,7 +316,7 @@ int main()
     }
 }                         
     `,
-        language: "C",
+        language: "c",
         category: "C",
         answer: "Thecyberhub",
         hint: "do some calculations",
@@ -348,14 +348,14 @@ else:
 	print("Wrong Password")                     
     `,
         language: "python",
-        category: "python",
+        category: "Python",
         answer: "you-got-the-write-answer",
         hint: "do some subtraction",
         solution: [
             "subtract the added number from 150",
             "now convert the ascii codes to their respective character values",
         ],
-        tags: ["Crackme", "python", "Password"],
+        tags: ["Crackme", "Python", "Password"],
         level: "Intermediate",
     },
 
@@ -363,8 +363,7 @@ else:
         id: 11,
         title: "Crackme Lab 11",
         description: "Crackme lab to test basic password checking.",
-        code: `
-#include <stdio.h>
+        code: `#include <stdio.h>
 
 int main() 
 {
@@ -397,7 +396,7 @@ int main()
 }
                             
     `,
-        language: "C",
+        language: "c",
         category: "C",
         answer: "l0LGorithm",
         hint: "something is reversed",
@@ -449,11 +448,11 @@ if __name__ == "__main__":
         print("Wrong answer")                       
     `,
         language: "python",
-        category: "python",
+        category: "Python",
         answer: "(~~>_<~~)",
         hint: "dehash it",
         solution: ["dehash the hashes with combination of special characters"],
-        tags: ["Crackme", "python", "Password"],
+        tags: ["Crackme", "Python", "Password"],
         level: "Advanced",
     },
 
@@ -475,11 +474,11 @@ else
 ?>                            
 	`,
         language: "php",
-        category: "php",
+        category: "PHP",
         answer: "WWiitttyyHaaccckk",
         hint: "try bypassing str_replace",
         solution: ["WWiitttyyHaaccckk is the correct answer"],
-        tags: ["Crackme", "php", "Password"],
+        tags: ["Crackme", "PHP", "Password"],
         level: "Beginner",
     },
 ];

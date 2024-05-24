@@ -85,11 +85,11 @@ const ResetPassword = () => {
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer onSubmit={onSubmit}>
-                    <p className="registration__promotion__p">
+                    <p className="registration-promotion-p">
                         Master Cybersecurity. This path will prepare you to build you base strong in cyber security
                     </p>
-                    <h1 className="registration__promotion__h1">Reset Password</h1>
-                    <div className="registration__inputfields">
+                    <h1 className="registration-promotion-h1">Reset Password</h1>
+                    <div className="registration-inputfields">
                         <CustomInputGroup>
                             <span>
                                 <CgPassword />
@@ -121,7 +121,7 @@ const ResetPassword = () => {
                             />
                         </CustomInputGroup>
                     </div>
-                    <div className="registration__ctas">
+                    <div className="registration-ctas">
                         {!isLoading ? (
                             isPasswordReset ? (
                                 <p style={{ color: "white" }}>Password Reset Successful</p>

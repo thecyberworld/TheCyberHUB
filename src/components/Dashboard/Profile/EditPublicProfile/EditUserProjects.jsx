@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-    AchievementHeading,
     AchievementItem,
     AchievementLink,
     AchievementList,
@@ -53,7 +52,7 @@ const UserProjects = ({ projects, setUserDetailData }) => {
 
     return (
         <AchievementsContainer>
-            <AchievementHeading>Projects</AchievementHeading>
+            <h3>Projects</h3>
             <AchievementList>
                 <AchievementItem>
                     {updatedProjects?.length > 0 &&

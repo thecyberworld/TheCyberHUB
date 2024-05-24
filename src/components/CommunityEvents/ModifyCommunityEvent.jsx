@@ -8,7 +8,6 @@ import InputEditor from "src/components/Common/InputEditor";
 import {
     ModifyActionsContainer,
     ModifyActionButton,
-    ModifyActionText,
     DayPickerContainer,
     Link,
     LinkEditor,
@@ -213,10 +212,10 @@ const ModifyCommunityEvent = ({ onCloseChangeMode, onModify, modifyEvent, modify
 
             <ModifyActionsContainer>
                 <ModifyActionButton type="save" onClick={handleSaveChanges}>
-                    <ModifyActionText type="save">Save</ModifyActionText>
+                    <p type="save">Save</p>
                 </ModifyActionButton>
                 <ModifyActionButton type="cancel" onClick={onCloseChangeMode}>
-                    <ModifyActionText type="cancel">Cancel</ModifyActionText>
+                    <p type="cancel">Cancel</p>
                 </ModifyActionButton>
             </ModifyActionsContainer>
         </ModifyItem>

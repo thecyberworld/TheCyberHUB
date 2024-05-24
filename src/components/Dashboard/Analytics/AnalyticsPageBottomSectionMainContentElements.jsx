@@ -102,6 +102,7 @@ export const TimeCaptionBtnHours = styled.div`
     border: 0.5px solid black;
     border-radius: 10px;
     cursor: pointer;
+
     &:hover {
         transform: scale(1.05);
     }
@@ -110,7 +111,7 @@ export const TimeCaptionBtnHours = styled.div`
 export const TimeCaptionBtnDays = styled.div`
     flex: 3;
     text-align: center;
-    background-color: #0000ff;
+    background-color: #00f;
     color: white;
     font-weight: 400;
     margin: 15px;
@@ -118,6 +119,7 @@ export const TimeCaptionBtnDays = styled.div`
     border: 0.5px solid grey;
     border-radius: 10px;
     cursor: pointer;
+
     &:hover {
         transform: scale(1.05);
     }
@@ -155,7 +157,7 @@ export const PopularPostCard = styled.div`
     flex-direction: row;
     align-items: center;
     gap: 15px;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
     font-size: 12px;
     border-radius: 5px;
     cursor: pointer;
@@ -188,6 +190,7 @@ export const PostTitle = styled.h5`
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+
     &:hover {
         color: grey;
     }
@@ -215,6 +218,7 @@ export const LikesIcon = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
     &:hover {
         color: #fff;
     }
@@ -225,6 +229,7 @@ export const CommentsIcon = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
     &:hover {
         color: #fff;
     }

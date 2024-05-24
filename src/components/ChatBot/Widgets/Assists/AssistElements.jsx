@@ -7,12 +7,12 @@ export const OptionButton = styled.button`
     cursor: pointer;
     font-weight: 700;
     letter-spacing: 0.08rem;
-    outline: 1px solid rgba(32, 194, 14, 0.4);
+    outline: 1px solid rgb(32 194 14 / 40%);
     padding: 0.5rem;
     transition: 260ms all;
 
-    :hover {
-        background: rgba(32, 194, 14, 0.2);
+    &:hover {
+        background: rgb(32 194 14 / 20%);
         color: white;
         outline-color: #545454;
         outline-offset: 1px;
@@ -35,7 +35,7 @@ export const LinkList = styled.ul`
     li {
         a {
             text-decoration: none;
-            background: rgba(32, 194, 14, 0.2);
+            background: rgb(32 194 14 / 20%);
             border-radius: 0.3rem;
             color: white;
             font-weight: 500;
@@ -45,10 +45,10 @@ export const LinkList = styled.ul`
             padding: 0.5rem;
             transition: 260ms all;
 
-            :hover {
+            &:hover {
                 background: transparent;
                 color: #cecac3;
-                outline-color: rgba(32, 194, 14, 0.4);
+                outline-color: rgb(32 194 14 / 40%);
                 outline-offset: 1px;
             }
         }

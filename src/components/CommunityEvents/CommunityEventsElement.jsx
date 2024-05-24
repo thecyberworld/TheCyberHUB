@@ -4,10 +4,10 @@ import { BiSolidChevronDown, BiSolidChevronUp } from "react-icons/bi";
 import { MdLocationOn } from "react-icons/md";
 
 export const ParentContainer = styled.div`
-    margin: ${(props) => (props.pageHeader ? "6.25rem auto;" : "0 auto;")}
+    margin: ${(props) => (props.$pageHeader ? "6.25rem auto;" : "0 auto;")};
     width: 100%;
     color: #f5f5f5;
-    padding: ${(props) => (props.pageHeader ? "0 1.563rem" : "0")}
+    padding: ${(props) => (props.$pageHeader ? "0 1.563rem" : "0")};
 `;
 
 export const Container = styled.div`
@@ -27,6 +27,18 @@ export const SubHeader = styled.p`
     color: gray;
 `;
 
+export const FilterContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    background: #131313;
+    border-radius: 7px;
+    height: 6vh;
+    align-self: center;
+    margin-bottom: 2.5rem;
+`;
 export const Tabs = styled.div`
     display: flex;
     gap: 1rem;
@@ -74,8 +86,6 @@ export const EventNote = styled.p`
     margin-bottom: 2.5rem;
     color: gray;
 `;
-
-export const EventList = styled.div``;
 
 const createStyledIcon = (IconComponent) => {
     return styled(IconComponent)`

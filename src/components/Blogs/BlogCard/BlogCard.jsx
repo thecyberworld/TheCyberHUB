@@ -30,7 +30,8 @@ const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f
 
 const BlogCard = ({ blog }) => {
     const pathname = window.location.pathname;
-    const isDashboard = pathname.split("/")[1] === "dashboard";
+    const isDashboard = pathname.split("/").includes("dashboard");
+    console.log(pathname.split("/")[1]);
     const dispatch = useDispatch();
     const coverImage = blog?.coverImage;
     const coverImageUrl = cdnContentImagesUrl(`/blog/${coverImage}`) || image;

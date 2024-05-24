@@ -50,9 +50,14 @@ export const TopSectionCaptionCTABtnBig = styled.div`
     border: 0.5px solid grey;
     border-radius: 12px;
     cursor: pointer;
+
     &:hover {
         transform: scale(1.05);
     }
+`;
+
+export const TopSectionDownloadText = styled.p`
+    color: #e77b0f;
 `;
 
 export const TopSectionCaptionCTABtnBigInnerSection = styled.div`
@@ -85,4 +90,3 @@ export const TopSectionInnerCardCaptionTitle = styled.div`
     color: #fff;
     font-size: 12px;
 `;
-

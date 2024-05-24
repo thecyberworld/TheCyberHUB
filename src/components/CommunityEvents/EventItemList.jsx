@@ -90,7 +90,7 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
                             <div className="action">
                                 <div
                                     className={`action-edit without-dropdown ${
-                                        leftPlacesToJoin === 0
+                                        leftPlacesToJoin === 0 && actionDisplay !== "Joined"
                                             ? " uniqe-state-button"
                                             : actionDisplay === "Join"
                                             ? " enable-button"
@@ -98,7 +98,9 @@ export const EventItemList = ({ event, actions, index, modify, eventsJoinedId, u
                                     }`}
                                     onClick={handleDisplayActionClick}
                                 >
-                                    <p>{leftPlacesToJoin === 0 ? "Full" : actionDisplay}</p>
+                                    <p>
+                                        {leftPlacesToJoin === 0 && actionDisplay !== "Joined" ? "Full" : actionDisplay}
+                                    </p>
                                 </div>
                             </div>
                             <div className="action">

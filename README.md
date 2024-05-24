@@ -47,12 +47,11 @@ Before installation, please make sure you have already installed the following t
 1. `Fork` the repository
 2. `Clone` the forked project
 3. Navigate to the cloned project directory
-4. Move to the dev branch: `git checkout dev`
-5. Install the dependencies with `npm i`
-6. Create a `.env` file in the root directory of the project
-7. Copy the contents of `.env.example` to `.env` file
-8. Run `npm run dev` to start the server
-9. Open the browser to visit the website at http://localhost:3000/
+4. Install the dependencies with `npm i`
+5. Create a `.env` file in the root directory of the project
+6. Copy the contents of `example.env` to `.env` file
+7. Run `npm run dev` to start the server
+8. Open the browser to visit the website at http://localhost:3000/
 
 > If you are new to Git and GitHub, then must check out **[first-contribution](https://github.com/thecyberworld/first-contribution)** repository **first** and contribute to it before you contributing to other open-source projects.
 
@@ -82,8 +81,8 @@ This project needs a ⭐️ from you. Don't forget to leave a star ⭐️
 
 <a href="https://discord.gg/QHBPq6xP5p" ><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
 <a href="https://www.github.com/thecyberworld" ><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="Github" /></a>
-<a href="https://www.twitter.com/thecyberw0rld" ><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>
-<a href="https://linkedin.com/company/thecyberworld" ><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" ></a>
+<a href="https://www.linkedin.com/company/thecyberw0rld/" ><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" ></a>
 <a href="https://t.me/thecyberw0rld" ><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" alt="Telegram" /></a>
+<a href="https://www.twitter.com/thecyberw0rld" ><img src="https://img.shields.io/badge/twitter-100000?style=for-the-badge&logo=x&logoColor=white" alt="Twitter" /></a>
 
 [Back to top 🖱](#thecyberhub-hub-of-cyber-security)

@@ -1,23 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import { ImLab } from "react-icons/im";
+import PreviewMarkdown from "src/components/Common/MarkdownPreview";
+import { Link } from "react-router-dom";
 
 const SubTopicContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 20px;
     background-color: #1a1a1a;
     padding: 20px;
     border-radius: 10px;
+    border: 1px solid #212121;
 `;
 
 const SubTopicTitle = styled.p`
     font-size: 24px;
     font-weight: 600;
-    color: #eeeeee;
+    color: #eee;
 `;
 
-const SubTopicContent = styled.p``;
+// const SubTopicContent = styled.p``;
 
 // const LabLevel = styled.p`
 //   display: flex;
@@ -46,7 +48,7 @@ export const LabContainer = styled.div`
 export const LabText = styled.h1`
     font-size: 24px;
     text-align: center;
-    color: #eeeeee;
+    color: #eee;
     padding: 10px;
     align-content: center;
     width: 100%;
@@ -61,20 +63,19 @@ export const Labs = styled.div`
     width: 100%;
 `;
 
-export const LabTitle = styled.div`
+export const Lab = styled.div`
     display: flex;
     width: 100%;
     flex-direction: row;
-    justify-content: space-between;
+    place-content: center space-between;
     gap: 10px;
     font-size: 16px;
-    align-content: center;
     align-items: center;
 `;
 
-export const LabLink = styled.p`
+export const LabTitle = styled.a`
     font-size: 16px;
-    color: #eeeeee;
+    color: #eee;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -91,35 +92,43 @@ export const LabIcon = styled.div`
     color: black;
 `;
 
-export const LabSolved = styled.p`
+export const LabSolved = styled(Link)`
+    color: #fdd;
     height: 100%;
     padding: 2px 10px;
     font-size: 12px;
     border: 1px solid #ed652f;
     border-radius: 100px;
-    background: rgba(224, 112, 0, 0.44);
+    background: rgb(224 112 0 / 44%);
+
+    &:hover {
+        background: rgb(224 112 0 / 74%);
+    }
 `;
 
-const SubTopic = ({ subtopic }) => {
+const SubTopic = ({ id, subtopic }) => {
     return (
-        <SubTopicContainer id={subtopic.id} key={subtopic.id}>
+        <SubTopicContainer id={id} key={subtopic.id}>
             <SubTopicTitle>{subtopic.title}</SubTopicTitle>
-            <SubTopicContent>{subtopic.content}</SubTopicContent>
+            {/* <SubTopicContent>{subtopic.content}</SubTopicContent> */}
+            <PreviewMarkdown content={subtopic.content} />
 
             {subtopic?.labs ? (
                 <LabContainer>
                     {/* <LabText>Labs</LabText> */}
                     <Labs>
                         {subtopic?.labs.map((lab, index) => (
-                            <LabTitle key={index}>
-                                <LabLink to={lab?.link}>
+                            <Lab key={index}>
+                                <LabTitle>
                                     <LabIcon>
                                         <ImLab />
                                     </LabIcon>
                                     {lab?.title}
-                                </LabLink>
-                                <LabSolved>{"Completed"}</LabSolved>
-                            </LabTitle>
+                                </LabTitle>
+                                <LabSolved to={`/websecurity/labs/${lab.link}`}>
+                                    {lab?.isCompleted ? "Completed" : "View Lab"}
+                                </LabSolved>
+                            </Lab>
                         ))}
                     </Labs>
                 </LabContainer>

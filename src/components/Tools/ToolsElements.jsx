@@ -7,11 +7,9 @@ export const ContainerTools = styled.div`
     align-items: center;
     justify-content: center;
     gap: 50px;
-
     width: 100%;
     max-width: 1500px;
 `;
-export const Tools = styled.div``;
 export const CardTools = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -31,12 +29,10 @@ export const CardTool = styled.div`
     width: 300px;
     padding: 20px;
     border-radius: 10px;
-
     background: transparent;
-    box-shadow: 0 0 150px 0 rgba(241, 115, 12, 0.25);
+    box-shadow: 0 0 150px 0 rgb(241 115 12 / 25%);
     backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgb(255 255 255 / 18%);
 
     &:hover {
         transition: all 0.3s ease-in-out;

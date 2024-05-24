@@ -4,14 +4,14 @@ export const SubmissionBoxContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    //padding: 20px;
+
+    /* padding: 20px; */
 `;
 
 export const InputSection = styled.div`
     display: flex;
     flex-direction: row;
     gap: 10px;
-
     width: 100%;
 `;
 

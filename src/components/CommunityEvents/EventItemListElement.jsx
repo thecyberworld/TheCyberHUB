@@ -15,35 +15,6 @@ export const EventItem = styled.div`
     margin-bottom: 1rem;
     position: relative;
 
-    .time-line {
-        flex-basis: 25%;
-        padding-left: 2rem;
-
-        .time-line-detail {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.75rem;
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            p {
-                margin: 0 0.75rem;
-            }
-
-            .text-over-flow {
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                width: 158px;
-            }
-        }
-
-        .time-line-request {
-            color: #e24612;
-        }
-    }
     .details {
         flex-basis: 55%;
         display: flex;
@@ -52,6 +23,7 @@ export const EventItem = styled.div`
         font-weight: 600;
         position: relative;
         width: 50%;
+
         .details-request {
             margin-right: 1rem;
             background-color: #fae4de;
@@ -62,10 +34,12 @@ export const EventItem = styled.div`
             font-weight: 600;
         }
     }
+
     .container-action-and-text {
         color: #5ca35c;
         text-transform: capitalize;
         position: relative;
+
         .details {
             display: flex;
             flex-direction: column;
@@ -74,6 +48,7 @@ export const EventItem = styled.div`
             align-items: center;
         }
     }
+
     .container-action {
         display: flex;
         flex-direction: row;
@@ -82,6 +57,7 @@ export const EventItem = styled.div`
         width: 250px;
         margin-bottom: 10px;
     }
+
     .action {
         flex-basis: 10%;
         display: flex;
@@ -89,13 +65,14 @@ export const EventItem = styled.div`
         cursor: pointer;
         position: relative;
         width: 100px;
+
         .action-edit {
             background-color: #f8f8f8;
             display: flex;
             justify-content: center;
             align-items: center;
             width: fit-content;
-            color: #000000;
+            color: #000;
             padding: 0.75rem 1.25rem;
             border-radius: 8px;
         }
@@ -103,17 +80,73 @@ export const EventItem = styled.div`
         p {
             margin-right: 0.75rem;
         }
+
         .without-dropdown {
             width: 100px;
+
             p {
                 margin-right: 0;
+            }
+        }
+
+        .enable-button {
+            background-color: #10f010;
+
+            p {
+                color: white;
+            }
+        }
+
+        .disable-button {
+            background-color: green;
+
+            p {
+                color: white;
+            }
+        }
+
+        .uniqe-state-button {
+            background-color: #002300;
+
+            p {
+                color: white;
+            }
+        }
+
+        .time-line {
+            flex-basis: 25%;
+            padding-left: 2rem;
+
+            .time-line-detail {
+                display: flex;
+                align-items: center;
+                margin-bottom: 0.75rem;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                p {
+                    margin: 0 0.75rem;
+                }
+
+                .text-over-flow {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 158px;
+                }
+            }
+
+            .time-line-request {
+                color: #e24612;
             }
         }
 
         .action-dropdown {
             width: 260px;
             border: 1px solid #ccc;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
             border-radius: 4px;
             padding: 0.5rem;
             background-color: #f0f0f0;
@@ -133,9 +166,11 @@ export const EventItem = styled.div`
                     margin-bottom: 0;
                     border-top: 1px solid lightgray;
                 }
+
                 &:first-child {
                     border-top: none;
                 }
+
                 p {
                     margin-left: 0.75rem;
                 }
@@ -144,28 +179,8 @@ export const EventItem = styled.div`
                     background-color: #ddd;
                     border-radius: 8px;
                     font-weight: 600;
-                    color: #000000;
+                    color: #000;
                 }
-            }
-        }
-        .enable-button {
-            background-color: #10f010;
-            p {
-                color: white;
-            }
-        }
-        .disable-button {
-            background-color: green;
-
-            p {
-                color: white;
-            }
-        }
-        .uniqe-state-button {
-            background-color: #002300;
-
-            p {
-                color: white;
             }
         }
     }

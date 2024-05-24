@@ -11,7 +11,6 @@ import {
     Form,
     ImageSelected,
     ImageUploadAndPreviewSection,
-    ImageUploadInput,
     ImageUploadLabel,
     Input,
     SectionCreateBlog,
@@ -217,7 +216,7 @@ const EditBlog = () => {
                             <ImageSelected> {fileName && <>{fileName.slice(0, 20)}..</>} </ImageSelected>
                             {/* <img src={file ? URL.createObjectURL(file) : coverImagePreview}  alt={""} style={{height: "100px", width:"auto"}}/> */}
                         </ImageUploadLabel>
-                        <ImageUploadInput
+                        <input
                             // type="file"
                             // name="addCoverImage"
                             // id="addCoverImage"

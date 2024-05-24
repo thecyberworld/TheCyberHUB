@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -10,9 +10,9 @@ import {
     SubHeader,
     Tabs,
     NoDataComponent,
-    EventList,
     EventNote,
     CommunityEventHeaderContainer,
+    FilterContainer,
 } from "./CommunityEventsElement";
 import NoDataFound from "src/assets/images/no_data_found.svg";
 import { EventItemList } from "./EventItemList";
@@ -20,6 +20,7 @@ import { RouterNavCreateButton } from "src/components/Header/Navbar/NavbarElemen
 import ModifyCommunityEvent from "./ModifyCommunityEvent";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyTimeline from "./ModifyTimeline";
+import { SidebarFilterButtons } from "src/components/Common/SocialSidebar";
 
 const CommunityEvents = ({
     pageHeader,
@@ -39,6 +40,7 @@ const CommunityEvents = ({
     const { events, isEventLoading, isEventError, eventMessage } = useSelector((state) => state.events);
     const [isActiveTab, setActiveTab] = useState(0);
     const [openCreatingNewEvent, setOpenCreatingNewEvent] = useState(false);
+    const [filterValue, setFilterValue] = useState("");
 
     const tabNames = [
         { id: 0, status: "upcoming" },
@@ -64,7 +66,37 @@ const CommunityEvents = ({
         return () => dispatch(eventsReset());
     }, [dispatch]);
 
-    const filteredEvents = events
+    const handleFilterUpdate = (filterLabel) => {
+        setFilterValue(filterLabel);
+    };
+
+    const filterButtonsData = useMemo(
+        () => [
+            {
+                filterLabel: "All",
+                onClick: handleFilterUpdate,
+                id: "All" + Math.random() * 100,
+            },
+            {
+                filterLabel: "Join",
+                onClick: handleFilterUpdate,
+                id: "Join" + Math.random() * 100,
+            },
+            {
+                filterLabel: "Joined",
+                onClick: handleFilterUpdate,
+                id: "Joined" + Math.random() * 100,
+            },
+            {
+                filterLabel: "Full",
+                onClick: handleFilterUpdate,
+                id: "Full" + Math.random() * 100,
+            },
+        ],
+        [],
+    );
+
+    let filteredEvents = events
         ? events
               .filter((event) => {
                   let eventFit = false;
@@ -94,6 +126,38 @@ const CommunityEvents = ({
                   return a.date < b.date || (a.date === b.date && a.startTime < b.startTime);
               })
         : [];
+
+    if (filterValue) {
+        filteredEvents = filteredEvents.filter((event) => {
+            let suitable = false;
+            switch (filterValue) {
+                case "Full":
+                    if (
+                        event.maxParticipantsNumber - event.participants.length === 0 &&
+                        !eventsJoinedId.includes(event._id)
+                    ) {
+                        suitable = true;
+                    }
+                    break;
+                case "Joined":
+                    if (eventsJoinedId.includes(event._id)) {
+                        suitable = true;
+                    }
+                    break;
+                case "Join":
+                    if (
+                        event.maxParticipantsNumber - event.participants.length !== 0 &&
+                        !eventsJoinedId.includes(event._id)
+                    ) {
+                        suitable = true;
+                    }
+                    break;
+                default:
+                    suitable = true;
+            }
+            return suitable; // }
+        });
+    }
     const handleModifyEvent = (newEvent, eventId = "") => {
         if (!eventId) return dispatch(createEvent(newEvent));
         dispatch(updateEvent({ id: newEvent._id, eventData: newEvent }));
@@ -118,7 +182,7 @@ const CommunityEvents = ({
 
     const modifyEvent = events.find((event) => event._id === modifyEventId || event._id === eventManageTimelineId);
     return (
-        <ParentContainer pageHeader={pageHeader}>
+        <ParentContainer $pageHeader={pageHeader}>
             <Container>
                 <Header>{title}</Header>
                 <SubHeader>{subtitle}</SubHeader>
@@ -143,8 +207,16 @@ const CommunityEvents = ({
                                     Create Event
                                 </RouterNavCreateButton>
                             )}
+                            {!modify && (
+                                <FilterContainer>
+                                    <SidebarFilterButtons
+                                        filterButtonsData={filterButtonsData}
+                                        defaultButtonId={filterButtonsData[0].id}
+                                    />
+                                </FilterContainer>
+                            )}
                         </CommunityEventHeaderContainer>
-                        <EventList>
+                        <div>
                             {modify && openCreatingNewEvent && (
                                 <ModifyCommunityEvent
                                     onModify={handleModifyEvent}
@@ -183,7 +255,7 @@ const CommunityEvents = ({
                                     <img src={NoDataFound} alt="No data found" />
                                 </NoDataComponent>
                             )}
-                        </EventList>
+                        </div>
                     </>
                 )}
                 {!modify && !user && (

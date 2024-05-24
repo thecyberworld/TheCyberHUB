@@ -14,12 +14,14 @@ export const SponsorsH1 = styled.a`
     font-weight: 600;
     color: #f5f5f5;
     margin: 0;
-    @media screen and (max-width: 1024px) {
+
+    @media screen and (width <= 1024px) {
         font-size: 1.3rem;
     }
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         font-size: 1rem;
-    } ;
+    }
 `;
 
 export const SponsorsH2 = styled.h2`
@@ -33,7 +35,7 @@ export const SponsorsContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #000000;
+    background: #000;
     width: 100%;
     max-width: 1400px;
     ${"" /* margin: 150px auto; */}
@@ -71,7 +73,7 @@ export const SponsorsFooterBar = styled.div`
     border-radius: 0 0 1rem 1rem;
     ${"" /* border-radius: 1rem 1rem 0 0 ; */}
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         margin-top: 0.3rem;
     }
 `;
@@ -83,7 +85,8 @@ export const SponsorsGrid1 = styled.div`
     grid-auto-rows: 1fr;
     grid-gap: 10px;
     margin: 10px 0;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         margin: 6px 0;
         grid-gap: 6px;
     }
@@ -96,7 +99,8 @@ export const SponsorsGrid2 = styled.div`
     grid-auto-rows: 1fr;
     grid-gap: 10px;
     margin: 10px 0;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         margin: 6px 0;
         grid-gap: 6px;
     }
@@ -109,14 +113,17 @@ export const SponsorsGrid3 = styled.div`
     grid-auto-rows: 2fr;
     grid-gap: 10px;
     margin-top: 10px;
-    @media screen and (max-width: 834px) {
+
+    @media screen and (width <= 834px) {
         grid-template-columns: repeat(4, 1fr);
     }
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         margin-top: 6px;
         grid-gap: 6px;
     }
-    @media screen and (max-width: 510px) {
+
+    @media screen and (width <= 510px) {
         grid-template-columns: repeat(3, 1fr);
     }
 `;
@@ -150,34 +157,40 @@ export const SponsorsGridCol = styled.div`
 
 export const SponsorsGridColHidden = styled(SponsorsGridCol)`
     padding: 3rem 0;
-    @media only screen and (max-width: 834px) {
+
+    @media only screen and (width <= 834px) {
         display: none;
     }
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         padding: 2rem 0;
     }
 `;
 
 export const SponsorsGridColHiddenSm = styled(SponsorsGridCol)`
     padding: 3rem 0;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         padding: 2rem 0;
     }
-    @media only screen and (max-width: 425px) {
+
+    @media only screen and (width <= 425px) {
         display: none;
     }
 `;
 
 export const SponsorsGridColLast = styled(SponsorsGridCol)`
     padding: 3rem 0;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         padding: 2rem 0;
     }
 `;
 
 export const SponsorsGridColTop = styled(SponsorsGridCol)`
     padding: 5rem 0;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         padding: 3rem 0;
     }
 `;
@@ -200,7 +213,7 @@ export const SponsorButton = styled.a`
         color: #f5f5f5;
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         padding: 8px 16px;
         font-size: 14px;
     }

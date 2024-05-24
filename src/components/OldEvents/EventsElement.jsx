@@ -7,12 +7,12 @@ export const EventsContainer = styled.div`
     display: flex;
     margin-top: 25px;
     text-align: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     justify-content: center;
     align-items: flex-start;
     color: #cecac3;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         flex-direction: column;
     }
 `;
@@ -25,7 +25,8 @@ export const RouterLink = styled(Link)`
 export const MainEventsContainer = styled.div`
     width: 55%;
     margin-bottom: 25px;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         width: 100%;
     }
 `;
@@ -43,7 +44,7 @@ export const EventsContent = styled.div`
 `;
 
 export const EventLocation = styled.div`
-    color: #777777;
+    color: #777;
     margin-bottom: 5px;
 `;
 export const OnGoingEventsContainer = styled.div`
@@ -51,8 +52,7 @@ export const OnGoingEventsContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
-    flex-wrap: wrap;
-    flex-direction: column;
+    flex-flow: column wrap;
 `;
 
 export const UpComingEventsSection = styled.div`
@@ -62,7 +62,7 @@ export const UpComingEventsSection = styled.div`
     align-items: center;
     justify-content: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         width: 100%;
     }
 `;
@@ -70,18 +70,18 @@ export const UpComingEventsSection = styled.div`
 export const UpComingEventsContainer = styled.div`
     display: grid;
     margin: 0 0 0 25px;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         margin: 0;
     }
 `;
 
 export const EventsHeading = styled.h1`
     background: #0c0c0c;
-    margin: 0 0 20px 0;
+    margin: 0 0 20px;
     border-radius: 5px;
     padding: 5px;
     text-align: center;
@@ -89,15 +89,15 @@ export const EventsHeading = styled.h1`
 
 export const EventsHeadingMedium = styled.h2`
     font-size: 1.4rem;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
 `;
 
 export const EventsHeadingSmall = styled.h3`
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
 `;
 export const EventsSubHeading = styled.div`
-    margin: 5px 0 10px 0;
-    color: #777777;
+    margin: 5px 0 10px;
+    color: #777;
 `;
 
 export const EventsImage = styled.img`
@@ -115,7 +115,6 @@ export const EventLink = styled.a`
     color: inherit;
 `;
 
-export const EventsHeader = styled.div``;
 export const PastEventsContainer = styled.div`
     width: 100%;
     height: auto;
@@ -123,7 +122,7 @@ export const PastEventsContainer = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 25px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         width: auto;
     }
 `;
@@ -137,7 +136,7 @@ export const EventComponent = styled.div`
     padding-top: 0;
     align-items: center;
     justify-content: space-between;
-    font-family: "Montserrat", sans-serif;
+    font-family: Montserrat, sans-serif;
     color: #cecac3;
 
     * {
@@ -167,14 +166,12 @@ export const EventHeaderImage = styled.img`
 export const EventVenue = styled.div`
     position: absolute;
     padding: 8px 20px;
-    background-color: #eeeeee;
-    color: #333333;
+    background-color: #eee;
+    color: #333;
     right: 0;
     bottom: 0;
     white-space: nowrap;
 `;
-
-export const EventTitle = styled.h1``;
 
 export const EventContent = styled.p`
     font-family: "Roboto Mono", monospace;
@@ -183,4 +180,3 @@ export const EventContent = styled.p`
     white-space: pre-line;
     font-size: 20px;
 `;
-export const EventDate = styled.h3``;

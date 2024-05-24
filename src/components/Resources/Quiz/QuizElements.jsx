@@ -8,10 +8,10 @@ export const QuizContainer = styled.div`
     max-width: 1500px;
     height: min-content;
     border-radius: 10px;
-    box-shadow: 10px 10px 42px 0 rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 42px 0 rgb(0 0 0 / 75%);
     display: flex;
 
-    @media screen and (max-width: 800px) {
+    @media screen and (width <= 800px) {
         margin: 50px 30px;
     }
 `;

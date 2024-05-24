@@ -13,6 +13,8 @@ import { SlOptionsVertical } from "react-icons/sl";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import Prompts from "./Prompts/Prompts";
+import { TbMessage2Plus } from "react-icons/tb";
+import { RecentChatsHeader } from "src/components/AIChat/RecentChatsElements.jsx";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
@@ -37,7 +39,7 @@ const AiChat = () => {
         {
             type: "bot",
             content: `Navigate to the Dashboard > Settings > API Key, claim your free api key and paste it in the input box to continue using this feature.`,
-            timestamp: "2024-01-29T07:15:09.752Z",
+            timestamp: "2024-01-29T07:15:10.752Z",
             _id: "65b7507df24f3468473bb983",
         },
     ];
@@ -49,6 +51,19 @@ const AiChat = () => {
     const [toggle, setToggle] = useState(false);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
 
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setToggle(true);
+            } else {
+                setToggle(false);
+            }
+        };
+
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
     const handleSendDummyMessage = async (dummyMessage) => {
         setUserInput(dummyMessage);
         setIsLoading(true);
@@ -251,28 +266,30 @@ const AiChat = () => {
                                         trailMessage={trailMessage}
                                     />
 
-                                    <div>
-                                        {chat.title !== "New Chat" ? null : (
-                                            <Prompts handleSendDummyMessage={handleSendDummyMessage} />
-                                        )}
-
-                                        <ChatInput onSubmit={handleSendMessage}>
-                                            <input
-                                                type="text"
-                                                value={userInput}
-                                                onChange={(e) => setUserInput(e.target.value)}
-                                            />
-                                            {isLoading ? (
-                                                <button>
-                                                    <CircleSpinner size={20} color={"#131313"} />
-                                                </button>
-                                            ) : (
-                                                <button type="submit">
-                                                    <BiSend size={25} />
-                                                </button>
+                                    {!isTrailEnded ? (
+                                        <div>
+                                            {chat.title !== "New Chat" ? null : (
+                                                <Prompts handleSendDummyMessage={handleSendDummyMessage} />
                                             )}
-                                        </ChatInput>
-                                    </div>
+
+                                            <ChatInput onSubmit={handleSendMessage}>
+                                                <input
+                                                    type="text"
+                                                    value={userInput}
+                                                    onChange={(e) => setUserInput(e.target.value)}
+                                                />
+                                                {isLoading ? (
+                                                    <button>
+                                                        <CircleSpinner size={20} color={"#131313"} />
+                                                    </button>
+                                                ) : (
+                                                    <button type="submit">
+                                                        <BiSend size={25} />
+                                                    </button>
+                                                )}
+                                            </ChatInput>
+                                        </div>
+                                    ) : null}
                                 </ChatBox>
                             ),
                     )
@@ -287,21 +304,12 @@ const AiChat = () => {
                         </ChatHeader>
 
                         <ChatInput onSubmit={handleSendMessage}>
-                            <input
-                                type="text"
-                                value={"Start A New Chat "}
-                                onChange={(e) => setUserInput(e.target.value)}
-                            />
-
-                            {/* {isLoading ? ( */}
-                            {/*    <button> */}
-                            {/*        <CircleSpinner size={20} color={"#131313"}/> */}
-                            {/*    </button> */}
-                            {/* ) : ( */}
-                            {/*    <button type="submit"> */}
-                            {/*        <BiSend size={25}/> */}
-                            {/*    </button> */}
-                            {/* )} */}
+                            <p>Start a New Chat</p>
+                            <RecentChatsHeader>
+                                <div className="new-chat-button" onClick={handleNewChat}>
+                                    <TbMessage2Plus size={30} />
+                                </div>
+                            </RecentChatsHeader>
                         </ChatInput>
                     </ChatBox>
                 )}

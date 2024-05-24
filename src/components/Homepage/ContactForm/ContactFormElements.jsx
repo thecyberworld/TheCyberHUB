@@ -19,7 +19,7 @@ export const H1 = styled.h1`
 export const ContentH = styled.h1`
     text-align: center;
     color: #f5f5f5;
-    margin: 5px 0 0 0;
+    margin: 5px 0 0;
     width: 100%;
     max-width: 600px;
 `;
@@ -29,24 +29,21 @@ export const ContentP = styled.p`
     font-family: "Fira Code Medium", monospace;
     text-align: center;
     color: #f5f5f5;
-    margin: 5px 0 0 0;
+    margin: 5px 0 0;
     width: 100%;
     max-width: 1100px;
     padding: 15px;
     font-size: 30px;
     align-items: center;
 
-    @media (max-width: 500px) {
+    @media (width <= 500px) {
         font-size: 20px;
     }
 `;
 
 export const ContactFormContainer = styled.div`
-    color: #f5f5f5;
     margin: 150px auto 50px;
     max-width: 1000px;
-    background: linear-gradient(#212121, #212121) padding-box,
-        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
     border: 2px solid transparent;
     padding: 32px 24px;
     font-size: 14px;
@@ -56,7 +53,8 @@ export const ContactFormContainer = styled.div`
     flex-direction: column;
     border-radius: 16px;
 
-    // CSS for input fields
+    /* CSS for input fields */
+
     input,
     textarea {
         width: calc(100% - 30px); /* Adjusted width to accommodate icon */
@@ -68,15 +66,15 @@ export const ContactFormContainer = styled.div`
         border: 1px solid #414141;
     }
 
-    input::placeholder,
+    input&::placeholder,
     textarea::placeholder {
         opacity: 0.5;
     }
 
-    input:focus,
+    input&:focus,
     textarea:focus {
         outline: none;
-        border-color: #e81cff;
+        border-color: #ff731c;
     }
 `;
 
@@ -88,7 +86,7 @@ export const Cover = styled.div`
     width: 100%;
     gap: 5px;
 
-    @media (max-width: 500px) {
+    @media (width <= 500px) {
         flex-direction: column;
         transition: 0.1s ease-in-out;
     }
@@ -105,13 +103,13 @@ export const CoverLeft = styled.div`
     border-radius: 2px;
     margin: 5px 0;
 
-    @media (max-width: 500px) {
+    @media (width <= 500px) {
         margin-right: 0;
     }
 `;
 
 export const CoverRight = styled.div`
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -123,53 +121,53 @@ export const CoverRight = styled.div`
     margin: 5px 0;
     margin-left: 5px;
 
-    @media (max-width: 500px) {
+    @media (width <= 500px) {
         margin-left: 0;
     }
 `;
 
 export const PersonIcon = styled(BsFillPersonFill)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 
 export const MessageIcon = styled(RiQuestionAnswerFill)`
-    color: #666666;
+    color: #666;
     margin: 15px 10px 0; /* Add 20px margin from the top */
 `;
 
 export const ReasonIcon = styled(BsQuestionSquareFill)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 export const PentestIcon = styled(SiFsecure)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 export const InternshipIcon = styled(CgWorkAlt)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 export const ResumeIcon = styled(CgNotes)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 export const PhoneIcon = styled(BsTelephoneFill)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 
 export const OrgIcon = styled(CgOrganisation)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 export const EmailIcon = styled(AiTwotoneMail)`
-    color: #666666;
+    color: #666;
     margin: 20px 10px;
 `;
 
 export const WebIcon = styled(SiFirefoxbrowser)`
-    color: #666666;
+    color: #666;
     margin: 0 10px;
 `;
 
@@ -193,13 +191,13 @@ export const ContactFormSection = styled.form`
     padding: 25px;
     margin-right: 40px;
 
-    @media (max-width: 500px) {
+    @media (width <= 500px) {
         padding: 5px;
     }
 `;
 
 export const ContactFormInput = styled.input`
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -212,7 +210,7 @@ export const ContactFormInput = styled.input`
     text-underline-offset: 5px;
     font-size: 20px;
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -226,7 +224,7 @@ export const ContactFormInput = styled.input`
 `;
 
 export const ContactFormSelect = styled.select`
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     font-size: 20px;
     display: flex;
     flex-direction: column;
@@ -237,10 +235,11 @@ export const ContactFormSelect = styled.select`
     color: #f5f5f5;
     width: 100%;
 
-    @media (max-width: 900px) {
+    @media (width <= 900px) {
         font-size: 17px;
     }
-    @media (max-width: 500px) {
+
+    @media (width <= 500px) {
         font-size: 15px;
     }
 `;
@@ -250,31 +249,35 @@ export const ContactFormSelectOption = styled.option`
     padding: 25px;
     margin: 25px;
 
-    @media (max-width: 900px) {
+    @media (width <= 900px) {
         font-size: 17px;
     }
-    @media (max-width: 500px) {
+
+    @media (width <= 500px) {
         font-size: 15px;
     }
 `;
 
 export const ContactFormLabel = styled.label`
     font-size: 20px;
-    @media (max-width: 900px) {
+
+    @media (width <= 900px) {
         font-size: 17px;
     }
-    @media (max-width: 500px) {
+
+    @media (width <= 500px) {
         font-size: 15px;
     }
 `;
 
 export const ContactFormTextArea = styled.textarea`
-    font-family: "Poppins", sans-serif;
+    font-family: Poppins, sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    //border-radius: 5px;
+
+    /* border-radius: 5px; */
     background: transparent;
     border: transparent;
     color: #f5f5f5;
@@ -282,14 +285,15 @@ export const ContactFormTextArea = styled.textarea`
     height: 250px;
     font-size: 20px;
 
-    @media (max-width: 900px) {
+    @media (width <= 900px) {
         font-size: 17px;
     }
-    @media (max-width: 500px) {
+
+    @media (width <= 500px) {
         font-size: 15px;
     }
 
-    ::placeholder {
+    &::placeholder {
         color: #f5f5f5;
     }
 
@@ -306,23 +310,20 @@ export const ContactFormSubmit = styled.button`
     padding: 15px 10px;
     font-size: 1.5rem;
     background: #101010;
-    border: 2px solid;
-    border-image: linear-gradient(#212121, #212121) padding-box,
-        linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
-    border-image-slice: 1;
     color: #f5f5f5;
+    border: 1px solid #2a2a2a;
     border-radius: 5px;
+    border-image-slice: 1;
     margin: 5px 0;
     width: 100%;
     cursor: pointer;
-    font-family: "Roboto", sans-serif;
-
+    font-family: Roboto, sans-serif;
     transition: all 0.2s ease-in-out;
 
     &:hover {
         transition: all 0.2s ease-in-out;
         background: #ff6b08;
-        color: #000000;
+        color: #000;
     }
 `;
 
@@ -341,9 +342,9 @@ export const GlowingButton = styled.button`
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease-in-out;
-    color: #000000;
+    color: #000;
     background: #ff6b08;
-    box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+    box-shadow: 0 0 30px rgb(32 194 14 / 0%);
     animation: glowing 2s ease-in-out infinite;
     margin: 5px 0;
     padding: 10px;
@@ -351,17 +352,20 @@ export const GlowingButton = styled.button`
 
     @keyframes glowing {
         0% {
-            box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+            box-shadow: 0 0 30px rgb(32 194 14 / 0%);
         }
+
         50% {
-            box-shadow: 0 0 60px 15px rgba(194, 89, 14, 0.5);
+            box-shadow: 0 0 60px 15px rgb(194 89 14 / 50%);
         }
+
         100% {
-            box-shadow: 0 0 30px rgba(32, 194, 14, 0);
+            box-shadow: 0 0 30px rgb(32 194 14 / 0%);
         }
     }
-    @media screen and (max-width: 600px) {
-        padding: 10px 10px;
+
+    @media screen and (width <= 600px) {
+        padding: 10px;
     }
 `;
 

@@ -29,7 +29,7 @@ export const Post = styled.div`
     background-color: #1c1c1c;
     padding: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     color: #eaeaea;
     border: 1px solid #151414;
     border-radius: 5px;
@@ -37,10 +37,9 @@ export const Post = styled.div`
 
 export const SummaryItem = styled.div`
     background-color: #1c1c1c;
-    border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     color: #eaeaea;
     border: 1px solid #151414;
     border-radius: 5px;
