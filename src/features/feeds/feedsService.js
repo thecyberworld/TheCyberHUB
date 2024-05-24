@@ -2,19 +2,6 @@ import axios from "axios";
 import { getApiUrl } from "src/features/apiUrl";
 
 const API_URL = getApiUrl("api/feeds/");
-const addComment = async (feedId, commentData, token) => {
-    try {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        };
-        const response = await axios.post(API_URL + feedId + "/comment", { comment: commentData }, config);
-        return response.data;
-    } catch (error) {
-        throw new Error(error);
-    }
-};
 
 // Get All feeds
 const getAllFeeds = async () => {
@@ -27,14 +14,14 @@ const getAllFeeds = async () => {
 };
 
 // Create new feed
-const createFeed = async (feedData, token) => {
+const createFeed = async (feedData, token, mainFeedId = "") => {
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
         },
     };
-
-    const response = await axios.post(API_URL, feedData, config);
+    console.log({ ...feedData, mainFeedId }, feedData);
+    const response = await axios.post(API_URL, { ...feedData, mainFeedId }, config);
 
     return response.data;
 };
@@ -64,7 +51,6 @@ const getFeeds = async (token) => {
 
     return response.data;
 };
-
 // Delete user feed
 const deleteFeed = async (feedId, token) => {
     const config = {
@@ -79,7 +65,6 @@ const deleteFeed = async (feedId, token) => {
 };
 
 const feedsService = {
-    addComment,
     getAllFeeds,
     createFeed,
     updateFeed,

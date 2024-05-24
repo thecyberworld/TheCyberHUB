@@ -138,7 +138,7 @@ const ModifyPost = ({ showPostTags, userDetails, editFeed = "" }) => {
             if (editFeed) {
                 dispatch(updateFeed({ id: editFeed?._id, feedData: data }));
             } else {
-                dispatch(createFeed(data));
+                dispatch(createFeed({ feedData: data }));
             }
 
             toast.success("Feed posted successfully");

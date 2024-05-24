@@ -10,7 +10,6 @@ import { getAllUserDetails, userDetailReset } from "src/features/userDetail/user
 import { FeedLikeReset, getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
 import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
 import { getViews } from "src/features/feeds/views/viewSlice";
-import { feedReplyReset, getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
 
 import FeedPagePost from "./FeedPagePost";
 import FeedReplies from "./FeedComments/FeedComments";
@@ -24,9 +23,6 @@ const FeedPage = () => {
     const dispatch = useDispatch();
     const { feedId } = useParams();
     const { feeds, isFeedLoading, isFeedError, feedMessage } = useSelector((state) => state.feeds);
-    const { feedComments, isFeedReplyLoading, isFeedReplyError, feedCommentMessage } = useSelector(
-        (state) => state.feedComments,
-    );
     const { user, isUserError, userMessage } = useSelector((state) => state.auth);
     const { userDetails, isUserDetailLoading, isUserDetailError, userDetailMessage } = useSelector(
         (state) => state.userDetail,
@@ -37,13 +33,11 @@ const FeedPage = () => {
 
     useEffect(() => {
         if (isFeedError) console.log(feedMessage);
-        if (isFeedReplyError) console.log(feedCommentMessage);
         if (isUserError) console.log(userMessage);
         if (isUserDetailError) console.log(userDetailMessage);
         if (isFeedLikeError) console.log(feedLikeMessage);
 
         dispatch(getAllFeeds());
-        dispatch(getFeedComments());
         dispatch(getAllUserDetails());
         dispatch(getFeedLikes());
         dispatch(getBookmarks());
@@ -53,11 +47,10 @@ const FeedPage = () => {
             dispatch(feedReset());
             dispatch(userDetailReset());
             dispatch(FeedLikeReset());
-            dispatch(feedReplyReset());
         };
     }, [dispatch]);
 
-    const feed = feeds?.find((feed) => feed?._id === feedId) || feedComments?.find((feed) => feed?._id === feedId);
+    const feed = feeds?.find((feed) => feed?._id === feedId);
 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === feed?.user);
 
@@ -83,7 +76,7 @@ const FeedPage = () => {
         return views?.filter((view) => view.itemId === feedId);
     };
 
-    const feedRepliesData = feedComments?.map((reply) => {
+    const feedRepliesData = feeds?.map((reply) => {
         const userDetail = userDetails?.find((userDetail) => userDetail?.user === reply?.user);
 
         const { username, avatar, verified } = userDetail || {};
@@ -92,10 +85,10 @@ const FeedPage = () => {
     });
 
     const feedCommentsData = ({ feedId }) => {
-        return feedRepliesData?.filter((reply) => reply?.feedId === feedId);
+        return feedRepliesData?.filter((reply) => reply?.mainFeedId === feedId && reply?._id !== reply?.mainFeedId);
     };
 
-    if (isApiLoading || isUserDetailLoading || isFeedLoading || isFeedReplyLoading) return <LoadingSpinner />;
+    if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
 
     if (!isApiWorking) return <UnderMaintenance />;
 
@@ -126,7 +119,6 @@ const FeedPage = () => {
                         bookmarks={bookmarks}
                         likes={feedLikes}
                         views={views}
-                        isFeedReplyLoading={isFeedReplyLoading}
                         updateFeedView={true}
                     />
                 </FeedContentSection>

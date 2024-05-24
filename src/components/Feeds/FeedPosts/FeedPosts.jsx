@@ -6,7 +6,6 @@ import FeedPost from "./FeedPost";
 import { getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
 import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
 import { getViews } from "src/features/feeds/views/viewSlice";
-import { getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 // import { getAllFeeds } from "src/features/feeds/feedsSlice";
 // import { HiRefresh } from "react-icons/hi";
@@ -18,7 +17,6 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
     const { feedLikes } = useSelector((state) => state.feedLikes);
     const { bookmarks } = useSelector((state) => state.bookmarks);
     const { views } = useSelector((state) => state.views);
-    const { feedComments } = useSelector((state) => state.feedComments);
     const { followData } = useSelector((state) => state.followData);
 
     // const [numPostsToShow, setNumPostsToShow] = useState(50);
@@ -27,7 +25,6 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
         dispatch(getFeedLikes());
         dispatch(getBookmarks());
         dispatch(getViews());
-        dispatch(getFeedComments());
     }, [dispatch]);
 
     if (isFeedLoading) return <LoadingSpinner />;
@@ -82,7 +79,7 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
     };
 
     const feedCommentsData = ({ feedId }) => {
-        return feedComments?.filter((reply) => reply.feedId === feedId);
+        return feeds?.filter((feed) => feed._id === feedId).comments;
     };
 
     // const [stopRefresh, setStopRefresh] = useState(false);

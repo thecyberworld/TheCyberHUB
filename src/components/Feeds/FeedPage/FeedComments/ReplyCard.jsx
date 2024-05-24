@@ -15,16 +15,14 @@ import PostActionsAndStats from "src/components/Feeds/FeedPosts/PostActionsAndSt
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import Options from "src/components/Common/ModalOptions";
-import { deleteComment } from "src/features/feeds/feedComments/feedCommentsSlice";
+import { deleteFeed } from "src/features/feeds/feedsSlice";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router";
 
 const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, updateFeedView }) => {
     const avatar = cdnContentImagesUrl("/user/" + (reply?.avatar || "avatarDummy.png"));
     const dispatch = useDispatch();
-    const { feedId } = useParams();
     const handleCommentDelete = () => {
-        dispatch(deleteComment({ feedId, commentId: reply._id }));
+        dispatch(deleteFeed(reply._id));
     };
 
     return (

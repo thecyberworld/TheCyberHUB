@@ -5,7 +5,6 @@ import FeedPost from "src/components/Feeds/FeedPosts/FeedPost";
 import { getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
 import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
 import { getViews } from "src/features/feeds/views/viewSlice";
-import { getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "src/NotFound";
 
@@ -15,7 +14,6 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     const { feedLikes } = useSelector((state) => state.feedLikes);
     const { bookmarks, isBookmarkLoading, isBookmarkError, bookmarkMessage } = useSelector((state) => state.bookmarks);
     const { views } = useSelector((state) => state.views);
-    const { feedComments } = useSelector((state) => state.feedComments);
 
     useEffect(() => {
         if (isBookmarkError) console.log(bookmarkMessage);
@@ -24,7 +22,6 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
             dispatch(getBookmarks());
         }
         dispatch(getViews());
-        dispatch(getFeedComments());
     }, [dispatch, isBookmarkError, bookmarkMessage]);
 
     if (isFeedLoading || isBookmarkLoading) return <LoadingSpinner />;
@@ -65,7 +62,7 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     };
 
     const feedCommentsData = ({ feedId }) => {
-        return feedComments?.filter((reply) => reply.feedId === feedId);
+        return feeds?.filter((feed) => feed._id === feedId).comments;
     };
 
     return (

@@ -12,7 +12,6 @@ import feedLikeReduces from "src/features/feeds/feedLikes/feedLikesSlice";
 import blogLikeReduces from "src/features/blogs/blogLikes/blogLikesSlice";
 
 import blogCommentsReducer from "src/features/blogs/blogComments/blogCommentSlice";
-import feedCommentsReducer from "src/features/feeds/feedComments/feedCommentsSlice";
 
 import ctfReducer from "src/features/ctf/ctfSlice";
 import bookmarkReduces from "src/features/bookmarks/bookmarkSlice";
@@ -37,7 +36,6 @@ export default configureStore({
         forums: forumReducer,
 
         feeds: feedReducer,
-        feedComments: feedCommentsReducer,
 
         views: viewReducer,
         bookmarks: bookmarkReduces,

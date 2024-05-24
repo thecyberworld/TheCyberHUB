@@ -10,10 +10,10 @@ const initialState = {
 };
 
 // Create new feed
-export const createFeed = createAsyncThunk("feed/create", async (feedData, thunkAPI) => {
+export const createFeed = createAsyncThunk("feed/create", async ({ feedData, mainFeedId = "" }, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await feedsService.createFeed(feedData, token);
+        return await feedsService.createFeed(feedData, token, mainFeedId);
     } catch (error) {
         const message =
             (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -83,7 +83,13 @@ export const feedsSlice = createSlice({
                 state.isFeedSuccess = true;
                 state.isFeedLoading = false;
                 state.isFeedError = false;
-                state.feeds.push(action.payload);
+                const mainFeedId = action.payload.mainFeedId;
+                if (mainFeedId) {
+                    const mainFeedIndex = state.feeds.findIndex((feed) => feed._id === mainFeedId);
+                    state.feeds[mainFeedIndex].comments.push(action.payload);
+                } else {
+                    state.feeds.push(action.payload);
+                }
             })
             .addCase(createFeed.rejected, (state, action) => {
                 state.isFeedLoading = false;

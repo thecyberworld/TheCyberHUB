@@ -1,8 +1,7 @@
 import React from "react";
 import ReplyCard from "./ReplyCard";
-import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 
-const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoading, updateFeedView }) => {
+const FeedComments = ({ user, replies, likes, bookmarks, views, updateFeedView }) => {
     const feedLikesData = ({ replyId }) => {
         return likes?.filter((like) => like?.itemId === replyId);
     };
@@ -19,10 +18,6 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
 
     if (replies.length === 0) {
         return <p style={{ textAlign: "center", padding: "25px 0" }}>Be the first to comment on this post</p>;
-    }
-
-    if (isFeedReplyLoading) {
-        return <LoadingSpinner />;
     }
 
     return (
