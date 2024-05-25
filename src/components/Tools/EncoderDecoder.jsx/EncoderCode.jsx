@@ -1,13 +1,26 @@
-import { CodeContainer } from "./EncoderCodeElement";
 import React from "react";
+import styled from "styled-components";
+import { toast } from "react-toastify";
+import { CodeContainer } from "./EncoderCodeElement";
+
+const CopyButton = styled.button`
+    padding: 5px 10px;
+    background-color: #ff6b08;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+`;
 
 function EncoderCode(props) {
     function Base64() {
         return btoa(props.Input);
     }
+
     function Url() {
         return encodeURIComponent(props.Input);
     }
+
     function fullURLEncode(url) {
         let encodedURL = encodeURI(url);
         const urlComponents = encodedURL.split("?");
@@ -28,6 +41,7 @@ function EncoderCode(props) {
 
         return encodedURL;
     }
+
     function asciiHexEncode(inputString) {
         let hexEncoded = "";
 
@@ -39,26 +53,52 @@ function EncoderCode(props) {
 
         return hexEncoded;
     }
+
     function htmlEncode(inputString) {
         return inputString.replace(/[\u00A0-\u9999<>]/gim, function (i) {
             return "&#" + i.charCodeAt(0) + ";";
         });
     }
+
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            toast.success("Copied to clipboard!");
+        });
+    }
+
     return (
         <div>
             <h1>Base64 Encode</h1>
             <CodeContainer>
                 <p>{Base64()}</p>
+                <CopyButton onClick={() => copyToClipboard(Base64())}>Copy</CopyButton>
             </CodeContainer>
+
             <h1>Url Encode</h1>
-            <CodeContainer>{Url()}</CodeContainer>
+            <CodeContainer>
+                <p>{Url()}</p>
+                <CopyButton onClick={() => copyToClipboard(Url())}>Copy</CopyButton>
+            </CodeContainer>
+
             <h1>Full Url Encode</h1>
-            <CodeContainer>{fullURLEncode(props.Input)}</CodeContainer>
+            <CodeContainer>
+                <p>{fullURLEncode(props.Input)}</p>
+                <CopyButton onClick={() => copyToClipboard(fullURLEncode(props.Input))}>Copy</CopyButton>
+            </CodeContainer>
+
             <h1>ASCII HEX Encode</h1>
-            <CodeContainer>{asciiHexEncode(props.Input)}</CodeContainer>
+            <CodeContainer>
+                <p>{asciiHexEncode(props.Input)}</p>
+                <CopyButton onClick={() => copyToClipboard(asciiHexEncode(props.Input))}>Copy</CopyButton>
+            </CodeContainer>
+
             <h1>HTML Encode</h1>
-            <CodeContainer>{htmlEncode(props.Input)}</CodeContainer>
+            <CodeContainer>
+                <p>{htmlEncode(props.Input)}</p>
+                <CopyButton onClick={() => copyToClipboard(htmlEncode(props.Input))}>Copy</CopyButton>
+            </CodeContainer>
         </div>
     );
 }
+
 export default EncoderCode;

@@ -6,8 +6,10 @@ export const CodeContainer = styled.div`
     margin-bottom: 10px;
     border-radius: 5px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 5px;
     overflow: clip;
+    color: white;
 `;
