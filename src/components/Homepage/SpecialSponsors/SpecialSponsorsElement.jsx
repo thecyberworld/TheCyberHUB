@@ -21,7 +21,7 @@ export const SponsorsH1 = styled.a`
 
     @media screen and (width <= 768px) {
         font-size: 1rem;
-    } ;
+    }
 `;
 
 export const SponsorsH2 = styled.h2`

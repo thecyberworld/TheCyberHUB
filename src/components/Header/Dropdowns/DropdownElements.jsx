@@ -25,6 +25,7 @@ export const DropdownContainer = styled.div`
     z-index: 999;
     display: block;
     backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
 
     @media screen and (width <= 821px) {
         display: flex;
@@ -44,10 +45,10 @@ export const DropdownItemsContainer = styled.div`
     max-width: 60rem;
     height: auto;
     margin: 0 auto;
-    margin-bottom: 1rem;
     z-index: 999;
     width: max-content;
     padding: 25px;
+    gap: 25px;
 
     /* sidebar */
     @media screen and (width <= 821px) {
@@ -70,7 +71,7 @@ export const DropdownItemsContainer = styled.div`
 export const DropdownItemContainer = styled.div`
     color: black;
     position: relative;
-    width: 270px;
+    width: 280px;
     z-index: 999;
     border: none;
     margin: 0;

@@ -3,8 +3,7 @@ export const codeReviewData = [
         id: 1,
         title: "Python Vulnerable Code Review",
         description: "Review and understand the vulnerable Python code.",
-        code: `
-import os
+        code: `import os
 import sys
 import subprocess
     
@@ -38,8 +37,7 @@ if __name__ == "__main__":
         id: 2,
         title: "Javascript Vulnerable Code Review",
         description: "Review and understand the vulnerable Javascript code.",
-        code: `
-const express = require('express');
+        code: `const express = require('express');
 const app = express();
 const port = 3000;
 

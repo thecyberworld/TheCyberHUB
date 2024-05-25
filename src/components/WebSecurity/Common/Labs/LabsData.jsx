@@ -4,7 +4,8 @@ export const LabData = [
         title: "First Basic Reflected XSS Lab",
         description: `Explore and understand basics reflected XSS vulnerabilities.
 This lab demonstrates a basic reflected XSS vulnerability in a search input field.
-The lab is designed to help you understand the impact and potential risk of reflected XSS vulnerabilities.`,
+The lab is designed to help you understand the impact and potential risk of reflected XSS vulnerabilities.
+`,
         labLink: "https://xss-labs.thecyberhub.org/xss1",
         tags: ["XSS", "Web Security", "Cyber Security"],
         category: "XSS",

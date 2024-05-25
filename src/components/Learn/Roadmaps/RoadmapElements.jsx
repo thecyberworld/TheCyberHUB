@@ -44,7 +44,7 @@ export const RoadmapHeading = styled.h1`
     color: #d9d9d9;
     background: #090909;
     font-size: 50px;
-    padding: 50px 0;
+    padding: 25px 0;
 
     /* background: #090909; */
     width: 100%;
@@ -78,7 +78,7 @@ export const RoadmapDetails = styled.div`
     background: #090909;
     width: 100%;
     border-radius: 5px;
-    padding: 5px 25px;
+    padding: 15px 25px;
     gap: 5px;
 `;
 
@@ -89,13 +89,14 @@ export const RoadmapContentHeading = styled.p`
     text-align: left;
     align-items: center;
     color: #c7c7c7;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     cursor: pointer;
     background: #121212;
     margin: 5px;
     padding: 0 15px;
     width: 100%;
+    border-radius: 10px;
 
     &:hover {
         color: #00b2ff;
@@ -153,8 +154,8 @@ export const RoadmapSectionHeading = styled.h2`
     justify-content: center;
     text-align: center;
     width: 100%;
-    color: #ffa317;
-    font-size: 30px;
+    color: #ff6b08;
+    font-size: 25px;
     font-weight: bold;
     letter-spacing: 0.1rem;
     margin: 0 0 25px;
