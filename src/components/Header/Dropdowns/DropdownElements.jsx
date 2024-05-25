@@ -25,7 +25,6 @@ export const DropdownContainer = styled.div`
     z-index: 999;
     display: block;
     backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
 
     @media screen and (width <= 821px) {
         display: flex;
@@ -135,6 +134,9 @@ export const DropdownDesc = styled.p`
 export const DropdownRouterLink = styled(LinkRouter)`
     text-decoration: none;
     color: #f5f5f5;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 
     @media screen and (width <= 821px) {
         display: flex;

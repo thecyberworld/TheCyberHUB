@@ -27,17 +27,17 @@ export const CategoriesSidebarHeaderTitle = styled.h3`
     font-family: "Roboto Mono", monospace;
 `;
 export const CategoriesListContainer = styled.ul`
-    flex: ${(props) => (props.required || props.addMode ? "" : 1)};
+    flex: ${(props) => (props.required || props.$addMode ? "" : 1)};
     margin-bottom: ${(props) => (props.required ? "5px" : "0")};
     display: flex;
     flex-direction: column;
     gap: 5px;
     border: 2px solid #111;
     border-top: 0;
-    border-bottom: ${(props) => (props.addMode ? "0px" : "2px solid #111111")};
+    border-bottom: ${(props) => (props.$addMode ? "0px" : "2px solid #111111")};
     padding: 5px;
     overflow-y: auto;
-    z-index: ${(props) => (props.addMode ? "-100" : 0)};
+    z-index: ${(props) => (props.$addMode ? "-100" : 0)};
 `;
 export const CategoriesListNoFound = styled.h4`
     color: #787878;
@@ -66,7 +66,7 @@ export const CategoryItemElement = styled.li`
     width: 100%;
     padding: 10px;
     gap: 5px;
-    background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
+    background-color: ${(props) => (props.$isPicked ? "#2a2a2a" : "#090909")};
     border: 1px solid #111;
     border-radius: 5px;
     color: #f5f5f5;
@@ -83,7 +83,9 @@ export const CategoryItemElement = styled.li`
 `;
 export const CategoryItemShortTitle = styled.p`
     text-transform: capitalize;
-    font: 15px "Roboto Mono", monospace;
+    font:
+        15px "Roboto Mono",
+        monospace;
     font-weight: 600;
 `;
 
@@ -103,7 +105,9 @@ export const ModifyCategoryModalInput = styled.input`
     outline: none;
     text-transform: capitalize;
     background-color: #090909;
-    font: 16px Poppins, sans-serif;
+    font:
+        16px Poppins,
+        sans-serif;
     line-height: 1;
 `;
 export const ModifyCategoryModalButtons = styled.div`

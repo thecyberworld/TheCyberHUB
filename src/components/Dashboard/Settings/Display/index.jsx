@@ -122,7 +122,7 @@ export default function Login() {
             </div>
             <div className="search-and-add">
                 <div className="group">
-                    <BiSearch className="icon" />
+                    <BiSearch className="icon-team-page" />
                     <input placeholder="Search" type="search" className="input" />
                 </div>
                 <button onClick={handleAddMemberClick} className="button type1">
