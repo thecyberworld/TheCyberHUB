@@ -46,7 +46,7 @@ export { default as UserProfile } from "src/components/Dashboard/Profile/UserPro
 export { default as LearningPath } from "./Resources/LearningPath/LearningPath";
 export { default as CreateBlog } from "./Blogs/ManageBlogs/CreateBlog/CreateBlog";
 export { default as GoalSetter } from "./Dashboard/OldDashbaord/GoalSetter/GoalSetter";
-export { default as UserBlogs } from "./Dashboard/OldDashbaord/Blogs/UserBlogs";
+export { default as UserBlogs } from "./Blogs/UserBlogs.jsx";
 export { default as Blogs } from "./Blogs/Blogs";
 export { default as SingleBlog } from "./Blogs/SingleBlog/SingleBlog";
 export { default as EditBlog } from "./Blogs/ManageBlogs/EditBlog/EditBlog";

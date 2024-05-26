@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Tools from "./Tools";
 import BreachCheck from "./BreachCheck/BreachCheck";
-import SubdomainFinder from "./SubdomainFinder/SubdomainFinder";
 import ReverseShellGenerator from "./ReverseShell/ShellGenerator";
 import { NotFound } from "src/components/index";
 import PassGen from "./PassGen/PassGen";
@@ -16,12 +15,13 @@ const ToolsRoutes = () => {
         <Routes>
             <Route index element={<Tools />} />
             <Route path={"/breachcheck"} element={<BreachCheck />} />
-            <Route path={"/subfinder"} element={<SubdomainFinder />} />
             <Route path={"/revshell"} element={<ReverseShellGenerator />} />
             <Route path={"/passgen"} element={<PassGen />} />
             <Route path={"/encoder"} element={<EncoderMain />} />
+
             <Route path={"/binexploits"} element={<GtfoBin />} />
             <Route path={"/binexploits/:id"} element={<DataPage />} />
+
             <Route path={"/dorking"} element={<Dorking />} />
 
             {/* <Route path={"portScanner"} element={<PortScanner/>}/> */}

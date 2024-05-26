@@ -30,6 +30,14 @@ export const EmailInput = styled.input`
     border-radius: 5px;
     width: 100%;
 
+    &:focus {
+        outline: none;
+    }
+
+    &:hover {
+        background: #1a1c1d;
+    }
+
     @media (width <= 768px) {
         padding-left: 0.5rem;
         min-width: auto;

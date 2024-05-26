@@ -10,6 +10,7 @@ import BlogCards from "src/components/Blogs/BlogCard/BlogCards";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { getFollowData, reset } from "src/features/follow/followSlice";
 import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
+import { getBookmarks } from "src/features/bookmarks/bookmarkSlice.js";
 
 const Blogs = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const Blogs = () => {
         (state) => state.userDetail,
     );
     const { followData } = useSelector((state) => state.followData);
+    const { bookmarks } = useSelector((state) => state.bookmarks);
 
     const userId = user?._id;
 
@@ -33,7 +35,9 @@ const Blogs = () => {
         if (isBlogError) console.log(blogMessage);
         if (isUserDetailError) console.log(userDetailMessage);
         if (userId) dispatch(getFollowData(userId));
+
         dispatch(getAllBlogs());
+        dispatch(getBookmarks());
         dispatch(getAllUserDetails());
 
         return () => {
@@ -105,7 +109,7 @@ const Blogs = () => {
             <BlogsContainer>
                 <BlogsSection>
                     <MiddleContainer>
-                        <BlogCards selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
+                        <BlogCards bookmarks={bookmarks} selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
                     </MiddleContainer>
                     <Sidebar
                         sidebarType={"blogs"}
