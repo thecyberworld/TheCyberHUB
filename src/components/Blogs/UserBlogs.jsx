@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
-import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
-import { AllBlogs, BlogsContainer, MiddleContainer } from "src/components/Blogs/BlogsElements";
-import LoadingBlogCard from "src/components/Blogs/BlogCard/LoadingBlogCard";
-import BlogCard from "src/components/Blogs/BlogCard/BlogCard";
+import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements.jsx";
+import { AllBlogs, BlogsContainer, MiddleContainer } from "src/components/Blogs/BlogsElements.jsx";
+import LoadingBlogCard from "src/components/Blogs/BlogCard/LoadingBlogCard.jsx";
+import BlogCard from "src/components/Blogs/BlogCard/BlogCard.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { getBlogs, blogReset } from "src/features/blogs/blogSlice";
-import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
-import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
-import apiStatus from "src/features/apiStatus";
+import { getBlogs, blogReset } from "src/features/blogs/blogSlice.js";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner.jsx";
+import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance.jsx";
+import apiStatus from "src/features/apiStatus.jsx";
 
 const UserBlogs = () => {
     const { isApiLoading, isApiWorking } = apiStatus();

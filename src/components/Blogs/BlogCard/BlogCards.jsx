@@ -4,7 +4,7 @@ import BlogCard from "./BlogCard";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "src/NotFound";
 
-const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displayAt, selectedTags }) => {
+const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displayAt, selectedTags, bookmarks }) => {
     if (isBlogLoading) return <LoadingSpinner />;
     if (!blogs.length) return <NotFound title="Blogs Not Found" description="There are no blog posts" />;
 
@@ -35,7 +35,7 @@ const BlogCards = ({ blogs, searchTerm, isBlogLoading, blogsBookmarksData, displ
                 ?.slice()
                 .reverse()
                 .map((blog) => (
-                    <BlogCard key={blog?._id} blog={blog} />
+                    <BlogCard key={blog?._id} blog={blog} bookmarks={bookmarks} />
                 ))}
         </AllBlogs>
     ) : null;

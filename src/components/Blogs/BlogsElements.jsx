@@ -24,7 +24,6 @@ export const BlogsSection = styled.div`
 `;
 export const MiddleContainer = styled.div`
     width: 100%;
-    max-width: 1500px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -41,11 +40,13 @@ export const SubContainerTop = styled.div`
 export const AllBlogs = styled(ExploreContentContainer)`
     background-color: ${(props) => (props.$displayAt === "explore" ? "#090909" : "#000000")};
     padding: ${(props) => (props.$displayAt ? "15px" : "0")};
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust this as per your requirement */
+    gap: 15px;
 
     @media screen and (width <= 800px) {
-        grid-auto-rows: 0fr;
-        gap: 15px;
-        padding: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 `;
 

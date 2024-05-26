@@ -62,6 +62,8 @@ const Feeds = () => {
     return (
         <Wrapper style={{ marginTop: "80px" }}>
             <FeedsContainer>
+                <LeftContainer style={{ padding: "25px 0" }}></LeftContainer>
+
                 <MiddleSection>
                     <AddFeed showPostTags={true} userDetails={userDetails} />
                     <FeedPosts

@@ -1,11 +1,12 @@
-// ReactBar.jsx
 import React from "react";
-import { FaHeart, FaComment, FaBookmark, FaShare } from "react-icons/fa";
+import { FaHeart, FaComment, FaShare } from "react-icons/fa";
 import styled from "styled-components";
+import { PostStat, PostStatLabel } from "src/components/Feeds/FeedPosts/FeedPostsElements.jsx";
+import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
+import { Link as ScrollLink } from "react-scroll";
 
-// Styled Components
 const SocialBarContainer = styled.div`
-    color: black;
+    color: #f4f4f4;
     position: fixed;
     bottom: 0;
     width: 20%;
@@ -13,7 +14,7 @@ const SocialBarContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #fff;
+    background-color: #1e1e1e;
     padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 -2px 8px rgb(0 0 0 / 10%);
@@ -31,16 +32,15 @@ const IconContainer = styled.div`
     & svg {
         width: 20px;
         height: 20px;
-        color: #333;
+        color: #d5d5d5;
     }
 
     &:hover svg {
-        color: rgb(255 107 8);
+        color: #ff6b08;
     }
 `;
 
-// React Component
-const ReactBar = () => {
+const ReactBar = ({ handleBookmark, isBookmarked, blog }) => {
     return (
         <SocialBarContainer>
             <IconContainer>
@@ -48,11 +48,15 @@ const ReactBar = () => {
                 <span>10</span>
             </IconContainer>
             <IconContainer>
-                <FaComment />
+                <ScrollLink to={"comments"} smooth={true} duration={500} spy={true} exact="true" offset={-80}>
+                    <FaComment />
+                </ScrollLink>
             </IconContainer>
-            <IconContainer>
-                <FaBookmark />
-            </IconContainer>
+            <PostStat>
+                <PostStatLabel onClick={() => handleBookmark(blog?._id)}>
+                    {isBookmarked(blog?._id) ? <BsBookmarksFill color={"#ff6b08"} /> : <BsBookmarks />}
+                </PostStatLabel>
+            </PostStat>
             <IconContainer>
                 <FaShare />
             </IconContainer>
