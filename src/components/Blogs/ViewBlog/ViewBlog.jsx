@@ -4,7 +4,7 @@ import { encodeURL } from "src/components/Blogs/util";
 import { useDispatch, useSelector } from "react-redux";
 import { blogReset, getAllBlogs } from "src/features/blogs/blogSlice";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-
+import ReactBar from "src/components/Blogs/ReactBarr/ReactBar"; // Ensure this path is correct
 import {
     BlogContent,
     BlogImage,
@@ -180,8 +180,7 @@ const ViewBlog = () => {
                     <BlogComments blogId={blog._id} />
                 </CommentContainer>
             </ContainerViewBlog>
-            {/* <LeftBlogSidebar/> */}
-            {/* </ViewBlogContainer> */}
+            <ReactBar /> {/* Fixed ReactBar component at the bottom */}
         </HelmetProvider>
     );
 };
