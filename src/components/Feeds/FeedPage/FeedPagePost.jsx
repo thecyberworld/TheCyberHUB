@@ -80,7 +80,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                     <ModifyFeed showPostTags={true} editFeed={feed} />
                 ) : (
                     <>
-                        <PostContent>{feed?.content ? feed?.content : feed?.reply}</PostContent>
+                        <PostContent>{feed?.content}</PostContent>
 
                         <ImagesContainer>
                             {feed?.images?.map((image, index) => (

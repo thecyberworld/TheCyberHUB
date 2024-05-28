@@ -78,9 +78,9 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
         return views?.filter((view) => view?.itemId === feedId);
     };
 
-    const feedCommentsData = ({ feedId }) => {
-        return feeds?.filter((feed) => feed._id === feedId).comments;
-    };
+    // const feedCommentsData = ({ feedId }) => {
+    //     return feeds?.filter((feed) => feed._id === feedId).comments;
+    // };
 
     // const [stopRefresh, setStopRefresh] = useState(false);
 
@@ -143,7 +143,7 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
                         key={index}
                         user={user}
                         feed={feed}
-                        comments={feedCommentsData({ feedId: feed._id })}
+                        // comments={feedCommentsData({ feedId: feed._id })}
                         likes={feedLikesData({ feedId: feed._id })}
                         bookmarks={feedUserBookmarksData({ feedId: feed._id })}
                         views={feedViewsData({ feedId: feed._id })}

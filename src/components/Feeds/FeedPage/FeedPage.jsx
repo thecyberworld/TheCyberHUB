@@ -76,7 +76,7 @@ const FeedPage = () => {
         return views?.filter((view) => view.itemId === feedId);
     };
 
-    const feedRepliesData = feeds?.map((reply) => {
+    const feedData = feeds?.map((reply) => {
         const userDetail = userDetails?.find((userDetail) => userDetail?.user === reply?.user);
 
         const { username, avatar, verified } = userDetail || {};
@@ -85,7 +85,15 @@ const FeedPage = () => {
     });
 
     const feedCommentsData = ({ feedId }) => {
-        return feedRepliesData?.filter((reply) => reply?.mainFeedId === feedId && reply?._id !== reply?.mainFeedId);
+        return feedData
+            ?.find((feed) => feed?._id === feedId)
+            .comments.map((reply) => {
+                const userDetail = userDetails?.find((userDetail) => userDetail?.user === reply?.user);
+
+                const { username, avatar, verified } = userDetail || {};
+
+                return { ...reply, username, avatar, verified };
+            });
     };
 
     if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
@@ -115,7 +123,7 @@ const FeedPage = () => {
 
                     <FeedReplies
                         user={user}
-                        replies={feedCommentsData({ feedId })}
+                        replies={feedCommentsData({ feedId: feed._id })}
                         bookmarks={bookmarks}
                         likes={feedLikes}
                         views={views}

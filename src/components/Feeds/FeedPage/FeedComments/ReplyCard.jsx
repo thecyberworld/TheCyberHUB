@@ -47,7 +47,7 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                         )}
                     </RightHeaderSection>
                 </PostHeader>
-                <PostContent>{reply?.reply}</PostContent>
+                <PostContent>{reply?.content}</PostContent>
                 {/* </RouteLink> */}
 
                 <PostActionsAndStats

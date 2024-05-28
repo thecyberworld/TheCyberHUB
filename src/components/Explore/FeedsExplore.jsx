@@ -62,7 +62,7 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     };
 
     const feedCommentsData = ({ feedId }) => {
-        return feeds?.filter((feed) => feed._id === feedId).comments;
+        return feeds?.find((feed) => feed._id === feedId).comments;
     };
 
     return (
