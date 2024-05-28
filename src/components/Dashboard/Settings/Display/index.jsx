@@ -1,6 +1,29 @@
 import React, { useState } from "react";
-import { BiEdit, BiSearch, BiTrashAlt } from "react-icons/bi";
-import "./display.css";
+import {
+    Section,
+    TeamName,
+    TeamNameContainer,
+    TeamNameHeading,
+    TeamNameInput,
+    EditIcon,
+    OwnerContainer,
+    OwnerLabel,
+    OwnerNames,
+    OwnerNameContainer,
+    SearchAndAdd,
+    Group,
+    Input,
+    Icon,
+    AddMemberButton,
+    BtnTxt,
+    MembersTable,
+    TableHeader,
+    TableRow,
+    DeleteIcon,
+    TeamOwner,
+    AddOwnerButton,
+    Form,
+} from "./displayComponents.jsx";
 
 export default function Login() {
     const [editing, setEditing] = useState(false);
@@ -61,7 +84,7 @@ export default function Login() {
         event.preventDefault();
         setMembers([...members, newMember]);
         setNewMember({ name: "", email: "", activity: "", role: "" });
-        setShowForm(false); // Hide the form after submitting
+        setShowForm(false);
     };
 
     const handleInputChange = (event) => {
@@ -69,38 +92,24 @@ export default function Login() {
     };
 
     return (
-        <section className="section">
-            <div className="team-name">
+        <Section>
+            <TeamName>
                 {editing ? (
-                    <input
-                        type="text"
-                        value={newTeamName}
-                        onChange={handleChange}
-                        autoFocus
-                        className="team-name-input"
-                    />
+                    <TeamNameInput type="text" value={newTeamName} onChange={handleChange} autoFocus />
                 ) : (
-                    <>
-                        <div className="team-name-container">
-                            <h2 className="team-name-heading">{teamName}</h2>
-                            <BiEdit className="edit-icon" onClick={handleEdit} />
-                        </div>
-                    </>
+                    <TeamNameContainer>
+                        <TeamNameHeading>{teamName}</TeamNameHeading>
+                        <EditIcon onClick={handleEdit} />
+                    </TeamNameContainer>
                 )}
-                {editing && (
-                    <button className="save-button" onClick={handleSave}>
-                        Save
-                    </button>
-                )}
-            </div>
-            <div className="owner-container">
-                <div className="owner-label">
-                    <div className="team-owner">Team Owner: </div>
-                    <button className="add-owner-button" onClick={handleAddOwnerClick}>
-                        +
-                    </button>
+                {editing && <button onClick={handleSave}>Save</button>}
+            </TeamName>
+            <OwnerContainer>
+                <OwnerLabel>
+                    <TeamOwner>Team Owner: </TeamOwner>
+                    <AddOwnerButton onClick={handleAddOwnerClick}>+</AddOwnerButton>
                     {showOwnerForm && (
-                        <form onSubmit={handleAddOwner}>
+                        <Form onSubmit={handleAddOwner}>
                             <input
                                 name="owner"
                                 value={newOwner}
@@ -109,27 +118,25 @@ export default function Login() {
                                 required
                             />
                             <button type="submit">Add owner</button>
-                        </form>
+                        </Form>
                     )}
-                </div>
-                <div className="owner-names">
+                </OwnerLabel>
+                <OwnerNames>
                     {teamOwners.map((owner, index) => (
-                        <div key={index} className="owner-name-container">
-                            {owner}
-                        </div>
+                        <OwnerNameContainer key={index}>{owner}</OwnerNameContainer>
                     ))}
-                </div>
-            </div>
-            <div className="search-and-add">
-                <div className="group">
-                    <BiSearch className="icon" />
-                    <input placeholder="Search" type="search" className="input" />
-                </div>
-                <button onClick={handleAddMemberClick} className="button type1">
-                    <span className="btn-txt">+ Add Member</span>
-                </button>
+                </OwnerNames>
+            </OwnerContainer>
+            <SearchAndAdd>
+                <Group>
+                    <Icon />
+                    <Input placeholder="Search" type="search" />
+                </Group>
+                <AddMemberButton onClick={handleAddMemberClick} className="button type1">
+                    <BtnTxt>+ Add Member</BtnTxt>
+                </AddMemberButton>
                 {showForm && (
-                    <form onSubmit={handleAddMember}>
+                    <Form onSubmit={handleAddMember}>
                         <input
                             name="name"
                             value={newMember.name}
@@ -159,35 +166,33 @@ export default function Login() {
                             required
                         />
                         <button type="submit">Submit</button>
-                    </form>
+                    </Form>
                 )}
-            </div>
-            <div className="members-list">
-                <table className="members-table">
-                    <thead>
-                        <tr className="table-header">
-                            <th>Member Name</th>
-                            <th>Email</th>
-                            <th>Last Activity</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {members.map((member, index) => (
-                            <tr key={index}>
-                                <td>{member.name}</td>
-                                <td>{member.email}</td>
-                                <td>{member.activity}</td>
-                                <td>{member.role}</td>
-                                <td>
-                                    <BiTrashAlt className="delete-icon" onClick={() => handleDelete(index)} />
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        </section>
+            </SearchAndAdd>
+            <MembersTable>
+                <thead>
+                    <TableHeader>
+                        <th>Member Name</th>
+                        <th>Email</th>
+                        <th>Last Activity</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </TableHeader>
+                </thead>
+                <tbody>
+                    {members.map((member, index) => (
+                        <TableRow key={index}>
+                            <td>{member.name}</td>
+                            <td>{member.email}</td>
+                            <td>{member.activity}</td>
+                            <td>{member.role}</td>
+                            <td>
+                                <DeleteIcon onClick={() => handleDelete(index)} />
+                            </td>
+                        </TableRow>
+                    ))}
+                </tbody>
+            </MembersTable>
+        </Section>
     );
 }
