@@ -8,7 +8,6 @@ import ScrollToTop from "./components/Other/ScrollToTop";
 import {
     About,
     Community,
-    CreateBlog,
     // CyberGames,
     Footer,
     InterviewQuestions,
@@ -72,6 +71,7 @@ import ResetPassword from "src/pages/ResetPassword";
 import Register from "src/pages/Register";
 // import CyberNews from "./components/Resources/CyberNews/CyberNews";
 import ChatBox from "src/components/Chat/ChatBox/ChatBox";
+import CheatSheetsRoutes from "src/components/CheatSheets/CheatSheetsRoutes.jsx";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -153,7 +153,6 @@ const App = () => {
                         <Route path={"/explore/*"} element={<ExploreRoutes />} />
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
                         <Route path={"/blogs/*"} element={<BlogsRoute />} />
-                        <Route exact path={"/blogs/create-blog"} element={<CreateBlog />} />
 
                         <Route path={"/forum/*"} element={<ForumRoute />} />
 
@@ -170,7 +169,7 @@ const App = () => {
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
-                        {/* <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} /> */}
+                        <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
                         <Route exact path={"/victimhelp"} element={<VictimHelp />} />
 

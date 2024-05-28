@@ -5,7 +5,6 @@ import { BsTrophyFill } from "react-icons/bs";
 
 export const DropdownIcon = styled(AiFillCaretDown)`
     margin: 2px 0 0 5px;
-    transform: ${(props) => props.clicked};
 `;
 
 export const Nav = styled.nav`

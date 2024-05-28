@@ -4,6 +4,7 @@ import { encodeURL } from "src/components/Blogs/util";
 import { useDispatch, useSelector } from "react-redux";
 import { blogReset, getAllBlogs } from "src/features/blogs/blogSlice";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import ReactBar from "src/components/Blogs/ReactBarr/ReactBar"; // Ensure this path is correct
 
 import {
     BlogContent,
@@ -34,6 +35,7 @@ import { blogCommentReset, getBlogComments } from "src/features/blogs/blogCommen
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { RouterLink } from "src/components/Tools/ToolsElements";
 import DOMPurify from "dompurify";
+import { addBookmark, getBookmarks, removeBookmark } from "src/features/bookmarks/bookmarkSlice.js";
 const ViewBlog = () => {
     const dispatch = useDispatch();
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -43,8 +45,8 @@ const ViewBlog = () => {
     const { userDetails, isUserDetailLoading, isUserDetailError, userDetailMessage } = useSelector(
         (state) => state.userDetail,
     );
-
-    // const {user} = useSelector(state => state.auth);
+    const { bookmarks } = useSelector((state) => state.bookmarks);
+    const { user } = useSelector((state) => state.auth);
 
     useEffect(() => {
         if (isBlogError) console.log(blogMessage);
@@ -53,6 +55,7 @@ const ViewBlog = () => {
         dispatch(getAllBlogs());
         dispatch(getBlogComments());
         dispatch(getAllUserDetails());
+        dispatch(getBookmarks());
 
         return () => {
             dispatch(blogReset());
@@ -70,6 +73,7 @@ const ViewBlog = () => {
     }
 
     if (!isApiWorking) return <UnderMaintenance />;
+    const userId = user?._id;
 
     const blogsData = blogs.map((blog) => {
         const userDetail = userDetails?.find((user) => user.user === blog.user);
@@ -136,6 +140,25 @@ const ViewBlog = () => {
     const blogCommentsData = blogsCommentsData.filter((comment) => comment.blogId === blog?._id);
 
     const purifiedCode = DOMPurify.sanitize(filterContent);
+
+    const isBookmarked = () => {
+        return bookmarks?.some((bookmark) => bookmark.user === userId && bookmark.itemId === blog?._id);
+    };
+
+    const itemType = "blog";
+
+    const handleBookmark = (_id) => {
+        // if (!user) {
+        //     setShowAuthPopup(true);
+        //     // setStopRefresh && setStopRefresh(true);
+        //     return;
+        // }
+        if (isBookmarked(_id)) {
+            dispatch(removeBookmark({ itemType, itemId: _id }));
+        } else {
+            dispatch(addBookmark({ itemType, itemId: _id }));
+        }
+    };
     return (
         <HelmetProvider>
             <Helmet>
@@ -148,6 +171,7 @@ const ViewBlog = () => {
             <ContainerViewBlog>
                 <ViewBlogHeader>
                     {/* <Tag> {blog?.category} </Tag> */}
+
                     <BlogImageContainer>
                         <BlogImage src={coverImageUrl} alt={""} />
                         <BlogTitle> {blog?.title} </BlogTitle>
@@ -174,7 +198,7 @@ const ViewBlog = () => {
 
                 {/* <PostActionsAndStats post={blog} user={user} itemType={"blog"}/> */}
 
-                <CommentContainer>
+                <CommentContainer id={"comments"}>
                     {/* <BlogComments blog={blog} isBlogError={isBlogError} blogMessage={blogMessage} /> */}
                     <ViewComments comments={blogCommentsData} />
                     <BlogComments blogId={blog._id} />
@@ -182,6 +206,8 @@ const ViewBlog = () => {
             </ContainerViewBlog>
             {/* <LeftBlogSidebar/> */}
             {/* </ViewBlogContainer> */}
+            <ReactBar blog={blog} isBookmarked={isBookmarked} handleBookmark={handleBookmark} />{" "}
+            {/* Fixed ReactBar component at the bottom */}
         </HelmetProvider>
     );
 };

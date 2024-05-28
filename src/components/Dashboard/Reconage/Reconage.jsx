@@ -6,20 +6,20 @@ import {
     CopyButtonSection,
     DownloadButton,
     Form,
-    Input,
     SubdomainFinderSpinner,
     SubdomainItem,
     SubdomainLink,
     SubdomainList,
     Title,
-} from "./SubdomainFinderElements";
+} from "src/components/Tools/SubdomainFinder/SubdomainFinderElements.jsx";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { CircleSpinner } from "react-spinners-kit";
 import apiStatus from "src/features/apiStatus";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import { RiEarthFill } from "react-icons/ri";
+import { Input } from "src/components/Blogs/BlogComments/AddCommentFormElements.jsx";
 
-const SubdomainFinder = () => {
+const Reconage = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
     const [domainName, setDomainName] = useState("");
     const [subdomains, setSubdomains] = useState([]);
@@ -41,7 +41,7 @@ const SubdomainFinder = () => {
             return;
         }
         try {
-            const response = await axios.get(`http://localhost:5000/api/subdomains?domain=${domainName}`);
+            const response = await axios.get(`http://localhost:5001/api/subdomains?domain=${domainName}`);
             setSubdomains(response?.data?.subdomains);
             setIsLoading(false);
         } catch (error) {
@@ -52,7 +52,7 @@ const SubdomainFinder = () => {
     };
 
     const handleCopyToClipboard = (subdomains) => {
-        const subdomainsText = subdomains.join("\n");
+        const subdomainsText = subdomains?.join("\n");
         navigator.clipboard
             .writeText(subdomainsText)
             .then(() => {
@@ -67,7 +67,7 @@ const SubdomainFinder = () => {
     };
 
     const handleDownloadTxtFile = () => {
-        const subdomainsText = subdomains.join("\n");
+        const subdomainsText = subdomains?.join("\n");
         const element = document.createElement("a");
         const file = new Blob([subdomainsText], { type: "text/plain" });
         element.href = URL.createObjectURL(file);
@@ -116,16 +116,16 @@ const SubdomainFinder = () => {
 
                 {isError && <SubdomainList>{errorMessage}</SubdomainList>}
 
-                {subdomains.length > 0 && (
+                {subdomains?.length > 0 && (
                     <SubdomainList>
-                        {subdomains.length} subdomains found for {domainName}
+                        {subdomains?.length} subdomains found for {domainName}
                         <CopyButtonSection>
                             {isDownloaded && <p>Downloaded!</p>}
                             {isCopied && <p>Copied!</p>}
                             <DownloadButton onClick={handleDownloadTxtFile} />
                             <CopyButton onClick={() => handleCopyToClipboard(subdomains)} />
                         </CopyButtonSection>
-                        {subdomains.map((subdomain, index) => (
+                        {subdomains?.map((subdomain, index) => (
                             <SubdomainItem key={index}>
                                 <SubdomainLink
                                     href={subdomain.includes("http") ? subdomain : `http://${subdomain}`}
@@ -142,4 +142,4 @@ const SubdomainFinder = () => {
     );
 };
 
-export default SubdomainFinder;
+export default Reconage;

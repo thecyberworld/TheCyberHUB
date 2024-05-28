@@ -1,15 +1,14 @@
 import React from "react";
 import {
     BiHomeCircleIcon,
-    BiLogoAlgoliaIcon,
     BiChatIcon,
-    CgOpenCollectiveIcon,
     PiNotebookDuotoneIcon,
     MdAnalyticsIcon,
-    BiLogoBloggerIcon,
     BiBookmarksIcon,
+    BsClipboardCheckIcon,
 } from "./DashbaordSidebarElements";
 import GeneralDashboardSidebar from "src/components/Common/GeneralDashboardSidebar";
+import { GiTridentShield } from "react-icons/gi";
 
 const DashboardSidebar = ({ userDetail }) => {
     const sidebarItems = [
@@ -17,12 +16,9 @@ const DashboardSidebar = ({ userDetail }) => {
         { to: "/dashboard/analytics", icon: <MdAnalyticsIcon />, label: "Analytics" },
         { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Chat" },
         { to: "/dashboard/notes", icon: <PiNotebookDuotoneIcon />, label: "Notes" },
-        { to: "/dashboard/goals", icon: <BiLogoAlgoliaIcon />, label: "Goals" },
-        { to: "/dashboard/tools", icon: <CgOpenCollectiveIcon />, label: "Tools" },
-        { to: "/dashboard/blogs", icon: <BiLogoBloggerIcon />, label: "User Blogs" },
-        { to: "/dashboard/bookmarks", icon: <BiBookmarksIcon />, label: "Bookmarks" },
-        // { to: "/dashboard/tasks", icon: <BsClipboardCheckIcon  />, label: "Tasks" },
-        // { to: "/settings/profile", icon: <CiSettingsIcon />, label: "Settings" },
+        { to: "/dashboard/tasks", icon: <BsClipboardCheckIcon />, label: "Tasks" },
+        { to: "/dashboard/reconage", icon: <GiTridentShield size={30} />, label: "Reconage" },
+        { to: "/dashboard/saved", icon: <BiBookmarksIcon />, label: "Saved" },
     ];
 
     return <GeneralDashboardSidebar userDetail={userDetail} sidebarItems={sidebarItems} />;

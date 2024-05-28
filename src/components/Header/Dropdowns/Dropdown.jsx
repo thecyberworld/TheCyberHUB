@@ -55,7 +55,7 @@ export default function Dropdown({
         { title: "Roadmap", to: "/roadmaps", desc: "Guide to becoming a cybersecurity professional" },
         { title: "Interview Questions", to: "/interviewQuestions", desc: "Prepare for your interview" },
         { title: "Quiz", to: "/quiz", desc: "Test your knowledge" },
-        // { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
+        { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
         { title: "Tools", to: "tools", desc: "Tools for your hacking needs" },
         { title: "Community", to: "/community", desc: "Join our community" },
         { title: "Methodology", to: "/resources/methodology", desc: "Test your knowledge" },

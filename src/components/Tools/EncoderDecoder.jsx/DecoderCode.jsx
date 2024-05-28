@@ -42,14 +42,10 @@ export default function Decode(props) {
 
     return (
         <div>
-            <h1>Base64 Decode</h1>
-            <CodeContainer>{DecodeBase64()}</CodeContainer>
-            <h1>Url Decode</h1>
-            <CodeContainer>{UrlDecode(props.Input)}</CodeContainer>
-            <h1>HTML Decode</h1>
-            <CodeContainer>{htmlDecode(props.Input)}</CodeContainer>
-            <h1>ASCII HEX Decode</h1>
-            <CodeContainer>{hexDecode(props.Input)}</CodeContainer>
+            <CodeContainer text={DecodeBase64()} title={"Base64 Decode"} />
+            <CodeContainer text={UrlDecode(props.Input)} title={"Url Decode"} />
+            <CodeContainer text={htmlDecode(props.Input)} title={"HTML Decode"} />
+            <CodeContainer text={hexDecode(props.Input)} title={"ASCII HEX Decode"} />
         </div>
     );
 }

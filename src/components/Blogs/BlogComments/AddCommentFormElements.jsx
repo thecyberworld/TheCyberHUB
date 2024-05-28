@@ -13,7 +13,6 @@ export const AddCommentFormContainer = styled.div`
     overflow-y: auto;
     box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
     color: #f5f5f5;
-    border: 1px solid rgb(65 65 65);
     background: transparent;
 `;
 
@@ -35,7 +34,7 @@ export const Input = styled.input`
     border-radius: 5px;
     background: #262525;
     border: transparent;
-    color: #f5f5f5;
+    color: #c6c6c6;
     width: 100%;
     height: 50px;
     font-size: 15px;
@@ -47,7 +46,10 @@ export const Input = styled.input`
     }
 
     &:hover {
-        border: 1px solid #aaa;
+        background: #292828;
+        border: transparent;
+        color: #ddd;
+        outline: none;
     }
 
     &::placeholder {
