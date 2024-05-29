@@ -66,11 +66,11 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                                 </LeftSection>
                                 <RightHeaderSection>
                                     <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                                    {user && user._id === feed.user && (
+                                    {user?._id === feed.user && (
                                         <Options
                                             onDelete={handleDeleteFeed}
                                             onEdit={handleEditFeed}
-                                            modalContainerId={"feed-post-options-container-" + feed._id}
+                                            modalContainerId={`feed-post-options-container-${feed._id}`}
                                         />
                                     )}
                                 </RightHeaderSection>

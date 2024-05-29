@@ -45,7 +45,7 @@ export const OptionsOverlay = styled.div`
     position: fixed;
     inset: 0;
     background-color: rgb(0 0 0 / 20%);
-    z-index: 100;
+    z-index: 70;
     cursor: default;
 `;
 export const OptionsModalContainer = styled.div`
@@ -57,5 +57,5 @@ export const OptionsModalContainer = styled.div`
     border: 1px #3d3d3d solid;
     box-shadow: 2px 2px 10px #333;
     padding: 20px 0;
-    z-index: 1000;
+    z-index: 100;
 `;

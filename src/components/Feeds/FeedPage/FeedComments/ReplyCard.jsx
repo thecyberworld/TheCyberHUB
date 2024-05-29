@@ -49,11 +49,11 @@ const ReplyCard = ({ reply, user, comments, likes, bookmarks, views, displayAt, 
                         </LeftSection>
                         <RightHeaderSection>
                             <PostTimestamp>{dateFormatter({ date: new Date(reply?.createdAt) })}</PostTimestamp>
-                            {user && user._id === reply.user && (
+                            {user?._id === reply.user && (
                                 <Options
                                     onDelete={handleCommentDelete}
                                     onEdit={handleEditFeed}
-                                    modalContainerId={"reply-card-options-container-" + reply._id}
+                                    modalContainerId={`reply-card-options-container-${reply._id}`}
                                 />
                             )}
                         </RightHeaderSection>
