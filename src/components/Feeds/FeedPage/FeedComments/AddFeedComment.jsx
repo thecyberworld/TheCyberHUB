@@ -25,7 +25,7 @@ const AddFeedComment = ({ feedId, userDetails }) => {
         }
 
         const replyData = { content };
-        dispatch(createFeed({ feedData: replyData, mainFeedId: feedId }));
+        dispatch(createFeed({ feedData: replyData, parentId: feedId }));
         setAddReply({ content: "" });
     };
 

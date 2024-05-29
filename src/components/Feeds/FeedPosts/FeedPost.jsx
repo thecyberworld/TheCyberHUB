@@ -19,7 +19,7 @@ import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import Options from "src/components/Common/ModalOptions";
-import { deleteFeed } from "src/features/feeds/feedsSlice";
+import { deleteFeed, updateFeed } from "src/features/feeds/feedsSlice";
 import { useDispatch } from "react-redux";
 import ModifyFeed from "src/components/Feeds/PostForm/ModifyFeed";
 
@@ -33,7 +33,9 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
     const handleEditFeed = () => {
         setEditMode(true);
     };
-
+    const handleSaveEditedFeed = (data) => {
+        dispatch(updateFeed({ id: feed?._id, feedData: data }));
+    };
     return (
         <FeedPostContainer $displayAt={displayAt}>
             <RightSection>
@@ -49,7 +51,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                                 <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
                             </RightHeaderSection>
                         </PostHeader>
-                        <ModifyFeed showPostTags={true} editFeed={feed} />
+                        <ModifyFeed showPostTags={true} editFeed={feed} onModifyFeed={handleSaveEditedFeed} />
                     </>
                 )}
 

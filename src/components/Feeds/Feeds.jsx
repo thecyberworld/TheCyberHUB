@@ -4,7 +4,7 @@ import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import ModifyFeed from "./PostForm/ModifyFeed";
 import FeedPosts from "./FeedPosts/FeedPosts";
 import { useDispatch, useSelector } from "react-redux";
-import { feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
+import { createFeed, feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
@@ -59,6 +59,10 @@ const Feeds = () => {
 
     if (!isApiWorking) return <UnderMaintenance />;
 
+    const handleSaveCreatedFeed = (data) => {
+        dispatch(createFeed({ feedData: data }));
+    };
+
     return (
         <Wrapper style={{ marginTop: "80px" }}>
             <FeedsContainer>
@@ -66,7 +70,11 @@ const Feeds = () => {
 
                 <MiddleSection>
                     <ModifyFeedContainer>
-                        <ModifyFeed showPostTags={true} userDetails={userDetails} />
+                        <ModifyFeed
+                            showPostTags={true}
+                            userDetails={userDetails}
+                            onModifyFeed={handleSaveCreatedFeed}
+                        />
                     </ModifyFeedContainer>
                     <FeedPosts
                         searchTerm={searchTerm}

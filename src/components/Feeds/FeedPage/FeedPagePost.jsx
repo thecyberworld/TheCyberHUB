@@ -24,7 +24,7 @@ import { ImageContainer, ImagesContainer, FeedImage } from "src/components/Feeds
 import { IconVerified } from "src/components/Explore/Users/UsersElements";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import Options from "src/components/Common/ModalOptions";
-import { deleteFeed } from "src/features/feeds/feedsSlice";
+import { deleteFeed, updateFeed } from "src/features/feeds/feedsSlice";
 import ModifyFeed from "src/components/Feeds/PostForm/ModifyFeed";
 
 const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFeedView }) => {
@@ -46,6 +46,9 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
     };
     const handleEditFeed = () => {
         setEditMode(true);
+    };
+    const handleSaveEditedFeed = (data) => {
+        dispatch(updateFeed({ id: feed?._id, feedData: data }));
     };
     return (
         <FeedPostContainer>
@@ -77,7 +80,7 @@ const FeedPagePost = ({ feed, user, comments, likes, bookmarks, views, updateFee
                     </RightHeaderSection>
                 </PostHeader>
                 {editMode ? (
-                    <ModifyFeed showPostTags={true} editFeed={feed} />
+                    <ModifyFeed showPostTags={true} editFeed={feed} onModifyFeed={handleSaveEditedFeed} />
                 ) : (
                     <>
                         <PostContent>{feed?.content}</PostContent>

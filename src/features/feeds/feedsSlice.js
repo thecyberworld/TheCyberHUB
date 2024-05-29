@@ -10,10 +10,10 @@ const initialState = {
 };
 
 // Create new feed
-export const createFeed = createAsyncThunk("feed/create", async ({ feedData, mainFeedId = "" }, thunkAPI) => {
+export const createFeed = createAsyncThunk("feed/create", async ({ feedData, parentId = "" }, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
-        return await feedsService.createFeed(feedData, token, mainFeedId);
+        return await feedsService.createFeed(feedData, token, parentId);
     } catch (error) {
         const message =
             (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -56,6 +56,17 @@ export const getAllFeeds = createAsyncThunk("feed/getAllFeeds", async (_, thunkA
     }
 });
 
+export const getFeedLineage = createAsyncThunk("feed/getFeedLineage", async (feedId, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+        return await feedsService.getFeedLineage(feedId, token);
+    } catch (error) {
+        const message =
+            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 // Delete user feed
 export const deleteFeed = createAsyncThunk("feed/delete", async (id, thunkAPI) => {
     try {
@@ -83,12 +94,11 @@ export const feedsSlice = createSlice({
                 state.isFeedSuccess = true;
                 state.isFeedLoading = false;
                 state.isFeedError = false;
-                const mainFeedId = action.payload.mainFeedId;
-                if (mainFeedId) {
-                    const mainFeedIndex = state.feeds.findIndex((feed) => feed._id === mainFeedId);
-                    state.feeds[mainFeedIndex].comments.push(action.payload);
-                } else {
+                if (action.payload && !action.payload.parentId) {
                     state.feeds.push(action.payload);
+                } else {
+                    const feedIndex = state.feeds.findIndex((feed) => feed._id === action.payload?.parentId);
+                    state.feeds[feedIndex].descendants.push(action.payload);
                 }
             })
             .addCase(createFeed.rejected, (state, action) => {
@@ -103,9 +113,14 @@ export const feedsSlice = createSlice({
             .addCase(updateFeed.fulfilled, (state, action) => {
                 state.isFeedLoading = false;
                 state.isFeedSuccess = true;
-                state.feeds = state.feeds.map((feed) =>
-                    feed._id === action.payload._id ? { ...feed, ...action.payload } : feed,
-                );
+                state.feeds = state.feeds.map((feed) => {
+                    if (feed._id === action.payload._id) {
+                        return { ...feed, ...action.payload };
+                    } else if (feed._id === action.payload.parentId) {
+                        feed.descendants = [...feed.descendants, action.payload];
+                    }
+                    return feed;
+                });
             })
             .addCase(updateFeed.rejected, (state, action) => {
                 state.isFeedLoading = false;
@@ -138,13 +153,39 @@ export const feedsSlice = createSlice({
                 state.isError = true;
                 state.feedMessage = action.payload;
             })
+            .addCase(getFeedLineage.pending, (state) => {
+                state.isFeedLoading = true;
+            })
+            .addCase(getFeedLineage.fulfilled, (state, action) => {
+                state.isFeedLoading = false;
+                state.isFeedSuccess = true;
+                const feedIndex = state.feeds.findIndex((feed) => feed._id === action.payload?._id);
+
+                if (feedIndex === -1) {
+                    state.feeds.push(action.payload);
+                } else {
+                    state.feeds[feedIndex] = action.payload;
+                }
+            })
+            .addCase(getFeedLineage.rejected, (state, action) => {
+                state.isFeedLoading = false;
+                state.isError = true;
+                state.feedMessage = action.payload;
+            })
             .addCase(deleteFeed.pending, (state) => {
                 state.isFeedLoading = true;
             })
             .addCase(deleteFeed.fulfilled, (state, action) => {
                 state.isFeedLoading = false;
                 state.isFeedSuccess = true;
-                state.feeds = state.feeds.filter((feed) => feed._id !== action.payload.id);
+                state.feeds = state.feeds.map((feed) => {
+                    if (feed._id === action.payload._id) {
+                        return {};
+                    } else if (feed._id === action.payload.parentId) {
+                        feed.descendants.filter((item) => item._id !== action.payload._id);
+                    }
+                    return feed;
+                });
             })
             .addCase(deleteFeed.rejected, (state, action) => {
                 state.isFeedLoading = false;

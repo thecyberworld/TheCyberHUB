@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
+import { createFeed, feedReset, getFeedLineage } from "src/features/feeds/feedsSlice";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
-import AddFeedComment from "./FeedComments/AddFeedComment";
+import ModifyFeed from "src/components/Feeds/PostForm/ModifyFeed";
 
 import { FeedContentSection, FeedPageContainer } from "./FeedPageElements";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
@@ -16,6 +16,7 @@ import FeedReplies from "./FeedComments/FeedComments";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "src/features/apiStatus";
+import { ModifyFeedContainer } from "src/components/Feeds/FeedsElements";
 
 const FeedPage = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -37,18 +38,18 @@ const FeedPage = () => {
         if (isUserDetailError) console.log(userDetailMessage);
         if (isFeedLikeError) console.log(feedLikeMessage);
 
-        dispatch(getAllFeeds());
         dispatch(getAllUserDetails());
         dispatch(getFeedLikes());
         dispatch(getBookmarks());
         dispatch(getViews());
+        dispatch(getFeedLineage(feedId));
 
         return () => {
             dispatch(feedReset());
             dispatch(userDetailReset());
             dispatch(FeedLikeReset());
         };
-    }, [dispatch]);
+    }, [feedId, dispatch]);
 
     const feed = feeds?.find((feed) => feed?._id === feedId);
 
@@ -76,25 +77,13 @@ const FeedPage = () => {
         return views?.filter((view) => view.itemId === feedId);
     };
 
-    const feedData = feeds?.map((reply) => {
+    const feedData = feed?.descendants?.map((reply) => {
         const userDetail = userDetails?.find((userDetail) => userDetail?.user === reply?.user);
 
         const { username, avatar, verified } = userDetail || {};
 
         return { ...reply, username, avatar, verified };
     });
-
-    const feedCommentsData = ({ feedId }) => {
-        return feedData
-            ?.find((feed) => feed?._id === feedId)
-            .comments.map((reply) => {
-                const userDetail = userDetails?.find((userDetail) => userDetail?.user === reply?.user);
-
-                const { username, avatar, verified } = userDetail || {};
-
-                return { ...reply, username, avatar, verified };
-            });
-    };
 
     if (isApiLoading || isUserDetailLoading || isFeedLoading) return <LoadingSpinner />;
 
@@ -103,6 +92,10 @@ const FeedPage = () => {
     if (!feed) {
         return <p>Feed not found</p>;
     }
+
+    const handleSaveCreatedFeed = (data) => {
+        dispatch(createFeed({ feedData: data, parentId: feedId }));
+    };
 
     return (
         <Wrapper style={{ margin: "80px auto" }}>
@@ -114,16 +107,22 @@ const FeedPage = () => {
                         likes={feedLikesData({ feedId: feed._id })}
                         bookmarks={feedUserBookmarksData({ feedId: feed._id })}
                         views={feedViewsData({ feedId: feed._id })}
-                        comments={feedCommentsData({ feedId: feed._id })}
+                        comments={feedData || []}
                         isFeedLikeLoading={isFeedLikeLoading}
                         updateFeedView={true}
                     />
-
-                    <AddFeedComment feedId={feedId} userDetails={userDetails} />
+                    {/* <AddFeedComment feedId={feedId} userDetails={userDetails} /> */}
+                    <ModifyFeedContainer>
+                        <ModifyFeed
+                            showPostTags={true}
+                            userDetails={userDetails}
+                            onModifyFeed={handleSaveCreatedFeed}
+                        />
+                    </ModifyFeedContainer>
 
                     <FeedReplies
                         user={user}
-                        replies={feedCommentsData({ feedId: feed._id })}
+                        replies={feedData || []}
                         bookmarks={bookmarks}
                         likes={feedLikes}
                         views={views}

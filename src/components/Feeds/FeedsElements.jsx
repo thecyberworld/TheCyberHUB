@@ -22,6 +22,7 @@ export const MiddleSection = styled.div`
 `;
 export const ModifyFeedContainer = styled.div`
     padding: 15px;
+    width: 100%;
 `;
 export const FilterButton = styled.button`
     font-size: 15px;

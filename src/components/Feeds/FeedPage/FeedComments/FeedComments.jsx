@@ -8,7 +8,6 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, updateFeedView }
     const feedViewsData = ({ feedId }) => {
         return views?.filter((view) => view.itemId === feedId);
     };
-
     const feedUserBookmarksData = ({ feedId }) => {
         return bookmarks?.length > 0
             ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
@@ -23,7 +22,7 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, updateFeedView }
     return (
         <>
             {replies
-                .slice()
+                ?.slice()
                 .reverse()
                 .map((reply, id) => (
                     <ReplyCard

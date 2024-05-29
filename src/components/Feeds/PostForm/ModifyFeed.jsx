@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import AddPostTags from "./AddPostTags/AddPostTags";
 import {
@@ -18,11 +18,9 @@ import { ImageUploadLabel } from "src/components/Blogs/ManageBlogs/CreateBlog/Cr
 import { cdnContentImagesUrl, getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { CircleSpinner } from "react-spinners-kit";
-import { createFeed, updateFeed } from "src/features/feeds/feedsSlice";
 import { toast } from "react-toastify";
 
-const ModifyPost = ({ showPostTags, userDetails, editFeed = "" }) => {
-    const dispatch = useDispatch();
+const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
     const textareaRef = useRef(null);
     const imageInputRef = useRef(null);
 
@@ -134,11 +132,7 @@ const ModifyPost = ({ showPostTags, userDetails, editFeed = "" }) => {
                 tags,
                 images: feedImages,
             };
-            if (editFeed) {
-                dispatch(updateFeed({ id: editFeed?._id, feedData: data }));
-            } else {
-                dispatch(createFeed({ feedData: data }));
-            }
+            onModifyFeed(data);
 
             toast.success("Feed posted successfully");
 
