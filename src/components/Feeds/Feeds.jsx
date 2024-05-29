@@ -44,8 +44,8 @@ const Feeds = () => {
         setSearchTerm(event.target.value);
     };
 
-    const feedTags = feeds?.map((feed) => feed && feed?.tags.map((tag) => tag.toLowerCase())).flat() || [];
-    const uniqueFeedTags = [...new Set(feedTags)];
+    const feedTags = feeds?.map((feed) => feed && feed?.tags?.map((tag) => tag.toLowerCase())).flat() || [];
+    const uniqueFeedTags = feedTags.length ? [...new Set(feedTags)] : [];
 
     const combinedData = feeds?.map((feed) => {
         const userDetail = userDetails?.find((user) => user?.user === feed?.user);

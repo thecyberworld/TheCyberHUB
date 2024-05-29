@@ -129,7 +129,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
 
             const data = {
                 content,
-                tags,
+                tags: tags || [],
                 images: feedImages,
             };
             onModifyFeed(data);

@@ -117,7 +117,8 @@ export const feedsSlice = createSlice({
                     if (feed._id === action.payload._id) {
                         return { ...feed, ...action.payload };
                     } else if (feed._id === action.payload.parentId) {
-                        feed.descendants = [...feed.descendants, action.payload];
+                        const findIndex = feed.descendants.findIndex((item) => item._id === action.payload._id);
+                        feed.descendants[findIndex] = action.payload;
                     }
                     return feed;
                 });
@@ -178,14 +179,14 @@ export const feedsSlice = createSlice({
             .addCase(deleteFeed.fulfilled, (state, action) => {
                 state.isFeedLoading = false;
                 state.isFeedSuccess = true;
-                state.feeds = state.feeds.map((feed) => {
-                    if (feed._id === action.payload._id) {
-                        return {};
-                    } else if (feed._id === action.payload.parentId) {
-                        feed.descendants.filter((item) => item._id !== action.payload._id);
-                    }
-                    return feed;
-                });
+                state.feeds = state.feeds
+                    .filter((feed) => feed._id !== action.payload._id)
+                    .map((feed) => {
+                        if (feed._id === action.payload.parentId) {
+                            feed.descendants = feed.descendants.filter((item) => item._id !== action.payload._id);
+                        }
+                        return feed;
+                    });
             })
             .addCase(deleteFeed.rejected, (state, action) => {
                 state.isFeedLoading = false;

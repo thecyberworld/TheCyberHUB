@@ -77,8 +77,8 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                             </PostHeader>
 
                             <PostContent>
-                                {feed?.content.slice(0, 225)}
-                                {feed?.content.length > 225 && (
+                                {feed?.content?.slice(0, 225)}
+                                {feed?.content?.length > 225 && (
                                     <>
                                         ... <span style={{ color: "#ff6b08" }}> show more.</span>
                                     </>
