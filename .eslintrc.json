@@ -4,7 +4,12 @@
         "es2021": true,
         "node": true
     },
-    "extends": ["plugin:react/recommended", "standard", "prettier"],
+    "extends": [
+        "plugin:react/recommended",
+        "standard",
+        "prettier",
+        "plugin:storybook/recommended"
+    ],
     "overrides": [],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -14,9 +19,17 @@
             "js": true
         }
     },
-    "plugins": ["react", "no-relative-import-paths"],
+    "plugins": [
+        "react",
+        "no-relative-import-paths"
+    ],
     "rules": {
         "react/prop-types": "off",
-        "no-relative-import-paths/no-relative-import-paths": ["error", { "allowSameFolder": true }]
+        "no-relative-import-paths/no-relative-import-paths": [
+            "error",
+            {
+                "allowSameFolder": true
+            }
+        ]
     }
 }
