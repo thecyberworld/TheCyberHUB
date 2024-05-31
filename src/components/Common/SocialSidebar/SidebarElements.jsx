@@ -1,18 +1,27 @@
 import styled from "styled-components";
 
 export const SidebarContainer = styled.div`
-    position: sticky;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 10px;
-    top: 100px;
     width: 100%;
-    max-width: 200px;
+    ${"" /* max-width: 200px; */}
     min-width: ${(props) => (props.$sidebarType === "explore" ? "310px" : "400px")};
     color: #fff;
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
     border-radius: 10px;
+    margin: 1rem 0;
+    padding: 0 3rem;
+
+    @media screen and (width >= 950px) {
+        position: sticky;
+        top: 100px;
+    }
+
+    @media screen and (width >= 400px) {
+        padding: 0 1rem;
+    }
 `;
 
 export const FilterButton = styled.button`
