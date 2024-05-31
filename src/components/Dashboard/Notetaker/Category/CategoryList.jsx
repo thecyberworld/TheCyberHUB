@@ -13,7 +13,7 @@ const CategoryList = ({
     editCategoryId,
 }) => {
     return (
-        <CategoriesListContainer required={required} addMode={addMode}>
+        <CategoriesListContainer required={required} $addMode={addMode}>
             {!children.length && !addMode && (
                 <CategoriesListNoFound>There Are No {<br />} Unique Categories</CategoriesListNoFound>
             )}

@@ -10,7 +10,7 @@ import NotePinning from "./NotePinning";
 const NoteItem = ({ _id, title, pinned, onPick, onPin, isPicked }) => {
     return (
         <NoteItemElementContainer>
-            <NoteItemElement isPinned={pinned} onClick={() => onPick(_id)} isPicked={isPicked}>
+            <NoteItemElement $isPinned={pinned} onClick={() => onPick(_id)} $isPicked={isPicked}>
                 <NoteItemShortTitle>{title.slice(0, 23)}</NoteItemShortTitle>
             </NoteItemElement>
             <NoteItemPinningContainer isPinned={pinned}>

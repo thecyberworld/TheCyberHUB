@@ -84,8 +84,8 @@ export const NoteItemElement = styled.li`
     width: 100%;
     padding: 10px;
     gap: 5px;
-    background-color: ${(props) => (props.isPicked ? "#2a2a2a" : "#090909")};
-    border: ${(props) => (props.isPinned ? "1px solid #2a2a2a" : "none")};
+    background-color: ${(props) => (props.$isPicked ? "#2a2a2a" : "#090909")};
+    border: ${(props) => (props.$isPinned ? "1px solid #2a2a2a" : "none")};
     border: 1px solid #111;
     border-radius: 5px;
     color: #f5f5f5;
