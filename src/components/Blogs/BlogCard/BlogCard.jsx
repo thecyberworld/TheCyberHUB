@@ -57,7 +57,7 @@ const BlogCard = ({ blog, bookmarks }) => {
     return (
         <ContainerCard>
             <span>
-                {isDashboard && user && user._id === blog?.user ? (
+                {isDashboard && user?._id === blog?.user ? (
                     <EditBlogSection>
                         <ButtonDelete onClick={() => dispatch(deleteBlog(blog?._id))} style={{ padding: "2px 10px" }}>
                             <AiFillDelete size={25} /> Delete

@@ -12,6 +12,7 @@ import { notesCategoryReset, getNotesCategories } from "src/features/notes/notes
 
 const defaultCategory = {
     name: "All Notes",
+    _id: "All-Notes!",
 };
 
 const NoteApp = () => {

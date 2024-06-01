@@ -38,9 +38,7 @@ export const Header = styled.div`
 export const LabTitle = styled.label`
     font-size: 25px;
     font-weight: bold;
-    font-family:
-        "Courier New",
-        monospace;
+    font-family: "Courier New", monospace;
     color: #dcdcdc;
     padding: 15px;
     width: 100%;

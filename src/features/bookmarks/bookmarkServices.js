@@ -38,7 +38,6 @@ const getBookmarks = async (token) => {
     };
 
     const response = await axios.get(API_URL + "get", config);
-    console.log(response.data);
 
     return response.data;
 };

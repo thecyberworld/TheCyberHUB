@@ -9,8 +9,8 @@ export const TagsInputContainer = styled.div`
     gap: 5px;
 
     /* padding: 10px 0; */
-    border: ${(props) => (props.size === "lg" ? "#222222 1px solid" : "transparent")};
-    background: ${(props) => (props.size === "lg" ? "#0c0c0c" : "transparent")};
+    border: ${({ size }) => (size === "lg" ? "#222222 1px solid" : "transparent")};
+    background: ${({ size }) => (size === "lg" ? "#0c0c0c" : "transparent")};
 `;
 
 export const TagsInput = styled.div`
@@ -26,7 +26,7 @@ export const TagsInput = styled.div`
     /* border: #222222 1px solid; */
 
     /* props */
-    font-size: ${(props) => (props.size === "lg" ? "11rem" : "0.8rem")};
+    font-size: ${({ size }) => (size === "lg" ? "11rem" : "0.8rem")};
 `;
 
 export const TagInput = styled.input`
@@ -45,8 +45,8 @@ export const TagInput = styled.input`
     border: transparent;
     transition: all 0.1s ease-in-out;
     font-family: Poppins, sans-serif;
-    font-size: ${(props) => (props.size === "lg" ? "13px" : "11px")};
-    padding: ${(props) => (props.size === "lg" ? "3px 5px" : "2px 5px")};
+    font-size: ${({ size }) => (size === "lg" ? "13px" : "11px")};
+    padding: ${({ size }) => (size === "lg" ? "3px 5px" : "2px 5px")};
 
     &::placeholder {
         /* transition: all 0.1s ease-in-out; */

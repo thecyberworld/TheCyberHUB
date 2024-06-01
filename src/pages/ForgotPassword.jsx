@@ -134,8 +134,8 @@ const ForgotPassword = () => {
                         {!emailSent
                             ? SendEmail({ email, onChange, onSubmitSendEmail, isLoading })
                             : !isEmailVerified
-                              ? VerifyCode({ code, onChange, onSubmitVerifyCode, isUserLoading })
-                              : ResetPassword({ password, confirmPassword, onChange, onSubmitPassword, isLoading })}
+                            ? VerifyCode({ code, onChange, onSubmitVerifyCode, isUserLoading })
+                            : ResetPassword({ password, confirmPassword, onChange, onSubmitPassword, isLoading })}
                     </div>
                 </RegistrationFormContainer>
             </CenterCard>
