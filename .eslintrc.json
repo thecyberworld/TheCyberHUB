@@ -8,6 +8,7 @@
         "plugin:react/recommended",
         "standard",
         "prettier",
+        "plugin:storybook/recommended",
         "plugin:storybook/recommended"
     ],
     "overrides": [],
