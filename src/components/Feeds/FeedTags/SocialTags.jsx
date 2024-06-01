@@ -14,7 +14,7 @@ const SocialTags = ({ tags, handleClick, selectedTags, setSelectedTags }) => {
             <AllTags>
                 {tags.slice(0, 10).map(
                     (tag, key) =>
-                        tag.length !== 0 && (
+                        tag?.length !== 0 && (
                             <Tag
                                 $isSelected={selectedTags.includes(tag)}
                                 key={key}

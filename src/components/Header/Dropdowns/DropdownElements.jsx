@@ -24,8 +24,7 @@ export const DropdownContainer = styled.div`
     left: 0;
     z-index: 999;
     display: block;
-    background: #0e0e0e;
-    backdrop-filter: blur(40px); /* Add this line */
+    backdrop-filter: blur(10px);
 
     @media screen and (width <= 821px) {
         display: flex;

@@ -34,6 +34,23 @@ export const updateNote = createAsyncThunk("notes/update", async ({ id, noteData
     }
 });
 
+// updates the notesId when component unmounts.
+export const updateNoteId = createAsyncThunk("notes/updateNoteId", async (sortByNoteId, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.user.token;
+
+        for (let i = 0; i < sortByNoteId.length; i++) {
+            await notesService.updateNote(sortByNoteId[i]._id, sortByNoteId[i], token);
+        }
+
+        
+    } catch (error) {
+        const message =
+            (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+        return thunkAPI.rejectWithValue(message);
+    }
+});
+
 // Update note pinned status
 export const pinNote = createAsyncThunk("notes/pin", async ({ id, noteData }, thunkAPI) => {
     try {
@@ -75,7 +92,11 @@ export const noteSlice = createSlice({
     initialState,
     reducers: {
         noteReset: () => initialState,
+        notesReorder: (state, action) => {
+            state.notes = [...action.payload];
+        },
     },
+
     extraReducers: (builder) => {
         builder
             .addCase(createNote.pending, (state) => {
@@ -173,5 +194,5 @@ export const noteSlice = createSlice({
     },
 });
 
-export const { noteReset } = noteSlice.actions;
+export const { noteReset, notesReorder } = noteSlice.actions;
 export default noteSlice.reducer;

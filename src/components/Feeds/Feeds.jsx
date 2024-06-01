@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { FeedsContainer, MiddleSection } from "./FeedsElements";
+import { FeedsContainer, MiddleSection, ModifyFeedContainer } from "./FeedsElements";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
-import AddFeed from "./PostForm/AddFeed";
+import ModifyFeed from "./PostForm/ModifyFeed";
 import FeedPosts from "./FeedPosts/FeedPosts";
 import { useDispatch, useSelector } from "react-redux";
-import { feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
+import { createFeed, feedReset, getAllFeeds } from "src/features/feeds/feedsSlice";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
@@ -44,8 +44,8 @@ const Feeds = () => {
         setSearchTerm(event.target.value);
     };
 
-    const feedTags = feeds?.map((feed) => feed && feed?.tags.map((tag) => tag.toLowerCase())).flat() || [];
-    const uniqueFeedTags = [...new Set(feedTags)];
+    const feedTags = feeds?.map((feed) => feed && feed?.tags?.map((tag) => tag.toLowerCase())).flat() || [];
+    const uniqueFeedTags = feedTags.length ? [...new Set(feedTags)] : [];
 
     const combinedData = feeds?.map((feed) => {
         const userDetail = userDetails?.find((user) => user?.user === feed?.user);
@@ -59,13 +59,23 @@ const Feeds = () => {
 
     if (!isApiWorking) return <UnderMaintenance />;
 
+    const handleSaveCreatedFeed = (data) => {
+        dispatch(createFeed({ feedData: data }));
+    };
+
     return (
         <Wrapper style={{ marginTop: "80px" }}>
             <FeedsContainer>
                 <LeftContainer style={{ padding: "25px 0" }}></LeftContainer>
 
                 <MiddleSection>
-                    <AddFeed showPostTags={true} userDetails={userDetails} />
+                    <ModifyFeedContainer>
+                        <ModifyFeed
+                            showPostTags={true}
+                            userDetails={userDetails}
+                            onModifyFeed={handleSaveCreatedFeed}
+                        />
+                    </ModifyFeedContainer>
                     <FeedPosts
                         searchTerm={searchTerm}
                         feeds={combinedData}

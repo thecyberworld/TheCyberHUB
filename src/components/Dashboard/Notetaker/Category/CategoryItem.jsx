@@ -66,7 +66,7 @@ const CategoryItem = ({
     if (requiredCategory) {
         return (
             <CategoryItemElementContainer>
-                <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
+                <CategoryItemElement onClick={() => onPick(category)} $isPicked={isPicked}>
                     <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
                 </CategoryItemElement>
             </CategoryItemElementContainer>
@@ -84,7 +84,7 @@ const CategoryItem = ({
                 />
             ) : (
                 <CategoryItemElementContainer>
-                    <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
+                    <CategoryItemElement onClick={() => onPick(category)} $isPicked={isPicked}>
                         <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
                     </CategoryItemElement>
                     <CategoryOptionsMenuContainer>
