@@ -7,7 +7,7 @@ export default {
 };
 
 const Template = (args) => {
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState(args.searchTerm || "");
     const [showOnlyFollowing, setShowOnlyFollowing] = useState(false);
     const [filterLabel, setFilterLabel] = useState("");
     const [selectedTags, setSelectedTags] = useState([]);
@@ -47,4 +47,5 @@ Default.args = {
     user: true,
     tags: ["Tag1", "Tag2", "Tag3"],
     data: {},
+    searchTerm: "Initial Search Term",
 };

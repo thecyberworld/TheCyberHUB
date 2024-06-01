@@ -5,8 +5,8 @@ export default {
     title: "Components/DurationDisplay/DurationDisplay",
     component: DurationDisplay,
     argTypes: {
-        startTime: { control: "text" },
-        endTime: { control: "text" },
+        startTime: { control: "date" },
+        endTime: { control: "date" },
         reschedule: { control: "boolean" },
         showDate: { control: "boolean" },
     },

@@ -7,7 +7,7 @@ export default {
     component: DateDisplay,
     argTypes: {
         rightBorder: { control: "boolean" },
-        time: { control: "text" },
+        time: { control: "date" },
         isCanBeToday: { control: "boolean" },
     },
 };

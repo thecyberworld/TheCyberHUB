@@ -12,7 +12,7 @@ const Template = ({ optionsValuesWithLabels, ...args }) => (
         <SelectContainer>
             <select>
                 {optionsValuesWithLabels.map((option) => (
-                    <Option key={option.value} value={option.value}>
+                    <Option style key={option.value} value={option.value}>
                         {option.label}
                     </Option>
                 ))}
