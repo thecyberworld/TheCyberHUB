@@ -84,7 +84,7 @@ const Socials = () => {
                     </SocialCardInstagram>
 
                     <SocialCardFacebook
-                        href="https://www.facebook.com/thecyberw0rld"
+                        href="https://www.facebook.com/thecyberworldcommunity/"
                         target="_blank"
                         aria-label="Facebook"
                     >
