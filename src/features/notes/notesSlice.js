@@ -43,7 +43,7 @@ export const updateNoteId = createAsyncThunk("notes/updateNoteId", async (sortBy
             await notesService.updateNote(sortByNoteId[i]._id, sortByNoteId[i], token);
         }
 
-        return;
+        
     } catch (error) {
         const message =
             (error.response && error.response.data && error.response.data.message) || error.message || error.toString();

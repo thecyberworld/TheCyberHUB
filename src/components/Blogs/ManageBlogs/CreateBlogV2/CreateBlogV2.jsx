@@ -278,8 +278,8 @@ const CreateBlogV2 = () => {
                                     remainingCharacters <= 1000
                                         ? "#ff2525"
                                         : remainingCharacters <= 5000
-                                        ? "#ff6b08"
-                                        : "grey",
+                                          ? "#ff6b08"
+                                          : "grey",
                                 width: "100%",
                                 textAlign: "right",
                                 fontSize: "12px",

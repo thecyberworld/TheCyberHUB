@@ -31,3 +31,5 @@ dist-ssr
 .eslintcache
 .env
 TheCyberHUB.iml
+
+*storybook.log

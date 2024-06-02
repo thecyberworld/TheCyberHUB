@@ -50,7 +50,9 @@ export const SideBarLink = styled(({ $isOpen, ...props }) => <NavLink {...props}
     padding: 7px 0;
     gap: 10px;
     padding-left: ${(props) => (props.$isOpen ? "10px" : "0")};
-    transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
+    transition:
+        background 0.3s ease-in-out,
+        padding 0.3s ease-in-out;
     width: 100%;
     justify-content: ${(props) => (props.$isOpen ? "unset" : "center")};
 
@@ -115,7 +117,9 @@ export const UserProfileDescription = styled.div`
     margin-left: ${(props) => (props.$isOpen ? "16px" : "0")};
     opacity: ${(props) => (props.$isOpen ? "1" : "0")};
     transform: ${(props) => (props.$isOpen ? "translateX(0)" : "translateX(-100%)")};
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
     visibility: ${(props) => (props.$isOpen ? "visible" : "hidden")};
     width: ${(props) => (props.$isOpen ? "unset" : "0")};
 

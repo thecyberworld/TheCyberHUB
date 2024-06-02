@@ -91,7 +91,9 @@ export const ContentSection = styled.div`
 
 export const BlogSummary = styled.div`
     padding: 40px;
-    font: 17px Poppins, sans-serif;
+    font:
+        17px Poppins,
+        sans-serif;
 `;
 export const BlogContent = styled(ReactQuill)`
     padding: 25px;
