@@ -23,7 +23,7 @@ const Template = ({ optionsValuesWithLabels, ...args }) => (
 
 export const Default = Template.bind({});
 Default.args = {
-    selectLabel: "Select an option",
+    selectLabel: "Label",
     selectedValue: "",
     defaultValue: "",
     optionsValuesWithLabels: [
