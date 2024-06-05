@@ -17,6 +17,7 @@ const StyledPollContainer = styled.div`
 
     .title {
         font-size: 1.2em;
+        margin-bottom: 0.5rem;
         color: #fff;
     }
 
@@ -29,7 +30,7 @@ const StyledPollContainer = styled.div`
         display: flex;
         align-items: center;
         gap: 0.1rem;
-        padding: 0.3rem;
+        padding: 0.6rem;
     }
 
     .stacked-images {
