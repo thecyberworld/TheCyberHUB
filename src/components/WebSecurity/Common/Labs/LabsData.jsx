@@ -5,15 +5,7 @@ export const LabData = [
         description: `Explore and understand basics reflected XSS vulnerabilities.
 This lab demonstrates a basic reflected XSS vulnerability in a search input field.
 The lab is designed to help you understand the impact and potential risk of reflected XSS vulnerabilities.
-Explore and understand basic reflected XSS vulnerabilities.
-This lab demonstrates a basic reflected XSS vulnerability in a search input field.
-The lab is designed to help you understand the impact and potential risk of reflected XSS vulnerabilities.
-Explore and understand basic reflected XSS vulnerabilities.
-This lab demonstrates a basic reflected XSS vulnerability in a search input field.
-The lab is designed to help you understand the impact and potential risk of reflected XSS vulnerabilities.
-Explore and understand basic reflected XSS vulnerabilities.
-This lab demonstrates a basic reflected XSS vulnerability in a search input field.
-The lab is designed to help you understand the impact and potential risk of reflected XSS vulnerabilities.`,
+`,
         labLink: "https://xss-labs.thecyberhub.org/xss1",
         tags: ["XSS", "Web Security", "Cyber Security"],
         category: "XSS",
@@ -25,6 +17,7 @@ The lab is designed to help you understand the impact and potential risk of refl
             "Try injecting a basic XSS payload in the search input to see if it gets executed.",
             "Understand the impact and potential risk of the reflected XSS vulnerability.",
         ],
+        hint: "Try injecting a basic XSS payload in the search input to see if it gets executed.",
     },
     {
         id: 2,

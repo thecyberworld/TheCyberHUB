@@ -1,13 +1,15 @@
-import { CodeContainer, H1 } from "./EncoderCodeElement";
 import React from "react";
+import { CodeContainer } from "./EncoderCodeElement";
 
 function EncoderCode(props) {
     function Base64() {
         return btoa(props.Input);
     }
+
     function Url() {
         return encodeURIComponent(props.Input);
     }
+
     function fullURLEncode(url) {
         let encodedURL = encodeURI(url);
         const urlComponents = encodedURL.split("?");
@@ -28,6 +30,7 @@ function EncoderCode(props) {
 
         return encodedURL;
     }
+
     function asciiHexEncode(inputString) {
         let hexEncoded = "";
 
@@ -39,26 +42,22 @@ function EncoderCode(props) {
 
         return hexEncoded;
     }
+
     function htmlEncode(inputString) {
         return inputString.replace(/[\u00A0-\u9999<>]/gim, function (i) {
             return "&#" + i.charCodeAt(0) + ";";
         });
     }
+
     return (
         <div>
-            <H1>Base64 Encode</H1>
-            <CodeContainer>
-                <p>{Base64()}</p>
-            </CodeContainer>
-            <H1>Url Encode</H1>
-            <CodeContainer>{Url()}</CodeContainer>
-            <H1>Full Url Encode</H1>
-            <CodeContainer>{fullURLEncode(props.Input)}</CodeContainer>
-            <H1>ASCII HEX Encode</H1>
-            <CodeContainer>{asciiHexEncode(props.Input)}</CodeContainer>
-            <H1>HTML Encode</H1>
-            <CodeContainer>{htmlEncode(props.Input)}</CodeContainer>
+            <CodeContainer text={Base64()} title={"Base64 Encode"} />
+            <CodeContainer text={Url()} title={"Url Encode"} />
+            <CodeContainer text={fullURLEncode(props.Input)} title={"Full Url Encode"} />
+            <CodeContainer text={asciiHexEncode(props.Input)} title={"ASCII HEX Encode"} />
+            <CodeContainer text={htmlEncode(props.Input)} title={"HTML Encode"} />
         </div>
     );
 }
+
 export default EncoderCode;

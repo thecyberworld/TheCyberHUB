@@ -1,8 +1,7 @@
 import React from "react";
 import ReplyCard from "./ReplyCard";
-import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 
-const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoading, updateFeedView }) => {
+const FeedComments = ({ user, replies, likes, bookmarks, views, updateFeedView }) => {
     const feedLikesData = ({ replyId }) => {
         return likes?.filter((like) => like?.itemId === replyId);
     };
@@ -12,7 +11,7 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
     const feedUserBookmarksData = ({ feedId }) => {
         return bookmarks?.length > 0
             ? bookmarks?.filter((bookmark) => bookmark?.itemId === feedId) &&
-                  bookmarks?.filter((bookmark) => bookmark.user === user._id)
+                  bookmarks?.filter((bookmark) => bookmark.user === user?._id)
             : [];
     };
 
@@ -20,14 +19,10 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
         return <p style={{ textAlign: "center", padding: "25px 0" }}>Be the first to comment on this post</p>;
     }
 
-    if (isFeedReplyLoading) {
-        return <LoadingSpinner />;
-    }
-
     return (
         <>
             {replies
-                .slice()
+                ?.slice()
                 .reverse()
                 .map((reply, id) => (
                     <ReplyCard
@@ -36,7 +31,7 @@ const FeedComments = ({ user, replies, likes, bookmarks, views, isFeedReplyLoadi
                         user={user}
                         // comments={comments}
                         likes={feedLikesData({ replyId: reply._id })}
-                        views={feedViewsData({ replyId: reply._id })}
+                        views={feedViewsData({ feedId: reply._id })}
                         bookmarks={feedUserBookmarksData({ replyId: reply._id })}
                         updateFeedView={updateFeedView}
                     />

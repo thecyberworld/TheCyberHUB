@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import {
     ModifyActionsContainer,
     ModifyActionButton,
-    ModifyActionText,
     ModifyItem,
     ModifyTimelineList,
     ModifyTimelineListContainer,
@@ -131,19 +130,19 @@ const ModifyTimeline = ({ onModify, onCloseChangeMode, modifyEvent, eventManageT
                 <ModifyTimelineList>{timeLineList}</ModifyTimelineList>
                 <ModifyItemActionsContainer>
                     <ModifyActionButton type="add" onClick={handleAddListItem}>
-                        <ModifyActionText type="add">Add</ModifyActionText>
+                        <p type="add">Add</p>
                     </ModifyActionButton>
                     <ModifyActionButton type="remove" onClick={handleRemoveLastItem}>
-                        <ModifyActionText type="remove">Remove</ModifyActionText>
+                        <p type="remove">Remove</p>
                     </ModifyActionButton>
                 </ModifyItemActionsContainer>
             </ModifyTimelineListContainer>
             <ModifyActionsContainer>
                 <ModifyActionButton type="save" onClick={handleSaveTimeline}>
-                    <ModifyActionText type="save">Save</ModifyActionText>
+                    <p type="save">Save</p>
                 </ModifyActionButton>
                 <ModifyActionButton type="cancel" onClick={onCloseChangeMode}>
-                    <ModifyActionText type="cancel">Cancel</ModifyActionText>
+                    <p type="cancel">Cancel</p>
                 </ModifyActionButton>
             </ModifyActionsContainer>
         </ModifyItem>

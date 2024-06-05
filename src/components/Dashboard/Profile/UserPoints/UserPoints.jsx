@@ -4,9 +4,6 @@ import {
     RankContainer,
     RankNumber,
     RankNumberContainer,
-    RoomsCompletedContainer,
-    UserBlogsCountContainer,
-    UserExpContainer,
     UserPointsContainer,
     UserStreakContainer,
     StreakNumberContainer,
@@ -18,43 +15,46 @@ import { ExpIcon } from "src/components/Header/ExpElemenets";
 const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
     const isCompleted = userDetail?.solved?.map((ctf) => (ctf?.isCompleted ? 1 : 0));
     const roomCompleted = isCompleted?.reduce((a, b) => a + b, 0);
-    const blogCount = blogs?.filter((blog) => blog?.username === userDetail?.username)?.length;
+    const blogCount = blogs?.filter((blog) => blog?.user === userDetail?.user)?.length;
+
+    console.log(blogs);
+    console.log(blogCount);
 
     const userRank = getUserRank(userDetail || [], allUserDetail || []);
     return (
         <UserPointsContainer>
             <RankContainer>
-                <RankNumberContainer userRank={userRank}>
+                <RankNumberContainer $userRank={userRank}>
                     {userRank === 1 ? <RankTrophy /> : null}
-                    <RankNumber userRank={userRank}>{userRank}</RankNumber>
+                    <RankNumber $userRank={userRank}>{userRank}</RankNumber>
                 </RankNumberContainer>
                 <h5>Rank</h5>
             </RankContainer>
 
-            <UserExpContainer>
+            <div>
                 {userDetail && userDetail?.length === 0 ? null : (
                     <div>
                         <h4>{userDetail?.exp || 0}</h4>
                         <h5>Points</h5>
                     </div>
                 )}
-            </UserExpContainer>
-            <RoomsCompletedContainer>
+            </div>
+            <div>
                 {userDetail?.solved && (
                     <div>
                         <h4>{roomCompleted} </h4>
                         <h5>Rooms</h5>
                     </div>
                 )}
-            </RoomsCompletedContainer>
-            <UserBlogsCountContainer>
+            </div>
+            <div>
                 {userDetail?.solved && (
                     <div>
                         <h4>{blogCount} </h4>
                         <h5>Blogs</h5>
                     </div>
                 )}
-            </UserBlogsCountContainer>
+            </div>
             <UserStreakContainer>
                 <StreakNumberContainer>
                     <ExpIcon />

@@ -12,22 +12,25 @@ export const InternshipHeader = styled.div`
     justify-content: center;
     text-align: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         padding: 10px;
     }
 `;
 
 export const InternshipHeading = styled.h1`
     font-size: 5rem;
-    //font-style: oblique;
-    transition: 0.2s ease-in-out;
+
+    /* font-style: oblique; */
     font-family: "Cascadia Code", monospace;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         transition: 0.2s ease-in-out;
         font-size: 3rem;
     }
+
     transition: 0.2s ease-in-out;
-    @media screen and (max-width: 500px) {
+
+    @media screen and (width <= 500px) {
         transition: 0.2s ease-in-out;
         font-size: 2rem;
     }

@@ -4,7 +4,7 @@ import { Learn2CodePromotion } from "src/components/Homepage/Registration/Learn2
 import { CustomInputGroup } from "src/components/Other/MixComponents/InputField/CustomInputField";
 import { RegistrationFormContainer } from "src/components/Homepage/Registration/Form";
 import { ButtonGreen, LoadingButton } from "src/components/Other/MixComponents/Buttons/ButtonElements";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { CgPassword } from "react-icons/cg";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,10 @@ const Login = () => {
     });
 
     const { username, password } = formData;
+
+    const [showPassword, setShowPassword] = useState(false);
+    const [passwordType, setPasswordType] = useState("password");
+    const eyeColor = "white";
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -62,6 +66,14 @@ const Login = () => {
         }
     };
 
+    const handleTogglePassword = () => {
+        setShowPassword((prevState) => {
+            const newState = !prevState;
+            newState ? setPasswordType("text") : setPasswordType("password");
+            return newState;
+        });
+    };
+
     return (
         <Container>
             <CenterCard>
@@ -74,11 +86,11 @@ const Login = () => {
                     </div>
                 </Learn2CodePromotion>
                 <RegistrationFormContainer onSubmit={onSubmit}>
-                    <h1 className="registration__promotion__h1">Join over 25 million learners from around the globe</h1>
-                    <p className="registration__promotion__p">
+                    <h1 className="registration-promotion-h1">Join over 25 million learners from around the globe</h1>
+                    <p className="registration-promotion-p">
                         Master Cybersecurity. This path will prepare you to build you base strong in cyber security
                     </p>
-                    <div className="registration__inputfields">
+                    <div className="registration-inputfields">
                         <CustomInputGroup>
                             <span>
                                 <FaUserCircle />
@@ -99,7 +111,7 @@ const Login = () => {
                                 <CgPassword />
                             </span>
                             <input
-                                type="password"
+                                type={passwordType}
                                 id={"password"}
                                 name={"password"}
                                 value={password}
@@ -108,9 +120,12 @@ const Login = () => {
                                 aria-label="Password"
                                 autoComplete="off"
                             />
+                            <button type="button" onClick={handleTogglePassword}>
+                                {showPassword ? <FaEyeSlash color={eyeColor} /> : <FaEye color={eyeColor} />}
+                            </button>
                         </CustomInputGroup>
                     </div>
-                    <div className={"forgot_register"}>
+                    <div className={"forgot-register"}>
                         <RouterLink to={"/forgetPassword"}>
                             <p style={{ color: "white", margin: "15px 0 0 0" }}>Forgot Password?</p>
                         </RouterLink>
@@ -118,8 +133,8 @@ const Login = () => {
                             <p style={{ color: "white", margin: "15px 0 0 0" }}>Register Instead?</p>
                         </RouterLink>
                     </div>
-                    <div className="registration__ctas">
-                        {/* <div className="registration__tandc"> */}
+                    <div className="registration-ctas">
+                        {/* <div className="registration-tandc"> */}
                         {/*    <input role="checkbox" type="checkbox" autoComplete="" /> */}
                         {/*    <div> */}
                         {/*        I agree to all statements included in */}

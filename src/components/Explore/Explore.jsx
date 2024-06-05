@@ -24,8 +24,6 @@ import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import NotFound from "src/NotFound";
 
-const FilterContainer = styled.div``;
-
 const FilterHeader = styled.div`
     display: flex;
     justify-content: space-between;
@@ -38,27 +36,28 @@ const FilterHeader = styled.div`
 
 const FilterTitle = styled.p`
     margin: 0;
-    font-weight: bold;
+
+    /* font-weight: bold; */
 `;
 
 const FilterContent = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-    padding: 10px 0 0 0;
+    padding: 10px 0 0;
 `;
 
 const FilterSection = ({ title, children }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <FilterContainer>
+        <div>
             <FilterHeader onClick={() => setIsOpen(!isOpen)}>
                 <FilterTitle>{title}</FilterTitle>
-                <HintIcon>{!isOpen ? <FaAngleDown /> : <FaAngleUp />}</HintIcon>
+                <HintIcon>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
             </FilterHeader>
             {isOpen && <FilterContent>{children}</FilterContent>}
-        </FilterContainer>
+        </div>
     );
 };
 
@@ -130,14 +129,15 @@ const Explore = () => {
         setSelectedFilter(allUsers);
     }, [connections]);
 
-    const blogTags = blogs?.map((blog) => blog && blog?.tags).flat() || [];
-    const ctfTags = ctf?.map((ctf) => ctf && ctf?.tags).flat() || [];
-    const feedTags = feeds?.map((feed) => feed && feed?.tags).flat() || [];
+    const blogTags = blogs?.map((blog) => blog && blog?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const ctfTags = ctf?.map((ctf) => ctf && ctf?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const feedTags = feeds?.map((feed) => feed && feed?.tags.map((tag) => tag.toLowerCase())).flat() || [];
     // const forumTags = forums.map((forum) => forum && forum.tags).flat() || [];
 
     const tags = [...new Set([...feedTags, ...blogTags, ...ctfTags])].sort();
 
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedTags, setSelectedTags] = useState([]);
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
@@ -251,6 +251,8 @@ const Explore = () => {
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
                         tags={tags}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                         showOnlyFollowing={showOnlyFollowing}
                         setShowOnlyFollowing={setShowOnlyFollowing}
                         userFilters={userFilters}
@@ -278,6 +280,7 @@ const Explore = () => {
                                     isFeedLoading={isFeedLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                             {filteredBlogs?.length ? (
@@ -286,6 +289,7 @@ const Explore = () => {
                                     isBlogLoading={isBlogLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                             {filteredCtf?.length ? (
@@ -294,6 +298,7 @@ const Explore = () => {
                                     isCtfLoading={isCtfLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                             {renderNotFoundComponents()}
@@ -323,6 +328,7 @@ const Explore = () => {
                                     blogs={filteredBlogs}
                                     isBlogLoading={isBlogLoading}
                                     searchTerm={searchTerm}
+                                    selectedTags={selectedTags}
                                     displayAt={"explore"}
                                 />
                             ) : null}
@@ -333,6 +339,7 @@ const Explore = () => {
                                     isCtfLoading={isCtfLoading}
                                     searchTerm={searchTerm}
                                     displayAt={"explore"}
+                                    selectedTags={selectedTags}
                                 />
                             ) : null}
                         </>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FormDataContainer, FormType, FormTypesContainer } from "./FormDataElements";
+import { FormDataContainer, FormType } from "./FormDataElements";
 import { JobsCardSection, JobsDetailContainer, JobsDetailSection } from "./Jobs/JobsElements";
 import Job from "./Jobs/Job";
 import JobDetailsPage from "./Jobs/JobDetailsPage";
@@ -85,13 +85,13 @@ const FormData = () => {
         <Wrapper>
             <FormDataContainer>
                 {errorMessage && <p>{errorMessage}</p>}
-                <FormTypesContainer>
+                <div>
                     <FormType onClick={() => handleShowState("showPentest")}>Services</FormType>
                     <FormType onClick={() => handleShowState("showInternship")}>Internships</FormType>
                     <FormType onClick={() => handleShowState("showVolunteer")}>Volunteer</FormType>
                     <FormType onClick={() => handleShowState("showFeedback")}>Feedback</FormType>
                     <FormType onClick={() => handleShowState("showOthers")}>Others</FormType>
-                </FormTypesContainer>
+                </div>
                 <JobsDetailContainer id="jobs">
                     {window.innerWidth > 1000 ? (
                         <>

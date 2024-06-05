@@ -10,12 +10,14 @@ import BlogCards from "src/components/Blogs/BlogCard/BlogCards";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { getFollowData, reset } from "src/features/follow/followSlice";
 import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
+import { getBookmarks } from "src/features/bookmarks/bookmarkSlice.js";
 
 const Blogs = () => {
     const dispatch = useDispatch();
 
     const [searchTerm, setSearchTerm] = useState("");
     const [showOnlyFollowingBlogs, setShowOnlyFollowingBlogs] = useState(false);
+    const [selectedTags, setSelectedTags] = useState([]);
 
     const { user } = useSelector((state) => state.auth);
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -25,6 +27,7 @@ const Blogs = () => {
         (state) => state.userDetail,
     );
     const { followData } = useSelector((state) => state.followData);
+    const { bookmarks } = useSelector((state) => state.bookmarks);
 
     const userId = user?._id;
 
@@ -32,7 +35,9 @@ const Blogs = () => {
         if (isBlogError) console.log(blogMessage);
         if (isUserDetailError) console.log(userDetailMessage);
         if (userId) dispatch(getFollowData(userId));
+
         dispatch(getAllBlogs());
+        dispatch(getBookmarks());
         dispatch(getAllUserDetails());
 
         return () => {
@@ -59,21 +64,27 @@ const Blogs = () => {
 
     const filteredBlogs = blogsData?.filter((blog) => {
         const postedByFollowingUser = !showOnlyFollowingBlogs || followData?.following?.includes(blog.user);
-        const cleanSearchTerm = searchTerm.trim();
+        const cleanSearchTerm = searchTerm.trim().toLowerCase();
         const contentIncludesSearchTerm =
-            !cleanSearchTerm || blog?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
-        const tagsIncludeSearchTerm =
-            !cleanSearchTerm || blog?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || blog?.content?.toLowerCase().includes(cleanSearchTerm) || false;
+        const allFilterTagsIncluded =
+            !selectedTags || selectedTags.length === 0
+                ? true
+                : selectedTags.every((selectedTag) =>
+                      blog?.tags?.some((blogTag) => blogTag.toLowerCase() === selectedTag.toLowerCase()),
+                  );
         const usernameIncludeSearchTerm =
-            !cleanSearchTerm || blog?.username.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+            !cleanSearchTerm || blog?.username?.toLowerCase().includes(cleanSearchTerm) || false;
 
         return (
             postedByFollowingUser &&
-            (!cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm || usernameIncludeSearchTerm)
+            allFilterTagsIncluded &&
+            (!cleanSearchTerm || contentIncludesSearchTerm || usernameIncludeSearchTerm)
         );
     });
 
-    const blogTags = blogs?.map((blog) => blog?.tags).flat() || [];
+    const blogTags = blogs?.map((blog) => blog?.tags.map((tag) => tag.toLowerCase())).flat() || [];
+    const uniqueBlogTags = [...new Set([...blogTags])];
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {
         return (
@@ -98,7 +109,7 @@ const Blogs = () => {
             <BlogsContainer>
                 <BlogsSection>
                     <MiddleContainer>
-                        <BlogCards blogs={filteredBlogs || blogs} />
+                        <BlogCards bookmarks={bookmarks} selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
                     </MiddleContainer>
                     <Sidebar
                         sidebarType={"blogs"}
@@ -106,7 +117,9 @@ const Blogs = () => {
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
                         handleSearchTermChange={handleSearchTermChange}
-                        tags={blogTags}
+                        tags={uniqueBlogTags}
+                        selectedTags={selectedTags}
+                        setSelectedTags={setSelectedTags}
                         showOnlyFollowing={showOnlyFollowingBlogs}
                         setShowOnlyFollowing={setShowOnlyFollowingBlogs}
                         data={blogs}

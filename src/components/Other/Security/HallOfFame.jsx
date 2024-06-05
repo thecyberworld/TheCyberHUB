@@ -2,7 +2,6 @@ import React from "react";
 import {
     HallOfFameContainer,
     HallOfFameList,
-    HallOfFameMonth,
     HallOfFameMonthSection,
     HallOfFameName,
     HallOfFameYear,
@@ -32,7 +31,7 @@ const HallOfFame = () => {
                                         .reverse()
                                         .map((item, index) => (
                                             <HallOfFameMonthSection key={index}>
-                                                <HallOfFameMonth>{item?.month}</HallOfFameMonth>
+                                                <h3>{item?.month}</h3>
                                                 <ul>
                                                     {item?.list.map((item, index) => (
                                                         <HallOfFameName key={index}>

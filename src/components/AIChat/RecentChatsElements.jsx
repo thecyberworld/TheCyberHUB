@@ -9,12 +9,14 @@ export const RecentChatsContainer = styled.div`
     max-width: 400px;
     min-width: 400px;
     padding: 10px 25px;
-    background: #111111; /* Adjusted background color */
+    background: #111; /* Adjusted background color */
     color: #fff;
-    border: 1px solid rgba(70, 70, 70, 0.55);
-    //border: 1px solid #464646;
-    //border-radius: 10px; /* Increased border-radius for a softer look */
-    border-radius: 10px 0px 0px 10px;
+    border: 1px solid rgb(70 70 70 / 55%);
+
+    /* border: 1px solid #464646; */
+
+    /* border-radius: 10px; Increased border-radius for a softer look */
+    border-radius: 10px 0 0 10px;
     font-size: 18px;
 
     .chat-title {
@@ -42,7 +44,7 @@ export const RecentChatsHeader = styled.div`
     height: 100%;
     max-height: 100px;
     padding: 0 0 0 10px;
-    border-bottom: 1px solid rgba(70, 70, 70, 0.75);
+    border-bottom: 1px solid rgb(70 70 70 / 75%);
 
     p {
         background: #ff6b08;

@@ -7,7 +7,8 @@ export const DashboardRoutesContainer = styled.div`
     align-items: start;
     justify-content: space-between;
     width: 100%;
-    //max-width: 1500px;
+
+    /* max-width: 1500px; */
 `;
 
 export const DashboardContainer = styled.div`
@@ -27,7 +28,7 @@ export const DashboardItemsContainer = styled.div`
     border-radius: 10px;
     color: #f5f5f5;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (width <= 768px) {
         flex-wrap: wrap;
     }
 `;

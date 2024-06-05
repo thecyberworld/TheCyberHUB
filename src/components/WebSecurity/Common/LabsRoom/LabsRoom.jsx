@@ -23,6 +23,7 @@ import { HintContainer, HintIcon, SolutionContainer } from "src/components/WebSe
 import { RiLightbulbFlashFill, RiLightbulbFlashLine } from "react-icons/ri";
 import { toast } from "react-toastify";
 import SyntaxHighlight from "src/components/WebSecurity/Common/SyntaxHighlight";
+import { RoomTags } from "src/components/WebSecurity/Common/Labs/RoomCardElement.jsx";
 
 const Room = ({ roomData }) => {
     const { "*": path, id } = useParams();
@@ -52,10 +53,48 @@ const Room = ({ roomData }) => {
             <DescriptionSection>
                 <Header>
                     <LabTitle>{data.title}</LabTitle>
+                    <div
+                        style={{
+                            background: "#142638",
+                            padding: "7px",
+                            borderRadius: "5px",
+                        }}
+                    >
+                        <label style={{}}>{data?.level}</label>
+                    </div>
                 </Header>
+
                 <Description>{data.description}</Description>
                 {data?.code && data?.language && <SyntaxHighlight language={data?.language} code={data?.code} />}
+
+                <div
+                    style={{
+                        width: "100%",
+                        height: "63px",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        background: "#131313",
+                    }}
+                >
+                    <div
+                        style={{
+                            height: "63px",
+                            display: "flex",
+                            justifyContent: "space-evenly",
+                            flexDirection: "row",
+                            alignItems: "center",
+                            background: "#131313",
+                        }}
+                    >
+                        {data?.tags.map((data) => {
+                            return <RoomTags key={data}>{data}</RoomTags>;
+                        })}
+                    </div>
+                </div>
             </DescriptionSection>
+
             <SolutionSection>
                 {roomType === "labs" && (
                     <StartLabButton href={data.labLink} target="_blank" rel="noreferrer">

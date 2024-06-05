@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { BsDot } from "react-icons/bs";
 
 export const FollowContainer = styled.div`
-    //display: flex;
-    //flex-direction: row;
-    //justify-content: space-between;
-    //align-items: center;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; */
     gap: 10px;
 `;
 
@@ -19,7 +19,8 @@ export const FollowCount = styled.p`
     justify-content: space-evenly;
     gap: 5px;
     color: #adadad;
-    @media screen and (max-width: 768px) {
+
+    @media screen and (width <= 768px) {
         font-size: 0.8rem;
         justify-content: start;
     }
@@ -31,7 +32,7 @@ export const DotIcon = styled(BsDot)`
 export const FollowButton = styled.button`
     padding: 5px 45px;
     margin: 15px 0;
-    width: stretch;
+    width: 100%;
     border-radius: 50px;
     background: #0e0e0e;
     color: #e0e0e0;

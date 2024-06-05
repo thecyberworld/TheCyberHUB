@@ -12,7 +12,6 @@ import feedLikeReduces from "src/features/feeds/feedLikes/feedLikesSlice";
 import blogLikeReduces from "src/features/blogs/blogLikes/blogLikesSlice";
 
 import blogCommentsReducer from "src/features/blogs/blogComments/blogCommentSlice";
-import feedCommentsReducer from "src/features/feeds/feedComments/feedCommentsSlice";
 
 import ctfReducer from "src/features/ctf/ctfSlice";
 import bookmarkReduces from "src/features/bookmarks/bookmarkSlice";
@@ -21,6 +20,7 @@ import followReducer from "src/features/follow/followSlice";
 import connectionReducer from "src/features/connections/connectionSlice";
 
 import eventsReducer from "src/features/events/eventsSlice";
+import { cyberNewsApi } from "src/services/cyberNewsApi";
 
 export default configureStore({
     reducer: {
@@ -36,7 +36,6 @@ export default configureStore({
         forums: forumReducer,
 
         feeds: feedReducer,
-        feedComments: feedCommentsReducer,
 
         views: viewReducer,
         bookmarks: bookmarkReduces,
@@ -51,6 +50,6 @@ export default configureStore({
 
         events: eventsReducer,
 
-        // [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
+        [cyberNewsApi.reducerPath]: cyberNewsApi.reducer,
     },
 });

@@ -31,6 +31,14 @@ const Socials = () => {
             <SocialsContainer id="join">
                 <H1>{"Community Links".toUpperCase()}</H1>
                 <SocialsWrapper>
+                    <SocialCardDiscord href="https://discord.gg/QHBPq6xP5p" target="_blank" aria-label="Discord">
+                        <FaDiscord /> <SocialH1> Discord </SocialH1>
+                    </SocialCardDiscord>
+
+                    <SocialCardGithub href="https://www.github.com/thecyberworld" target="_blank" aria-label="Github">
+                        <FaGithub /> <SocialH1> Github </SocialH1>
+                    </SocialCardGithub>
+
                     <SocialCardYoutube
                         href="https://www.youtube.com/c/thecyberworld"
                         target="_blank"
@@ -46,14 +54,6 @@ const Socials = () => {
                     >
                         <FaLinkedinIn /> <SocialH1> LinkedIn </SocialH1>
                     </SocialCardLinkedin>
-
-                    <SocialCardGithub href="https://www.github.com/thecyberworld" target="_blank" aria-label="Github">
-                        <FaGithub /> <SocialH1> Github </SocialH1>
-                    </SocialCardGithub>
-
-                    <SocialCardDiscord href="https://discord.gg/QHBPq6xP5p" target="_blank" aria-label="Discord">
-                        <FaDiscord /> <SocialH1> Discord </SocialH1>
-                    </SocialCardDiscord>
 
                     <SocialCardTelegram href="https://t.me/thecyberw0rld" target="_blank" aria-label="Telegram">
                         <FaTelegramPlane /> <SocialH1> Telegram </SocialH1>
@@ -84,7 +84,7 @@ const Socials = () => {
                     </SocialCardInstagram>
 
                     <SocialCardFacebook
-                        href="https://www.facebook.com/thecyberw0rld"
+                        href="https://www.facebook.com/thecyberworldcommunity/"
                         target="_blank"
                         aria-label="Facebook"
                     >

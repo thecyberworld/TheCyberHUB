@@ -21,7 +21,6 @@ import { toast } from "react-toastify";
 import {
     AddCoverImageSection,
     AddImage,
-    ImageUploadInput,
     ImageUploadLabel,
 } from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import axios from "axios";
@@ -91,7 +90,7 @@ const UserLinks = ({ userDetail, userDetailData, setUserDetailData, onSubmit }) 
                             >
                                 <AddImage />
                             </ImageUploadLabel>
-                            <ImageUploadInput
+                            <input
                                 type="file"
                                 name="avatar"
                                 id="avatar"

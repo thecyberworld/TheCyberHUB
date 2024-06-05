@@ -1,24 +1,24 @@
 import styled from "styled-components";
 import { BsCheck } from "react-icons/bs";
-
 export const ContainerCard = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 400px;
     text-align: start;
-    background: #111111;
+    background: #111;
     justify-content: space-between;
     border-radius: 5px;
-    transition: 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Corrected property name */
     border: 1px solid #1f1f1f;
 
     &:hover {
-        scale: 1.03;
-        transition: 0.3s ease-in-out;
+        transform: scale(1.03); /* Corrected property name */
     }
 `;
 
 export const BlogImageSection = styled.div`
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -75,8 +75,7 @@ export const BlogCardImage = styled.img`
     width: 100%;
     height: auto;
     object-fit: cover;
-    max-height: 300px;
-
+    max-height: 150px;
     display: block;
     margin: 0 auto;
     border-radius: 15px 15px 0 0;
@@ -92,14 +91,16 @@ export const MainSection = styled.div`
 `;
 
 export const SubSection = styled.div`
-    padding: 25px;
-    @media screen and (max-width: 600px) {
+    padding: 15px 15px 10px;
+
+    @media screen and (width <= 600px) {
         padding: 10px 10px 15px 15px;
     }
 `;
 
 export const DetailsSection = styled.div`
     display: flex;
+    position: relative;
     flex-direction: column;
     text-align: start;
     width: 100%;
@@ -115,51 +116,62 @@ export const FooterDetailsSection = styled.div`
     display: flex;
     align-items: end;
     justify-content: space-between;
-    padding: 5px 5px 15px 0;
+    padding: 0 10px 10px;
 `;
 
 export const Title = styled.div`
-    font-size: 20px;
+    font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
-
     word-wrap: break-word;
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         font-size: 16px;
     }
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         font-size: 12px;
     }
 `;
 
 export const Description = styled.div`
     word-wrap: break-word;
-    @media screen and (max-width: 760px) {
+
+    @media screen and (width <= 760px) {
         font-size: 14px;
     }
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         font-size: 11px;
     }
-    @media screen and (max-width: 460px) {
+
+    @media screen and (width <= 460px) {
         display: none;
     }
 `;
 export const Username = styled.p`
-    padding: 0 5px 0 0;
-    @media screen and (max-width: 600px) {
-        font-size: 10px;
-    }
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: rgb(0 0 0 / 70%);
+    color: #d3d3d3;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: bold;
 `;
+
 export const Date = styled.p`
     font-size: 10px;
     margin: 0 5px 0 0;
 `;
+
 export const Categories = styled.div`
-    margin-left: 25px;
     display: flex;
     flex-wrap: wrap;
     word-wrap: break-word;
-    @media screen and (max-width: 600px) {
+
+    @media screen and (width <= 600px) {
         margin-left: 15px;
     }
 `;
@@ -169,14 +181,14 @@ export const Category = styled.p`
     margin: 5px 5px 5px 0;
     border-radius: 2px;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 11px;
     transition: transform 0.3s;
 
     &:hover {
         transform: scale(1.02);
     }
 
-    @media screen and (max-width: 600px) {
+    @media screen and (width <= 600px) {
         font-size: 10px;
     }
 `;

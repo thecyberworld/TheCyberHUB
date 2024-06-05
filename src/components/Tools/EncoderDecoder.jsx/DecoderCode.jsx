@@ -1,4 +1,4 @@
-import { CodeContainer, H1 } from "./EncoderCodeElement";
+import { CodeContainer } from "./EncoderCodeElement";
 import React from "react";
 
 export default function Decode(props) {
@@ -42,14 +42,10 @@ export default function Decode(props) {
 
     return (
         <div>
-            <H1>Base64 Decode</H1>
-            <CodeContainer>{DecodeBase64()}</CodeContainer>
-            <H1>Url Decode</H1>
-            <CodeContainer>{UrlDecode(props.Input)}</CodeContainer>
-            <H1>HTML Decode</H1>
-            <CodeContainer>{htmlDecode(props.Input)}</CodeContainer>
-            <H1>ASCII HEX Decode</H1>
-            <CodeContainer>{hexDecode(props.Input)}</CodeContainer>
+            <CodeContainer text={DecodeBase64()} title={"Base64 Decode"} />
+            <CodeContainer text={UrlDecode(props.Input)} title={"Url Decode"} />
+            <CodeContainer text={htmlDecode(props.Input)} title={"HTML Decode"} />
+            <CodeContainer text={hexDecode(props.Input)} title={"ASCII HEX Decode"} />
         </div>
     );
 }

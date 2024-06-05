@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { EditBlog, GoalSetter, NotFound, UserBlogs } from "src/components/index";
+import { GoalSetter, NotFound } from "src/components/index";
 import CreateBlogV2 from "src/components/Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import DashboardSidebar from "./DashbaordSidebar/DashboardSidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
@@ -11,6 +11,7 @@ import CommunityChat from "src/components/Chat/CommunityChat";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
 import { Analytics } from "./Analytics/Analytics";
+import Reconage from "src/components/Dashboard/Reconage/Reconage.jsx";
 
 const DashboardRoute = () => {
     const dispatch = useDispatch();
@@ -22,9 +23,6 @@ const DashboardRoute = () => {
         if (!user) {
             navigate("/");
         }
-        // setTimeout(() => {
-        //     setIsLoading(false);
-        // }, 1000);
     }, [user, navigate]);
 
     useEffect(() => {
@@ -50,14 +48,14 @@ const DashboardRoute = () => {
                     <Route index element={<Analytics />} />
                     <Route path={"analytics"} element={<Analytics />} />
                     <Route path={"goals"} element={<GoalSetter />} />
-                    <Route path={"bookmarks"} element={<Bookmarks />} />
+                    <Route path={"saved"} element={<Bookmarks />} />
                     <Route path={"notes"} element={<NoteApp />} />
                     <Route path={"tools"} element={<Tools />} />
                     <Route path={"chat/*"} element={<CommunityChat userDetails={userDetails} />} />
-                    <Route path={"blogs"}>
-                        <Route index element={<UserBlogs />} />
+
+                    <Route path={"reconage"}>
+                        <Route index element={<Reconage />} />
                         <Route exact path={"create"} element={<CreateBlogV2 />} />
-                        <Route exact path={"edit/:blogTitle"} element={<EditBlog />} />
                         <Route path={"*"} element={<NotFound />} />
                     </Route>
 

@@ -10,7 +10,6 @@ import {
     EventDetailsDescription,
     EventDetailsHeader,
     EventDetailsHeaderContainer,
-    EventDetailsHeaderRightSide,
     EventDetailsHeaderText,
     EventDetailsTitle,
     EventLink,
@@ -44,7 +43,7 @@ const DisplayEventDetails = () => {
                         <EventDetailsTitle>{currentEvent.name}</EventDetailsTitle>
                         <EventDetailsDescription>{currentEvent.description}</EventDetailsDescription>
                     </EventDetailsHeaderText>
-                    <EventDetailsHeaderRightSide>
+                    <div>
                         <EventDetailsDateContainer>
                             <DateDisplay time={currentEvent.startTime} />
                         </EventDetailsDateContainer>
@@ -73,7 +72,7 @@ const DisplayEventDetails = () => {
                                 timeZone={Intl.DateTimeFormat().resolvedOptions().timeZone}
                             />
                         )}
-                    </EventDetailsHeaderRightSide>
+                    </div>
                 </EventDetailsHeader>
                 {actionDisplay === "Joined" && (
                     <EventLink

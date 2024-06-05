@@ -19,7 +19,7 @@ export const EventDetailsHeader = styled.div`
 export const EventDetailsDateContainer = styled.div`
     padding: 5px;
     border-radius: 20px;
-    background-image: linear-gradient(to right, #313131, #000000);
+    background-image: linear-gradient(to right, #313131, #000);
     height: 150px;
     display: flex;
     justify-content: center;
@@ -31,7 +31,6 @@ export const EventDetailsHeaderText = styled.div`
     flex-direction: column;
     width: 70%;
 `;
-export const EventDetailsHeaderRightSide = styled.div``;
 export const EventDetailsTitle = styled.h1`
     font-size: 36px;
     text-shadow: 2px 2px #646464;
@@ -49,11 +48,14 @@ export const EventLink = styled.a`
     margin-bottom: 20px;
     display: inline;
     color: white;
-    :hover {
+
+    &:hover {
         color: #2c2cf0;
     }
+
     svg {
         float: left;
     }
+
     line-height: 20px;
 `;

@@ -11,6 +11,7 @@ export const AnalyticsInnerCard = styled.div`
     border-radius: 5px;
     transition: transform 0.2s; /* Animation */
     cursor: pointer;
+
     &:hover {
         transform: scale(1.05);
     }
@@ -51,7 +52,7 @@ export const TopSectionInnerCardMainSection = styled.div`
 export const TopSectionInnerCardMainSectionSummary = styled.div`
     display: flex;
     justify-content: flex-start;
-    padding: 0 0 0.9rem 0;
+    padding: 0 0 0.9rem;
 `;
 
 export const MainFigure = styled.p`

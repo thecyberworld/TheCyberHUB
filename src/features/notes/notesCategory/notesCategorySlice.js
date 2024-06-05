@@ -65,7 +65,7 @@ export const AddSelectedCategory = createAsyncThunk("notesCategory/selected", as
         if (isExist === -1) {
             return id;
         } else {
-            return thunkAPI.rejectWithValue("mesasge");
+            return thunkAPI.rejectWithValue("message");
         }
     } catch (error) {
         return thunkAPI.rejectWithValue();
@@ -80,7 +80,7 @@ export const RemoveSelectedCategory = createAsyncThunk("notesCategory/remove", a
         if (isExist !== -1) {
             return id;
         } else {
-            return thunkAPI.rejectWithValue("mesasge");
+            return thunkAPI.rejectWithValue("message");
         }
     } catch (error) {
         return thunkAPI.rejectWithValue();
@@ -106,6 +106,9 @@ export const notesCategorySlice = createSlice({
             if (isExist !== -1) {
                 state.selectedCategories = state.selectedCategories.filter((e) => e !== action.payload);
             }
+        },
+        notesCategoryReorder: (state, action) => {
+            state.notesCategories = [...action.payload];
         },
     },
     extraReducers: (builder) => {
@@ -186,5 +189,5 @@ export const notesCategorySlice = createSlice({
     },
 });
 
-export const { notesCategoryReset, RemoveCategory } = notesCategorySlice.actions;
+export const { notesCategoryReset, RemoveCategory, notesCategoryReorder } = notesCategorySlice.actions;
 export default notesCategorySlice.reducer;

@@ -5,17 +5,15 @@ import FeedPost from "src/components/Feeds/FeedPosts/FeedPost";
 import { getFeedLikes } from "src/features/feeds/feedLikes/feedLikesSlice";
 import { getBookmarks } from "src/features/bookmarks/bookmarkSlice";
 import { getViews } from "src/features/feeds/views/viewSlice";
-import { getFeedComments } from "src/features/feeds/feedComments/feedCommentsSlice";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import NotFound from "src/NotFound";
 
-const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt }) => {
+const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, displayAt, selectedTags }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
     const { feedLikes } = useSelector((state) => state.feedLikes);
     const { bookmarks, isBookmarkLoading, isBookmarkError, bookmarkMessage } = useSelector((state) => state.bookmarks);
     const { views } = useSelector((state) => state.views);
-    const { feedComments } = useSelector((state) => state.feedComments);
 
     useEffect(() => {
         if (isBookmarkError) console.log(bookmarkMessage);
@@ -24,7 +22,6 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
             dispatch(getBookmarks());
         }
         dispatch(getViews());
-        dispatch(getFeedComments());
     }, [dispatch, isBookmarkError, bookmarkMessage]);
 
     if (isFeedLoading || isBookmarkLoading) return <LoadingSpinner />;
@@ -39,10 +36,14 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
         const cleanSearchTerm = removeInvisibleChars(searchTerm);
         const contentIncludesSearchTerm =
             !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
-        const tagsIncludeSearchTerm =
-            !cleanSearchTerm || feed?.tags?.join(" ").toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
+        const allFilterTagsIncluded =
+            !selectedTags || selectedTags.length === 0
+                ? true
+                : selectedTags.every((selectedTag) =>
+                      feed?.tags?.some((postTag) => postTag.toLowerCase() === selectedTag.toLowerCase()),
+                  );
 
-        return !cleanSearchTerm || contentIncludesSearchTerm || tagsIncludeSearchTerm;
+        return allFilterTagsIncluded && (!cleanSearchTerm || contentIncludesSearchTerm);
     });
 
     const feedLikesData = ({ feedId }) => {
@@ -61,11 +62,11 @@ const FeedsExplore = ({ feeds, searchTerm, feedBookmarksData, isFeedLoading, dis
     };
 
     const feedCommentsData = ({ feedId }) => {
-        return feedComments?.filter((reply) => reply.feedId === feedId);
+        return feeds?.find((feed) => feed._id === feedId).comments;
     };
 
     return (
-        <FeedPostsContainer displayAt={displayAt}>
+        <FeedPostsContainer $displayAt={displayAt}>
             {filteredData?.length > 0 &&
                 filteredData
                     ?.slice()

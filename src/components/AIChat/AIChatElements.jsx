@@ -4,19 +4,15 @@ export const AIChatContainer = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 10px;
-
     flex-direction: row;
-
     max-width: 1500px;
     width: 100%;
     margin: 0 auto;
-
     height: 80vh;
 
-    //padding: 20px;
-
+    /* padding: 20px; */
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 `;
 
 export const Divider = styled.div`
@@ -26,10 +22,10 @@ export const Divider = styled.div`
     align-items: center;
     width: 1px;
     height: 100%;
-    background: rgba(42, 42, 42, 0.35);
+    background: rgb(42 42 42 / 35%);
     padding: 5px;
     border-radius: 10px;
-    border: rgba(42, 42, 42, 0.78) 1px solid;
+    border: rgb(42 42 42 / 78%) 1px solid;
 `;
 
 export const ToggleSection = styled.p`
@@ -52,15 +48,17 @@ export const ToggleSection = styled.p`
 
 export const ChatBox = styled.div`
     display: flex;
-    background: #111111;
+    background: #111;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid rgba(70, 70, 70, 0.55);
-    //border-radius: 10px;
-    border-radius: 0 10px 10px 0px;
+    border: 1px solid rgb(70 70 70 / 55%);
+
+    /* border-radius: 10px; */
+    border-radius: 0 10px 10px 0;
     font-size: 18px;
     width: 100%;
-    //max-width: 1100px;
+
+    /* max-width: 1100px; */
     gap: 25px;
     padding: 25px;
 `;
@@ -88,12 +86,11 @@ export const ChatTitle = styled.p`
 
 export const ChatInput = styled.form`
     display: flex;
-
     gap: 10px;
 
-    input {
+    input,
+    p {
         padding: 10px 15px;
-
         flex: 1;
         background: #1a1c1d;
         color: #fff;
@@ -145,21 +142,19 @@ export const BotMessage = styled.div`
 `;
 
 export const UserMessage = styled.div`
-    //background: #3d3d3d; // vote pankaj
-    background: #1e1e1e; // vote kabir
+    /* background: #3d3d3d; vote pankaj */
+
+    background: #1e1e1e; /* vote kabir */
     align-self: flex-end;
     border: 1px solid #333;
-
     margin-top: 10px;
     border-radius: 10px 1px 0 0;
     font-size: 18px;
     font-weight: bold;
     padding: 15px 20px;
-
     color: #afafaf; /* Light gray or white */
-    font-family: "Roboto", sans-serif;
+    font-family: Roboto, sans-serif;
     line-height: 1.5;
-
     width: 100%;
 
     .message-content {

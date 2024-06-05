@@ -3,14 +3,38 @@ import { useDispatch } from "react-redux";
 import { createGoal } from "src/features/goals/goalSlice";
 import { toast } from "react-toastify";
 import styled from "styled-components";
+import { MdAddBox } from "react-icons/md";
 
 const GoalInput = styled.input`
+    border: none;
+    background: #212121;
+    color: #d7d7d7;
+    padding: 7px 12px;
+    font-size: 16px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid ${(props) => (props.error ? "red" : "#e6e6e6")};
+    border-radius: 4px;
+    outline: none;
+    margin: 1rem 0;
+`;
+
+const GoalInputContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: none;
+    height: 3rem;
+    margin: 1rem 0;
+`;
+
+const GoalSubmit = styled.button`
+    color: #ff6b09;
+    padding: 0.5rem;
+    font-size: 1.5rem;
     border-radius: 5px;
-    margin-bottom: 10px;
-    font-family: inherit;
+
+    &:hover {
+        opacity: 0.7;
+    }
 `;
 
 const GoalForm = () => {
@@ -37,23 +61,20 @@ const GoalForm = () => {
             <form onSubmit={onSubmit}>
                 <div>
                     <label htmlFor="goal">Goal</label>
-                    <GoalInput
-                        type="text"
-                        name="text"
-                        id="text"
-                        value={text}
-                        error={error}
-                        onChange={(e) => setText(e.target.value)}
-                        placeholder="What's your goal?"
-                        style={{ color: "#000" }}
-                    />
-                    <div className="form-group"></div>
-                </div>
-
-                <div className="form-group">
-                    <button className={"btn btn-block"} type={"submit"}>
-                        Add Goal
-                    </button>
+                    <GoalInputContainer>
+                        <GoalInput
+                            type="text"
+                            name="text"
+                            id="text"
+                            value={text}
+                            error={error}
+                            onChange={(e) => setText(e.target.value)}
+                            placeholder="What's your goal?"
+                        />
+                        <GoalSubmit type={"submit"}>
+                            <MdAddBox className="!m-[unset]" />
+                        </GoalSubmit>
+                    </GoalInputContainer>
                 </div>
             </form>
         </section>

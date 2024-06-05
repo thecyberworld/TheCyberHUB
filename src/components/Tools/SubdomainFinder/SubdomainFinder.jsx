@@ -15,7 +15,6 @@ import {
 } from "./SubdomainFinderElements";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { CircleSpinner } from "react-spinners-kit";
-import { getApiUrl } from "src/features/apiUrl";
 import apiStatus from "src/features/apiStatus";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import { RiEarthFill } from "react-icons/ri";
@@ -42,7 +41,7 @@ const SubdomainFinder = () => {
             return;
         }
         try {
-            const response = await axios.post(getApiUrl("api/tool/subdomainFinder"), { domainName });
+            const response = await axios.get(`http://localhost:5000/api/subdomains?domain=${domainName}`);
             setSubdomains(response?.data?.subdomains);
             setIsLoading(false);
         } catch (error) {

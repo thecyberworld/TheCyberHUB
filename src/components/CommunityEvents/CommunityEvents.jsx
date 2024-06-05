@@ -10,7 +10,6 @@ import {
     SubHeader,
     Tabs,
     NoDataComponent,
-    EventList,
     EventNote,
     CommunityEventHeaderContainer,
     FilterContainer,
@@ -183,7 +182,7 @@ const CommunityEvents = ({
 
     const modifyEvent = events.find((event) => event._id === modifyEventId || event._id === eventManageTimelineId);
     return (
-        <ParentContainer pageHeader={pageHeader}>
+        <ParentContainer $pageHeader={pageHeader}>
             <Container>
                 <Header>{title}</Header>
                 <SubHeader>{subtitle}</SubHeader>
@@ -217,7 +216,7 @@ const CommunityEvents = ({
                                 </FilterContainer>
                             )}
                         </CommunityEventHeaderContainer>
-                        <EventList>
+                        <div>
                             {modify && openCreatingNewEvent && (
                                 <ModifyCommunityEvent
                                     onModify={handleModifyEvent}
@@ -256,7 +255,7 @@ const CommunityEvents = ({
                                     <img src={NoDataFound} alt="No data found" />
                                 </NoDataComponent>
                             )}
-                        </EventList>
+                        </div>
                     </>
                 )}
                 {!modify && !user && (

@@ -33,11 +33,11 @@ export default function Dropdown({
             to: "/community-events",
             desc: "Checkout and Join to our Weekly Cyber Community Events",
         },
-        // {
-        //     title: "Volunteer",
-        //     to: "/volunteer",
-        //     desc: `Volunteer for Change: \nJoin Our Community Program and Make an Impact.`,
-        // },
+        {
+            title: "Volunteer",
+            to: "/volunteer",
+            desc: `Volunteer for Change: \nJoin Our Community Program and Make an Impact.`,
+        },
         // {
         //     title: "TheCyberXcel",
         //     to: "/thecyberxcel",
@@ -60,15 +60,13 @@ export default function Dropdown({
         { title: "Community", to: "/community", desc: "Join our community" },
         { title: "Methodology", to: "/resources/methodology", desc: "Test your knowledge" },
         { title: "Victim Help", to: "/victimhelp", desc: "Guidance and Support for Victim" },
-
-        // { title: "Events", to: "/events", desc: "Find Cybersecurity Events" },
-        // { title: "Support", to: "/support", desc: "Support us" },
+        { title: "Support", to: "/support", desc: "Support us" },
         // {title: "News", to: "/cyberNews", desc: "Stay up to date with the latest news"},
     ];
 
     return (
         toggleDropdown && (
-            <DropdownContainer isOpen={isOpen} style={{ backgroundColor, color }}>
+            <DropdownContainer $isOpen={isOpen} style={{ backgroundColor, color }}>
                 <DropdownItemsContainer>
                     {isOpportunities === true &&
                         opportunities.map((program, id) => (

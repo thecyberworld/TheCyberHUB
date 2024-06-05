@@ -7,17 +7,21 @@ import {
     CTABtn,
     TopSectionCaptionCTABtnBig,
     TopSectionCaptionCTABtnBigInnerSection,
-    TopSectionMainContent
+    TopSectionMainContent,
+    TopSectionDownloadText,
 } from "./AnalyticsPageTopSectionMainContentElements";
 import { FiInfoIcon, SlCalenderIcon, TbFileDownloadIcon } from "./AnalyticsIconElements";
-import { lastAmountOfDays } from "./AnalyticsUtils";
+import { getAnalyticsFileData, lastAmountOfDays } from "./AnalyticsUtils";
 import { AnalyticsTopInnerCards } from "./AnalyticsTopInnerCards";
 import { AnalyticsBarChart } from "./AnalyticsBarChart";
 import { AnalyticsDoughnutChart } from "./AnalyticsDoughnutChart";
 import visitors from "./AnalyticsVisitorsData.json";
 import AnalyticsHorizontalBarCharts from "./AnalyticsHorizontalBarCharts";
+import { CSVLink } from "react-csv";
 
 export const AnalyticsPageTopSectionMainContent = () => {
+    const { headers, data } = getAnalyticsFileData();
+
     return (
         <TopSection>
             <Caption>
@@ -33,10 +37,12 @@ export const AnalyticsPageTopSectionMainContent = () => {
                         </TopSectionCaptionCTABtnBigInnerSection>
                     </TopSectionCaptionCTABtnBig>
                     <TopSectionCaptionCTABtnBig>
-                        <TopSectionCaptionCTABtnBigInnerSection>
-                            Download
-                            <TbFileDownloadIcon />
-                        </TopSectionCaptionCTABtnBigInnerSection>
+                        <CSVLink data={data} headers={headers} filename="Analytics_Data.csv">
+                            <TopSectionCaptionCTABtnBigInnerSection>
+                                <TopSectionDownloadText>Download</TopSectionDownloadText>
+                                <TbFileDownloadIcon />
+                            </TopSectionCaptionCTABtnBigInnerSection>
+                        </CSVLink>
                     </TopSectionCaptionCTABtnBig>
                 </CTABtn>
             </Caption>

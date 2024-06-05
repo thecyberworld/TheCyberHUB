@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import {
     AnswerContainer,
-    BackArrowSection,
+    ArrowIcon,
     InterviewQuestionContainer,
     InterviewQuestionSection,
     InterviewsAnswerQuestionsHeading,
     InterviewsQuestionsCard,
     InterviewsQuestionsHeading,
     InterviewsQuestionsTitle,
+    QuestionSection,
     SingleQuestion,
 } from "./InterviewQuestionsElements";
 import InterviewsQuestionsData from "./InterviewQuestionsData";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import { BackArrow } from "src/components/Resources/Jobs/JobsElements";
 import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
+import { Checkbox, CheckboxContainer } from "src/components/Courses/LearningPath/LearningPathElements.jsx";
 
 const InterviewQuestions = () => {
     const firstQuestion = InterviewsQuestionsData[0].details[0].question;
@@ -66,8 +68,8 @@ const InterviewQuestions = () => {
                                                     <InterviewsQuestionsTitle
                                                         onClick={() => onQuestionClick(resources.question)}
                                                         key={index}
+                                                        isSelected={selectedQuestion === resources.question}
                                                     >
-                                                        {/* {index + 1} */}
                                                         <SingleQuestion> {">"} </SingleQuestion> {resources.question}
                                                     </InterviewsQuestionsTitle>
                                                 );
@@ -78,9 +80,9 @@ const InterviewQuestions = () => {
                             </InterviewQuestionSection>
                         ) : (
                             <AnswerContainer>
-                                <BackArrowSection>
+                                <div>
                                     <BackArrow onClick={handleIsShown} />
-                                </BackArrowSection>
+                                </div>
                                 <InterviewsAnswerQuestionsHeading>
                                     {selectedQuestion && <p>{selectedQuestion}</p>}
                                 </InterviewsAnswerQuestionsHeading>
@@ -96,12 +98,20 @@ const InterviewQuestions = () => {
                                             <InterviewsQuestionsHeading> {Question.title} </InterviewsQuestionsHeading>
                                             {Question.details.map((resources, index) => {
                                                 return (
-                                                    <InterviewsQuestionsTitle
-                                                        onClick={() => onQuestionClick(resources.question)}
-                                                        key={index}
-                                                    >
-                                                        {/* {index + 1} */}
-                                                        <SingleQuestion> {">"} </SingleQuestion> {resources.question}
+                                                    <InterviewsQuestionsTitle key={index}>
+                                                        <QuestionSection>
+                                                            <ArrowIcon> {" > "} </ArrowIcon>
+                                                            <SingleQuestion
+                                                                onClick={() => onQuestionClick(resources.question)}
+                                                                isSelected={selectedQuestion === resources.question}
+                                                            >
+                                                                {resources.question}
+                                                            </SingleQuestion>
+                                                        </QuestionSection>
+
+                                                        <CheckboxContainer>
+                                                            <Checkbox type="checkbox" />
+                                                        </CheckboxContainer>
                                                     </InterviewsQuestionsTitle>
                                                 );
                                             })}
@@ -110,11 +120,11 @@ const InterviewQuestions = () => {
                                 })}
                             </InterviewQuestionSection>
                             <AnswerContainer>
-                                <BackArrowSection>
+                                <div>
                                     <BackArrow onClick={handleIsShown} />
-                                </BackArrowSection>
+                                </div>
                                 <InterviewsAnswerQuestionsHeading>
-                                    {selectedQuestion && <h4>{selectedQuestion}</h4>}
+                                    {selectedQuestion && <div>{selectedQuestion}</div>}
                                 </InterviewsAnswerQuestionsHeading>
                                 {selectedAnswer && selectedAnswer.length > 0 ? <p>{selectedAnswer}</p> : "Coming soon"}
                             </AnswerContainer>

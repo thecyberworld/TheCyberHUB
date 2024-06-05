@@ -16,7 +16,8 @@ const securityUrlWs = "wss://security.api.thecyberhub.org";
 
 export const webEnv = import.meta.env.VITE_WEB_ENV || "production";
 
-const assetsURL = "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets";
+const assetsURL =
+    import.meta.env.VITE_ASSETSURLS3 || "https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets";
 const cdnAssets = `${assetsURL}/assets`;
 
 export const cdnContentImagesUrl = (props) => {
