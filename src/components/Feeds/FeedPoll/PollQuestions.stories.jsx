@@ -1,17 +1,17 @@
 import React from "react";
-import { PollContainer } from "./PollContainer";
+import { Poll } from "./Poll";
 import { PollQuestions } from "./PollQuestions";
 
 export default {
     title: "Components/Poll/PollQuestions",
-    component: PollContainer,
+    component: Poll,
     id: "components-poll-answers",
 };
 
 const Template = (args) => (
-    <PollContainer {...args}>
+    <Poll {...args}>
         <PollQuestions questions={["JavaScript", "Python", "Ruby"]} />
-    </PollContainer>
+    </Poll>
 );
 
 export const DefaultPollQuestions = Template.bind({});

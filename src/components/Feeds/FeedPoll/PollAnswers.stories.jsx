@@ -1,15 +1,15 @@
 import React from "react";
 import { PollAnswers } from "./PollAnswers";
-import { PollContainer } from "./PollContainer";
+import { Poll } from "./Poll";
 
 export default {
     title: "Components/Poll/PollAnswers",
-    component: PollContainer,
+    component: Poll,
     id: "components-poll-questions",
 };
 
 const Template = (args) => (
-    <PollContainer {...args}>
+    <Poll {...args}>
         <PollAnswers
             answers={[
                 { percentage: 50, title: "JavaScript", isCorrectAnswer: true },
@@ -17,7 +17,7 @@ const Template = (args) => (
                 { percentage: 20, title: "Ruby", isCorrectAnswer: false },
             ]}
         />
-    </PollContainer>
+    </Poll>
 );
 
 export const DefaultPollAnswers = Template.bind({});

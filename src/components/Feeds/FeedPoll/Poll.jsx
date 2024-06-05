@@ -49,7 +49,7 @@ const InformationContainer = ({ votes, daysLeft }) => (
     </div>
 );
 
-export const PollContainer = ({ title, votes, daysLeft, children }) => {
+export const Poll = ({ title, votes, daysLeft, children }) => {
     return (
         <StyledPollContainer>
             <h3 className="title">{title}</h3>
