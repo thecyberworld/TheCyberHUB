@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PollImage } from "./PollImage";
 
 const StyledAnswer = styled.div`
-    margin-bottom: 1rem;
+    margin-bottom: 0.4rem;
 `;
 
 const PercentageLabel = styled.div`
@@ -54,7 +54,7 @@ export const PollAnswers = ({ answers }) => {
                 <AnswerBarContainer>
                     <TitleContainer>
                         <Title>{title}</Title>
-                        {isCorrectAnswer && <StyledPollImage />} {/* Image after the title */}
+                        {isCorrectAnswer && <StyledPollImage />}
                     </TitleContainer>
                     <AnswerBar isCorrectAnswer={isCorrectAnswer} percentage={percentage} />
                 </AnswerBarContainer>
