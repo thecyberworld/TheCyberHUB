@@ -139,7 +139,7 @@ It allows you to visualize different states of your components and interact with
 To view and run Storybook, use the following command in your terminal:
 
 ```
-storybook dev -p 6006
+npm run storybook
 ```
 This will start the Storybook server on port 6006.
 
