@@ -1,9 +1,11 @@
+import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { getApiUrl } from "src/features/apiUrl";
 
 const useUploadImages = ({ maxImageSizeByte, pageName, defaultImages = [] }) => {
-    const [images, setImages] = useState(defaultImages || []);
-    const [imagesName, setImagesName] = useState([]);
+    const [images, setImages] = useState([]);
+    const [imagesName, setImagesName] = useState(defaultImages || []);
 
     const handleValidate = (image, maxSizeByte) => {
         if (!image) return;
@@ -24,7 +26,10 @@ const useUploadImages = ({ maxImageSizeByte, pageName, defaultImages = [] }) => 
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onloadend = () => {
-                resolve({ image: new File([reader.result], imageName, { type: image?.type }), imageName });
+                resolve({
+                    image: new File([reader.result], imageName, { type: image?.type }),
+                    imageName: imageName.split("-")[1],
+                });
             };
             reader.readAsArrayBuffer(image);
         });
@@ -34,18 +39,13 @@ const useUploadImages = ({ maxImageSizeByte, pageName, defaultImages = [] }) => 
         const manyImages = [];
         const manyImagesName = [];
         try {
-            if (imageFiles?.length === 1) {
-                const { image, imageName } = await handleUploadImage(imageFiles[0]);
+            for (const imageFile of imageFiles) {
+                const { image, imageName } = await handleUploadImage(imageFile);
                 manyImages.push(image);
                 manyImagesName.push(imageName);
-            } else {
-                for (const imageFile of imageFiles) {
-                    const { image, imageName } = await handleUploadImage(imageFile);
-                    manyImages.push(image);
-                    manyImagesName.push(imageName);
-                }
             }
-            setImages((prevImages) => [...prevImages, ...imageFiles]);
+
+            setImages((prevImages) => [...prevImages, ...manyImages]);
             setImagesName((prevImagesName) => [...prevImagesName, ...manyImagesName]);
         } catch (error) {
             console.log(`Error uploading this image:${error}`);
@@ -90,7 +90,56 @@ const useUploadImages = ({ maxImageSizeByte, pageName, defaultImages = [] }) => 
         e.preventDefault();
     };
 
-    const handleSubmit = () => {};
+    const handleSubmit = async (file) => {
+        try {
+            const formData = new FormData();
+            formData.append("image", file);
+            const API_URL = getApiUrl("api/upload");
+            await axios.post(API_URL, formData);
+        } catch (err) {
+            if (err.message === "Request failed with status code 429") {
+                toast.error("You are uploading images too fast. Please wait a few seconds and try again.");
+            }
+        }
+    };
+
+    const handleSubmitManyImages = async (files) => {
+        for (const file of files) {
+            await handleSubmit(file);
+        }
+    };
+
+    const handleSubmitFromContent = async (content) => {
+        const imageTags = content.match(/<img[^>]*src="([^"]*)"[^>]*>/g) || [];
+        let updatedContent = content;
+        if (imageTags.length > 0) {
+            async function uploadContentImages() {
+                const imageUrls = imageTags.map((tag) => {
+                    const match = tag.match(/src="([^"]*)"/);
+                    return match ? match[1] : null;
+                });
+
+                for (const imageUrl of imageUrls) {
+                    if (!isImageUrl(imageUrl)) {
+                        await uploadContentImage(imageUrl);
+                    }
+                }
+            }
+
+            await uploadContentImages();
+        }
+
+        async function uploadContentImage(imageUrl) {
+            const [imageType, base64Data] = imageUrl.split(";base64,");
+            const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
+            updatedContent = updatedContent.replace(imageUrl, filename.split("-")[1]);
+
+            const newFile = bufferToFile(base64Data, filename, imageType);
+
+            await handleSubmit(newFile);
+        }
+        return updatedContent;
+    };
 
     return {
         images,
@@ -103,6 +152,26 @@ const useUploadImages = ({ maxImageSizeByte, pageName, defaultImages = [] }) => 
         onImagePaste: handlePaste,
         onImageDragOver: handleDragOver,
         onImageSubmit: handleSubmit,
+        onManyImageSubmit: handleSubmitManyImages,
+        onImageFromContentSubmit: handleSubmitFromContent,
     };
 };
 export default useUploadImages;
+
+function isImageUrl(url) {
+    return (
+        url.startsWith("http://") || url.startsWith("https://") || url.replace(/^data:/, "").startsWith("data:image")
+    );
+}
+
+function bufferToFile(base64Data, fileName, imageType) {
+    const byteCharacters = atob(base64Data);
+
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const uint8Array = new Uint8Array(byteNumbers);
+    const blob = new Blob([uint8Array], { type: imageType });
+    return new File([blob], fileName, { type: imageType.replace(/^data:/, "") });
+}

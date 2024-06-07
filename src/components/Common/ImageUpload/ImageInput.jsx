@@ -1,8 +1,20 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { AddImage, ImageUploadLabel } from "./ImageElements";
 
-const ImageInput = ({ inputName, onChange, labelStyles = {}, filesName, multiple = false, labelPlaceholder = "" }) => {
+const ImageInput = ({
+    inputName,
+    onChange,
+    labelStyles = {},
+    filesName,
+    multiple = false,
+    labelPlaceholder = "",
+    resetRef = false,
+}) => {
     const imageInputRef = useRef(null);
+
+    useEffect(() => {
+        if (resetRef) imageInputRef.current.value = "";
+    }, [resetRef]);
 
     return (
         <>

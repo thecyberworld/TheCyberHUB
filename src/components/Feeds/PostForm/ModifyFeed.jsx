@@ -5,14 +5,14 @@ import AddPostTags from "./AddPostTags/AddPostTags";
 import { AddFeedCommentContainer, FooterSection, PostFormButton } from "./AddPostElements";
 import { FeedCommentInput } from "src/components/Feeds/FeedPage/FeedComments/AddFeedCommentsElements";
 import { LeftSection, PostHeaderImg, RightSection } from "src/components/Feeds/FeedPosts/FeedPostsElements";
-import { cdnContentImagesUrl, getApiUrl } from "src/features/apiUrl";
-import axios from "axios";
+import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { CircleSpinner } from "react-spinners-kit";
 import { toast } from "react-toastify";
 import { ImageInput, ImagePreview, useUploadImages } from "src/components/Common/ImageUpload";
 
 const maxImageSizeByte = 1000000;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
+    console.log(editFeed);
     const {
         images,
         setImages,
@@ -23,14 +23,15 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         onImageDragOver,
         onImageDrop,
         onImagePaste,
+        onManyImageSubmit,
     } = useUploadImages({
         maxImageSizeByte,
         pageName: "feed",
+        defaultImages: editFeed?.images,
     });
 
     const textareaRef = useRef(null);
-    // const imageInputRef = useRef(null);
-
+    const [resetRef, setResetRef] = useState(false);
     const { user } = useSelector((state) => state.auth);
 
     const [isFeedLoading, setIsFeedLoading] = useState(false);
@@ -54,7 +55,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         setContent(textarea.value);
     };
 
-    const onSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsFeedLoading(true);
 
@@ -78,20 +79,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
             toast.warn("You can upload a maximum of 4 images");
             setIsFeedLoading(false);
         } else {
-            async function uploadFeedImages() {
-                async function uploadFeedImage({ file }) {
-                    const formData = new FormData();
-                    formData.append("image", file);
-                    const API_URL = getApiUrl("api/upload");
-                    await axios.post(API_URL, formData);
-                }
-
-                for (const file of images) {
-                    await uploadFeedImage({ file });
-                }
-            }
-
-            if (images) await uploadFeedImages();
+            if (images) await onManyImageSubmit(images);
 
             const data = {
                 content,
@@ -107,18 +95,12 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
             setTags([]);
             setImages([]);
             setImagesName([]);
-
-            // Reset the file input to clear the selected images
-            // if (imageInputRef.current) {
-            //     imageInputRef.current.value = "";
-            // }
+            setResetRef(true);
         }
     };
-    console.log(onSubmit);
 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || editFeed?.avatar || "avatarDummy.png"));
-
     return (
         <AddFeedCommentContainer>
             {!editFeed && (
@@ -164,6 +146,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                             filesName={imagesName}
                             multiple
                             key={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                            resetRef={resetRef}
                         />
                     )}
                     {isFeedLoading ? (
@@ -171,7 +154,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                             <CircleSpinner size={17} />
                         </PostFormButton>
                     ) : (
-                        <PostFormButton>{editFeed ? "Update" : "Create"}</PostFormButton>
+                        <PostFormButton onClick={handleSubmit}>{editFeed ? "Update" : "Create"}</PostFormButton>
                     )}
                 </FooterSection>
             </RightSection>
