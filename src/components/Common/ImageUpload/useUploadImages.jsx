@@ -3,9 +3,9 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { getApiUrl } from "src/features/apiUrl";
 
-const useUploadImages = ({ maxImageSizeByte, pageName, defaultImages = [] }) => {
+const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     const [images, setImages] = useState([]);
-    const [imagesName, setImagesName] = useState(defaultImages || []);
+    const [imagesName, setImagesName] = useState(initImages || []);
 
     const handleValidate = (image, maxSizeByte) => {
         if (!image) return;

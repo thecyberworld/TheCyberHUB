@@ -27,7 +27,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
     } = useUploadImages({
         maxImageSizeByte,
         pageName: "feed",
-        defaultImages: editFeed?.images,
+        initImages: editFeed?.images,
     });
 
     const textareaRef = useRef(null);
@@ -133,7 +133,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                     </p>
                 </div>
 
-                <ImagePreview files={images} onRemove={onImageRemove} />
+                <ImagePreview files={images} filesName={imagesName} onRemove={onImageRemove} />
 
                 {showPostTags && <AddPostTags tags={tags} setTags={setTags} />}
 
