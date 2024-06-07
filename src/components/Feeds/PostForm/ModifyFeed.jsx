@@ -2,27 +2,34 @@ import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import AddPostTags from "./AddPostTags/AddPostTags";
-import {
-    AddFeedCommentContainer,
-    AddImage,
-    FooterSection,
-    ImageContainer,
-    ImagesContainer,
-    PostFormButton,
-    RemoveButton,
-    FeedImage,
-} from "./AddPostElements";
+import { AddFeedCommentContainer, FooterSection, PostFormButton } from "./AddPostElements";
 import { FeedCommentInput } from "src/components/Feeds/FeedPage/FeedComments/AddFeedCommentsElements";
 import { LeftSection, PostHeaderImg, RightSection } from "src/components/Feeds/FeedPosts/FeedPostsElements";
-import { ImageUploadLabel } from "src/components/Blogs/ManageBlogs/CreateBlog/CreateBlogElements";
 import { cdnContentImagesUrl, getApiUrl } from "src/features/apiUrl";
 import axios from "axios";
 import { CircleSpinner } from "react-spinners-kit";
 import { toast } from "react-toastify";
+import { ImageInput, ImagePreview, useUploadImages } from "src/components/Common/ImageUpload";
 
+const maxImageSizeByte = 1000000;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
+    const {
+        images,
+        setImages,
+        imagesName,
+        setImagesName,
+        onImageRemove,
+        onImageChange,
+        onImageDragOver,
+        onImageDrop,
+        onImagePaste,
+    } = useUploadImages({
+        maxImageSizeByte,
+        pageName: "feed",
+    });
+
     const textareaRef = useRef(null);
-    const imageInputRef = useRef(null);
+    // const imageInputRef = useRef(null);
 
     const { user } = useSelector((state) => state.auth);
 
@@ -30,8 +37,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
 
     const [content, setContent] = useState(editFeed?.content || "");
     const [tags, setTags] = useState(editFeed?.tags || []);
-    const [files, setFiles] = useState([]);
-    const [feedImages, setFeedImages] = useState(editFeed?.images || []);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
 
     const maxCharacterCount = 1500;
@@ -47,45 +52,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         textarea.style.height = "auto"; // Reset height to recalculate scrollHeight
         textarea.style.height = `${textarea.scrollHeight}px`; // Set height to fit content
         setContent(textarea.value);
-    };
-
-    const handleImageChange = (e) => {
-        const imageFiles = e.target.files;
-
-        const newFileNames = [];
-        const feedImageNames = [];
-        const newFiles = [];
-
-        for (const file of imageFiles) {
-            if (file.type !== "image/jpeg" && file.type !== "image/png") {
-                toast.warn("Only JPEG and PNG are allowed");
-                return;
-            }
-            const fileName = `feed-${Date.now()}.${file && file.type.split("/")[1]}`;
-
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const newFile = new File([reader.result], fileName, { type: file && file.type });
-                newFileNames.push(fileName);
-                feedImageNames.push(fileName.split("-")[1]);
-
-                newFiles.push(newFile);
-
-                if (newFiles.length === imageFiles.length) {
-                    setFeedImages((prevFileNames) => [...prevFileNames, ...feedImageNames]);
-                    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
-                }
-            };
-            reader.readAsArrayBuffer(file);
-        }
-    };
-
-    const handleRemoveImage = (index) => {
-        setFiles((prevFiles) => {
-            const updatedFiles = [...prevFiles];
-            updatedFiles.splice(index, 1);
-            return updatedFiles;
-        });
     };
 
     const onSubmit = async (e) => {
@@ -108,7 +74,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         } else if (tags.length > 10) {
             toast.warn("You can add a maximum of 10 tags");
             setIsFeedLoading(false);
-        } else if (files.length > 4) {
+        } else if (images.length > 4) {
             toast.warn("You can upload a maximum of 4 images");
             setIsFeedLoading(false);
         } else {
@@ -120,17 +86,17 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                     await axios.post(API_URL, formData);
                 }
 
-                for (const file of files) {
+                for (const file of images) {
                     await uploadFeedImage({ file });
                 }
             }
 
-            if (files) await uploadFeedImages();
+            if (images) await uploadFeedImages();
 
             const data = {
                 content,
                 tags: tags || [],
-                images: feedImages,
+                images: imagesName,
             };
             onModifyFeed(data);
 
@@ -139,15 +105,16 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
             setIsFeedLoading(false);
             setContent("");
             setTags([]);
-            setFiles([]);
-            setFeedImages([]);
+            setImages([]);
+            setImagesName([]);
 
             // Reset the file input to clear the selected images
-            if (imageInputRef.current) {
-                imageInputRef.current.value = "";
-            }
+            // if (imageInputRef.current) {
+            //     imageInputRef.current.value = "";
+            // }
         }
     };
+    console.log(onSubmit);
 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || editFeed?.avatar || "avatarDummy.png"));
@@ -159,7 +126,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                     <PostHeaderImg src={avatar} alt="Profile picture" />
                 </LeftSection>
             )}
-            <RightSection>
+            <RightSection onDrop={onImageDrop} onDragOver={onImageDragOver} onPaste={onImagePaste}>
                 <div>
                     <FeedCommentInput
                         ref={textareaRef}
@@ -184,45 +151,27 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                     </p>
                 </div>
 
-                <ImagesContainer>
-                    {files?.map((file, index) => (
-                        <ImageContainer key={`${editFeed?._id} + ${index}`}>
-                            <FeedImage src={URL.createObjectURL(file)} alt={`Uploaded ${index + 1}`} />
-                            <RemoveButton onClick={() => handleRemoveImage(index)}>&#10005;</RemoveButton>
-                        </ImageContainer>
-                    ))}
-                </ImagesContainer>
-
-                {/* File input for image upload */}
-                {files.length < 4 && (
-                    <input
-                        type="file"
-                        name={editFeed ? editFeed._id + "feedImage" : "feedImage"}
-                        id={editFeed ? editFeed._id + "feedImage" : "feedImage"}
-                        ref={imageInputRef}
-                        onChange={handleImageChange}
-                        accept="image/*"
-                        multiple
-                        style={{ display: "none" }}
-                    />
-                )}
+                <ImagePreview files={images} onRemove={onImageRemove} />
 
                 {showPostTags && <AddPostTags tags={tags} setTags={setTags} />}
 
                 <FooterSection>
-                    <ImageUploadLabel
-                        style={{ background: "transparent", border: "transparent", padding: "0" }}
-                        htmlFor={editFeed ? editFeed._id + "feedImage" : "feedImage"}
-                    >
-                        {files.length < 4 && <AddImage />}
-                    </ImageUploadLabel>
-
+                    {images.length < 4 && (
+                        <ImageInput
+                            inputName={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                            onChange={onImageChange}
+                            labelStyles={{ background: "transparent", border: "transparent", padding: "0" }}
+                            filesName={imagesName}
+                            multiple
+                            key={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                        />
+                    )}
                     {isFeedLoading ? (
                         <PostFormButton>
                             <CircleSpinner size={17} />
                         </PostFormButton>
                     ) : (
-                        <PostFormButton onClick={onSubmit}>{editFeed ? "Update" : "Create"}</PostFormButton>
+                        <PostFormButton>{editFeed ? "Update" : "Create"}</PostFormButton>
                     )}
                 </FooterSection>
             </RightSection>
