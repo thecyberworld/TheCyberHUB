@@ -22,6 +22,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         onImageDragOver,
         onImageDrop,
         onManyImageSubmit,
+        onImagePaste,
     } = useUploadImages({
         MAX_IMAGE_SIZE_BYTES,
         pageName: "feed",
@@ -113,6 +114,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                         placeholder="What's on your mind?"
                         value={content}
                         onChange={handleChange}
+                        onPaste={(e) => onImagePaste(e, true, 4)}
                     />
                     <p
                         style={{
