@@ -63,14 +63,14 @@ const CreateBlogV2 = () => {
     const [category, setCategory] = useState("Blog");
     const [tags, setTags] = useState([]);
 
-    const maxCharacterCount = 10000;
+    const MAX_CHARACTER_COUNT = 10000;
 
-    const [remainingCharacters, setRemainingCharacters] = useState(maxCharacterCount);
+    const [remainingCharacters, setRemainingCharacters] = useState(MAX_CHARACTER_COUNT);
 
     useEffect(() => {
         const filteredContentLength = content.replace(/<img src="data:image[^>]*>/g, "").length;
-        setRemainingCharacters(maxCharacterCount - filteredContentLength);
-    }, [content, maxCharacterCount]);
+        setRemainingCharacters(MAX_CHARACTER_COUNT - filteredContentLength);
+    }, [content, MAX_CHARACTER_COUNT]);
 
     useEffect(() => {
         if (isBlogError || errorMessage) {
