@@ -29,11 +29,20 @@ import { ImageInput, useUploadImages } from "src/components/Common/ImageUpload";
 
 const maxImageSizeByte = 1000000;
 const CreateBlogV2 = () => {
-    const { images, setImages, imagesName, setImagesName, onImageChange, onImageFromContentSubmit, onImageSubmit } =
-        useUploadImages({
-            maxImageSizeByte,
-            pageName: "blog",
-        });
+    const {
+        images,
+        setImages,
+        imagesName,
+        setImagesName,
+        onImageChange,
+        onImageFromContentSubmit,
+        onImageSubmit,
+        onImageDrop,
+        onImageDragOver,
+    } = useUploadImages({
+        maxImageSizeByte,
+        pageName: "blog",
+    });
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
@@ -156,7 +165,7 @@ const CreateBlogV2 = () => {
         <Wrapper>
             {showAuthPopup && <AuthPopup onClose={() => setShowAuthPopup(false)} />}
             <CreateBlogContainer>
-                <ImageUploadAndPreviewSection>
+                <ImageUploadAndPreviewSection onDragOver={onImageDragOver} onDrop={onImageDrop}>
                     <AddCoverImageSection>
                         <ImageInput
                             inputName="addCoverImage"

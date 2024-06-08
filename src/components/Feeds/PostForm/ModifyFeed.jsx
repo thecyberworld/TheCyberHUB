@@ -21,7 +21,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         onImageChange,
         onImageDragOver,
         onImageDrop,
-        onImagePaste,
         onManyImageSubmit,
     } = useUploadImages({
         maxImageSizeByte,
@@ -101,13 +100,13 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
     const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || editFeed?.avatar || "avatarDummy.png"));
     return (
-        <AddFeedCommentContainer>
+        <AddFeedCommentContainer onDrop={(e) => onImageDrop(e, true, 4)} onDragOver={onImageDragOver}>
             {!editFeed && (
                 <LeftSection>
                     <PostHeaderImg src={avatar} alt="Profile picture" />
                 </LeftSection>
             )}
-            <RightSection onDrop={onImageDrop} onDragOver={onImageDragOver} onPaste={onImagePaste}>
+            <RightSection>
                 <div>
                     <FeedCommentInput
                         ref={textareaRef}
@@ -139,7 +138,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                 <FooterSection>
                     <ImageInput
                         inputName={editFeed ? editFeed._id + "feedImage" : "feedImage"}
-                        onChange={(e) => onImageChange(e, true)}
+                        onChange={(e) => onImageChange(e, true, 4)}
                         labelStyles={{ background: "transparent", border: "transparent", padding: "0" }}
                         filesName={imagesName}
                         multiple

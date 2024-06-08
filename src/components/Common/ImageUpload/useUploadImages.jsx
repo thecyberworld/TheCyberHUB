@@ -35,7 +35,7 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         });
     };
 
-    const handleOneOrManyUploads = async (imageFiles) => {
+    const handleManyUploads = async (imageFiles, maxImages = undefined) => {
         const manyImages = [];
         const manyImagesName = [];
         try {
@@ -44,9 +44,19 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
                 manyImages.push(image);
                 manyImagesName.push(imageName);
             }
+            let currentImagesNameNum;
 
-            setImages((prevImages) => [...prevImages, ...manyImages]);
-            setImagesName((prevImagesName) => [...prevImagesName, ...manyImagesName]);
+            setImagesName((prevImagesName) => {
+                currentImagesNameNum = prevImagesName.length;
+                return maxImages
+                    ? [...prevImagesName, ...manyImagesName].slice(0, maxImages)
+                    : [...prevImagesName, ...manyImagesName];
+            });
+            setImages((prevImages) => {
+                return maxImages
+                    ? [...prevImages, ...manyImages].slice(0, maxImages - currentImagesNameNum)
+                    : [...prevImages, ...manyImages];
+            });
         } catch (error) {
             console.log(`Error uploading this image:${error}`);
         }
@@ -65,21 +75,25 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         });
     };
 
-    const handleChange = async (e, multiple = false) => {
-        const imageFiles = e.target.files;
-        if (multiple) return await handleOneOrManyUploads(imageFiles);
+    const handleMultipleSingularOptions = async (imageFiles, multiple, maxImages) => {
+        if (multiple) return await handleManyUploads(imageFiles, maxImages);
         const { image, imageName } = await handleUploadImage(imageFiles[0]);
         setImages([image]);
         setImagesName([imageName]);
     };
 
-    const handleDrop = async (e) => {
-        e.preventDefault();
-        const imageFiles = e.dataTransfer.files;
-        await handleOneOrManyUploads(imageFiles);
+    const handleChange = async (e, multiple = false, maxImages = undefined) => {
+        const imageFiles = e.target.files;
+        await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
-    const handlePaste = async (e) => {
+    const handleDrop = async (e, multiple = false, maxImages = undefined) => {
+        e.preventDefault();
+        const imageFiles = e.dataTransfer.files;
+        await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
+    };
+
+    const handlePaste = async (e, multiple = false, maxImages = undefined) => {
         const items = (e.clipboardData || e.originalEvent.clipboardData).items;
         const imageFiles = [];
 
@@ -91,7 +105,7 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             }
         }
 
-        await handleOneOrManyUploads(imageFiles);
+        await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
     const handleDragOver = (e) => {
