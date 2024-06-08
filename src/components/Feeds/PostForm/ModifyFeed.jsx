@@ -137,12 +137,12 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
 
                 <FooterSection>
                     <ImageInput
-                        inputName={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                        inputName={editFeed ? `${editFeed._id}feedImage` : "feedImage"}
                         onChange={(e) => onImageChange(e, true, 4)}
                         labelStyles={{ background: "transparent", border: "transparent", padding: "0" }}
                         filesName={imagesName}
                         multiple
-                        key={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                        key={editFeed ? `${editFeed._id}feedImage` : "feedImage"}
                         resetRef={resetRef}
                     />
 
