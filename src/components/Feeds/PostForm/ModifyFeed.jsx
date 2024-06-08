@@ -38,12 +38,12 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
     const [tags, setTags] = useState(editFeed?.tags || []);
     const [showAuthPopup, setShowAuthPopup] = useState(false);
 
-    const maxCharacterCount = 1500;
+    const MAX_CHARACTER_COUNT = 1500;
 
-    const [remainingCharacters, setRemainingCharacters] = useState(maxCharacterCount);
+    const [remainingCharacters, setRemainingCharacters] = useState(MAX_CHARACTER_COUNT);
 
     useEffect(() => {
-        setRemainingCharacters(maxCharacterCount - content.length);
+        setRemainingCharacters(MAX_CHARACTER_COUNT - content.length);
     }, [content]);
 
     const handleChange = () => {
