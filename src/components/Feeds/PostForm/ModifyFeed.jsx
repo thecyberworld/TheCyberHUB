@@ -10,7 +10,7 @@ import { CircleSpinner } from "react-spinners-kit";
 import { toast } from "react-toastify";
 import { ImageInput, ImagePreview, useUploadImages } from "src/components/Common/ImageUpload";
 
-const maxImageSizeByte = 1000000;
+const MAX_IMAGE_SIZE_BYTES = 1048576;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
     const {
         images,
@@ -23,7 +23,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         onImageDrop,
         onManyImageSubmit,
     } = useUploadImages({
-        maxImageSizeByte,
+        MAX_IMAGE_SIZE_BYTES,
         pageName: "feed",
         initImages: editFeed?.images,
     });

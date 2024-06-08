@@ -2,7 +2,6 @@ import React from "react";
 import { ImageContainer, ImagesContainer, PreviewImage, RemoveButton } from "./ImageElements";
 
 const ImagePreview = ({ files, onRemove }) => {
-    console.log(files);
     return (
         <ImagesContainer>
             {files?.map((file, index) => (
