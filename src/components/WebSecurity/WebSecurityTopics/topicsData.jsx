@@ -17,7 +17,7 @@ const topics = [
                         content: "Lab 1 content",
                         level: "Beginner",
                         link: "1",
-                        isCompleted: true,
+                        isCompleted: false,
                     },
                     {
                         title: "Stored XSS",
@@ -35,10 +35,6 @@ const topics = [
             {
                 title: "Reflected XSS",
                 content: `Reflected Cross-Site Scripting (XSS) occurs when an attacker injects malicious scripts into user-provided data, such as input fields or URL parameters. These scripts are then reflected back to the user's browser by the web application, potentially leading to the execution of the malicious code in the context of the victim's session. Here's a javascript code which is vulnerable to Reflected XSS:
-
-![](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/notes/1708420176731.png)
-
-![](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/development/notes/1702915910929.png)
 
 Reflected Cross-Site Scripting (XSS) occurs when an attacker injects malicious scripts into user-provided data, such as input fields or URL parameters. These scripts are then reflected back to the user's browser by the web application, potentially leading to the execution of the malicious code in the context of the victim's session. Here's a javascript code which is vulnerable to Reflected XSS:
 
@@ -117,23 +113,9 @@ The vulnerable code doesn't validate or sanitize the user input and thus the scr
                 title: "Overview",
                 content:
                     "when  a website reflects back the malicious input by the attacker , we call it as reflected XSS.",
-                labs: [
-                    {
-                        title: "Reflected XSS",
-                        content: "Lab 1 content",
-                        level: "Beginner",
-                        link: "labs/lab1",
-                    },
-                    {
-                        title: "Stored XSS",
-                        content: "Lab 2 content",
-                        level: "Beginner",
-                        link: "labs/lab2",
-                    },
-                ],
             },
             {
-                title: "Example of RXSS 1",
+                title: "Example of R-XSS 1",
                 content: `lets take a look at this javascript code which reflects username without any sanitization
 \`\`\`javascript          
 function displayUsername() {
@@ -152,7 +134,7 @@ first we need to find and analyse where our inputs gets reflected on the website
     `,
             },
             {
-                title: "Example of RXSS 2",
+                title: "Example of R-XSS 2",
                 content: `let's take the an example where our \`username\` gets reflected inside a \`title tag\`
 \`\`\`html
 <title>username</title>
@@ -161,10 +143,9 @@ so in this case the if we inject our payload
 \`\`\`html
 <title><script>alert('XSS')</script></title>
 \`\`\`
-therefore it will not execute since the only permissible content of the <title> tag is plain text.
-url : https://html.spec.whatwg.org/multipage/semantics.html#the-title-element
+therefore it will not execute since the only permissible content of the \`<title>\` tag is plain text.
 
-so what can we do is to break out from the <title> tag and execute our payload , for this we can input our own closing </title> tag and then continue our payload
+so what can we do is to break out from the <title> tag and execute our payload , for this we can input our own closing \`</title>\` tag and then continue our payload
 \`\`\`html
 </title><script>alert('XSS')</script>
 \`\`\`
@@ -180,7 +161,7 @@ using the same logic we can break out of many different HTML tags
 `,
             },
             {
-                title: "Example of RXSS 3",
+                title: "Example of R-XSS 3",
                 content: `when input lands inside an attribute’s value within double quote of an HTML tag
 \`\`\`html
 <input name="uname" value="inputReflectedHere">
@@ -219,20 +200,6 @@ here we can breakout of it
                 title: "What is DOM?",
                 content:
                     "The Document Object Model (DOM) is a programming interface that provides a tree-like representation of HTML and XML documents, comprising nodes that symbolize elements, attributes, and text fragments. This dynamic representation allows for real-time modifications by JavaScript code and other technologies, enabling interactive and dynamic web page manipulation.",
-                labs: [
-                    {
-                        title: "DOM XSS",
-                        content: "Lab 1 content",
-                        level: "Beginner",
-                        link: "labs/lab1",
-                    },
-                    {
-                        title: "DOM XSS",
-                        content: "Lab 2 content",
-                        level: "Beginner",
-                        link: "labs/lab2",
-                    },
-                ],
             },
             {
                 title: "How it is used in context of XSS?",
@@ -277,11 +244,11 @@ The following are some of the main sinks that can lead to DOM-XSS vulnerabilitie
 \`\`\`javascript
 document.write()
 document.writeln()
-document.domain
-element.innerHTML
-element.outerHTML
-element.insertAdjacentHTML
-element.onevent
+document.domain()
+element.innerHTML()
+element.outerHTML()
+element.insertAdjacentHTML()
+element.onevent()
 \`\`\`
 The following jQuery functions are also sinks that can lead to DOM-XSS vulnerabilities:
 \`\`\`javascript
@@ -339,10 +306,11 @@ and this is the JavaScript code which is vulnerable to command injection:
 \`\`\`javascript
 function displayUserInfo(userId) {    
     const user = getUserFromDatabase(userId);
-const systemCommand = \`cat /home/users/\${userId}/info.txt\`; 
-// Vulnerable command
-const userDetails = exec(systemCommand); // Executes the command
-return userDetails;
+    const systemCommand = \`cat /home/users/\${userId}/info.txt\`;  
+    
+    // Vulnerable command
+    const userDetails = exec(systemCommand); // Executes the command
+    return userDetails;
 }
 \`\`\`
 In the above code, the input is unsanitized to command injection attacks.
@@ -393,8 +361,8 @@ We can protect it from command injections by properly sanitizing user input.
                 title: "Example",
                 content: `\`https://vulnerablesite.com?page=5\`
 
-Lets say we have the page directory saved on the application server, and the complete path to it is /var/www/page.
-An attacker can move back in the directories using \`../\` recursively to reach its destined position. For /var/www/page, the attacker needs to move three directories back to get to the root directory \`../../../\` and then move up to read any sensitive data like /etc/passwd.
+Lets say we have the page directory saved on the application server, and the complete path to it is \`/var/www/page\`.
+An attacker can move back in the directories using \`../\` recursively to reach its destined position. For \`/var/www/page\`, the attacker needs to move three directories back to get to the root directory \`../../../\` and then move up to read any sensitive data like \`/etc/passwd\`.
 The final exploit will look like this:
 
 \`https://vulnerablesite.com?page=../../../etc/passwd\`
@@ -403,7 +371,7 @@ Take a look at this vulnerable code prone to path traversal:
 
 \`\`\`javascript
 app.post('/upload', (req, res) => {
-const filePath = req.body.path;      
+    const filePath = req.body.path;      
 }
 \`\`\`
 
@@ -413,12 +381,12 @@ We can fix it by properly validating the path and sanitizing it:
 \`\`\`javascript
 const path = require('path');
 app.post('/upload', (req, res) => {
-const userInputPath = req.body.path;
-// Validate and sanitize user input to prevent path traversal
-const sanitizedPath = path.normalize(userInputPath).replace(/^(..\\)+/, '');
-const filePath = path.join(__dirname, 'uploads', sanitizedPath);
-// Now use filePath for file operations
-// ...
+    const userInputPath = req.body.path;
+    
+    // Validate and sanitize user input to prevent path traversal
+    const sanitizedPath = path.normalize(userInputPath).replace(/^(..\\)+/, '');
+    const filePath = path.join(__dirname, 'uploads', sanitizedPath);
+    // Now use filePath for file operations
 });
 \`\`\`
 `,
@@ -465,11 +433,12 @@ const query = { username: username };
 // Find documents based on user input
 const users = await User.find(query); 
 \`\`\`
-Explanation:
 
-User-supplied username is directly embedded into the MQL query object.
+# Explanation:
 
-An attacker can craft a username containing malicious MQL operators or functions (e.g., username: {$where: "return true;"}).
+User-supplied \`username\` is directly embedded into the MQL query object.
+
+An attacker can craft a username containing malicious MQL operators or functions (e.g., \`username: {$where: "return true;"}\`).
 
 The vulnerable code executes the entire crafted string as part of the MQL query.
 
@@ -483,7 +452,8 @@ const query = { username: username.trim() }; // Sanitize input
 // Use a parameterized query
 const users = await User.find({ username: { $eq: username } }); // Safe binding
 \`\`\`
-Explanation:
+
+# Explanation:
 
 User input is sanitized (e.g., trimming) before embedding it in the query object.
 
@@ -535,7 +505,8 @@ $sqlQuery = "SELECT * FROM users WHERE username = '$username' AND password = '$p
 $result = mysqli_query($conn, $sqlQuery); // Vulnerable: User input directly embedded
 // Process the query results
 \`\`\`
-Explanation:
+
+# Explanation:
 - User input (\`username\` and \`password\`) is directly inserted into the SQL query string.
 - An attacker can craft a username containing malicious code (e.g., \`username='admin'; DROP TABLE users;--\`).
 - The vulnerable code executes the entire crafted string as an SQL statement.
@@ -551,7 +522,8 @@ mysqli_stmt_bind_param($stmt, "ss", $username, $password); // Bind parameters
 mysqli_stmt_execute($stmt); // Execute prepared statement
 // Process the query results (using mysqli_stmt_fetch)
 \`\`\`
-Explanation:
+
+# Explanation:
 - User input is escaped using \`mysqli_real_escape_string\` before embedding it in the query string.
 - A prepared statement is used to separate the SQL code from user input.\n- Parameters (\`?\`) are used as placeholders for user input.
 - Input is bound to the parameters using \`mysqli_stmt_bind_param\`.
