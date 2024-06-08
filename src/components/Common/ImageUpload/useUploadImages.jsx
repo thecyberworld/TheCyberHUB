@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { getApiUrl } from "src/features/apiUrl";
+import { uploadImages } from "src/features/imageUploadService";
 
 const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     const [images, setImages] = useState([]);
@@ -94,22 +93,14 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     };
 
     const handleSubmit = async (file) => {
-        try {
-            const formData = new FormData();
-            formData.append("image", file);
-            const API_URL = getApiUrl("api/upload");
-            await axios.post(API_URL, formData);
-        } catch (err) {
-            if (err.message === "Request failed with status code 429") {
-                toast.error("You are uploading images too fast. Please wait a few seconds and try again.");
-            }
-        }
+        const formData = new FormData();
+        formData.append("image", file);
+        await uploadImages(formData);
     };
 
     const handleSubmitManyImages = async (files) => {
-        for (const file of files) {
-            await handleSubmit(file);
-        }
+        const promises = files.map((file) => handleSubmit(file));
+        await Promise.all(promises);
     };
 
     const handleSubmitFromContent = async (content) => {

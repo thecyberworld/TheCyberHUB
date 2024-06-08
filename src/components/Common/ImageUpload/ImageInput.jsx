@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { AddImage, ImageUploadLabel } from "./ImageElements";
 
 const ImageInput = ({
@@ -9,14 +9,7 @@ const ImageInput = ({
     multiple = false,
     maxMultiple = 4,
     labelPlaceholder = undefined,
-    resetRef = false,
 }) => {
-    const imageInputRef = useRef(null);
-
-    useEffect(() => {
-        if (resetRef) imageInputRef.current.value = "";
-    }, [resetRef]);
-
     const shouldShowAddImage = !multiple || (multiple && filesName.length < maxMultiple);
     return (
         <div key={!multiple && filesName[0]}>
@@ -36,7 +29,6 @@ const ImageInput = ({
                 type="file"
                 name={inputName}
                 id={inputName}
-                ref={imageInputRef}
                 onChange={onChange}
                 accept="image/*"
                 multiple={multiple}
