@@ -57,7 +57,6 @@ import SettingsRoute from "./components/Dashboard/Settings";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
 import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
-import VictimHelp from "./components/Other/Victimhelp/Victimhelp";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
@@ -71,7 +70,8 @@ import ResetPassword from "src/pages/ResetPassword";
 import Register from "src/pages/Register";
 // import CyberNews from "./components/Resources/CyberNews/CyberNews";
 import ChatBox from "src/components/Chat/ChatBox/ChatBox";
-import CheatSheetsRoutes from "src/components/CheatSheets/CheatSheetsRoutes.jsx";
+import Checklist from "src/components/Resources/Checklist/Checklist.jsx";
+import Payloads from "src/components/Resources/Payloads/Payloads.jsx";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -169,11 +169,11 @@ const App = () => {
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
-                        <Route path={"/cheatsheets/*"} element={<CheatSheetsRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
-                        <Route exact path={"/victimhelp"} element={<VictimHelp />} />
 
                         <Route path={"/resources/methodology"} element={<Methodology />} />
+                        <Route path={"/resources/checklist"} element={<Checklist />} />
+                        <Route path={"/resources/payloads"} element={<Payloads />} />
 
                         <Route path={"/settings/*"} element={<SettingsRoute />} />
 

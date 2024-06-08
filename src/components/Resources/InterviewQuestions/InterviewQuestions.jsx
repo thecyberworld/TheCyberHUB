@@ -33,6 +33,20 @@ const InterviewQuestions = () => {
     const handleIsShown = () => {
         setIsShown(!isShown);
     };
+
+    const [checkboxState, setCheckboxState] = useState(() => {
+        return JSON.parse(localStorage.getItem(`interviewQuestions-localstorage`)) || {};
+    });
+
+    useEffect(() => {
+        const storedCheckboxState = JSON.parse(localStorage.getItem("interviewQuestions-localstorage")) || {};
+        setCheckboxState(storedCheckboxState);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("interviewQuestions-localstorage", JSON.stringify(checkboxState));
+    }, [checkboxState]);
+
     const onQuestionClick = (questionToFind) => {
         setIsShown(!isShown);
         setSelectedQuestion(questionToFind);
@@ -40,6 +54,13 @@ const InterviewQuestions = () => {
             data.details.find((question) => question.question === questionToFind),
         );
         setSelectedAnswer(questionObject.details.find((question) => question.question === questionToFind).answer);
+    };
+
+    const handleCheckboxChange = (question, isChecked) => {
+        setCheckboxState((prevState) => ({
+            ...prevState,
+            [question]: isChecked,
+        }));
     };
 
     return (
@@ -110,7 +131,16 @@ const InterviewQuestions = () => {
                                                         </QuestionSection>
 
                                                         <CheckboxContainer>
-                                                            <Checkbox type="checkbox" />
+                                                            <Checkbox
+                                                                type="checkbox"
+                                                                checked={checkboxState[resources.question] || false}
+                                                                onChange={(e) =>
+                                                                    handleCheckboxChange(
+                                                                        resources.question,
+                                                                        e.target.checked,
+                                                                    )
+                                                                }
+                                                            />
                                                         </CheckboxContainer>
                                                     </InterviewsQuestionsTitle>
                                                 );

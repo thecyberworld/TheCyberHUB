@@ -60,7 +60,7 @@ export const SingleQuestion = styled.p`
     background: ${(props) => (props.isSelected ? "#ff6b08" : "#131313")};
     color: ${(props) => (props.isSelected ? "#0A0A0A" : "#e1e1e1")};
     display: flex;
-    padding: 5px;
+    padding: 5px 10px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 

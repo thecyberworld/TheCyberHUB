@@ -78,24 +78,24 @@ const Bookmarks = () => {
                 >
                     Blogs
                 </FilterButton>
-                <FilterButton
-                    style={{
-                        background: selectedFilter === "CTF" ? "#FF6B08" : "",
-                        color: selectedFilter === "CTF" ? "#0A0A0A" : "",
-                    }}
-                    onClick={() => handleFilterChange("CTF")}
-                >
-                    CTF
-                </FilterButton>
-                <FilterButton
-                    style={{
-                        background: selectedFilter === "WebSecurity" ? "#FF6B08" : "",
-                        color: selectedFilter === "WebSecurity" ? "#0A0A0A" : "",
-                    }}
-                    onClick={() => handleFilterChange("WebSecurity")}
-                >
-                    Web Security
-                </FilterButton>
+                {/* <FilterButton */}
+                {/*    style={{ */}
+                {/*        background: selectedFilter === "CTF" ? "#FF6B08" : "", */}
+                {/*        color: selectedFilter === "CTF" ? "#0A0A0A" : "", */}
+                {/*    }} */}
+                {/*    onClick={() => handleFilterChange("CTF")} */}
+                {/* > */}
+                {/*    CTF */}
+                {/* </FilterButton> */}
+                {/* <FilterButton */}
+                {/*    style={{ */}
+                {/*        background: selectedFilter === "WebSecurity" ? "#FF6B08" : "", */}
+                {/*        color: selectedFilter === "WebSecurity" ? "#0A0A0A" : "", */}
+                {/*    }} */}
+                {/*    onClick={() => handleFilterChange("WebSecurity")} */}
+                {/* > */}
+                {/*    Web Security */}
+                {/* </FilterButton> */}
             </div>
             {selectedFilter === "Feeds" ? (
                 <FeedPosts feeds={filteredFeeds} isFeedLoading={isFeedLoading} />

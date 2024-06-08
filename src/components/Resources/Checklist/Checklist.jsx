@@ -1,11 +1,22 @@
 import React, { useRef, useState } from "react";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
-import { MethodologyData } from "./MethodlogyData";
-import { HideDataContainer, MainTitleContainer, MethodologyHeading } from "./MethodologyElement";
+import { checklistData } from "./checklistData.jsx";
+import {
+    HideDataContainer,
+    MainTitleContainer,
+    MethodologyHeading,
+} from "src/components/Resources/Methodology/MethodologyElement";
 import { HintIcon } from "src/components/WebSecurity/Common/HintElements";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { Checkbox, CheckboxContainer } from "src/components/Courses/LearningPath/LearningPathElements.jsx";
+import {
+    ArrowIcon,
+    InterviewsQuestionsTitle,
+    QuestionSection,
+    SingleQuestion,
+} from "src/components/Resources/InterviewQuestions/InterviewQuestionsElements.jsx";
 
-const Methodology = () => {
+const Checklist = () => {
     const subtopicRefs = useRef({});
 
     const [active, setActive] = useState(null);
@@ -31,7 +42,7 @@ const Methodology = () => {
         <Wrapper>
             <div></div>
             <div>
-                {MethodologyData.map((data) => (
+                {checklistData.map((data) => (
                     <MainTitleContainer key={data.Methodology}>
                         <h1 style={{ fontSize: "42px" }}>{data.Methodology}</h1>
                         <p style={{ display: "block", textAlign: "center", marginBottom: "20px" }}>
@@ -56,12 +67,21 @@ const Methodology = () => {
                                             id={subTopic.Name}
                                         >
                                             <p>
-                                                <span style={{ fontWeight: "bold" }}></span> {subTopic.Summary}
+                                                <span style={{ fontWeight: "bold" }}></span> {subTopic.Name}
                                             </p>
                                             <h1 style={{ marginTop: "15px" }}>Goals:</h1>
-                                            <ul style={{ listStyle: "circle", marginLeft: "30px" }}>
-                                                {subTopic?.Goals?.map((goal) => (
-                                                    <li key={goal}>{goal}</li>
+                                            <ul style={{ listStyle: "circle", marginLeft: "0px" }}>
+                                                {subTopic?.Goals?.map((goal, index) => (
+                                                    <InterviewsQuestionsTitle key={index}>
+                                                        <QuestionSection>
+                                                            <ArrowIcon style={{ margin: "0" }}>{" > "} </ArrowIcon>
+                                                            <SingleQuestion>{goal}</SingleQuestion>
+                                                        </QuestionSection>
+
+                                                        <CheckboxContainer>
+                                                            <Checkbox type="checkbox" />
+                                                        </CheckboxContainer>
+                                                    </InterviewsQuestionsTitle>
                                                 ))}
                                             </ul>
 
@@ -83,4 +103,4 @@ const Methodology = () => {
     );
 };
 
-export default Methodology;
+export default Checklist;
