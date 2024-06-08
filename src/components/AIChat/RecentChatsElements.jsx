@@ -11,6 +11,7 @@ export const RecentChatsContainer = styled.div`
     padding: 10px 25px;
     background: #111; /* Adjusted background color */
     color: #fff;
+    z-index: 10;
     border: 1px solid rgb(70 70 70 / 55%);
 
     /* border: 1px solid #464646; */
@@ -34,6 +35,11 @@ export const RecentChatsContainer = styled.div`
 
     p {
         text-align: center;
+    }
+
+    @media (width <= 800px) {
+        position: absolute;
+        top: 95px;
     }
 `;
 
