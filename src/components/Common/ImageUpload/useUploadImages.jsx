@@ -3,31 +3,6 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { getApiUrl } from "src/features/apiUrl";
 
-async function uploadContentImage(imageUrl, updatedContent, pageName, onSubmit) {
-    const [imageType, base64Data] = imageUrl.split(";base64,");
-    const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
-
-    const newFile = bufferToFile(base64Data, filename, imageType);
-
-    await onSubmit(newFile);
-
-    return updatedContent.replace(imageUrl, filename.split("-")[1]);
-}
-
-async function uploadContentImages(imageTags, updatedContent, ...args) {
-    const imageUrls = imageTags.map((tag) => {
-        const match = tag.match(/src="([^"]*)"/);
-        return match ? match[1] : null;
-    });
-
-    for (const imageUrl of imageUrls) {
-        if (!isImageUrl(imageUrl)) {
-            updatedContent = await uploadContentImage(imageUrl, updatedContent, ...args);
-        }
-    }
-    return updatedContent;
-}
-
 const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     const [images, setImages] = useState([]);
     const [imagesName, setImagesName] = useState(initImages || []);
@@ -62,7 +37,7 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         });
     };
 
-    const handleManyUploads = async (imageFiles, maxImages = undefined) => {
+    const handleManyUploads = async (imageFiles, maxImages) => {
         const manyImages = [];
         const manyImagesName = [];
         try {
@@ -71,18 +46,14 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
                 manyImages.push(image);
                 manyImagesName.push(imageName);
             }
-            let currentImagesNameNum;
 
             setImagesName((prevImagesName) => {
-                currentImagesNameNum = prevImagesName.length;
-                return maxImages
-                    ? [...prevImagesName, ...manyImagesName].slice(0, maxImages)
-                    : [...prevImagesName, ...manyImagesName];
+                const newImagesName = [...prevImagesName, ...manyImagesName];
+                return maxImages ? newImagesName.slice(0, maxImages) : newImagesName;
             });
             setImages((prevImages) => {
-                return maxImages
-                    ? [...prevImages, ...manyImages].slice(0, maxImages - currentImagesNameNum)
-                    : [...prevImages, ...manyImages];
+                const newImages = [...prevImages, ...manyImages];
+                return maxImages ? newImages.slice(0, maxImages - initImages.length) : newImages;
             });
         } catch (error) {
             console.log(`Error uploading this image:${error}`);
@@ -90,16 +61,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     };
 
     const handleRemove = (index) => {
-        setImages((prevImages) => {
-            const updatedImages = [...prevImages];
-            updatedImages.splice(index, 1);
-            return updatedImages;
-        });
-        setImagesName((prevImagesName) => {
-            const updatedImagesName = [...prevImagesName];
-            updatedImagesName.splice(index, 1);
-            return updatedImagesName;
-        });
+        setImages((prevImages) => removeItemAtIndex(prevImages, index));
+        setImagesName((prevImagesName) => removeItemAtIndex(prevImagesName, index));
     };
 
     const handleMultipleSingularOptions = async (imageFiles, multiple, maxImages) => {
@@ -109,29 +72,20 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         setImagesName([imageName]);
     };
 
-    const handleChange = async (e, multiple = false, maxImages = undefined) => {
+    const handleChange = async (e, multiple = false, maxImages) => {
         const imageFiles = e.target.files;
         await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
-    const handleDrop = async (e, multiple = false, maxImages = undefined) => {
+    const handleDrop = async (e, multiple = false, maxImages) => {
         e.preventDefault();
-        const imageFiles = e.dataTransfer.files;
+        const imageFiles = e.dataTransfer.files || [];
         await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
-    const handlePaste = async (e, multiple = false, maxImages = undefined) => {
-        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-        const imageFiles = [];
-
-        // Check if the paste event contains an image
-        for (const item of items) {
-            if (item.type.startsWith("image")) {
-                const file = item.getAsFile();
-                return imageFiles.push[file];
-            }
-        }
-
+    const handlePaste = async (e, multiple = false, maxImages) => {
+        const pasteItems = (e.clipboardData || e.originalEvent.clipboardData).items;
+        const imageFiles = getAllImagesFromArray(pasteItems);
         await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
@@ -184,6 +138,31 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
 };
 export default useUploadImages;
 
+async function uploadContentImages(imageTags, updatedContent, ...args) {
+    const imageUrls = imageTags.map((tag) => {
+        const match = tag.match(/src="([^"]*)"/);
+        return match ? match[1] : null;
+    });
+
+    for (const imageUrl of imageUrls) {
+        if (!isImageUrl(imageUrl)) {
+            updatedContent = await uploadContentImage(imageUrl, updatedContent, ...args);
+        }
+    }
+    return updatedContent;
+}
+
+async function uploadContentImage(imageUrl, updatedContent, pageName, onSubmit) {
+    const [imageType, base64Data] = imageUrl.split(";base64,");
+    const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
+
+    const newFile = bufferToFile(base64Data, filename, imageType);
+
+    await onSubmit(newFile);
+
+    return updatedContent.replace(imageUrl, filename.split("-")[1]);
+}
+
 function isImageUrl(url) {
     return (
         url.startsWith("http://") || url.startsWith("https://") || url.replace(/^data:/, "").startsWith("data:image")
@@ -196,4 +175,22 @@ function bufferToFile(base64Data, fileName, imageType) {
     const uint8Array = new Uint8Array(byteNumbers);
     const blob = new Blob([uint8Array], { type: imageType });
     return new File([blob], fileName, { type: imageType.replace(/^data:/, "") });
+}
+
+function removeItemAtIndex(items, index) {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    return updatedItems;
+}
+
+function getAllImagesFromArray(itemsArray) {
+    const imageFiles = [];
+
+    for (const item of itemsArray) {
+        if (!item.type.startsWith("image")) return;
+        const file = item.getAsFile();
+        imageFiles.push(file);
+    }
+
+    return imageFiles;
 }
