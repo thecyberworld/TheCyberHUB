@@ -29,7 +29,7 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
 
     const avatar = cdnContentImagesUrl("/user/" + (feed?.avatar || "avatarDummy.png"));
     const feedImage = (image) => cdnContentImagesUrl(`/feed/${image}`);
-    const handleDeleteFeed = () => dispatch(deleteFeed(feed._id));
+    const handleDeleteFeed = () => dispatch(deleteFeed(feed?._id));
     const handleEditFeed = () => {
         setEditMode(true);
     };
@@ -66,11 +66,11 @@ const FeedPost = ({ feed, user, comments, likes, bookmarks, views, setStopRefres
                                 </LeftSection>
                                 <RightHeaderSection>
                                     <PostTimestamp>{dateFormatter({ date: new Date(feed?.createdAt) })}</PostTimestamp>
-                                    {user?._id === feed.user && (
+                                    {user?._id === feed?.user && (
                                         <Options
                                             onDelete={handleDeleteFeed}
                                             onEdit={handleEditFeed}
-                                            modalContainerId={`feed-post-options-container-${feed._id}`}
+                                            modalContainerId={`feed-post-options-container-${feed?._id}`}
                                         />
                                     )}
                                 </RightHeaderSection>

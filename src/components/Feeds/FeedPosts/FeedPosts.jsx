@@ -43,7 +43,7 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
     };
 
     const filteredData = feeds?.filter((feed) => {
-        const postedByFollowingUser = !showOnlyFollowingPosts || followData?.following?.includes(feed.user);
+        const postedByFollowingUser = !showOnlyFollowingPosts || followData?.following?.includes(feed?.user);
         const cleanSearchTerm = removeInvisibleChars(searchTerm);
         const contentIncludesSearchTerm =
             !cleanSearchTerm || feed?.content?.toLowerCase().includes(cleanSearchTerm?.toLowerCase()) || false;
@@ -118,10 +118,10 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
         //                                 key={index}
         //                                 user={user}
         //                                 feed={feed}
-        //                                 comments={feedCommentsData({ feedId: feed._id })}
-        //                                 likes={feedLikesData({ feedId: feed._id })}
-        //                                 bookmarks={feedUserBookmarksData({ feedId: feed._id })}
-        //                                 views={feedViewsData({ feedId: feed._id })}
+        //                                 comments={feedCommentsData({ feedId: feed?._id })}
+        //                                 likes={feedLikesData({ feedId: feed?._id })}
+        //                                 bookmarks={feedUserBookmarksData({ feedId: feed?._id })}
+        //                                 views={feedViewsData({ feedId: feed?._id })}
         //                                 displayAt={displayAt}
         //                                 // setStopRefresh={setStopRefresh}
         //                             />
@@ -139,9 +139,9 @@ const FeedPosts = ({ feeds, searchTerm, showOnlyFollowingPosts, isFeedLoading, d
                         key={index}
                         user={user}
                         feed={feed}
-                        likes={feedLikesData({ feedId: feed._id })}
-                        bookmarks={feedUserBookmarksData({ feedId: feed._id })}
-                        views={feedViewsData({ feedId: feed._id })}
+                        likes={feedLikesData({ feedId: feed?._id })}
+                        bookmarks={feedUserBookmarksData({ feedId: feed?._id })}
+                        views={feedViewsData({ feedId: feed?._id })}
                         displayAt={displayAt}
                         // setStopRefresh={setStopRefresh}
                     />
