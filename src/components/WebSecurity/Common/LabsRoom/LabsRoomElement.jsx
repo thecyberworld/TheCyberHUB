@@ -38,7 +38,6 @@ export const Header = styled.div`
 export const LabTitle = styled.label`
     font-size: 25px;
     font-weight: bold;
-    font-family: "Courier New", monospace;
     color: #dcdcdc;
     padding: 15px;
     width: 100%;
@@ -57,13 +56,13 @@ export const StartLabButton = styled.a`
 `;
 
 export const Description = styled.p`
-    background: #151515;
+    background: #1e1e1e;
     padding: 15px;
     font-size: 16px;
     opacity: 0.8;
     white-space: pre-wrap;
-    border: 1px solid #242425;
     border-radius: 5px;
+    color: #fff;
 `;
 
 export const SolutionHeader = styled.div`
@@ -106,7 +105,6 @@ export const SolutionIndex = styled.span`
 `;
 
 export const SolutionText = styled.span`
-    padding-left: 10px;
     font-size: 16px;
     opacity: 0.8;
 `;

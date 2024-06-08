@@ -52,15 +52,15 @@ export default function Dropdown({
 
     const resources = [
         // { title: "Cyber Security Complete Course", to: "/learning-path", desc: "Learn everything about Cyber Security" },
+        { title: "Tools", to: "tools", desc: "Tools for your hacking needs" },
+        { title: "Payloads", to: "/resources/payloads", desc: "Pay to load" },
+        { title: "Methodology", to: "/resources/methodology", desc: "Methodologies for your hacking needs" },
+        { title: "Checklist", to: "/resources/checklist", desc: "Checklist for your hacking needs" },
         { title: "Roadmap", to: "/roadmaps", desc: "Guide to becoming a cybersecurity professional" },
         { title: "Interview Questions", to: "/interviewQuestions", desc: "Prepare for your interview" },
         { title: "Quiz", to: "/quiz", desc: "Test your knowledge" },
-        { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
-        { title: "Tools", to: "tools", desc: "Tools for your hacking needs" },
         { title: "Community", to: "/community", desc: "Join our community" },
-        { title: "Methodology", to: "/resources/methodology", desc: "Test your knowledge" },
-        { title: "Victim Help", to: "/victimhelp", desc: "Guidance and Support for Victim" },
-        { title: "Support", to: "/support", desc: "Support us" },
+        // { title: "Support", to: "/support", desc: "Support us" },
         // {title: "News", to: "/cyberNews", desc: "Stay up to date with the latest news"},
     ];
 
