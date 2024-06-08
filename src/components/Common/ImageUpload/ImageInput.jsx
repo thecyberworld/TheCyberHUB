@@ -17,10 +17,11 @@ const ImageInput = ({
         if (resetRef) imageInputRef.current.value = "";
     }, [resetRef]);
 
+    const shouldShowAddImage = !multiple || (multiple && filesName.length < maxMultiple);
     return (
         <div key={!multiple && filesName[0]}>
             <ImageUploadLabel style={labelStyles} htmlFor={inputName}>
-                {(!multiple || (multiple && filesName.length < maxMultiple)) && <AddImage />}
+                {shouldShowAddImage && <AddImage />}
                 {labelPlaceholder &&
                     (!filesName.length ? (
                         <p>{labelPlaceholder.choose}</p>

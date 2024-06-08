@@ -3,13 +3,40 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { getApiUrl } from "src/features/apiUrl";
 
+async function uploadContentImage(imageUrl, updatedContent, pageName, onSubmit) {
+    const [imageType, base64Data] = imageUrl.split(";base64,");
+    const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
+
+    const newFile = bufferToFile(base64Data, filename, imageType);
+
+    await onSubmit(newFile);
+
+    return updatedContent.replace(imageUrl, filename.split("-")[1]);
+}
+
+async function uploadContentImages(imageTags, updatedContent, ...args) {
+    const imageUrls = imageTags.map((tag) => {
+        const match = tag.match(/src="([^"]*)"/);
+        return match ? match[1] : null;
+    });
+
+    for (const imageUrl of imageUrls) {
+        if (!isImageUrl(imageUrl)) {
+            updatedContent = await uploadContentImage(imageUrl, updatedContent, ...args);
+        }
+    }
+    return updatedContent;
+}
+
 const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     const [images, setImages] = useState([]);
     const [imagesName, setImagesName] = useState(initImages || []);
 
     const handleValidate = (image, maxSizeByte) => {
         if (!image) return;
-        if (!image.type.startsWith("image/") && !["image/png", "image/jpeg", "image/jpg"].includes(image.type)) {
+        const isImageValid =
+            !image.type.startsWith("image/") && !["image/png", "image/jpeg", "image/jpg"].includes(image.type);
+        if (isImageValid) {
             toast.error("Invalid image type. Only png, jpeg and jpg are allowed.");
             return;
         }
@@ -135,30 +162,7 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         const imageTags = content.match(/<img[^>]*src="([^"]*)"[^>]*>/g) || [];
         let updatedContent = content;
         if (imageTags.length > 0) {
-            async function uploadContentImages() {
-                const imageUrls = imageTags.map((tag) => {
-                    const match = tag.match(/src="([^"]*)"/);
-                    return match ? match[1] : null;
-                });
-
-                for (const imageUrl of imageUrls) {
-                    if (!isImageUrl(imageUrl)) {
-                        await uploadContentImage(imageUrl);
-                    }
-                }
-            }
-
-            await uploadContentImages();
-        }
-
-        async function uploadContentImage(imageUrl) {
-            const [imageType, base64Data] = imageUrl.split(";base64,");
-            const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
-            updatedContent = updatedContent.replace(imageUrl, filename.split("-")[1]);
-
-            const newFile = bufferToFile(base64Data, filename, imageType);
-
-            await handleSubmit(newFile);
+            updatedContent = await uploadContentImages(imageTags, updatedContent, pageName, handleSubmit);
         }
         return updatedContent;
     };
@@ -188,11 +192,7 @@ function isImageUrl(url) {
 
 function bufferToFile(base64Data, fileName, imageType) {
     const byteCharacters = atob(base64Data);
-
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
+    const byteNumbers = byteCharacters.split("").map((char) => char.charCodeAt());
     const uint8Array = new Uint8Array(byteNumbers);
     const blob = new Blob([uint8Array], { type: imageType });
     return new File([blob], fileName, { type: imageType.replace(/^data:/, "") });
