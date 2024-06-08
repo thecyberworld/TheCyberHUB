@@ -12,7 +12,6 @@ import { ImageInput, ImagePreview, useUploadImages } from "src/components/Common
 
 const maxImageSizeByte = 1000000;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
-    console.log(editFeed);
     const {
         images,
         setImages,
@@ -138,17 +137,16 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                 {showPostTags && <AddPostTags tags={tags} setTags={setTags} />}
 
                 <FooterSection>
-                    {images.length < 4 && (
-                        <ImageInput
-                            inputName={editFeed ? editFeed._id + "feedImage" : "feedImage"}
-                            onChange={onImageChange}
-                            labelStyles={{ background: "transparent", border: "transparent", padding: "0" }}
-                            filesName={imagesName}
-                            multiple
-                            key={editFeed ? editFeed._id + "feedImage" : "feedImage"}
-                            resetRef={resetRef}
-                        />
-                    )}
+                    <ImageInput
+                        inputName={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                        onChange={(e) => onImageChange(e, true)}
+                        labelStyles={{ background: "transparent", border: "transparent", padding: "0" }}
+                        filesName={imagesName}
+                        multiple
+                        key={editFeed ? editFeed._id + "feedImage" : "feedImage"}
+                        resetRef={resetRef}
+                    />
+
                     {isFeedLoading ? (
                         <PostFormButton>
                             <CircleSpinner size={17} />

@@ -58,11 +58,19 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             updatedImages.splice(index, 1);
             return updatedImages;
         });
+        setImagesName((prevImagesName) => {
+            const updatedImagesName = [...prevImagesName];
+            updatedImagesName.splice(index, 1);
+            return updatedImagesName;
+        });
     };
 
-    const handleChange = async (e) => {
+    const handleChange = async (e, multiple = false) => {
         const imageFiles = e.target.files;
-        await handleOneOrManyUploads(imageFiles);
+        if (multiple) return await handleOneOrManyUploads(imageFiles);
+        const { image, imageName } = await handleUploadImage(imageFiles[0]);
+        setImages([image]);
+        setImagesName([imageName]);
     };
 
     const handleDrop = async (e) => {

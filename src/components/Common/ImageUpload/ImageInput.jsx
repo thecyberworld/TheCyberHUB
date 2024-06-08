@@ -7,7 +7,8 @@ const ImageInput = ({
     labelStyles = {},
     filesName,
     multiple = false,
-    labelPlaceholder = "",
+    maxMultiple = 4,
+    labelPlaceholder = undefined,
     resetRef = false,
 }) => {
     const imageInputRef = useRef(null);
@@ -17,25 +18,17 @@ const ImageInput = ({
     }, [resetRef]);
 
     return (
-        <>
+        <div key={!multiple && filesName[0]}>
             <ImageUploadLabel style={labelStyles} htmlFor={inputName}>
-                <AddImage />
-                {labelPlaceholder ? (
-                    !filesName.length ? (
-                        <>
-                            Add Cover Image
-                            <p> Please select an image </p>
-                        </>
+                {(!multiple || (multiple && filesName.length < maxMultiple)) && <AddImage />}
+                {labelPlaceholder &&
+                    (!filesName.length ? (
+                        <p>{labelPlaceholder.choose}</p>
                     ) : (
-                        <p>
-                            {filesName.map((fileName) => {
-                                return <>{fileName.slice(0, 20)}</>;
-                            })}{" "}
-                        </p>
-                    )
-                ) : (
-                    <></>
-                )}
+                        filesName.map((fileName) => {
+                            return <p key={fileName}>{fileName.slice(0, 20)}</p>;
+                        })
+                    ))}
             </ImageUploadLabel>
 
             <input
@@ -48,7 +41,7 @@ const ImageInput = ({
                 multiple={multiple}
                 style={{ display: "none" }}
             />
-        </>
+        </div>
     );
 };
 export default ImageInput;
