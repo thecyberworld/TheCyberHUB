@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const AIChatContainer = styled.div`
+    position: relative;
     display: flex;
     justify-content: space-between;
     gap: 10px;
