@@ -30,7 +30,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
     });
 
     const textareaRef = useRef(null);
-    const [resetRef, setResetRef] = useState(false);
     const { user } = useSelector((state) => state.auth);
 
     const [isFeedLoading, setIsFeedLoading] = useState(false);
@@ -94,7 +93,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
             setTags([]);
             setImages([]);
             setImagesName([]);
-            setResetRef(true);
         }
     };
 
@@ -145,7 +143,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                         filesName={imagesName}
                         multiple
                         key={editFeed ? `${editFeed._id}feedImage` : "feedImage"}
-                        resetRef={resetRef}
                     />
 
                     {isFeedLoading ? (
