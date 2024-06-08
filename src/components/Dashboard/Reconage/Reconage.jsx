@@ -41,7 +41,7 @@ const Reconage = () => {
             return;
         }
         try {
-            const response = await axios.get(`http://localhost:5001/api/subdomains?domain=${domainName}`);
+            const response = await axios.get(`http://75.101.252.65:5000/api/subdomains?domain=${domainName}`);
             setSubdomains(response?.data?.subdomains);
             setIsLoading(false);
         } catch (error) {

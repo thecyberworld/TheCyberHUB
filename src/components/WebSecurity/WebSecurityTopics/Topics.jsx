@@ -61,8 +61,9 @@ export const TopicCard = styled.div`
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 10px;
+    height: 100%;
     padding: 20px;
     border-radius: 10px;
     border: 1px solid rgb(255 255 255 / 18%);

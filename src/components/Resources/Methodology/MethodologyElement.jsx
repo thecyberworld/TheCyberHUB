@@ -14,6 +14,7 @@ export const MethodologyHeading = styled.h2`
     border: 1px solid #343434;
     border-radius: 5px;
     color: #eaeaea;
+    cursor: pointer;
 `;
 
 export const HideDataContainer = styled.div`
