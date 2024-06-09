@@ -68,7 +68,6 @@ export default function SettingsForm() {
             error: "",
         }));
     }
-    console.log(geminiProApiKey);
 
     return (
         <form onSubmit={handleSubmit} className="settings-profile-form">

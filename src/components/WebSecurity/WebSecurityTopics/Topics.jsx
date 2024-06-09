@@ -68,7 +68,7 @@ export const TopicCard = styled.div`
     border-radius: 10px;
     border: 1px solid rgb(255 255 255 / 18%);
     transition: all 0.3s ease-in-out;
-    background: #131313;
+    background: #090909;
 
     &:hover {
         transform: translateY(-1px);

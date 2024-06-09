@@ -1,19 +1,9 @@
 import React from "react";
-import SettingsForm from "./ProfileForm";
-import "./profile.css";
 
-export default function Proofile() {
+export default function Profile() {
     return (
         <section style={{ width: "100%" }}>
-            <div>
-                <div className="settings-profile">
-                    <h3 className="profile-heading">Profile</h3>
-                    <p className="profile-info">This is how others will see you on the site.</p>
-                </div>
-                <div>
-                    <SettingsForm />
-                </div>
-            </div>
+            <h3>Profile</h3>
         </section>
     );
 }

@@ -45,7 +45,7 @@ const DashboardRoute = () => {
                 }}
             >
                 <Routes>
-                    <Route index element={<Analytics />} />
+                    <Route index element={<NoteApp />} />
                     <Route path={"analytics"} element={<Analytics />} />
                     <Route path={"goals"} element={<GoalSetter />} />
                     <Route path={"saved"} element={<Bookmarks />} />

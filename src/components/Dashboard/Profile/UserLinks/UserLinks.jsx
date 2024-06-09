@@ -10,7 +10,7 @@ import { FaGithub, FaInstagram, FaLinkedin, FaMedium, FaTwitter } from "react-ic
 import { CgWebsite } from "react-icons/cg";
 import ConnectionsAndFollows from "src/components/Dashboard/Profile/ConnectionsAndFollows/ConnectionsAndFollows";
 
-const UserLinks = ({ userDetail, userDetails, setShowAuthPopup }) => {
+const UserLinks = ({ userDetail, userDetails, isUserDetailsLoading, setShowAuthPopup }) => {
     const socialUsernames = userDetail?.socialLinks?.map(
         (item) => item?.profileUsername !== "" && item?.profileUsername,
     );
@@ -23,6 +23,7 @@ const UserLinks = ({ userDetail, userDetails, setShowAuthPopup }) => {
 
             {userDetail?.user && (
                 <ConnectionsAndFollows
+                    isUserDetailsLoading={isUserDetailsLoading}
                     userDetail={userDetail}
                     userDetails={userDetails}
                     setShowAuthPopup={setShowAuthPopup}

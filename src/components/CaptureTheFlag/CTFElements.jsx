@@ -128,6 +128,10 @@ export const CTFCardContainer = styled.div`
     width: 100%;
     text-align: left;
     transition: 0.2s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     &:hover {
         transition: 0.2s ease-in-out;

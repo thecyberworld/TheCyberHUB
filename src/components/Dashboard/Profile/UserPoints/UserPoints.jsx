@@ -17,9 +17,6 @@ const UserPoints = ({ userDetail, allUserDetail, blogs }) => {
     const roomCompleted = isCompleted?.reduce((a, b) => a + b, 0);
     const blogCount = blogs?.filter((blog) => blog?.user === userDetail?.user)?.length;
 
-    console.log(blogs);
-    console.log(blogCount);
-
     const userRank = getUserRank(userDetail || [], allUserDetail || []);
     return (
         <UserPointsContainer>

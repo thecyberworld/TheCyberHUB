@@ -99,22 +99,22 @@ const CTF = () => {
                         </Select>
                     </SearchDifficulty>
 
-                    <RouteLink to="teams">
-                        <SearchDifficulty
-                            style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                textDecoration: "none",
-                                gap: "5px",
-                                padding: "6px 15px 6px 10px",
-                                borderRadius: "5px",
-                                backgroundColor: "#252525",
-                            }}
-                        >
-                            <RankTrophy style={{ fontSize: "1rem" }} />
-                            <span> Teams </span>
-                        </SearchDifficulty>
-                    </RouteLink>
+                    {/* <RouteLink to="teams"> */}
+                    {/*    <SearchDifficulty */}
+                    {/*        style={{ */}
+                    {/*            display: "flex", */}
+                    {/*            justifyContent: "center", */}
+                    {/*            textDecoration: "none", */}
+                    {/*            gap: "5px", */}
+                    {/*            padding: "6px 15px 6px 10px", */}
+                    {/*            borderRadius: "5px", */}
+                    {/*            backgroundColor: "#252525", */}
+                    {/*        }} */}
+                    {/*    > */}
+                    {/*        <RankTrophy style={{ fontSize: "1rem" }} /> */}
+                    {/*        <span> Teams </span> */}
+                    {/*    </SearchDifficulty> */}
+                    {/* </RouteLink> */}
 
                     <RouteLink to="/leaderboard">
                         <SearchDifficulty

@@ -13,10 +13,11 @@ import { followUser, getFollowData, unfollowUser, reset } from "src/features/fol
 import { DotIcon, FollowButton, FollowContainer, FollowCount } from "./Follow/FollowElements";
 import { RouterLink } from "src/components/Tools/ToolsElements";
 import { CircleSpinner } from "react-spinners-kit";
+import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner.jsx";
 
 // import { ConnectionButton } from "./Connections/ConnectionElements";
 
-const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
+const ConnectionsAndFollows = ({ userDetail, isUserDetailsLoading, setShowAuthPopup }) => {
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.auth);
 
@@ -145,14 +146,17 @@ const ConnectionsAndFollows = ({ userDetail, setShowAuthPopup }) => {
     const followersCount = followers?.length || 0;
     const followingCount = following?.length || 0;
 
+    if (isUserDetailsLoading) {
+        return <LoadingSpinner />;
+    }
+
     return (
         <FollowContainer>
             <div>
-                {/* follow */}
-                {user && followUserId && user?._id === followUserId ? (
-                    <FollowButton>
-                        <RouterLink to={`/user/edit/${user?.username}`}> Edit Profile </RouterLink>
-                    </FollowButton>
+                {user && userDetail && user._id === userDetail.user ? (
+                    <RouterLink to={`/user/edit/${user?.username}`}>
+                        <FollowButton>Edit Profile</FollowButton>
+                    </RouterLink>
                 ) : (
                     <div style={{ display: "flex", gap: "15px" }}>
                         {isLoading ? (

@@ -211,7 +211,7 @@ function ReverseShellGenerator() {
                                             .replace(/\{cmd\}/i, selected)}
                                     />
                                 </CommandTitle>
-                                Shell Options Encode Options
+                                {/* Shell Options Encode Options */}
                             </CommandDisplayContainer>
                         </RevShellBodyBottom>
                     </RevShellBodyContainer>

@@ -76,7 +76,7 @@ const Room = ({ roomData }) => {
                         justifyContent: "space-between",
                         flexDirection: "row",
                         alignItems: "center",
-                        background: "#131313",
+                        background: "#090909",
                     }}
                 >
                     <div

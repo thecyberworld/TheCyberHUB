@@ -12,7 +12,7 @@ const RoomCard = (props) => {
                 style={{
                     width: "100%",
                     height: "87px",
-                    background: "#1A1C1D",
+                    background: "#131313",
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -50,7 +50,7 @@ const RoomCard = (props) => {
                     justifyContent: "space-between",
                     flexDirection: "row",
                     alignItems: "center",
-                    background: "#131313",
+                    background: "#090909",
                 }}
             >
                 <div
@@ -60,7 +60,7 @@ const RoomCard = (props) => {
                         justifyContent: "flex-start",
                         flexDirection: "row",
                         alignItems: "center",
-                        background: "#131313",
+                        background: "#090909",
                     }}
                 >
                     {props?.tags.map((data) => {

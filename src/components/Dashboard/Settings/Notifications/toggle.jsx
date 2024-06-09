@@ -1,24 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Notification.css";
 
-export default function Toggle({ className, handleClick }) {
-    const [isOn, setIsOn] = useState(false);
-
-    const handleToggle = () => {
-        console.log("function is called");
-        setIsOn(!isOn);
-        console.log(isOn);
-    };
-
+export default function Toggle({ className, handleClick, checked }) {
     return (
         <label className={`switch ${className}`}>
-            <input
-                type="checkbox"
-                onClick={() => {
-                    handleToggle();
-                    handleClick();
-                }}
-            />
+            <input type="checkbox" onChange={handleClick} checked={checked} />
             <span className="slider" />
         </label>
     );
