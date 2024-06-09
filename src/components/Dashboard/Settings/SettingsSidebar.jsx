@@ -2,11 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const SIDEBAR_LINKS = [
-    {
-        id: 1,
-        label: "Profile",
-        href: "/settings/profile",
-    },
+    // {
+    // id: 1,
+    // label: "Profile",
+    // href: "/settings/profile",
+    // },
     {
         id: 2,
         label: "Account",
@@ -17,21 +17,21 @@ const SIDEBAR_LINKS = [
         label: "Api",
         href: "/settings/api",
     },
-    {
-        id: 4,
-        label: "Appearance",
-        href: "/settings/appearance",
-    },
+    // {
+    //     id: 4,
+    //     label: "Appearance",
+    //     href: "/settings/appearance",
+    // },
     {
         id: 5,
         label: "Notifications",
         href: "/settings/notifications",
     },
-    {
-        id: 6,
-        label: "Display",
-        href: "/settings/display",
-    },
+    // {
+    //     id: 6,
+    //     label: "Display",
+    //     href: "/settings/display",
+    // },
     {
         id: 7,
         label: "Dashboard",

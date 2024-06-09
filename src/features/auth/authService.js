@@ -53,12 +53,16 @@ const logout = () => {
 
 // Update User
 const updateUser = async (userData, token) => {
+    console.log(userData);
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
         },
     };
     const response = await axios.put(API_URL + "user", userData, config);
+    if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+    }
     return response.data;
 };
 

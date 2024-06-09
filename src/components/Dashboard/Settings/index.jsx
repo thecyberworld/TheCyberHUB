@@ -21,7 +21,7 @@ export default function SettingsRoute() {
                 <div className="settings-profile-wrapper">
                     <Sidebar />
                     <Routes>
-                        <Route index element={<Profile />} />
+                        <Route index element={<Account />} />
                         <Route path={"profile"} element={<Profile />} />
                         <Route path={"account"} element={<Account />} />
                         <Route path={"appearance"} element={<Appearance />} />

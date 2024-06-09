@@ -62,7 +62,9 @@ const UserProfile = () => {
 
     if (!isApiWorking) return <UnderMaintenance />;
 
+    console.log(!userDetail);
     if (
+        !userDetail ||
         userDetail?.length === 0 ||
         userDetail === "Request failed with status code 404" ||
         message === "Request failed with status code 500"
@@ -87,7 +89,12 @@ const UserProfile = () => {
             <ProfileContainer>
                 <ProfileHeader userDetail={userDetail} />
                 <ProfileDetailsSection>
-                    <UserLinks userDetail={userDetail} userDetails={userDetails} setShowAuthPopup={setShowAuthPopup} />
+                    <UserLinks
+                        userDetail={userDetail}
+                        isUserDetailsLoading={isUserDetailLoading}
+                        userDetails={userDetails}
+                        setShowAuthPopup={setShowAuthPopup}
+                    />
                     <UserDetailsContainer>
                         <UserPoints userDetail={userDetail} allUserDetail={userDetails} blogs={blogs} />
                         {(aboutMe && aboutMe?.length === 0) || aboutMe === undefined ? null : (

@@ -41,7 +41,7 @@ export const RoomContainer = styled.div`
     }
 `;
 export const LevelContainer = styled.div`
-    background: #131313;
+    background: #090909;
     width: 390px;
     height: 42px;
     display: flex;

@@ -68,7 +68,6 @@ import NewLeaderboard from "src/components/Other/CyberGames/Leaderboard/NewLeade
 import ForgotPassword from "src/pages/ForgotPassword";
 import ResetPassword from "src/pages/ResetPassword";
 import Register from "src/pages/Register";
-// import CyberNews from "./components/Resources/CyberNews/CyberNews";
 import ChatBox from "src/components/Chat/ChatBox/ChatBox";
 import Checklist from "src/components/Resources/Checklist/Checklist.jsx";
 import Payloads from "src/components/Resources/Payloads/Payloads.jsx";
@@ -149,7 +148,6 @@ const App = () => {
 
                         <Route exact path={"/aichat"} element={<AiChat />} />
 
-                        {/* <Route path={"/cyberNews/*"} element={<CyberNews />} /> */}
                         <Route path={"/explore/*"} element={<ExploreRoutes />} />
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
                         <Route path={"/blogs/*"} element={<BlogsRoute />} />

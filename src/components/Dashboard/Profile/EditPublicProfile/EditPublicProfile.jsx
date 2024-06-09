@@ -17,7 +17,7 @@ const EditPublicProfile = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
-    const { userDetail, isLoading, isError, message } = useSelector((state) => state.userDetail);
+    const { userDetail, isUserDetailLoading, isError, message } = useSelector((state) => state.userDetail);
 
     const [isSuccess, setIsSuccess] = useState(false);
 
@@ -28,7 +28,7 @@ const EditPublicProfile = () => {
             console.log(message);
         }
 
-        if (user !== null && user.username !== userDetail.username) {
+        if (user !== null && user.username !== username) {
             navigate(`/user/${username}`);
         }
 
@@ -75,7 +75,7 @@ const EditPublicProfile = () => {
         }
     };
 
-    if (isLoading) {
+    if (isUserDetailLoading) {
         return (
             <Wrapper>
                 <CircleSpinner size={20} color={"#ff6b08"} />

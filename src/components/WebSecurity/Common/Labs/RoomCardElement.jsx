@@ -9,7 +9,7 @@ export const RoomCardContainer = styled.div`
 export const RoomTags = styled.label`
     margin-left: 10px;
     font-size: 15px;
-    background: black;
+    background: #131313;
     padding: 7px;
     border-radius: 7px;
 `;

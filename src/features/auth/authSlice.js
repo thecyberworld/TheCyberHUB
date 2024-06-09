@@ -53,7 +53,7 @@ export const login = createAsyncThunk("auth/login", async (user, thunkAPI) => {
 });
 
 // Update existing User
-export const updateUser = createAsyncThunk("user/update", async ({ userData }, thunkAPI) => {
+export const updateUser = createAsyncThunk("user/update", async (userData, thunkAPI) => {
     try {
         const token = thunkAPI.getState().auth.user.token;
         return await authService.updateUser(userData, token);
