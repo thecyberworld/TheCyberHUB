@@ -1,3 +1,12 @@
+# [0.54.0](https://github.com/thecyberworld/TheCyberHUB/compare/v0.53.15...v0.54.0) (2024-06-09)
+
+
+### Features
+
+* TheCyberHUB 3.0 ([#852](https://github.com/thecyberworld/TheCyberHUB/issues/852)) ([c2ab26c](https://github.com/thecyberworld/TheCyberHUB/commit/c2ab26c37188756b9a2842ca3c5eb24b59a5c2cb)), closes [#451](https://github.com/thecyberworld/TheCyberHUB/issues/451) [#454](https://github.com/thecyberworld/TheCyberHUB/issues/454) [#451](https://github.com/thecyberworld/TheCyberHUB/issues/451)
+
+
+
 ## [0.53.15](https://github.com/thecyberworld/TheCyberHUB/compare/v0.53.14...v0.53.15) (2023-10-09)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * social container & links ([2663bfd](https://github.com/thecyberworld/TheCyberHUB/commit/2663bfda9bba8ee540a241467e16f59fcb999090))
-
-
-
-## [0.53.11](https://github.com/thecyberworld/TheCyberHUB/compare/v0.53.10...v0.53.11) (2023-09-15)
-
-
-### Bug Fixes
-
-* TheCyberHUB name ([8525677](https://github.com/thecyberworld/TheCyberHUB/commit/852567753cba30135e1100e06ae155c5db2e50e3))
 
 
 
