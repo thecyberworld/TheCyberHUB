@@ -11,6 +11,11 @@ const sendEmailCode = async (userData) => {
 
 const verifyEmailCode = async (userData) => {
     const response = await axios.post(API_URL + `verify-email-code`, userData);
+
+    if (response.data) {
+        localStorage.setItem("user", JSON.stringify(response.data));
+    }
+
     return response.data;
 };
 
@@ -25,9 +30,19 @@ const registerUser = async (userData) => {
 // Login user
 const login = async (userData) => {
     const response = await axios.post(API_URL + "login", userData);
-    if (response.data) {
+
+    if (response.data.message === "email sent") {
+        console.log("2fa user");
+        return response.data;
+    }
+
+    if (response.data.message !== "email sent" && response.data) {
+        console.log("no 2fa user");
         localStorage.setItem("user", JSON.stringify(response.data));
     }
+
+    console.log("lastResponse");
+
     return response.data;
 };
 
