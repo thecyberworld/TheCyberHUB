@@ -10,7 +10,7 @@ export const DescriptionSection = styled.div`
     border-radius: 7px;
     padding: 20px;
     border: 1px solid #232323;
-    background: #131313;
+    background: #090909;
     width: 100%;
 `;
 
@@ -18,7 +18,7 @@ export const SolutionSection = styled.div`
     display: flex;
     flex-direction: column;
     border: 1px solid #232323;
-    background: #131313;
+    background: #090909;
     border-radius: 7px;
     padding: 20px;
     gap: 10px;
@@ -28,17 +28,16 @@ export const SolutionSection = styled.div`
 
 export const Header = styled.div`
     width: 100%;
-    height: 60px;
+    height: 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 `;
 
-export const LabTitle = styled.label`
+export const LabTitle = styled.h1`
     font-size: 25px;
     font-weight: bold;
-    font-family: "Courier New", monospace;
     color: #dcdcdc;
     padding: 15px;
     width: 100%;
@@ -57,13 +56,13 @@ export const StartLabButton = styled.a`
 `;
 
 export const Description = styled.p`
-    background: #151515;
+    background: #1e1e1e;
     padding: 15px;
     font-size: 16px;
     opacity: 0.8;
     white-space: pre-wrap;
-    border: 1px solid #242425;
     border-radius: 5px;
+    color: #fff;
 `;
 
 export const SolutionHeader = styled.div`
@@ -74,7 +73,7 @@ export const SolutionHeader = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    /* background-color: #1a1c1d; */
+    /* background-color: #131313; */
     cursor: pointer;
 `;
 
@@ -106,7 +105,6 @@ export const SolutionIndex = styled.span`
 `;
 
 export const SolutionText = styled.span`
-    padding-left: 10px;
     font-size: 16px;
     opacity: 0.8;
 `;

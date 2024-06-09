@@ -34,6 +34,7 @@ export const ROEHeading = styled.h1`
     color: #fff;
     text-align: center;
     max-width: 800px;
+    font-size: 20px;
 `;
 
 export const ROEDescription = styled.p`

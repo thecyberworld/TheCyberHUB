@@ -29,7 +29,7 @@ const NoteApp = () => {
     useEffect(() => {
         if (isNotesCategoryError) {
             toast.error(notesCategoryMessage);
-            console.log(notesCategoryMessage);
+            // console.log(notesCategoryMessage);
         }
         dispatch(getNotesCategories());
         return () => dispatch(notesCategoryReset());

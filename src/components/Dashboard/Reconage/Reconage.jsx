@@ -18,7 +18,7 @@ import apiStatus from "src/features/apiStatus";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import { RiEarthFill } from "react-icons/ri";
 import { Input } from "src/components/Blogs/BlogComments/AddCommentFormElements.jsx";
-
+import { getApiUrl } from "src/features/apiUrl";
 const Reconage = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
     const [domainName, setDomainName] = useState("");
@@ -41,7 +41,7 @@ const Reconage = () => {
             return;
         }
         try {
-            const response = await axios.get(`http://localhost:5001/api/subdomains?domain=${domainName}`);
+            const response = await axios.post(getApiUrl("api/tool/subdomainFinder"), { domainName });
             setSubdomains(response?.data?.subdomains);
             setIsLoading(false);
         } catch (error) {

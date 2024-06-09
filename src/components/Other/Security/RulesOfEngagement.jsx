@@ -16,7 +16,8 @@ const RulesOfEngagement = () => {
             title: `Scope of Testing`,
             description: (
                 <>
-                    Security testing should only be conducted on <br /> <DotSymbol />
+                    Security testing should only be conducted on
+                    <br /> <DotSymbol style={{ margin: "0 10px" }} />
                     <a
                         style={{ color: "#ed652f" }}
                         href="https://security.thecyberhub.org"
@@ -25,7 +26,7 @@ const RulesOfEngagement = () => {
                     >
                         security.thecyberhub.org
                     </a>
-                    <br /> <DotSymbol />
+                    <br /> <DotSymbol style={{ margin: "0 10px" }} />
                     <a
                         style={{ color: "#ed652f" }}
                         href="https://security.api.thecyberhub.org"
@@ -48,19 +49,19 @@ const RulesOfEngagement = () => {
                 <>
                     The following domains are out of scope for security testing and should not be tested under any
                     circumstances:
-                    <br /> <DotSymbol />
+                    <br /> <DotSymbol style={{ margin: "0 10px" }} />
                     <a style={{ color: "#ed652f" }} href="https://thecyberhub.org" target="_blank" rel="noreferrer">
                         thecyberhub.org
                     </a>
-                    <br /> <DotSymbol />
+                    <br /> <DotSymbol style={{ margin: "0 10px" }} />
                     <a style={{ color: "#ed652f" }} href="https://api.thecyberhub.org" target="_blank" rel="noreferrer">
                         api.thecyberhub.org
                     </a>
-                    <br /> <DotSymbol />
+                    <br /> <DotSymbol style={{ margin: "0 10px" }} />
                     <a style={{ color: "#ed652f" }} href="https://dev.thecyberhub.org" target="_blank" rel="noreferrer">
                         dev.thecyberhub.org
                     </a>
-                    <br /> <DotSymbol />
+                    <br /> <DotSymbol style={{ margin: "0 10px" }} />
                     <a
                         style={{ color: "#ed652f" }}
                         href="https://dev.api.thecyberhub.org"
@@ -77,7 +78,7 @@ const RulesOfEngagement = () => {
             description: (
                 <>
                     If you discover a vulnerability during your testing, please report it immediately to
-                    <a style={{ color: "#ed652f", marginRight: "-3px" }} href="mailto:info@thecyberhub.org">
+                    <a style={{ color: "#ed652f", margin: "0 0 0 5px" }} href="mailto:info@thecyberhub.org">
                         info@thecyberhub.org
                     </a>
                     . Please do not disclose any information about the vulnerability to others until it has been

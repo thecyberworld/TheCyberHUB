@@ -33,7 +33,7 @@ const Security = () => {
                 text: (
                     <>
                         If you have discovered a security vulnerability, please contact us at
-                        <a style={{ color: "#00b2ff", marginRight: "-3px" }} href="mailto:info@thecyberhub.org">
+                        <a style={{ color: "#00b2ff", margin: "0 0 0 5px" }} href="mailto:info@thecyberhub.org">
                             info@thecyberhub.org
                         </a>
                         . We will do our best to respond to your report in a timely manner.

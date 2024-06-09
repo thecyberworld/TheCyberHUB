@@ -33,11 +33,7 @@ export default function Dropdown({
             to: "/community-events",
             desc: "Checkout and Join to our Weekly Cyber Community Events",
         },
-        {
-            title: "Volunteer",
-            to: "/volunteer",
-            desc: `Volunteer for Change: \nJoin Our Community Program and Make an Impact.`,
-        },
+        // {title: "Volunteer", to: "/volunteer", desc: `Volunteer for Change: \nJoin Our Community Program and Make an Impact.`,},
         // {
         //     title: "TheCyberXcel",
         //     to: "/thecyberxcel",
@@ -52,16 +48,15 @@ export default function Dropdown({
 
     const resources = [
         // { title: "Cyber Security Complete Course", to: "/learning-path", desc: "Learn everything about Cyber Security" },
-        { title: "Roadmap", to: "/roadmaps", desc: "Guide to becoming a cybersecurity professional" },
-        { title: "Interview Questions", to: "/interviewQuestions", desc: "Prepare for your interview" },
-        { title: "Quiz", to: "/quiz", desc: "Test your knowledge" },
-        { title: "Cheat Sheets", to: "/cheatsheets", desc: "Cheat Sheets for quick reference" },
-        { title: "Tools", to: "tools", desc: "Tools for your hacking needs" },
-        { title: "Community", to: "/community", desc: "Join our community" },
-        { title: "Methodology", to: "/resources/methodology", desc: "Test your knowledge" },
-        { title: "Victim Help", to: "/victimhelp", desc: "Guidance and Support for Victim" },
-        { title: "Support", to: "/support", desc: "Support us" },
-        // {title: "News", to: "/cyberNews", desc: "Stay up to date with the latest news"},
+        { title: "Methodology", to: "/resources/methodology", desc: "Master ethical hacking strategies" },
+        { title: "Checklist", to: "/resources/checklist", desc: "Secure your systems with our checklist" },
+        { title: "Payloads", to: "/resources/payloads", desc: "Learn about payloads (for educational purposes)" },
+        { title: "Tools", to: "/tools", desc: "Explore ethical hacking tools" },
+        { title: "Roadmap", to: "/roadmaps", desc: "Chart your path to cybersecurity expertise" },
+        { title: "Interview Questions", to: "/interviewQuestions", desc: "Ace your cybersecurity interview" },
+        { title: "Quiz", to: "/quiz", desc: "Challenge your cybersecurity knowledge" },
+        { title: "Join our Community", to: "/community", desc: "Connect with fellow cybersecurity enthusiasts" },
+        // { title: "Support", to: "/support", desc: "Support us" },
     ];
 
     return (

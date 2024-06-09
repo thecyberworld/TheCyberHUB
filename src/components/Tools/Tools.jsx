@@ -11,7 +11,6 @@ import { RiEarthFill } from "react-icons/ri";
 const Tools = () => {
     const tools = [
         { name: "Reconage", link: "/dashboard/reconage", icon: <GiTridentShield /> },
-
         { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
         { name: "Bin Exploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
         { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },

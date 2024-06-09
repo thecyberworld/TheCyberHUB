@@ -9,7 +9,7 @@ export default function CodeReviewCard(props) {
                 style={{
                     width: "100%",
                     height: "87px",
-                    background: "#1A1C1D",
+                    background: "#131313",
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -46,7 +46,7 @@ export default function CodeReviewCard(props) {
                     justifyContent: "space-between",
                     flexDirection: "row",
                     alignItems: "center",
-                    background: "#131313",
+                    background: "#090909",
                 }}
             >
                 <div
@@ -56,7 +56,7 @@ export default function CodeReviewCard(props) {
                         justifyContent: "flex-start",
                         flexDirection: "row",
                         alignItems: "center",
-                        background: "#131313",
+                        background: "#090909",
                     }}
                 >
                     {props.tags.map((data) => {

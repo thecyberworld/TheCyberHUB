@@ -1,61 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Notification.css";
 import Toggle from "./toggle";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { updateUser, userReset } from "src/features/auth/authSlice";
 
 export default function Notifications() {
+    const dispatch = useDispatch();
+    const { user, isUserSuccess } = useSelector((state) => state.auth);
+
     const [toggled, setToggled] = useState({
         all: false,
-        blogs: false,
         newsletter: false,
         event: false,
+        blogs: false,
     });
 
+    useEffect(() => {
+        if (isUserSuccess) {
+            toast("Successfully updated");
+        }
+
+        if (user && user.notification) {
+            setToggled(user.notification);
+        }
+
+        dispatch(userReset());
+    }, [user, isUserSuccess, dispatch]);
+
     function handleClickAll() {
-        toggled.all = !toggled.all;
-        setToggled(toggled);
-        console.log(toggled);
-        if (toggled.all === true) {
-            const x = document.getElementsByClassName("otherButtons");
-            if (toggled.event === false) {
-                x[0].click();
-            }
-            if (toggled.newsletter === false) {
-                x[1].click();
-            }
-            if (toggled.blogs === false) {
-                x[2].click();
-            }
-        }
+        const newState = !toggled.all;
+        const updatedToggled = {
+            all: newState,
+            blogs: newState,
+            newsletter: newState,
+            event: newState,
+        };
+
+        setToggled(updatedToggled);
+        dispatch(updateUser({ notification: updatedToggled }));
     }
 
-    function handleEvent() {
-        toggled.event = !toggled.event;
-        setToggled(toggled);
-        if (toggled.all === true) {
-            const x = document.getElementsByClassName("allButton");
-            x[0].click();
-        }
-        console.log(toggled);
-    }
+    function handleToggle(type) {
+        setToggled((prevToggled) => {
+            const updatedToggled = { ...prevToggled, [type]: !prevToggled[type] };
 
-    function handleNewsletter() {
-        toggled.newsletter = !toggled.newsletter;
-        setToggled(toggled);
-        if (toggled.all === true) {
-            const x = document.getElementsByClassName("allButton");
-            x[0].click();
-        }
-        console.log(toggled);
-    }
+            if (type !== "all" && updatedToggled.all) {
+                updatedToggled.all = updatedToggled.blogs && updatedToggled.newsletter && updatedToggled.event;
+            }
 
-    function handleBlogs() {
-        toggled.blogs = !toggled.blogs;
-        setToggled(toggled);
-        if (toggled.all === true) {
-            const x = document.getElementsByClassName("allButton");
-            x[0].click();
-        }
-        console.log(toggled);
+            dispatch(updateUser({ notification: updatedToggled }));
+            return updatedToggled;
+        });
     }
 
     return (
@@ -66,27 +62,39 @@ export default function Notifications() {
                 <div id="container">
                     <div>
                         <h2>All notifications</h2>
-                        <p id="allNotif">Turn of all notifications</p>
+                        <p id="allNotif">Turn off all notifications</p>
                     </div>
-                    <Toggle handleClick={handleClickAll} className={"allButton"} />
-
-                    <div>
-                        <h3>Event notifications</h3>
-                        <p>Receive notifications related to events</p>
-                    </div>
-                    <Toggle handleClick={handleEvent} className={"otherButtons"} />
+                    <Toggle handleClick={handleClickAll} checked={toggled.all} className={"allButton"} />
 
                     <div>
                         <h3>Newsletter notifications</h3>
                         <p>Receive the monthly newsletter</p>
                     </div>
-                    <Toggle handleClick={handleNewsletter} className={"otherButtons"} />
+                    <Toggle
+                        handleClick={() => handleToggle("newsletter")}
+                        checked={toggled.newsletter}
+                        className={"otherButtons"}
+                    />
+
+                    <div>
+                        <h3>Event notifications</h3>
+                        <p>Receive notifications related to events</p>
+                    </div>
+                    <Toggle
+                        handleClick={() => handleToggle("event")}
+                        checked={toggled.event}
+                        className={"otherButtons"}
+                    />
 
                     <div>
                         <h3>Blogs notifications</h3>
                         <p>Receive notifications regarding the blog</p>
                     </div>
-                    <Toggle handleClick={handleBlogs} className={"otherButtons"} />
+                    <Toggle
+                        handleClick={() => handleToggle("blogs")}
+                        checked={toggled.blogs}
+                        className={"otherButtons"}
+                    />
                 </div>
             </div>
         </section>

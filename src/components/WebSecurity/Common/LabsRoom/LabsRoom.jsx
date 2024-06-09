@@ -55,9 +55,10 @@ const Room = ({ roomData }) => {
                     <LabTitle>{data.title}</LabTitle>
                     <div
                         style={{
-                            background: "#142638",
-                            padding: "7px",
-                            borderRadius: "5px",
+                            backgroundColor: "#2c1b16",
+                            border: "1px solid #ff6b08",
+                            padding: "7px 10px",
+                            borderRadius: "10px",
                         }}
                     >
                         <label style={{}}>{data?.level}</label>
@@ -75,7 +76,7 @@ const Room = ({ roomData }) => {
                         justifyContent: "space-between",
                         flexDirection: "row",
                         alignItems: "center",
-                        background: "#131313",
+                        background: "#090909",
                     }}
                 >
                     <div
@@ -85,11 +86,19 @@ const Room = ({ roomData }) => {
                             justifyContent: "space-evenly",
                             flexDirection: "row",
                             alignItems: "center",
-                            background: "#131313",
                         }}
                     >
                         {data?.tags.map((data) => {
-                            return <RoomTags key={data}>{data}</RoomTags>;
+                            return (
+                                <RoomTags
+                                    style={{
+                                        backgroundColor: "#272727",
+                                    }}
+                                    key={data}
+                                >
+                                    {data}
+                                </RoomTags>
+                            );
                         })}
                     </div>
                 </div>

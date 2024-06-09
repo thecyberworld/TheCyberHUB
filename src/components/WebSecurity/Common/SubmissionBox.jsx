@@ -20,7 +20,7 @@ const SubmissionBox = ({ submitType, onSubmit, setUserInput }) => {
             <InputSection>
                 <Input placeholder={`Enter your ${submitType} here`} value={inputValue} onChange={handleInputChange} />
                 <SubmitButton onClick={handleSubmit}>
-                    <PiUploadDuotone size={26} />
+                    <PiUploadDuotone size={20} />
                 </SubmitButton>
             </InputSection>
         </SubmissionBoxContainer>

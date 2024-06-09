@@ -14,13 +14,15 @@ const Methodology = () => {
 
         if (active !== null && active !== subtopic) {
             const previousElement = subtopicRefs.current[active];
-            previousElement.style.display = "none";
+            if (previousElement) {
+                previousElement.style.display = "none";
+            }
         }
 
         const element = subtopicRefs.current[subtopic];
-        if (element.style.display === "block") {
+        if (element && element.style.display === "block") {
             element.style.display = "none";
-        } else {
+        } else if (element) {
             element.style.display = "block";
         }
     }
@@ -29,48 +31,45 @@ const Methodology = () => {
         <Wrapper>
             <div></div>
             <div>
-                {Object.keys(MethodologyData).map((mainTitle) => (
-                    <MainTitleContainer key={mainTitle}>
-                        <h1
-                            style={{
-                                fontSize: "42px",
-                            }}
-                        >
-                            {mainTitle}
-                        </h1>
-                        <p
-                            style={{
-                                display: "block",
-                                textAlign: "center",
-                            }}
-                        >
-                            {MethodologyData[mainTitle].Description}
+                {MethodologyData.map((data) => (
+                    <MainTitleContainer key={data.Methodology}>
+                        <h1 style={{ fontSize: "42px" }}>{data.Methodology}</h1>
+                        <p style={{ display: "block", textAlign: "center", marginBottom: "20px" }}>
+                            {data.Description}
                         </p>
 
-                        {Object.keys(MethodologyData[mainTitle].Topics).map((topic) => (
-                            <div key={topic} style={{ width: "100%", margin: "20px" }}>
-                                <h2 style={{ textAlign: "center", fontSize: "25px" }}>{topic}</h2>
-                                {Object.keys(MethodologyData[mainTitle].Topics[topic]).map((subTopic) => (
-                                    <div key={subTopic} style={{ width: "100%", cursor: "pointer" }}>
-                                        <MethodologyHeading onClick={() => handleClick(subTopic)}>
-                                            {subTopic}
-                                            <HintIcon>{active === subTopic ? <FaAngleUp /> : <FaAngleDown />}</HintIcon>
+                        {data.Topics.map((topic) => (
+                            <div key={topic.Topic} style={{ width: "100%", margin: "20px" }}>
+                                <h2 style={{ textAlign: "center", fontSize: "25px" }}>{topic.Topic}</h2>
+                                <p style={{ textAlign: "center", fontSize: "15px" }}>{topic.Description}</p>
+                                <br />
+                                {topic.SubTopics.map((subTopic) => (
+                                    <div key={subTopic.Name} style={{ width: "100%" }}>
+                                        <MethodologyHeading onClick={() => handleClick(subTopic.Name)}>
+                                            {subTopic.Name}
+                                            <HintIcon>
+                                                {active === subTopic.Name ? <FaAngleUp /> : <FaAngleDown />}
+                                            </HintIcon>
                                         </MethodologyHeading>
                                         <HideDataContainer
-                                            ref={(el) => (subtopicRefs.current[subTopic] = el)}
-                                            id={subTopic}
+                                            ref={(el) => (subtopicRefs.current[subTopic.Name] = el)}
+                                            id={subTopic.Name}
                                         >
                                             <p>
-                                                <span style={{ fontWeight: "bold" }}>Summary </span>-
-                                                {MethodologyData[mainTitle].Topics[topic][subTopic].Summary}
+                                                <span style={{ fontWeight: "bold" }}></span> {subTopic.Summary}
                                             </p>
-                                            <h1 style={{ marginTop: "5px" }}>Goals:</h1>
+                                            <h1 style={{ marginTop: "15px" }}>Goals:</h1>
                                             <ul style={{ listStyle: "circle", marginLeft: "30px" }}>
-                                                {MethodologyData[mainTitle].Topics[topic][subTopic].Goals.map(
-                                                    (goal) => (
-                                                        <li key={goal}>{goal}</li>
-                                                    ),
-                                                )}
+                                                {subTopic?.Goals?.map((goal) => (
+                                                    <li key={goal}>{goal}</li>
+                                                ))}
+                                            </ul>
+
+                                            <h1 style={{ marginTop: "15px" }}>Tools:</h1>
+                                            <ul style={{ listStyle: "circle", marginLeft: "30px" }}>
+                                                {subTopic?.Tools?.map((tool) => (
+                                                    <li key={tool}>{tool}</li>
+                                                ))}
                                             </ul>
                                         </HideDataContainer>
                                     </div>

@@ -257,7 +257,7 @@ const RegisterEmail = ({
     </>
 );
 
-const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
+export const VerifyCode = ({ code, onChange, onSubmitVerifyCode, isUserLoading }) => (
     <>
         <VerificationCodeSection>
             <CustomInputGroup style={{ width: "100%" }}>

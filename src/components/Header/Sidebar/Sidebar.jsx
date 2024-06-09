@@ -14,7 +14,6 @@ import {
 
 const Sidebar = (props) => {
     const { isOpen, toggle } = props;
-    console.log(isOpen);
 
     const [drop, setDrop] = useState(false);
     const [resourcesClick, setResourcesClick] = useState(true);

@@ -59,13 +59,13 @@ const ChatBox = () => {
         setWs(newWs);
 
         newWs.addEventListener("open", () => {
-            console.log("WebSocket connection opened");
+            // console.log("WebSocket connection opened");
         });
 
         newWs.addEventListener("message", handleMessages);
         newWs.addEventListener("close", () => {
             setTimeout(() => {
-                console.log("WebSocket connection closed. Reconnecting...");
+                // console.log("WebSocket connection closed. Reconnecting...");
                 connectToWs();
             }, 1000);
         });
