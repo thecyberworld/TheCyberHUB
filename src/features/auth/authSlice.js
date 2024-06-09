@@ -96,6 +96,7 @@ export const authSlice = createSlice({
             .addCase(verifyEmailCode.fulfilled, (state, action) => {
                 state.isUserLoading = false;
                 state.isUserSuccess = true;
+                state.user = action.payload;
                 state.userMessage = action.payload;
             })
             .addCase(verifyEmailCode.rejected, (state, action) => {
