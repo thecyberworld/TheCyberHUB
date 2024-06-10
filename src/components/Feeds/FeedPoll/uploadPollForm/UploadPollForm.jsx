@@ -1,16 +1,19 @@
 import React, { useState } from "react";
-import { FormInput } from "./FormInput";
+import { FormInput, ErrorMessage } from "./FormInput";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 const schema = z.object({
-    questions: z.array(z.string().min(4, "Min 4 characters")),
+    question: z.string().min(10, "Minimun 10 characters"),
+    answer1: z.string().min(4, "Min 4 characters"),
+    answer2: z.string().min(4, "Min 4 characters"),
+    answer3: z.string().min(4, "Min 4 characters").optional(),
 });
 
 export const UploadPollForm = () => {
-    const [questions, setQuestions] = useState(["Change me"]);
+    const [answers, setAnswers] = useState(["", ""]);
     const {
         register,
         handleSubmit,
@@ -20,30 +23,39 @@ export const UploadPollForm = () => {
     });
 
     const onSubmit = (data) => {
-        console.log(data);
+        console.log({ data });
     };
 
-    const addQuestion = () => {
-        setQuestions([...questions, ""]);
+    const addAnswer = () => {
+        setAnswers([...answers, ""]);
     };
 
     return (
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Title>Add a question</Title>
-            <QuestionBody>aa</QuestionBody>
-            {questions.map((question, index) => (
+            <QuestionBody
+                errorMessage={errors?.question?.message}
+                placeholder="Question Body..."
+                {...register("question")}
+            />
+            {errors?.question?.message && <ErrorMessage>{errors.question.message}</ErrorMessage>}
+            {answers.map((answer, index) => (
                 <FormInput
-                    key={index}
-                    name={`questions.${index}`}
-                    placeholder="Your Question"
+                    key={`${answer}-${index}`}
+                    name={`answer${index + 1}`}
+                    placeholder="Your Answer"
                     errors={errors}
                     register={register}
-                />
+                >
+                    {answer}
+                </FormInput>
             ))}
-            <AddQuestionContainer>
-                <Text>Add another question</Text>
-                <Button onClick={addQuestion}>+</Button>
-            </AddQuestionContainer>
+            <AddAnswerContainer>
+                <Text>Add another answer</Text>
+                <Button disabled={answers.length === 3} type="button" onClick={addAnswer}>
+                    +
+                </Button>
+            </AddAnswerContainer>
             <Button type="submit">Submit</Button>
         </Form>
     );
@@ -51,12 +63,17 @@ export const UploadPollForm = () => {
 
 const Button = styled.button`
     font-size: 14px;
-    background: #333;
-    color: #fff;
-    border: 1px solid #555;
+    background: ${(props) => (props.disabled ? "#ccc" : "#333")};
+    color: ${(props) => (props.disabled ? "#666" : "#fff")};
+    border: 1px solid ${(props) => (props.disabled ? "#aaa" : "#555")};
     border-radius: 0.2rem;
     padding: 0.5rem;
     box-shadow: 0 0 1px 1px #f5f5f569;
+    cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+
+    &:hover {
+        background: ${(props) => (props.disabled ? "#ccc" : "#444")};
+    }
 `;
 
 const Form = styled.form`
@@ -76,7 +93,7 @@ const Text = styled.p`
     font-size: 1rem;
 `;
 
-const AddQuestionContainer = styled.div`
+const AddAnswerContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;

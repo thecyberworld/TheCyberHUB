@@ -20,10 +20,9 @@ const StyledInput = styled.input`
         border-color: #fff;
     }
 `;
-const ErrorMessage = styled.p`
+export const ErrorMessage = styled.p`
     color: #d32f2f;
     font-size: 0.9rem;
-    margin-top: 0.3rem;
 `;
 
 export const FormInput = ({ placeholder, errors, name, register }) => {
