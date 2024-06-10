@@ -1,5 +1,32 @@
 import React from "react";
 import styled from "styled-components";
+import { AiOutlineReload } from "react-icons/ai";
+import { MdDelete } from "react-icons/md";
+
+export const FormInput = ({ placeholder, errors, name, register, deletable }) => {
+    const errorMessage = errors?.[name]?.message || "";
+
+    const handleIconClick = (e) => {
+        e.preventDefault();
+        if (deletable) {
+            // Handle delete action
+        } else {
+            // Handle reset action
+        }
+    };
+
+    return (
+        <div>
+            <StyledInputContainer>
+                <StyledInput errorMessage={errorMessage} placeholder={placeholder} {...register(name)} />
+                <IconButton onClick={(e) => handleIconClick(e)}>
+                    {deletable ? <MdDelete size={25} /> : <AiOutlineReload size={25} />}
+                </IconButton>
+            </StyledInputContainer>
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+        </div>
+    );
+};
 
 const StyledInput = styled.input`
     font-size: 1rem;
@@ -20,18 +47,20 @@ const StyledInput = styled.input`
         border-color: #fff;
     }
 `;
+
+const StyledInputContainer = styled.div`
+    display: flex;
+`;
 export const ErrorMessage = styled.p`
     color: #d32f2f;
     font-size: 0.9rem;
 `;
 
-export const FormInput = ({ placeholder, errors, name, register }) => {
-    const errorMessage = errors?.[name]?.message || "";
-
-    return (
-        <div>
-            <StyledInput errorMessage={errorMessage} placeholder={placeholder} {...register(name)} />
-            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        </div>
-    );
-};
+const IconButton = styled.button`
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+`;

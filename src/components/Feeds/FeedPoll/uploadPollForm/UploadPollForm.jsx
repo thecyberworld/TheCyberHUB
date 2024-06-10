@@ -22,6 +22,9 @@ export const UploadPollForm = () => {
         resolver: zodResolver(schema),
     });
 
+    const MAX_ANSWERS = 3;
+    const isAtMaxAnswers = answers.length === MAX_ANSWERS;
+
     const onSubmit = (data) => {
         console.log({ data });
     };
@@ -46,13 +49,14 @@ export const UploadPollForm = () => {
                     placeholder="Your Answer"
                     errors={errors}
                     register={register}
+                    deletable={isAtMaxAnswers}
                 >
                     {answer}
                 </FormInput>
             ))}
             <AddAnswerContainer>
                 <Text>Add another answer</Text>
-                <Button disabled={answers.length === 3} type="button" onClick={addAnswer}>
+                <Button disabled={isAtMaxAnswers} type="button" onClick={addAnswer}>
                     +
                 </Button>
             </AddAnswerContainer>
@@ -113,6 +117,7 @@ const QuestionBody = styled.textarea`
     box-shadow: 0 0 1px 1px #f5f5f569;
     min-height: 5rem;
     padding: 0.3rem;
+    width: 100%;
 
     &::placeholder {
         color: #aaa;
