@@ -42,7 +42,7 @@ export const AllBlogs = styled(ExploreContentContainer)`
     padding: ${(props) => (props.$displayAt ? "15px" : "0")};
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust this as per your requirement */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 15px;
 
     @media screen and (width <= 800px) {
