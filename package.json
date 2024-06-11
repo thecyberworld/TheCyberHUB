@@ -11,9 +11,8 @@
         "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" vite build",
         "preview": "vite preview",
         "prepare": "husky install",
-        "lint:fix": "eslint --fix --ext .js,.jsx .",
-        "lint:css": "stylelint **/*.jsx",
-        "lint:css-fix": "stylelint **/*.jsx --fix",
+        "lint": "eslint --ext .js,.jsx . && stylelint **/*.jsx",
+        "lint:fix": "eslint --fix --ext .js,.jsx . && stylelint **/*.jsx --fix",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
     },

@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { MdCreateNewFolder } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { BiTrash } from "react-icons/bi";
+import { GoMultiSelect } from "react-icons/go";
 
 import {
     CategoriesSidebarContainer,
     CategoriesSidebarHeader,
     CategoriesSidebarHeaderTitle,
     CategoryCreateContainer,
+    ToggleButton,
 } from "./CategoryElements";
+
 import CategoryList from "./CategoryList";
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import ModifyCategory from "./ModifyCategory";
 import { createNotesCategory, deleteNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { BiTrash } from "react-icons/bi";
 
 const CategorySidebar = ({
     pickedCategory,
@@ -29,6 +32,7 @@ const CategorySidebar = ({
     const [modalOpenMode, setModalOpenMode] = useState(false);
     const [categoryOptionMode, setCategoryOptionMode] = useState(false);
     const [editCategory, setEditCategory] = useState("");
+    const [showDeleteAll, setShowDeleteAll] = useState(false);
 
     useEffect(() => {
         if (!categories.length && categoryOptionMode) handleCloseOptionsMode();
@@ -37,6 +41,7 @@ const CategorySidebar = ({
     useEffect(() => {
         setCopyCategoryOptionMode(categoryOptionMode);
     }, [categoryOptionMode]);
+
     const handleCreateCategory = () => {
         setModalOpenMode(true);
         onUnpickNote();
@@ -60,6 +65,7 @@ const CategorySidebar = ({
         handleCloseModal();
         onPick({});
     };
+
     const { selectedCategories } = useSelector((state) => state.notesCategories);
 
     const deleteAllCategories = () => {
@@ -68,6 +74,7 @@ const CategorySidebar = ({
             selectedCategories.map((e) => dispatch(deleteNotesCategory(e)));
         }
     };
+
     return (
         <CategoriesSidebarContainer>
             <CategoriesSidebarHeader>
@@ -91,21 +98,20 @@ const CategorySidebar = ({
                 <LoadingSpinner />
             ) : (
                 <>
-                    {selectedCategories.length > 0 ? (
-                        <div
-                            onClick={deleteAllCategories}
-                            style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}
-                        >
-                            <BiTrash size="25px" fill="red" />
-                            <span style={{ marginRight: "5px", color: "orange" }}>Delete All</span>
-                        </div>
-                    ) : null}
-
+                    <div style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}>
+                        {showDeleteAll && selectedCategories.length > 0 && (
+                            <div onClick={deleteAllCategories}>
+                                <BiTrash size="25px" fill="red" />
+                                <span style={{ marginRight: "5px", color: "orange" }}>Delete All</span>
+                            </div>
+                        )}
+                    </div>
                     <CategoryList
                         required
                         onPick={onPick}
                         pickedCategory={pickedCategory}
                         defaultCategory={defaultCategory}
+                        showCheckboxes={showDeleteAll}
                     >
                         {[defaultCategory]}
                     </CategoryList>
@@ -116,6 +122,7 @@ const CategorySidebar = ({
                         defaultCategory={defaultCategory}
                         onEditCategory={setEditCategory}
                         editCategoryId={editCategory}
+                        showCheckboxes={showDeleteAll}
                     >
                         {categories}
                     </CategoryList>
@@ -126,7 +133,12 @@ const CategorySidebar = ({
                     )}
                 </>
             )}
+            <div style={{ display: "flex", alignItems: "center", color: "White", marginLeft: " 50px" }}>
+                <GoMultiSelect />
+                <ToggleButton onClick={() => setShowDeleteAll(!showDeleteAll)}>MultiSelect</ToggleButton>
+            </div>
         </CategoriesSidebarContainer>
     );
 };
+
 export default CategorySidebar;
