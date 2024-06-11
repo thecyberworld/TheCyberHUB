@@ -3,16 +3,12 @@ import styled from "styled-components";
 import { AiOutlineReload } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
-export const FormInput = ({ placeholder, errors, name, register, deletable }) => {
+export const FormInput = ({ placeholder, errors, name, register, deletable, removeInput, resetField }) => {
     const errorMessage = errors?.[name]?.message || "";
 
     const handleIconClick = (e) => {
         e.preventDefault();
-        if (deletable) {
-            // Handle delete action
-        } else {
-            // Handle reset action
-        }
+        deletable ? removeInput() : resetField();
     };
 
     return (

@@ -13,24 +13,32 @@ const schema = z.object({
 });
 
 export const UploadPollForm = () => {
-    const [answers, setAnswers] = useState(["", ""]);
+    const [answers, setAnswers] = useState([1, 2]);
     const {
         register,
         handleSubmit,
+        resetField,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schema),
+        shouldUnregister: true,
     });
 
     const MAX_ANSWERS = 3;
     const isAtMaxAnswers = answers.length === MAX_ANSWERS;
 
     const onSubmit = (data) => {
-        console.log({ data });
+        console.log(data);
     };
 
     const addAnswer = () => {
         setAnswers([...answers, ""]);
+    };
+
+    const removeAnswer = (index) => {
+        const updatedAnswers = [...answers];
+        updatedAnswers.splice(index, 1);
+        setAnswers(updatedAnswers);
     };
 
     return (
@@ -42,26 +50,43 @@ export const UploadPollForm = () => {
                 {...register("question")}
             />
             {errors?.question?.message && <ErrorMessage>{errors.question.message}</ErrorMessage>}
+            <Answers
+                answers={answers}
+                errors={errors}
+                register={register}
+                removeAnswer={removeAnswer}
+                isAtMaxAnswers={isAtMaxAnswers}
+                resetField={resetField}
+            />
+            <AddAnswerContainer>
+                <Text>Add another answer</Text>
+                <Button disabled={isAtMaxAnswers} type="button" onClick={() => addAnswer()}>
+                    +
+                </Button>
+            </AddAnswerContainer>
+            <Button type="submit">Submit</Button>
+        </Form>
+    );
+};
+
+const Answers = ({ answers, errors, register, removeAnswer, isAtMaxAnswers, resetField }) => {
+    return (
+        <>
             {answers.map((answer, index) => (
                 <FormInput
                     key={`${answer}-${index}`}
                     name={`answer${index + 1}`}
                     placeholder="Your Answer"
                     errors={errors}
+                    resetField={() => resetField(`answer${index + 1}`)}
                     register={register}
+                    removeInput={() => removeAnswer(index)}
                     deletable={isAtMaxAnswers}
                 >
                     {answer}
                 </FormInput>
             ))}
-            <AddAnswerContainer>
-                <Text>Add another answer</Text>
-                <Button disabled={isAtMaxAnswers} type="button" onClick={addAnswer}>
-                    +
-                </Button>
-            </AddAnswerContainer>
-            <Button type="submit">Submit</Button>
-        </Form>
+        </>
     );
 };
 
