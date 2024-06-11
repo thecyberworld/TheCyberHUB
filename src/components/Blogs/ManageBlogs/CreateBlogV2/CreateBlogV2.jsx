@@ -27,7 +27,7 @@ import { LoadingButton } from "src/components/Other/MixComponents/Buttons/Button
 import { Option, Select } from "src/components/CaptureTheFlag/CTFElements";
 import { ImageInput, useUploadImages } from "src/components/Common/ImageUpload";
 
-const maxImageSizeByte = 1000000;
+const MAX_IMAGE_SIZE_BYTES = 1048576;
 const CreateBlogV2 = () => {
     const {
         images,
@@ -40,7 +40,7 @@ const CreateBlogV2 = () => {
         onImageDrop,
         onImageDragOver,
     } = useUploadImages({
-        maxImageSizeByte,
+        MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
     });
     const dispatch = useDispatch();
