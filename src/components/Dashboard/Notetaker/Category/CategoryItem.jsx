@@ -33,6 +33,7 @@ const CategoryItem = ({
     defaultCategory,
     onEditCategory,
     stillEditing,
+    showCheckbox,
 }) => {
     const dispatch = useDispatch();
     const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
@@ -90,14 +91,20 @@ const CategoryItem = ({
                 />
             ) : (
                 <CategoryItemElementContainer>
-                    <CategoryItemElement onClick={() => onPick(category)} isPicked={isPicked}>
-                        <CategoriesSidebarCheckbox
-                            onChange={(e) => {
-                                e.target.checked ? dispatch(AddSelectedCategory(id)) : dispatch(RemoveCategory(id));
-                            }}
-                        />
+                    <CategoryItemElement onClick={() => onPick(category)} $isPicked={isPicked}>
+                        {showCheckbox && ( // Conditionally render the checkbox based on the showCheckbox prop
+                            <CategoriesSidebarCheckbox
+                                id={`checkbox-${id}`}
+                                onChange={(e) => {
+                                    e.target.checked ? dispatch(AddSelectedCategory(id)) : dispatch(RemoveCategory(id));
+                                }}
+                            />
+                        )}
+                        {showCheckbox && <label htmlFor={`checkbox-${id}`}></label>}{" "}
+                        {/* Conditionally render the label based on the showCheckbox prop */}
                         <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
                     </CategoryItemElement>
+
                     <CategoryOptionsMenuContainer>
                         <SlOptionsVertical
                             size="16"

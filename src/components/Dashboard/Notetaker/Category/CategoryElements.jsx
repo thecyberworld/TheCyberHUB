@@ -1,7 +1,58 @@
 import styled from "styled-components";
+export const ToggleButton = styled.button`
+    color: white;
+    margin-top: auto;
+
+    /* Push the button to the bottom */
+`;
 
 export const CategoriesSidebarCheckbox = styled.input.attrs({ type: "checkbox" })`
-    accent-color: orange;
+    display: none;
+
+    /* Ensure there is a label following this input in your component structure */
+    + label {
+        position: relative;
+        padding-left: 25px;
+        cursor: pointer;
+        display: inline-block;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid #ccc;
+            transition: all 0.3s;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 45%;
+            left: 13.25%;
+            transform: translate(-50%, -50%); /* Perfect center alignment */
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: orange;
+            transition: opacity 0.3s;
+            opacity: 0; /* Initially hidden */
+        }
+    }
+
+    &:checked + label&::before {
+        border-color: orange;
+    }
+
+    &:checked + label&::after {
+        opacity: 1;
+        box-shadow: 0 0 5px 2px orange;
+    }
 `;
 
 export const CategoriesSidebarContainer = styled.div`
