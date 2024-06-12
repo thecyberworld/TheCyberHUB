@@ -5,11 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
+const ANSWER_ERROR_MSG = "Min 4 characters";
 const schema = z.object({
     question: z.string().min(10, "Minimum 10 characters"),
-    answer1: z.string().min(4, "Min 4 characters"),
-    answer2: z.string().min(4, "Min 4 characters"),
-    answer3: z.string().min(4, "Min 4 characters").optional(),
+    answer1: z.string().min(4, ANSWER_ERROR_MSG),
+    answer2: z.string().min(4, ANSWER_ERROR_MSG),
+    answer3: z.string().min(4, ANSWER_ERROR_MSG).optional(),
 });
 
 export const UploadPollForm = () => {
