@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 const schema = z.object({
-    question: z.string().min(10, "Minimun 10 characters"),
+    question: z.string().min(10, "Minimum 10 characters"),
     answer1: z.string().min(4, "Min 4 characters"),
     answer2: z.string().min(4, "Min 4 characters"),
     answer3: z.string().min(4, "Min 4 characters").optional(),
@@ -18,6 +18,8 @@ export const UploadPollForm = () => {
         register,
         handleSubmit,
         resetField,
+        setValue,
+        getValues,
         formState: { errors },
     } = useForm({
         resolver: zodResolver(schema),
@@ -32,13 +34,20 @@ export const UploadPollForm = () => {
     };
 
     const addAnswer = () => {
-        setAnswers([...answers, ""]);
+        setAnswers((prevAnswers) => [...prevAnswers, prevAnswers.length + 1]);
     };
 
     const removeAnswer = (index) => {
-        const updatedAnswers = [...answers];
-        updatedAnswers.splice(index, 1);
-        setAnswers(updatedAnswers);
+        setAnswers((prevAnswers) => {
+            const updatedAnswers = prevAnswers.filter((_, i) => i !== index);
+
+            resetField(`answer${index + 1}`);
+            const currentValues = getValues();
+            for (let i = index; i < prevAnswers.length - 1; i++) {
+                setValue(`answer${i + 1}`, currentValues[`answer${i + 2}`]);
+            }
+            return updatedAnswers;
+        });
     };
 
     return (
@@ -60,7 +69,7 @@ export const UploadPollForm = () => {
             />
             <AddAnswerContainer>
                 <Text>Add another answer</Text>
-                <Button disabled={isAtMaxAnswers} type="button" onClick={() => addAnswer()}>
+                <Button disabled={isAtMaxAnswers} type="button" onClick={addAnswer}>
                     +
                 </Button>
             </AddAnswerContainer>
