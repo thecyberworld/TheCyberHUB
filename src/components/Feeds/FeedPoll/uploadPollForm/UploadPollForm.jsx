@@ -40,12 +40,16 @@ export const UploadPollForm = () => {
     const removeAnswer = (index) => {
         setAnswers((prevAnswers) => {
             const updatedAnswers = prevAnswers.filter((_, i) => i !== index);
-
-            resetField(`answer${index + 1}`);
             const currentValues = getValues();
+
+            if (index === 0) {
+                index++;
+            }
+
             for (let i = index; i < prevAnswers.length - 1; i++) {
                 setValue(`answer${i + 1}`, currentValues[`answer${i + 2}`]);
             }
+
             return updatedAnswers;
         });
     };
