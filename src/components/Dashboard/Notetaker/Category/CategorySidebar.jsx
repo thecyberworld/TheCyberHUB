@@ -11,6 +11,7 @@ import {
     CategoryCreateContainer,
     DeleteCategoryContainer,
     DeleteCategorySpan,
+    FunctionalityContainer,
     MultiSelectContainer,
     ToggleButton,
 } from "./CategoryElements";
@@ -101,14 +102,6 @@ const CategorySidebar = ({
                 <LoadingSpinner />
             ) : (
                 <>
-                    <DeleteCategoryContainer>
-                        {showDeleteAll && selectedCategories.length > 0 && (
-                            <div onClick={deleteAllCategories}>
-                                <BiTrash size="25px" fill="red" />
-                                <DeleteCategorySpan>Delete All</DeleteCategorySpan>
-                            </div>
-                        )}
-                    </DeleteCategoryContainer>
                     <CategoryList
                         required
                         onPick={onPick}
@@ -135,10 +128,18 @@ const CategorySidebar = ({
                     )}
                 </>
             )}
-            <MultiSelectContainer>
-                <GoMultiSelect />
-                <ToggleButton onClick={() => setShowDeleteAll(!showDeleteAll)}>MultiSelect</ToggleButton>
-            </MultiSelectContainer>
+            <FunctionalityContainer>
+                <MultiSelectContainer onClick={() => setShowDeleteAll(!showDeleteAll)}>
+                    <GoMultiSelect />
+                    <ToggleButton>Multi Select</ToggleButton>
+                </MultiSelectContainer>
+                {showDeleteAll && selectedCategories.length > 0 && (
+                    <DeleteCategoryContainer onClick={deleteAllCategories}>
+                        <BiTrash size="25px" fill="red" />
+                        <DeleteCategorySpan>Delete All</DeleteCategorySpan>
+                    </DeleteCategoryContainer>
+                )}
+            </FunctionalityContainer>
         </CategoriesSidebarContainer>
     );
 };

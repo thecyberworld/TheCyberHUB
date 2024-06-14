@@ -1,13 +1,23 @@
 import styled from "styled-components";
 
+export const FunctionalityContainer = styled.div`
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    position: absolute;
+    bottom: 1px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+`;
 export const MultiSelectContainer = styled.div`
     display: flex;
     align-items: center;
+    justify-content: space-around;
     color: white;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    bottom: 1px;
+    width: 125px;
+    cursor: pointer;
 `;
 export const ToggleButton = styled.button`
     color: white;
@@ -19,7 +29,6 @@ export const ToggleButton = styled.button`
 export const DeleteCategoryContainer = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 10px;
 `;
 export const DeleteCategorySpan = styled.span`
     margin-right: 5px;
