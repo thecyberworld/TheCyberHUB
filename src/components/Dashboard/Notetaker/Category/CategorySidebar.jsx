@@ -9,6 +9,7 @@ import {
     CategoriesSidebarHeader,
     CategoriesSidebarHeaderTitle,
     CategoryCreateContainer,
+    MultiSelectContainer,
     ToggleButton,
 } from "./CategoryElements";
 
@@ -133,10 +134,10 @@ const CategorySidebar = ({
                     )}
                 </>
             )}
-            <div style={{ display: "flex", alignItems: "center", color: "White", marginLeft: " 50px" }}>
+            <MultiSelectContainer>
                 <GoMultiSelect />
                 <ToggleButton onClick={() => setShowDeleteAll(!showDeleteAll)}>MultiSelect</ToggleButton>
-            </div>
+            </MultiSelectContainer>
         </CategoriesSidebarContainer>
     );
 };

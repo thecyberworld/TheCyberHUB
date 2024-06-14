@@ -1,4 +1,14 @@
 import styled from "styled-components";
+
+export const MultiSelectContainer = styled.div`
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    bottom: 1px;
+`;
 export const ToggleButton = styled.button`
     color: white;
     margin-top: auto;
@@ -60,6 +70,7 @@ export const CategoriesSidebarContainer = styled.div`
     flex-direction: column;
     height: 100vh;
     width: 250px;
+    position: relative;
 
     @media screen and (width <= 800px) {
         width: 35%;

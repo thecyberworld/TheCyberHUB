@@ -16,7 +16,7 @@ import {
 } from "./CategoryElements";
 import {
     AddSelectedCategory,
-    RemoveCategory,
+    notesRemoveCategory,
     deleteNotesCategory,
     updateNotesCategory,
 } from "src/features/notes/notesCategory/notesCategorySlice";
@@ -96,7 +96,9 @@ const CategoryItem = ({
                             <CategoriesSidebarCheckbox
                                 id={`checkbox-${id}`}
                                 onChange={(e) => {
-                                    e.target.checked ? dispatch(AddSelectedCategory(id)) : dispatch(RemoveCategory(id));
+                                    e.target.checked
+                                        ? dispatch(AddSelectedCategory(id))
+                                        : dispatch(notesRemoveCategory(id));
                                 }}
                             />
                         )}
