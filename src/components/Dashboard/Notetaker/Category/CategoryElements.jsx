@@ -16,6 +16,15 @@ export const ToggleButton = styled.button`
     /* Push the button to the bottom */
 `;
 
+export const DeleteCategoryContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+`;
+export const DeleteCategorySpan = styled.span`
+    margin-right: 5px;
+    color: orange;
+`;
 export const CategoriesSidebarCheckbox = styled.input.attrs({ type: "checkbox" })`
     display: none;
 

@@ -9,6 +9,8 @@ import {
     CategoriesSidebarHeader,
     CategoriesSidebarHeaderTitle,
     CategoryCreateContainer,
+    DeleteCategoryContainer,
+    DeleteCategorySpan,
     MultiSelectContainer,
     ToggleButton,
 } from "./CategoryElements";
@@ -72,7 +74,7 @@ const CategorySidebar = ({
     const deleteAllCategories = () => {
         const userConfirmed = window.confirm("Are you sure you want to delete all selected categories?");
         if (userConfirmed) {
-            selectedCategories.map((e) => dispatch(deleteNotesCategory(e)));
+            selectedCategories.map((category) => dispatch(deleteNotesCategory(category)));
         }
     };
 
@@ -99,20 +101,19 @@ const CategorySidebar = ({
                 <LoadingSpinner />
             ) : (
                 <>
-                    <div style={{ display: "flex", alignItems: "center", marginLeft: "10px" }}>
+                    <DeleteCategoryContainer>
                         {showDeleteAll && selectedCategories.length > 0 && (
                             <div onClick={deleteAllCategories}>
                                 <BiTrash size="25px" fill="red" />
-                                <span style={{ marginRight: "5px", color: "orange" }}>Delete All</span>
+                                <DeleteCategorySpan>Delete All</DeleteCategorySpan>
                             </div>
                         )}
-                    </div>
+                    </DeleteCategoryContainer>
                     <CategoryList
                         required
                         onPick={onPick}
                         pickedCategory={pickedCategory}
                         defaultCategory={defaultCategory}
-                        showCheckboxes={showDeleteAll}
                     >
                         {[defaultCategory]}
                     </CategoryList>

@@ -60,8 +60,7 @@ export const deleteNotesCategory = createAsyncThunk("notesCategory/delete", asyn
 // IsSelected user category: note
 export const AddSelectedCategory = createAsyncThunk("notesCategory/selected", async (id, thunkAPI) => {
     try {
-        const isExist = initialState.selectedCategories.findIndex((c) => c.id === id);
-        console.log(isExist);
+        const isExist = initialState.selectedCategories.findIndex((currentCategory) => currentCategory.id === id);
         if (isExist === -1) {
             return id;
         } else {
@@ -74,9 +73,7 @@ export const AddSelectedCategory = createAsyncThunk("notesCategory/selected", as
 // RemoveSelected note
 export const RemoveSelectedCategory = createAsyncThunk("notesCategory/remove", async (id, thunkAPI) => {
     try {
-        const isExist = initialState.selectedCategories.findIndex((c) => c === id);
-        console.log(initialState.selectedCategories);
-        console.log(isExist);
+        const isExist = initialState.selectedCategories.findIndex((currentCategory) => currentCategory === id);
         if (isExist !== -1) {
             return id;
         } else {
@@ -104,10 +101,12 @@ export const notesCategorySlice = createSlice({
             state.notesCategories = [...action.payload];
         },
         notesRemoveCategory: (state, action) => {
-            const isExist = state.selectedCategories.findIndex((c) => c === action.payload);
+            const isExist = state.selectedCategories.findIndex((category) => category === action.payload);
 
             if (isExist !== -1) {
-                state.selectedCategories = state.selectedCategories.filter((e) => e !== action.payload);
+                state.selectedCategories = state.selectedCategories.filter(
+                    (selectedCategory) => selectedCategory !== action.payload,
+                );
             }
         },
     },
