@@ -61,11 +61,8 @@ export const deleteNotesCategory = createAsyncThunk("notesCategory/delete", asyn
 export const AddSelectedCategory = createAsyncThunk("notesCategory/selected", async (id, thunkAPI) => {
     try {
         const isExist = initialState.selectedCategories.findIndex((currentCategory) => currentCategory.id === id);
-        if (isExist === -1) {
-            return id;
-        } else {
-            return thunkAPI.rejectWithValue("message");
-        }
+        if (isExist === -1) return id;
+        return thunkAPI.rejectWithValue("message");
     } catch (error) {
         return thunkAPI.rejectWithValue();
     }
@@ -84,14 +81,6 @@ export const RemoveSelectedCategory = createAsyncThunk("notesCategory/remove", a
     }
 });
 
-/* export const deleteAllSelectedCategory = createAsyncThunk("notesCategory/delete",(id,thunkApi)=>{
-
-    try {
-        
-    } catch (error) {
-        
-    }
-}) */
 export const notesCategorySlice = createSlice({
     name: "notesCategories",
     initialState,

@@ -15,12 +15,12 @@ export const MultiSelectContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    color: white;
+    color: ${({ $showDeleteAll }) => ($showDeleteAll ? "#10a010" : "orange")};
     width: 125px;
     cursor: pointer;
 `;
 export const ToggleButton = styled.button`
-    color: white;
+    color: ${({ $showDeleteAll }) => ($showDeleteAll ? "#10a010" : "orange")};
     margin-top: auto;
 
     /* Push the button to the bottom */
@@ -29,6 +29,7 @@ export const ToggleButton = styled.button`
 export const DeleteCategoryContainer = styled.div`
     display: flex;
     align-items: center;
+    cursor: pointer;
 `;
 export const DeleteCategorySpan = styled.span`
     margin-right: 5px;

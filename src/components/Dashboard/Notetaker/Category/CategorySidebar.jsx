@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { MdCreateNewFolder } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BiTrash } from "react-icons/bi";
-import { GoMultiSelect } from "react-icons/go";
+import { FaToggleOff, FaToggleOn } from "react-icons/fa6";
 
 import {
     CategoriesSidebarContainer,
@@ -112,7 +112,7 @@ const CategorySidebar = ({
                     </CategoryList>
                     <CategoryList
                         addMode={modalOpenMode}
-                        onPick={onPick}
+                        onPick={!showDeleteAll ? onPick : {}}
                         pickedCategory={pickedCategory}
                         defaultCategory={defaultCategory}
                         onEditCategory={setEditCategory}
@@ -129,9 +129,9 @@ const CategorySidebar = ({
                 </>
             )}
             <FunctionalityContainer>
-                <MultiSelectContainer onClick={() => setShowDeleteAll(!showDeleteAll)}>
-                    <GoMultiSelect />
-                    <ToggleButton>Multi Select</ToggleButton>
+                <MultiSelectContainer $showDeleteAll={showDeleteAll} onClick={() => setShowDeleteAll(!showDeleteAll)}>
+                    {showDeleteAll ? <FaToggleOn /> : <FaToggleOff />}
+                    <ToggleButton $showDeleteAll={showDeleteAll}>Multi Select</ToggleButton>
                 </MultiSelectContainer>
                 {showDeleteAll && selectedCategories.length > 0 && (
                     <DeleteCategoryContainer onClick={deleteAllCategories}>

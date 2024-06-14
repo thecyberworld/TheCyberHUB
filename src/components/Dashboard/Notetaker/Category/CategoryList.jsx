@@ -19,7 +19,6 @@ const CategoryList = ({
     const dispatch = useDispatch();
     return (
         <>
-            <div></div>
             <CategoriesListContainer required={required} $addMode={addMode}>
                 {!children.length && !addMode && (
                     <CategoriesListNoFound>There Are No {<br />} Unique Categories</CategoriesListNoFound>
