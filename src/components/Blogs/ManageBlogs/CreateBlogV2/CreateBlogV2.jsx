@@ -40,7 +40,7 @@ const CreateBlogV2 = () => {
         onImageDrop,
         onImageDragOver,
     } = useUploadImages({
-        MAX_IMAGE_SIZE_BYTES,
+        maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
     });
     const dispatch = useDispatch();

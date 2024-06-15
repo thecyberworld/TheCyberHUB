@@ -24,7 +24,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
         onManyImageSubmit,
         onImagePaste,
     } = useUploadImages({
-        MAX_IMAGE_SIZE_BYTES,
+        maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "feed",
         initImages: editFeed?.images,
     });

@@ -15,7 +15,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             return;
         }
         if (image.size > maxSizeByte) {
-            toast.error(`Image size should be less than ${maxSizeByte / 1000}KB.`);
+            const maxSizeLog = niceBytes(maxSizeByte);
+            toast.error(`Image size should be less than ${maxSizeLog}.`);
             return;
         }
         return image;
@@ -83,9 +84,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     };
 
     const handlePaste = async (e, multiple = false, maxImages) => {
-        const pasteItems = (e.clipboardData || e.originalEvent.clipboardData).items;
-        const imageFiles = getAllImagesFromArray(pasteItems);
-        await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
+        const pasteItems = e.clipboardData.files;
+        await handleMultipleSingularOptions(pasteItems, multiple, maxImages);
     };
 
     const handleDragOver = (e) => {
@@ -174,14 +174,15 @@ function removeItemAtIndex(items, index) {
     return updatedItems;
 }
 
-function getAllImagesFromArray(itemsArray) {
-    const imageFiles = [];
+const units = ["bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
 
-    for (const item of itemsArray) {
-        if (!item.type.startsWith("image")) return;
-        const file = item.getAsFile();
-        imageFiles.push(file);
+const niceBytes = (size) => {
+    let unitNameIndex = 0;
+    let number = parseInt(size, 10) || 0;
+
+    while (number >= 1024 && ++unitNameIndex) {
+        number = number / 1024;
     }
 
-    return imageFiles;
-}
+    return number.toFixed(number < 10 && unitNameIndex > 0 ? 1 : 0) + " " + units[unitNameIndex];
+};
