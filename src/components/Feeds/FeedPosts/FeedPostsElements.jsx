@@ -4,8 +4,10 @@ import { ExploreContentContainer } from "src/components/Explore/ExploreElements"
 export const FeedPostsContainer = styled(ExploreContentContainer)`
     background-color: ${({ $displayAt }) => ($displayAt === "explore" ? "#090909" : "#000000")};
     padding: ${({ $displayAt }) => ($displayAt === "explore" ? "15px" : "0")};
-    grid-auto-rows: minmax(min-content, max-content);
     gap: ${({ $displayAt }) => ($displayAt === "explore" ? "25px" : "0")};
+    grid-template-columns: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "1fr")};
+    grid-auto-rows: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "unset")};
+    overflow: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "hidden")};
 
     @media screen and (width <= 1230px) {
         grid-auto-rows: 0fr;

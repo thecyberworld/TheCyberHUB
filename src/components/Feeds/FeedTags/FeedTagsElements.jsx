@@ -8,18 +8,15 @@ export const TagsContainer = styled.div`
     text-align: start;
     padding: 20px;
     width: 100%;
-    max-width: 500px;
     background: #131313;
     border-radius: 5px;
 
     @media screen and (width <= 800px) {
         padding: 15px;
-        display: none;
     }
 
     @media screen and (width <= 600px) {
         padding: 15px;
-        display: none;
     }
 `;
 
