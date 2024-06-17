@@ -54,6 +54,10 @@ const BlogCard = ({ blog, bookmarks }) => {
             dispatch(addBookmark({ itemType, itemId: _id }));
         }
     };
+
+    const blogURL = `/blogs/${encodeURL(blog?.title)}-${(blog?._id).slice(5, 10)}`;
+    console.log(blogURL);
+
     return (
         <ContainerCard>
             <span>
@@ -71,7 +75,7 @@ const BlogCard = ({ blog, bookmarks }) => {
                 ) : null}
                 <DetailsSection>
                     <BlogImageSection>
-                        <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
+                        <RouterLink to={{ pathname: blogURL }}>
                             <BlogCardImage src={coverImageUrl || image} alt={""} />
                         </RouterLink>
                         <Username> @{blog?.username}</Username>
@@ -79,7 +83,7 @@ const BlogCard = ({ blog, bookmarks }) => {
                 </DetailsSection>
                 <MainSection>
                     <SubSection>
-                        <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
+                        <RouterLink to={{ pathname: blogURL }}>
                             <Title> {blog?.title} </Title>
                         </RouterLink>
                     </SubSection>

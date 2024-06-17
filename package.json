@@ -61,6 +61,7 @@
     "rehype-sanitize": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "sass": "^1.77.1",
+    "sitemap": "^8.0.0",
     "styled-components": "^6.1.11",
     "validator": "^13.12.0"
   },
