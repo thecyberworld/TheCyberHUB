@@ -9,26 +9,27 @@ import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { CircleSpinner } from "react-spinners-kit";
 import { toast } from "react-toastify";
 import { ImageInput, ImagePreview, useUploadImages } from "src/components/Common/ImageUpload";
+import CompressImage from "src/components/Common/ImageUpload/CompressImage";
 
 const MAX_IMAGE_SIZE_BYTES = 1048576;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
     const {
         images,
-        setImages,
         imagesName,
-        setImagesName,
         onImageRemove,
         onImageChange,
         onImageDragOver,
         onImageDrop,
         onManyImageSubmit,
         onImagePaste,
+        resizeImage,
+        onResetImages,
+        onAddImages,
     } = useUploadImages({
         maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "feed",
         initImages: editFeed?.images,
     });
-
     const textareaRef = useRef(null);
     const { user } = useSelector((state) => state.auth);
 
@@ -91,8 +92,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
             setIsFeedLoading(false);
             setContent("");
             setTags([]);
-            setImages([]);
-            setImagesName([]);
+            onResetImages();
         }
     };
 
@@ -157,6 +157,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
 
             {/* Render the AuthPopup component */}
             {showAuthPopup && <AuthPopup onClose={() => setShowAuthPopup(false)} />}
+            {resizeImage && <CompressImage resizeImage={resizeImage} pageName="feed" onAddImages={onAddImages} />}
         </AddFeedCommentContainer>
     );
 };

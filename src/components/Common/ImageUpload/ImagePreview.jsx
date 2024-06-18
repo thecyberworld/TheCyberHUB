@@ -3,6 +3,7 @@ import { ImageContainer, ImagesContainer, PreviewImage, RemoveButton } from "./I
 
 const ImagePreview = ({ files, onRemove }) => {
     const closeIcon = <>&#10005;</>;
+
     return (
         <ImagesContainer>
             {files?.map((file, index) => (

@@ -31,14 +31,13 @@ const MAX_IMAGE_SIZE_BYTES = 1048576;
 const CreateBlogV2 = () => {
     const {
         images,
-        setImages,
         imagesName,
-        setImagesName,
         onImageChange,
         onImageFromContentSubmit,
         onImageSubmit,
         onImageDrop,
         onImageDragOver,
+        onResetImages,
     } = useUploadImages({
         maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
@@ -154,10 +153,9 @@ const CreateBlogV2 = () => {
             setTitle("");
             setSummary("");
             setContent("");
-            setImagesName("");
             setCategory("");
             setTags([]);
-            setImages("");
+            onResetImages();
         }
     };
 
