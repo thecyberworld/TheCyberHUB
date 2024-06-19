@@ -1,5 +1,6 @@
 import React from "react";
 import { AddImage, ImageUploadLabel } from "./ImageElements";
+import CompressImage from "./CompressImage";
 
 const ImageInput = ({
     inputName,
@@ -9,8 +10,11 @@ const ImageInput = ({
     multiple = false,
     maxMultiple = 4,
     labelPlaceholder = undefined,
+    onAddImages,
+    resizeImage,
 }) => {
     const shouldShowAddImage = !multiple || (multiple && filesName.length < maxMultiple);
+    console.log(filesName);
     return (
         <div key={!multiple && filesName[0]}>
             <ImageUploadLabel style={labelStyles} htmlFor={inputName}>
@@ -34,6 +38,7 @@ const ImageInput = ({
                 multiple={multiple}
                 style={{ display: "none" }}
             />
+            {resizeImage && <CompressImage resizeImage={resizeImage} pageName="feed" onAddImages={onAddImages} />}
         </div>
     );
 };

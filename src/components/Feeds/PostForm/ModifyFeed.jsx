@@ -9,7 +9,6 @@ import { cdnContentImagesUrl } from "src/features/apiUrl";
 import { CircleSpinner } from "react-spinners-kit";
 import { toast } from "react-toastify";
 import { ImageInput, ImagePreview, useUploadImages } from "src/components/Common/ImageUpload";
-import CompressImage from "src/components/Common/ImageUpload/CompressImage";
 
 const MAX_IMAGE_SIZE_BYTES = 1048576;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
@@ -143,6 +142,8 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                         filesName={imagesName}
                         multiple
                         key={editFeed ? `${editFeed._id}feedImage` : "feedImage"}
+                        onAddImages={onAddImages}
+                        resizeImage={resizeImage}
                     />
 
                     {isFeedLoading ? (
@@ -157,7 +158,6 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
 
             {/* Render the AuthPopup component */}
             {showAuthPopup && <AuthPopup onClose={() => setShowAuthPopup(false)} />}
-            {resizeImage && <CompressImage resizeImage={resizeImage} pageName="feed" onAddImages={onAddImages} />}
         </AddFeedCommentContainer>
     );
 };
