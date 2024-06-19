@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { bufferToFile } from "./useUploadImages";
 
-const CompressImage = ({ resizeImage, requiredImageWidth = 400, onAddImages, pageName }) => {
+const CompressImage = ({ resizeImage, requiredImageWidth = 400, onAddImages, pageName, requiredImageHeight = 0 }) => {
     const refCanvas = useRef("");
 
     useEffect(() => {
@@ -14,11 +14,11 @@ const CompressImage = ({ resizeImage, requiredImageWidth = 400, onAddImages, pag
             image.onload = () => {
                 const aspectRatio = requiredImageWidth / image.width;
                 canvas.width = requiredImageWidth;
-                canvas.height = image.height * aspectRatio;
+                canvas.height = requiredImageHeight > 0 ? requiredImageHeight : image.height * aspectRatio;
                 ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
                 const newImageUrl = ctx.canvas.toDataURL("image/jpeg");
                 const { newFile: newImageFile, fileName: newImageFileName } = bufferToFile(newImageUrl, pageName);
-                onAddImages([newImageFile], [newImageFileName]);
+                onAddImages([newImageFile], [newImageFileName], false);
             };
         };
         resizeImageFunc();

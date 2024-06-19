@@ -144,6 +144,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                         key={editFeed ? `${editFeed._id}feedImage` : "feedImage"}
                         onAddImages={onAddImages}
                         resizeImage={resizeImage}
+                        pageName="feed"
                     />
 
                     {isFeedLoading ? (

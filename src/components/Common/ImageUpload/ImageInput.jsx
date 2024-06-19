@@ -12,9 +12,11 @@ const ImageInput = ({
     labelPlaceholder = undefined,
     onAddImages,
     resizeImage,
+    pageName,
+    requiredImageHeight,
+    requiredImageWidth,
 }) => {
     const shouldShowAddImage = !multiple || (multiple && filesName.length < maxMultiple);
-    console.log(filesName);
     return (
         <div key={!multiple && filesName[0]}>
             <ImageUploadLabel style={labelStyles} htmlFor={inputName}>
@@ -38,7 +40,15 @@ const ImageInput = ({
                 multiple={multiple}
                 style={{ display: "none" }}
             />
-            {resizeImage && <CompressImage resizeImage={resizeImage} pageName="feed" onAddImages={onAddImages} />}
+            {resizeImage && (
+                <CompressImage
+                    resizeImage={resizeImage}
+                    pageName={pageName}
+                    onAddImages={onAddImages}
+                    requiredImageHeight={requiredImageHeight}
+                    requiredImageWidth={requiredImageWidth}
+                />
+            )}
         </div>
     );
 };

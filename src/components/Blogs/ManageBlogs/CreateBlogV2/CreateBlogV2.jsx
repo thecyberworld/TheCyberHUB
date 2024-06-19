@@ -175,6 +175,8 @@ const CreateBlogV2 = () => {
                             labelPlaceholder={{ choose: "Add Cover Image", pick: "Please select an image" }}
                             resizeImage={resizeImage}
                             onAddImages={onAddImages}
+                            pageName="blog"
+                            requiredImageWidth={1280}
                         />
                     </AddCoverImageSection>
 

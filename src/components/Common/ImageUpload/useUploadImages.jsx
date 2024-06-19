@@ -38,9 +38,16 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             reader.readAsArrayBuffer(image);
         });
     };
-    const handleAddImagesToState = (images, imagesName, maxImages = 4) => {
+    const handleAddImagesToState = (images, imagesName, multiple = true, maxImages = 4) => {
+        const correctImagesName = [...imagesName.map((imageName) => imageName.split("-")[1])];
+        if (!multiple) {
+            setImagesName([...correctImagesName]);
+            setImages([...images]);
+            setResizeImage("");
+            return;
+        }
         setImagesName((prevImagesName) => {
-            const newImagesName = [...prevImagesName, ...imagesName.map((imageName) => imageName.split("-")[1])];
+            const newImagesName = [...prevImagesName, ...correctImagesName];
             return maxImages ? newImagesName.slice(0, maxImages) : newImagesName;
         });
         setImages((prevImages) => {
@@ -62,7 +69,7 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
                 manyImages.push(image);
                 manyImagesName.push(imageName);
             }
-            handleAddImagesToState(manyImages, manyImagesName, maxImages);
+            handleAddImagesToState(manyImages, manyImagesName, true, maxImages);
         } catch (error) {
             console.log(`Error uploading this image:${error}`);
         }
@@ -75,9 +82,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
 
     const handleMultipleSingularOptions = async (imageFiles, multiple, maxImages) => {
         if (multiple) return await handleManyUploads(imageFiles, maxImages);
-        const { image, imageName } = await handleUploadImage(imageFiles[0]);
-        setImages([image]);
-        setImagesName([imageName]);
+        const imageWithNameObj = await handleUploadImage(imageFiles[0]);
+        if (imageWithNameObj) handleAddImagesToState([imageWithNameObj.image], [imageWithNameObj.imageName], false);
     };
 
     const handleChange = async (e, multiple = false, maxImages) => {
