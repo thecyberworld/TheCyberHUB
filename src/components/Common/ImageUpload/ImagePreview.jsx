@@ -7,7 +7,7 @@ const ImagePreview = ({ files, onRemove }) => {
     return (
         <ImagesContainer>
             {files?.map((file, index) => (
-                <ImageContainer key={index}>
+                <ImageContainer key={file.name}>
                     <PreviewImage src={URL.createObjectURL(file)} alt={`Uploaded ${index + 1}`} />
                     <RemoveButton onClick={() => onRemove(index)}>{closeIcon}</RemoveButton>
                 </ImageContainer>

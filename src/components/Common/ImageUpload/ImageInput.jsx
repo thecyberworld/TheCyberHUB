@@ -47,6 +47,7 @@ const ImageInput = ({
                     onAddImages={onAddImages}
                     requiredImageHeight={requiredImageHeight}
                     requiredImageWidth={requiredImageWidth}
+                    multiple={!labelPlaceholder}
                 />
             )}
         </div>
