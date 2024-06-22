@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 export const FormInput = ({ placeholder, errors, name, register, deletable, removeInput, resetField }) => {
     const errorMessage = errors?.[name]?.message || "";
 
-    const handleIconClick = (e) => {
+    const handleInputDelete = (e) => {
         e.preventDefault();
         deletable ? removeInput() : resetField();
     };
@@ -15,7 +15,7 @@ export const FormInput = ({ placeholder, errors, name, register, deletable, remo
         <div>
             <StyledInputContainer>
                 <StyledInput errorMessage={errorMessage} placeholder={placeholder} {...register(name)} />
-                <IconButton onClick={(e) => handleIconClick(e)}>
+                <IconButton onClick={(e) => handleInputDelete(e)}>
                     {deletable ? <MdDelete size={25} /> : <AiOutlineReload size={25} />}
                 </IconButton>
             </StyledInputContainer>
