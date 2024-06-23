@@ -90,9 +90,9 @@ const Sidebar = ({
         <SidebarContainer $sidebarType={sidebarType}>
             {sidebarType === "blogs" && (
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-                    <RouterNavCreateButtonLink to={"/blogs/create"}>Create Blog</RouterNavCreateButtonLink>
-                    <RouterNavCreateButtonLink to={"/blogs/my-blogs"}>View My Blogs</RouterNavCreateButtonLink>
-                    <RouterNavCreateButtonLink to={"/dashboard/saved"}>Saved</RouterNavCreateButtonLink>
+                    <RouterNavCreateButtonLink to={"/articles/create"}>Create Article</RouterNavCreateButtonLink>
+                    <RouterNavCreateButtonLink to={"/articles/my-articles"}>My Articles</RouterNavCreateButtonLink>
+                    <RouterNavCreateButtonLink to={"/articles/saved"}>Saved</RouterNavCreateButtonLink>
                 </div>
             )}
 

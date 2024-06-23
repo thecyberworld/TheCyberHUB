@@ -96,16 +96,16 @@ const Blogs = () => {
     const dynamicCategories = new Set(blogs.map((blog) => blog.category));
     const manualCategories = new Set([
         "All",
-        "Blog",
+        "Articles",
         "Security",
         "News",
         "Bug Hunting",
         "CTF",
         "Tools",
         "Dark Web",
-        "Others",
+        "Other",
     ]);
-    const categories = Array.from(new Set([...manualCategories, ...dynamicCategories])).sort();
+    const categories = Array.from(new Set([...manualCategories, ...dynamicCategories]));
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {
         return (
