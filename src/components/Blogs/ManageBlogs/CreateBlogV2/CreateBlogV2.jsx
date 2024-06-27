@@ -230,12 +230,13 @@ const CreateBlogV2 = () => {
                                 onChange={(ev) => setCategory(ev.target.value)}
                             >
                                 <Option value="Blog">Blog</Option>
-                                <Option value="CTF Walkthrough">CTF Walkthrough</Option>
-                                <Option value="Bug Hunting WriteUp">Bug Hunting WriteUp</Option>
-                                <Option value="Tools Walkthrough">Tools Walkthrough</Option>
-                                <Option value="Tips & Tricks">Tips & Tricks</Option>
                                 <Option value="News">News</Option>
-                                <Option value="Others">Others</Option>
+                                <Option value="Bug Hunting">Bug Hunting</Option>
+                                <Option value="CTF">CTF</Option>
+                                <Option value="Tools">Tools</Option>
+                                <Option value="Dark Web">Dark Web</Option>
+                                <Option value="Other">Other</Option>
+                                <Option value="Security">Security</Option>
                             </Select>
                         </CategorySection>
 
