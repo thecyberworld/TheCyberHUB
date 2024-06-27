@@ -106,19 +106,4 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --cache --fix",
-      "stylelint --fix"
-    ],
-    "*.{js,jsx,css,md}": "prettier --write"
-  },
-  "eslintConfig": {
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    }
-  }
 }

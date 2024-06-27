@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const AIChatContainer = styled.div`
+    position: relative;
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -66,6 +67,7 @@ export const ChatBox = styled.div`
 export const ChatHeader = styled.div`
     display: flex;
     flex-direction: row;
+    gap: 5px;
     justify-content: space-between;
     align-items: center;
 `;
@@ -92,6 +94,7 @@ export const ChatInput = styled.form`
     p {
         padding: 10px 15px;
         flex: 1;
+        width: 100%;
         background: #1a1c1d;
         color: #fff;
         border: 1px solid #464646;

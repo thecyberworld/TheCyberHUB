@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { AddImage, ImageUploadLabel } from "./ImageElements";
+import CompressImage from "./CompressImage";
 
 const ImageInput = ({
     inputName,
@@ -9,18 +10,17 @@ const ImageInput = ({
     multiple = false,
     maxMultiple = 4,
     labelPlaceholder = undefined,
-    resetRef = false,
+    onAddImages,
+    resizeImage,
+    pageName,
+    requiredImageHeight,
+    requiredImageWidth,
 }) => {
-    const imageInputRef = useRef(null);
-
-    useEffect(() => {
-        if (resetRef) imageInputRef.current.value = "";
-    }, [resetRef]);
-
+    const shouldShowAddImage = !multiple || (multiple && filesName.length < maxMultiple);
     return (
         <div key={!multiple && filesName[0]}>
             <ImageUploadLabel style={labelStyles} htmlFor={inputName}>
-                {(!multiple || (multiple && filesName.length < maxMultiple)) && <AddImage />}
+                {shouldShowAddImage && <AddImage />}
                 {labelPlaceholder &&
                     (!filesName.length ? (
                         <p>{labelPlaceholder.choose}</p>
@@ -35,12 +35,21 @@ const ImageInput = ({
                 type="file"
                 name={inputName}
                 id={inputName}
-                ref={imageInputRef}
                 onChange={onChange}
                 accept="image/*"
                 multiple={multiple}
                 style={{ display: "none" }}
             />
+            {resizeImage && (
+                <CompressImage
+                    resizeImage={resizeImage}
+                    pageName={pageName}
+                    onAddImages={onAddImages}
+                    requiredImageHeight={requiredImageHeight}
+                    requiredImageWidth={requiredImageWidth}
+                    multiple={!labelPlaceholder}
+                />
+            )}
         </div>
     );
 };

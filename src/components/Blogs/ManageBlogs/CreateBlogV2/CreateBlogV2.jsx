@@ -27,20 +27,21 @@ import { LoadingButton } from "src/components/Other/MixComponents/Buttons/Button
 import { Option, Select } from "src/components/CaptureTheFlag/CTFElements";
 import { ImageInput, useUploadImages } from "src/components/Common/ImageUpload";
 
-const maxImageSizeByte = 1000000;
+const MAX_IMAGE_SIZE_BYTES = 1048576;
 const CreateBlogV2 = () => {
     const {
         images,
-        setImages,
         imagesName,
-        setImagesName,
         onImageChange,
         onImageFromContentSubmit,
         onImageSubmit,
         onImageDrop,
         onImageDragOver,
+        onResetImages,
+        resizeImage,
+        onAddImages,
     } = useUploadImages({
-        maxImageSizeByte,
+        maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
     });
     const dispatch = useDispatch();
@@ -63,14 +64,14 @@ const CreateBlogV2 = () => {
     const [category, setCategory] = useState("Blog");
     const [tags, setTags] = useState([]);
 
-    const maxCharacterCount = 10000;
+    const MAX_CHARACTER_COUNT = 10000;
 
-    const [remainingCharacters, setRemainingCharacters] = useState(maxCharacterCount);
+    const [remainingCharacters, setRemainingCharacters] = useState(MAX_CHARACTER_COUNT);
 
     useEffect(() => {
         const filteredContentLength = content.replace(/<img src="data:image[^>]*>/g, "").length;
-        setRemainingCharacters(maxCharacterCount - filteredContentLength);
-    }, [content, maxCharacterCount]);
+        setRemainingCharacters(MAX_CHARACTER_COUNT - filteredContentLength);
+    }, [content, MAX_CHARACTER_COUNT]);
 
     useEffect(() => {
         if (isBlogError || errorMessage) {
@@ -154,10 +155,9 @@ const CreateBlogV2 = () => {
             setTitle("");
             setSummary("");
             setContent("");
-            setImagesName("");
             setCategory("");
             setTags([]);
-            setImages("");
+            onResetImages();
         }
     };
 
@@ -173,6 +173,10 @@ const CreateBlogV2 = () => {
                             labelStyles={{ color: "grey" }}
                             filesName={imagesName}
                             labelPlaceholder={{ choose: "Add Cover Image", pick: "Please select an image" }}
+                            resizeImage={resizeImage}
+                            onAddImages={onAddImages}
+                            pageName="blog"
+                            requiredImageWidth={1280}
                         />
                     </AddCoverImageSection>
 

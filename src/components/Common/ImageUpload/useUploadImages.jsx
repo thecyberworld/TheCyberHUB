@@ -1,20 +1,24 @@
-import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { getApiUrl } from "src/features/apiUrl";
+import { uploadImages } from "src/features/imageUploadService";
 
 const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     const [images, setImages] = useState([]);
     const [imagesName, setImagesName] = useState(initImages || []);
+    const [resizeImage, setResizeImage] = useState();
 
     const handleValidate = (image, maxSizeByte) => {
         if (!image) return;
-        if (!image.type.startsWith("image/") && !["image/png", "image/jpeg", "image/jpg"].includes(image.type)) {
+        const isImageValid =
+            !image.type.startsWith("image/") && !["image/png", "image/jpeg", "image/jpg"].includes(image.type);
+        if (isImageValid) {
             toast.error("Invalid image type. Only png, jpeg and jpg are allowed.");
             return;
         }
         if (image.size > maxSizeByte) {
-            toast.error(`Image size should be less than ${maxSizeByte / 1000}KB.`);
+            const maxSizeLog = niceBytes(maxSizeByte);
+            toast.warning(`Image size should be less than ${maxSizeLog}. We will compress this image size.`);
+            setResizeImage(image);
             return;
         }
         return image;
@@ -28,14 +32,35 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             reader.onloadend = () => {
                 resolve({
                     image: new File([reader.result], imageName, { type: image?.type }),
-                    imageName: imageName.split("-")[1],
+                    imageName,
                 });
             };
             reader.readAsArrayBuffer(image);
         });
     };
-
-    const handleManyUploads = async (imageFiles, maxImages = undefined) => {
+    const handleAddImagesToState = (images, imagesName, multiple = true, maxImages = 4) => {
+        const correctImagesName = [...imagesName.map((imageName) => imageName.split("-")[1])];
+        if (!multiple) {
+            setImagesName([...correctImagesName]);
+            setImages([...images]);
+            setResizeImage("");
+            return;
+        }
+        setImagesName((prevImagesName) => {
+            const newImagesName = [...prevImagesName, ...correctImagesName];
+            return maxImages ? newImagesName.slice(0, maxImages) : newImagesName;
+        });
+        setImages((prevImages) => {
+            const newImages = [...prevImages, ...images];
+            return maxImages ? newImages.slice(0, maxImages - initImages.length) : newImages;
+        });
+        setResizeImage("");
+    };
+    const handleResetImagesInState = () => {
+        setImagesName([]);
+        setImages([]);
+    };
+    const handleManyUploads = async (imageFiles, maxImages) => {
         const manyImages = [];
         const manyImagesName = [];
         try {
@@ -44,68 +69,37 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
                 manyImages.push(image);
                 manyImagesName.push(imageName);
             }
-            let currentImagesNameNum;
-
-            setImagesName((prevImagesName) => {
-                currentImagesNameNum = prevImagesName.length;
-                return maxImages
-                    ? [...prevImagesName, ...manyImagesName].slice(0, maxImages)
-                    : [...prevImagesName, ...manyImagesName];
-            });
-            setImages((prevImages) => {
-                return maxImages
-                    ? [...prevImages, ...manyImages].slice(0, maxImages - currentImagesNameNum)
-                    : [...prevImages, ...manyImages];
-            });
+            handleAddImagesToState(manyImages, manyImagesName, true, maxImages);
         } catch (error) {
             console.log(`Error uploading this image:${error}`);
         }
     };
 
     const handleRemove = (index) => {
-        setImages((prevImages) => {
-            const updatedImages = [...prevImages];
-            updatedImages.splice(index, 1);
-            return updatedImages;
-        });
-        setImagesName((prevImagesName) => {
-            const updatedImagesName = [...prevImagesName];
-            updatedImagesName.splice(index, 1);
-            return updatedImagesName;
-        });
+        setImages((prevImages) => removeItemAtIndex(prevImages, index));
+        setImagesName((prevImagesName) => removeItemAtIndex(prevImagesName, index));
     };
 
     const handleMultipleSingularOptions = async (imageFiles, multiple, maxImages) => {
         if (multiple) return await handleManyUploads(imageFiles, maxImages);
-        const { image, imageName } = await handleUploadImage(imageFiles[0]);
-        setImages([image]);
-        setImagesName([imageName]);
+        const imageWithNameObj = await handleUploadImage(imageFiles[0]);
+        if (imageWithNameObj) handleAddImagesToState([imageWithNameObj.image], [imageWithNameObj.imageName], false);
     };
 
-    const handleChange = async (e, multiple = false, maxImages = undefined) => {
+    const handleChange = async (e, multiple = false, maxImages) => {
         const imageFiles = e.target.files;
         await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
-    const handleDrop = async (e, multiple = false, maxImages = undefined) => {
+    const handleDrop = async (e, multiple = false, maxImages) => {
         e.preventDefault();
-        const imageFiles = e.dataTransfer.files;
+        const imageFiles = e.dataTransfer.files || [];
         await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
     };
 
-    const handlePaste = async (e, multiple = false, maxImages = undefined) => {
-        const items = (e.clipboardData || e.originalEvent.clipboardData).items;
-        const imageFiles = [];
-
-        // Check if the paste event contains an image
-        for (const item of items) {
-            if (item.type.startsWith("image")) {
-                const file = item.getAsFile();
-                return imageFiles.push[file];
-            }
-        }
-
-        await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
+    const handlePaste = async (e, multiple = false, maxImages) => {
+        const pasteItems = e.clipboardData.files;
+        await handleMultipleSingularOptions(pasteItems, multiple, maxImages);
     };
 
     const handleDragOver = (e) => {
@@ -113,61 +107,30 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     };
 
     const handleSubmit = async (file) => {
-        try {
-            const formData = new FormData();
-            formData.append("image", file);
-            const API_URL = getApiUrl("api/upload");
-            await axios.post(API_URL, formData);
-        } catch (err) {
-            if (err.message === "Request failed with status code 429") {
-                toast.error("You are uploading images too fast. Please wait a few seconds and try again.");
-            }
-        }
+        const formData = new FormData();
+        formData.append("image", file);
+        await uploadImages(formData);
     };
 
     const handleSubmitManyImages = async (files) => {
-        for (const file of files) {
-            await handleSubmit(file);
-        }
+        const promises = files.map((file) => handleSubmit(file));
+        await Promise.all(promises);
     };
 
     const handleSubmitFromContent = async (content) => {
         const imageTags = content.match(/<img[^>]*src="([^"]*)"[^>]*>/g) || [];
         let updatedContent = content;
         if (imageTags.length > 0) {
-            async function uploadContentImages() {
-                const imageUrls = imageTags.map((tag) => {
-                    const match = tag.match(/src="([^"]*)"/);
-                    return match ? match[1] : null;
-                });
-
-                for (const imageUrl of imageUrls) {
-                    if (!isImageUrl(imageUrl)) {
-                        await uploadContentImage(imageUrl);
-                    }
-                }
-            }
-
-            await uploadContentImages();
-        }
-
-        async function uploadContentImage(imageUrl) {
-            const [imageType, base64Data] = imageUrl.split(";base64,");
-            const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
-            updatedContent = updatedContent.replace(imageUrl, filename.split("-")[1]);
-
-            const newFile = bufferToFile(base64Data, filename, imageType);
-
-            await handleSubmit(newFile);
+            updatedContent = await uploadContentImages(imageTags, updatedContent, pageName, handleSubmit);
         }
         return updatedContent;
     };
 
     return {
         images,
-        setImages,
         imagesName,
-        setImagesName,
+        onAddImages: handleAddImagesToState,
+        onResetImages: handleResetImagesInState,
         onImageRemove: handleRemove,
         onImageChange: handleChange,
         onImageDrop: handleDrop,
@@ -176,9 +139,33 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         onImageSubmit: handleSubmit,
         onManyImageSubmit: handleSubmitManyImages,
         onImageFromContentSubmit: handleSubmitFromContent,
+        resizeImage,
     };
 };
 export default useUploadImages;
+
+async function uploadContentImages(imageTags, updatedContent, ...args) {
+    const imageUrls = imageTags.map((tag) => {
+        const match = tag.match(/src="([^"]*)"/);
+        return match ? match[1] : null;
+    });
+
+    for (const imageUrl of imageUrls) {
+        if (!isImageUrl(imageUrl)) {
+            updatedContent = await uploadContentImage(imageUrl, updatedContent, ...args);
+        }
+    }
+    return updatedContent;
+}
+
+async function uploadContentImage(imageUrl, updatedContent, pageName, onSubmit) {
+    if (!imageUrl) return;
+    const { newFile, fileName } = bufferToFile(imageUrl, pageName);
+
+    await onSubmit(newFile);
+
+    return updatedContent.replace(imageUrl, fileName.split("-")[1]);
+}
 
 function isImageUrl(url) {
     return (
@@ -186,14 +173,32 @@ function isImageUrl(url) {
     );
 }
 
-function bufferToFile(base64Data, fileName, imageType) {
-    const byteCharacters = atob(base64Data);
+export function bufferToFile(imageUrl, pageName) {
+    const [imageType, base64Data] = imageUrl?.split(";base64,");
+    const fileName = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
 
-    const byteNumbers = new Array(byteCharacters.length);
-    for (let i = 0; i < byteCharacters.length; i++) {
-        byteNumbers[i] = byteCharacters.charCodeAt(i);
-    }
+    const byteCharacters = atob(base64Data);
+    const byteNumbers = byteCharacters.split("").map((char) => char.charCodeAt());
     const uint8Array = new Uint8Array(byteNumbers);
     const blob = new Blob([uint8Array], { type: imageType });
-    return new File([blob], fileName, { type: imageType.replace(/^data:/, "") });
+    return { newFile: new File([blob], fileName, { type: imageType.replace(/^data:/, "") }), fileName };
 }
+
+function removeItemAtIndex(items, index) {
+    const updatedItems = [...items];
+    updatedItems.splice(index, 1);
+    return updatedItems;
+}
+
+const units = ["bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
+
+const niceBytes = (size) => {
+    let unitNameIndex = 0;
+    let number = parseInt(size, 10) || 0;
+
+    while (number >= 1024 && ++unitNameIndex) {
+        number = number / 1024;
+    }
+
+    return number.toFixed(number < 10 && unitNameIndex > 0 ? 1 : 0) + " " + units[unitNameIndex];
+};

@@ -267,7 +267,7 @@ const AiChat = () => {
                                     />
 
                                     {!isTrailEnded ? (
-                                        <div>
+                                        <>
                                             {chat.title !== "New Chat" ? null : (
                                                 <Prompts handleSendDummyMessage={handleSendDummyMessage} />
                                             )}
@@ -288,7 +288,7 @@ const AiChat = () => {
                                                     </button>
                                                 )}
                                             </ChatInput>
-                                        </div>
+                                        </>
                                     ) : null}
                                 </ChatBox>
                             ),
