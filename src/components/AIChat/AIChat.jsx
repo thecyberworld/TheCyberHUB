@@ -257,7 +257,7 @@ const AiChat = () => {
                                             {toggle ? <FaAngleRight /> : <FaAngleLeft />}
                                         </ToggleSection>
                                         <ChatTitle>{chat?.title}</ChatTitle>
-                                        <SlOptionsVertical />
+                                        <SlOptionsVertical className="hidden" />
                                     </ChatHeader>
 
                                     <ChatMessages
@@ -300,7 +300,7 @@ const AiChat = () => {
                                 {toggle ? <FaAngleRight /> : <FaAngleLeft />}
                             </ToggleSection>
                             <ChatTitle>{"New Chat"}</ChatTitle>
-                            <SlOptionsVertical />
+                            <SlOptionsVertical className="hidden" />
                         </ChatHeader>
 
                         <ChatInput onSubmit={handleSendMessage}>
