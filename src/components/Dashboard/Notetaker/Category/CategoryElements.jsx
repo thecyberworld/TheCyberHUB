@@ -208,4 +208,5 @@ export const CategoryItemElementChecked = styled.div`
     border-radius: 50%;
     border: ${({ $isSelected }) => ($isSelected ? "2px solid #8f6143" : "2px solid #efefef")};
     background-color: ${({ $isSelected }) => $isSelected && "#ff6b08"};
+    box-shadow: ${({ $isSelected }) => $isSelected && " 0px 0px 10px #ff6b08"};
 `;
