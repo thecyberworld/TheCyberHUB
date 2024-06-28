@@ -31,16 +31,17 @@ const MAX_IMAGE_SIZE_BYTES = 1048576;
 const CreateBlogV2 = () => {
     const {
         images,
-        setImages,
         imagesName,
-        setImagesName,
         onImageChange,
         onImageFromContentSubmit,
         onImageSubmit,
         onImageDrop,
         onImageDragOver,
+        onResetImages,
+        resizeImage,
+        onAddImages,
     } = useUploadImages({
-        MAX_IMAGE_SIZE_BYTES,
+        maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
     });
     const dispatch = useDispatch();
@@ -154,10 +155,9 @@ const CreateBlogV2 = () => {
             setTitle("");
             setSummary("");
             setContent("");
-            setImagesName("");
             setCategory("");
             setTags([]);
-            setImages("");
+            onResetImages();
         }
     };
 
@@ -173,6 +173,10 @@ const CreateBlogV2 = () => {
                             labelStyles={{ color: "grey" }}
                             filesName={imagesName}
                             labelPlaceholder={{ choose: "Add Cover Image", pick: "Please select an image" }}
+                            resizeImage={resizeImage}
+                            onAddImages={onAddImages}
+                            pageName="blog"
+                            requiredImageWidth={1280}
                         />
                     </AddCoverImageSection>
 
@@ -226,12 +230,13 @@ const CreateBlogV2 = () => {
                                 onChange={(ev) => setCategory(ev.target.value)}
                             >
                                 <Option value="Blog">Blog</Option>
-                                <Option value="CTF Walkthrough">CTF Walkthrough</Option>
-                                <Option value="Bug Hunting WriteUp">Bug Hunting WriteUp</Option>
-                                <Option value="Tools Walkthrough">Tools Walkthrough</Option>
-                                <Option value="Tips & Tricks">Tips & Tricks</Option>
                                 <Option value="News">News</Option>
-                                <Option value="Others">Others</Option>
+                                <Option value="Bug Hunting">Bug Hunting</Option>
+                                <Option value="CTF">CTF</Option>
+                                <Option value="Tools">Tools</Option>
+                                <Option value="Dark Web">Dark Web</Option>
+                                <Option value="Other">Other</Option>
+                                <Option value="Security">Security</Option>
                             </Select>
                         </CategorySection>
 

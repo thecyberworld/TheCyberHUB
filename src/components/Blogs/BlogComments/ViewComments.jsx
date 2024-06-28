@@ -14,21 +14,30 @@ import { cdnContentImagesUrl } from "src/features/apiUrl";
 const ViewComments = ({ comments }) => {
     return (
         <ViewCommentsContainer>
-            {comments?.map((comment, id) => (
-                <CommentSection key={id}>
-                    <SectionUserPicture>
-                        <UserPicture
-                            src={cdnContentImagesUrl("/user/" + (comment?.avatar || "avatarDummy.png"))}
-                            alt={comment?.avatar}
-                        />
-                    </SectionUserPicture>
-                    <SectionCommentDetails>
-                        <Username>{comment?.username}</Username>
-                        <CommentDate> Jan 26, 2023</CommentDate>
-                        <Comment>{comment?.comment}</Comment>
-                    </SectionCommentDetails>
-                </CommentSection>
-            ))}
+            {comments?.map((comment, id) => {
+                const commentUnFormattedDate = new Date(comment.createdAt);
+                const commentCreatedAt = new Intl.DateTimeFormat("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                }).format(commentUnFormattedDate);
+
+                return (
+                    <CommentSection key={id}>
+                        <SectionUserPicture>
+                            <UserPicture
+                                src={cdnContentImagesUrl("/user/" + (comment?.avatar || "avatarDummy.png"))}
+                                alt={comment?.avatar}
+                            />
+                        </SectionUserPicture>
+                        <SectionCommentDetails>
+                            <Username>{comment?.username}</Username>
+                            <CommentDate>{commentCreatedAt}</CommentDate>
+                            <Comment>{comment?.comment}</Comment>
+                        </SectionCommentDetails>
+                    </CommentSection>
+                );
+            })}
             {/* {props?.isBlogLoading && <CircleSpinner size={20} color={"#ff6b08"} />} */}
         </ViewCommentsContainer>
     );

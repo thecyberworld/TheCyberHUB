@@ -18,6 +18,7 @@ const Blogs = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [showOnlyFollowingBlogs, setShowOnlyFollowingBlogs] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState("All");
 
     const { user } = useSelector((state) => state.auth);
     const { isApiLoading, isApiWorking } = apiStatus();
@@ -75,16 +76,36 @@ const Blogs = () => {
                   );
         const usernameIncludeSearchTerm =
             !cleanSearchTerm || blog?.username?.toLowerCase().includes(cleanSearchTerm) || false;
+        const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory;
 
         return (
             postedByFollowingUser &&
             allFilterTagsIncluded &&
-            (!cleanSearchTerm || contentIncludesSearchTerm || usernameIncludeSearchTerm)
+            (!cleanSearchTerm || contentIncludesSearchTerm || usernameIncludeSearchTerm) &&
+            matchesCategory
         );
     });
 
     const blogTags = blogs?.map((blog) => blog?.tags.map((tag) => tag.toLowerCase())).flat() || [];
     const uniqueBlogTags = [...new Set([...blogTags])];
+
+    const handleCategoryClick = (category) => {
+        setSelectedCategory((prevCategory) => (prevCategory === category ? "All" : category));
+    };
+
+    const dynamicCategories = new Set(blogs.map((blog) => blog.category));
+    const manualCategories = new Set([
+        "All",
+        "Articles",
+        "Security",
+        "News",
+        "Bug Hunting",
+        "CTF",
+        "Tools",
+        "Dark Web",
+        "Other",
+    ]);
+    const categories = Array.from(new Set([...manualCategories, ...dynamicCategories]));
 
     if (isBlogLoading || isUserDetailLoading || isApiLoading) {
         return (
@@ -109,6 +130,39 @@ const Blogs = () => {
             <BlogsContainer>
                 <BlogsSection>
                     <MiddleContainer>
+                        <header>
+                            <ul
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "5px",
+                                    padding: "0",
+                                    margin: "0",
+                                    width: "auto",
+                                    flexDirection: "row",
+                                    flexWrap: "wrap",
+                                    wordWrap: "break-word",
+                                }}
+                            >
+                                {categories.map((category, index) => (
+                                    <li
+                                        key={index}
+                                        onClick={() => handleCategoryClick(category)}
+                                        style={{
+                                            cursor: "pointer",
+                                            fontWeight: selectedCategory === category ? "bold" : "normal",
+                                            backgroundColor: "#1d1d1d",
+                                            padding: "0.5rem 1rem", // Use rem for padding
+                                            borderRadius: "5px",
+                                            fontSize: "1rem", // Use rem for font size
+                                        }}
+                                    >
+                                        {category}
+                                    </li>
+                                ))}
+                            </ul>
+                        </header>
+
                         <BlogCards bookmarks={bookmarks} selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
                     </MiddleContainer>
                     <Sidebar

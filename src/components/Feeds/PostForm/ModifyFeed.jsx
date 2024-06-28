@@ -14,21 +14,21 @@ const MAX_IMAGE_SIZE_BYTES = 1048576;
 const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) => {
     const {
         images,
-        setImages,
         imagesName,
-        setImagesName,
         onImageRemove,
         onImageChange,
         onImageDragOver,
         onImageDrop,
         onManyImageSubmit,
         onImagePaste,
+        resizeImage,
+        onResetImages,
+        onAddImages,
     } = useUploadImages({
-        MAX_IMAGE_SIZE_BYTES,
+        maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "feed",
         initImages: editFeed?.images,
     });
-
     const textareaRef = useRef(null);
     const { user } = useSelector((state) => state.auth);
 
@@ -91,8 +91,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
             setIsFeedLoading(false);
             setContent("");
             setTags([]);
-            setImages([]);
-            setImagesName([]);
+            onResetImages();
         }
     };
 
@@ -143,6 +142,9 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
                         filesName={imagesName}
                         multiple
                         key={editFeed ? `${editFeed._id}feedImage` : "feedImage"}
+                        onAddImages={onAddImages}
+                        resizeImage={resizeImage}
+                        pageName="feed"
                     />
 
                     {isFeedLoading ? (

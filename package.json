@@ -61,7 +61,8 @@
         "remark-gfm": "^4.0.0",
         "sass": "^1.77.1",
         "styled-components": "^6.1.11",
-        "validator": "^13.12.0"
+        "validator": "^13.12.0",
+        "sitemap": "^8.0.0"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.5.0",
