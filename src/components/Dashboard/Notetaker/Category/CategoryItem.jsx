@@ -6,20 +6,15 @@ import { useDispatch } from "react-redux";
 
 import {
     CategoryItemElement,
+    CategoryItemElementChecked,
     CategoryItemElementContainer,
     CategoryItemShortTitle,
     CategoryMenuButton,
     CategoryMenuButtonLabel,
     CategoryMenuButtons,
     CategoryOptionsMenuContainer,
-    CategoriesSidebarCheckbox,
 } from "./CategoryElements";
-import {
-    AddSelectedCategory,
-    notesRemoveCategory,
-    deleteNotesCategory,
-    updateNotesCategory,
-} from "src/features/notes/notesCategory/notesCategorySlice";
+import { deleteNotesCategory, updateNotesCategory } from "src/features/notes/notesCategory/notesCategorySlice";
 import "src/components/Dashboard/Notetaker/NoteApp.css";
 import ModifyCategory from "./ModifyCategory";
 import { toast } from "react-toastify";
@@ -34,6 +29,8 @@ const CategoryItem = ({
     onEditCategory,
     stillEditing,
     showCheckbox,
+    onToggleSelectCategory,
+    isSelected,
 }) => {
     const dispatch = useDispatch();
     const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
@@ -69,11 +66,19 @@ const CategoryItem = ({
         onPick({});
         handleCloseEdit();
     };
+    const handlePickCategory = (category) => {
+        if (requiredCategory && showCheckbox) return;
+        if (showCheckbox || !onPick) {
+            onToggleSelectCategory(category._id);
+        } else {
+            onPick(category);
+        }
+    };
 
     if (requiredCategory) {
         return (
             <CategoryItemElementContainer>
-                <CategoryItemElement onClick={() => onPick(category)} $isPicked={isPicked}>
+                <CategoryItemElement onClick={() => handlePickCategory(category)} $isPicked={isPicked}>
                     <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
                 </CategoryItemElement>
             </CategoryItemElementContainer>
@@ -91,19 +96,8 @@ const CategoryItem = ({
                 />
             ) : (
                 <CategoryItemElementContainer>
-                    <CategoryItemElement onClick={() => onPick(category)} $isPicked={isPicked}>
-                        {showCheckbox && ( // Conditionally render the checkbox based on the showCheckbox prop
-                            <CategoriesSidebarCheckbox
-                                id={`checkbox-${id}`}
-                                onChange={(e) => {
-                                    e.target.checked
-                                        ? dispatch(AddSelectedCategory(id))
-                                        : dispatch(notesRemoveCategory(id));
-                                }}
-                            />
-                        )}
-                        {showCheckbox && <label htmlFor={`checkbox-${id}`}></label>}{" "}
-                        {/* Conditionally render the label based on the showCheckbox prop */}
+                    <CategoryItemElement onClick={() => handlePickCategory(category)} $isPicked={isPicked}>
+                        {showCheckbox && <CategoryItemElementChecked $isSelected={isSelected} />}
                         <CategoryItemShortTitle>{category.name.slice(0, 23)}</CategoryItemShortTitle>
                     </CategoryItemElement>
 

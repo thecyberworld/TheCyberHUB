@@ -14,7 +14,9 @@ const CategoryList = ({
     defaultCategory,
     onEditCategory,
     editCategoryId,
-    showCheckboxes, // New prop to control whether to show checkboxes
+    showCheckboxes,
+    onToggleSelectCategory,
+    selectedCategoriesIds,
 }) => {
     const dispatch = useDispatch();
     return (
@@ -42,7 +44,9 @@ const CategoryList = ({
                                     defaultCategory={defaultCategory}
                                     onEditCategory={onEditCategory}
                                     stillEditing={editCategoryId === category._id}
-                                    showCheckbox={showCheckboxes} // Pass the showCheckbox prop to CategoryItem
+                                    showCheckbox={showCheckboxes}
+                                    onToggleSelectCategory={onToggleSelectCategory}
+                                    isSelected={selectedCategoriesIds?.includes(category._id)}
                                 />
                             </motion.ul>
                         </Reorder.Item>
