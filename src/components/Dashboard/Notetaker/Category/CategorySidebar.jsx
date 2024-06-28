@@ -87,6 +87,10 @@ const CategorySidebar = ({
             }
         });
     };
+    const handleToggleMultiSelectMode = (multiSelectShow) => {
+        setShowDeleteAll(multiSelectShow);
+        setSelectedCategoriesIds([]);
+    };
     return (
         <CategoriesSidebarContainer>
             <CategoriesSidebarHeader>
@@ -140,7 +144,10 @@ const CategorySidebar = ({
                 </>
             )}
             <FunctionalityContainer>
-                <MultiSelectContainer $showDeleteAll={showDeleteAll} onClick={() => setShowDeleteAll(!showDeleteAll)}>
+                <MultiSelectContainer
+                    $showDeleteAll={showDeleteAll}
+                    onClick={() => handleToggleMultiSelectMode(!showDeleteAll)}
+                >
                     {showDeleteAll ? <FaToggleOn /> : <FaToggleOff />}
                     <ToggleButton $showDeleteAll={showDeleteAll}>Multi Select</ToggleButton>
                 </MultiSelectContainer>
