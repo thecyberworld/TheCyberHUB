@@ -11,15 +11,14 @@
         "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" vite build",
         "preview": "vite preview",
         "prepare": "husky install",
-        "lint:fix": "eslint --fix --ext .js,.jsx .",
-        "lint:css": "stylelint **/*.jsx",
-        "lint:css-fix": "stylelint **/*.jsx --fix",
+        "lint": "eslint --ext .js,.jsx . && stylelint **/*.jsx",
+        "lint:fix": "eslint --fix --ext .js,.jsx . && stylelint **/*.jsx --fix",
         "storybook": "storybook dev -p 6006",
         "build-storybook": "storybook build"
     },
     "dependencies": {
         "@radix-ui/react-slot": "^1.0.2",
-        "@reduxjs/toolkit": "^2.2.4",
+        "@reduxjs/toolkit": "^2.2.5",
         "@uiw/react-md-editor": "^4.0.4",
         "add-to-calendar-button-react": "^2.6.14",
         "axios": "^1.7.2",
