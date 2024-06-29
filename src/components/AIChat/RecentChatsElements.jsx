@@ -37,7 +37,7 @@ export const RecentChatsContainer = styled.div`
         text-align: center;
     }
 
-    @media (width <= 900px) {
+    @media (width <= 48rem) {
         position: absolute;
         max-width: 1000px;
         min-width: 0;
@@ -52,7 +52,6 @@ export const RecentChatsHeader = styled.div`
     align-items: center;
     height: 100%;
     max-height: 100px;
-    padding: 0 0 0 10px;
     border-bottom: 1px solid rgb(70 70 70 / 75%);
 
     p {
