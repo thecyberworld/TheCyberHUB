@@ -21,7 +21,7 @@
         "@reduxjs/toolkit": "^2.2.5",
         "@uiw/react-md-editor": "^4.0.4",
         "add-to-calendar-button-react": "^2.6.14",
-        "axios": "^1.6.8",
+        "axios": "^1.7.2",
         "chart.js": "^4.4.2",
         "crypto-js": "^4.2.0",
         "date-fns": "^3.6.0",
@@ -60,9 +60,9 @@
         "rehype-sanitize": "^6.0.0",
         "remark-gfm": "^4.0.0",
         "sass": "^1.77.1",
+        "sitemap": "^8.0.0",
         "styled-components": "^6.1.11",
-        "validator": "^13.12.0",
-        "sitemap": "^8.0.0"
+        "validator": "^13.12.0"
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^1.5.0",
