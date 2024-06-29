@@ -15,16 +15,22 @@ import AuthPopup from "src/pages/AuthPopup/AuthPopup";
 import Prompts from "./Prompts/Prompts";
 import { TbMessage2Plus } from "react-icons/tb";
 import { RecentChatsHeader } from "src/components/AIChat/RecentChatsElements.jsx";
+import { useNavigate } from "react-router";
 
 const API_BASE_URL = getApiUrl("api/aiChat");
 
 const AiChat = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const { user } = useSelector((state) => state.auth);
-
     // if (!user) {
     //     navigate("/login");
     // }
+
+    const handleIsUserExit = () => {
+        if (!user) {
+            navigate("/login");
+        }
+    };
 
     const [chats, setChats] = useState([]);
     const [isTrailEnded, setIsTrailEnded] = useState(false);
@@ -300,10 +306,10 @@ const AiChat = () => {
                                 {toggle ? <FaAngleRight /> : <FaAngleLeft />}
                             </ToggleSection>
                             <ChatTitle>{"New Chat"}</ChatTitle>
-                            <SlOptionsVertical />
+                            <SlOptionsVertical className="hidden" />
                         </ChatHeader>
 
-                        <ChatInput onSubmit={handleSendMessage}>
+                        <ChatInput onClick={handleIsUserExit} onSubmit={handleSendMessage}>
                             <p>Start a New Chat</p>
                             <RecentChatsHeader>
                                 <div className="new-chat-button" onClick={handleNewChat}>
