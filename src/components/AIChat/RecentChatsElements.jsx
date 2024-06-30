@@ -124,20 +124,5 @@ export const RecentChatsList = styled.ul`
 `;
 
 export const ToggleSection = styled.p`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ff6b08;
-    cursor: pointer;
-    background: #252525;
-    border-radius: 10px;
-    padding: 5px;
     z-index: -1;
-    font-size: 30px;
-    transition: all 0.3s ease;
-
-    &:hover {
-        background: #464646;
-        scale: 1.1;
-    }
 `;
