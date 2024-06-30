@@ -39,6 +39,7 @@ export const ToggleSection = styled.p`
     border-radius: 10px;
     padding: 5px;
     font-size: 30px;
+    z-index: 6;
     transition: all 0.3s ease;
 
     &:hover {

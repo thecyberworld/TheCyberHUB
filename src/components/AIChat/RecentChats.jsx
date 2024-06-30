@@ -1,8 +1,7 @@
 import React from "react";
-import { RecentChatsContainer, RecentChatsHeader, RecentChatsList } from "./RecentChatsElements";
+import { RecentChatsContainer, RecentChatsHeader, RecentChatsList, ToggleSection } from "./RecentChatsElements";
 import { TbMessage2Plus } from "react-icons/tb";
 import { ImCross } from "react-icons/im";
-import { ToggleSection } from "./AIChatElements";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa";
 
 const RecentChats = ({ chats, selectedChatId, setSelectedChatId, onNewChat, onDeleteChat, toggle, setToggle }) => {
