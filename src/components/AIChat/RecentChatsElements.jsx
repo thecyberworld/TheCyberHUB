@@ -41,8 +41,7 @@ export const RecentChatsContainer = styled.div`
         position: absolute;
         max-width: 1000px;
         min-width: 0;
-        top: 100px;
-        height: calc(100% - 100px);
+        height: 100%;
     }
 `;
 

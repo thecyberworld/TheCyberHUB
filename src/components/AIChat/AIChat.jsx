@@ -244,6 +244,8 @@ const AiChat = () => {
                         onNewChat={handleNewChat}
                         selectedChatId={selectedChatId}
                         onDeleteChat={handleDeleteChat}
+                        toggle={toggle}
+                        setToggle={setToggle}
                     />
                 )}
 
