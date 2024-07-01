@@ -6,8 +6,15 @@ export const FeedsContainer = styled.div`
     margin: 0 auto;
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (width >= 950px) {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
 `;
 
 export const MiddleSection = styled.div`
@@ -19,6 +26,13 @@ export const MiddleSection = styled.div`
     gap: 15px;
     border-left: 1px solid #1a1a1a;
     border-right: 1px solid #1a1a1a;
+    padding: 0 1rem;
+
+    @media screen and (width >= 950px) {
+        justify-content: space-between;
+        align-items: flex-start;
+        max-width: calc(50% - 100px);
+    }
 `;
 export const ModifyFeedContainer = styled.div`
     padding: 15px;

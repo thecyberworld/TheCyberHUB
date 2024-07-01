@@ -9,7 +9,6 @@ import { getAllUserDetails, userDetailReset } from "src/features/userDetail/user
 import LoadingSpinner from "src/components/Other/MixComponents/Spinner/LoadingSpinner";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "src/features/apiStatus";
-import { LeftContainer } from "src/components/Explore/ExploreElements";
 import { getFollowData, reset } from "src/features/follow/followSlice";
 import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
 
@@ -66,8 +65,6 @@ const Feeds = () => {
     return (
         <Wrapper style={{ marginTop: "80px" }}>
             <FeedsContainer>
-                <LeftContainer style={{ padding: "25px 0" }}></LeftContainer>
-
                 <MiddleSection>
                     <ModifyFeedContainer>
                         <ModifyFeed
@@ -84,21 +81,19 @@ const Feeds = () => {
                         selectedTags={selectedTags}
                     />
                 </MiddleSection>
-                <LeftContainer style={{ padding: "25px 0" }}>
-                    <Sidebar
-                        user={user}
-                        searchTerm={searchTerm}
-                        setSearchTerm={setSearchTerm}
-                        handleSearchTermChange={handleSearchTermChange}
-                        tags={uniqueFeedTags}
-                        showOnlyFollowing={showOnlyFollowingPosts}
-                        setShowOnlyFollowing={setShowOnlyFollowingPosts}
-                        sidebarType={"feeds"}
-                        data={feeds}
-                        selectedTags={selectedTags}
-                        setSelectedTags={setSelectedTags}
-                    />
-                </LeftContainer>
+                <Sidebar
+                    user={user}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
+                    handleSearchTermChange={handleSearchTermChange}
+                    tags={uniqueFeedTags}
+                    showOnlyFollowing={showOnlyFollowingPosts}
+                    setShowOnlyFollowing={setShowOnlyFollowingPosts}
+                    sidebarType={"feeds"}
+                    data={feeds}
+                    selectedTags={selectedTags}
+                    setSelectedTags={setSelectedTags}
+                />
             </FeedsContainer>
         </Wrapper>
     );
