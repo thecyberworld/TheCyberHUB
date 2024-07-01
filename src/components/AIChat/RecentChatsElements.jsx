@@ -11,7 +11,6 @@ export const RecentChatsContainer = styled.div`
     padding: 10px 25px;
     background: #111; /* Adjusted background color */
     color: #fff;
-    z-index: 5;
     border: 1px solid rgb(70 70 70 / 55%);
 
     /* border: 1px solid #464646; */
@@ -37,12 +36,11 @@ export const RecentChatsContainer = styled.div`
         text-align: center;
     }
 
-    @media (width <= 900px) {
+    @media (width <= 48rem) {
         position: absolute;
         max-width: 1000px;
         min-width: 0;
-        top: 100px;
-        height: calc(100% - 100px);
+        height: 100%;
     }
 `;
 
@@ -52,7 +50,6 @@ export const RecentChatsHeader = styled.div`
     align-items: center;
     height: 100%;
     max-height: 100px;
-    padding: 0 0 0 10px;
     border-bottom: 1px solid rgb(70 70 70 / 75%);
 
     p {
@@ -124,4 +121,8 @@ export const RecentChatsList = styled.ul`
             transform: scale3d(1.1, 1.1, 1.1);
         }
     }
+`;
+
+export const ToggleSection = styled.p`
+    z-index: -1;
 `;
