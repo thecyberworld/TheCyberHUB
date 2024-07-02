@@ -35,6 +35,7 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
                     imageName,
                 });
             };
+            reader.onerror = (error) => reject(error);
             reader.readAsArrayBuffer(image);
         });
     };
