@@ -1,13 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { uploadImages } from "src/features/imageUploadService";
 
-const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
+const useUploadImages = ({
+    maxImageSizeByte,
+    pageName,
+    requiredImageWidth,
+    initImages = [],
+    requiredImageHeight = 0,
+}) => {
     const [images, setImages] = useState([]);
     const [imagesName, setImagesName] = useState(initImages || []);
-    const [resizeImage, setResizeImage] = useState();
+    const [workerAction, setWorkerAction] = useState(null);
+    useEffect(() => {
+        const imageUploadWorker = new Worker("/src/utils/workers/imageUploadWorker.js");
+        imageUploadWorker.onmessage = (event) => {
+            const newImageBlob = event.data.blobImage;
+            const fileName = `${pageName}-${Date.now()}.${newImageBlob.type.split("/")[1]}`;
+            const imageFileWithUpdatedName = new File([newImageBlob], fileName, { type: newImageBlob.type });
+            handleAddImagesToState([imageFileWithUpdatedName], [fileName], event.data.multiple);
+        };
+        setWorkerAction(imageUploadWorker);
+        return () => {
+            imageUploadWorker.terminate();
+        };
+    }, []);
 
-    const handleValidate = (image, maxSizeByte) => {
+    const handleValidate = (image, maxSizeByte, multiple) => {
         if (!image) return;
         const isImageValid =
             !image.type.startsWith("image/") && !["image/png", "image/jpeg", "image/jpg"].includes(image.type);
@@ -18,14 +37,19 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         if (image.size > maxSizeByte) {
             const maxSizeLog = niceBytes(maxSizeByte);
             toast.warning(`Image size should be less than ${maxSizeLog}. We will compress this image size.`);
-            setResizeImage(image);
+            workerAction.postMessage({
+                image,
+                requiredImageWidth,
+                requiredImageHeight,
+                multiple,
+            });
             return;
         }
         return image;
     };
 
-    const handleUploadImage = (image) => {
-        if (!handleValidate(image, maxImageSizeByte)) return;
+    const handleUploadImage = (image, multiple = false) => {
+        if (!handleValidate(image, maxImageSizeByte, multiple)) return {};
         const imageName = `${pageName}-${Date.now()}.${image?.type.split("/")[1]}`;
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -44,7 +68,6 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         if (!multiple) {
             setImagesName([...correctImagesName]);
             setImages([...images]);
-            setResizeImage("");
             return;
         }
         setImagesName((prevImagesName) => {
@@ -55,7 +78,6 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             const newImages = [...prevImages, ...images];
             return maxImages ? newImages.slice(0, maxImages - initImages.length) : newImages;
         });
-        setResizeImage("");
     };
     const handleResetImagesInState = () => {
         setImagesName([]);
@@ -66,9 +88,9 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         const manyImagesName = [];
         try {
             for (const imageFile of imageFiles) {
-                const { image, imageName } = await handleUploadImage(imageFile);
-                manyImages.push(image);
-                manyImagesName.push(imageName);
+                const { image, imageName } = await handleUploadImage(imageFile, true);
+                if (image) manyImages.push(image);
+                if (imageName) manyImagesName.push(imageName);
             }
             handleAddImagesToState(manyImages, manyImagesName, true, maxImages);
         } catch (error) {
@@ -84,7 +106,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     const handleMultipleSingularOptions = async (imageFiles, multiple, maxImages) => {
         if (multiple) return await handleManyUploads(imageFiles, maxImages);
         const imageWithNameObj = await handleUploadImage(imageFiles[0]);
-        if (imageWithNameObj) handleAddImagesToState([imageWithNameObj.image], [imageWithNameObj.imageName], false);
+        if (Object.keys(imageWithNameObj).length > 0)
+            handleAddImagesToState([imageWithNameObj.image], [imageWithNameObj.imageName], false);
     };
 
     const handleChange = async (e, multiple = false, maxImages) => {
@@ -130,7 +153,6 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     return {
         images,
         imagesName,
-        onAddImages: handleAddImagesToState,
         onResetImages: handleResetImagesInState,
         onImageRemove: handleRemove,
         onImageChange: handleChange,
@@ -140,7 +162,6 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
         onImageSubmit: handleSubmit,
         onManyImageSubmit: handleSubmitManyImages,
         onImageFromContentSubmit: handleSubmitFromContent,
-        resizeImage,
     };
 };
 export default useUploadImages;
