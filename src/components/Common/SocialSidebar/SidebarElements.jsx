@@ -8,7 +8,6 @@ export const SidebarContainer = styled.div`
     gap: 10px;
     top: 100px;
     width: 100%;
-    max-width: 200px;
     min-width: ${(props) => (props.$sidebarType === "explore" ? "310px" : "400px")};
     color: #fff;
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
