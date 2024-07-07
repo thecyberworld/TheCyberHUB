@@ -38,11 +38,10 @@ const CreateBlogV2 = () => {
         onImageDrop,
         onImageDragOver,
         onResetImages,
-        resizeImage,
-        onAddImages,
     } = useUploadImages({
         maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
+        requiredImageWidth: 1280,
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -173,10 +172,6 @@ const CreateBlogV2 = () => {
                             labelStyles={{ color: "grey" }}
                             filesName={imagesName}
                             labelPlaceholder={{ choose: "Add Cover Image", pick: "Please select an image" }}
-                            resizeImage={resizeImage}
-                            onAddImages={onAddImages}
-                            pageName="blog"
-                            requiredImageWidth={1280}
                         />
                     </AddCoverImageSection>
 
