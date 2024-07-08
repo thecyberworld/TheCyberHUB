@@ -60,7 +60,7 @@ const CreateBlogV2 = () => {
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
     const [content, setContent] = useState("");
-    const [category, setCategory] = useState("Blog");
+    const [category, setCategory] = useState("Article");
     const [tags, setTags] = useState([]);
 
     const MAX_CHARACTER_COUNT = 10000;
@@ -224,7 +224,7 @@ const CreateBlogV2 = () => {
                                 value={category}
                                 onChange={(ev) => setCategory(ev.target.value)}
                             >
-                                <Option value="Blog">Blog</Option>
+                                <Option value="Article">Article</Option>
                                 <Option value="News">News</Option>
                                 <Option value="Bug Hunting">Bug Hunting</Option>
                                 <Option value="CTF">CTF</Option>
