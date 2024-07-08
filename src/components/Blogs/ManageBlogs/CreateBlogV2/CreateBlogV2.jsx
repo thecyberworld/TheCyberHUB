@@ -79,7 +79,7 @@ const CreateBlogV2 = () => {
 
         if (!user) navigate("/login");
 
-        if (isSuccess) navigate("/blogs");
+        if (isSuccess) navigate("/articles");
 
         return () => dispatch(blogReset());
     }, [user, isSuccess, isBlogError, blogMessage, errorMessage, dispatch, navigate]);
