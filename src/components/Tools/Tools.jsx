@@ -7,6 +7,7 @@ import { MdPassword } from "react-icons/md";
 import { TbHash } from "react-icons/tb";
 import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 import { RiEarthFill } from "react-icons/ri";
+import { FaGoogle } from "react-icons/fa";
 
 const Tools = () => {
     const tools = [
@@ -14,6 +15,8 @@ const Tools = () => {
         { name: "Rev Shell", desc: "Reverse Shell Generator", link: "/tools/revshell", icon: <GiNautilusShell /> },
         { name: "Bin Exploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
         { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },
+        { name: "Google Dork", link: "/tools/googledorks", icon: <FaGoogle /> },
+
         { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
         { name: "Sub Finder", link: "/tools/subfinder", icon: <RiEarthFill /> },
         { name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill /> },
