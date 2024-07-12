@@ -88,7 +88,7 @@ const Sidebar = ({
 
     return (
         <SidebarContainer $sidebarType={sidebarType}>
-            {sidebarType === "blogs" && (
+            {sidebarType === "articles" && (
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
                     <RouterNavCreateButtonLink to={"/articles/create"}>Create Article</RouterNavCreateButtonLink>
                     <RouterNavCreateButtonLink to={"/articles/my-articles"}>My Articles</RouterNavCreateButtonLink>
