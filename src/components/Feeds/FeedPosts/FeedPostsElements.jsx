@@ -7,8 +7,8 @@ export const FeedPostsContainer = styled(ExploreContentContainer)`
     grid-auto-rows: minmax(min-content, max-content);
     gap: ${({ $displayAt }) => ($displayAt === "explore" ? "25px" : "0")};
 
-    @media screen and (width <= 1230px) {
-        grid-auto-rows: 0fr;
+    @media (width <= 1230px) {
+        grid-auto-rows: auto;
         gap: 15px;
     }
 `;

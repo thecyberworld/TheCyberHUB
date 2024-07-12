@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,7 +23,7 @@ import {
     Support,
 } from "./components";
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
-import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
+// import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
 // import { useSelector } from "react-redux";
 import ContactForm from "./components/Homepage/ContactForm/ContactForm";
 import TermsAndCondition from "./components/Resources/TermsAndCondition";
@@ -60,7 +60,6 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
-import Methodology from "./components/Resources/Methodology/MethodologyMain";
 import SessionExpireLogout from "./components/Other/SessionExpireLogout";
 import { useSelector } from "react-redux";
 import MainPage from "./components/CaptureTheFlag/CtFPage/MainPage";
@@ -69,30 +68,29 @@ import ForgotPassword from "src/pages/ForgotPassword";
 import ResetPassword from "src/pages/ResetPassword";
 import Register from "src/pages/Register";
 // import ChatBox from "src/components/Chat/ChatBox/ChatBox";
-import Checklist from "src/components/Resources/Checklist/Checklist.jsx";
-import Payloads from "src/components/Resources/Payloads/Payloads.jsx";
+import ResourcesRoutes from "src/components/Resources/ResourcesRoutes.jsx";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
     const { user } = useSelector((state) => state.auth);
 
     const { pathname } = useLocation();
-    const hostname = window.location.hostname;
+    // const hostname = window.location.hostname;
 
-    useEffect(() => {
-        if (hostname === "localhost") {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 0);
-        } else {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 5000);
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (hostname === "localhost") {
+    //         setTimeout(() => {
+    //             setIsLoading(false);
+    //         }, 0);
+    //     } else {
+    //         setTimeout(() => {
+    //             setIsLoading(false);
+    //         }, 5000);
+    //     }
+    // }, []);
 
     // isAuthenticated();
 
@@ -122,7 +120,7 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    if (isLoading) return <Spinner />;
+    // if (isLoading) return <Spinner />;
 
     return (
         <>
@@ -167,11 +165,8 @@ const App = () => {
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
+                        <Route path={"/resources/*"} element={<ResourcesRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
-
-                        <Route path={"/resources/methodology"} element={<Methodology />} />
-                        <Route path={"/resources/checklist"} element={<Checklist />} />
-                        <Route path={"/resources/payloads"} element={<Payloads />} />
 
                         <Route path={"/settings/*"} element={<SettingsRoute />} />
 

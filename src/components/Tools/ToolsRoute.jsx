@@ -10,6 +10,9 @@ import GtfoBin from "./BinaryExploits/BinaryExploits";
 import DataPage from "./BinaryExploits/DataPages";
 import Dorking from "./Dorking/Dorking";
 import GoogleDorks from "./GoogleDork/GoogleDorkMain";
+import IPInfo from "src/components/Tools/IPInfo.jsx";
+import SubdomainGenerator from "src/components/Tools/SubdomainGenerator.jsx";
+import MarkdownEditor from "src/components/Tools/MarkdownEditor.jsx";
 
 const ToolsRoutes = () => {
     return (
@@ -23,6 +26,10 @@ const ToolsRoutes = () => {
 
             <Route path={"/binexploits"} element={<GtfoBin />} />
             <Route path={"/binexploits/:id"} element={<DataPage />} />
+
+            <Route path={"/ipinfo/"} element={<IPInfo />} />
+            <Route path={"/subdomain-generator/"} element={<SubdomainGenerator />} />
+            <Route path={"/markdown-editor/"} element={<MarkdownEditor />} />
 
             <Route path={"/dorking"} element={<Dorking />} />
 

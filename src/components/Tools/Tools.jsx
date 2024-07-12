@@ -8,6 +8,7 @@ import { TbHash } from "react-icons/tb";
 import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 import { RiEarthFill } from "react-icons/ri";
 import { FaGoogle } from "react-icons/fa";
+import { FaInternetExplorer } from "react-icons/fa";
 
 const Tools = () => {
     const tools = [
@@ -16,10 +17,11 @@ const Tools = () => {
         { name: "Bin Exploit", link: "/tools/binexploits", icon: <GoFileBinary /> },
         { name: "Encoder", link: "/tools/encoder", icon: <TbHash /> },
         { name: "Google Dork", link: "/tools/googledorks", icon: <FaGoogle /> },
-
         { name: "Pass Gen", link: "/tools/passgen", icon: <MdPassword /> },
-        { name: "Sub Finder", link: "/tools/subfinder", icon: <RiEarthFill /> },
         { name: "Breach Check", link: "/tools/breachcheck", icon: <RiEarthFill /> },
+        { name: "IP Info", link: "/tools/ipinfo", icon: <FaInternetExplorer /> },
+        { name: "Sub Generator", link: "/tools/subdomain-generator", icon: <FaInternetExplorer /> },
+        { name: "Markdown Editor", link: "/tools/markdown-editor", icon: <FaInternetExplorer /> },
         // { name: "Dorking", link: "/tools/dorking", icon: <MdScreenSearchDesktop  /> },
 
         // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
@@ -32,7 +34,20 @@ const Tools = () => {
             <ContainerTools>
                 <HeadingBanner heading={"Hacking Tools"} />
                 <CardTools>
-                    {tools.map((tool, index) => {
+                    {tools.slice(0, 1).map((tool, index) => {
+                        return (
+                            <RouterLink to={tool.link} key={index}>
+                                <CardTool style={{ width: 450, justifyContent: "center" }}>
+                                    <ToolIcon style={{ fontSize: "50px" }}>{tool.icon}</ToolIcon>
+                                    <CardToolHeading style={{ fontSize: "46px" }}>{tool.name}</CardToolHeading>
+                                    <ToolIcon style={{ fontSize: "50px" }}>{tool.icon}</ToolIcon>
+                                </CardTool>
+                            </RouterLink>
+                        );
+                    })}
+                </CardTools>
+                <CardTools>
+                    {tools.slice(1).map((tool, index) => {
                         return (
                             <RouterLink to={tool.link} key={index}>
                                 <CardTool>

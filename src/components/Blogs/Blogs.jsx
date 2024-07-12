@@ -166,7 +166,7 @@ const Blogs = () => {
                         <BlogCards bookmarks={bookmarks} selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
                     </MiddleContainer>
                     <Sidebar
-                        sidebarType={"blogs"}
+                        sidebarType={"articles"}
                         user={user}
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
