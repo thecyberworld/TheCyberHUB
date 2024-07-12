@@ -48,12 +48,10 @@ async function generateSitemap() {
         { url: "/admin-dashboard/*", changefreq: "weekly", priority: 0.7 },
         { url: "/security/*", changefreq: "weekly", priority: 0.7 },
         { url: "/quiz/:type", changefreq: "weekly", priority: 0.7 },
-        { url: "/contactFormResponses/internshipResponse", changefreq: "weekly", priority: 0.7 },
         { url: "/community-events/:eventId", changefreq: "weekly", priority: 0.7 },
         { url: "/user/:username", changefreq: "weekly", priority: 0.7 },
         { url: "/connections", changefreq: "weekly", priority: 0.7 },
         { url: "/user/edit/:username", changefreq: "weekly", priority: 0.7 },
-        { url: "/admin-dashboard/manage-community-events", changefreq: "weekly", priority: 0.7 },
         // Add routes from BlogsRoute
         { url: "/blogs", changefreq: "weekly", priority: 0.7 },
         { url: "/blogs/:title", changefreq: "weekly", priority: 0.7 },

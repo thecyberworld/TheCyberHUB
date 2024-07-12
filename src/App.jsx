@@ -60,7 +60,6 @@ import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
 
 import Connections from "./components/Dashboard/Profile/ConnectionsAndFollows/Connections/Connections";
 import WebSecurityRoutes from "./components/WebSecurity/WebSecurityRoutes";
-import Methodology from "./components/Resources/Methodology/MethodologyMain";
 import SessionExpireLogout from "./components/Other/SessionExpireLogout";
 import { useSelector } from "react-redux";
 import MainPage from "./components/CaptureTheFlag/CtFPage/MainPage";
@@ -69,8 +68,7 @@ import ForgotPassword from "src/pages/ForgotPassword";
 import ResetPassword from "src/pages/ResetPassword";
 import Register from "src/pages/Register";
 // import ChatBox from "src/components/Chat/ChatBox/ChatBox";
-import Checklist from "src/components/Resources/Checklist/Checklist.jsx";
-import Payloads from "src/components/Resources/Payloads/Payloads.jsx";
+import ResourcesRoutes from "src/components/Resources/ResourcesRoutes.jsx";
 
 // import isAuthenticated from "./features/isAuthenticated";
 // import ChatBot from "./components/ChatBot/ChatBot";
@@ -167,11 +165,8 @@ const App = () => {
                         <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
                         <Route path={"/tools/*"} element={<ToolsRoutes />} />
+                        <Route path={"/resources/*"} element={<ResourcesRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
-
-                        <Route path={"/resources/methodology"} element={<Methodology />} />
-                        <Route path={"/resources/checklist"} element={<Checklist />} />
-                        <Route path={"/resources/payloads"} element={<Payloads />} />
 
                         <Route path={"/settings/*"} element={<SettingsRoute />} />
 
