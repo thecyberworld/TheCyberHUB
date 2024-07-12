@@ -38,11 +38,10 @@ const CreateBlogV2 = () => {
         onImageDrop,
         onImageDragOver,
         onResetImages,
-        resizeImage,
-        onAddImages,
     } = useUploadImages({
         maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
+        requiredImageWidth: 1280,
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -61,7 +60,7 @@ const CreateBlogV2 = () => {
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
     const [content, setContent] = useState("");
-    const [category, setCategory] = useState("Blog");
+    const [category, setCategory] = useState("Article");
     const [tags, setTags] = useState([]);
 
     const MAX_CHARACTER_COUNT = 10000;
@@ -80,7 +79,7 @@ const CreateBlogV2 = () => {
 
         if (!user) navigate("/login");
 
-        if (isSuccess) navigate("/blogs");
+        if (isSuccess) navigate("/articles");
 
         return () => dispatch(blogReset());
     }, [user, isSuccess, isBlogError, blogMessage, errorMessage, dispatch, navigate]);
@@ -173,10 +172,6 @@ const CreateBlogV2 = () => {
                             labelStyles={{ color: "grey" }}
                             filesName={imagesName}
                             labelPlaceholder={{ choose: "Add Cover Image", pick: "Please select an image" }}
-                            resizeImage={resizeImage}
-                            onAddImages={onAddImages}
-                            pageName="blog"
-                            requiredImageWidth={1280}
                         />
                     </AddCoverImageSection>
 
@@ -229,7 +224,7 @@ const CreateBlogV2 = () => {
                                 value={category}
                                 onChange={(ev) => setCategory(ev.target.value)}
                             >
-                                <Option value="Blog">Blog</Option>
+                                <Option value="Article">Article</Option>
                                 <Option value="News">News</Option>
                                 <Option value="Bug Hunting">Bug Hunting</Option>
                                 <Option value="CTF">CTF</Option>

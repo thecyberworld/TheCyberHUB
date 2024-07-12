@@ -9,6 +9,7 @@ import EncoderMain from "./EncoderDecoder.jsx/EncoderMain";
 import GtfoBin from "./BinaryExploits/BinaryExploits";
 import DataPage from "./BinaryExploits/DataPages";
 import Dorking from "./Dorking/Dorking";
+import GoogleDorks from "./GoogleDork/GoogleDorkMain";
 import IPInfo from "src/components/Tools/IPInfo.jsx";
 import SubdomainGenerator from "src/components/Tools/SubdomainGenerator.jsx";
 import MarkdownEditor from "src/components/Tools/MarkdownEditor.jsx";
@@ -18,6 +19,7 @@ const ToolsRoutes = () => {
         <Routes>
             <Route index element={<Tools />} />
             <Route path={"/breachcheck"} element={<BreachCheck />} />
+            <Route path={"/googledorks"} element={<GoogleDorks />} />
             <Route path={"/revshell"} element={<ReverseShellGenerator />} />
             <Route path={"/passgen"} element={<PassGen />} />
             <Route path={"/encoder"} element={<EncoderMain />} />
