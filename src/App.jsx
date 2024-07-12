@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,7 +23,7 @@ import {
     Support,
 } from "./components";
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
-import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
+// import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
 // import { useSelector } from "react-redux";
 import ContactForm from "./components/Homepage/ContactForm/ContactForm";
 import TermsAndCondition from "./components/Resources/TermsAndCondition";
@@ -74,23 +74,23 @@ import ResourcesRoutes from "src/components/Resources/ResourcesRoutes.jsx";
 // import ChatBot from "./components/ChatBot/ChatBot";
 
 const App = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
     const { user } = useSelector((state) => state.auth);
 
     const { pathname } = useLocation();
-    const hostname = window.location.hostname;
+    // const hostname = window.location.hostname;
 
-    useEffect(() => {
-        if (hostname === "localhost") {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 0);
-        } else {
-            setTimeout(() => {
-                setIsLoading(false);
-            }, 5000);
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (hostname === "localhost") {
+    //         setTimeout(() => {
+    //             setIsLoading(false);
+    //         }, 0);
+    //     } else {
+    //         setTimeout(() => {
+    //             setIsLoading(false);
+    //         }, 5000);
+    //     }
+    // }, []);
 
     // isAuthenticated();
 
@@ -120,7 +120,7 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    if (isLoading) return <Spinner />;
+    // if (isLoading) return <Spinner />;
 
     return (
         <>
