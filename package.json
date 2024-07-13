@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@codemirror/lang-python": "^6.1.6",
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-slot": "^1.1.0",
     "@reduxjs/toolkit": "^2.2.4",
     "@uiw/codemirror-theme-dracula": "^4.23.0",
     "@uiw/react-codemirror": "^4.23.0",
