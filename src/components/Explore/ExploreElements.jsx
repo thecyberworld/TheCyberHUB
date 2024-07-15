@@ -10,7 +10,7 @@ export const ExploreContainer = styled.div`
 
     /* background: #090909; */
 
-    @media screen and (width <= 800px) {
+    @media screen and (width <= 900px) {
         flex-direction: column;
         gap: 0;
         align-items: center;
@@ -34,9 +34,8 @@ export const LeftContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 25px;
-    max-width: 300px;
 
-    @media screen and (width <= 800px) {
+    @media screen and (width <= 900px) {
         max-width: 100%;
     }
 `;

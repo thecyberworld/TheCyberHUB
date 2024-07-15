@@ -7,7 +7,7 @@ export const FeedPostsContainer = styled(ExploreContentContainer)`
     gap: ${({ $displayAt }) => ($displayAt === "explore" ? "25px" : "0")};
     grid-template-columns: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "1fr")};
     grid-auto-rows: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "unset")};
-    overflow: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "hidden")};
+    overflow: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "")};
 
     @media screen and (width <= 1230px) {
         grid-auto-rows: 0fr;

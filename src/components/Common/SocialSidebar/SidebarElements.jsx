@@ -10,6 +10,11 @@ const commonStyles = css`
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
     border-radius: 10px;
     max-width: 500px;
+    margin: 1rem 0;
+
+    @media screen and (width >= 950px) {
+        margin: 0;
+    }
 `;
 
 export const SidebarContainer = styled.div`
@@ -18,7 +23,6 @@ export const SidebarContainer = styled.div`
         css`
             ${commonStyles}
             position: unset;
-            margin: 1rem 0;
 
             @media screen and (width >= 950px) {
                 position: sticky;

@@ -11,7 +11,7 @@ export const FeedsContainer = styled.div`
     align-items: center;
 
     @media screen and (width >= 950px) {
-        flex-direction: row;
+        flex-direction: row-reverse;
         justify-content: space-around;
         align-items: flex-start;
     }
