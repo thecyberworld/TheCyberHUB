@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { GoalSetter, NotFound } from "src/components/index";
-import CreateBlogV2 from "src/components/Blogs/ManageBlogs/CreateBlogV2/CreateBlogV2";
 import DashboardSidebar from "./DashbaordSidebar/DashboardSidebar";
 import { DashboardRoutesContainer } from "./DashboardElements";
 import Bookmarks from "./Bookmarks/Bookmarks";
@@ -11,7 +10,7 @@ import Tools from "src/components/Tools/Tools";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllUserDetails } from "src/features/userDetail/userDetailSlice";
 import { Analytics } from "./Analytics/Analytics";
-import Reconage from "src/components/Dashboard/Reconage/Reconage.jsx";
+import ReconageRoutes from "src/components/Tools/Reconage/ReconageRoutes.jsx";
 
 const DashboardRoute = () => {
     const dispatch = useDispatch();
@@ -52,12 +51,7 @@ const DashboardRoute = () => {
                     <Route path={"notes"} element={<NoteApp />} />
                     <Route path={"tools"} element={<Tools />} />
                     {/* <Route path={"chat/*"} element={<CommunityChat userDetails={userDetails} />} /> */}
-
-                    <Route path={"reconage"}>
-                        <Route index element={<Reconage />} />
-                        <Route exact path={"create"} element={<CreateBlogV2 />} />
-                        <Route path={"*"} element={<NotFound />} />
-                    </Route>
+                    <Route path={"reconage/*"} element={<ReconageRoutes />} />
 
                     <Route path={"*"} element={<NotFound />} />
                 </Routes>

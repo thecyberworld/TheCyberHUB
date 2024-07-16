@@ -35,7 +35,6 @@ export const Input = styled.input`
     background: #262525;
     border: transparent;
     color: #c6c6c6;
-    width: 100%;
     height: 50px;
     font-size: 15px;
     text-underline-offset: 5px;

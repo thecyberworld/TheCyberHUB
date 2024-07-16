@@ -1,12 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { uploadImages } from "src/features/imageUploadService";
 
-const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
+const useUploadImages = ({
+    maxImageSizeByte,
+    pageName,
+    requiredImageWidth,
+    initImages = [],
+    requiredImageHeight = 0,
+}) => {
     const [images, setImages] = useState([]);
     const [imagesName, setImagesName] = useState(initImages || []);
+    const [workerAction, setWorkerAction] = useState(null);
+    useEffect(() => {
+        const imageUploadWorker = new Worker("/src/utils/workers/imageUploadWorker.js");
+        imageUploadWorker.onmessage = (event) => {
+            const newImageBlob = event.data.blobImage;
+            const fileName = `${pageName}-${Date.now()}.${newImageBlob.type.split("/")[1]}`;
+            const imageFileWithUpdatedName = new File([newImageBlob], fileName, { type: newImageBlob.type });
+            handleAddImagesToState([imageFileWithUpdatedName], [fileName], event.data.multiple);
+        };
+        setWorkerAction(imageUploadWorker);
+        return () => {
+            imageUploadWorker.terminate();
+        };
+    }, []);
 
-    const handleValidate = (image, maxSizeByte) => {
+    const handleValidate = (image, maxSizeByte, multiple) => {
         if (!image) return;
         const isImageValid =
             !image.type.startsWith("image/") && !["image/png", "image/jpeg", "image/jpg"].includes(image.type);
@@ -15,45 +35,64 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
             return;
         }
         if (image.size > maxSizeByte) {
-            toast.error(`Image size should be less than ${maxSizeByte / 1000}KB.`);
+            const maxSizeLog = niceBytes(maxSizeByte);
+            toast.warning(`Image size should be less than ${maxSizeLog}. We will compress this image size.`);
+            workerAction.postMessage({
+                image,
+                requiredImageWidth,
+                requiredImageHeight,
+                multiple,
+            });
             return;
         }
         return image;
     };
 
-    const handleUploadImage = (image) => {
-        if (!handleValidate(image, maxImageSizeByte)) return;
+    const handleUploadImage = (image, multiple = false) => {
+        if (!handleValidate(image, maxImageSizeByte, multiple)) return {};
         const imageName = `${pageName}-${Date.now()}.${image?.type.split("/")[1]}`;
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.onloadend = () => {
                 resolve({
                     image: new File([reader.result], imageName, { type: image?.type }),
-                    imageName: imageName.split("-")[1],
+                    imageName,
                 });
             };
+            reader.onerror = (error) => reject(error);
             reader.readAsArrayBuffer(image);
         });
     };
-
+    const handleAddImagesToState = (images, imagesName, multiple = true, maxImages = 4) => {
+        const correctImagesName = [...imagesName.map((imageName) => imageName.split("-")[1])];
+        if (!multiple) {
+            setImagesName([...correctImagesName]);
+            setImages([...images]);
+            return;
+        }
+        setImagesName((prevImagesName) => {
+            const newImagesName = [...prevImagesName, ...correctImagesName];
+            return maxImages ? newImagesName.slice(0, maxImages) : newImagesName;
+        });
+        setImages((prevImages) => {
+            const newImages = [...prevImages, ...images];
+            return maxImages ? newImages.slice(0, maxImages - initImages.length) : newImages;
+        });
+    };
+    const handleResetImagesInState = () => {
+        setImagesName([]);
+        setImages([]);
+    };
     const handleManyUploads = async (imageFiles, maxImages) => {
         const manyImages = [];
         const manyImagesName = [];
         try {
             for (const imageFile of imageFiles) {
-                const { image, imageName } = await handleUploadImage(imageFile);
-                manyImages.push(image);
-                manyImagesName.push(imageName);
+                const { image, imageName } = await handleUploadImage(imageFile, true);
+                if (image) manyImages.push(image);
+                if (imageName) manyImagesName.push(imageName);
             }
-
-            setImagesName((prevImagesName) => {
-                const newImagesName = [...prevImagesName, ...manyImagesName];
-                return maxImages ? newImagesName.slice(0, maxImages) : newImagesName;
-            });
-            setImages((prevImages) => {
-                const newImages = [...prevImages, ...manyImages];
-                return maxImages ? newImages.slice(0, maxImages - initImages.length) : newImages;
-            });
+            handleAddImagesToState(manyImages, manyImagesName, true, maxImages);
         } catch (error) {
             console.log(`Error uploading this image:${error}`);
         }
@@ -66,9 +105,9 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
 
     const handleMultipleSingularOptions = async (imageFiles, multiple, maxImages) => {
         if (multiple) return await handleManyUploads(imageFiles, maxImages);
-        const { image, imageName } = await handleUploadImage(imageFiles[0]);
-        setImages([image]);
-        setImagesName([imageName]);
+        const imageWithNameObj = await handleUploadImage(imageFiles[0]);
+        if (Object.keys(imageWithNameObj).length > 0)
+            handleAddImagesToState([imageWithNameObj.image], [imageWithNameObj.imageName], false);
     };
 
     const handleChange = async (e, multiple = false, maxImages) => {
@@ -83,9 +122,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
     };
 
     const handlePaste = async (e, multiple = false, maxImages) => {
-        const pasteItems = (e.clipboardData || e.originalEvent.clipboardData).items;
-        const imageFiles = getAllImagesFromArray(pasteItems);
-        await handleMultipleSingularOptions(imageFiles, multiple, maxImages);
+        const pasteItems = e.clipboardData.files;
+        await handleMultipleSingularOptions(pasteItems, multiple, maxImages);
     };
 
     const handleDragOver = (e) => {
@@ -114,9 +152,8 @@ const useUploadImages = ({ maxImageSizeByte, pageName, initImages = [] }) => {
 
     return {
         images,
-        setImages,
         imagesName,
-        setImagesName,
+        onResetImages: handleResetImagesInState,
         onImageRemove: handleRemove,
         onImageChange: handleChange,
         onImageDrop: handleDrop,
@@ -144,14 +181,12 @@ async function uploadContentImages(imageTags, updatedContent, ...args) {
 }
 
 async function uploadContentImage(imageUrl, updatedContent, pageName, onSubmit) {
-    const [imageType, base64Data] = imageUrl.split(";base64,");
-    const filename = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
-
-    const newFile = bufferToFile(base64Data, filename, imageType);
+    if (!imageUrl) return;
+    const { newFile, fileName } = bufferToFile(imageUrl, pageName);
 
     await onSubmit(newFile);
 
-    return updatedContent.replace(imageUrl, filename.split("-")[1]);
+    return updatedContent.replace(imageUrl, fileName.split("-")[1]);
 }
 
 function isImageUrl(url) {
@@ -160,12 +195,15 @@ function isImageUrl(url) {
     );
 }
 
-function bufferToFile(base64Data, fileName, imageType) {
+export function bufferToFile(imageUrl, pageName) {
+    const [imageType, base64Data] = imageUrl?.split(";base64,");
+    const fileName = `${pageName}-${Date.now()}.${imageType.split("/")[1]}`;
+
     const byteCharacters = atob(base64Data);
     const byteNumbers = byteCharacters.split("").map((char) => char.charCodeAt());
     const uint8Array = new Uint8Array(byteNumbers);
     const blob = new Blob([uint8Array], { type: imageType });
-    return new File([blob], fileName, { type: imageType.replace(/^data:/, "") });
+    return { newFile: new File([blob], fileName, { type: imageType.replace(/^data:/, "") }), fileName };
 }
 
 function removeItemAtIndex(items, index) {
@@ -174,14 +212,15 @@ function removeItemAtIndex(items, index) {
     return updatedItems;
 }
 
-function getAllImagesFromArray(itemsArray) {
-    const imageFiles = [];
+const units = ["bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"];
 
-    for (const item of itemsArray) {
-        if (!item.type.startsWith("image")) return;
-        const file = item.getAsFile();
-        imageFiles.push(file);
+const niceBytes = (size) => {
+    let unitNameIndex = 0;
+    let number = parseInt(size, 10) || 0;
+
+    while (number >= 1024 && ++unitNameIndex) {
+        number = number / 1024;
     }
 
-    return imageFiles;
-}
+    return number.toFixed(number < 10 && unitNameIndex > 0 ? 1 : 0) + " " + units[unitNameIndex];
+};

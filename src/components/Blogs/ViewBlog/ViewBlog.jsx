@@ -88,7 +88,9 @@ const ViewBlog = () => {
         };
     });
 
-    const blog = blogsData?.find((blog) => `${encodeURL(blog?.title)}`.toLowerCase() === title.toLowerCase());
+    const blog = blogsData?.find(
+        (blog) => `${encodeURL(blog?.title)}-${blog?._id.slice(5, 10)}`.toLowerCase() === title.toLowerCase(),
+    );
 
     if (!blog) return <NotFound />;
 
@@ -165,7 +167,10 @@ const ViewBlog = () => {
                 <meta property="og:title" content={blog?.title} />
                 <meta property="og:description" content={blog?.description} />
                 <meta property="og:image" content={coverImageUrl} />
-                <meta property="og:url" content={`https://thecyberhub.org/blogs/${encodeURL(blog?.title)}`} />
+                <meta
+                    property="og:url"
+                    content={`https://thecyberhub.org/blogs/${encodeURL(blog?.title)}-${blog?._id.slice(5, 10)}`}
+                />
             </Helmet>
             {/* <ViewBlogContainer> */}
             <ContainerViewBlog>

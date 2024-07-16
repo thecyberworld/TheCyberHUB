@@ -33,7 +33,7 @@ const image = "https://user-images.githubusercontent.com/44284877/210166161-ad2f
 
 const BlogCard = ({ blog, bookmarks }) => {
     const pathname = window.location.pathname;
-    const isDashboard = pathname.split("/").includes("my-blogs");
+    const isDashboard = pathname.split("/").includes("my-articles");
     const dispatch = useDispatch();
     const coverImage = blog?.coverImage;
     const coverImageUrl = cdnContentImagesUrl(`/blog/${coverImage}`) || image;
@@ -54,6 +54,10 @@ const BlogCard = ({ blog, bookmarks }) => {
             dispatch(addBookmark({ itemType, itemId: _id }));
         }
     };
+
+    const blogURL = `/articles/${encodeURL(blog?.title)}-${(blog?._id).slice(5, 10)}`;
+    console.log(blogURL);
+
     return (
         <ContainerCard>
             <span>
@@ -71,7 +75,7 @@ const BlogCard = ({ blog, bookmarks }) => {
                 ) : null}
                 <DetailsSection>
                     <BlogImageSection>
-                        <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
+                        <RouterLink to={{ pathname: blogURL }}>
                             <BlogCardImage src={coverImageUrl || image} alt={""} />
                         </RouterLink>
                         <Username> @{blog?.username}</Username>
@@ -79,7 +83,7 @@ const BlogCard = ({ blog, bookmarks }) => {
                 </DetailsSection>
                 <MainSection>
                     <SubSection>
-                        <RouterLink to={{ pathname: `/blogs/${encodeURL(blog?.title)}` }}>
+                        <RouterLink to={{ pathname: blogURL }}>
                             <Title> {blog?.title} </Title>
                         </RouterLink>
                     </SubSection>

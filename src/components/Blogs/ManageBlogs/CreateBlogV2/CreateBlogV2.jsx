@@ -31,17 +31,17 @@ const MAX_IMAGE_SIZE_BYTES = 1048576;
 const CreateBlogV2 = () => {
     const {
         images,
-        setImages,
         imagesName,
-        setImagesName,
         onImageChange,
         onImageFromContentSubmit,
         onImageSubmit,
         onImageDrop,
         onImageDragOver,
+        onResetImages,
     } = useUploadImages({
-        MAX_IMAGE_SIZE_BYTES,
+        maxImageSizeByte: MAX_IMAGE_SIZE_BYTES,
         pageName: "blog",
+        requiredImageWidth: 1280,
     });
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ const CreateBlogV2 = () => {
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
     const [content, setContent] = useState("");
-    const [category, setCategory] = useState("Blog");
+    const [category, setCategory] = useState("Article");
     const [tags, setTags] = useState([]);
 
     const MAX_CHARACTER_COUNT = 10000;
@@ -79,7 +79,7 @@ const CreateBlogV2 = () => {
 
         if (!user) navigate("/login");
 
-        if (isSuccess) navigate("/blogs");
+        if (isSuccess) navigate("/articles");
 
         return () => dispatch(blogReset());
     }, [user, isSuccess, isBlogError, blogMessage, errorMessage, dispatch, navigate]);
@@ -154,10 +154,9 @@ const CreateBlogV2 = () => {
             setTitle("");
             setSummary("");
             setContent("");
-            setImagesName("");
             setCategory("");
             setTags([]);
-            setImages("");
+            onResetImages();
         }
     };
 
@@ -225,13 +224,14 @@ const CreateBlogV2 = () => {
                                 value={category}
                                 onChange={(ev) => setCategory(ev.target.value)}
                             >
-                                <Option value="Blog">Blog</Option>
-                                <Option value="CTF Walkthrough">CTF Walkthrough</Option>
-                                <Option value="Bug Hunting WriteUp">Bug Hunting WriteUp</Option>
-                                <Option value="Tools Walkthrough">Tools Walkthrough</Option>
-                                <Option value="Tips & Tricks">Tips & Tricks</Option>
+                                <Option value="Article">Article</Option>
                                 <Option value="News">News</Option>
-                                <Option value="Others">Others</Option>
+                                <Option value="Bug Hunting">Bug Hunting</Option>
+                                <Option value="CTF">CTF</Option>
+                                <Option value="Tools">Tools</Option>
+                                <Option value="Dark Web">Dark Web</Option>
+                                <Option value="Other">Other</Option>
+                                <Option value="Security">Security</Option>
                             </Select>
                         </CategorySection>
 

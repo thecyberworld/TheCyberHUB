@@ -9,8 +9,8 @@ export const FeedPostsContainer = styled(ExploreContentContainer)`
     grid-auto-rows: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "unset")};
     overflow: ${({ $displayAt }) => ($displayAt === "explore" ? "" : "")};
 
-    @media screen and (width <= 1230px) {
-        grid-auto-rows: 0fr;
+    @media (width <= 1230px) {
+        grid-auto-rows: auto;
         gap: 15px;
     }
 `;
