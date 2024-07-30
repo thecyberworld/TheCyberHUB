@@ -11,7 +11,7 @@ export const FeedsContainer = styled.div`
     align-items: center;
 
     @media screen and (width >= 950px) {
-        flex-direction: row-reverse;
+        flex-direction: row;
         justify-content: space-around;
         align-items: flex-start;
     }
@@ -55,8 +55,8 @@ export const FilterButton = styled.button`
         border-bottom-right-radius: 7px;
     }
 
+    transition: all 0.3s ease;
     border: 1px solid #1e1e1e;
-    transition: all 0.3s ease-in-out;
 
     &:hover {
         background: #ff6800;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ExploreContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     width: 100%;
     gap: 25px;
@@ -49,7 +49,9 @@ export const RightContainer = styled.div`
 
 export const ExploreContentContainer = styled.div`
     background: #090909;
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    ${"" /* edit this */}
     grid-auto-rows: 1fr;
     grid-gap: 25px;
     width: 100%;
@@ -57,8 +59,6 @@ export const ExploreContentContainer = styled.div`
     font-size: 0.8rem;
     padding: 15px;
     gap: 15px;
-    display: inline-flex;
-    flex-direction: column;
 `;
 
 export const SearchTypeContainer = styled.div`
@@ -91,7 +91,7 @@ export const SearchTypeButton = styled.button`
 `;
 
 export const BlogsContainer = styled(ExploreContentContainer)`
-    /* BlogsContainer */
+    /* ExploreContentContainer */
 `;
 
 export const JobsContainer = styled(ExploreContentContainer)`
