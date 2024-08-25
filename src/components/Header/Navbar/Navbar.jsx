@@ -80,7 +80,7 @@ const Navbar = ({ isOpen, toggle }) => {
                     {[
                         { to: "explore", title: "Explore", dropdown: "explore" },
                         { to: "feeds", title: "Feeds", dropdown: "feeds" },
-                        { to: "articles", title: "Articles", dropdown: "articles" },
+                        { to: "blogs", title: "Blogs", dropdown: "blogs" },
                         // { to: "forum", title: "Forum", dropdown: "forum" },
                         // { to: "courses", title: "Courses", dropdown: "courses" },
                         { to: "aiChat", title: "AI ", dropdown: "aiChat" },

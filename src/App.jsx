@@ -148,7 +148,7 @@ const App = () => {
 
                         <Route path={"/explore/*"} element={<ExploreRoutes />} />
                         <Route path={"/feeds/*"} element={<FeedsRoute />} />
-                        <Route path={"/articles/*"} element={<BlogsRoute />} />
+                        <Route path={"/blogs/*"} element={<BlogsRoute />} />
 
                         <Route path={"/forum/*"} element={<ForumRoute />} />
 

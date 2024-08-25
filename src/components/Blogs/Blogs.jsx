@@ -96,7 +96,7 @@ const Blogs = () => {
     const dynamicCategories = new Set(blogs.map((blog) => blog.category));
     const manualCategories = new Set([
         "All",
-        "Articles",
+        "Blogs",
         "Security",
         "News",
         "Bug Hunting",
@@ -166,7 +166,7 @@ const Blogs = () => {
                         <BlogCards bookmarks={bookmarks} selectedTags={selectedTags} blogs={filteredBlogs || blogs} />
                     </MiddleContainer>
                     <Sidebar
-                        sidebarType={"articles"}
+                        sidebarType={"blogs"}
                         user={user}
                         searchTerm={searchTerm}
                         setSearchTerm={setSearchTerm}
