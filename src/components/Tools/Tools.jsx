@@ -7,8 +7,7 @@ import { MdPassword } from "react-icons/md";
 import { TbHash } from "react-icons/tb";
 import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 import { RiEarthFill } from "react-icons/ri";
-import { FaGoogle } from "react-icons/fa";
-import { FaInternetExplorer } from "react-icons/fa";
+import { FaGoogle , FaInternetExplorer } from "react-icons/fa";
 
 const Tools = () => {
     const tools = [
@@ -22,6 +21,7 @@ const Tools = () => {
         { name: "IP Info", link: "/tools/ipinfo", icon: <FaInternetExplorer /> },
         { name: "Sub Generator", link: "/tools/subdomain-generator", icon: <FaInternetExplorer /> },
         { name: "Markdown Editor", link: "/tools/markdown-editor", icon: <FaInternetExplorer /> },
+        { name: "ExifViewer", link: "/tools/ExifViewer", icon: <FaInternetExplorer /> },
         // { name: "Dorking", link: "/tools/dorking", icon: <MdScreenSearchDesktop  /> },
 
         // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
@@ -32,7 +32,7 @@ const Tools = () => {
     return (
         <Wrapper>
             <ContainerTools>
-                <HeadingBanner heading={"Hacking Tools"} />
+                <HeadingBanner heading={"Hacking ReconTools"} />
                 <CardTools>
                     {tools.slice(0, 1).map((tool, index) => {
                         return (

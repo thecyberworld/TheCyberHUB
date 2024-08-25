@@ -254,7 +254,7 @@ const EditBlog = () => {
                                 <Option value="Blog">Blog</Option>
                                 <Option value="CTF Walkthrough">CTF Walkthrough</Option>
                                 <Option value="Bug Hunting WriteUp">Bug Hunting WriteUp</Option>
-                                <Option value="Tools Walkthrough">Tools Walkthrough</Option>
+                                <Option value="ReconTools Walkthrough">ReconTools Walkthrough</Option>
                                 <Option value="Tips & Tricks">Tips & Tricks</Option>
                                 <Option value="News">News</Option>
                                 <Option value="Others">Others</Option>

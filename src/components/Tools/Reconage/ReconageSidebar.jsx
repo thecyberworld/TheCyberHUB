@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { GiTridentShield } from "react-icons/gi";
-import { FaSearch, FaFileAlt } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 import { FiTarget } from "react-icons/fi";
 
@@ -43,8 +43,8 @@ const SidebarItem = styled(Link)`
     gap: 15px;
     cursor: pointer;
     border-radius: 8px;
-    color: ${(props) => (props.active ? "#232b30" : "#ecf0f1")};
-    background-color: ${(props) => (props.active ? "#2c3e50" : "transparent")};
+    color: ${(props) => (props.active ? "#979ea1" : "#979ea1")};
+    background-color: ${(props) => (props.active ? "#22272c" : "transparent")};
     transition: all 0.3s ease;
     text-decoration: none;
     margin-bottom: 10px;
@@ -74,29 +74,20 @@ const ReconageSidebar = () => {
                 <GiTridentShield size={32} />
             </SidebarTitle>
             <SidebarList>
-                <SidebarItem
-                    to="/dashboard/reconage/targets"
-                    active={location.pathname === "/dashboard/reconage/targets"}
-                >
+                <SidebarItem to="/dashboard/reconage/tools" active={location.pathname === "/dashboard/reconage/tools"}>
                     <IconWrapper>
                         <FiTarget size={20} />
                     </IconWrapper>
-                    Targets
+                    Tools
                 </SidebarItem>
-                <SidebarItem to="/dashboard/reconage/scans" active={location.pathname === "/dashboard/reconage/scans"}>
+                <SidebarItem
+                    to="/dashboard/reconage/assets"
+                    active={location.pathname === "/dashboard/reconage/assets"}
+                >
                     <IconWrapper>
                         <FaSearch size={20} />
                     </IconWrapper>
-                    Scans
-                </SidebarItem>
-                <SidebarItem
-                    to="/dashboard/reconage/report"
-                    active={location.pathname === "/dashboard/reconage/report"}
-                >
-                    <IconWrapper>
-                        <FaFileAlt size={20} />
-                    </IconWrapper>
-                    Report
+                    Assets
                 </SidebarItem>
             </SidebarList>
         </ReconageSidebarContainer>

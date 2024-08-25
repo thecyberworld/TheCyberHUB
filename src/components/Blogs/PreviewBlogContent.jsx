@@ -12,7 +12,7 @@ const PreviewBlogContent = (props) => {
                 <PreviewMarkdown content={props.content} />
             </ContentSection>
             <Tags>
-                {pathname === "/dashboard/articles/create"
+                {pathname === "/dashboard/blogs/create"
                     ? props.tags.length !== 0 && props.tags[0] !== ""
                         ? props.tags.split(/,\s*/).map((tag, id) => <Tag key={id}>{tag}</Tag>)
                         : "Please add some Tags"

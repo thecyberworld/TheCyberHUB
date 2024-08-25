@@ -60,7 +60,7 @@ const CreateBlogV2 = () => {
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
     const [content, setContent] = useState("");
-    const [category, setCategory] = useState("Article");
+    const [category, setCategory] = useState("Blog");
     const [tags, setTags] = useState([]);
 
     const MAX_CHARACTER_COUNT = 10000;
@@ -79,7 +79,7 @@ const CreateBlogV2 = () => {
 
         if (!user) navigate("/login");
 
-        if (isSuccess) navigate("/articles");
+        if (isSuccess) navigate("/blogs");
 
         return () => dispatch(blogReset());
     }, [user, isSuccess, isBlogError, blogMessage, errorMessage, dispatch, navigate]);
@@ -224,11 +224,11 @@ const CreateBlogV2 = () => {
                                 value={category}
                                 onChange={(ev) => setCategory(ev.target.value)}
                             >
-                                <Option value="Article">Article</Option>
+                                <Option value="Blog">Blog</Option>
                                 <Option value="News">News</Option>
                                 <Option value="Bug Hunting">Bug Hunting</Option>
                                 <Option value="CTF">CTF</Option>
-                                <Option value="Tools">Tools</Option>
+                                <Option value="ReconTools">ReconTools</Option>
                                 <Option value="Dark Web">Dark Web</Option>
                                 <Option value="Other">Other</Option>
                                 <Option value="Security">Security</Option>
