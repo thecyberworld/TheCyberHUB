@@ -1098,6 +1098,172 @@ print(f"Suits in inventory: {suits_in_inventory}")
             },
         ],
     },
+
+    {
+        id: 10,
+        title: "Introduction to Authentication",
+        tags: ["Authentication", "Web Security", "Database Security"],
+        level: "Beginner",
+        category: "Authentication",
+        desc: [
+            {
+                title: "Overview",
+                content: `Authentication is the process to verify the identity of the user accessing any service. 
+                \nAuthentication follows the \`KHA\` rule: \n1. Something you KNOW (e.g. password)\n2. Something you HAVE (mobile/security token)\n3. Something you ARE (biometrics). 
+                \nTo verify these factors, various methods are used.`,
+            },
+            {
+                title: "Common Question - Authentication vs Authorization",
+                content: `Authentication is the first step of the secure journey, focusing on verifying user identity. Authorization is the second step, checking for the rights or privileges that the verified user has. 
+###  For example
+Harry is an employee of XYZ company. At the main gate, he has to authenticate his identity using his RFID card or biometric method. Once verified, he can enter the office premises. However, access to various departments like the server room, developer office, etc., is checked via authorization.`,
+            },
+            {
+                title: "How Authentication Vulnerabilities Occur",
+                content: `Authentication vulnerabilities can arise mainly due to two wrong steps: 
+                            \n - Weaker Credentials making the system prone to brute-force attacks\n - Logic errors in the verification algorithm, sometimes called 'Broken Authentication'.`,
+            },
+            {
+                title: "How Authentication Vulnerabilities Affect Business",
+                content: `As the first step towards a secure journey, authentication is critical. Almost every internet-facing software and application uses various methods to verify user identity. 
+                    \nA logic flaw in the software can result in bypassing the method, giving hackers access to sensitive information. 
+### For example
+If an E-commerce site has a logic flaw in its login area, a hacker could access user data, leading to potential privilege escalation and significant impacts.`,
+            },
+            {
+                title: "Authentication Mechanisms and Their Vulnerabilities",
+                content: `
+## 1. Vulnerabilities in Password-based Authentication:
+
+Websites often use username and password combinations to authenticate users. If a hacker knows this combination, they can compromise the service.
+### \`\`\`Brute Forcing:\`\`\`
+\n
+Enumerating username and password using hit-and-trial can lead to success. Tools like Burp Suite for HTTP requests or ffuf/Hydra for other services can be used. 
+### \`\`\`How to brute force:\`\`\`
+- Turn on the proxy
+![turn_on_proxy](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721979126827.png)
+- Capture the request using Burp Suite.![Capture_the_request](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721979280162.png)
+- Send the request to Intruder and set the payload area.![Send_request_to_intruder](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721979394333.png)
+- Go to the payload option and set the payload.
+![Set_Payload](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721979451876.png)
+- Start the attack.![Start_Attack](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721979492526.png)    
+
+### \`\`\`Bypassing IP-based Rate Limiting:\`\`\` 
+\nUse the X-Forwarded-For header to change the perceived IP of the request. Apply a payload marker on the last octet to send multiple requests without getting blocked.
+![X-Forwarded-FOR](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721979546575.png)
+
+
+
+### \`\`\`Credential Stuffing\`\`\`
+\nUse breached username:password pairs to gain access to other websites, as users often reuse passwords.
+
+\n ## 2. Vulnerabilities in Multi-Factor Authentication (MFA):
+
+Multi-factor authentication uses multiple methods to verify user identity (e.g., Username+Password+OTP). However, this method can still be vulnerable.
+                            
+### \`\`\`Issues with Password + OTP via SMS/Email:\`\`\`
+\nSMS and email can be intercepted. SIM swapping can bypass this method. Tools like Google Authenticator improve security but can also be brute-forced if not properly implemented.
+                           
+### \`\`\`Example:\`\`\`
+\nInstagram allowed 250 requests per IP on their OTP page. An attacker could use multiple IPs and 250 payloads per IP to bypass the login.
+
+## 3. Vulnerabilities in Other Authentication Methods:
+### \`\`\`a. "Remember Me" feature:\`\`\`
+\nWebsites create a token to maintain the session, which may be easily guessable. An attacker can analyze and guess this information.
+### \n\`\`\`b. Password Reset:\`\`\`
+\nExamine methods used for password reset, such as temporary passwords or reset links, which may expose sensitive information.
+### \n\`\`\`Note:\`\`\`
+URL parameters can sometimes expose user information or token details
+\`\`\`JavaScript
+https://dev.thecyberhub.org/reset-password?username=ABC
+\`\`\``,
+            },
+            {
+                title: "Mitigation:",
+                content: `- No disclosure of sensitive information: Encrypt user credentials and important data.\n - Implement effective password policy: Ensure strong passwords during registration.\n - Implement IP-based rate limiting: Prevent bypassing by using robust rate limiting techniques.\n - Use generic error messages: Avoid giving specific error messages that aid brute-forcing.\n - Check verification logic: Remove logic flaws in password verification and other mechanisms.\n - Implement proper MFA: Ensure MFA is implemented correctly to provide additional security layers.`,
+            },
+            {
+                title: "Importance of Proper Authetication:",
+                content: `Authentication is the first critical step in securing any application. As attackers become more sophisticated, developers must also enhance their security measures. Implementing robust authentication mechanisms is essential to protect user data and maintain system integrity.`,
+            },
+        ],
+    },
+
+    {
+        id: 11,
+        title: "Introduction to Information Disclosure Vulnerability",
+        tags: ["Information Disclosure", "Web Security", "Database Security"],
+        level: "Beginner",
+        category: "Information Disclosure",
+        desc: [
+            {
+                title: "What is Information Disclosure Vulnerability?",
+                content:
+                    "As the name suggests, this vulnerability involves websites unintentionally disclosing sensitive information to unauthorized users. Information can include technical data, business-related information, or personal details of users. Among these, technical information can be the most fatal as it can be the first step towards a major attack. An attacker can note technical leaks and modify their attack strategy accordingly.",
+            },
+            {
+                title: "Examples",
+                content:
+                    "Examples of information disclosure include backend technology-related information in error messages, leaks about hidden directories in robots.txt, and hardcoded credentials or comments in source code.",
+            },
+            {
+                title: "How this Vulnerability Comes into Action",
+                content:
+                    "1. Developers forget to remove comments from code before pushing it to production.\n2. Poorly designed code gives different responses for different errors.\n3. Insecure configuration.",
+            },
+            {
+                title: "Impact of this Vulnerability",
+                content:
+                    "The impact of this vulnerability can vary. For example, a blog website showing server information is less fatal, whereas a shopping site leaking credit card details is extremely serious.",
+            },
+            {
+                title: "How to Categorize the Severity of this Vulnerability",
+                content:
+                    "The severity depends on the common sense of the attacker. It's like a hint given by the website, and it's up to the attacker what exploit they can derive from that information.",
+            },
+            {
+                title: "Finding Information Disclosure Vulnerability",
+                content:
+                    "The key to finding this vulnerability is paying close attention to the information received during testing.",
+            },
+            {
+                title: "Example",
+                content:
+                    "On a web page, information related to version can be found.![content_info](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721980064424.png) This information can be used to find exploits for this version on Exploit-DB. For instance, if a website reveals it uses MySQL version 8.0, this version information can be useful for finding specific exploits.![exploit_db](https://thecyberhub-assets.s3.ap-south-1.amazonaws.com/thecyberhub-assets/production/notes/1721980155270.png)",
+            },
+            {
+                title: "Tools and Techniques to Discover this Vulnerability",
+                content: `## 1. FUZZING: 
+If you find any parameter expecting user input in your application, try adding fuzzy strings and observe the application's behavior. 
+### For example, 
+
+\`\`\` JavaScript
+GET /product?productId=1
+\`\`\`
+Suppose you capture a request. This request is sending a parameter (productid=1) which will fetch the details from the DB of product having ID = 1. 
+
+Now, if you fill anything else in this which is out of scope for the query this will throw an error 
+
+\`\`\` JavaScript
+Error - Product ID not found
+MySQL version 8.0
+\`\`\`
+
+## 2. Burp Suite Scanner: 
+Burp Suite Professional's Scanner feature can crawl the website and provide information on any leaks.`,
+            },
+            {
+                title: "Some Common Sources to Observe",
+                content:
+                    "1. Insecure Configuration: Leaving default credentials can be risky.\n2. Logic Flaw: Poorly implemented features can lead to significant breaches.\n3. Developer Comments: Comments left in the source code during development can be devastating if pushed to production.\n4. Error Messages: Technology error messages can provide version or other useful information.\n5. Version Control History: Searching for old source code in the “/.git” directory can be beneficial.",
+            },
+            {
+                title: "Mitigations",
+                content:
+                    "1. Never trust your user; provide minimal data necessary for the task.\n2. Never display error messages on the front end; use generic messages.\n3. Do not leave any comments/passkeys/hardcoded secrets in the code.\n4. Double-check for logic flaws.",
+            },
+        ],
+    },
 ];
 
 export default topics;
