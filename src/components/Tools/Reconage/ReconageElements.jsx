@@ -9,5 +9,4 @@ export const ReconageContainer = styled.div`
     align-items: start;
     width: 100%;
     color: #d0d7de;
-    border: 1px solid orange;
 `;
