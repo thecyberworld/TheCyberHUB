@@ -7,7 +7,7 @@ import { MdPassword } from "react-icons/md";
 import { TbHash } from "react-icons/tb";
 import HeadingBanner from "src/components/Common/HeadingBanner/HeadingBanner";
 import { RiEarthFill } from "react-icons/ri";
-import { FaGoogle , FaInternetExplorer } from "react-icons/fa";
+import { FaGoogle, FaInternetExplorer } from "react-icons/fa";
 
 const Tools = () => {
     const tools = [
@@ -21,8 +21,6 @@ const Tools = () => {
         { name: "IP Info", link: "/tools/ipinfo", icon: <FaInternetExplorer /> },
         { name: "Sub Generator", link: "/tools/subdomain-generator", icon: <FaInternetExplorer /> },
         { name: "Markdown Editor", link: "/tools/markdown-editor", icon: <FaInternetExplorer /> },
-        { name: "ExifViewer", link: "/tools/ExifViewer", icon: <FaInternetExplorer /> },
-        // { name: "Dorking", link: "/tools/dorking", icon: <MdScreenSearchDesktop  /> },
 
         // {name: "Binary Exploits", link: "/tools/binaryexploitation", icon: <RiEarthFill/>,},
         // {name: "jwt Decoder", link: "/tools/jwtdecoder", icon: <RiEarthFill/>,},
