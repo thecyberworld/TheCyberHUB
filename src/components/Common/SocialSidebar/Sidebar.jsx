@@ -86,13 +86,11 @@ const Sidebar = ({
         </>
     );
 
-    console.log(user);
-
     return (
         <SidebarContainer $sidebarType={sidebarType}>
             {sidebarType === "blogs" && (
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "10px" }}>
-                    {user.type === "admin" ? (
+                    {user?.type === "admin" ? (
                         <>
                             <RouterNavCreateButtonLink to={"/blogs/create"}>Create Blog</RouterNavCreateButtonLink>
                             <RouterNavCreateButtonLink to={"/blogs/my-blogs"}>My Blogs</RouterNavCreateButtonLink>

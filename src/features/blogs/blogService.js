@@ -6,7 +6,17 @@ const API_URL = getApiUrl("api/blogs/");
 // Get All blogs
 const getAllBlogs = async () => {
     try {
-        const response = await axios.get(API_URL + "all");
+        const response = await axios.get(API_URL);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const getBlog = async (id) => {
+    console.log("service: id", id);
+    try {
+        const response = await axios.get(API_URL + "/" + id);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -67,6 +77,7 @@ const deleteBlog = async (blogId, token) => {
 
 const blogService = {
     getAllBlogs,
+    getBlog,
     createBlog,
     updateBlog,
     getBlogs,

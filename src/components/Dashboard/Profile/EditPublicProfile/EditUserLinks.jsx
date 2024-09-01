@@ -73,7 +73,7 @@ const UserLinks = ({ userDetail, userDetailData, setUserDetailData, onSubmit }) 
 
         if (file) await uploadCoverImage();
     };
-    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatarDummy.png"));
+    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || "avatar.png"));
     return (
         <UserLinksContainer>
             <UserInfoContainer>

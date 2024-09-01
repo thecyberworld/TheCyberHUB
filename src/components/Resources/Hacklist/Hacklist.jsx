@@ -23,7 +23,27 @@ import { data } from "./data.jsx";
 
 export const CodeBlock = ({ language, value }) => {
     return (
-        <SyntaxHighlighter language={language} style={atomDark}>
+        <SyntaxHighlighter
+            language={language}
+            style={atomDark}
+            customStyle={{
+                borderRadius: "10px",
+                padding: "20px",
+                fontFamily: "'Fira Code', monospace",
+                fontSize: "18px",
+                lineHeight: "1.5",
+                overflowX: "scroll",
+                overflowY: "auto",
+                maxHeight: "600px",
+                maxWidth: "800px",
+                boxShadow: "0 0 10px rgba(0, 0, 0, 0.25)",
+                wrap: "pre-wrap",
+                whiteSpace: "pre-wrap",
+                wordWrap: "break-word",
+                backgroundColor: "#1e1e1e",
+                color: "#f5f5f5",
+            }}
+        >
             {value}
         </SyntaxHighlighter>
     );

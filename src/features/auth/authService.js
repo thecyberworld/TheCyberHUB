@@ -62,7 +62,6 @@ const logout = () => {
 
 // Update User
 const updateUser = async (userData, token) => {
-    console.log(userData);
     const config = {
         headers: {
             Authorization: `Bearer ${token}`,
