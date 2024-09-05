@@ -95,7 +95,7 @@ const ModifyPost = ({ showPostTags, userDetails, onModifyFeed, editFeed = "" }) 
     };
 
     const userDetail = userDetails?.find((userDetail) => userDetail?.user === user?._id);
-    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || editFeed?.avatar || "avatarDummy.png"));
+    const avatar = cdnContentImagesUrl("/user/" + (userDetail?.avatar || editFeed?.avatar || "avatar.png"));
     return (
         <AddFeedCommentContainer onDrop={(e) => onImageDrop(e, true, 4)} onDragOver={onImageDragOver}>
             {!editFeed && (

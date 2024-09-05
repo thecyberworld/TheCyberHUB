@@ -23,22 +23,17 @@ import {
     Support,
 } from "./components";
 import { Container } from "./components/Other/MixComponents/Layout/LayoutElements";
-// import Spinner from "./components/Other/MixComponents/Spinner/Spinner";
-// import { useSelector } from "react-redux";
 import ContactForm from "./components/Homepage/ContactForm/ContactForm";
 import TermsAndCondition from "./components/Resources/TermsAndCondition";
 import PrivacyPolicy from "./components/Resources/PrivacyPolicy";
 import FormData from "./components/Dashboard/FormData/FormData";
 import UserProfile from "./components/Dashboard/Profile/UserProfile";
-// import UserTimestamps from "./features/UserTimestamps";
 import InternshipResponse from "./components/Dashboard/FormData/InternshipResponse";
 import EditPublicProfile from "./components/Dashboard/Profile/EditPublicProfile/EditPublicProfile";
 import Volunteer from "./components/Opportunities/Volunteer/Volunteer";
 import DisplayCommunityEvents, { DisplayEventDetails } from "./components/Opportunities/DisplayCommunityEvents";
-// import TheCyberXcel from "./components/Opportunities/TheCyberXcel/TheCyberXcel";
 import OpenSecProjects from "./components/Opportunities/OpenSecProjects/OpenSecProjects";
 import DashboardRoute from "./components/Dashboard/DashboardRoute";
-// import CreateForumPost from "./components/Forum/CreateForumPost/CreateForumPost";
 import FeedsRoute from "./components/Feeds/FeedsRoute";
 import Course from "./components/Courses/NewCourses/Course";
 import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
@@ -48,12 +43,10 @@ import BlogsRoute from "./components/Blogs/BlogsRoute";
 import RoadmapsRoute from "./components/Learn/Roadmaps/RoadmapsRoute";
 import CoursesRoute from "./components/Learn/Courses/CoursesRoute";
 import ForumRoute from "./components/Forum/ForumRoute";
-// import AuthRoute from "./pages/AuthRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
 import ExploreRoutes from "./components/Explore/ExploreRoutes";
 import Leaderboard from "./components/Other/CyberGames/Leaderboard/Leaderboard";
 import SettingsRoute from "./components/Dashboard/Settings";
-// import CheatSheetsRoutes from "./components/CheatSheets/CheatSheetsRoutes";
 import AdminDashboardRoute from "./components/AdminDashboard/AdminDashboardRoute";
 import AiChat from "./components/AIChat/AIChat";
 import MakeQuiz from "./components/Resources/Quiz/CreateQuiz/Main";
@@ -67,32 +60,12 @@ import NewLeaderboard from "src/components/Other/CyberGames/Leaderboard/NewLeade
 import ForgotPassword from "src/pages/ForgotPassword";
 import ResetPassword from "src/pages/ResetPassword";
 import Register from "src/pages/Register";
-// import ChatBox from "src/components/Chat/ChatBox/ChatBox";
 import ResourcesRoutes from "src/components/Resources/ResourcesRoutes.jsx";
 
-// import isAuthenticated from "./features/isAuthenticated";
-// import ChatBot from "./components/ChatBot/ChatBot";
-
 const App = () => {
-    // const [isLoading, setIsLoading] = useState(true);
     const { user } = useSelector((state) => state.auth);
 
     const { pathname } = useLocation();
-    // const hostname = window.location.hostname;
-
-    // useEffect(() => {
-    //     if (hostname === "localhost") {
-    //         setTimeout(() => {
-    //             setIsLoading(false);
-    //         }, 0);
-    //     } else {
-    //         setTimeout(() => {
-    //             setIsLoading(false);
-    //         }, 5000);
-    //     }
-    // }, []);
-
-    // isAuthenticated();
 
     const hideHomeHeader = () => {
         const pathDashboard = pathname.includes("/dashboard");
@@ -120,12 +93,9 @@ const App = () => {
         document.body.style.overflow = overflowStatus === "hidden" ? "auto" : "hidden";
     };
 
-    // if (isLoading) return <Spinner />;
-
     return (
         <>
             {user ? <SessionExpireLogout /> : null}
-            {/* {user && <UserTimestamps user={user} />} */}
             <Container>
                 {!hideHomeHeader() && (
                     <>

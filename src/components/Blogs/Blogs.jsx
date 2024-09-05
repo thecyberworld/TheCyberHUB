@@ -7,7 +7,6 @@ import LoadingBlogCard from "src/components/Blogs/BlogCard/LoadingBlogCard";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 import apiStatus from "src/features/apiStatus";
 import BlogCards from "src/components/Blogs/BlogCard/BlogCards";
-import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { getFollowData, reset } from "src/features/follow/followSlice";
 import Sidebar from "src/components/Common/SocialSidebar/Sidebar";
 import { getBookmarks } from "src/features/bookmarks/bookmarkSlice.js";
@@ -24,47 +23,29 @@ const Blogs = () => {
     const { isApiLoading, isApiWorking } = apiStatus();
 
     const { blogs, isBlogLoading, isBlogError, blogMessage } = useSelector((state) => state.blogs);
-    const { userDetails, isUserDetailLoading, isUserDetailError, userDetailMessage } = useSelector(
-        (state) => state.userDetail,
-    );
-    const { followData } = useSelector((state) => state.followData);
+
     const { bookmarks } = useSelector((state) => state.bookmarks);
 
     const userId = user?._id;
 
     useEffect(() => {
         if (isBlogError) console.log(blogMessage);
-        if (isUserDetailError) console.log(userDetailMessage);
         if (userId) dispatch(getFollowData(userId));
 
         dispatch(getAllBlogs());
         dispatch(getBookmarks());
-        dispatch(getAllUserDetails());
 
         return () => {
             dispatch(reset());
             dispatch(blogReset());
-            dispatch(userDetailReset());
         };
-    }, [dispatch, isBlogError, blogMessage, isUserDetailError, userDetailMessage, userId]);
+    }, [dispatch, isBlogError, blogMessage, userId]);
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
     };
 
-    const userDetailsfunction = (blog) => {
-        const userDetail = userDetails?.find((user) => user?.user === blog.user);
-        const { username, avatar, verified } = userDetail || {};
-
-        return { ...blog, username, avatar, verified };
-    };
-
-    const blogsData = blogs?.map((blog) => {
-        return userDetailsfunction(blog);
-    });
-
-    const filteredBlogs = blogsData?.filter((blog) => {
-        const postedByFollowingUser = !showOnlyFollowingBlogs || followData?.following?.includes(blog.user);
+    const filteredBlogs = blogs?.filter((blog) => {
         const cleanSearchTerm = searchTerm.trim().toLowerCase();
         const contentIncludesSearchTerm =
             !cleanSearchTerm || blog?.content?.toLowerCase().includes(cleanSearchTerm) || false;
@@ -79,7 +60,6 @@ const Blogs = () => {
         const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory;
 
         return (
-            postedByFollowingUser &&
             allFilterTagsIncluded &&
             (!cleanSearchTerm || contentIncludesSearchTerm || usernameIncludeSearchTerm) &&
             matchesCategory
@@ -94,20 +74,10 @@ const Blogs = () => {
     };
 
     const dynamicCategories = new Set(blogs.map((blog) => blog.category));
-    const manualCategories = new Set([
-        "All",
-        "Blogs",
-        "Security",
-        "News",
-        "Bug Hunting",
-        "CTF",
-        "Tools",
-        "Dark Web",
-        "Other",
-    ]);
+    const manualCategories = new Set(["All", "Security", "News", "Bug Hunting", "CTF", "Tools", "Dark Web", "Other"]);
     const categories = Array.from(new Set([...manualCategories, ...dynamicCategories]));
 
-    if (isBlogLoading || isUserDetailLoading || isApiLoading) {
+    if (isApiLoading || isBlogLoading) {
         return (
             <Wrapper>
                 <MiddleContainer>

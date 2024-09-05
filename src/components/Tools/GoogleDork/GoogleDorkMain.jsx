@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input } from "src/components/Blogs/BlogComments/AddCommentFormElements";
+import { Input } from "src/components/Blogs/ViewBlog/BlogComments/BlogCommentsElements.jsx";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 
 export default function GoogleDorks() {

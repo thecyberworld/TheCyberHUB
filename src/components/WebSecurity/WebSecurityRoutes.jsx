@@ -17,17 +17,9 @@ const WebSecurityRoutes = () => {
     const subHeaderData = [
         { id: 1, title: "Topics", link: "topics" },
         { id: 2, title: "Labs", link: "labs" },
-        { id: 4, title: "Secure Code", link: "secure-code" },
+        // { id: 4, title: "Secure Code", link: "secure-code" },
         { id: 3, title: "Code Review", link: "code-review" },
         { id: 5, title: "Crack Me", link: "crack-me" },
-        // {id: 3, title: "Resources", link: "./"},
-        // {id: 4, title: "Capture The Flag", link: "/ctf"},
-        // {
-        //     id: 2, title: 'Content', link: 'labs', isDropdown: true, dropdownOptions: [
-        //         {id: 21, title: 'All Topics', link: './'},
-        //         {id: 22, title: 'All Labs', link: './'},
-        //     ]
-        // },
     ];
 
     return (

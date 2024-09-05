@@ -42,7 +42,7 @@ const Users = ({ userDetails, searchTerm, isUserDetailLoading, displayAt }) => {
     const displayedUsers = searchTerm.length === 0 ? filteredUsers.slice(0, 10) : filteredUsers;
 
     const avatar = ({ user }) => {
-        return cdnContentImagesUrl("/user/" + (user?.avatar || "avatarDummy.png"));
+        return cdnContentImagesUrl("/user/" + (user?.avatar || "avatar.png"));
     };
 
     return filteredUsers.length > 0 ? (

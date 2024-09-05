@@ -20,8 +20,6 @@ const DashboardSidebar = ({ userDetail }) => {
         // { to: "/dashboard/chat", icon: <BiChatIcon />, label: "Chat" },
         { to: "/dashboard/saved", icon: <BiBookmarksIcon />, label: "Saved" },
         { to: "/settings", icon: <FiSettings size={30} />, label: "Settings" },
-        // { to: "/dashboard/analytics", icon: <MdAnalyticsIcon />, label: "Analytics" },
-        // { to: "/dashboard/tasks", icon: <BsClipboardCheckIcon />, label: "Tasks" },
     ];
 
     return <GeneralDashboardSidebar userDetail={userDetail} sidebarItems={sidebarItems} />;

@@ -55,8 +55,7 @@ const BlogCard = ({ blog, bookmarks }) => {
         }
     };
 
-    const blogURL = `/blogs/${encodeURL(blog?.title)}-${(blog?._id).slice(5, 10)}`;
-    console.log(blogURL);
+    const blogURL = `/blogs/${encodeURL(blog?.title)}-${(blog?._id).slice(-8)}`;
 
     return (
         <ContainerCard>

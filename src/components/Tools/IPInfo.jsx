@@ -13,8 +13,6 @@ const IpInfo = () => {
         fetchUserIp();
     }, []);
 
-    console.log(userIp);
-
     const fetchUserIp = async () => {
         try {
             const response = await axios.get("https://api.ipify.org?format=json");
@@ -42,6 +40,8 @@ const IpInfo = () => {
             fetchIpInfo(inputIp, setInputIpInfo);
         }
     };
+
+    console.log(userIp);
 
     const renderIpInfo = (info) => {
         if (!info) return null;

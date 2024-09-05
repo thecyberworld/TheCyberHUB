@@ -192,9 +192,6 @@ const ContactForm = () => {
         }
     };
 
-    console.log(error);
-    console.log(error2);
-
     if (isApiLoading) {
         return lastEndpoint === "contact" ? (
             <Wrapper>

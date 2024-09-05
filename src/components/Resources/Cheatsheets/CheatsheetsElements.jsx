@@ -28,12 +28,12 @@ export const SidebarItem = styled.div`
     cursor: pointer;
     border-radius: 6px;
     background-color: ${(props) => (props.active ? "#3a3a3a" : "transparent")};
-    color: ${(props) => (props.active ? "#60a5fa" : "#d0d0d0")};
+    color: ${(props) => (props.active ? "#ff7e16" : "#d0d0d0")};
     transition: all 0.3s ease;
 
     &:hover {
         background-color: ${(props) => (props.active ? "#3a3a3a" : "#2f2f2f")};
-        color: ${(props) => (props.active ? "#60a5fa" : "#fff")};
+        color: ${(props) => (props.active ? "#ff7e16" : "#fff")};
     }
 `;
 
@@ -44,7 +44,7 @@ export const MainContent = styled.div`
 
 export const CommandCode = styled.code`
     background-color: #2a2a2a;
-    color: #60a5fa;
+    color: #ff7e16;
     padding: 8px 12px;
     border-radius: 6px;
     flex-wrap: wrap;
@@ -97,7 +97,7 @@ export const CopyButton = styled.button`
     font-weight: 500;
 
     &:hover {
-        background-color: #60a5fa;
+        background-color: #ff7e16;
         color: #1a1a1a;
     }
 `;
@@ -114,7 +114,7 @@ export const Section = styled.div`
 `;
 
 export const SectionHeader = styled.h2`
-    color: #60a5fa;
+    color: #ff7e16;
     border-bottom: 2px solid #3a3a3a;
     padding-bottom: 10px;
     margin-bottom: 25px;

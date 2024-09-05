@@ -1121,12 +1121,12 @@ Harry is an employee of XYZ company. At the main gate, he has to authenticate hi
             {
                 title: "How Authentication Vulnerabilities Occur",
                 content: `Authentication vulnerabilities can arise mainly due to two wrong steps: 
-                            \n - Weaker Credentials making the system prone to brute-force attacks\n - Logic errors in the verification algorithm, sometimes called 'Broken Authentication'.`,
+- Weaker Credentials making the system prone to brute-force attacks\n - Logic errors in the verification algorithm, sometimes called 'Broken Authentication'.`,
             },
             {
                 title: "How Authentication Vulnerabilities Affect Business",
                 content: `As the first step towards a secure journey, authentication is critical. Almost every internet-facing software and application uses various methods to verify user identity. 
-                    \nA logic flaw in the software can result in bypassing the method, giving hackers access to sensitive information. 
+A logic flaw in the software can result in bypassing the method, giving hackers access to sensitive information. 
 ### For example
 If an E-commerce site has a logic flaw in its login area, a hacker could access user data, leading to potential privilege escalation and significant impacts.`,
             },
@@ -1136,8 +1136,8 @@ If an E-commerce site has a logic flaw in its login area, a hacker could access 
 ## 1. Vulnerabilities in Password-based Authentication:
 
 Websites often use username and password combinations to authenticate users. If a hacker knows this combination, they can compromise the service.
-### \`\`\`Brute Forcing:\`\`\`
-\n
+### \`Brute Forcing:\`
+
 Enumerating username and password using hit-and-trial can lead to success. Tools like Burp Suite for HTTP requests or ffuf/Hydra for other services can be used. 
 ### \`\`\`How to brute force:\`\`\`
 - Turn on the proxy
@@ -1174,7 +1174,7 @@ Multi-factor authentication uses multiple methods to verify user identity (e.g.,
 \nExamine methods used for password reset, such as temporary passwords or reset links, which may expose sensitive information.
 ### \n\`\`\`Note:\`\`\`
 URL parameters can sometimes expose user information or token details
-\`\`\`JavaScript
+\`\`\`javascript
 https://dev.thecyberhub.org/reset-password?username=ABC
 \`\`\``,
             },
@@ -1237,14 +1237,14 @@ https://dev.thecyberhub.org/reset-password?username=ABC
 If you find any parameter expecting user input in your application, try adding fuzzy strings and observe the application's behavior. 
 ### For example, 
 
-\`\`\` JavaScript
+\`\`\`javascript
 GET /product?productId=1
 \`\`\`
 Suppose you capture a request. This request is sending a parameter (productid=1) which will fetch the details from the DB of product having ID = 1. 
 
 Now, if you fill anything else in this which is out of scope for the query this will throw an error 
 
-\`\`\` JavaScript
+\`\`\`javascript
 Error - Product ID not found
 MySQL version 8.0
 \`\`\`
