@@ -120,7 +120,7 @@ const ViewBlog = () => {
         "code-block",
     ];
 
-    const blogsCommentsData = blogComments.map((comments) => {
+    const blogsCommentsData = blogComments?.map((comments) => {
         const userDetail = userDetails?.find((user) => user?.user === comments.user);
         const { username, avatar, verified } = userDetail || {};
 

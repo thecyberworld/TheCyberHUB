@@ -82,25 +82,26 @@ const BlogComments = ({ blogId }) => {
         <CommentContainer id={"comments"}>
             {/* View Comments */}
             <ViewCommentsContainer>
-                {blogComments?.map((comment, id) => {
-                    const commentCreatedAt = formatDate(comment.createdAt);
+                {blogComments &&
+                    blogComments?.map((comment, id) => {
+                        const commentCreatedAt = formatDate(comment?.createdAt);
 
-                    return (
-                        <CommentSection key={id}>
-                            <SectionUserPicture>
-                                <UserPicture
-                                    src={cdnContentImagesUrl("/user/" + comment?.avatar)}
-                                    alt={`${comment?.username}, avatar`}
-                                />
-                            </SectionUserPicture>
-                            <SectionCommentDetails>
-                                <Username>{comment?.username}</Username>
-                                <CommentDate>{commentCreatedAt}</CommentDate>
-                                <Comment>{comment?.comment}</Comment>
-                            </SectionCommentDetails>
-                        </CommentSection>
-                    );
-                })}
+                        return (
+                            <CommentSection key={id}>
+                                <SectionUserPicture>
+                                    <UserPicture
+                                        src={cdnContentImagesUrl("/user/" + comment?.avatar)}
+                                        alt={`${comment?.username}, avatar`}
+                                    />
+                                </SectionUserPicture>
+                                <SectionCommentDetails>
+                                    <Username>{comment?.username}</Username>
+                                    <CommentDate>{commentCreatedAt}</CommentDate>
+                                    <Comment>{comment?.comment}</Comment>
+                                </SectionCommentDetails>
+                            </CommentSection>
+                        );
+                    })}
                 {/* {props?.isBlogLoading && <CircleSpinner size={20} color={"#ff6b08"} />} */}
             </ViewCommentsContainer>
 
