@@ -145,7 +145,6 @@ const UrlFinder = () => {
             }
 
             const data = await response.json();
-            console.log(data.urls);
             setURLs(data.urls || []);
         } catch (err) {
             setError(err.message);
@@ -178,8 +177,6 @@ const UrlFinder = () => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     };
-
-    console.log(subdomains);
 
     return (
         <Container>

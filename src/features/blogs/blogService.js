@@ -14,7 +14,6 @@ const getAllBlogs = async () => {
 };
 
 const getBlog = async (id) => {
-    console.log("service: id", id);
     try {
         const response = await axios.get(API_URL + "/" + id);
         return response.data;

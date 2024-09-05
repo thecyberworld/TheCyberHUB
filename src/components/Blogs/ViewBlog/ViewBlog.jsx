@@ -18,10 +18,10 @@ import {
 } from "src/components/Blogs/ViewBlog/ViewBlogElements";
 
 import NotFound from "src/NotFound";
-import { CircleSpinner } from "react-spinners-kit";
 import { cdnContentImagesUrl } from "src/features/apiUrl";
 import apiStatus from "src/features/apiStatus";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
+import { CircleSpinner } from "react-spinners-kit";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 
 import "react-quill/dist/quill.bubble.css";
@@ -29,13 +29,14 @@ import { RouterLink } from "src/components/Tools/ToolsElements";
 import DOMPurify from "dompurify";
 import { getBookmarks } from "src/features/bookmarks/bookmarkSlice.js";
 
+import BlogComments from "src/components/Blogs/ViewBlog/BlogComments/BlogComments.jsx";
+
 const ViewBlog = () => {
     const dispatch = useDispatch();
     const { isApiLoading, isApiWorking } = apiStatus();
     const { title } = useParams();
     const { blog, isBlogLoading, isBlogError, blogMessage } = useSelector((state) => state.blogs);
 
-    console.log(title);
     useEffect(() => {
         if (isBlogError) console.log(blogMessage);
 
@@ -119,6 +120,8 @@ const ViewBlog = () => {
             <Tags>
                 {blog?.tags.map((tag, id) => (tag.length !== 0 ? <Tag key={id}> {tag.slice(0, 40)} </Tag> : <></>))}
             </Tags>
+
+            <BlogComments blogId={blog?._id} />
         </ContainerViewBlog>
     );
 };

@@ -29,8 +29,8 @@ import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 
 import "react-quill/dist/quill.bubble.css";
-import BlogComments from "src/components/Blogs/BlogComments/BlogComments";
-import ViewComments from "src/components/Blogs/BlogComments/ViewComments";
+import BlogComments from "src/components/Blogs/ViewBlog/BlogComments/BlogComments";
+import ViewComments from "src/components/Blogs/ViewBlog/BlogComments/ViewComments";
 import { blogCommentReset, getBlogComments } from "src/features/blogs/blogComments/blogCommentSlice";
 import { getAllUserDetails, userDetailReset } from "src/features/userDetail/userDetailSlice";
 import { RouterLink } from "src/components/Tools/ToolsElements";
