@@ -118,7 +118,7 @@ const ViewBlog = () => {
                 </ContentSection>
             </ViewBlogHeader>
             <Tags>
-                {blog?.tags?.map((tag, id) => (tag.length !== 0 ? <Tag key={id}> {tag.slice(0, 40)} </Tag> : <></>))}
+                {blog?.tags?.map((tag, id) => (tag?.length !== 0 ? <Tag key={id}> {tag?.slice(0, 40)} </Tag> : <></>))}
             </Tags>
 
             <BlogComments blogId={blog?._id} />
