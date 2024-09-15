@@ -43,8 +43,6 @@ const ConnectionsAndFollows = ({ userDetail, isUserDetailsLoading, setShowAuthPo
         return <LoadingSpinner />;
     }
 
-    console.log(followData);
-
     return (
         <FollowContainer>
             <div>
