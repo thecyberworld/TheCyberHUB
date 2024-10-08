@@ -73,6 +73,7 @@ export default function QuizPage() {
 
         if (isCorrect === true) {
             setShowAnswer(true);
+            setScore(score + 1);
             setClickedAnswerIndex(null);
             setButtonClicked(true);
             setDisableSkipButton(true);
@@ -103,8 +104,7 @@ export default function QuizPage() {
     };
     const handleSkipButton = (length) => {
         const nextQuestion = currentQuestion + 1;
-        setScore(score + 1);
-        setCurrentQuestion(nextQuestion);
+        // setCurrentQuestion(nextQuestion);
         setShowAnswer(false);
         setButtonClicked(false);
         if (showAdditionalInfo) {
