@@ -34,7 +34,7 @@ import apiStatus from "src/features/apiStatus";
 import { Wrapper } from "src/components/Dashboard/Profile/ProfileElements";
 import UnderMaintenance from "src/components/Other/UnderMaintenance/UnderMaintenance";
 // import { volunteerPrograms } from "src/components/Opportunities/Volunteer/VolunteerData";
-import { RedirectLink } from "src/components/Learn/Roadmaps/RoadmapElements.jsx";
+import { RedirectLink } from "src/components/Resources/Roadmaps/RoadmapElements.jsx";
 import { DiscordButtonIcon } from "src/components/Other/Community/CommunityElements.jsx";
 
 const ContactForm = () => {
