@@ -10,7 +10,7 @@ export { default as Support } from "./Other/Support/Sponsors";
 
 // Learn //
 export { default as Learn } from "./Learn/Learn";
-export { default as Roadmaps } from "./Learn/Roadmaps/Roadmaps";
+export { default as Roadmaps } from "./Resources/Roadmaps/Roadmaps";
 export { default as CoursesLayout } from "./Learn/Courses/YoutubeCoursesLayout";
 export { default as Courses } from "./Learn/Courses/Courses";
 export { default as CourseDetail } from "./Learn/Courses/YoutubeCourseDetail";
@@ -34,7 +34,7 @@ export { default as ComingSoon } from "./Other/MixComponents/ComingSoon";
 export { default as OpensourceProjects } from "./Other/CyberGames/OpensourceProjects/OpensourceProjects";
 export { default as Spinner } from "./Other/MixComponents/Spinner/Spinner";
 export { default as ViewBlog } from "./Blogs/ViewBlog/ViewBlog";
-export { default as Roadmap } from "./Learn/Roadmaps/Roadmap";
+export { default as Roadmap } from "./Resources/Roadmaps/Roadmap";
 
 export { default as Dashboard } from "./Dashboard/Dashboard";
 export { default as Login } from "src/pages/Login";

@@ -7,17 +7,17 @@ import Homepage from "./components/Homepage/Homepage";
 import ScrollToTop from "./components/Other/ScrollToTop";
 import {
     About,
-    Community,
+    // Community,
     // CyberGames,
     Footer,
-    InterviewQuestions,
+    // InterviewQuestions,
     Jobs,
     // LearningPath,
     Login,
     Navbar,
     NotFound,
     // OSINTGame,
-    Quiz,
+    // Quiz,
     Sidebar,
     SpecialSponsors,
     Support,
@@ -37,10 +37,10 @@ import DashboardRoute from "./components/Dashboard/DashboardRoute";
 import FeedsRoute from "./components/Feeds/FeedsRoute";
 import Course from "./components/Courses/NewCourses/Course";
 import QuizPage from "./components/Resources/Quiz/Categories/QuizPage";
-import ToolsRoutes from "./components/Tools/ToolsRoute";
+// import ToolsRoutes from "./components/Tools/ToolsRoute";
 import CtfRoute from "./components/CaptureTheFlag/CTFRoute";
 import BlogsRoute from "./components/Blogs/BlogsRoute";
-import RoadmapsRoute from "./components/Learn/Roadmaps/RoadmapsRoute";
+// import RoadmapsRoute from "./components/Resources/Roadmaps/RoadmapsRoute";
 import CoursesRoute from "./components/Learn/Courses/CoursesRoute";
 import ForumRoute from "./components/Forum/ForumRoute";
 import SecurityRoutes from "./components/Other/Security/SecurityRoutes";
@@ -132,9 +132,9 @@ const App = () => {
                         <Route path={"/websecurity/*"} element={<WebSecurityRoutes />} />
 
                         {/* Resources */}
-                        <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
+                        {/* <Route path={"/roadmaps/*"} element={<RoadmapsRoute />} />
                         <Route path={"/interviewQuestions"} element={<InterviewQuestions />} />
-                        <Route path={"/tools/*"} element={<ToolsRoutes />} />
+                        <Route path={"/tools/*"} element={<ToolsRoutes />} /> */}
                         <Route path={"/resources/*"} element={<ResourcesRoutes />} />
                         <Route path={"/courses/*"} element={<CoursesRoute />} />
 
@@ -150,14 +150,18 @@ const App = () => {
                             <Route exact path={"/user/edit/:username"} element={<EditPublicProfile />} />
                         </Route>
 
-                        <Route exact path={"/community"} element={<Community />} />
+                        {/* <Route exact path={"/community"} element={<Community />} /> */}
                         <Route exact path={"/support"} element={<Support />} />
                         <Route exact path={"/sponsors"} element={<SpecialSponsors />} />
 
                         <Route exact path={"/volunteer"} element={<Volunteer />} />
-                        <Route exact path={"/opensec-projects"} element={<OpenSecProjects />} />
-                        <Route exact path={"/community-events"} element={<DisplayCommunityEvents />} />
-                        <Route exact path={"/community-events/:eventId"} element={<DisplayEventDetails />} />
+                        <Route exact path={"/opportunities/opensec-projects"} element={<OpenSecProjects />} />
+                        <Route exact path={"/opportunities/community-events"} element={<DisplayCommunityEvents />} />
+                        <Route
+                            exact
+                            path={"/opportunities/community-events/:eventId"}
+                            element={<DisplayEventDetails />}
+                        />
 
                         {/* <Route exact path={"/thecyberxcel"} element={<TheCyberXcel />} /> */}
                         {/* <Route exact path={"/thecyberspeak"} element={<TheCyberXcel />} /> */}
@@ -168,8 +172,8 @@ const App = () => {
 
                         {/* <Route path={"/dashboard/forum/create"} element={<CreateForumPost />} /> */}
 
-                        <Route path={"/internship"} element={<Jobs />} />
-                        <Route path={"/quiz"} element={<Quiz />} />
+                        <Route path={"/opportunities/internship"} element={<Jobs />} />
+                        {/* <Route path={"/quiz"} element={<Quiz />} /> */}
                         <Route path={"/createquiz"} element={<MakeQuiz />} />
                         <Route path={"/quiz/:type"} element={<QuizPage />} />
 
