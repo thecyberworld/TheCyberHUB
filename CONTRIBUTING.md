@@ -31,13 +31,13 @@ Front-end:
 **2.** Clone your new fork of the repository in the terminal/CLI on your computer with the following command:
 
 ```bash
-git clone https://github.com/<your-github-username>/thecyberhub.org
+git clone https://github.com/<your-github-username>/TheCyberHUB.org
 ```
 
 **3.** Navigate to the newly created thecyberhub.org project directory:
 
 ```bash
-cd thecyberhub.org
+cd TheCyberHUB.org
 ```
 
 **4.** Set upstream command:
@@ -117,9 +117,9 @@ Open the browser to visit the website at http://localhost:3000
 
 -   Use the present tense. (Example: "Add feature" instead of "Added feature")
 -   Use the imperative mood. (Example: "Move item to...", instead of "Moves item to...")
--   Limit the first line (also called the Subject Line) to _50 characters or fewer_.
+-   Limit the first line (the Subject Line) to _50 characters or fewer_.
 -   Capitalize the Subject Line.
--   Separate subject from body with a blank line.
+-   Separate the subject from the body with a blank line.
 -   Do not end the subject line with a period.
 -   Wrap the body at _72 characters_.
 -   Use the body to explain the _what_, _why_, _vs_, and _how_.
@@ -151,7 +151,7 @@ For more info and examples you can check storybook [documentaion](https://storyb
 
 ## 💥 Issues
 
-In order to discuss changes, you are welcome to [open an issue](https://github.com/thecyberworld/TheCyberHUB/issues/new/choose) about what you would like to contribute. Enhancements are always encouraged and appreciated.
+To talk about changes, you are welcome to [open an issue](https://github.com/thecyberworld/TheCyberHUB/issues/new/choose) about what you'd like to contribute. Enhancements are always encouraged and appreciated.
 
 ## All the best! 🥇
 
