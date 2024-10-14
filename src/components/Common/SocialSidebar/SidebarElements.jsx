@@ -13,6 +13,15 @@ export const SidebarContainer = styled.div`
     color: #fff;
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
     border-radius: 10px;
+    @media screen and (width <= 1280px) {
+        min-width: 80%;
+    }
+    @media screen and (max-width <= 1080px) {
+        width: 96%;
+    }
+    @media screen and (width <= 980px) {
+        display: none;
+    }
 `;
 
 export const FilterButton = styled.button`
@@ -35,3 +44,5 @@ export const FilterButton = styled.button`
         border-bottom-right-radius: 7px;
     }
 `;
+
+
