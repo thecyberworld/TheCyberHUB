@@ -244,6 +244,7 @@ export default function ForumsPage() {
     const selectedTag = searchParams.get('tag') || null;
     const sortBy = (searchParams.get('sort') as SortOption) || 'hot';
     const searchQuery = searchParams.get('q') || '';
+    const solvedOnly = searchParams.get('status') === 'solved';
     const page = parseInt(searchParams.get('page') || '1');
 
     // Update URL params
@@ -293,6 +294,7 @@ export default function ForumsPage() {
                     tag: selectedTag || undefined,
                     sort: sortBy,
                     search: searchQuery || undefined,
+                    status: solvedOnly ? 'solved' : undefined,
                 });
                 setDiscussions(result.data || []);
                 setTotalPages(result.pagination?.totalPages || 1);
@@ -304,7 +306,7 @@ export default function ForumsPage() {
             }
         };
         fetchDiscussions();
-    }, [page, selectedCategory, selectedTag, sortBy, searchQuery]);
+    }, [page, selectedCategory, selectedTag, sortBy, searchQuery, solvedOnly]);
 
     return (
         <div className="min-h-screen bg-black">
@@ -440,10 +442,24 @@ export default function ForumsPage() {
                                     </button>
                                 ))}
                             </div>
+
+                            {/* Solved only */}
+                            <button
+                                type="button"
+                                aria-pressed={solvedOnly}
+                                onClick={() => updateParams({ status: solvedOnly ? null : 'solved' })}
+                                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg border text-sm transition-colors ${solvedOnly
+                                    ? 'bg-green-500/10 border-green-500/30 text-green-400'
+                                    : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
+                                    }`}
+                            >
+                                <CheckCircle className="w-4 h-4" aria-hidden="true" />
+                                <span>Solved</span>
+                            </button>
                         </div>
 
                         {/* Active filters */}
-                        {(selectedCategory || selectedTag || searchQuery) && (
+                        {(selectedCategory || selectedTag || searchQuery || solvedOnly) && (
                             <div className="flex flex-wrap items-center gap-2 mb-4">
                                 <span className="text-xs text-gray-500">Filters:</span>
                                 {selectedCategory && (
@@ -461,6 +477,15 @@ export default function ForumsPage() {
                                         className="flex items-center gap-1 px-2 py-1 bg-white/5 text-gray-300 text-xs rounded hover:bg-white/10"
                                     >
                                         #{selectedTag}
+                                        <span className="text-gray-500">×</span>
+                                    </button>
+                                )}
+                                {solvedOnly && (
+                                    <button
+                                        onClick={() => updateParams({ status: null })}
+                                        className="flex items-center gap-1 px-2 py-1 bg-white/5 text-gray-300 text-xs rounded hover:bg-white/10"
+                                    >
+                                        Solved only
                                         <span className="text-gray-500">×</span>
                                     </button>
                                 )}
@@ -492,7 +517,7 @@ export default function ForumsPage() {
                                     onClick={() => {
                                         setFetchError(false);
                                         setLoading(true);
-                                        getDiscussions({ page, limit: 20, category: selectedCategory || undefined, tag: selectedTag || undefined, sort: sortBy, search: searchQuery || undefined })
+                                        getDiscussions({ page, limit: 20, category: selectedCategory || undefined, tag: selectedTag || undefined, sort: sortBy, search: searchQuery || undefined, status: solvedOnly ? 'solved' : undefined })
                                             .then(result => { setDiscussions(result.data || []); setTotalPages(result.pagination?.totalPages || 1); })
                                             .catch(() => setFetchError(true))
                                             .finally(() => setLoading(false));
