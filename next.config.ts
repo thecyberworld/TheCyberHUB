@@ -2,6 +2,20 @@ import type { NextConfig } from 'next'
 import type { Configuration } from 'webpack'
 import { withSentryConfig } from '@sentry/nextjs'
 
+// The browser calls the API (and its Socket.IO endpoint) directly, so the production CSP must allow
+// exactly that origin in connect-src: the http(s) origin for fetch and the ws(s) origin for sockets.
+// Nothing broader is added; an unset or invalid URL adds nothing.
+function apiConnectSources(apiUrl: string | undefined): string[] {
+    if (!apiUrl) return []
+    try {
+        const { protocol, host } = new URL(apiUrl)
+        if (protocol !== 'https:' && protocol !== 'http:') return []
+        return [`${protocol}//${host}`, `${protocol === 'https:' ? 'wss:' : 'ws:'}//${host}`]
+    } catch {
+        return []
+    }
+}
+
 const nextConfig: NextConfig = {
     // Enable ESLint and TypeScript checking during builds
     eslint: {
@@ -93,7 +107,7 @@ const nextConfig: NextConfig = {
                             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
                             "font-src 'self' https://fonts.gstatic.com",
                             "img-src 'self' data: https:",
-                            `connect-src 'self' https://*.amazonaws.com https://crt.sh https://www.google-analytics.com https://www.googletagmanager.com https://va.vercel-scripts.com${process.env.NEXT_PUBLIC_AWS_API_GATEWAY ? ' ' + process.env.NEXT_PUBLIC_AWS_API_GATEWAY : ''}`,
+                            `connect-src 'self' https://*.amazonaws.com https://crt.sh https://www.google-analytics.com https://www.googletagmanager.com https://va.vercel-scripts.com${[...apiConnectSources(process.env.NEXT_PUBLIC_API_URL), ...(process.env.NEXT_PUBLIC_AWS_API_GATEWAY ? [process.env.NEXT_PUBLIC_AWS_API_GATEWAY] : [])].map((source) => ' ' + source).join('')}`,
                             "frame-ancestors 'none'",
                         ].join('; ') + ';',
                     }] : []),

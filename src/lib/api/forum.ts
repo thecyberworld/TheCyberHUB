@@ -28,17 +28,8 @@ export async function getDiscussions(params: {
     if (params.sort) searchParams.set('sortBy', params.sort);
     if (params.search) searchParams.set('search', params.search);
 
-    try {
-        return await fetchApi(`/api/forum/discussions?${searchParams}`, { requireAuth: false });
-    } catch (error) {
-        // Return empty result on network error
-        console.error('Failed to fetch discussions:', error);
-        return {
-            success: false,
-            data: [],
-            pagination: { page: 1, limit: 20, total: 0, totalPages: 0 },
-        };
-    }
+    // Errors propagate so the page can show a retry state instead of an empty forum
+    return fetchApi(`/api/forum/discussions?${searchParams}`, { requireAuth: false });
 }
 
 export async function getDiscussion(id: string): Promise<{ success: boolean; data: Discussion | null }> {
@@ -78,20 +69,12 @@ export async function getReplies(
     discussionId: string,
     params?: { threaded?: boolean; page?: number; limit?: number }
 ): Promise<{ success: boolean; data: Reply[] }> {
-    try {
-        const searchParams = new URLSearchParams();
-        if (params?.threaded) searchParams.set('threaded', 'true');
-        if (params?.page) searchParams.set('page', params.page.toString());
-        if (params?.limit) searchParams.set('limit', params.limit.toString());
+    const searchParams = new URLSearchParams();
+    if (params?.threaded) searchParams.set('threaded', 'true');
+    if (params?.page) searchParams.set('page', params.page.toString());
+    if (params?.limit) searchParams.set('limit', params.limit.toString());
 
-        return await fetchApi(
-            `/api/forum/discussions/${discussionId}/replies?${searchParams}`,
-            { requireAuth: false }
-        );
-    } catch (error) {
-        console.error('Failed to fetch replies:', error);
-        return { success: false, data: [] };
-    }
+    return fetchApi(`/api/forum/discussions/${discussionId}/replies?${searchParams}`, { requireAuth: false });
 }
 
 export async function createReply(
@@ -121,10 +104,16 @@ export async function deleteReply(replyId: string): Promise<{ success: boolean }
 }
 
 // Voting
+export interface VoteResult {
+    upvotes: number;
+    downvotes: number;
+    userVote: number;
+}
+
 export async function voteDiscussion(
     discussionId: string,
     value: 1 | -1
-): Promise<{ success: boolean; data: { upvotes: number; downvotes: number } }> {
+): Promise<{ success: boolean; data: VoteResult }> {
     return fetchApi(`/api/forum/discussions/${discussionId}/vote`, {
         method: 'POST',
         body: JSON.stringify({ value }),
@@ -134,7 +123,7 @@ export async function voteDiscussion(
 export async function voteReply(
     replyId: string,
     value: 1 | -1
-): Promise<{ success: boolean; data: { upvotes: number; downvotes: number } }> {
+): Promise<{ success: boolean; data: VoteResult }> {
     return fetchApi(`/api/forum/replies/${replyId}/vote`, {
         method: 'POST',
         body: JSON.stringify({ value }),

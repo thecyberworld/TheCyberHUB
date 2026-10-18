@@ -130,26 +130,47 @@ export const blogSchema = blogPostSchema;
 // Forum / Discussion Schemas
 // ============================================
 
+// Limits and categories mirror the backend (thecyberhub-core/src/config/forum.js). The API is
+// `content` / `parentId` / `value`.
+export const FORUM_LIMITS = {
+    title: { min: 10, max: 200 },
+    content: { min: 30, max: 10000 },
+    reply: { min: 3, max: 5000 },
+    tags: { maxCount: 5, maxLength: 30 },
+} as const;
+
+export const FORUM_CATEGORY_SLUGS = [
+    'general', 'ctf-help', 'pentesting', 'bug-bounty', 'malware', 'career', 'tools', 'news',
+] as const;
+
+const forumTagsSchema = z
+    .array(z.string().trim().min(1).max(FORUM_LIMITS.tags.maxLength, `Tags cannot exceed ${FORUM_LIMITS.tags.maxLength} characters`))
+    .max(FORUM_LIMITS.tags.maxCount, `Maximum ${FORUM_LIMITS.tags.maxCount} tags allowed`)
+    .optional();
+
 export const discussionSchema = z.object({
-    title: z.string().min(5, 'Title must be at least 5 characters').max(200, 'Title cannot exceed 200 characters'),
-    body: z.string().min(10, 'Body must be at least 10 characters').max(50000, 'Body cannot exceed 50000 characters'),
-    category: z.enum([
-        'general', 'help', 'career', 'ctf', 'tools',
-        'news', 'projects', 'learning', 'offtopic',
-    ], {
+    title: z.string()
+        .min(FORUM_LIMITS.title.min, `Title must be at least ${FORUM_LIMITS.title.min} characters`)
+        .max(FORUM_LIMITS.title.max, `Title cannot exceed ${FORUM_LIMITS.title.max} characters`),
+    content: z.string()
+        .min(FORUM_LIMITS.content.min, `Discussion content must be at least ${FORUM_LIMITS.content.min} characters`)
+        .max(FORUM_LIMITS.content.max, `Discussion content cannot exceed ${FORUM_LIMITS.content.max} characters`),
+    category: z.enum(FORUM_CATEGORY_SLUGS, {
         errorMap: () => ({ message: 'Please select a valid category' }),
     }),
-    tags: tagsSchema,
+    tags: forumTagsSchema,
 });
 
 export const replySchema = z.object({
-    body: z.string().min(1, 'Reply cannot be empty').max(5000, 'Reply cannot exceed 5000 characters'),
-    parentReply: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid reply ID').optional().nullable(),
+    content: z.string()
+        .min(FORUM_LIMITS.reply.min, `Reply must be at least ${FORUM_LIMITS.reply.min} characters`)
+        .max(FORUM_LIMITS.reply.max, `Reply cannot exceed ${FORUM_LIMITS.reply.max} characters`),
+    parentId: z.string().regex(/^[0-9a-fA-F]{24}$/, 'Invalid reply ID').optional().nullable(),
 });
 
 export const voteSchema = z.object({
-    direction: z.enum(['up', 'down'], {
-        errorMap: () => ({ message: 'Vote direction must be "up" or "down"' }),
+    value: z.union([z.literal(1), z.literal(-1)], {
+        errorMap: () => ({ message: 'Vote value must be 1 or -1' }),
     }),
 });
 

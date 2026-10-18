@@ -714,7 +714,7 @@ export default function AdminEventEditPage() {
                             <div
                                 className="prose prose-invert max-w-none"
                                 dangerouslySetInnerHTML={{
-                                    __html: DOMPurify.sanitize(`<p class="text-gray-300 mb-4">${renderMarkdown(formData.description) || '<span class="text-gray-500">No description yet...</span>'}</p>`)
+                                    __html: DOMPurify.sanitize(`<div>${renderMarkdown(formData.description) || '<span class="text-gray-500">No description yet...</span>'}</div>`)
                                 }}
                             />
                         </div>

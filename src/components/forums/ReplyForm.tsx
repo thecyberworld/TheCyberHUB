@@ -27,7 +27,7 @@ export default function ReplyForm({
         setError('');
 
         const trimmed = content.trim();
-        const result = replySchema.safeParse({ body: trimmed });
+        const result = replySchema.safeParse({ content: trimmed });
         if (!result.success) {
             setError(result.error.issues[0]?.message || 'Invalid reply');
             return;

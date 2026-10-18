@@ -17,7 +17,6 @@ import {
     Loader2,
     AlertCircle,
     Share2,
-    Link as LinkIcon,
 } from 'lucide-react';
 import { Discussion, Reply, CATEGORY_INFO, ROLE_BADGES } from '@/types/forum';
 import {
@@ -34,6 +33,8 @@ import {
     toggleLock,
 } from '@/lib/api/forum';
 import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/context/ToastContext';
+import { isModeratorRole } from '@/lib/roles';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { ConfirmDialog, useConfirmDialog } from '@/components/ui/ConfirmDialog';
 import VoteButtons from '@/components/forums/VoteButtons';
@@ -63,6 +64,7 @@ export default function DiscussionDetailPage({ params }: { params: Promise<{ id:
     const { id } = use(params);
     const router = useRouter();
     const { user, loading: authLoading } = useAuth();
+    const { addToast } = useToast();
 
     const [discussion, setDiscussion] = useState<Discussion | null>(null);
     const [replies, setReplies] = useState<Reply[]>([]);
@@ -100,83 +102,101 @@ export default function DiscussionDetailPage({ params }: { params: Promise<{ id:
     }, [id]);
 
     const isAuthor = currentUser?._id === discussion?.author._id;
-    const isModerator = currentUser?.role === 'admin' || currentUser?.role === 'moderator';
+    const isModerator = isModeratorRole(currentUser?.role);
     const canEdit = isAuthor || isModerator;
     const canDelete = isAuthor || isModerator;
     const canModerate = isModerator;
 
-    const handleVoteDiscussion = async (value: 1 | -1) => {
-        if (!discussion) return;
-        const result = await voteDiscussion(discussion._id, value);
-        setDiscussion({
-            ...discussion,
-            upvotes: result.data.upvotes,
-            downvotes: result.data.downvotes,
-        });
+    // Every mutation reports failure instead of leaving the page unchanged and silent
+    const run = async (action: () => Promise<void>, failure: string) => {
+        try {
+            await action();
+        } catch (err) {
+            addToast({ message: err instanceof Error && err.message ? err.message : failure, variant: 'error' });
+        }
     };
 
-    const handleVoteReply = async (replyId: string, value: 1 | -1) => {
-        await voteReply(replyId, value);
-        // Refresh replies
+    const refreshReplies = async () => {
         const repliesRes = await getReplies(id, { threaded: true });
         setReplies(repliesRes.data);
     };
 
-    const handleAcceptAnswer = async (replyId: string) => {
-        if (!discussion) return;
-        await acceptAnswer(discussion._id, replyId);
-        // Refresh data
-        const [discussionRes, repliesRes] = await Promise.all([
-            getDiscussion(id),
-            getReplies(id, { threaded: true }),
-        ]);
-        setDiscussion(discussionRes.data);
-        setReplies(repliesRes.data);
-    };
+    const handleVoteDiscussion = (value: 1 | -1) =>
+        run(async () => {
+            if (!discussion) return;
+            const result = await voteDiscussion(discussion._id, value);
+            setDiscussion({
+                ...discussion,
+                upvotes: result.data.upvotes,
+                downvotes: result.data.downvotes,
+                userVote: result.data.userVote,
+            });
+        }, 'Could not record your vote');
 
+    const handleVoteReply = (replyId: string, value: 1 | -1) =>
+        run(async () => {
+            await voteReply(replyId, value);
+            await refreshReplies();
+        }, 'Could not record your vote');
+
+    const handleAcceptAnswer = (replyId: string) =>
+        run(async () => {
+            if (!discussion) return;
+            await acceptAnswer(discussion._id, replyId);
+            const [discussionRes] = await Promise.all([getDiscussion(id), refreshReplies()]);
+            if (discussionRes.data) setDiscussion(discussionRes.data);
+        }, 'Could not accept this answer');
+
+    // The form shows the error itself, so this one rethrows after refreshing nothing
     const handleCreateReply = async (content: string, parentId?: string) => {
         await createReply(id, { content, parentId });
-        // Refresh replies
-        const repliesRes = await getReplies(id, { threaded: true });
-        setReplies(repliesRes.data);
-        // Update reply count
-        if (discussion) {
-            setDiscussion({ ...discussion, replyCount: discussion.replyCount + 1 });
-        }
+        await refreshReplies();
+        setDiscussion((current) => (current ? { ...current, replyCount: current.replyCount + 1 } : current));
     };
 
-    const handleEditReply = async (replyId: string, content: string) => {
-        await updateReply(replyId, content);
-        const repliesRes = await getReplies(id, { threaded: true });
-        setReplies(repliesRes.data);
-    };
+    const handleEditReply = (replyId: string, content: string) =>
+        run(async () => {
+            await updateReply(replyId, content);
+            await refreshReplies();
+        }, 'Could not save your edit');
 
-    const handleDeleteReply = async (replyId: string) => {
-        await deleteReply(replyId);
-        const repliesRes = await getReplies(id, { threaded: true });
-        setReplies(repliesRes.data);
-        if (discussion) {
-            setDiscussion({ ...discussion, replyCount: Math.max(0, discussion.replyCount - 1) });
-        }
-    };
+    const handleDeleteReply = (replyId: string) =>
+        run(async () => {
+            await deleteReply(replyId);
+            await refreshReplies();
+            setDiscussion((current) => (current ? { ...current, replyCount: Math.max(0, current.replyCount - 1) } : current));
+        }, 'Could not delete the reply');
 
     const handleDeleteDiscussion = async () => {
         const confirmed = await showConfirm();
         if (!confirmed) return;
-        await deleteDiscussion(id);
-        router.push('/forums');
+        await run(async () => {
+            await deleteDiscussion(id);
+            router.push('/forums');
+        }, 'Could not delete the discussion');
     };
 
-    const handleTogglePin = async () => {
-        if (!discussion) return;
-        const result = await togglePin(discussion._id);
-        setDiscussion({ ...discussion, isPinned: result.data.isPinned });
-    };
+    const handleTogglePin = () =>
+        run(async () => {
+            if (!discussion) return;
+            const result = await togglePin(discussion._id);
+            setDiscussion({ ...discussion, isPinned: result.data.isPinned });
+        }, 'Could not change the pin');
 
-    const handleToggleLock = async () => {
-        if (!discussion) return;
-        const result = await toggleLock(discussion._id);
-        setDiscussion({ ...discussion, isLocked: result.data.isLocked });
+    const handleToggleLock = () =>
+        run(async () => {
+            if (!discussion) return;
+            const result = await toggleLock(discussion._id);
+            setDiscussion({ ...discussion, isLocked: result.data.isLocked });
+        }, 'Could not change the lock');
+
+    const handleCopyLink = async () => {
+        try {
+            await navigator.clipboard.writeText(window.location.href);
+            addToast({ message: 'Link copied', variant: 'success' });
+        } catch {
+            addToast({ message: 'Could not copy the link', variant: 'error' });
+        }
     };
 
     if (loading || authLoading) {
@@ -338,22 +358,11 @@ export default function DiscussionDetailPage({ params }: { params: Promise<{ id:
                             {/* Share button */}
                             <div className="flex items-center gap-4 mt-6 pt-6 border-t border-white/10">
                                 <button
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(window.location.href);
-                                    }}
+                                    onClick={handleCopyLink}
                                     className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white text-sm rounded-lg transition-colors"
                                 >
                                     <Share2 className="w-4 h-4" />
-                                    Share
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        navigator.clipboard.writeText(window.location.href);
-                                    }}
-                                    className="flex items-center gap-2 px-3 py-2 bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white text-sm rounded-lg transition-colors"
-                                >
-                                    <LinkIcon className="w-4 h-4" />
-                                    Copy Link
+                                    Copy link
                                 </button>
                                 <ReportContentButton contentType="discussion" contentId={discussion._id} />
                             </div>

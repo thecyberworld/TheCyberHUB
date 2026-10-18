@@ -293,7 +293,7 @@ const BlogEditPage = () => {
                         <div 
                             className="prose prose-invert max-w-none"
                             dangerouslySetInnerHTML={{
-                                __html: DOMPurify.sanitize(`<p class="text-gray-300 mb-4">${renderMarkdown(content) || '<span class="text-gray-500">No content yet...</span>'}</p>`)
+                                __html: DOMPurify.sanitize(`<div>${renderMarkdown(content) || '<span class="text-gray-500">No content yet...</span>'}</div>`)
                             }}
                         />
                     </div>
