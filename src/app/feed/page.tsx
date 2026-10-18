@@ -6,6 +6,7 @@ import { Rss, Loader2, X, Search, TrendingUp, Hash, Flame, MousePointerClick, Us
 import { useAuth } from '@/context/AuthContext';
 import { useDebounce } from '@/hooks/useDebounce';
 import { EmptyState } from '@/components/ui/EmptyState';
+import SuggestedFollows from '@/components/onboarding/SuggestedFollows';
 import { Skeleton } from '@/components/ui/skeleton';
 import FeedItem from '@/components/feed/FeedItem';
 import CreatePost from '@/components/feed/CreatePost';
@@ -207,7 +208,14 @@ export default function FeedPage() {
                                     </button>
                                 </div>
                             ) : visible.length === 0 ? (
-                                <EmptyState icon={tab === 'following' ? Users : Rss} title={copy.title} description={copy.description} />
+                                <>
+                                    <EmptyState icon={tab === 'following' ? Users : Rss} title={copy.title} description={copy.description} />
+                                    {tab === 'following' && user && !debouncedSearch.trim() && (
+                                        <div className="max-w-md mx-auto mt-2 p-5 rounded-2xl border border-white/10 bg-white/[0.02]">
+                                            <SuggestedFollows limit={5} title="People you might like" />
+                                        </div>
+                                    )}
+                                </>
                             ) : (
                                 <div className="space-y-4">
                                     {visible.map((post) => (
@@ -280,6 +288,12 @@ export default function FeedPage() {
                                     </div>
                                 )}
                             </div>
+
+                            {user && (
+                                <div className="bg-black border border-white/5 rounded-2xl p-4">
+                                    <SuggestedFollows limit={4} title="Who to follow" />
+                                </div>
+                            )}
 
                             {stats.data && (
                                 <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-4">

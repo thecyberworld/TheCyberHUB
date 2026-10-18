@@ -5,12 +5,13 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import { landingPath } from '@/lib/landingPath';
 import { stashPending2fa } from '@/lib/pending2fa';
 
 const GoogleCallbackPage = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const { loginWithGoogle } = useAuth();
+    const { user, loginWithGoogle } = useAuth();
     const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
 
@@ -57,12 +58,19 @@ const GoogleCallbackPage = () => {
                 return;
             }
             setStatus('success');
-            setTimeout(() => router.push('/profile'), 1500);
+            // The effect below takes them on once their account has loaded
         } catch (err) {
             setStatus('error');
             setError(err instanceof Error ? err.message : 'Authentication failed');
         }
     };
+
+    // New accounts go through the welcome flow; everyone else to their profile
+    useEffect(() => {
+        if (status !== 'success' || !user) return;
+        const timer = setTimeout(() => router.push(landingPath(user, null)), 1500);
+        return () => clearTimeout(timer);
+    }, [status, user, router]);
 
     return (
         <div className="min-h-screen bg-black flex items-center justify-center px-4">
