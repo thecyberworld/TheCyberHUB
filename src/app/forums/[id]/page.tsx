@@ -364,7 +364,7 @@ export default function DiscussionDetailPage({ params }: { params: Promise<{ id:
                                     <Share2 className="w-4 h-4" />
                                     Copy link
                                 </button>
-                                <ReportContentButton contentType="discussion" contentId={discussion._id} />
+                                <ReportContentButton contentType="discussion" contentId={discussion._id} authorId={discussion.author._id} />
                             </div>
 
                             {/* Actions */}

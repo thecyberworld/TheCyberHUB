@@ -325,7 +325,7 @@ export default function FeedCard({
                     {commentCount > 0 && commentCount}
                     <span className="hidden sm:inline">Comment</span>
                 </button>
-                <ReportContentButton contentType="feedPost" contentId={post._id} />
+                <ReportContentButton contentType="feedPost" contentId={post._id} authorId={post.author._id} />
             </div>
 
             {/* Comments section */}
