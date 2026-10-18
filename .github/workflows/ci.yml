@@ -1,18 +1,14 @@
 name: CI
 
-# Lean check for pull requests only. Everything heavier (build, e2e, audit,
-# image build, deploys) lives in ci-full.yml and runs manually.
+# Paused to save CI usage: runs only when started by hand from the Actions tab.
+# The gate before merging into v2 is the local pre-push hook (.githooks/pre-push).
+# To switch PR checks back on, replace the trigger below with:
+#   on:
+#     pull_request:
+#       branches: [main, dev, v2]
+#       paths-ignore: ["**/*.md", "docs/**", "LICENSE", ".github/ISSUE_TEMPLATE/**"]
 on:
-  pull_request:
-    branches: [main, dev, v2]
-    paths-ignore:
-      - "**/*.md"
-      - "docs/**"
-      - "LICENSE"
-      - ".github/ISSUE_TEMPLATE/**"
-      - ".github/workflows/ci-full.yml"
-      - ".github/workflows/community.yml"
-      - ".github/workflows/labels.yml"
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
