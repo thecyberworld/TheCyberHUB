@@ -1,10 +1,16 @@
 name: CI
 
+# Manual-only (paused to stop automatic runs and notifications).
+# To restore the automatic push and pull request checks, replace the trigger below with:
+#
+#   on:
+#     push:
+#       branches: [main, develop]
+#     pull_request:
+#       branches: [main]
+
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main]
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

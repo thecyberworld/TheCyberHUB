@@ -1,15 +1,21 @@
+# Manual-only (paused to stop automatic runs and notifications).
+# To restore the welcome messages, replace the trigger below with:
+#
+#   on:
+#     fork:
+#     push:
+#       branches: [main]
+#     issues:
+#       types: [opened]
+#     issue_comment:
+#       types: [created]
+#     pull_request_target:
+#       types: [opened]
+#     pull_request_review_comment:
+#       types: [created]
+
 on:
-  fork:
-  push:
-    branches: [main]
-  issues:
-    types: [opened]
-  issue_comment:
-    types: [created]
-  pull_request_target:
-    types: [opened]
-  pull_request_review_comment:
-    types: [created]
+  workflow_dispatch:
 
 jobs:
   welcome:
