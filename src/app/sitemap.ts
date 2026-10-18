@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
 
 // Define your static routes
 const staticRoutes = [

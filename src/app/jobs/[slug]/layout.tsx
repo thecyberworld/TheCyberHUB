@@ -10,7 +10,7 @@ export async function generateMetadata(
     const { slug } = await params;
 
     try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001';
         const response = await fetch(`${apiUrl}/api/jobs/${slug}`, { next: { revalidate: 60 } });
         const data = await response.json();
 
