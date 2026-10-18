@@ -22,6 +22,9 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { fetchApi } from '@/lib/api';
 import AchievementsPanel from '@/components/badges/AchievementsPanel';
+import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/context/ToastContext';
+import { followUser } from '@/lib/api/feed';
 
 interface PublicUser {
     id: string;
@@ -47,6 +50,9 @@ interface PublicUser {
         rank?: number | null;
     };
     badgeCount?: number;
+    followerCount?: number;
+    followingCount?: number;
+    isFollowing?: boolean;
 }
 
 const PublicProfilePage = () => {
@@ -56,6 +62,23 @@ const PublicProfilePage = () => {
     const [user, setUser] = useState<PublicUser | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const { user: me } = useAuth();
+    const { addToast } = useToast();
+    const [followPending, setFollowPending] = useState(false);
+
+    const toggleFollow = async () => {
+        if (!user || followPending) return;
+        const next = !user.isFollowing;
+        setFollowPending(true);
+        try {
+            await followUser(user.username, next);
+            setUser({ ...user, isFollowing: next, followerCount: Math.max(0, (user.followerCount ?? 0) + (next ? 1 : -1)) });
+        } catch (err) {
+            addToast({ variant: 'error', message: err instanceof Error ? err.message : 'Could not update the follow.' });
+        } finally {
+            setFollowPending(false);
+        }
+    };
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -183,6 +206,23 @@ const PublicProfilePage = () => {
                             )}
                         </div>
                         <p className="text-orange-400 text-lg">@{user.username}</p>
+                        <div className="flex items-center gap-4 mt-3 flex-wrap">
+                            <span className="text-sm text-gray-400">
+                                <strong className="text-white">{user.followerCount ?? 0}</strong> followers
+                                <span className="mx-2" aria-hidden="true">·</span>
+                                <strong className="text-white">{user.followingCount ?? 0}</strong> following
+                            </span>
+                            {me && me.id !== user.id && (
+                                <button
+                                    onClick={toggleFollow}
+                                    disabled={followPending}
+                                    aria-pressed={!!user.isFollowing}
+                                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors disabled:opacity-60 ${user.isFollowing ? 'bg-white/10 text-white hover:bg-white/20' : 'bg-orange-500 text-white hover:bg-orange-600'}`}
+                                >
+                                    {user.isFollowing ? 'Following' : 'Follow'}
+                                </button>
+                            )}
+                        </div>
                     </div>
 
                     {/* Bio */}

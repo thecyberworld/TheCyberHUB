@@ -155,7 +155,7 @@ export default function ReplyThread({
                         {/* Author info */}
                         <div className="flex items-center gap-2 mb-3">
                             <Link
-                                href={`/profile/${author.username}`}
+                                href={`/user/${author.username}`}
                                 className="flex items-center gap-2 hover:text-orange-400 transition-colors"
                             >
                                 {author.avatar ? (

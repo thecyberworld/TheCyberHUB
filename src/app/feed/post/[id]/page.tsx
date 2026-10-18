@@ -4,117 +4,97 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, Loader2, MessageCircle } from 'lucide-react';
 import FeedItem from '@/components/feed/FeedItem';
-import { fetchApi } from '@/lib/api';
+import ReshareDialog from '@/components/feed/ReshareDialog';
+import { useAuth } from '@/context/AuthContext';
+import { useThread } from '@/hooks/queries';
+import { countView } from '@/lib/api/feed';
+import type { FeedPost } from '@/types/feed';
 
-export default function ThreadViewerPage({ params }: { params: Promise<{ id: string }> }) {
+export default function PostPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = React.use(params);
     const router = useRouter();
-    const [loading, setLoading] = useState(true);
-    interface ThreadPost {
-        _id: string;
-        content?: string;
-        type: 'post' | 'event';
-        author: { _id: string; name: string; username: string; avatar?: string };
-        images?: string[];
-        likes?: string[];
-        likeCount?: number;
-        commentCount: number;
-        bookmarks?: string[];
-        reshares?: string[];
-        reshareCount?: number;
-        hashtags?: string[];
-        createdAt: string;
-    }
+    const { user } = useAuth();
+    const { data, isLoading, isError, error, refetch } = useThread(id);
+    const [reshareTarget, setReshareTarget] = useState<FeedPost | null>(null);
 
-    const [thread, setThread] = useState<{ root: ThreadPost; descendants: ThreadPost[] } | null>(null);
-
+    // A view counts once someone has the post open, never for a card scrolled past
+    const rootId = data?.root._id;
+    const isOwner = data?.root.viewer.isOwner;
     useEffect(() => {
-        const fetchThread = async () => {
-            try {
-                const data = await fetchApi(`/api/feed/posts/${id}/thread`, { requireAuth: false });
-                if (data.success) {
-                    setThread({
-                        root: { ...data.root, type: data.root.type || 'post' },
-                        descendants: (data.descendants || []).map((d: ThreadPost) => ({ ...d, type: d.type || 'post' } as ThreadPost)),
-                    });
-                }
-            } catch (error) {
-                console.error('Failed to load thread:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        if (!rootId || !user || isOwner) return;
+        const timer = setTimeout(() => { countView(rootId).catch(() => { }); }, 2000);
+        return () => clearTimeout(timer);
+    }, [rootId, user, isOwner]);
 
-        fetchThread();
-    }, [id]);
-
-    if (loading) {
+    if (isLoading) {
         return (
-            <div className="flex justify-center items-center py-20">
-                <Loader2 className="w-8 h-8 animate-spin text-orange-500" />
+            <div className="flex justify-center items-center py-20" role="status" aria-label="Loading the post">
+                <Loader2 className="w-8 h-8 animate-spin text-orange-500" aria-hidden="true" />
             </div>
         );
     }
 
-    if (!thread || !thread.root) {
+    if (isError || !data) {
+        const missing = !isError || /not found/i.test(error?.message ?? '');
         return (
-            <div className="text-center py-20">
-                <p className="text-gray-500 mb-4">Thread not found or has been deleted.</p>
-                <button
-                    onClick={() => router.push('/feed')}
-                    className="px-4 py-2 bg-orange-500 text-white rounded-xl text-sm font-medium hover:bg-orange-600 transition-colors"
-                >
-                    Back to Feed
-                </button>
+            <div className="text-center py-20 px-4">
+                <p className="text-gray-500 mb-4">
+                    {missing ? 'This post was not found. It may have been deleted, or you may not be able to see it.' : 'The post could not be loaded.'}
+                </p>
+                <div className="flex justify-center gap-2">
+                    {!missing && (
+                        <button onClick={() => refetch()} className="px-4 py-2 bg-white/10 text-white rounded-xl text-sm font-medium hover:bg-white/20 transition-colors">
+                            Try again
+                        </button>
+                    )}
+                    <button onClick={() => router.push('/feed')} className="px-4 py-2 bg-orange-500 text-white rounded-xl text-sm font-medium hover:bg-orange-600 transition-colors">
+                        Back to feed
+                    </button>
+                </div>
             </div>
         );
     }
 
-    // Combine root and descendants into a single array for rendering
-    const allPosts = [thread.root, ...thread.descendants];
+    const posts = [data.root, ...data.descendants];
+    const isThread = posts.length > 1;
 
     return (
-        <div className="max-w-3xl mx-auto py-6 px-4">
-            <div className="flex items-center gap-4 mb-6 sticky top-0 bg-black/80 backdrop-blur-md z-10 py-3 border-b border-white/10">
-                <button
-                    onClick={() => router.back()}
-                    className="p-2 hover:bg-white/10 rounded-full transition-colors"
-                >
-                    <ArrowLeft className="w-5 h-5 text-white" />
+        <div className="max-w-3xl mx-auto py-6 px-4 pt-24">
+            <div className="flex items-center gap-4 mb-6 sticky top-16 bg-black/80 backdrop-blur-md z-10 py-3 border-b border-white/10">
+                <button onClick={() => router.back()} className="p-2 hover:bg-white/10 rounded-full transition-colors" aria-label="Go back">
+                    <ArrowLeft className="w-5 h-5 text-white" aria-hidden="true" />
                 </button>
                 <div>
-                    <h1 className="text-lg font-bold text-white flex items-center gap-2">
-                        Thread
-                    </h1>
-                    <p className="text-xs text-gray-500">
-                        {allPosts.length} post{allPosts.length !== 1 ? 's' : ''} • Started by {thread.root.author.name}
-                    </p>
+                    <h1 className="text-lg font-bold text-white">{isThread ? 'Thread' : 'Post'}</h1>
+                    {isThread && (
+                        <p className="text-xs text-gray-500">
+                            {posts.length} posts • Started by {data.root.author?.name ?? 'a former member'}
+                        </p>
+                    )}
                 </div>
             </div>
 
-            <div className="relative">
-                {/* Connective background line for the entire thread */}
-                {allPosts.length > 1 && (
-                    <div className="absolute left-[39px] top-12 bottom-24 w-0.5 bg-gray-800 dark:bg-white/10 z-0 hidden sm:block"></div>
-                )}
-
-                <div className="space-y-4 relative z-10">
-                    {allPosts.map((post) => (
-                        <div key={post._id} className="relative">
-                            <FeedItem post={post} />
-                        </div>
-                    ))}
-                </div>
-
-                {/* Visual cap at the end of the thread */}
-                {allPosts.length > 1 && (
-                    <div className="flex items-center gap-3 mt-6 justify-center">
-                        <div className="h-px bg-white/10 flex-1"></div>
-                        <span className="text-xs font-medium text-gray-500 flex items-center gap-1.5"><MessageCircle className="w-3.5 h-3.5" /> End of thread</span>
-                        <div className="h-px bg-white/10 flex-1"></div>
-                    </div>
-                )}
+            <div className="space-y-4">
+                {posts.map((post, i) => (
+                    <FeedItem
+                        key={post._id}
+                        post={post}
+                        defaultShowComments={post._id === id || (i === 0 && !isThread)}
+                        onReshare={setReshareTarget}
+                        onDeleted={() => { if (post._id === data.root._id) router.push('/feed'); }}
+                    />
+                ))}
             </div>
+
+            {isThread && (
+                <div className="flex items-center gap-3 mt-6 justify-center">
+                    <div className="h-px bg-white/10 flex-1" />
+                    <span className="text-xs font-medium text-gray-500 flex items-center gap-1.5"><MessageCircle className="w-3.5 h-3.5" aria-hidden="true" /> End of thread</span>
+                    <div className="h-px bg-white/10 flex-1" />
+                </div>
+            )}
+
+            <ReshareDialog post={reshareTarget} onClose={() => setReshareTarget(null)} />
         </div>
     );
 }
