@@ -1,0 +1,12 @@
+#!/bin/sh
+# Runs the same checks as the PR workflow (.github/workflows/ci.yml) before a
+# push, so CI minutes are not spent on failures you can catch locally.
+# Skip once with: SKIP_HOOKS=1 git push   (or git push --no-verify)
+[ -n "$SKIP_HOOKS" ] && exit 0
+set -e
+echo "pre-push: lint"
+npm run --silent lint
+echo "pre-push: typecheck"
+npx tsc --noEmit
+echo "pre-push: unit tests"
+npm run --silent test:ci
