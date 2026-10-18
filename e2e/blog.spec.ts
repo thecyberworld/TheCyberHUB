@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { mockEmptyApi } from './helpers';
 
 test.describe('Blog Listing', () => {
     test('should display blog page with heading', async ({ page }) => {
@@ -19,18 +20,11 @@ test.describe('Blog Listing', () => {
         await expect(writeLink).toContainText(/Write/i);
     });
 
-    test('should display blog posts or empty state', async ({ page }) => {
+    test('should show empty state when there are no blog posts', async ({ page }) => {
+        await mockEmptyApi(page);
         await page.goto('/blog');
-        // Wait for loading to finish
-        await page.waitForTimeout(2000);
 
-        const blogCards = page.locator('a[href^="/blog/"]').filter({ hasNotText: /Write/i });
-        const emptyState = page.locator('text=/No blog posts yet|No posts found/i');
-
-        const hasCards = await blogCards.count() > 0;
-        const hasEmptyState = await emptyState.count() > 0;
-
-        expect(hasCards || hasEmptyState).toBeTruthy();
+        await expect(page.getByText(/No blog posts yet/i)).toBeVisible();
     });
 
     test('should filter blog posts when typing in search', async ({ page }) => {

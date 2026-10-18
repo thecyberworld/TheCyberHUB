@@ -6,7 +6,7 @@ test.describe('Authentication Flows', () => {
     test('should display login page', async ({ page }) => {
         await page.goto(`${BASE_URL}/auth`);
         
-        await expect(page.locator('h1')).toContainText(/sign in|login/i);
+        await expect(page.locator('h1')).toContainText(/welcome back|sign in|login/i);
         await expect(page.locator('input[type="email"]')).toBeVisible();
         await expect(page.locator('input[type="password"]')).toBeVisible();
     });
@@ -60,17 +60,14 @@ test.describe('Authentication Flows', () => {
         const passwordInput = page.locator('input[type="password"]').first();
         await passwordInput.fill('testpassword123');
         
-        // Look for eye/visibility toggle button
-        const toggleButton = page.locator('button, svg').filter({ 
-            hasText: /show|hide|eye/i 
-        }).or(page.locator('[aria-label*="password"]'));
-        
-        if (await toggleButton.count() > 0) {
-            await toggleButton.first().click();
-            // After toggle, input should be text type
-            const inputType = await passwordInput.getAttribute('type');
-            expect(inputType).toBe('text');
-        }
+        // Retry the click until the page has hydrated and the handler is attached
+        await expect(async () => {
+            await page.getByRole('button', { name: 'Show password' }).click();
+            await expect(page.locator('input[name="password"]')).toHaveAttribute('type', 'text', { timeout: 1000 });
+        }).toPass();
+
+        await page.getByRole('button', { name: 'Hide password' }).click();
+        await expect(page.locator('input[name="password"]')).toHaveAttribute('type', 'password');
     });
 });
 
@@ -93,8 +90,9 @@ test.describe('Registration Flow', () => {
         const emailField = page.locator('input[type="email"]');
         const passwordField = page.locator('input[type="password"]');
         
-        await expect(usernameField.or(emailField)).toBeVisible();
-        await expect(passwordField).toBeVisible();
+        await expect(usernameField).toBeVisible();
+        await expect(emailField).toBeVisible();
+        await expect(passwordField.first()).toBeVisible();
     });
 
     test('should validate password strength', async ({ page }) => {

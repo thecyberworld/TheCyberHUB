@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { mockEmptyApi } from './helpers';
 
 test.describe('Challenges Listing', () => {
     test('should display challenges page with heading', async ({ page }) => {
@@ -37,17 +38,11 @@ test.describe('Challenges Listing', () => {
         }
     });
 
-    test('should display challenge cards or empty state after loading', async ({ page }) => {
+    test('should show empty state when there are no challenges', async ({ page }) => {
+        await mockEmptyApi(page);
         await page.goto('/challenges');
-        await page.waitForTimeout(3000);
 
-        const challengeCards = page.locator('a[href^="/challenges/"]');
-        const emptyState = page.locator('text=/No challenges found/i');
-
-        const hasCards = await challengeCards.count() > 0;
-        const hasEmpty = await emptyState.count() > 0;
-
-        expect(hasCards || hasEmpty).toBeTruthy();
+        await expect(page.getByText(/No challenges found/i)).toBeVisible();
     });
 
     test('should filter by difficulty using dropdown', async ({ page }) => {
