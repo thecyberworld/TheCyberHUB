@@ -11,21 +11,32 @@ import { describe, it, expect } from 'vitest';
 // In a real setup, these would use @testing-library/react
 
 describe('AchievementBadge Component', () => {
-    const mockEarnedAchievement = {
+    interface MockAchievement {
+        id: string;
+        name: string;
+        description: string;
+        icon: string;
+        tier: 'bronze' | 'silver' | 'gold' | 'platinum';
+        earnedAt?: string;
+        progress?: number;
+        requirement?: string;
+    }
+
+    const mockEarnedAchievement: MockAchievement = {
         id: '1',
         name: 'First Blood',
         description: 'Solve your first challenge',
         icon: 'first_solve',
-        tier: 'bronze' as const,
+        tier: 'bronze',
         earnedAt: '2024-01-15T10:00:00Z',
     };
 
-    const mockLockedAchievement = {
+    const mockLockedAchievement: MockAchievement = {
         id: '2',
         name: 'Challenge Master',
         description: 'Solve 50 challenges',
         icon: 'challenge_master',
-        tier: 'gold' as const,
+        tier: 'gold',
         progress: 60,
         requirement: 'Solve 50 challenges (30/50)',
     };
