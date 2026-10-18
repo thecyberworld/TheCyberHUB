@@ -284,7 +284,7 @@ export default function DiscussionDetailPage({ params }: { params: Promise<{ id:
                     {/* Meta */}
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 mb-6">
                         <Link
-                            href={`/profile/${discussion.author.username}`}
+                            href={`/user/${discussion.author.username}`}
                             className="flex items-center gap-2 hover:text-orange-400 transition-colors"
                         >
                             {discussion.author.avatar ? (

@@ -154,6 +154,12 @@ const nextConfig: NextConfig = {
                 destination: '/tools/ssl-scanner',
                 permanent: true,
             },
+            // Public profiles live at /user/:username (/profile is the signed-in member's own page)
+            {
+                source: '/profile/:username((?!sessions$|edit$)[^/]+)',
+                destination: '/user/:username',
+                permanent: true,
+            },
             // Legacy redirects
             {
                 source: '/jwt-tool',

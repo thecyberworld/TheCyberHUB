@@ -3,18 +3,26 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { Send, Loader2, Bold, Code, Link2, Hash, Plus, Trash2, Image as ImageIcon } from 'lucide-react';
-import { fetchApi } from '@/lib/api';
+import { uploadFile } from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
+import { useToast } from '@/context/ToastContext';
+import { useCreatePost } from '@/hooks/queries/useFeed';
 import { feedPostSchema } from '@/lib/validations';
 
 interface CreatePostProps {
-    onPostCreated: (post: unknown) => void;
+    onPostCreated?: () => void;
 }
+
+const MAX_THREAD = 10;
+const MAX_IMAGES = 4;
 
 const DRAFT_KEY = 'tch:feed:draft';
 
 export default function CreatePost({ onPostCreated }: CreatePostProps) {
     const { user } = useAuth();
+    const { addToast } = useToast();
+    const createPost = useCreatePost();
+    const [visibility, setVisibility] = useState<'public' | 'followers'>('public');
     const [contents, setContents] = useState<string[]>(() => {
         // Restore draft from localStorage
         try {
@@ -29,7 +37,8 @@ export default function CreatePost({ onPostCreated }: CreatePostProps) {
         return [''];
     });
     const [images, setImages] = useState<string[][]>([[]]);
-    const [loading, setLoading] = useState(false);
+    const [uploading, setUploading] = useState(false);
+    const loading = uploading || createPost.isPending;
     const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
     const [showDraftBanner, setShowDraftBanner] = useState(() => {
         try {
@@ -58,45 +67,44 @@ export default function CreatePost({ onPostCreated }: CreatePostProps) {
 
     if (!user) return null;
 
-    const isThread = contents.length > 1;
+    const isThread = contents.filter((c) => c.trim()).length > 1;
     const isFocused = focusedIndex !== null;
 
-    const handleSubmit = async () => {
-        // filter out completely empty trailing thread links
-        const validContents = contents.map(c => c.trim()).filter(c => c.length > 0);
-        if (validContents.length === 0 || loading) return;
+    const handleSubmit = () => {
+        if (loading) return;
+        // Empty posts in a thread are dropped, together with their images
+        const parts = contents
+            .map((c, i) => ({ text: c.trim(), images: images[i] ?? [] }))
+            .filter((p) => p.text.length > 0);
+        if (parts.length === 0) return;
 
-        // Validate each post content against the schema
-        for (const postContent of validContents) {
-            const validation = feedPostSchema.safeParse({ content: postContent });
-            if (!validation.success) {
-                console.error('Feed post validation failed:', validation.error.issues[0]?.message);
+        for (const part of parts) {
+            const parsed = feedPostSchema.safeParse({ content: part.text, images: part.images });
+            if (!parsed.success) {
+                addToast({ variant: 'error', message: parsed.error.issues[0]?.message ?? 'Check your post.' });
                 return;
             }
         }
 
-        setLoading(true);
-        try {
-            const data = await fetchApi('/api/feed/posts', {
-                method: 'POST',
-                body: JSON.stringify({
-                    content: isThread ? validContents : validContents[0],
-                    images: isThread ? images : images[0],
-                    isThread,
-                }),
-            });
-            onPostCreated(data.data);
-            // Reset to single post
-            setContents(['']);
-            setImages([[]]);
-            setFocusedIndex(null);
-            setShowDraftBanner(false);
-            try { localStorage.removeItem(DRAFT_KEY); } catch {}
-        } catch (err) {
-            console.error('Create post failed:', err);
-        } finally {
-            setLoading(false);
-        }
+        const thread = parts.length > 1;
+        createPost.mutate(
+            {
+                content: thread ? parts.map((p) => p.text) : parts[0].text,
+                images: thread ? parts.map((p) => p.images) : parts[0].images,
+                isThread: thread,
+                visibility,
+            },
+            {
+                onSuccess: () => {
+                    setContents(['']);
+                    setImages([[]]);
+                    setFocusedIndex(null);
+                    setShowDraftBanner(false);
+                    try { localStorage.removeItem(DRAFT_KEY); } catch {}
+                    onPostCreated?.();
+                },
+            }
+        );
     };
 
     const handleContentChange = (index: number, value: string) => {
@@ -107,37 +115,46 @@ export default function CreatePost({ onPostCreated }: CreatePostProps) {
 
     const handleImageUpload = async (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
+        e.target.value = '';
         if (!file) return;
+        if ((images[index]?.length ?? 0) >= MAX_IMAGES) {
+            addToast({ variant: 'info', message: `A post can have up to ${MAX_IMAGES} images.` });
+            return;
+        }
 
         try {
-            setLoading(true);
-            const { uploadFile } = await import('@/lib/api');
+            setUploading(true);
             const url = await uploadFile(file, 'feed');
-
-            const newImages = [...images];
-            newImages[index] = [...(newImages[index] || []), url];
-            setImages(newImages);
+            setImages((prev) => {
+                const next = [...prev];
+                next[index] = [...(next[index] || []), url];
+                return next;
+            });
         } catch (err) {
-            console.error('Image upload failed:', err);
+            addToast({ variant: 'error', title: 'Upload failed', message: err instanceof Error ? err.message : 'Please try another image.' });
         } finally {
-            setLoading(false);
+            setUploading(false);
         }
     };
 
     const removeImage = (postIndex: number, imgIndex: number) => {
-        const newImages = [...images];
-        newImages[postIndex].splice(imgIndex, 1);
-        setImages(newImages);
+        setImages((prev) => prev.map((set, i) => (i === postIndex ? set.filter((_, j) => j !== imgIndex) : set)));
     };
 
     const addThreadPost = () => {
+        if (contents.length >= MAX_THREAD) {
+            addToast({ variant: 'info', message: `A thread can have up to ${MAX_THREAD} posts.` });
+            return;
+        }
         setContents([...contents, '']);
+        setImages([...images, []]);
         setFocusedIndex(contents.length);
     };
 
     const removeThreadPost = (index: number) => {
         const newContents = contents.filter((_, i) => i !== index);
         setContents(newContents.length ? newContents : ['']);
+        setImages(images.filter((_, i) => i !== index));
         setFocusedIndex(newContents.length - 1 >= 0 ? newContents.length - 1 : 0);
     };
 
@@ -329,6 +346,15 @@ export default function CreatePost({ onPostCreated }: CreatePostProps) {
                     </button>
 
                     <div className="flex items-center gap-2">
+                        <select
+                            value={visibility}
+                            onChange={(e) => setVisibility(e.target.value as 'public' | 'followers')}
+                            aria-label="Who can see this"
+                            className="bg-transparent border border-white/10 rounded-lg px-2 py-1.5 text-xs text-gray-400 outline-none focus:border-orange-500/30"
+                        >
+                            <option value="public" className="bg-black">Everyone</option>
+                            <option value="followers" className="bg-black">Followers only</option>
+                        </select>
                         <button
                             onClick={discardDraft}
                             className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors rounded-xl"
