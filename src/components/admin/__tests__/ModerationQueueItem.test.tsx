@@ -75,4 +75,15 @@ describe('ModerationQueueItem', () => {
         render(<ul><ModerationQueueItem entry={entry({}, { isHidden: true, hiddenReason: 'auto' })} selected={false} onSelect={vi.fn()} onAction={vi.fn()} /></ul>)
         expect(screen.getByText('Hidden automatically')).toBeInTheDocument()
     })
+
+    it('offers a Manage user button only when allowed', async () => {
+        const user = userEvent.setup()
+        const onManage = vi.fn()
+        const { rerender } = render(<ul><ModerationQueueItem entry={entry()} selected={false} onSelect={vi.fn()} onAction={vi.fn()} /></ul>)
+        expect(screen.queryByRole('button', { name: /manage user/i })).not.toBeInTheDocument()
+
+        rerender(<ul><ModerationQueueItem entry={entry()} selected={false} onSelect={vi.fn()} onAction={vi.fn()} onManageAuthor={onManage} /></ul>)
+        await user.click(screen.getByRole('button', { name: /manage user @spammer/i }))
+        expect(onManage).toHaveBeenCalled()
+    })
 })

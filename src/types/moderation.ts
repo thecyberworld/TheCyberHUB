@@ -80,3 +80,79 @@ export const ACTION_COPY: Record<ModerationAction, { label: string; title: strin
         effect: 'The content becomes visible again.',
     },
 };
+
+export type SanctionAction = 'warn' | 'mute' | 'unmute' | 'ban' | 'unban';
+
+export const MUTE_DURATIONS = [
+    { value: '1h', label: '1 hour' },
+    { value: '24h', label: '24 hours' },
+    { value: '7d', label: '7 days' },
+] as const;
+
+export const BAN_DURATIONS = [
+    { value: '1d', label: '1 day' },
+    { value: '7d', label: '7 days' },
+    { value: '30d', label: '30 days' },
+    { value: 'permanent', label: 'Permanent' },
+] as const;
+
+export const SANCTION_COPY: Record<SanctionAction, { label: string; title: string; effect: string; reasonRequired: boolean }> = {
+    warn: {
+        label: 'Warn',
+        title: 'Warn user',
+        effect: 'The user is notified. Repeated violations can lead to a mute or a ban.',
+        reasonRequired: true,
+    },
+    mute: {
+        label: 'Mute',
+        title: 'Mute user',
+        effect: 'The user can read and vote but cannot post, reply, comment or edit until the mute ends.',
+        reasonRequired: true,
+    },
+    unmute: {
+        label: 'Lift mute',
+        title: 'Lift mute',
+        effect: 'The user can post again straight away.',
+        reasonRequired: false,
+    },
+    ban: {
+        label: 'Ban',
+        title: 'Ban user',
+        effect: 'The user is signed out everywhere and cannot sign in until the ban ends or you lift it.',
+        reasonRequired: true,
+    },
+    unban: {
+        label: 'Lift ban',
+        title: 'Lift ban',
+        effect: 'The user can sign in again.',
+        reasonRequired: false,
+    },
+};
+
+export interface UserSanctionRecord {
+    _id: string;
+    type: 'warn' | 'mute' | 'ban';
+    reason: string;
+    createdAt: string;
+    expiresAt: string | null;
+    revokedAt: string | null;
+    revokedReason: 'lifted' | 'superseded' | 'expired' | null;
+    isInEffect: boolean;
+    issuedBy?: { _id: string; username: string } | null;
+}
+
+export interface UserModerationHistory {
+    user: {
+        _id: string;
+        username: string;
+        role: string;
+        avatar?: string;
+        createdAt?: string;
+        isBanned: boolean;
+        banReason: string | null;
+        banExpiresAt: string | null;
+        mutedUntil: string | null;
+    };
+    counts: { warn: number; mute: number; ban: number };
+    sanctions: UserSanctionRecord[];
+}

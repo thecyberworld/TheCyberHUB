@@ -30,6 +30,7 @@ import {
     Download,
 } from 'lucide-react';
 import Link from 'next/link';
+import { UserSanctionDialog, type SanctionInput } from '@/components/admin/UserSanctionDialog';
 
 interface User {
     _id: string;
@@ -97,7 +98,9 @@ export default function AdminUsersPage() {
     const [roleFilter, setRoleFilter] = useState<string>('');
     const [activeRoleEdit, setActiveRoleEdit] = useState<string | null>(null);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
-    const [confirmAction, setConfirmAction] = useState<{ type: 'ban' | 'role'; userId: string; username: string; detail: string } | null>(null);
+    const [confirmAction, setConfirmAction] = useState<{ type: 'role'; userId: string; username: string; detail: string } | null>(null);
+    const [banDialog, setBanDialog] = useState<{ action: 'ban' | 'unban'; userIds: string[]; subject: string } | null>(null);
+    const [banError, setBanError] = useState('');
     const [viewUser, setViewUser] = useState<User | null>(null);
     const [selectedBadge, setSelectedBadge] = useState<string>('');
     const [awardingBadge, setAwardingBadge] = useState<boolean>(false);
@@ -126,23 +129,15 @@ export default function AdminUsersPage() {
         }
     };
 
-    const handleBulkBan = async () => {
-        if (selectedUsers.size === 0) return;
-        setBulkLoading(true);
-        try {
-            const promises = Array.from(selectedUsers).map(id =>
-                fetchApi(`/api/admin/users/${id}/status`, { method: 'PATCH' })
-            );
-            await Promise.all(promises);
-            addToast({ variant: 'success', title: 'Bulk Action', message: `Toggled status for ${selectedUsers.size} users.` });
-            setSelectedUsers(new Set());
-            setBulkMode(false);
-            fetchUsers(pagination.page);
-        } catch {
-            addToast({ variant: 'error', title: 'Error', message: 'Failed to complete bulk action.' });
-        } finally {
-            setBulkLoading(false);
+    const handleBulkBan = () => {
+        // Only active accounts can be banned; banned ones are skipped rather than toggled back
+        const targets = users.filter(u => selectedUsers.has(u._id) && u.isActive !== false);
+        if (targets.length === 0) {
+            addToast({ variant: 'error', title: 'Nothing to ban', message: 'The selected accounts are already banned.' });
+            return;
         }
+        setBanError('');
+        setBanDialog({ action: 'ban', userIds: targets.map(u => u._id), subject: `${targets.length} ${targets.length === 1 ? 'user' : 'users'}` });
     };
 
     // CSV export
@@ -224,29 +219,54 @@ export default function AdminUsersPage() {
 
     const handleToggleStatus = async (userId: string, currentlyActive: boolean) => {
         const userToChange = users.find(u => u._id === userId);
-        setConfirmAction({ type: 'ban', userId, username: userToChange?.username || 'user', detail: currentlyActive ? 'ban' : 'unban' });
+        setBanError('');
+        setBanDialog({ action: currentlyActive ? 'ban' : 'unban', userIds: [userId], subject: `@${userToChange?.username || 'user'}` });
     };
 
-    const executeToggleStatus = async () => {
-        if (!confirmAction || confirmAction.type !== 'ban') return;
-        const { userId } = confirmAction;
-        setActionLoading(userId);
+    const executeBan = async ({ reason, duration }: SanctionInput) => {
+        if (!banDialog) return;
+        const { action, userIds } = banDialog;
+        setBulkLoading(true);
+        setBanError('');
         try {
-            const data = await fetchApi(`/api/admin/users/${userId}/status`, {
-                method: 'PATCH',
-            });
-            setUsers(prev => prev.map(u => u._id === userId ? { ...u, ...data.data } : u));
-            addToast({
-                variant: 'success',
-                title: confirmAction.detail === 'ban' ? 'User Banned' : 'User Unbanned',
-                message: `User has been ${confirmAction.detail === 'ban' ? 'banned' : 'unbanned'}.`,
-            });
-        } catch (err: unknown) {
-            const message = err instanceof Error ? err.message : 'Failed to toggle status.';
-            addToast({ variant: 'error', title: 'Error', message });
+            const results = await Promise.allSettled(userIds.map(id =>
+                fetchApi(`/api/admin/users/${id}/status`, {
+                    method: 'PATCH',
+                    body: JSON.stringify({ isBanned: action === 'ban', reason: reason || undefined, duration }),
+                }).then(res => ({ id, data: res.data }))
+            ));
+            const done = results.flatMap(r => (r.status === 'fulfilled' ? [r.value] : []));
+            const failed = results.filter((r): r is PromiseRejectedResult => r.status === 'rejected');
+
+            if (done.length > 0) {
+                const updates = new Map(done.map(d => [d.id, d.data]));
+                setUsers(prev => prev.map(u => (updates.has(u._id) ? { ...u, ...updates.get(u._id) } : u)));
+            }
+
+            if (failed.length === 0) {
+                addToast({
+                    variant: 'success',
+                    title: action === 'ban' ? 'User Banned' : 'User Unbanned',
+                    message: userIds.length === 1
+                        ? `User has been ${action === 'ban' ? 'banned and signed out everywhere' : 'unbanned'}.`
+                        : `${done.length} users ${action === 'ban' ? 'banned' : 'unbanned'}.`,
+                });
+                setBanDialog(null);
+                setSelectedUsers(new Set());
+                setBulkMode(false);
+            } else if (userIds.length === 1) {
+                setBanError(failed[0].reason instanceof Error ? failed[0].reason.message : 'Failed to update status.');
+            } else {
+                addToast({
+                    variant: 'error',
+                    title: `${failed.length} of ${userIds.length} failed`,
+                    message: failed[0].reason instanceof Error ? failed[0].reason.message : 'Some accounts could not be updated.',
+                });
+                setBanDialog(null);
+                fetchUsers(pagination.page);
+            }
         } finally {
-            setActionLoading(null);
-            setConfirmAction(null);
+            setBulkLoading(false);
         }
     };
 
@@ -333,7 +353,7 @@ export default function AdminUsersPage() {
                             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg bg-red-500/20 text-red-400 hover:bg-red-500/30 transition-colors"
                         >
                             {bulkLoading ? <Loader2 className="w-3 h-3 animate-spin" /> : <Ban className="w-3 h-3" />}
-                            Toggle Ban
+                            Ban selected
                         </button>
                     </div>
                 )}
@@ -362,28 +382,31 @@ export default function AdminUsersPage() {
                     </select>
                 </div>
 
+                <UserSanctionDialog
+                    key={banDialog ? `${banDialog.action}:${banDialog.userIds.join(',')}` : 'closed'}
+                    action={banDialog ? banDialog.action : null}
+                    subject={banDialog ? banDialog.subject : ''}
+                    busy={bulkLoading}
+                    error={banError}
+                    onConfirm={executeBan}
+                    onCancel={() => { setBanDialog(null); setBanError(''); }}
+                />
+
                 {/* Confirmation Modal */}
                 {confirmAction && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-background)]/60 backdrop-blur-sm" onClick={() => setConfirmAction(null)}>
                         <div className="bg-gray-900 border border-white/10 rounded-2xl p-6 max-w-md w-full mx-4" role="dialog" aria-modal="true" aria-label="Confirm action" onClick={e => e.stopPropagation()}>
                             <h3 className="text-lg font-semibold text-white mb-2">
-                                {confirmAction.type === 'ban'
-                                    ? (confirmAction.detail === 'ban' ? 'Ban User' : 'Unban User')
-                                    : 'Change Role'}
+                                Change Role
                             </h3>
                             <p className="text-sm text-gray-400 mb-6">
-                                {confirmAction.type === 'ban'
-                                    ? `Are you sure you want to ${confirmAction.detail} "${confirmAction.username}"?`
-                                    : `Change "${confirmAction.username}" role to ${confirmAction.detail}?`}
+                                {`Change "${confirmAction.username}" role to ${confirmAction.detail}?`}
                             </p>
                             <div className="flex gap-3 justify-end">
                                 <button onClick={() => setConfirmAction(null)} className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors">Cancel</button>
                                 <button
-                                    onClick={() => confirmAction.type === 'ban' ? executeToggleStatus() : executeRoleChange()}
-                                    className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${confirmAction.type === 'ban' && confirmAction.detail === 'ban'
-                                        ? 'bg-red-500/20 text-red-400 hover:bg-red-500/30'
-                                        : 'bg-orange-500/20 text-orange-400 hover:bg-orange-500/30'
-                                        }`}
+                                    onClick={() => executeRoleChange()}
+                                    className="px-4 py-2 text-sm font-medium rounded-lg transition-colors bg-orange-500/20 text-orange-400 hover:bg-orange-500/30"
                                 >
                                     Confirm
                                 </button>

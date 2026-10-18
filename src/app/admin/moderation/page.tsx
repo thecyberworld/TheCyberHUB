@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
 import { fetchApi } from '@/lib/api';
-import { isModeratorRole } from '@/lib/roles';
+import { isModeratorRole, canSanctionUser } from '@/lib/roles';
 import {
     Flag,
     ArrowLeft,
@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { ModerationQueueItem, availableActions } from '@/components/admin/ModerationQueueItem';
 import { ModerationActionDialog } from '@/components/admin/ModerationActionDialog';
+import { UserModerationPanel } from '@/components/admin/UserModerationPanel';
 import {
     CONTENT_TYPE_LABELS,
     REASON_LABELS,
@@ -67,6 +68,7 @@ export default function AdminModerationPage() {
     const [selected, setSelected] = useState<Set<string>>(new Set());
     const [pending, setPending] = useState<Pending | null>(null);
     const [busy, setBusy] = useState(false);
+    const [panelUserId, setPanelUserId] = useState<string | null>(null);
 
     const allowed = !!user && isModeratorRole(user.role);
 
@@ -338,6 +340,11 @@ export default function AdminModerationPage() {
                                 disabled={busy}
                                 onSelect={(on) => toggle(entry, on)}
                                 onAction={(action) => setPending({ action, entries: [entry] })}
+                                onManageAuthor={
+                                    entry.content.author && canSanctionUser(user, { id: entry.content.author._id, role: entry.content.author.role })
+                                        ? () => setPanelUserId(entry.content.author!._id)
+                                        : undefined
+                                }
                             />
                         ))}
                     </ul>
@@ -372,6 +379,8 @@ export default function AdminModerationPage() {
                     </div>
                 )}
             </div>
+
+            <UserModerationPanel userId={panelUserId} onClose={() => setPanelUserId(null)} onChanged={() => loadStats()} />
 
             <ModerationActionDialog
                 key={pending ? `${pending.action}:${pending.entries.map(entryKey).join(',')}` : 'closed'}
