@@ -20,6 +20,7 @@ export const API_ENDPOINTS = {
     JOBS: { BASE: '/api/jobs', BY_SLUG: (slug: string) => `/api/jobs/${slug}`, APPLY: (id: string) => `/api/jobs/${id}/apply`, EMPLOYER: '/api/jobs/employer' },
     USERS: { BASE: '/api/users', BY_USERNAME: (username: string) => `/api/users/${username}`, SEARCH: '/api/users/search' },
     LEADERBOARD: { BASE: '/api/leaderboard' },
+    BADGES: { BASE: '/api/badges' },
     SEARCH: { BASE: '/api/search' },
     NOTIFICATIONS: { BASE: '/api/notifications', UNREAD: '/api/notifications/unread-count', READ: (id: string) => `/api/notifications/${id}/read`, READ_ALL: '/api/notifications/read-all' },
     BOOKMARKS: { BASE: '/api/bookmarks', COLLECTIONS: '/api/bookmarks/collections' },
@@ -28,6 +29,6 @@ export const API_ENDPOINTS = {
     LEARNING_PATHS: { BASE: '/api/learning-paths', BY_SLUG: (slug: string) => `/api/learning-paths/${slug}` },
     UPLOAD: { AVATAR: '/api/upload/avatar', MEDIA: '/api/upload/media' },
     HEALTH: { BASE: '/api/health' },
-    DAILY_CHALLENGE: { TODAY: '/api/daily-challenges/today', SUBMIT: '/api/daily-challenges/submit' },
+    DAILY_CHALLENGE: { TODAY: '/api/daily-challenge/today', SUBMIT: '/api/daily-challenge/submit', HISTORY: '/api/daily-challenge/history' },
     STREAK: { BASE: '/api/streak', CHECKIN: '/api/streak/checkin' },
 } as const;

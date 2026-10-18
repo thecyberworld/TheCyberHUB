@@ -8,6 +8,9 @@ import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
 import dynamic from 'next/dynamic';
 
+import AchievementsPanel from '@/components/badges/AchievementsPanel';
+import { useStreak } from '@/hooks/queries';
+
 const ProfileChart = dynamic(() => import('@/components/charts/ProfileChart'), { ssr: false });
 const ActivityHeatmap = dynamic(() => import('@/components/charts/ActivityHeatmap'), { ssr: false });
 import {
@@ -90,13 +93,7 @@ const ProfilePage = () => {
     const [activityLoading, setActivityLoading] = useState(true);
 
     // Streak & heatmap
-    interface StreakData {
-        currentStreak: number;
-        longestStreak: number;
-        totalActiveDays: number;
-        activityLog: { date: string; actions: string[]; xpEarned: number }[];
-    }
-    const [streakData, setStreakData] = useState<StreakData | null>(null);
+    const { data: streakData } = useStreak();
 
     // Profile completeness calculation
     const getProfileCompleteness = useCallback(() => {
@@ -242,19 +239,9 @@ const ProfilePage = () => {
                 setActivityLoading(false);
             }
         };
-        const fetchStreak = async () => {
-            if (!user) return;
-            try {
-                const data = await fetchApi('/api/streak/me', { credentials: 'include' });
-                setStreakData(data.data);
-            } catch {
-                // Streak is optional
-            }
-        };
 
         fetchStats();
         fetchActivity();
-        fetchStreak();
     }, [user]);
 
     // Generate mock performance curve based on actual points
@@ -742,13 +729,7 @@ const ProfilePage = () => {
                                     <Award className="w-5 h-5 text-orange-400" />
                                     <h3 className="text-lg font-semibold text-white">Achievements</h3>
                                 </div>
-                                <div className="text-center py-8">
-                                    <Award className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-                                    <p className="text-gray-400">Complete challenges to earn badges!</p>
-                                    <p className="text-sm text-gray-500 mt-1">
-                                        Achievements will be displayed here as you progress.
-                                    </p>
-                                </div>
+                                <AchievementsPanel username={user?.username} showProgress emptyText="Complete challenges to earn your first badge." />
                             </div>
 
                             {/* Activity Feed */}

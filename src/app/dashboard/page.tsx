@@ -31,6 +31,7 @@ import {
 import { SkeletonDashboard } from '@/components/ui/skeleton';
 import { fetchApi } from '@/lib/api';
 import StreakWidget from '@/components/StreakWidget';
+import AchievementsPanel from '@/components/badges/AchievementsPanel';
 const DailyChallenge = lazy(() => import('@/components/DailyChallenge'));
 
 interface ChallengeSummary {
@@ -276,57 +277,18 @@ const DashboardPage = () => {
 
                     {/* Achievements & Recommendations */}
                     <div className="grid lg:grid-cols-2 gap-6 mb-10">
-                        {/* Recent Achievements */}
+                        {/* Achievements */}
                         <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
                             <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
                                 <Award className="w-5 h-5 text-yellow-400" />
                                 Achievements
                             </h2>
-                            {challengesSolved > 0 || ctfPoints > 0 || eventsAttended > 0 ? (
-                                <div className="space-y-3">
-                                    {challengesSolved >= 1 && (
-                                        <div className="flex items-center gap-3 p-3 rounded-lg bg-green-500/5 border border-green-500/10">
-                                            <Flag className="w-5 h-5 text-green-400" />
-                                            <div>
-                                                <p className="text-sm font-medium text-white">First Blood</p>
-                                                <p className="text-xs text-gray-500">Solved your first challenge</p>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {ctfPoints >= 100 && (
-                                        <div className="flex items-center gap-3 p-3 rounded-lg bg-yellow-500/5 border border-yellow-500/10">
-                                            <Star className="w-5 h-5 text-yellow-400" />
-                                            <div>
-                                                <p className="text-sm font-medium text-white">Rising Star</p>
-                                                <p className="text-xs text-gray-500">Earned 100+ CTF points</p>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {challengesSolved >= 10 && (
-                                        <div className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/10">
-                                            <Award className="w-5 h-5 text-purple-400" />
-                                            <div>
-                                                <p className="text-sm font-medium text-white">Problem Solver</p>
-                                                <p className="text-xs text-gray-500">Solved 10+ challenges</p>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {eventsAttended >= 1 && (
-                                        <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/10">
-                                            <Calendar className="w-5 h-5 text-blue-400" />
-                                            <div>
-                                                <p className="text-sm font-medium text-white">Event Goer</p>
-                                                <p className="text-xs text-gray-500">Attended your first event</p>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-                            ) : (
-                                <div className="text-center py-6">
-                                    <Award className="w-10 h-10 text-gray-600 mx-auto mb-2" />
-                                    <p className="text-gray-500 text-sm">Complete challenges and attend events to earn badges</p>
-                                </div>
-                            )}
+                            <AchievementsPanel
+                                username={user.username}
+                                limit={4}
+                                showProgress
+                                emptyText="Complete challenges and attend events to earn badges"
+                            />
                         </div>
 
                         {/* Personalized Recommendations */}
