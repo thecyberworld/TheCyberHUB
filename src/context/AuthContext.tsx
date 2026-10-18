@@ -51,6 +51,8 @@ interface User {
     };
 }
 
+export type TwoFactorChallenge = { requires2FA: true; tempToken: string };
+
 interface AuthContextType {
     user: User | null;
     token: string | null;
@@ -73,8 +75,8 @@ interface AuthContextType {
     resetPassword: (token: string, password: string) => Promise<void>;
     requestVerification: () => Promise<string>;
     verifyEmail: (token: string) => Promise<void>;
-    loginWithGoogle: (idToken: string) => Promise<void>;
-    loginWithGithub: (code: string) => Promise<void>;
+    loginWithGoogle: (idToken: string) => Promise<TwoFactorChallenge | void>;
+    loginWithGithub: (code: string) => Promise<TwoFactorChallenge | void>;
     updateBookmarks: (data: Partial<NonNullable<User['bookmarks']>>) => Promise<void>;
     updateProgress: (payload: { roadmapId: string; completedSteps: string[]; percent: number }) => Promise<void>;
 }
@@ -185,6 +187,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const login = async (email: string, password: string): Promise<{ requires2FA: boolean; tempToken: string } | void> => {
         const response = await fetch(`${API_URL}/api/auth/login`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password }),
         });
@@ -210,6 +213,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const verify2faLogin = async (tempToken: string, code: string) => {
         const response = await fetch(`${API_URL}/api/auth/2fa/verify`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ tempToken, code }),
         });
@@ -230,6 +234,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const register = async (name: string, email: string, password: string, username?: string) => {
         const response = await fetch(`${API_URL}/api/auth/register`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, password, ...(username && { username }) }),
         });
@@ -382,16 +387,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-    const loginWithGoogle = async (idToken: string) => {
+    const loginWithGoogle = async (idToken: string): Promise<TwoFactorChallenge | void> => {
         const response = await fetch(`${API_URL}/api/auth/oauth/google`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idToken }),
         });
 
         const result = await response.json();
         if (!response.ok) {
-            throw new Error(result.error || 'Google login failed');
+            throw new Error(result.error?.message || (typeof result.error === 'string' ? result.error : 'Google login failed'));
+        }
+
+        if (result.requires2FA) {
+            return { requires2FA: true, tempToken: result.tempToken };
         }
 
         safeLocalStorage.setItem('token', result.token);
@@ -399,16 +409,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         setUser(result.data);
     };
 
-    const loginWithGithub = async (code: string) => {
+    const loginWithGithub = async (code: string): Promise<TwoFactorChallenge | void> => {
         const response = await fetch(`${API_URL}/api/auth/oauth/github`, {
             method: 'POST',
+            credentials: 'include',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ code }),
         });
 
         const result = await response.json();
         if (!response.ok) {
-            throw new Error(result.error || 'GitHub login failed');
+            throw new Error(result.error?.message || (typeof result.error === 'string' ? result.error : 'GitHub login failed'));
+        }
+
+        if (result.requires2FA) {
+            return { requires2FA: true, tempToken: result.tempToken };
         }
 
         safeLocalStorage.setItem('token', result.token);

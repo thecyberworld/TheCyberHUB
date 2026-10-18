@@ -9,6 +9,7 @@ import { useToast } from '@/context/ToastContext';
 import { useDebounce } from '@/hooks/useDebounce';
 import { fetchApi } from '@/lib/api';
 import { loginSchema, registerSchema } from '@/lib/validations';
+import { takePending2fa } from '@/lib/pending2fa';
 
 type AuthMode = 'login' | 'register' | '2fa';
 
@@ -111,6 +112,16 @@ const AuthPage = () => {
     const passwordStrength = getPasswordStrength(formData.password);
     const strengthLabels = ['Weak', 'Fair', 'Good', 'Strong'];
     const strengthColors = ['bg-red-500', 'bg-yellow-500', 'bg-blue-500', 'bg-green-500'];
+
+    // An OAuth sign-in for an account with 2FA lands here with the challenge stashed.
+    useEffect(() => {
+        const pending = takePending2fa();
+        if (pending) {
+            setTempToken(pending);
+            setMode('2fa');
+            setSuccess('Please enter your 2FA code.');
+        }
+    }, []);
 
     useEffect(() => {
         if (!authLoading && user) {
