@@ -11,6 +11,7 @@ import { ROLE_BADGES } from '@/types/forum';
 import VoteButtons from './VoteButtons';
 import MarkdownContent from './MarkdownContent';
 import { isModeratorRole } from '@/lib/roles';
+import { ReportContentButton } from '@/components/ui/ReportContentButton';
 import ReplyForm from './ReplyForm';
 
 interface ReplyThreadProps {
@@ -62,7 +63,8 @@ export default function ReplyThread({
     const [editContent, setEditContent] = useState(reply.content);
     const { isOpen: confirmOpen, confirm: showConfirm, onConfirm, onCancel } = useConfirmDialog();
 
-    const isAuthor = currentUserId === reply.author._id;
+    const author = reply.author;
+    const isAuthor = !!author && currentUserId === author._id;
     const isDiscussionAuthor = currentUserId === discussionAuthorId;
     const isModerator = isModeratorRole(userRole);
     const canEdit = isAuthor || isModerator;
@@ -86,8 +88,41 @@ export default function ReplyThread({
         }
     };
 
+    const childThreads = reply.children && reply.children.length > 0 && (
+        <div className="mt-4 space-y-4">
+            {reply.children.map((child) => (
+                <ReplyThread
+                    key={child._id}
+                    reply={child}
+                    discussionId={discussionId}
+                    discussionAuthorId={discussionAuthorId}
+                    currentUserId={currentUserId}
+                    userRole={userRole}
+                    depth={depth + 1}
+                    onVote={onVote}
+                    onAccept={onAccept}
+                    onReply={onReply}
+                    onEdit={onEdit}
+                    onDelete={onDelete}
+                />
+            ))}
+        </div>
+    );
+
+    // A moderator removed this reply: keep its place in the thread so the replies under it still read
+    if (reply.isHidden || !author) {
+        return (
+            <div id={`reply-${reply._id}`} className={cn('relative', depth > 0 && 'ml-8 pl-4 border-l border-white/10')}>
+                <div className="rounded-lg border border-dashed border-white/10 bg-black/20 px-4 py-3 text-sm italic text-gray-500">
+                    This reply was removed by a moderator.
+                </div>
+                {childThreads}
+            </div>
+        );
+    }
+
     return (
-        <div className={cn('relative', depth > 0 && 'ml-8 pl-4 border-l border-white/10')}>
+        <div id={`reply-${reply._id}`} className={cn('relative', depth > 0 && 'ml-8 pl-4 border-l border-white/10')}>
             <div
                 className={cn(
                     'rounded-lg p-4',
@@ -120,13 +155,13 @@ export default function ReplyThread({
                         {/* Author info */}
                         <div className="flex items-center gap-2 mb-3">
                             <Link
-                                href={`/profile/${reply.author.username}`}
+                                href={`/profile/${author.username}`}
                                 className="flex items-center gap-2 hover:text-orange-400 transition-colors"
                             >
-                                {reply.author.avatar ? (
+                                {author.avatar ? (
                                     <Image
-                                        src={reply.author.avatar}
-                                        alt={reply.author.username}
+                                        src={author.avatar}
+                                        alt={author.username}
                                         width={24}
                                         height={24}
                                         className="w-6 h-6 rounded-full"
@@ -134,15 +169,15 @@ export default function ReplyThread({
                                     />
                                 ) : (
                                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-sm text-white font-medium">
-                                        {reply.author.username[0].toUpperCase()}
+                                        {author.username[0].toUpperCase()}
                                     </div>
                                 )}
                                 <span className="text-sm font-medium text-white">
-                                    {reply.author.username}
+                                    {author.username}
                                 </span>
-                                {reply.author.role && reply.author.role !== 'user' && ROLE_BADGES[reply.author.role] && (
-                                    <span className={`text-xs px-1.5 py-0.5 rounded ${ROLE_BADGES[reply.author.role].bgColor} ${ROLE_BADGES[reply.author.role].color} ${ROLE_BADGES[reply.author.role].borderColor} border`}>
-                                        {ROLE_BADGES[reply.author.role].label}
+                                {author.role && author.role !== 'user' && ROLE_BADGES[author.role] && (
+                                    <span className={`text-xs px-1.5 py-0.5 rounded ${ROLE_BADGES[author.role].bgColor} ${ROLE_BADGES[author.role].color} ${ROLE_BADGES[author.role].borderColor} border`}>
+                                        {ROLE_BADGES[author.role].label}
                                     </span>
                                 )}
                             </Link>
@@ -209,6 +244,10 @@ export default function ReplyThread({
                                     </button>
                                 )}
 
+                                {currentUserId && !isAuthor && (
+                                    <ReportContentButton contentType="reply" contentId={reply._id} authorId={author._id} />
+                                )}
+
                                 {(canEdit || canDelete) && (
                                     <div className="relative">
                                         <button
@@ -271,7 +310,7 @@ export default function ReplyThread({
                             setShowReplyForm(false);
                         }}
                         onCancel={() => setShowReplyForm(false)}
-                        placeholder={`Reply to ${reply.author.username}...`}
+                        placeholder={`Reply to ${author.username}...`}
                     />
                 </div>
             )}
@@ -287,26 +326,7 @@ export default function ReplyThread({
             />
 
             {/* Nested replies */}
-            {reply.children && reply.children.length > 0 && (
-                <div className="mt-4 space-y-4">
-                    {reply.children.map((child) => (
-                        <ReplyThread
-                            key={child._id}
-                            reply={child}
-                            discussionId={discussionId}
-                            discussionAuthorId={discussionAuthorId}
-                            currentUserId={currentUserId}
-                            userRole={userRole}
-                            depth={depth + 1}
-                            onVote={onVote}
-                            onAccept={onAccept}
-                            onReply={onReply}
-                            onEdit={onEdit}
-                            onDelete={onDelete}
-                        />
-                    ))}
-                </div>
-            )}
+            {childThreads}
         </div>
     );
 }

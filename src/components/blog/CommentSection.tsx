@@ -7,6 +7,8 @@ import { MessageSquare, ThumbsUp, Reply, Trash2, Loader2, Send, User } from 'luc
 import { useAuth } from '@/context/AuthContext';
 import { fetchApi } from '@/lib/api';
 import { ConfirmDialog, useConfirmDialog } from '@/components/ui/ConfirmDialog';
+import { ReportContentButton } from '@/components/ui/ReportContentButton';
+import { isModeratorRole } from '@/lib/roles';
 
 interface Comment {
     _id: string;
@@ -158,7 +160,10 @@ const CommentSection: React.FC<CommentSectionProps> = ({ blogId }) => {
                                 <Reply className="w-3.5 h-3.5" /> Reply
                             </button>
                         )}
-                        {user && (user.id === comment.author._id || user.role === 'admin') && (
+                        {user && user.id !== comment.author._id && (
+                            <ReportContentButton contentType="comment" contentId={comment._id} authorId={comment.author._id} />
+                        )}
+                        {user && (user.id === comment.author._id || isModeratorRole(user.role)) && (
                             <button onClick={() => deleteComment(comment._id)} className="flex items-center gap-1 text-xs text-gray-500 hover:text-red-400" aria-label="Delete comment">
                                 <Trash2 className="w-3.5 h-3.5" />
                             </button>

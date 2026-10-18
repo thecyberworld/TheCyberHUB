@@ -110,7 +110,11 @@ export default function NewDiscussionPage() {
             <div className="max-w-3xl mx-auto px-4 py-8">
                 <h1 className="text-2xl font-bold text-white mb-2">Start a Discussion</h1>
                 <p className="text-gray-400 mb-8">
-                    Ask a question, share knowledge, or start a conversation with the community.
+                    Ask a question, share knowledge, or start a conversation with the community. Please read the{' '}
+                    <Link href="/community-guidelines" className="text-orange-400 hover:underline" target="_blank">
+                        community guidelines
+                    </Link>{' '}
+                    first.
                 </p>
 
                 {error && (

@@ -389,7 +389,7 @@ const BlogPostPage = () => {
                                 initialIsBookmarked={!!isBookmarked}
                             />
                             <SocialShareButtons title={blog.title} />
-                            <ReportContentButton contentType="blog" contentId={blog._id} />
+                            <ReportContentButton contentType="blog" contentId={blog._id} authorId={blog.author?._id} />
                         </div>
 
                         {/* Edit/Delete Buttons (Owner or Admin only) */}

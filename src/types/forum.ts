@@ -6,7 +6,7 @@ export interface Discussion {
         _id: string;
         username: string;
         avatar?: string;
-        role?: 'user' | 'moderator' | 'admin';
+        role?: 'user' | 'moderator' | 'admin' | 'owner';
     };
     category: Category;
     tags: string[];
@@ -32,12 +32,14 @@ export interface Reply {
     discussion: string;
     parent?: string;
     content: string;
+    // Null for a reply a moderator removed (it stays as a placeholder so its children keep their place)
     author: {
         _id: string;
         username: string;
         avatar?: string;
-        role?: 'user' | 'moderator' | 'admin';
-    };
+        role?: 'user' | 'moderator' | 'admin' | 'owner';
+    } | null;
+    isHidden?: boolean;
     upvotes: number;
     downvotes: number;
     isAccepted: boolean;

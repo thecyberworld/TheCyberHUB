@@ -75,6 +75,11 @@ const staticRoutes = [
         priority: 0.8,
     },
     {
+        url: '/community-guidelines',
+        changeFrequency: 'yearly' as const,
+        priority: 0.3,
+    },
+    {
         url: '/leaderboard',
         changeFrequency: 'daily' as const,
         priority: 0.7,
