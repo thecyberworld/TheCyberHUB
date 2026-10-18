@@ -54,9 +54,9 @@ lerna-debug.log*
 .env.test.local
 .env.production.local
 
-# Environment files (keep out of git)
+# Environment files (keep out of git). .env.example is tracked on purpose.
 .env.local
-.env.example
+!.env.example
 
 # Vercel
 .vercel

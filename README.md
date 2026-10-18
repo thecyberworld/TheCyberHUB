@@ -76,7 +76,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-The frontend connects to the TheCyberHub API. Set `NEXT_PUBLIC_API_URL` in your `.env.local` to point to the API server.
+The frontend connects to the TheCyberHub API. Set `NEXT_PUBLIC_API_URL` in your `.env.local` to point to the API server. To run the API yourself, see the [thecyberhub-core README](https://github.com/th3cyb3rhub/thecyberhub-core#quick-start) (it listens on port 5001 and includes a `docker-compose.yml` for local MongoDB and Redis). `NEXT_PUBLIC_*` values are baked in at build time, so restart `npm run dev` after changing them.
 
 ---
 
@@ -169,7 +169,8 @@ npm run lint     # Fix any lint warnings
 npm run dev          # Dev server (Turbopack)
 npm run build        # Production build
 npm run lint         # ESLint
-npm test             # Vitest unit tests
+npx tsc --noEmit     # Type check
+npm test             # Vitest unit tests (watch mode); use `npm run test:ci` for a single run
 npm run test:e2e     # Playwright E2E
 ```
 

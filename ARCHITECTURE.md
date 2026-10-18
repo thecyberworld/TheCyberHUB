@@ -334,7 +334,9 @@ The Socket.IO server initializes in `server.js` after the HTTP server starts. Au
 
 ## Deployment Architecture
 
-### Docker Compose (Production)
+### Docker Compose (Production, planned)
+
+> Not in either repository yet. `thecyberhub-core` ships a `docker-compose.yml` that starts only MongoDB and Redis for local development. A full-stack compose file (API and frontend containers) is still to be written; the layout below is the intended shape.
 
 ```
 docker-compose.yml
@@ -350,7 +352,7 @@ docker-compose.yml
   |     - Memory limit: 512MB
   |
   +-- api (thecyberhub-core)
-  |     - Port: 5000:5001
+  |     - Port: 5001:5001
   |     - Depends on: mongodb, redis (healthy)
   |     - Health check: HTTP GET /api/health
   |     - Memory limit: 1GB
