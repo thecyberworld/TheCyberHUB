@@ -10,8 +10,19 @@ import { describe, it, expect } from 'vitest';
 // Mock implementations for testing without full React setup
 // In a real setup, these would use @testing-library/react
 
+interface MockAchievement {
+    id: string;
+    name: string;
+    description: string;
+    icon: string;
+    tier: 'bronze' | 'silver' | 'gold' | 'platinum';
+    earnedAt?: string;
+    progress?: number;
+    requirement?: string;
+}
+
 describe('AchievementBadge Component', () => {
-    const mockEarnedAchievement = {
+    const mockEarnedAchievement: MockAchievement = {
         id: '1',
         name: 'First Blood',
         description: 'Solve your first challenge',
@@ -20,7 +31,7 @@ describe('AchievementBadge Component', () => {
         earnedAt: '2024-01-15T10:00:00Z',
     };
 
-    const mockLockedAchievement = {
+    const mockLockedAchievement: MockAchievement = {
         id: '2',
         name: 'Challenge Master',
         description: 'Solve 50 challenges',
