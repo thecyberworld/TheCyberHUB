@@ -9,6 +9,7 @@ import { useToast } from '@/context/ToastContext';
 import { useDebounce } from '@/hooks/useDebounce';
 import { fetchApi } from '@/lib/api';
 import { loginSchema, registerSchema } from '@/lib/validations';
+import { safeRedirectPath } from '@/lib/safeRedirect';
 import { takePending2fa } from '@/lib/pending2fa';
 
 type AuthMode = 'login' | 'register' | '2fa';
@@ -23,7 +24,7 @@ const AuthPage = () => {
     const router = useRouter();
     const { user, loading: authLoading, login, verify2faLogin, register } = useAuth();
     const searchParams = useSearchParams();
-    const redirect = searchParams.get('redirect') || '/profile';
+    const redirect = safeRedirectPath(searchParams.get('redirect'));
     const { addToast } = useToast();
     const [mode, setMode] = useState<AuthMode>('login');
     const [showPassword, setShowPassword] = useState(false);
