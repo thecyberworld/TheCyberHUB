@@ -11,3 +11,4 @@ export * from './useSearch';
 export * from './useDailyChallenge';
 export * from './useStreak';
 export * from './useBookmarks';
+export * from './useBadges';

@@ -1,18 +1,27 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchApi } from '@/lib/api';
+import { getMyStreak, checkInToday } from '@/lib/api/gamification';
+import { useAuth } from '@/context/AuthContext';
 
+/** The signed-in user's streak. One shared cache entry, so the dashboard and profile make one request. */
 export function useStreak() {
+    const { user } = useAuth();
     return useQuery({
-        queryKey: ['streak'],
-        queryFn: () => fetchApi('/api/streak/me'),
-        staleTime: 10 * 60 * 1000,
+        queryKey: ['streak', user?.id ?? null],
+        queryFn: getMyStreak,
+        select: (res) => res.data,
+        enabled: !!user,
+        staleTime: 5 * 60 * 1000,
+        retry: 1,
     });
 }
 
 export function useCheckin() {
     const qc = useQueryClient();
     return useMutation({
-        mutationFn: () => fetchApi('/api/streak/checkin', { method: 'POST' }),
-        onSuccess: () => qc.invalidateQueries({ queryKey: ['streak'] }),
+        mutationFn: checkInToday,
+        onSuccess: () => {
+            qc.invalidateQueries({ queryKey: ['streak'] });
+            qc.invalidateQueries({ queryKey: ['badges'] });
+        },
     });
 }

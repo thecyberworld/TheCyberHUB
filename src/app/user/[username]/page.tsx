@@ -21,6 +21,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { fetchApi } from '@/lib/api';
+import AchievementsPanel from '@/components/badges/AchievementsPanel';
 
 interface PublicUser {
     id: string;
@@ -297,6 +298,14 @@ const PublicProfilePage = () => {
                             <p className="text-sm text-gray-500">Events</p>
                         </div>
                         <p className="text-2xl font-bold text-white">{user.stats?.eventsAttended || 0}</p>
+                    </div>
+                </div>
+
+                {/* Achievements */}
+                <div className="mt-8">
+                    <h2 className="text-lg font-semibold text-white mb-4">Achievements</h2>
+                    <div className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
+                        <AchievementsPanel username={user.username} emptyText={`${user.name} has not earned any badges yet.`} />
                     </div>
                 </div>
 

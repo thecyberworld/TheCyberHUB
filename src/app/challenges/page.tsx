@@ -27,7 +27,9 @@ import {
 import Footer from '@/components/Footer';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/ui/EmptyState';
-import { useChallenges, useLeaderboard } from '@/hooks/queries';
+import { useChallenges } from '@/hooks/queries';
+import LeaderboardView from '@/components/leaderboard/LeaderboardView';
+import type { ChallengeCategory, LeaderboardPeriod } from '@/types/gamification';
 
 interface Challenge {
     _id: string;
@@ -46,15 +48,6 @@ interface Challenge {
     hints?: { cost: number; unlocked?: boolean }[];
     solved?: boolean;
     createdAt: string;
-}
-
-interface LeaderboardEntry {
-    _id: string;
-    username: string;
-    name?: string;
-    score: number;
-    solves: number;
-    rank: number;
 }
 
 const difficultyConfig = {
@@ -109,20 +102,16 @@ const ChallengesPage = () => {
     const [selectedDifficulty, setSelectedDifficulty] = useState<string>(searchParams.get('difficulty') || 'all');
     const [solvedFilter, setSolvedFilter] = useState<'all' | 'unsolved' | 'solved'>((searchParams.get('solved') as 'all' | 'unsolved' | 'solved') || 'all');
     const [showLeaderboard, setShowLeaderboard] = useState(false);
+    const [boardPeriod, setBoardPeriod] = useState<LeaderboardPeriod>('all');
+    const [boardCategory, setBoardCategory] = useState<ChallengeCategory | null>(null);
 
     const { data: challengesData, isLoading: challengesLoading, isError: challengesError, refetch: refetchChallenges } = useChallenges();
-    const { data: leaderboardData, isLoading: leaderboardLoading } = useLeaderboard({ limit: 10 });
 
     const challenges: Challenge[] = (() => {
         const raw = challengesData;
         return Array.isArray(raw) ? raw : raw?.challenges || raw?.data || [];
     })();
-    const leaderboard: LeaderboardEntry[] = (() => {
-        const raw = leaderboardData;
-        if (Array.isArray(raw)) return raw.slice(0, 10);
-        return (raw?.data || []).slice(0, 10);
-    })();
-    const loading = challengesLoading || leaderboardLoading;
+    const loading = challengesLoading;
 
     const updateFilters = useCallback((key: string, value: string) => {
         const params = new URLSearchParams(searchParams.toString());
@@ -165,10 +154,6 @@ const ChallengesPage = () => {
     // Stats
     const totalSolved = challenges.filter(c => c.solved).length;
     const totalPoints = challenges.filter(c => c.solved).reduce((acc, c) => acc + c.points, 0);
-    const currentUserEntry = user
-        ? leaderboard.find(entry => entry.username === user.username)
-        : undefined;
-
     if (challengesError) {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center px-4">
@@ -250,71 +235,13 @@ const ChallengesPage = () => {
 
             <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
                 {showLeaderboard ? (
-                    /* Leaderboard */
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden">
-                        <div className="p-5 border-b border-white/10">
-                            <div className="flex items-center justify-between gap-4">
-                                <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-                                    <Trophy className="w-5 h-5 text-yellow-400" />
-                                    Top Players
-                                </h2>
-                                {user && (
-                                    <div className="text-xs text-gray-400 text-right">
-                                        {currentUserEntry ? (
-                                            <span>
-                                                Your rank: #{
-                                                    currentUserEntry.rank ??
-                                                    (leaderboard.findIndex(e => e._id === currentUserEntry._id) + 1)
-                                                }
-                                                {' '}
-                                                {currentUserEntry.score} pts
-                                            </span>
-                                        ) : (
-                                            <span>Solve challenges to enter the leaderboard</span>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                        <div className="divide-y divide-white/5">
-                            {leaderboard.map((entry, index) => {
-                                const isCurrentUser = !!user && entry.username === user.username;
-                                return (
-                                    <div
-                                        key={entry._id}
-                                        className={`flex items-center gap-4 p-4 hover:bg-white/5 transition-colors ${index < 3 ? 'bg-white/[0.02]' : ''
-                                            } ${isCurrentUser ? 'border border-orange-500/40 bg-orange-500/10' : ''}`}
-                                    >
-                                        <div
-                                            className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${index === 0
-                                                    ? 'bg-yellow-500/20 text-yellow-400'
-                                                    : index === 1
-                                                        ? 'bg-gray-400/20 text-gray-300'
-                                                        : index === 2
-                                                            ? 'bg-orange-600/20 text-orange-400'
-                                                            : 'bg-white/5 text-gray-500'
-                                                }`}
-                                        >
-                                            {index + 1}
-                                        </div>
-                                        <div className="flex-1">
-                                            <Link
-                                                href={`/user/${entry.username}`}
-                                                className="text-white font-medium hover:text-orange-400 transition-colors"
-                                            >
-                                                {entry.name || entry.username}
-                                            </Link>
-                                            <p className="text-xs text-gray-500">@{entry.username}</p>
-                                        </div>
-                                        <div className="text-right">
-                                            <p className="text-white font-semibold">{entry.score} pts</p>
-                                            <p className="text-xs text-gray-500">{entry.solves} solves</p>
-                                        </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
+                    <LeaderboardView
+                        period={boardPeriod}
+                        onPeriodChange={setBoardPeriod}
+                        category={boardCategory}
+                        onCategoryChange={setBoardCategory}
+                        limit={10}
+                    />
                 ) : (
                     <>
                         {/* Filters */}

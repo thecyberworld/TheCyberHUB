@@ -85,6 +85,11 @@ const staticRoutes = [
         priority: 0.7,
     },
     {
+        url: '/badges',
+        changeFrequency: 'weekly' as const,
+        priority: 0.5,
+    },
+    {
         url: '/roadmaps',
         changeFrequency: 'monthly' as const,
         priority: 0.7,
