@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { mockEmptyApi, signInAs } from './helpers';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
@@ -6,21 +7,18 @@ test.describe('Events Listing', () => {
     test('should display events page', async ({ page }) => {
         await page.goto(`${BASE_URL}/events`);
         
-        await expect(page.locator('h1')).toContainText(/events/i);
+        await expect(page.locator('h1')).toContainText(/learn, compete|events/i);
     });
 
     test('should show event cards', async ({ page }) => {
+        await mockEmptyApi(page);
         await page.goto(`${BASE_URL}/events`);
-        
-        // Should have event cards or empty state
-        const eventCards = page.locator('[data-testid="event-card"], article, .event-card');
-        const emptyState = page.locator('text=/no events|coming soon/i');
-        
-        const hasCards = await eventCards.count() > 0;
-        const hasEmptyState = await emptyState.count() > 0;
-        
-        // Should have either events or empty state
-        expect(hasCards || hasEmptyState).toBeTruthy();
+
+        // Cards are links to /events/<slug>; with an empty API the page falls back to sample events
+        const eventCards = page.locator('a[href^="/events/"]');
+        const emptyState = page.getByText(/no events found/i);
+
+        await expect(eventCards.first().or(emptyState)).toBeVisible();
     });
 
     test('should filter events by category', async ({ page }) => {
@@ -240,25 +238,12 @@ test.describe('Event Calendar', () => {
 });
 
 test.describe('My Events', () => {
-    test('should display user registered events', async ({ page, context }) => {
-        // Mock logged in state
-        await context.addCookies([{
-            name: 'token',
-            value: 'fake-token-for-testing',
-            domain: 'localhost',
-            path: '/',
-        }]);
-        
+    test('should display user registered events', async ({ page }) => {
+        await signInAs(page);
+
         await page.goto(`${BASE_URL}/my-events`);
-        
-        // Should show user's events or empty state
-        const myEvents = page.locator('[data-testid="event-card"], article');
-        const emptyState = page.locator('text=/no events|haven\'t registered/i');
-        
-        const hasEvents = await myEvents.count() > 0;
-        const hasEmptyState = await emptyState.count() > 0;
-        
-        expect(hasEvents || hasEmptyState).toBeTruthy();
+
+        await expect(page.getByRole('heading', { name: 'No registered events' })).toBeVisible();
     });
 
     test('should require authentication', async ({ page }) => {

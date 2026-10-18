@@ -19,6 +19,9 @@ export default defineConfig({
     use: {
         baseURL,
         headless: true,
+        // Production builds ship a CSP whose connect-src omits the API origin; bypass it so
+        // page.route() mocks (e2e/helpers.ts) can answer API calls
+        bypassCSP: true,
         screenshot: 'only-on-failure',
         video: 'retain-on-failure',
         trace: 'on-first-retry',

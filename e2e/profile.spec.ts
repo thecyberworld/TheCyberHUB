@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { signInAs } from './helpers';
 
 const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
 
@@ -94,30 +95,14 @@ test.describe('Profile Page', () => {
         }
     });
 
-    test('should have multiple profile tabs', async ({ page, context }) => {
-        await context.addCookies([{
-            name: 'token',
-            value: 'fake-token-for-testing',
-            domain: 'localhost',
-            path: '/',
-        }]);
+    test('should have multiple profile tabs', async ({ page }) => {
+        await signInAs(page);
 
         await page.goto(`${BASE_URL}/profile`);
 
-        // Look for tabs (Stats, Profile, Security, Privacy)
-        const statsTab = page.locator('button').filter({ hasText: /stats/i });
-        const profileTab = page.locator('button').filter({ hasText: /profile/i });
-        const securityTab = page.locator('button').filter({ hasText: /security/i });
-        const privacyTab = page.locator('button').filter({ hasText: /privacy/i });
-
-        // At least some tabs should exist
-        const tabCount =
-            await statsTab.count() +
-            await profileTab.count() +
-            await securityTab.count() +
-            await privacyTab.count();
-
-        expect(tabCount).toBeGreaterThanOrEqual(2);
+        for (const name of [/stats/i, /profile/i, /security/i, /privacy/i]) {
+            await expect(page.getByRole('button', { name }).first()).toBeVisible();
+        }
     });
 
     test('should display stats tab with user statistics', async ({ page, context }) => {
