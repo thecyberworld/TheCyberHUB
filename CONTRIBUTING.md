@@ -19,46 +19,52 @@ TheCyberHub is a monorepo with a Next.js 15 frontend and an Express.js 4 backend
 
 ### Prerequisites
 
-- Node.js 18+ and npm
+- Node.js 20+ and npm
 - Git
-- MongoDB 7 (local or Docker)
-- Redis 7 (local or Docker)
+- MongoDB 7 (local, Docker or Atlas)
+- Redis 7 (optional in development; local or Docker)
+- Docker (recommended, to run MongoDB and Redis)
 - A code editor (VS Code recommended)
 
 ### Repository Structure
 
+The frontend and backend are separate repositories. Clone them side by side:
+
 ```
-TheCyberHub/              # Monorepo root
-  TheCyberHub/            # Next.js 15 frontend (App Router, React 19, TypeScript 5.8)
-  thecyberhub-core/       # Express.js 4 backend (MongoDB, Redis, Socket.IO)
-  docker-compose.yml      # Production: MongoDB + Redis + API + Frontend
-  docker-compose.dev.yml  # Dev override with hot reload
+th3cyb3rhub/
+  TheCyberHub/            # this repo: Next.js 15 frontend (App Router, React 19, TypeScript 5.8)
+  thecyberhub-core/       # backend: Express.js 4 (MongoDB, Redis, Socket.IO)
 ```
+
+The default branch of both repositories is `dev`.
 
 ## Development Setup
 
-### Option 1: Docker (Recommended for Quick Start)
+### Option 1: Frontend only (Quickest)
+
+Uses the hosted dev API, so no database or backend is needed:
 
 ```bash
-# Clone the repository
-git clone https://github.com/thecyberhub/TheCyberHub.git
+git clone https://github.com/th3cyb3rhub/TheCyberHub.git
 cd TheCyberHub
-
-# Start all services with hot reload
-docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+npm install
+cp .env.example .env.local     # points at https://dev-api.thecyberhub.org
+npm run dev
 ```
 
-This starts MongoDB, Redis, the API, and the frontend. Visit `http://localhost:3000`.
+Visit `http://localhost:3000`.
 
-### Option 2: Manual Setup
+### Option 2: Full local stack
 
 #### Backend (thecyberhub-core)
 
 ```bash
+git clone https://github.com/th3cyb3rhub/thecyberhub-core.git
 cd thecyberhub-core
 npm install
+docker compose up -d           # MongoDB and Redis for local development
 cp .env.example .env.development
-# Edit .env.development with your MongoDB URI and secrets
+# Edit .env.development: set MONGO_URI and generate secrets (openssl rand -hex 32)
 npm run dev
 ```
 
@@ -76,7 +82,7 @@ Required environment variables:
 cd TheCyberHub
 npm install
 cp .env.example .env.local
-# Set NEXT_PUBLIC_API_URL=http://localhost:5001
+# In .env.local, set NEXT_PUBLIC_API_URL=http://localhost:5001
 npm run dev
 ```
 
