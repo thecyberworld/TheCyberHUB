@@ -15,6 +15,8 @@ interface ModerationQueueItemProps {
     disabled?: boolean;
     onSelect: (selected: boolean) => void;
     onAction: (action: ModerationAction) => void;
+    /** Open the author's moderation panel; omit when the viewer may not sanction them */
+    onManageAuthor?: () => void;
 }
 
 const formatDate = (iso: string) =>
@@ -31,7 +33,7 @@ export function availableActions(entry: ModerationQueueEntry): ModerationAction[
     return concealed ? ['restore'] : [];
 }
 
-export function ModerationQueueItem({ entry, selected, disabled = false, onSelect, onAction }: ModerationQueueItemProps) {
+export function ModerationQueueItem({ entry, selected, disabled = false, onSelect, onAction, onManageAuthor }: ModerationQueueItemProps) {
     const { content } = entry;
     const label = CONTENT_TYPE_LABELS[entry.contentType] || entry.contentType;
     const heading = content.title || label;
@@ -95,6 +97,16 @@ export function ModerationQueueItem({ entry, selected, disabled = false, onSelec
                             <span>
                                 By <span className="text-gray-400">@{content.author.username}</span>
                                 {content.author.role && content.author.role !== 'user' && ` (${content.author.role})`}
+                                {onManageAuthor && (
+                                    <button
+                                        type="button"
+                                        onClick={onManageAuthor}
+                                        className="ml-2 text-orange-400 hover:text-orange-300"
+                                    >
+                                        Manage user{' '}
+                                        <span className="sr-only">@{content.author.username}</span>
+                                    </button>
+                                )}
                             </span>
                         )}
                         <span>First report {formatDate(entry.firstReportedAt)}</span>
@@ -129,8 +141,8 @@ export function ModerationQueueItem({ entry, selected, disabled = false, onSelec
                                             : 'border-white/10 bg-white/5 text-gray-300 hover:bg-white/10'
                                 }`}
                             >
-                                {ACTION_COPY[action].label}
-                                <span className="sr-only"> {heading}</span>
+                                {ACTION_COPY[action].label}{' '}
+                                <span className="sr-only">{heading}</span>
                             </button>
                         ))}
                     </div>
