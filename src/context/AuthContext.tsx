@@ -49,6 +49,13 @@ interface User {
         twitter?: string | null;
         linkedin?: string | null;
     };
+    interests?: string[];
+    experienceLevel?: string | null;
+    goal?: string | null;
+    onboarding?: {
+        completedAt: string | null;
+        skippedAt: string | null;
+    };
 }
 
 export type TwoFactorChallenge = { requires2FA: true; tempToken: string };
@@ -61,6 +68,8 @@ interface AuthContextType {
     verify2faLogin: (tempToken: string, code: string) => Promise<void>;
     register: (name: string, email: string, password: string, username?: string) => Promise<void>;
     logout: () => void;
+    /** Re-read the signed-in user from the API (after something changed on the server) */
+    refreshUser: () => Promise<void>;
     updateProfile: (data: {
         name?: string;
         username?: string;
@@ -251,6 +260,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         safeLocalStorage.setItem('token', data.token);
         setToken(data.token);
         setUser(data.data);
+    };
+
+    // Unlike fetchUser this never signs anyone out: a failed refresh just keeps what we have
+    const refreshUser = async () => {
+        if (!token) return;
+        try {
+            const response = await fetch(`${API_URL}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } });
+            if (response.ok) setUser((await response.json()).data);
+        } catch {
+            // Keep the current user
+        }
     };
 
     const logout = () => {
@@ -478,6 +498,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             verify2faLogin,
             register,
             logout,
+            refreshUser,
             updateProfile,
             updatePassword,
             forgotPassword,

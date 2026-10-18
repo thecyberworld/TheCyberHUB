@@ -10,7 +10,6 @@ import {
     BookOpen,
     Map,
     Calendar,
-    Clock,
     ArrowRight,
     Search,
     Key,
@@ -18,7 +17,6 @@ import {
     Terminal,
     Hash,
     Shield,
-    Code,
     TrendingUp,
     Star,
     ChevronRight,
@@ -32,6 +30,9 @@ import { SkeletonDashboard } from '@/components/ui/skeleton';
 import { fetchApi } from '@/lib/api';
 import StreakWidget from '@/components/StreakWidget';
 import AchievementsPanel from '@/components/badges/AchievementsPanel';
+import ChecklistCard from '@/components/onboarding/ChecklistCard';
+import SuggestedFollows from '@/components/onboarding/SuggestedFollows';
+import { useOnboarding } from '@/hooks/queries';
 const DailyChallenge = lazy(() => import('@/components/DailyChallenge'));
 
 interface ChallengeSummary {
@@ -56,8 +57,8 @@ const quickTools = [
 const learningResources = [
     { title: 'Cybersecurity Roadmap', href: '/roadmaps', icon: Map, description: 'Start your security journey' },
     { title: 'Cheatsheets', href: '/cheatsheets', icon: BookOpen, description: 'Quick reference guides' },
-    { title: 'Security Tools', href: '/tools', icon: Wrench, description: 'Explore all 9+ tools' },
-    { title: 'Practice Labs', href: '/labs', icon: Shield, description: 'Coming soon - Hands-on environments' },
+    { title: 'Security Tools', href: '/tools', icon: Wrench, description: 'Explore every security tool' },
+    { title: 'Practice Labs', href: '/labs', icon: Shield, description: 'Hands-on environments' },
 ];
 
 // Stats cards
@@ -84,6 +85,13 @@ const DashboardPage = () => {
     const [recentChallenges, setRecentChallenges] = useState<ChallengeSummary[]>([]);
     const [activityLoading, setActivityLoading] = useState(true);
     const [showMilestone, setShowMilestone] = useState<{ label: string; description: string } | null>(null);
+    const [justOnboarded, setJustOnboarded] = useState(false);
+    const onboarding = useOnboarding();
+
+    // /dashboard?welcome=1 is where the welcome flow ends
+    useEffect(() => {
+        if (new URLSearchParams(window.location.search).get('welcome') === '1') setJustOnboarded(true);
+    }, []);
 
     // Fix: Use Intl.DateTimeFormat to get user's local timezone hour
     useEffect(() => {
@@ -109,13 +117,23 @@ const DashboardPage = () => {
     // Milestone celebration check
     useEffect(() => {
         if (!user?.stats) return;
-        const dismissed = JSON.parse(localStorage.getItem('dismissed_milestones') || '[]');
+        let dismissed: string[] = [];
+        try {
+            const parsed = JSON.parse(localStorage.getItem('dismissed_milestones') || '[]');
+            if (Array.isArray(parsed)) dismissed = parsed;
+        } catch {
+            // Unreadable storage just means the celebration can show again
+        }
         for (const m of MILESTONES) {
             const value = user.stats[m.field as keyof typeof user.stats] ?? 0;
             if (typeof value === 'number' && value >= m.threshold && !dismissed.includes(m.key)) {
                 setShowMilestone({ label: m.label, description: m.description });
                 const updated = [...dismissed, m.key];
-                localStorage.setItem('dismissed_milestones', JSON.stringify(updated));
+                try {
+                    localStorage.setItem('dismissed_milestones', JSON.stringify(updated));
+                } catch {
+                    // Private mode or full storage
+                }
                 // Auto-dismiss after 5 seconds
                 setTimeout(() => setShowMilestone(null), 5000);
                 break;
@@ -190,17 +208,33 @@ const DashboardPage = () => {
         { ...statsConfig[3], value: eventsAttended.toString() },
     ];
 
-    // Personalized recommendations based on user activity
+    // Next steps from the server (an unsolved challenge in their interests, the next event),
+    // then the always-useful ones
     const getRecommendations = () => {
-        const recs = [];
-        if (challengesSolved === 0) {
+        const recs: { title: string; description: string; href: string; icon: React.ElementType }[] = [];
+        const next = onboarding.data?.next;
+        if (next?.challenge) {
+            recs.push({
+                title: `Try: ${next.challenge.title}`,
+                description: `${next.challenge.category} · ${next.challenge.difficulty}`,
+                href: `/challenges/${next.challenge.slug}`,
+                icon: Flag,
+            });
+        } else if (challengesSolved === 0) {
             recs.push({ title: 'Try Your First Challenge', description: 'Start with a beginner challenge to get your feet wet', href: '/challenges', icon: Flag });
+        }
+        if (next?.event) {
+            recs.push({
+                title: next.event.title,
+                description: `Next event · ${new Date(next.event.startDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}`,
+                href: `/events/${next.event.slug}`,
+                icon: Calendar,
+            });
+        } else if (eventsAttended === 0) {
+            recs.push({ title: 'Attend an Event', description: 'Join a CTF, workshop, or webinar', href: '/events', icon: Calendar });
         }
         if (challengesSolved > 0 && challengesSolved < 10) {
             recs.push({ title: 'Keep Solving Challenges', description: `${10 - challengesSolved} more to earn the Problem Solver badge`, href: '/challenges', icon: Target });
-        }
-        if (eventsAttended === 0) {
-            recs.push({ title: 'Attend an Event', description: 'Join a CTF, workshop, or webinar', href: '/events', icon: Calendar });
         }
         recs.push({ title: 'Explore Learning Paths', description: 'Follow structured cybersecurity roadmaps', href: '/roadmaps', icon: Map });
         if (ctfPoints < 100) {
@@ -246,6 +280,17 @@ const DashboardPage = () => {
                         <p className="text-gray-400">
                             Welcome to your security workspace. Pick up where you left off.
                         </p>
+                    </div>
+
+                    {justOnboarded && (
+                        <div role="status" className="mb-6 p-4 rounded-xl border border-green-500/30 bg-green-500/5 flex items-start justify-between gap-3">
+                            <p className="text-sm text-green-300">You are all set. Your suggestions below follow what you told us.</p>
+                            <button onClick={() => setJustOnboarded(false)} className="text-xs text-green-400 hover:underline shrink-0">Dismiss</button>
+                        </div>
+                    )}
+
+                    <div className="mb-10">
+                        <ChecklistCard />
                     </div>
 
                     {/* Stats Grid */}
@@ -314,6 +359,9 @@ const DashboardPage = () => {
                                         <ChevronRight className="w-4 h-4 text-gray-600 group-hover:text-orange-500 transition-colors" />
                                     </Link>
                                 ))}
+                            </div>
+                            <div className="mt-6 pt-5 border-t border-white/10">
+                                <SuggestedFollows limit={3} title="Who to follow" />
                             </div>
                         </div>
                     </div>
@@ -385,44 +433,6 @@ const DashboardPage = () => {
                                     </Link>
                                 ))}
                             </div>
-                        </div>
-                    </div>
-
-                    {/* Recent Activity / Getting Started */}
-                    <div className="mt-10">
-                        <h2 className="text-lg font-semibold text-white flex items-center gap-2 mb-4">
-                            <Clock className="w-5 h-5 text-green-500" />
-                            Getting Started
-                        </h2>
-                        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                            <GettingStartedCard
-                                title="Complete your profile"
-                                description="Add more details to your profile"
-                                href="/profile"
-                                icon={Shield}
-                                completed={!!user.name && !!user.username}
-                            />
-                            <GettingStartedCard
-                                title="Try a security tool"
-                                description="Explore our free security tools"
-                                href="/tools"
-                                icon={Wrench}
-                                completed={false}
-                            />
-                            <GettingStartedCard
-                                title="View a roadmap"
-                                description="Start your learning journey"
-                                href="/roadmaps"
-                                icon={Map}
-                                completed={false}
-                            />
-                            <GettingStartedCard
-                                title="Check cheatsheets"
-                                description="Quick reference guides"
-                                href="/cheatsheets"
-                                icon={Code}
-                                completed={false}
-                            />
                         </div>
                     </div>
 
@@ -501,45 +511,5 @@ const DashboardPage = () => {
         </div>
     );
 };
-
-// Getting Started Card Component
-const GettingStartedCard = ({
-    title,
-    description,
-    href,
-    icon: Icon,
-    completed,
-}: {
-    title: string;
-    description: string;
-    href: string;
-    icon: React.ElementType;
-    completed: boolean;
-}) => (
-    <Link
-        href={href}
-        className={`group p-4 rounded-xl border transition-all ${completed
-            ? 'border-green-500/30 bg-green-500/5'
-            : 'border-white/10 bg-white/[0.02] hover:border-orange-500/40'
-            }`}
-    >
-        <div className="flex items-start gap-3">
-            <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${completed ? 'bg-green-500/20' : 'bg-white/5 group-hover:bg-orange-500/10'
-                } transition-colors`}>
-                {completed ? (
-                    <Star className="w-4 h-4 text-green-500" />
-                ) : (
-                    <Icon className="w-4 h-4 text-gray-400 group-hover:text-orange-500 transition-colors" />
-                )}
-            </div>
-            <div className="flex-1 min-w-0">
-                <p className={`font-medium mb-0.5 ${completed ? 'text-green-400' : 'text-white group-hover:text-orange-400'} transition-colors`}>
-                    {title}
-                </p>
-                <p className="text-xs text-gray-500">{description}</p>
-            </div>
-        </div>
-    </Link>
-);
 
 export default DashboardPage;

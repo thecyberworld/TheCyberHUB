@@ -95,9 +95,8 @@ test.describe('Challenges Leaderboard', () => {
         const leaderboardTab = page.locator('button').filter({ hasText: /Leaderboard/i });
         await leaderboardTab.first().click();
 
-        // Should show "Top Players" heading
-        const topPlayersHeading = page.locator('text=/Top Players/i');
-        await expect(topPlayersHeading).toBeVisible({ timeout: 10_000 });
+        // The shared leaderboard view replaces the challenge list
+        await expect(page.getByRole('region', { name: 'Leaderboard' })).toBeVisible({ timeout: 10_000 });
     });
 
     test('should display leaderboard entries or empty state', async ({ page }) => {
@@ -106,8 +105,7 @@ test.describe('Challenges Leaderboard', () => {
         await leaderboardTab.first().click();
         await page.waitForTimeout(2000);
 
-        // Leaderboard should show entries with points/solves or be empty
-        const topPlayersHeading = page.locator('text=/Top Players/i');
-        await expect(topPlayersHeading).toBeVisible({ timeout: 10_000 });
+        // Leaderboard shows entries, an empty state or an error, always inside its region
+        await expect(page.getByRole('region', { name: 'Leaderboard' })).toBeVisible({ timeout: 10_000 });
     });
 });

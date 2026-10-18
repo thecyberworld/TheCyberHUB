@@ -274,14 +274,13 @@ test.describe('CTF Filter Features', () => {
 });
 
 test.describe('CTF Admin Features', () => {
-    test('should not load admin data without auth', async ({ page }) => {
-        // /admin/challenges has no client-side redirect; the API is what refuses
-        // an unauthenticated request, so the page must show an error and no data.
+    test('should send signed-out visitors to sign in', async ({ page }) => {
+        // The page guard redirects; the API still enforces admin/owner on every route.
         await mockUnauthorizedApi(page);
 
         await page.goto(`${BASE_URL}/admin/challenges`);
 
-        await expect(page.getByText(/failed to (connect|load)/i)).toBeVisible();
+        await expect(page).toHaveURL(/\/auth\?redirect=/);
         await expect(page.getByText(/total challenges/i)).toHaveCount(0);
     });
 

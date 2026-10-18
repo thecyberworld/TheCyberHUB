@@ -10,6 +10,7 @@ import { useDebounce } from '@/hooks/useDebounce';
 import { fetchApi } from '@/lib/api';
 import { loginSchema, registerSchema } from '@/lib/validations';
 import { safeRedirectPath } from '@/lib/safeRedirect';
+import { landingPath } from '@/lib/landingPath';
 import { takePending2fa } from '@/lib/pending2fa';
 
 type AuthMode = 'login' | 'register' | '2fa';
@@ -124,11 +125,13 @@ const AuthPage = () => {
         }
     }, []);
 
+    // A valid ?redirect= wins; a brand new member who has not done the welcome flow goes there
+    const explicitRedirect = searchParams.get('redirect');
     useEffect(() => {
         if (!authLoading && user) {
-            router.push(redirect);
+            router.push(landingPath(user, explicitRedirect, redirect));
         }
-    }, [authLoading, user, router, redirect]);
+    }, [authLoading, user, router, redirect, explicitRedirect]);
 
     const validateForm = () => {
         const schema = mode === 'register' ? registerSchema : loginSchema;
@@ -204,7 +207,7 @@ const AuthPage = () => {
                 });
             }
 
-            setTimeout(() => router.push(redirect), 500);
+            // The effect above takes the member on as soon as the user is set
         } catch (err) {
             let message = 'Something went wrong';
             if (err instanceof Error) {

@@ -17,6 +17,7 @@ vi.mock('@/components/feed/FeedItem', () => ({
 }))
 vi.mock('@/components/feed/CreatePost', () => ({ default: () => <div data-testid="composer" /> }))
 vi.mock('@/components/feed/ReshareDialog', () => ({ default: () => null }))
+vi.mock('@/components/onboarding/SuggestedFollows', () => ({ default: ({ title }: { title?: string }) => <div data-testid="suggestions">{title}</div> }))
 
 class FakeObserver {
     observe() {}
@@ -48,6 +49,14 @@ beforeEach(() => {
 })
 
 describe('FeedPage', () => {
+    it('offers people to follow in the sidebar only when signed in', () => {
+        const { rerender } = render(<FeedPage />)
+        expect(screen.queryByTestId('suggestions')).toBeNull()
+        useAuth.mockReturnValue({ user: { id: 'u1', name: 'Me', username: 'me' } })
+        rerender(<FeedPage />)
+        expect(screen.getByTestId('suggestions')).toHaveTextContent('Who to follow')
+    })
+
     it('shows the posts and the community numbers', () => {
         render(<FeedPage />)
         expect(screen.getByText('Hello feed')).toBeInTheDocument()

@@ -33,7 +33,7 @@ export default function NotificationRow({ notification: n, onRead, onDelete }: P
                 </p>
                 <p className="text-xs text-gray-500 mt-1">
                     <time dateTime={n.createdAt}>{timeAgo(n.createdAt)}</time>
-                    {!n.read && <span className="sr-only"> (unread)</span>}
+                    {!n.read && <>{' '}<span className="sr-only">(unread)</span></>}
                 </p>
             </div>
             {!n.read && <div className="w-2 h-2 rounded-full bg-orange-500 flex-shrink-0 mt-2" aria-hidden="true" />}

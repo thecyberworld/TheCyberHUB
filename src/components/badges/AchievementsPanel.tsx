@@ -40,9 +40,10 @@ export default function AchievementsPanel({ username, limit = 8, showProgress = 
         );
     }
 
-    const shown = data.earned.slice(0, limit);
-    const hidden = data.earned.length - shown.length;
-    const next = showProgress ? data.progress.slice(0, 2) : [];
+    const earned = data.earned ?? [];
+    const shown = earned.slice(0, limit);
+    const hidden = earned.length - shown.length;
+    const next = showProgress ? (data.progress ?? []).slice(0, 2) : [];
 
     return (
         <div className="space-y-4">

@@ -33,6 +33,12 @@ describe('AchievementsPanel', () => {
         expect(screen.getByText('Nothing yet')).toBeInTheDocument()
     })
 
+    it('copes with a reply that has no lists', () => {
+        useUserBadges.mockReturnValue({ isLoading: false, isError: false, data: [] })
+        render(<AchievementsPanel username="alice" emptyText="Nothing yet" showProgress />)
+        expect(screen.getByText('Nothing yet')).toBeInTheDocument()
+    })
+
     it('lists earned badges up to the limit and counts the rest', () => {
         useUserBadges.mockReturnValue({
             isLoading: false, isError: false,
