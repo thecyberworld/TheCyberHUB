@@ -22,7 +22,7 @@ const getEnv = (key: string, defaultValue?: string): string => {
 
 export const env = {
     // Core API URL — required; defaults to localhost for local dev
-    apiUrl: getEnv('NEXT_PUBLIC_API_URL', 'http://localhost:5000'),
+    apiUrl: getEnv('NEXT_PUBLIC_API_URL', 'http://localhost:5001'),
 
     // App base URL — used for canonical links, SEO, and OAuth redirects
     appUrl: getEnv('NEXT_PUBLIC_APP_URL', 'http://localhost:3000'),
