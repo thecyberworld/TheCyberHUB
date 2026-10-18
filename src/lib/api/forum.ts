@@ -19,6 +19,8 @@ export async function getDiscussions(params: {
     tag?: string;
     sort?: SortOption;
     search?: string;
+    /** Only threads with an accepted answer */
+    status?: 'solved';
 }): Promise<PaginatedResponse<Discussion>> {
     const searchParams = new URLSearchParams();
     if (params.page) searchParams.set('page', params.page.toString());
@@ -27,6 +29,7 @@ export async function getDiscussions(params: {
     if (params.tag) searchParams.set('tag', params.tag);
     if (params.sort) searchParams.set('sortBy', params.sort);
     if (params.search) searchParams.set('search', params.search);
+    if (params.status) searchParams.set('status', params.status);
 
     // Errors propagate so the page can show a retry state instead of an empty forum
     return fetchApi(`/api/forum/discussions?${searchParams}`, { requireAuth: false });
