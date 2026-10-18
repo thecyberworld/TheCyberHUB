@@ -133,7 +133,7 @@ export const GlobalSearch = () => {
                 const [blogsData, eventsData, forumsData] = await Promise.all([
                     fetchApi('/api/blogs?limit=3&sort=-createdAt', { requireAuth: false }).catch(() => null),
                     fetchApi('/api/events?limit=3&sort=-createdAt', { requireAuth: false }).catch(() => null),
-                    fetchApi('/api/forums/discussions?limit=3&sort=-createdAt', { requireAuth: false }).catch(() => null),
+                    fetchApi('/api/forum/discussions?limit=3&sortBy=new', { requireAuth: false }).catch(() => null),
                 ]);
 
                 const items: SearchItem[] = [];

@@ -3,9 +3,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Shield, Play, Square, BarChart3, Settings, Plus, Loader2, AlertCircle } from 'lucide-react';
 import { ConfirmDialog, useConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { fetchApi } from '@/lib/api';
+import { useAuth } from '@/context/AuthContext';
 
 interface Solve {
     user: string;
@@ -32,15 +34,27 @@ const statusColor = (status: string) => {
 };
 
 export default function AdminChallenges() {
+    const router = useRouter();
+    const { user, loading: authLoading } = useAuth();
+    const isAdmin = !!user && (user.role === 'admin' || user.role === 'owner');
     const [challenges, setChallenges] = useState<Challenge[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [actionLoading, setActionLoading] = useState<string | null>(null);
     const { isOpen: confirmOpen, confirm: showConfirm, onConfirm, onCancel } = useConfirmDialog();
 
+    // Signed-out and non-admin visitors are sent to sign in, like the other admin pages. This is
+    // only the UI guard; the API enforces admin/owner on every challenge route.
     useEffect(() => {
-        fetchChallenges();
-    }, []);
+        if (!authLoading && !isAdmin) {
+            const redirectUrl = `${window.location.pathname}${window.location.search}`;
+            router.push(`/auth?redirect=${encodeURIComponent(redirectUrl)}`);
+        }
+    }, [authLoading, isAdmin, router]);
+
+    useEffect(() => {
+        if (isAdmin) fetchChallenges();
+    }, [isAdmin]);
 
     const fetchChallenges = async () => {
         try {
@@ -107,7 +121,11 @@ export default function AdminChallenges() {
         }
     };
 
-    if (loading) {
+    if (!authLoading && !isAdmin) {
+        return null;
+    }
+
+    if (authLoading || loading) {
         return (
             <div className="min-h-screen bg-[var(--color-background)] px-4 sm:px-6 pt-28 pb-16 flex items-center justify-center">
                 <div className="flex items-center gap-2 text-gray-400">

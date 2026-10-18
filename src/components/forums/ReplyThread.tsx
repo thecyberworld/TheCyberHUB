@@ -10,6 +10,7 @@ import type { Reply } from '@/types/forum';
 import { ROLE_BADGES } from '@/types/forum';
 import VoteButtons from './VoteButtons';
 import MarkdownContent from './MarkdownContent';
+import { isModeratorRole } from '@/lib/roles';
 import ReplyForm from './ReplyForm';
 
 interface ReplyThreadProps {
@@ -63,7 +64,7 @@ export default function ReplyThread({
 
     const isAuthor = currentUserId === reply.author._id;
     const isDiscussionAuthor = currentUserId === discussionAuthorId;
-    const isModerator = userRole === 'admin' || userRole === 'moderator';
+    const isModerator = isModeratorRole(userRole);
     const canEdit = isAuthor || isModerator;
     const canDelete = isAuthor || isModerator;
     const canAccept = isDiscussionAuthor && !reply.isAccepted;

@@ -6,7 +6,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
     const { id } = await params
 
     try {
-        const response = await fetch(`${API_URL}/api/discussions/${id}`, { next: { revalidate: 60 } })
+        const response = await fetch(`${API_URL}/api/forum/discussions/${id}`, { next: { revalidate: 60 } })
         if (response.ok) {
             const result = await response.json()
             const discussion = result.data || result

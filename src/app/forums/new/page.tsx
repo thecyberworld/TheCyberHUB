@@ -40,7 +40,7 @@ export default function NewDiscussionPage() {
     const validate = (): boolean => {
         const result = discussionSchema.safeParse({
             title: title.trim(),
-            body: content.trim(),
+            content: content.trim(),
             category: category || undefined,
             tags: tags.length > 0 ? tags : undefined,
         });
@@ -48,7 +48,7 @@ export default function NewDiscussionPage() {
             const newErrors: typeof errors = {};
             result.error.issues.forEach(issue => {
                 const key = issue.path[0] as string;
-                if (key === 'body') newErrors.content = issue.message;
+                if (key === 'content') newErrors.content = issue.message;
                 else if (key === 'title') newErrors.title = issue.message;
                 else if (key === 'category') newErrors.category = issue.message;
             });

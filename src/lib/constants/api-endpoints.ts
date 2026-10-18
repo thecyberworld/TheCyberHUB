@@ -15,7 +15,7 @@ export const API_ENDPOINTS = {
     BLOGS: { BASE: '/api/blogs', BY_ID: (id: string) => `/api/blogs/${id}` },
     CHALLENGES: { BASE: '/api/challenges', BY_SLUG: (slug: string) => `/api/challenges/${slug}`, SUBMIT: (id: string) => `/api/challenges/${id}/submit`, HINT: (id: string) => `/api/challenges/${id}/hint` },
     EVENTS: { BASE: '/api/events', BY_SLUG: (slug: string) => `/api/events/${slug}`, REGISTER: (id: string) => `/api/events/${id}/register`, UPCOMING: '/api/events/upcoming' },
-    FORUMS: { DISCUSSIONS: '/api/forums/discussions', BY_ID: (id: string) => `/api/forums/discussions/${id}`, REPLIES: (id: string) => `/api/forums/discussions/${id}/replies` },
+    FORUMS: { DISCUSSIONS: '/api/forum/discussions', BY_ID: (id: string) => `/api/forum/discussions/${id}`, REPLIES: (id: string) => `/api/forum/discussions/${id}/replies` },
     FEED: { BASE: '/api/feed', BY_ID: (id: string) => `/api/feed/${id}`, LIKE: (id: string) => `/api/feed/${id}/like`, COMMENT: (id: string) => `/api/feed/${id}/comments` },
     JOBS: { BASE: '/api/jobs', BY_SLUG: (slug: string) => `/api/jobs/${slug}`, APPLY: (id: string) => `/api/jobs/${id}/apply`, EMPLOYER: '/api/jobs/employer' },
     USERS: { BASE: '/api/users', BY_USERNAME: (username: string) => `/api/users/${username}`, SEARCH: '/api/users/search' },
