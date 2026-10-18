@@ -25,6 +25,7 @@ import AchievementsPanel from '@/components/badges/AchievementsPanel';
 import { useAuth } from '@/context/AuthContext';
 import { useToast } from '@/context/ToastContext';
 import { followUser } from '@/lib/api/feed';
+import { safeWebsite, socialHref } from '@/lib/socialLinks';
 
 interface PublicUser {
     id: string;
@@ -83,7 +84,7 @@ const PublicProfilePage = () => {
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const data = await fetchApi(`/api/users/${username}`, { requireAuth: false });
+                const data = await fetchApi(`/api/users/${username}`);
                 setUser(data.data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'Failed to load profile');
@@ -245,54 +246,31 @@ const PublicProfilePage = () => {
                     </div>
 
                     {/* Social Links */}
-                    {user.socialLinks && (
-                        <div className="flex items-center gap-3 mt-4">
-                            {user.socialLinks.website && (
-                                <a
-                                    href={user.socialLinks.website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
-                                    title="Website"
-                                >
-                                    <Globe className="w-5 h-5" />
-                                </a>
-                            )}
-                            {user.socialLinks.github && (
-                                <a
-                                    href={`https://github.com/${user.socialLinks.github}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
-                                    title="GitHub"
-                                >
-                                    <Github className="w-5 h-5" />
-                                </a>
-                            )}
-                            {user.socialLinks.twitter && (
-                                <a
-                                    href={`https://twitter.com/${user.socialLinks.twitter}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
-                                    title="Twitter / X"
-                                >
-                                    <Twitter className="w-5 h-5" />
-                                </a>
-                            )}
-                            {user.socialLinks.linkedin && (
-                                <a
-                                    href={`https://linkedin.com/in/${user.socialLinks.linkedin}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
-                                    title="LinkedIn"
-                                >
-                                    <Linkedin className="w-5 h-5" />
-                                </a>
-                            )}
-                        </div>
-                    )}
+                    {user.socialLinks && (() => {
+                        const links = [
+                            { key: 'website', title: 'Website', href: safeWebsite(user.socialLinks.website), Icon: Globe },
+                            { key: 'github', title: 'GitHub', href: socialHref('github', user.socialLinks.github), Icon: Github },
+                            { key: 'twitter', title: 'Twitter / X', href: socialHref('twitter', user.socialLinks.twitter), Icon: Twitter },
+                            { key: 'linkedin', title: 'LinkedIn', href: socialHref('linkedin', user.socialLinks.linkedin), Icon: Linkedin },
+                        ].filter((l) => l.href);
+                        return links.length > 0 && (
+                            <div className="flex items-center gap-3 mt-4">
+                                {links.map(({ key, title, href, Icon }) => (
+                                    <a
+                                        key={key}
+                                        href={href as string}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="p-2 text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-lg transition-colors"
+                                        title={title}
+                                        aria-label={`${title} (opens in a new tab)`}
+                                    >
+                                        <Icon className="w-5 h-5" aria-hidden="true" />
+                                    </a>
+                                ))}
+                            </div>
+                        );
+                    })()}
 
                     {/* Skills */}
                     {user.skills && user.skills.length > 0 && (

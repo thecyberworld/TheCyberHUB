@@ -313,7 +313,6 @@ const Navbar = () => {
                                     unreadCount={unreadCount}
                                     markAsRead={markAsRead}
                                     markAllAsRead={markAllAsRead}
-                                    theme={theme}
                                 />
                             )}
 
