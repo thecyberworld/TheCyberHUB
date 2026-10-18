@@ -10,24 +10,24 @@ import { describe, it, expect } from 'vitest';
 // Mock implementations for testing without full React setup
 // In a real setup, these would use @testing-library/react
 
-describe('AchievementBadge Component', () => {
-    interface MockAchievement {
-        id: string;
-        name: string;
-        description: string;
-        icon: string;
-        tier: 'bronze' | 'silver' | 'gold' | 'platinum';
-        earnedAt?: string;
-        progress?: number;
-        requirement?: string;
-    }
+interface MockAchievement {
+    id: string;
+    name: string;
+    description: string;
+    icon: string;
+    tier: 'bronze' | 'silver' | 'gold' | 'platinum';
+    earnedAt?: string;
+    progress?: number;
+    requirement?: string;
+}
 
+describe('AchievementBadge Component', () => {
     const mockEarnedAchievement: MockAchievement = {
         id: '1',
         name: 'First Blood',
         description: 'Solve your first challenge',
         icon: 'first_solve',
-        tier: 'bronze',
+        tier: 'bronze' as const,
         earnedAt: '2024-01-15T10:00:00Z',
     };
 
@@ -36,7 +36,7 @@ describe('AchievementBadge Component', () => {
         name: 'Challenge Master',
         description: 'Solve 50 challenges',
         icon: 'challenge_master',
-        tier: 'gold',
+        tier: 'gold' as const,
         progress: 60,
         requirement: 'Solve 50 challenges (30/50)',
     };
