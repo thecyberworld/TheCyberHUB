@@ -147,7 +147,8 @@ describe('fetchApi', () => {
                     ok: true,
                     status: 200,
                     json: () => Promise.resolve({
-                        accessToken: 'new-access-token',
+                        success: true,
+                        token: 'new-access-token',
                         refreshToken: 'new-refresh-token',
                     }),
                 })
@@ -170,5 +171,35 @@ describe('fetchApi', () => {
         const result = await fetchApi('/api/protected')
         expect(result).toEqual({ data: 'success' })
         expect(tokenStore.get()).toBe('new-access-token')
+    })
+
+    it('refreshes with only the cookie when no refresh token is stored locally', async () => {
+        tokenStore.set('expired-token')
+        localStorage.removeItem('refreshToken')
+
+        let callCount = 0
+        global.fetch = vi.fn().mockImplementation((url: string) => {
+            if (url.includes('/auth/refresh')) {
+                return Promise.resolve({
+                    ok: true,
+                    status: 200,
+                    json: () => Promise.resolve({ success: true, token: 'cookie-access-token' }),
+                })
+            }
+            callCount++
+            if (callCount === 1) {
+                return Promise.resolve({ ok: false, status: 401, json: () => Promise.resolve({}) })
+            }
+            return Promise.resolve({ ok: true, status: 200, json: () => Promise.resolve({ data: 'ok' }) })
+        })
+
+        const result = await fetchApi('/api/protected')
+
+        expect(result).toEqual({ data: 'ok' })
+        expect(tokenStore.get()).toBe('cookie-access-token')
+        const refreshCall = (global.fetch as ReturnType<typeof vi.fn>).mock.calls.find(
+            (call: unknown[]) => String(call[0]).includes('/auth/refresh')
+        )
+        expect(refreshCall?.[1]).toMatchObject({ method: 'POST', credentials: 'include', body: '{}' })
     })
 })

@@ -89,24 +89,29 @@ async function tryRefreshToken(): Promise<boolean> {
 
     refreshPromise = (async () => {
         try {
-            const refreshToken = typeof window !== 'undefined'
-                ? window.localStorage.getItem('refreshToken')
-                : null;
+            if (typeof window === 'undefined') return false;
 
-            if (!refreshToken) return false;
+            // The refresh token lives in an httpOnly cookie the browser sends with
+            // `credentials: 'include'`. A token kept in localStorage by older sessions
+            // is still sent in the body as a fallback.
+            let legacyRefreshToken: string | null = null;
+            try { legacyRefreshToken = window.localStorage.getItem('refreshToken'); } catch { /* ignore */ }
 
             const response = await fetch(`${API_URL}/api/auth/refresh`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ refreshToken }),
+                body: JSON.stringify(legacyRefreshToken ? { refreshToken: legacyRefreshToken } : {}),
             });
 
             if (!response.ok) return false;
 
+            // The backend answers { token, refreshToken, expiresIn }
             const data = await response.json();
-            if (data.accessToken) {
-                tokenStore.set(data.accessToken);
-                if (data.refreshToken) {
+            const accessToken: string | undefined = data.token ?? data.accessToken;
+            if (accessToken) {
+                tokenStore.set(accessToken);
+                if (data.refreshToken && legacyRefreshToken) {
                     try { window.localStorage.setItem('refreshToken', data.refreshToken); } catch { /* ignore */ }
                 }
                 return true;
