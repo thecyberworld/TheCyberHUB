@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Loader2, CheckCircle2, XCircle } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import { stashPending2fa } from '@/lib/pending2fa';
 
 const GitHubCallbackPage = () => {
     const router = useRouter();
@@ -30,7 +31,12 @@ const GitHubCallbackPage = () => {
 
         const handleCallback = async () => {
             try {
-                await loginWithGithub(code);
+                const challenge = await loginWithGithub(code);
+                if (challenge) {
+                    stashPending2fa(challenge.tempToken);
+                    router.replace('/auth');
+                    return;
+                }
                 setStatus('success');
                 setTimeout(() => router.push('/profile'), 1500);
             } catch (err) {
