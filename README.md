@@ -174,6 +174,8 @@ npm test             # Vitest unit tests (watch mode); use `npm run test:ci` for
 npm run test:e2e     # Playwright E2E
 ```
 
+`npm install` also enables a `pre-push` git hook (`.githooks/pre-push`) that runs lint, the type check and unit tests before every push, the same checks as the PR workflow. Skip it once with `SKIP_HOOKS=1 git push`.
+
 ---
 
 ## License

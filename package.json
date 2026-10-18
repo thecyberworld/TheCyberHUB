@@ -6,6 +6,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
+    "prepare": "git rev-parse --git-dir >/dev/null 2>&1 && git config core.hooksPath .githooks || true",
     "dev": "cross-env NODE_OPTIONS=--no-experimental-webstorage next dev --turbopack",
     "dev:webpack": "cross-env NODE_OPTIONS=--no-experimental-webstorage next dev",
     "build": "next build",
