@@ -9,7 +9,10 @@ import { useToast } from '@/context/ToastContext';
 import dynamic from 'next/dynamic';
 
 import AchievementsPanel from '@/components/badges/AchievementsPanel';
-import { useStreak } from '@/hooks/queries';
+import { useStreak, useUserActivity, useUserPosts, pointsByMonth } from '@/hooks/queries';
+import NotificationSettings from '@/components/profile/NotificationSettings';
+import { eventHref, timeAgo } from '@/lib/feedFormat';
+import { normalizeHandle } from '@/lib/socialLinks';
 
 const ProfileChart = dynamic(() => import('@/components/charts/ProfileChart'), { ssr: false });
 const ActivityHeatmap = dynamic(() => import('@/components/charts/ActivityHeatmap'), { ssr: false });
@@ -39,20 +42,34 @@ import {
     Tag,
     X,
     Plus,
-    FileText,
     MessageSquare,
     MapPin,
     Globe,
     Github,
     Twitter,
-    Linkedin
+    Linkedin,
+    Bell
 } from 'lucide-react';
 import { API_URL, fetchApi, tokenStore } from '@/lib/api';
 import { profileSchema } from '@/lib/validations';
+type ProfileTab = 'stats' | 'profile' | 'security' | 'privacy' | 'notifications';
+const PROFILE_TABS: ProfileTab[] = ['stats', 'profile', 'security', 'privacy', 'notifications'];
+
 const ProfilePage = () => {
     const router = useRouter();
     const { user, loading, logout, updateProfile, updatePassword, requestVerification } = useAuth();
-    const [activeTab, setActiveTab] = useState<'stats' | 'profile' | 'security' | 'privacy'>('stats');
+    const [activeTab, setActiveTabState] = useState<ProfileTab>('stats');
+
+    // ?tab= opens a tab from outside (the bell page links to the notification settings)
+    useEffect(() => {
+        const requested = new URLSearchParams(window.location.search).get('tab');
+        if (PROFILE_TABS.includes(requested as ProfileTab)) setActiveTabState(requested as ProfileTab);
+    }, []);
+
+    const setActiveTab = useCallback((tab: ProfileTab) => {
+        setActiveTabState(tab);
+        window.history.replaceState(null, '', tab === 'stats' ? '/profile' : `/profile?tab=${tab}`);
+    }, []);
     const avatarInputRef = useRef<HTMLInputElement>(null);
 
     // Profile extended fields
@@ -82,15 +99,10 @@ const ProfilePage = () => {
     const [skills, setSkills] = useState<string[]>([]);
     const [newSkill, setNewSkill] = useState('');
 
-    // Activity feed
-    interface ActivityItem {
-        type: 'challenge' | 'blog' | 'event' | 'forum';
-        title: string;
-        date: string;
-        description: string;
-    }
-    const [activityFeed, setActivityFeed] = useState<ActivityItem[]>([]);
-    const [activityLoading, setActivityLoading] = useState(true);
+    // Real activity: points per day from the API, and the member's own latest posts and events
+    const { data: activity, isLoading: activityLoading } = useUserActivity(user?.username);
+    const { data: ownPosts, isLoading: postsLoading } = useUserPosts(user?.username);
+    const recentItems = (ownPosts?.pages.flatMap((p) => p.data) ?? []).slice(0, 5);
 
     // Streak & heatmap
     const { data: streakData } = useStreak();
@@ -220,52 +232,8 @@ const ProfilePage = () => {
                 setStatsLoading(false);
             }
         };
-        const fetchActivity = async () => {
-            if (!user) return;
-            try {
-                // Load recent challenges as activity
-                const json = await fetchApi('/api/challenges?limit=5', { requireAuth: false });
-                const challenges = Array.isArray(json) ? json : Array.isArray(json.data) ? json.data : [];
-                const items: ActivityItem[] = challenges.slice(0, 5).map((c: { title: string; createdAt: string; difficulty?: string }) => ({
-                    type: 'challenge' as const,
-                    title: c.title,
-                    date: c.createdAt,
-                    description: `${c.difficulty || 'Challenge'} challenge`,
-                }));
-                setActivityFeed(items);
-            } catch {
-                // Activity feed is optional
-            } finally {
-                setActivityLoading(false);
-            }
-        };
-
         fetchStats();
-        fetchActivity();
     }, [user]);
-
-    // Generate mock performance curve based on actual points
-    const getPerformanceData = (totalPoints: number) => {
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const currentMonth = new Date().getMonth();
-        const data = [];
-
-        for (let i = 5; i >= 0; i--) {
-            let monthIndex = currentMonth - i;
-            if (monthIndex < 0) monthIndex += 12;
-            data.push({ name: months[monthIndex], points: 0 });
-        }
-
-        if (totalPoints > 0) {
-            data[0].points = Math.max(0, Math.floor(totalPoints * 0.2));
-            data[1].points = Math.floor(totalPoints * 0.35);
-            data[2].points = Math.floor(totalPoints * 0.5);
-            data[3].points = Math.floor(totalPoints * 0.7);
-            data[4].points = Math.floor(totalPoints * 0.85);
-            data[5].points = totalPoints;
-        }
-        return data;
-    };
 
     // Initialize form when user loads
     React.useEffect(() => {
@@ -313,9 +281,9 @@ const ProfilePage = () => {
                 skills,
                 socialLinks: {
                     website: socialLinks.website.trim() || null,
-                    github: socialLinks.github.trim() || null,
-                    twitter: socialLinks.twitter.trim() || null,
-                    linkedin: socialLinks.linkedin.trim() || null,
+                    github: normalizeHandle('github', socialLinks.github) || null,
+                    twitter: normalizeHandle('twitter', socialLinks.twitter) || null,
+                    linkedin: normalizeHandle('linkedin', socialLinks.linkedin) || null,
                 },
             });
             setProfileSuccess(true);
@@ -631,6 +599,16 @@ const ProfilePage = () => {
                             <Eye className="w-4 h-4" />
                             Privacy
                         </button>
+                        <button
+                            onClick={() => setActiveTab('notifications')}
+                            className={`flex items-center gap-2 px-4 py-3 border-b-2 transition-colors whitespace-nowrap ${activeTab === 'notifications'
+                                ? 'border-orange-500 text-white'
+                                : 'border-transparent text-gray-400 hover:text-white'
+                                }`}
+                        >
+                            <Bell className="w-4 h-4" />
+                            Notifications
+                        </button>
                     </div>
 
                     {/* Stats Tab */}
@@ -680,16 +658,17 @@ const ProfilePage = () => {
                             <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
                                 <div className="flex items-center gap-2 mb-6">
                                     <BarChart3 className="w-5 h-5 text-orange-400" />
-                                    <h3 className="text-lg font-semibold text-white">Points Growth</h3>
+                                    <h3 className="text-lg font-semibold text-white">Points earned</h3>
+                                    {activity && <span className="text-xs text-gray-500">last 6 months</span>}
                                 </div>
                                 <div className="h-[300px] w-full">
-                                    {statsLoading ? (
+                                    {activityLoading ? (
                                         <div className="w-full h-full flex flex-col items-center justify-center">
                                             <Loader2 className="w-8 h-8 animate-spin text-orange-500 mb-4" />
                                             <p className="text-gray-500 text-sm">Loading activity data...</p>
                                         </div>
                                     ) : (
-                                        <ProfileChart data={getPerformanceData(stats?.ctfPoints || 0)} />
+                                        <ProfileChart data={pointsByMonth(activity?.days ?? [])} />
                                     )}
                                 </div>
                             </div>
@@ -738,41 +717,39 @@ const ProfilePage = () => {
                                     <Activity className="w-5 h-5 text-blue-400" />
                                     <h3 className="text-lg font-semibold text-white">Recent Activity</h3>
                                 </div>
-                                {activityLoading ? (
+                                {postsLoading ? (
                                     <div className="flex items-center justify-center py-8">
                                         <Loader2 className="w-6 h-6 animate-spin text-orange-500" />
                                     </div>
-                                ) : activityFeed.length === 0 ? (
+                                ) : recentItems.length === 0 ? (
                                     <div className="text-center py-8">
                                         <Activity className="w-12 h-12 text-gray-600 mx-auto mb-3" />
                                         <p className="text-gray-400">No recent activity</p>
                                         <p className="text-sm text-gray-500 mt-1">
-                                            Start solving challenges and writing posts to see activity here.
+                                            Solve a challenge or post in the feed and it shows up here.
                                         </p>
                                     </div>
                                 ) : (
-                                    <div className="space-y-3">
-                                        {activityFeed.map((item, i) => {
-                                            const icons = {
-                                                challenge: <Flag className="w-4 h-4 text-green-400" />,
-                                                blog: <FileText className="w-4 h-4 text-blue-400" />,
-                                                event: <Calendar className="w-4 h-4 text-purple-400" />,
-                                                forum: <MessageSquare className="w-4 h-4 text-orange-400" />,
-                                            };
+                                    <ul className="space-y-3">
+                                        {recentItems.map((item) => {
+                                            const isEvent = item.type === 'event';
+                                            const text = isEvent
+                                                ? item.eventData?.description ?? 'Activity'
+                                                : (item.content ?? item.reshareComment ?? 'Shared a post');
+                                            const href = isEvent ? eventHref(item) ?? `/feed/post/${item._id}` : `/feed/post/${item._id}`;
                                             return (
-                                                <div key={i} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
-                                                    <div className="mt-0.5">{icons[item.type]}</div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <p className="text-sm text-white font-medium truncate">{item.title}</p>
-                                                        <p className="text-xs text-gray-500">{item.description}</p>
-                                                    </div>
-                                                    <span className="text-xs text-gray-600 whitespace-nowrap">
-                                                        {item.date ? new Date(item.date).toLocaleDateString() : ''}
-                                                    </span>
-                                                </div>
+                                                <li key={item._id}>
+                                                    <Link href={href} className="flex items-start gap-3 p-3 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                                                        <div className="mt-0.5">
+                                                            {isEvent ? <Flag className="w-4 h-4 text-green-400" /> : <MessageSquare className="w-4 h-4 text-orange-400" />}
+                                                        </div>
+                                                        <p className="flex-1 min-w-0 text-sm text-white truncate">{text}</p>
+                                                        <span className="text-xs text-gray-500 whitespace-nowrap">{timeAgo(item.createdAt)}</span>
+                                                    </Link>
+                                                </li>
                                             );
                                         })}
-                                    </div>
+                                    </ul>
                                 )}
                             </div>
                         </div>
@@ -875,7 +852,7 @@ const ProfilePage = () => {
                                                 type="text"
                                                 value={socialLinks.github}
                                                 onChange={(e) => setSocialLinks(prev => ({ ...prev, github: e.target.value }))}
-                                                placeholder="GitHub username"
+                                                placeholder="GitHub username or profile link"
                                                 className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 focus:border-orange-500/50 focus:outline-none transition-colors"
                                             />
                                         </div>
@@ -885,7 +862,7 @@ const ProfilePage = () => {
                                                 type="text"
                                                 value={socialLinks.twitter}
                                                 onChange={(e) => setSocialLinks(prev => ({ ...prev, twitter: e.target.value }))}
-                                                placeholder="Twitter/X handle"
+                                                placeholder="X handle or profile link"
                                                 className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 focus:border-orange-500/50 focus:outline-none transition-colors"
                                             />
                                         </div>
@@ -895,7 +872,7 @@ const ProfilePage = () => {
                                                 type="text"
                                                 value={socialLinks.linkedin}
                                                 onChange={(e) => setSocialLinks(prev => ({ ...prev, linkedin: e.target.value }))}
-                                                placeholder="LinkedIn username"
+                                                placeholder="LinkedIn username or profile link"
                                                 className="w-full pl-11 pr-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder:text-gray-500 focus:border-orange-500/50 focus:outline-none transition-colors"
                                             />
                                         </div>
@@ -1327,19 +1304,21 @@ const ProfilePage = () => {
                                         <h3 className="text-white font-medium mb-1">Active Sessions</h3>
                                         <p className="text-sm text-gray-400">Manage your logged-in devices</p>
                                     </div>
-                                    <button
-                                        disabled
-                                        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 text-gray-500 cursor-not-allowed opacity-50"
+                                    <Link
+                                        href="/profile/sessions"
+                                        className="flex items-center gap-2 px-4 py-2 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
                                     >
                                         <Shield className="w-4 h-4" />
-                                        Manage Sessions (Coming Soon)
-                                    </button>
+                                        Manage sessions
+                                    </Link>
                                 </div>
                             </div>
                         </div>
                     )}
 
                     {/* Privacy Tab */}
+                    {activeTab === 'notifications' && <NotificationSettings />}
+
                     {activeTab === 'privacy' && (
                         <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8">
                             <h2 className="text-lg font-semibold text-white mb-6">Privacy Settings</h2>
@@ -1399,15 +1378,6 @@ const ProfilePage = () => {
                                             />
                                         )}
                                     </button>
-                                </div>
-
-                                {/* Future privacy options placeholder */}
-                                <div className="text-center py-8 border-t border-white/10 mt-6">
-                                    <Shield className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-                                    <p className="text-gray-400">More privacy options coming soon</p>
-                                    <p className="text-sm text-gray-500 mt-1">
-                                        Control who can see your activity, message you, and more.
-                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -13,3 +13,5 @@ export * from './useStreak';
 export * from './useBookmarks';
 export * from './useBadges';
 export * from './usePublicStats';
+export * from './useNotifications';
+export * from './useUserActivity';
